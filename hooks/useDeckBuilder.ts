@@ -28,7 +28,8 @@ export function useDeckBuilder() {
         ...card,
         deckId: `${card.id}_${Date.now()}_${Math.random()}`,
         selectedHiramekiLevel: 0,
-        godHiramekiType: null
+        godHiramekiType: null,
+        godHiramekiEffectId: null
       }));
 
       return {
@@ -66,7 +67,8 @@ export function useDeckBuilder() {
         ...card,
         deckId: `${card.id}_${Date.now()}_${Math.random()}`,
         selectedHiramekiLevel: 0,
-        godHiramekiType: null
+        godHiramekiType: null,
+        godHiramekiEffectId: null
       };
       return {
         ...prev,
@@ -98,7 +100,7 @@ export function useDeckBuilder() {
       ...prev,
       cards: prev.cards.map(card => 
         card.deckId === deckId 
-          ? { ...card, godHiramekiType: godType }
+          ? { ...card, godHiramekiType: godType, godHiramekiEffectId: null }
           : card
       )
     }));

@@ -292,12 +292,15 @@ export function getCardInfo(card: DeckCard, egoLevel: number = 0, hasPotential: 
     }
   }
 
-  // Apply god hirameki if active
-  if (card.godHiramekiType && !card.isBasicCard) {
-    const godEffect = GOD_HIRAMEKI_EFFECTS[card.godHiramekiType];
-    description = `${description}\n${godEffect.additionalEffect}`;
-    if (godEffect.costModifier !== undefined) {
-      cost += godEffect.costModifier;
+  // Apply god hirameki if active and an effect is selected
+  if (card.godHiramekiType && card.godHiramekiEffectId && !card.isBasicCard) {
+    const godDef = GOD_HIRAMEKI_EFFECTS[card.godHiramekiType];
+    const effect = godDef.effects.find(e => e.id === card.godHiramekiEffectId);
+    if (effect) {
+      description = `${description}\n${effect.additionalEffect}`;
+      if (effect.costModifier !== undefined) {
+        cost += effect.costModifier;
+      }
     }
   }
 
