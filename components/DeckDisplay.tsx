@@ -4,12 +4,14 @@ import { DeckCard, getCardInfo } from "@/types";
 
 interface DeckDisplayProps {
   cards: DeckCard[];
+  egoLevel: number;
+  hasPotential: boolean;
   onRemoveCard: (deckId: string) => void;
   onUpdateHirameki: (deckId: string, hiramekiLevel: number) => void;
   onToggleGodHirameki: (deckId: string) => void;
 }
 
-export function DeckDisplay({ cards, onRemoveCard, onUpdateHirameki, onToggleGodHirameki }: DeckDisplayProps) {
+export function DeckDisplay({ cards, egoLevel, hasPotential, onRemoveCard, onUpdateHirameki, onToggleGodHirameki }: DeckDisplayProps) {
   if (cards.length === 0) {
     return (
       <div className="p-12 text-center text-gray-500 border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-lg">
@@ -32,7 +34,7 @@ export function DeckDisplay({ cards, onRemoveCard, onUpdateHirameki, onToggleGod
   return (
     <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
       {cards.map((card) => {
-        const cardInfo = getCardInfo(card);
+        const cardInfo = getCardInfo(card, egoLevel, hasPotential);
         const maxHiramekiLevel = card.hiramekiVariations.length - 1;
         const isBasicCard = card.isBasicCard === true;
 

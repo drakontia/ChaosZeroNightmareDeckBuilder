@@ -10,7 +10,7 @@ interface CardSelectorProps {
 
 export function CardSelector({ character, onAddCard }: CardSelectorProps) {
   const characterHiramekiCards = character ? getCharacterHiramekiCards(character) : [];
-  const addableCards = getAddableCards();
+  const addableCards = getAddableCards(character?.job);
 
   const getCardTypeLabel = (type: CardType) => {
     switch (type) {

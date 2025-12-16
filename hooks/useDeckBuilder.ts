@@ -12,7 +12,12 @@ export function useDeckBuilder() {
       armor: null,
       pendant: null
     },
-    cards: []
+    cards: [],
+    egoLevel: 0,
+    hasPotential: false,
+    removedCards: new Map(),
+    copiedCards: new Map(),
+    convertedCards: new Set()
   });
 
   const selectCharacter = useCallback((character: Character) => {
@@ -107,8 +112,27 @@ export function useDeckBuilder() {
         armor: null,
         pendant: null
       },
-      cards: []
+      cards: [],
+      egoLevel: 0,
+      hasPotential: false,
+      removedCards: new Map(),
+      copiedCards: new Map(),
+      convertedCards: new Set()
     });
+  }, []);
+
+  const setEgoLevel = useCallback((level: number) => {
+    setDeck(prev => ({
+      ...prev,
+      egoLevel: Math.max(0, Math.min(6, level))
+    }));
+  }, []);
+
+  const togglePotential = useCallback(() => {
+    setDeck(prev => ({
+      ...prev,
+      hasPotential: !prev.hasPotential
+    }));
   }, []);
 
   return {
@@ -119,6 +143,8 @@ export function useDeckBuilder() {
     removeCard,
     updateCardHirameki,
     toggleGodHirameki,
-    clearDeck
+    clearDeck,
+    setEgoLevel,
+    togglePotential
   };
 }

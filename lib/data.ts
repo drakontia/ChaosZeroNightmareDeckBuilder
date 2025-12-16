@@ -1,4 +1,4 @@
-import { Character, Equipment, EquipmentType, Card, CardType, HiramekiVariation } from "@/types";
+import { Character, Equipment, EquipmentType, Card, CardType, CardCategory, CardStatus, JobType } from "@/types";
 
 // Sample cards with full hirameki variations
 export const CARDS: Card[] = [
@@ -7,7 +7,10 @@ export const CARDS: Card[] = [
     id: "char_card_1",
     name: "基本攻撃",
     type: CardType.NORMAL,
+    category: CardCategory.ATTACK,
+    statuses: [],
     isBasicCard: true,
+    isCharacterCard: true,
     hiramekiVariations: [
       { level: 0, cost: 1, description: "敵単体に攻撃" }
     ]
@@ -16,7 +19,10 @@ export const CARDS: Card[] = [
     id: "char_card_2",
     name: "基本防御",
     type: CardType.NORMAL,
+    category: CardCategory.ENHANCEMENT,
+    statuses: [],
     isBasicCard: true,
+    isCharacterCard: true,
     hiramekiVariations: [
       { level: 0, cost: 1, description: "自身の防御力を上げる" }
     ]
@@ -25,7 +31,10 @@ export const CARDS: Card[] = [
     id: "char_card_3",
     name: "基本回復",
     type: CardType.NORMAL,
+    category: CardCategory.SKILL,
+    statuses: [],
     isBasicCard: true,
+    isCharacterCard: true,
     hiramekiVariations: [
       { level: 0, cost: 1, description: "自身のHPを回復" }
     ]
@@ -34,7 +43,10 @@ export const CARDS: Card[] = [
     id: "char_card_4",
     name: "ファイアボール",
     type: CardType.NORMAL,
+    category: CardCategory.ATTACK,
+    statuses: [],
     isBasicCard: false,
+    isCharacterCard: true,
     hiramekiVariations: [
       { level: 0, cost: 3, description: "敵単体に火属性ダメージを与える" },
       { level: 1, cost: 3, description: "敵単体に火属性ダメージを与える（威力小上昇）", status: "火傷" },
@@ -53,6 +65,9 @@ export const CARDS: Card[] = [
     id: "char_hirameki_1",
     name: "フレイムストライク",
     type: CardType.NORMAL,
+    category: CardCategory.ATTACK,
+    statuses: [],
+    isCharacterCard: true,
     hiramekiVariations: [
       { level: 0, cost: 4, description: "敵単体に強力な火属性ダメージ" },
       { level: 1, cost: 4, description: "敵単体に強力な火属性ダメージ（威力小上昇）", status: "火傷" },
@@ -69,6 +84,9 @@ export const CARDS: Card[] = [
     id: "char_hirameki_2",
     name: "アイスシールド",
     type: CardType.NORMAL,
+    category: CardCategory.ENHANCEMENT,
+    statuses: [],
+    isCharacterCard: true,
     hiramekiVariations: [
       { level: 0, cost: 2, description: "氷の盾で防御し、攻撃者にダメージ" },
       { level: 1, cost: 2, description: "氷の盾で防御し、攻撃者にダメージ（威力小上昇）" },
@@ -85,6 +103,9 @@ export const CARDS: Card[] = [
     id: "char_hirameki_3",
     name: "ヒール",
     type: CardType.NORMAL,
+    category: CardCategory.SKILL,
+    statuses: [],
+    isCharacterCard: true,
     hiramekiVariations: [
       { level: 0, cost: 2, description: "味方単体のHPを回復する" },
       { level: 1, cost: 2, description: "味方単体のHPを回復する（回復量小上昇）" },
@@ -101,6 +122,9 @@ export const CARDS: Card[] = [
     id: "char_hirameki_4",
     name: "防御",
     type: CardType.NORMAL,
+    category: CardCategory.ENHANCEMENT,
+    statuses: [],
+    isCharacterCard: true,
     hiramekiVariations: [
       { level: 0, cost: 1, description: "自身の防御力を上げる" },
       { level: 1, cost: 1, description: "自身の防御力を上げる（効果小上昇）" },
@@ -113,11 +137,14 @@ export const CARDS: Card[] = [
       additionalEffect: "味方全体の防御力も少し上げる"
     }
   },
-  // Shared cards (3 hirameki levels)
+  // Shared cards (3 hirameki levels) - can be added to specific jobs
   {
     id: "shared_card_1",
     name: "全体攻撃",
     type: CardType.SHARED,
+    category: CardCategory.ATTACK,
+    statuses: [],
+    allowedJobs: "all",
     hiramekiVariations: [
       { level: 0, cost: 5, description: "敵全体に無属性ダメージを与える" },
       { level: 1, cost: 4, description: "敵全体に無属性ダメージを与える（威力上昇）" },
@@ -132,6 +159,9 @@ export const CARDS: Card[] = [
     id: "shared_card_2",
     name: "サンダーストーム",
     type: CardType.SHARED,
+    category: CardCategory.ATTACK,
+    statuses: [],
+    allowedJobs: [JobType.STRIKER, JobType.RANGER],
     hiramekiVariations: [
       { level: 0, cost: 6, description: "敵全体に雷属性ダメージ" },
       { level: 1, cost: 5, description: "敵全体に雷属性ダメージ＋麻痺", status: "麻痺" },
@@ -147,6 +177,9 @@ export const CARDS: Card[] = [
     id: "monster_card_1",
     name: "モンスター召喚",
     type: CardType.MONSTER,
+    category: CardCategory.SKILL,
+    statuses: [],
+    allowedJobs: [JobType.CONTROLLER, JobType.PSIONIC],
     hiramekiVariations: [
       { level: 0, cost: 4, description: "モンスターを召喚して攻撃" },
       { level: 1, cost: 3, description: "強力なモンスターを召喚して攻撃" },
@@ -162,6 +195,9 @@ export const CARDS: Card[] = [
     id: "forbidden_card_1",
     name: "禁呪",
     type: CardType.FORBIDDEN,
+    category: CardCategory.ATTACK,
+    statuses: [],
+    allowedJobs: "all",
     hiramekiVariations: [
       { level: 0, cost: 7, description: "禁断の魔法で敵に大ダメージ（反動あり）" },
       { level: 1, cost: 6, description: "禁断の魔法で敵に大ダメージ（反動軽減）" },
@@ -174,12 +210,13 @@ export const CARDS: Card[] = [
   }
 ];
 
-// Sample characters with their card sets
+// Sample characters with their card sets and job types
 export const CHARACTERS: Character[] = [
   {
     id: "char_1",
     name: "リリス",
     rarity: "SSR",
+    job: JobType.STRIKER,
     startingCards: ["char_card_1", "char_card_2", "char_card_3", "char_card_4"],
     hiramekiCards: ["char_hirameki_1", "char_hirameki_2", "char_hirameki_3", "char_hirameki_4"]
   },
@@ -187,6 +224,7 @@ export const CHARACTERS: Character[] = [
     id: "char_2",
     name: "アリス",
     rarity: "SSR",
+    job: JobType.VANGUARD,
     startingCards: ["char_card_1", "char_card_2", "char_card_3", "char_card_4"],
     hiramekiCards: ["char_hirameki_1", "char_hirameki_2", "char_hirameki_3", "char_hirameki_4"]
   },
@@ -194,6 +232,7 @@ export const CHARACTERS: Character[] = [
     id: "char_3",
     name: "ヴィクター",
     rarity: "SR",
+    job: JobType.RANGER,
     startingCards: ["char_card_1", "char_card_2", "char_card_3", "char_card_4"],
     hiramekiCards: ["char_hirameki_1", "char_hirameki_2", "char_hirameki_3", "char_hirameki_4"]
   },
@@ -201,6 +240,7 @@ export const CHARACTERS: Character[] = [
     id: "char_4",
     name: "エマ",
     rarity: "SR",
+    job: JobType.HUNTER,
     startingCards: ["char_card_1", "char_card_2", "char_card_3", "char_card_4"],
     hiramekiCards: ["char_hirameki_1", "char_hirameki_2", "char_hirameki_3", "char_hirameki_4"]
   },
@@ -208,6 +248,7 @@ export const CHARACTERS: Character[] = [
     id: "char_5",
     name: "カイル",
     rarity: "R",
+    job: JobType.CONTROLLER,
     startingCards: ["char_card_1", "char_card_2", "char_card_3", "char_card_4"],
     hiramekiCards: ["char_hirameki_1", "char_hirameki_2", "char_hirameki_3", "char_hirameki_4"]
   }
@@ -302,11 +343,17 @@ export function getCharacterHiramekiCards(character: Character): Card[] {
     .filter((card): card is Card => card !== undefined);
 }
 
-// Helper function to get shared/monster/forbidden cards
-export function getAddableCards(): Card[] {
-  return CARDS.filter(card => 
-    card.type === CardType.SHARED || 
-    card.type === CardType.MONSTER || 
-    card.type === CardType.FORBIDDEN
-  );
+// Helper function to get shared/monster/forbidden cards that are allowed for character's job
+export function getAddableCards(characterJob?: JobType): Card[] {
+  return CARDS.filter(card => {
+    if (card.type === CardType.NORMAL) return false; // Skip character cards
+    
+    if (!characterJob) return true; // Show all if no character selected
+    
+    // Check if card is allowed for this job
+    if (card.allowedJobs === "all") return true;
+    if (Array.isArray(card.allowedJobs) && card.allowedJobs.includes(characterJob)) return true;
+    
+    return false;
+  });
 }

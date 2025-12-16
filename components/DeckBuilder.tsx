@@ -6,7 +6,7 @@ import { EquipmentSelector } from "./EquipmentSelector";
 import { CardSelector } from "./CardSelector";
 import { DeckDisplay } from "./DeckDisplay";
 import { CHARACTERS, EQUIPMENT } from "@/lib/data";
-import { getCardInfo } from "@/types";
+import { getCardInfo, calculateVagueMemory } from "@/types";
 
 export function DeckBuilder() {
   const {
@@ -17,13 +17,17 @@ export function DeckBuilder() {
     removeCard,
     updateCardHirameki,
     toggleGodHirameki,
-    clearDeck
+    clearDeck,
+    setEgoLevel,
+    togglePotential
   } = useDeckBuilder();
 
   const totalCost = deck.cards.reduce((sum, card) => {
-    const info = getCardInfo(card);
+    const info = getCardInfo(card, deck.egoLevel, deck.hasPotential);
     return sum + info.cost;
   }, 0);
+
+  const vagueMemoryPoints = calculateVagueMemory(deck);
 
   return (
     <div className="min-h-screen p-4 md:p-8 bg-gray-50 dark:bg-gray-900">
@@ -47,6 +51,55 @@ export function DeckBuilder() {
                 selectedCharacter={deck.character}
                 onSelect={selectCharacter}
               />
+              
+              {/* Character Info Section */}
+              {deck.character && (
+                <div className="mt-4 pt-4 border-t border-gray-200 dark:border-gray-700">
+                  <div className="text-sm text-gray-600 dark:text-gray-400 mb-2">
+                    職業: <span className="font-semibold">{deck.character.job}</span>
+                  </div>
+                  
+                  {/* Vague Memory Points */}
+                  <div className="p-3 bg-purple-50 dark:bg-purple-900 rounded-lg">
+                    <div className="text-sm font-semibold text-purple-700 dark:text-purple-300">
+                      曖昧な記憶
+                    </div>
+                    <div className="text-2xl font-bold text-purple-600 dark:text-purple-400">
+                      {vagueMemoryPoints} pt
+                    </div>
+                  </div>
+
+                  {/* Ego Level Control */}
+                  <div className="mt-3">
+                    <label className="text-sm font-semibold text-gray-700 dark:text-gray-300">
+                      エゴ発現: Lv {deck.egoLevel}
+                    </label>
+                    <input
+                      type="range"
+                      min="0"
+                      max="6"
+                      value={deck.egoLevel}
+                      onChange={(e) => setEgoLevel(Number(e.target.value))}
+                      className="w-full mt-1"
+                    />
+                  </div>
+
+                  {/* Potential Toggle */}
+                  <div className="mt-3">
+                    <label className="flex items-center cursor-pointer">
+                      <input
+                        type="checkbox"
+                        checked={deck.hasPotential}
+                        onChange={togglePotential}
+                        className="mr-2"
+                      />
+                      <span className="text-sm font-semibold text-gray-700 dark:text-gray-300">
+                        潜在力有効
+                      </span>
+                    </label>
+                  </div>
+                </div>
+              )}
             </div>
 
             {/* Points/Stats Section */}
@@ -98,6 +151,8 @@ export function DeckBuilder() {
               
               <DeckDisplay
                 cards={deck.cards}
+                egoLevel={deck.egoLevel}
+                hasPotential={deck.hasPotential}
                 onRemoveCard={removeCard}
                 onUpdateHirameki={updateCardHirameki}
                 onToggleGodHirameki={toggleGodHirameki}
