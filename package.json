@@ -1,0 +1,29 @@
+{
+  "name": "chaos-zero-nightmare-deck-editor",
+  "version": "0.1.0",
+  "private": true,
+  "description": "ゲーム「カオスゼロナイトメア」のカードデッキを作成・保存出来る攻略補助サイトです。",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "test": "playwright test",
+    "test:ui": "playwright test --ui"
+  },
+  "dependencies": {
+    "next": "^16.0.10",
+    "next-intl": "^4.6.1",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.57.0",
+    "@tailwindcss/postcss": "^4.1.18",
+    "@types/node": "^25.0.2",
+    "@types/react": "^19.2.7",
+    "autoprefixer": "^10.4.23",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^4.1.18",
+    "typescript": "^5.9.3"
+  }
+}

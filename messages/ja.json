@@ -1,0 +1,74 @@
+{
+  "app": {
+    "title": "カオスゼロナイトメア デッキエディター",
+    "description": "デッキを自由に編集できるツールです"
+  },
+  "character": {
+    "title": "キャラクター",
+    "select": "キャラクターを選択",
+    "job": "職業",
+    "vagueMemory": "曖昧な記憶",
+    "egoManifest": "エゴ発現",
+    "potential": "潜在力"
+  },
+  "equipment": {
+    "title": "装備",
+    "weapon": "武器",
+    "armor": "防具",
+    "pendant": "ペンダント",
+    "none": "なし"
+  },
+  "card": {
+    "title": "カード",
+    "addCard": "カード選択",
+    "startingCards": "開始カード",
+    "hiramekiCards": "ヒラメキカード",
+    "sharedCards": "共用カード",
+    "monsterCards": "モンスターカード",
+    "forbiddenCards": "禁忌カード",
+    "basicCard": "基本カード（ヒラメキなし）",
+    "hirameki": "ヒラメキ",
+    "godHirameki": "神ヒラメキ",
+    "godSelect": "神ヒラメキ選択",
+    "god": "神",
+    "level": "Lv"
+  },
+  "deck": {
+    "title": "デッキ",
+    "clear": "デッキをクリア",
+    "totalCards": "カード枚数",
+    "totalCost": "合計コスト",
+    "noDeck": "デッキが空です"
+  },
+  "rarity": {
+    "SSR": "SSR",
+    "SR": "SR",
+    "R": "R"
+  },
+  "job": {
+    "striker": "ストライカー",
+    "vanguard": "ヴァンガード",
+    "ranger": "レンジャー",
+    "hunter": "ハンター",
+    "controller": "コントローラー",
+    "psionic": "サイオニック"
+  },
+  "god": {
+    "kilken": "キルケン",
+    "seclaid": "セクレド",
+    "dialos": "ディアロス",
+    "nihilum": "ニヒルム",
+    "vitol": "ヴィトル"
+  },
+  "category": {
+    "attack": "攻撃",
+    "enhancement": "強化",
+    "skill": "スキル"
+  },
+  "actions": {
+    "add": "追加",
+    "remove": "削除",
+    "select": "選択",
+    "clear": "クリア"
+  }
+}

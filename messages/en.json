@@ -1,0 +1,74 @@
+{
+  "app": {
+    "title": "Chaos Zero Nightmare Deck Editor",
+    "description": "A tool to freely edit your deck"
+  },
+  "character": {
+    "title": "Character",
+    "select": "Select Character",
+    "job": "Job",
+    "vagueMemory": "Vague Memory",
+    "egoManifest": "Ego Manifestation",
+    "potential": "Potential"
+  },
+  "equipment": {
+    "title": "Equipment",
+    "weapon": "Weapon",
+    "armor": "Armor",
+    "pendant": "Pendant",
+    "none": "None"
+  },
+  "card": {
+    "title": "Cards",
+    "addCard": "Select Card",
+    "startingCards": "Starting Cards",
+    "hiramekiCards": "Hirameki Cards",
+    "sharedCards": "Shared Cards",
+    "monsterCards": "Monster Cards",
+    "forbiddenCards": "Forbidden Cards",
+    "basicCard": "Basic Card (No Hirameki)",
+    "hirameki": "Hirameki",
+    "godHirameki": "God Hirameki",
+    "godSelect": "Select God Hirameki",
+    "god": "God",
+    "level": "Lv"
+  },
+  "deck": {
+    "title": "Deck",
+    "clear": "Clear Deck",
+    "totalCards": "Total Cards",
+    "totalCost": "Total Cost",
+    "noDeck": "Deck is empty"
+  },
+  "rarity": {
+    "SSR": "SSR",
+    "SR": "SR",
+    "R": "R"
+  },
+  "job": {
+    "striker": "Striker",
+    "vanguard": "Vanguard",
+    "ranger": "Ranger",
+    "hunter": "Hunter",
+    "controller": "Controller",
+    "psionic": "Psionic"
+  },
+  "god": {
+    "kilken": "Kilken",
+    "seclaid": "Seclaid",
+    "dialos": "Dialos",
+    "nihilum": "Nihilum",
+    "vitol": "Vitol"
+  },
+  "category": {
+    "attack": "Attack",
+    "enhancement": "Enhancement",
+    "skill": "Skill"
+  },
+  "actions": {
+    "add": "Add",
+    "remove": "Remove",
+    "select": "Select",
+    "clear": "Clear"
+  }
+}

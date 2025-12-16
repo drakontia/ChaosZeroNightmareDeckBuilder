@@ -1,0 +1,74 @@
+{
+  "app": {
+    "title": "混沌零噩梦卡组编辑器",
+    "description": "可自由编辑卡组的工具"
+  },
+  "character": {
+    "title": "角色",
+    "select": "选择角色",
+    "job": "职业",
+    "vagueMemory": "模糊记忆",
+    "egoManifest": "自我显现",
+    "potential": "潜力"
+  },
+  "equipment": {
+    "title": "装备",
+    "weapon": "武器",
+    "armor": "防具",
+    "pendant": "吊坠",
+    "none": "无"
+  },
+  "card": {
+    "title": "卡牌",
+    "addCard": "选择卡牌",
+    "startingCards": "起始卡牌",
+    "hiramekiCards": "灵感卡牌",
+    "sharedCards": "共用卡牌",
+    "monsterCards": "怪物卡牌",
+    "forbiddenCards": "禁忌卡牌",
+    "basicCard": "基础卡牌（无灵感）",
+    "hirameki": "灵感",
+    "godHirameki": "神之灵感",
+    "godSelect": "选择神之灵感",
+    "god": "神",
+    "level": "等级"
+  },
+  "deck": {
+    "title": "卡组",
+    "clear": "清空卡组",
+    "totalCards": "卡牌总数",
+    "totalCost": "总费用",
+    "noDeck": "卡组为空"
+  },
+  "rarity": {
+    "SSR": "SSR",
+    "SR": "SR",
+    "R": "R"
+  },
+  "job": {
+    "striker": "前锋",
+    "vanguard": "先锋",
+    "ranger": "游侠",
+    "hunter": "猎人",
+    "controller": "控制者",
+    "psionic": "灵能者"
+  },
+  "god": {
+    "kilken": "基尔肯",
+    "seclaid": "塞克雷德",
+    "dialos": "迪亚洛斯",
+    "nihilum": "尼希鲁姆",
+    "vitol": "维托尔"
+  },
+  "category": {
+    "attack": "攻击",
+    "enhancement": "强化",
+    "skill": "技能"
+  },
+  "actions": {
+    "add": "添加",
+    "remove": "删除",
+    "select": "选择",
+    "clear": "清空"
+  }
+}

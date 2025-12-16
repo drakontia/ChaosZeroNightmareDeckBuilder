@@ -1,0 +1,74 @@
+{
+  "app": {
+    "title": "카오스 제로 나이트메어 덱 편집기",
+    "description": "덱을 자유롭게 편집할 수 있는 도구"
+  },
+  "character": {
+    "title": "캐릭터",
+    "select": "캐릭터 선택",
+    "job": "직업",
+    "vagueMemory": "모호한 기억",
+    "egoManifest": "에고 발현",
+    "potential": "잠재력"
+  },
+  "equipment": {
+    "title": "장비",
+    "weapon": "무기",
+    "armor": "방어구",
+    "pendant": "펜던트",
+    "none": "없음"
+  },
+  "card": {
+    "title": "카드",
+    "addCard": "카드 선택",
+    "startingCards": "시작 카드",
+    "hiramekiCards": "히라메키 카드",
+    "sharedCards": "공용 카드",
+    "monsterCards": "몬스터 카드",
+    "forbiddenCards": "금기 카드",
+    "basicCard": "기본 카드 (히라메키 없음)",
+    "hirameki": "히라메키",
+    "godHirameki": "신 히라메키",
+    "godSelect": "신 히라메키 선택",
+    "god": "신",
+    "level": "레벨"
+  },
+  "deck": {
+    "title": "덱",
+    "clear": "덱 초기화",
+    "totalCards": "총 카드 수",
+    "totalCost": "총 비용",
+    "noDeck": "덱이 비어 있습니다"
+  },
+  "rarity": {
+    "SSR": "SSR",
+    "SR": "SR",
+    "R": "R"
+  },
+  "job": {
+    "striker": "스트라이커",
+    "vanguard": "뱅가드",
+    "ranger": "레인저",
+    "hunter": "헌터",
+    "controller": "컨트롤러",
+    "psionic": "사이오닉"
+  },
+  "god": {
+    "kilken": "킬켄",
+    "seclaid": "세크레드",
+    "dialos": "디알로스",
+    "nihilum": "니힐룸",
+    "vitol": "비톨"
+  },
+  "category": {
+    "attack": "공격",
+    "enhancement": "강화",
+    "skill": "스킬"
+  },
+  "actions": {
+    "add": "추가",
+    "remove": "제거",
+    "select": "선택",
+    "clear": "초기화"
+  }
+}
