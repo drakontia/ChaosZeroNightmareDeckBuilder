@@ -54,11 +54,7 @@ export const CARDS: Card[] = [
       { level: 3, cost: 2, description: "敵単体に大火属性ダメージを与える", status: "火傷・防御低下" },
       { level: 4, cost: 1, description: "敵単体に大火属性ダメージを与える（威力上昇）", status: "火傷・防御低下" },
       { level: 5, cost: 1, description: "敵単体に超大火属性ダメージを与える", status: "火傷・防御低下・継続ダメージ" }
-    ],
-    godHirameki: {
-      additionalEffect: "対象の火属性耐性を無視する",
-      costModifier: -1
-    }
+    ]
   },
   // Character hirameki cards
   {
@@ -75,10 +71,7 @@ export const CARDS: Card[] = [
       { level: 3, cost: 3, description: "敵単体に超強力な火属性ダメージ", status: "火傷・防御低下" },
       { level: 4, cost: 2, description: "敵単体に超強力な火属性ダメージ（威力上昇）", status: "火傷・防御低下・スタン" },
       { level: 5, cost: 2, description: "敵単体に極大火属性ダメージ", status: "火傷・防御低下・スタン・継続ダメージ" }
-    ],
-    godHirameki: {
-      additionalEffect: "使用後、次のターン火属性ダメージ2倍"
-    }
+    ]
   },
   {
     id: "char_hirameki_2",
@@ -94,10 +87,7 @@ export const CARDS: Card[] = [
       { level: 3, cost: 1, description: "氷の盾で防御し、攻撃者に高ダメージ＋凍結", status: "凍結" },
       { level: 4, cost: 1, description: "氷の盾で完全防御し、攻撃者に大ダメージ＋凍結", status: "凍結・防御低下" },
       { level: 5, cost: 0, description: "氷の盾で完全防御し、攻撃者に超大ダメージ", status: "凍結・防御低下・スタン" }
-    ],
-    godHirameki: {
-      additionalEffect: "ダメージ無効1回付与"
-    }
+    ]
   },
   {
     id: "char_hirameki_3",
@@ -113,10 +103,7 @@ export const CARDS: Card[] = [
       { level: 3, cost: 2, description: "味方全体のHPを回復する" },
       { level: 4, cost: 1, description: "味方全体のHPを大回復する", status: "再生" },
       { level: 5, cost: 1, description: "味方全体のHPを超回復する", status: "再生・防御上昇" }
-    ],
-    godHirameki: {
-      additionalEffect: "状態異常を1つ解除"
-    }
+    ]
   },
   {
     id: "char_hirameki_4",
@@ -132,10 +119,7 @@ export const CARDS: Card[] = [
       { level: 3, cost: 0, description: "自身の防御力を大きく上げる＋ダメージ無効1回", status: "防御上昇" },
       { level: 4, cost: 0, description: "自身の防御力を超上昇＋ダメージ無効2回", status: "防御上昇・再生" },
       { level: 5, cost: 0, description: "自身を無敵状態にする（1ターン）", status: "無敵・防御上昇・再生" }
-    ],
-    godHirameki: {
-      additionalEffect: "味方全体の防御力も少し上げる"
-    }
+    ]
   },
   // Shared cards (3 hirameki levels) - can be added to specific jobs
   {
@@ -150,10 +134,7 @@ export const CARDS: Card[] = [
       { level: 1, cost: 4, description: "敵全体に無属性ダメージを与える（威力上昇）" },
       { level: 2, cost: 4, description: "敵全体に大無属性ダメージを与える", status: "防御低下" },
       { level: 3, cost: 3, description: "敵全体に超大無属性ダメージを与える", status: "防御低下・スタン" }
-    ],
-    godHirameki: {
-      additionalEffect: "敵全体の防御力を大幅に下げる"
-    }
+    ]
   },
   {
     id: "shared_card_2",
@@ -167,10 +148,7 @@ export const CARDS: Card[] = [
       { level: 1, cost: 5, description: "敵全体に雷属性ダメージ＋麻痺", status: "麻痺" },
       { level: 2, cost: 5, description: "敵全体に大雷属性ダメージ＋麻痺＋スタン", status: "麻痺・スタン" },
       { level: 3, cost: 4, description: "敵全体に超大雷属性ダメージ＋麻痺＋スタン", status: "麻痺・スタン・防御低下" }
-    ],
-    godHirameki: {
-      additionalEffect: "確率で即死効果"
-    }
+    ]
   },
   // Monster cards (3 hirameki levels)
   {
@@ -185,10 +163,7 @@ export const CARDS: Card[] = [
       { level: 1, cost: 3, description: "強力なモンスターを召喚して攻撃" },
       { level: 2, cost: 3, description: "強力なモンスターを召喚して複数回攻撃" },
       { level: 3, cost: 2, description: "伝説のモンスターを召喚して強力な攻撃", status: "防御低下" }
-    ],
-    godHirameki: {
-      additionalEffect: "召喚したモンスターが場に残る（1ターン）"
-    }
+    ]
   },
   // Forbidden cards (3 hirameki levels)
   {
@@ -203,10 +178,7 @@ export const CARDS: Card[] = [
       { level: 1, cost: 6, description: "禁断の魔法で敵に大ダメージ（反動軽減）" },
       { level: 2, cost: 6, description: "禁断の魔法で敵に超大ダメージ（反動軽減）" },
       { level: 3, cost: 5, description: "禁断の魔法で敵に超大ダメージ（反動なし）" }
-    ],
-    godHirameki: {
-      additionalEffect: "使用後HPが1残る"
-    }
+    ]
   }
 ];
 

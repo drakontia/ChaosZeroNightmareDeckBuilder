@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useCallback } from "react";
-import { Character, Equipment, Card, DeckCard, Deck, EquipmentType } from "@/types";
+import { Character, Equipment, Card, DeckCard, Deck, EquipmentType, GodType } from "@/types";
 import { getCharacterStartingCards } from "@/lib/data";
 
 export function useDeckBuilder() {
@@ -28,7 +28,7 @@ export function useDeckBuilder() {
         ...card,
         deckId: `${card.id}_${Date.now()}_${Math.random()}`,
         selectedHiramekiLevel: 0,
-        hasGodHirameki: false
+        godHiramekiType: null
       }));
 
       return {
@@ -66,7 +66,7 @@ export function useDeckBuilder() {
         ...card,
         deckId: `${card.id}_${Date.now()}_${Math.random()}`,
         selectedHiramekiLevel: 0,
-        hasGodHirameki: false
+        godHiramekiType: null
       };
       return {
         ...prev,
@@ -93,12 +93,12 @@ export function useDeckBuilder() {
     }));
   }, []);
 
-  const toggleGodHirameki = useCallback((deckId: string) => {
+  const setCardGodHirameki = useCallback((deckId: string, godType: GodType | null) => {
     setDeck(prev => ({
       ...prev,
       cards: prev.cards.map(card => 
         card.deckId === deckId 
-          ? { ...card, hasGodHirameki: !card.hasGodHirameki }
+          ? { ...card, godHiramekiType: godType }
           : card
       )
     }));
@@ -142,7 +142,7 @@ export function useDeckBuilder() {
     addCard,
     removeCard,
     updateCardHirameki,
-    toggleGodHirameki,
+    setCardGodHirameki,
     clearDeck,
     setEgoLevel,
     togglePotential

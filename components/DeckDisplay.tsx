@@ -1,6 +1,6 @@
 "use client";
 
-import { DeckCard, getCardInfo } from "@/types";
+import { DeckCard, getCardInfo, GodType, GOD_HIRAMEKI_EFFECTS } from "@/types";
 
 interface DeckDisplayProps {
   cards: DeckCard[];
@@ -8,10 +8,10 @@ interface DeckDisplayProps {
   hasPotential: boolean;
   onRemoveCard: (deckId: string) => void;
   onUpdateHirameki: (deckId: string, hiramekiLevel: number) => void;
-  onToggleGodHirameki: (deckId: string) => void;
+  onSetGodHirameki: (deckId: string, godType: GodType | null) => void;
 }
 
-export function DeckDisplay({ cards, egoLevel, hasPotential, onRemoveCard, onUpdateHirameki, onToggleGodHirameki }: DeckDisplayProps) {
+export function DeckDisplay({ cards, egoLevel, hasPotential, onRemoveCard, onUpdateHirameki, onSetGodHirameki }: DeckDisplayProps) {
   if (cards.length === 0) {
     return (
       <div className="p-12 text-center text-gray-500 border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-lg">
@@ -19,6 +19,14 @@ export function DeckDisplay({ cards, egoLevel, hasPotential, onRemoveCard, onUpd
       </div>
     );
   }
+
+  // Cycle through god types: null -> KILKEN -> SECLAID -> DIALOS -> NIHILUM -> VITOL -> null
+  const cycleGodHirameki = (currentType: GodType | null) => {
+    const godTypes = [null, GodType.KILKEN, GodType.SECLAID, GodType.DIALOS, GodType.NIHILUM, GodType.VITOL];
+    const currentIndex = godTypes.indexOf(currentType);
+    const nextIndex = (currentIndex + 1) % godTypes.length;
+    return godTypes[nextIndex];
+  };
 
   const getHiramekiButtonClass = (current: number, target: number, maxLevel: number) => {
     const baseClass = "px-2 py-1 text-xs rounded transition-all";
@@ -49,9 +57,22 @@ export function DeckDisplay({ cards, egoLevel, hasPotential, onRemoveCard, onUpd
                 {card.name}
               </div>
               <div className="flex justify-between items-center gap-2">
-                <span className="text-xs font-bold bg-blue-500 text-white px-2 py-1 rounded">
-                  コスト: {cardInfo.cost}
-                </span>
+                <div className="flex flex-col items-start">
+                  <span className="text-xs font-bold bg-blue-500 text-white px-2 py-1 rounded">
+                    コスト: {cardInfo.cost}
+                  </span>
+                  {/* Mark below cost: Hirameki mark or God mark */}
+                  {!isBasicCard && card.selectedHiramekiLevel > 0 && !card.godHiramekiType && (
+                    <span className="text-[10px] mt-1 px-1.5 py-0.5 bg-purple-500 text-white rounded font-bold">
+                      ★ ヒラメキ Lv{card.selectedHiramekiLevel}
+                    </span>
+                  )}
+                  {!isBasicCard && card.godHiramekiType && (
+                    <span className="text-[10px] mt-1 px-1.5 py-0.5 bg-yellow-500 text-black rounded font-bold">
+                      ✦ {GOD_HIRAMEKI_EFFECTS[card.godHiramekiType].name}
+                    </span>
+                  )}
+                </div>
                 <button
                   onClick={() => onRemoveCard(card.deckId)}
                   className="text-xs px-2 py-1 bg-red-500 hover:bg-red-600 text-white rounded transition-all"
@@ -92,19 +113,19 @@ export function DeckDisplay({ cards, egoLevel, hasPotential, onRemoveCard, onUpd
                     ))}
                   </div>
 
-                  {/* God Hirameki Toggle */}
-                  {card.godHirameki && (
-                    <button
-                      onClick={() => onToggleGodHirameki(card.deckId)}
-                      className={`w-full text-xs px-2 py-1 rounded transition-all ${
-                        card.hasGodHirameki
-                          ? "bg-yellow-500 text-white font-bold"
-                          : "bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600"
-                      }`}
-                    >
-                      神ヒラメキ
-                    </button>
-                  )}
+                  {/* God Hirameki Selector - cycles through all 5 gods */}
+                  <button
+                    onClick={() => onSetGodHirameki(card.deckId, cycleGodHirameki(card.godHiramekiType))}
+                    className={`w-full text-xs px-2 py-1 rounded transition-all ${
+                      card.godHiramekiType
+                        ? "bg-yellow-500 text-black font-bold"
+                        : "bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600"
+                    }`}
+                  >
+                    {card.godHiramekiType 
+                      ? `✦ 神: ${GOD_HIRAMEKI_EFFECTS[card.godHiramekiType].name}`
+                      : "神ヒラメキ選択"}
+                  </button>
                 </div>
               )}
 

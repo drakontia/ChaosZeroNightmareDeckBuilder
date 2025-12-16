@@ -16,7 +16,7 @@ export function DeckBuilder() {
     addCard,
     removeCard,
     updateCardHirameki,
-    toggleGodHirameki,
+    setCardGodHirameki,
     clearDeck,
     setEgoLevel,
     togglePotential
@@ -155,7 +155,7 @@ export function DeckBuilder() {
                 hasPotential={deck.hasPotential}
                 onRemoveCard={removeCard}
                 onUpdateHirameki={updateCardHirameki}
-                onToggleGodHirameki={toggleGodHirameki}
+                onSetGodHirameki={setCardGodHirameki}
               />
 
               {/* Card Selection for adding cards */}

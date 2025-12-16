@@ -82,8 +82,19 @@ export interface HiramekiVariation {
   };
 }
 
-// God Hirameki adds extra effects
-export interface GodHirameki {
+// God types for God Hirameki system
+export enum GodType {
+  KILKEN = "kilken",       // キルケン
+  SECLAID = "seclaid",     // セクレド
+  DIALOS = "dialos",       // ディアロス
+  NIHILUM = "nihilum",     // ニヒルム
+  VITOL = "vitol"          // ヴィトル
+}
+
+// God Hirameki effect definition (shared across all cards with hirameki)
+export interface GodHiramekiEffect {
+  god: GodType;
+  name: string;
   additionalEffect: string;
   costModifier?: number; // Optional cost change
 }
@@ -100,16 +111,44 @@ export interface Card {
   imgUrl?: string;
   // Hirameki variations (index 0 is base, 1-5 for character cards, 1-3 for others)
   hiramekiVariations: HiramekiVariation[];
-  // God hirameki information (separate from normal hirameki)
-  godHirameki?: GodHirameki;
 }
 
 // Deck state
 export interface DeckCard extends Card {
   deckId: string; // unique ID for this card in the deck
   selectedHiramekiLevel: number; // 0 = base, 1-5 for variations
-  hasGodHirameki: boolean; // Whether god hirameki is applied
+  godHiramekiType: GodType | null; // Which god's hirameki is applied (null = none)
 }
+
+// God Hirameki effect definitions (shared across all cards)
+export const GOD_HIRAMEKI_EFFECTS: Record<GodType, GodHiramekiEffect> = {
+  [GodType.KILKEN]: {
+    god: GodType.KILKEN,
+    name: "キルケン",
+    additionalEffect: "攻撃時、追加ダメージを与える",
+    costModifier: -1
+  },
+  [GodType.SECLAID]: {
+    god: GodType.SECLAID,
+    name: "セクレド",
+    additionalEffect: "防御力を大幅に上昇させる"
+  },
+  [GodType.DIALOS]: {
+    god: GodType.DIALOS,
+    name: "ディアロス",
+    additionalEffect: "全体効果に変化する"
+  },
+  [GodType.NIHILUM]: {
+    god: GodType.NIHILUM,
+    name: "ニヒルム",
+    additionalEffect: "敵の強化効果を無効化する"
+  },
+  [GodType.VITOL]: {
+    god: GodType.VITOL,
+    name: "ヴィトル",
+    additionalEffect: "HPを回復する"
+  }
+};
 
 export interface Deck {
   character: Character | null;
@@ -157,10 +196,11 @@ export function getCardInfo(card: DeckCard, egoLevel: number = 0, hasPotential: 
   }
 
   // Apply god hirameki if active
-  if (card.hasGodHirameki && card.godHirameki) {
-    description = `${description}\n${card.godHirameki.additionalEffect}`;
-    if (card.godHirameki.costModifier !== undefined) {
-      cost += card.godHirameki.costModifier;
+  if (card.godHiramekiType && !card.isBasicCard) {
+    const godEffect = GOD_HIRAMEKI_EFFECTS[card.godHiramekiType];
+    description = `${description}\n${godEffect.additionalEffect}`;
+    if (godEffect.costModifier !== undefined) {
+      cost += godEffect.costModifier;
     }
   }
 
@@ -195,7 +235,7 @@ export function calculateVagueMemory(deck: Deck): number {
 
     // God Hirameki: +20pt (for all cards including character cards)
     // If shared/monster, also add the +10pt from hirameki above
-    if (card.hasGodHirameki) {
+    if (card.godHiramekiType) {
       points += 20;
     }
   }
