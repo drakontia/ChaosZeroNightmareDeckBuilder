@@ -43,11 +43,6 @@ export function DeckDisplay({ cards, egoLevel, hasPotential, onRemoveCard, onUnd
         const maxHiramekiLevel = card.hiramekiVariations.length - 1;
         const isBasicCard = card.isBasicCard === true;
 
-        // テキストを白＋黒縁取りに
-        const textShadowStyle = {
-          textShadow: '2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 0 2px 0 #000, 2px 0 0 #000, 0 -2px 0 #000, -2px 0 0 #000'
-        } as const;
-
         return (
           <UiCard key={card.deckId} className="relative overflow-hidden aspect-[2/3]">
             {/* 背景画像 */}

@@ -6,8 +6,9 @@ import Image from 'next/image';
 import { Equipment, EquipmentType } from "@/types";
 import { Button } from "./ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "./ui/dialog";
-import { Field, FieldGroup, FieldLabel } from "./ui/field";
+import { Field, FieldGroup, FieldLabel, FieldSet } from "./ui/field";
 import { CardContent } from './ui/card';
+import { Swords } from "lucide-react";
 
 interface EquipmentSelectorProps {
   equipment: Equipment[];
@@ -36,8 +37,8 @@ export function EquipmentSelector({ equipment, selectedEquipment, onSelect }: Eq
       <Field>
         <Dialog open={isOpen} onOpenChange={(open) => setOpenType(open ? type : null)}>
           <DialogTrigger asChild>
-            <Button 
-              variant="outline" 
+            <Button
+              variant="outline"
               className="w-full h-32 border-dashed relative overflow-hidden"
             >
               {selected ? (
@@ -53,11 +54,8 @@ export function EquipmentSelector({ equipment, selectedEquipment, onSelect }: Eq
                       />
                     </div>
                   )}
-                  <div 
+                  <div
                     className="relative z-10 ml-auto flex flex-col text-right pr-4"
-                    style={{
-                      textShadow: '2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 0 2px 0 #000, 2px 0 0 #000, 0 -2px 0 #000, -2px 0 0 #000'
-                    }}
                   >
                     <span className="text-lg font-semibold text-white">{t(selected.name)}</span>
                     <span className="text-sm text-white">{t(`rarity.${selected.rarity}`)}</span>
@@ -123,15 +121,13 @@ export function EquipmentSelector({ equipment, selectedEquipment, onSelect }: Eq
   };
 
   return (
-    <CardContent className="space-y-4">
-      <FieldGroup>
-        <FieldLabel>{t('equipment.title')}</FieldLabel>
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          {renderEquipmentSection(EquipmentType.WEAPON, "equipment.weapon.title")}
-          {renderEquipmentSection(EquipmentType.ARMOR, "equipment.armor.title")}
-          {renderEquipmentSection(EquipmentType.PENDANT, "equipment.pendant.title")}
-        </div>
-      </FieldGroup>
-    </CardContent>
+    <FieldGroup className="pt-6 gap-2">
+      <FieldLabel className="text-2xl"><Swords />{t('equipment.title')}</FieldLabel>
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        {renderEquipmentSection(EquipmentType.WEAPON, "equipment.weapon.title")}
+        {renderEquipmentSection(EquipmentType.ARMOR, "equipment.armor.title")}
+        {renderEquipmentSection(EquipmentType.PENDANT, "equipment.pendant.title")}
+      </div>
+    </FieldGroup>
   );
 }

@@ -13,6 +13,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 import { Button } from "./ui/button";
 import { Field, FieldLabel, FieldGroup, FieldSet, FieldSeparator } from "./ui/field";
 import { Input } from './ui/input';
+import { Brain, CardSim, Clock12 } from 'lucide-react';
 
 export function DeckBuilder() {
   const t = useTranslations();
@@ -86,76 +87,45 @@ export function DeckBuilder() {
                   characters={CHARACTERS}
                   selectedCharacter={deck.character}
                   onSelect={selectCharacter}
+                  hasPotential={deck.hasPotential}
+                  onTogglePotential={togglePotential}
                 />
 
-                {/* Character Info Section */}
-                {deck.character && (
-                  <div className="mt-4 pt-4 border-t border-border space-y-4">
-                    <div className="text-sm text-muted-foreground">
-                      {t('character.job')}: <span className="font-semibold text-foreground">{t(`job.${deck.character.job}`)}</span>
+                {/* Points/Stats Section */}
+                <FieldGroup className='gap-2'>
+                  <Field orientation={'horizontal'} className='border-b'>
+                    <FieldLabel className='text-2xl align-middle'><Clock12 className='align-middle'/>{t('deck.createdDate')}</FieldLabel>
+                    <div className="flex justify-between items-center p-2">
+                      <span className="text-2xl font-bold text-foreground">
+                        {(() => {
+                          const d = new Date(deck.createdAt);
+                          const yy = String(d.getFullYear()).slice(-2);
+                          const mm = String(d.getMonth() + 1).padStart(2, '0');
+                          const dd = String(d.getDate()).padStart(2, '0');
+                          return `${yy}.${mm}.${dd}`;
+                        })()}
+                      </span>
                     </div>
-
-                    <Field>
-                      <FieldLabel>{t('character.egoManifest')} ({t('card.level')} {deck.egoLevel})</FieldLabel>
-                      <input
-                        type="range"
-                        min="0"
-                        max="6"
-                        value={deck.egoLevel}
-                        onChange={(e) => setEgoLevel(Number(e.target.value))}
-                        className="w-full"
-                      />
-                    </Field>
-
-                    <Field>
-                      <FieldLabel>{t('character.potential')}</FieldLabel>
-                      <label className="inline-flex items-center gap-2">
-                        <Input
-                          type="checkbox"
-                          checked={deck.hasPotential}
-                          onChange={togglePotential}
-                          className="h-4 w-4"
-                        />
-                        <span className="text-sm text-foreground">{t('character.potential')}</span>
-                      </label>
-                    </Field>
-                  </div>
-                )}
+                  </Field>
+                  <Field orientation={'horizontal'} className='border-b'>
+                    <FieldLabel className='text-2xl'><CardSim />{t('deck.totalCards')}</FieldLabel>
+                    <div className="flex justify-between items-center p-2">
+                      <span className="text-2xl font-bold text-primary">{deck.cards.length}</span>
+                    </div>
+                  </Field>
+                  <Field orientation={'horizontal'}>
+                    <FieldLabel className='text-2xl'><Brain />{t('character.faintMemory')}</FieldLabel>
+                    <div className="flex justify-between items-center p-2">
+                      <span className="text-2xl font-bold text-primary">{faintMemoryPoints} pt</span>
+                    </div>
+                  </Field>
+                </FieldGroup>
+                <EquipmentSelector
+                  equipment={EQUIPMENT}
+                  selectedEquipment={deck.equipment}
+                  onSelect={selectEquipment}
+                />
               </CardContent>
-              {/* Points/Stats Section */}
-              <CardContent className="space-y-4">
-                <Field orientation={'horizontal'}>
-                  <FieldLabel>{t('deck.createdDate')}</FieldLabel>
-                  <div className="flex justify-between items-center p-3">
-                    <span className="text-base font-bold text-foreground">
-                      {(() => {
-                        const d = new Date(deck.createdAt);
-                        const yy = String(d.getFullYear()).slice(-2);
-                        const mm = String(d.getMonth() + 1).padStart(2, '0');
-                        const dd = String(d.getDate()).padStart(2, '0');
-                        return `${yy}.${mm}.${dd}`;
-                      })()}
-                    </span>
-                  </div>
-                </Field>
-                <Field orientation={'horizontal'}>
-                  <FieldLabel>{t('character.faintMemory')}</FieldLabel>
-                  <div className="flex justify-between items-center p-3">
-                    <span className="text-base font-bold text-primary">{faintMemoryPoints} pt</span>
-                  </div>
-                </Field>
-                <Field orientation={'horizontal'}>
-                  <FieldLabel>{t('deck.totalCards')}</FieldLabel>
-                  <div className="flex justify-between items-center p-3">
-                    <span className="text-base font-bold text-primary">{deck.cards.length}</span>
-                  </div>
-                </Field>
-              </CardContent>
-              <EquipmentSelector
-                equipment={EQUIPMENT}
-                selectedEquipment={deck.equipment}
-                onSelect={selectEquipment}
-              />
 
             </Card>
 
