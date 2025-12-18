@@ -8,12 +8,29 @@ export enum JobType {
   PSIONIC = "psionic"       // サイオニック
 }
 
+// Elemental affinities
+export enum ElementType {
+  PASSION = "passion",   // 情熱
+  JUSTICE = "justice",   // 正義
+  ORDER = "order",       // 秩序
+  INSTINCT = "instinct", // 本能
+  VOID = "void"          // 空虚
+}
+
+// Job icon information
+export interface JobIcon {
+  job: JobType;
+  iconUrl: string;
+}
+
 // Character types
 export interface Character {
   id: string;
   name: string;
   rarity: string; // ★4、★5
   job: JobType; // Character's job class
+  element?: ElementType; // Element affinity
+  egoLevel?: number; // Ego manifestation level
   imgUrl?: string;
   startingCards: string[]; // IDs of 4 starting cards
   hiramekiCards: string[]; // IDs of 4 hirameki cards
