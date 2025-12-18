@@ -3,7 +3,7 @@ import { Equipment, EquipmentType } from "@/types";
 export const PENDANTS: Equipment[] = [
   {
     id: "pendant_1",
-    name: "equipment.pendant.lifePendant",
+    name: "equipment.pendant.lifePendant.name",
     type: EquipmentType.PENDANT,
     rarity: "equipment.rarity.rare",
     description: "equipment.pendant.lifePendant.description",
@@ -11,7 +11,7 @@ export const PENDANTS: Equipment[] = [
   },
   {
     id: "pendant_2",
-    name: "equipment.pendant.magicPendant",
+    name: "equipment.pendant.magicPendant.name",
     type: EquipmentType.PENDANT,
     rarity: "equipment.rarity.rare",
     description: "equipment.pendant.magicPendant.description",
@@ -19,7 +19,7 @@ export const PENDANTS: Equipment[] = [
   },
   {
     id: "pendant_3",
-    name: "equipment.pendant.luckyPendant",
+    name: "equipment.pendant.luckyPendant.name",
     type: EquipmentType.PENDANT,
     rarity: "equipment.rarity.rare",
     description: "equipment.pendant.luckyPendant.description",

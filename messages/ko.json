@@ -24,28 +24,46 @@
     "pendant": "펜던트",
     "none": "없음",
     "weapon": {
-      "excalibur": "성검 엑스칼리버",
-      "excalibur.description": "전설의 성검",
-      "darkSword": "다크 소드",
-      "darkSword.description": "어둠의 힘이 깃든 검",
-      "steelSword": "강철 검",
-      "steelSword.description": "표준적인 검"
+      "excalibur": {
+        "name": "성검 엑스칼리버",
+        "description": "전설의 성검"
+      },
+      "darkSword": {
+        "name": "다크 소드",
+        "description": "어둠의 힘이 깃든 검"
+      },
+      "steelSword": {
+        "name": "강철 검",
+        "description": "표준적인 검"
+      }
     },
     "armor": {
-      "holyArmor": "신성한 갑옷",
-      "holyArmor.description": "신들의 가호를 받은 갑옷",
-      "magicArmor": "마법 갑옷",
-      "magicArmor.description": "마법 방어력이 높음",
-      "leatherArmor": "가죽 갑옷",
-      "leatherArmor.description": "가볍고 편한 갑옷"
+      "holyArmor": {
+        "name": "신성한 갑옷",
+        "description": "신들의 가호를 받은 갑옷"
+      },
+      "magicArmor": {
+        "name": "마법 갑옷",
+        "description": "마법 방어력이 높음"
+      },
+      "leatherArmor": {
+        "name": "가죽 갑옷",
+        "description": "가볍고 편한 갑옷"
+      }
     },
     "pendant": {
-      "lifePendant": "생명의 펜던트",
-      "lifePendant.description": "HP를 크게 증가",
-      "magicPendant": "마력의 펜던트",
-      "magicPendant.description": "마력을 증가",
-      "luckyPendant": "행운의 펜던트",
-      "luckyPendant.description": "운을 조금 증가"
+      "lifePendant": {
+        "name": "생명의 펜던트",
+        "description": "HP를 크게 증가"
+      },
+      "magicPendant": {
+        "name": "마력의 펜던트",
+        "description": "마력을 증가"
+      },
+      "luckyPendant": {
+        "name": "행운의 펜던트",
+        "description": "운을 조금 증가"
+      }
     }
   },
   "card": {

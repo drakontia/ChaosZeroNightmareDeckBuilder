@@ -127,9 +127,9 @@ export function EquipmentSelector({ equipment, selectedEquipment, onSelect }: Eq
       <FieldGroup>
         <FieldLabel>{t('equipment.title')}</FieldLabel>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          {renderEquipmentSection(EquipmentType.WEAPON, "equipment.weapon")}
-          {renderEquipmentSection(EquipmentType.ARMOR, "equipment.armor")}
-          {renderEquipmentSection(EquipmentType.PENDANT, "equipment.pendant")}
+          {renderEquipmentSection(EquipmentType.WEAPON, "equipment.weapon.title")}
+          {renderEquipmentSection(EquipmentType.ARMOR, "equipment.armor.title")}
+          {renderEquipmentSection(EquipmentType.PENDANT, "equipment.pendant.title")}
         </div>
       </FieldGroup>
     </CardContent>

@@ -13,7 +13,7 @@ export const CHARACTERS: Character[] = [
   {
     id: "char_2",
     name: "character.alice",
-    rarity: "SSR",
+    rarity: "★5",
     job: JobType.VANGUARD,
     imgUrl: "/images/characters/alice.png",
     startingCards: ["char_card_1", "char_card_2", "char_card_3", "char_card_4"],
@@ -22,7 +22,7 @@ export const CHARACTERS: Character[] = [
   {
     id: "char_3",
     name: "character.victor",
-    rarity: "SR",
+    rarity: "★4",
     job: JobType.RANGER,
     imgUrl: "/images/characters/victor.png",
     startingCards: ["char_card_1", "char_card_2", "char_card_3", "char_card_4"],
@@ -31,7 +31,7 @@ export const CHARACTERS: Character[] = [
   {
     id: "char_4",
     name: "character.emma",
-    rarity: "SR",
+    rarity: "★4",
     job: JobType.HUNTER,
     imgUrl: "/images/characters/emma.png",
     startingCards: ["char_card_1", "char_card_2", "char_card_3", "char_card_4"],
@@ -40,7 +40,7 @@ export const CHARACTERS: Character[] = [
   {
     id: "char_5",
     name: "character.kyle",
-    rarity: "R",
+    rarity: "★4",
     job: JobType.CONTROLLER,
     imgUrl: "/images/characters/kyle.png",
     startingCards: ["char_card_1", "char_card_2", "char_card_3", "char_card_4"],

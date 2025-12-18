@@ -3,7 +3,7 @@ import { Equipment, EquipmentType } from "@/types";
 export const WEAPONS: Equipment[] = [
   {
     id: "weapon_1",
-    name: "equipment.weapon.weapon_1",
+    name: "equipment.weapon.weapon_1.name",
     type: EquipmentType.WEAPON,
     rarity: "equipment.rarity.rare",
     description: "equipment.weapon.weapon_1.description",
@@ -11,7 +11,7 @@ export const WEAPONS: Equipment[] = [
   },
   {
     id: "weapon_2",
-    name: "equipment.weapon.darkSword",
+    name: "equipment.weapon.darkSword.name",
     type: EquipmentType.WEAPON,
     rarity: "equipment.rarity.rare",
     description: "equipment.weapon.darkSword.description",
@@ -19,7 +19,7 @@ export const WEAPONS: Equipment[] = [
   },
   {
     id: "weapon_3",
-    name: "equipment.weapon.steelSword",
+    name: "equipment.weapon.steelSword.name",
     type: EquipmentType.WEAPON,
     rarity: "equipment.rarity.rare",
     description: "equipment.weapon.steelSword.description",

@@ -27,30 +27,48 @@
     },
     "weapon": {
       "title": "武器",
-      "weapon_1": "ガストロノミコン",
-      "weapon_1.description": "コスト2以上の攻撃カード使用時、対象に苦痛3",
-      "darkSword": "ダークソード",
-      "darkSword.description": "闇の力を宿した剣",
-      "steelSword": "鋼の剣",
-      "steelSword.description": "標準的な剣"
+      "weapon_1": {
+        "name": "ガストロノミコン",
+        "description": "コスト2以上の攻撃カード使用時、対象に苦痛3"
+      },
+      "darkSword": {
+        "name": "ダークソード",
+        "description": "闇の力を宿した剣"
+      },
+      "steelSword": {
+        "name": "鋼の剣",
+        "description": "標準的な剣"
+      }
     },
     "armor": {
       "title": "防具",
-      "holyArmor": "神聖なる鎧",
-      "holyArmor.description": "神々の加護を受けた鎧",
-      "magicArmor": "魔法の鎧",
-      "magicArmor.description": "魔法防御力が高い",
-      "leatherArmor": "革の鎧",
-      "leatherArmor.description": "軽量な鎧"
+      "holyArmor": {
+        "name": "神聖なる鎧",
+        "description": "神々の加護を受けた鎧"
+      },
+      "magicArmor": {
+        "name": "魔法の鎧",
+        "description": "魔法防御力が高い"
+      },
+      "leatherArmor": {
+        "name": "革の鎧",
+        "description": "軽量な鎧"
+      }
     },
     "pendant": {
       "title": "ペンダント",
-      "lifePendant": "生命のペンダント",
-      "lifePendant.description": "HPを大幅に増加",
-      "magicPendant": "魔力のペンダント",
-      "magicPendant.description": "魔力を増加",
-      "luckyPendant": "幸運のペンダント",
-      "luckyPendant.description": "運を少し上げる"
+      "lifePendant": {
+        "name": "生命のペンダント",
+        "description": "HPを大幅に増加"
+      },
+      "magicPendant": {
+        "name": "魔力のペンダント",
+        "description": "魔力を増加"
+      },
+      "luckyPendant": {
+        "name": "幸運のペンダント",
+        "description": "運を少し上げる"
+      }
     }
   },
   "card": {
@@ -79,10 +97,8 @@
     "createdDate": "作成日"
   },
   "rarity": {
-    "SSR": "SSR",
-    "SR": "SR",
-    "R": "R",
-    "★5": "★5"
+    "★5": "★5",
+    "★4": "★4"
   },
   "job": {
     "striker": "ストライカー",

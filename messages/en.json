@@ -24,28 +24,46 @@
     "pendant": "Pendant",
     "none": "None",
     "weapon": {
-      "excalibur": "Holy Sword Excalibur",
-      "excalibur.description": "A legendary holy sword",
-      "darkSword": "Dark Sword",
-      "darkSword.description": "A sword imbued with dark power",
-      "steelSword": "Steel Sword",
-      "steelSword.description": "A standard sword"
+      "excalibur": {
+        "name": "Holy Sword Excalibur",
+        "description": "A legendary holy sword"
+      },
+      "darkSword": {
+        "name": "Dark Sword",
+        "description": "A sword imbued with dark power"
+      },
+      "steelSword": {
+        "name": "Steel Sword",
+        "description": "A standard sword"
+      }
     },
     "armor": {
-      "holyArmor": "Holy Armor",
-      "holyArmor.description": "Armor blessed by the gods",
-      "magicArmor": "Magic Armor",
-      "magicArmor.description": "High magical defense",
-      "leatherArmor": "Leather Armor",
-      "leatherArmor.description": "Lightweight armor"
+      "holyArmor": {
+        "name": "Holy Armor",
+        "description": "Armor blessed by the gods"
+      },
+      "magicArmor": {
+        "name": "Magic Armor",
+        "description": "High magical defense"
+      },
+      "leatherArmor": {
+        "name": "Leather Armor",
+        "description": "Lightweight armor"
+      }
     },
     "pendant": {
-      "lifePendant": "Life Pendant",
-      "lifePendant.description": "Greatly increases HP",
-      "magicPendant": "Magic Pendant",
-      "magicPendant.description": "Increases magical power",
-      "luckyPendant": "Lucky Pendant",
-      "luckyPendant.description": "Slightly increases luck"
+      "lifePendant": {
+        "name": "Life Pendant",
+        "description": "Greatly increases HP"
+      },
+      "magicPendant": {
+        "name": "Magic Pendant",
+        "description": "Increases magical power"
+      },
+      "luckyPendant": {
+        "name": "Lucky Pendant",
+        "description": "Slightly increases luck"
+      }
     }
   },
   "card": {

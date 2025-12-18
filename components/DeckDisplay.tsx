@@ -70,12 +70,12 @@ export function DeckDisplay({ cards, egoLevel, hasPotential, onRemoveCard, onUnd
                 {!isBasicCard && (
                   <div className="mt-2 flex flex-col gap-1">
                     {card.isCopied && (
-                      <span className="inline-flex items-center gap-1 text-[11px] font-semibold px-2 py-1 rounded-full bg-blue-600/90 text-white" style={textShadowStyle}>
+                      <span className="inline-flex items-center gap-1 text-[11px] font-semibold px-2 py-1 rounded-full bg-blue-600/90 text-white text-shadow-2xl">
                         📋 {t("card.copied", { defaultValue: "コピー済み" })}
                       </span>
                     )}
                     {card.selectedHiramekiLevel > 0 && !card.godHiramekiType && (
-                      <span className="inline-flex items-center gap-1 text-[11px] font-semibold px-2 py-1 rounded-full bg-purple-600/90 text-white" style={textShadowStyle}>
+                      <span className="inline-flex items-center gap-1 text-[11px] font-semibold px-2 py-1 rounded-full bg-purple-600/90 text-white text-shadow-2xl">
                         ★ {t("card.hirameki")} {t("card.level")}{card.selectedHiramekiLevel}
                       </span>
                     )}
