@@ -1,5 +1,5 @@
-import { describe, it, expect, beforeEach, vi } from 'vitest';
-import { renderHook, act, waitFor } from '@testing-library/react';
+import { describe, it, expect, beforeEach, vi, afterEach } from 'vitest';
+import { renderHook, act } from '@testing-library/react';
 import { useExportDeckImage } from '@/hooks/useExportDeckImage';
 import * as htmlToImage from 'html-to-image';
 
@@ -120,6 +120,6 @@ describe('useExportDeckImage', () => {
 
     const callArgs = vi.mocked(htmlToImage.toPng).mock.calls[0];
     expect(callArgs[1]).toHaveProperty('pixelRatio');
-    expect(callArgs[1].pixelRatio).toBeLessThanOrEqual(3);
+    expect(callArgs[1]?.pixelRatio).toBeLessThanOrEqual(3);
   });
 });

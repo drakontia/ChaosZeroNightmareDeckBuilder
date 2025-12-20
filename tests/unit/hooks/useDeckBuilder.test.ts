@@ -1,7 +1,7 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest';
 import { renderHook, act, waitFor } from '@testing-library/react';
 import { useDeckBuilder } from '@/hooks/useDeckBuilder';
-import { CardType, EquipmentType } from '@/types';
+import { CardType, EquipmentType, GodType } from '@/types';
 import * as dataModule from '@/lib/data';
 
 // Mock data module
@@ -178,7 +178,7 @@ describe('useDeckBuilder', () => {
     deckId = result.current.deck.cards[0].deckId;
 
     act(() => {
-      result.current.setCardGodHirameki(deckId, 'kilken');
+      result.current.setCardGodHirameki(deckId, GodType.KILKEN);
     });
 
     expect(result.current.deck.cards[0].godHiramekiType).toBe('kilken');

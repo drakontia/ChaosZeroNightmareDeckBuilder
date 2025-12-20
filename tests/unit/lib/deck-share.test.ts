@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeEach } from 'vitest';
 import { encodeDeckShare, decodeDeckShare } from '@/lib/deck-share';
-import { Deck, CardType, CardCategory, GodType } from '@/types';
+import { Deck, CardType, CardCategory, GodType, EquipmentType } from '@/types';
 
 describe('deck-share', () => {
   let mockDeck: Deck;
@@ -18,7 +18,7 @@ describe('deck-share', () => {
         imgUrl: ''
       } as any,
       equipment: {
-        weapon: { id: 'weapon_1', name: 'equipment.weapon.weapon_1.name', type: 'WEAPON' },
+        weapon: { id: 'weapon_1', name: 'equipment.weapon.weapon_1.name', type: EquipmentType.WEAPON, rarity: 'RARE' },
         armor: null,
         pendant: null
       },
