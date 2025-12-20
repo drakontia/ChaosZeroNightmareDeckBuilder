@@ -34,8 +34,8 @@ const openAccordion = async (page: Page, name: string) => {
 
 const getDeckCardContainerByName = (page: Page, cardName: string) => {
   const nameLocator = page.locator(`div[title="${cardName}"]`).first();
-  // CardFrame container is two levels up from the title element
-  return nameLocator.locator('..').locator('..');
+  // Climb to the nearest ancestor that also contains the menu button
+  return nameLocator.locator('xpath=ancestor::div[.//button[@aria-label="メニュー"]][1]');
 };
 
 test.describe('Deck Editor', () => {
@@ -214,5 +214,42 @@ test.describe('Deck Editor', () => {
     // It should reappear in the hirameki list (at least one match)
     const afterCount = await hiramekiGrid.locator(`div[title="${clickedTitle}"]`).count();
     expect(afterCount).toBeGreaterThan(0);
+  });
+
+  test('should convert a card to shared and restore from converted list', async ({ page }) => {
+    await page.goto('/');
+    await selectCharacterAndWeapon(page);
+
+    const originalName = await addFirstHiramekiCard(page);
+
+    // Open actions menu for the added card
+    const deckCard = getDeckCardContainerByName(page, originalName);
+    await expect(deckCard.getByRole('button', { name: 'メニュー' })).toBeVisible();
+    await deckCard.getByRole('button', { name: 'メニュー' }).click();
+    await deckCard.getByRole('button', { name: '変換' }).click();
+
+    // Pick a shared card from the conversion modal
+    const targetName = '全体攻撃';
+    const dialog = page.getByRole('dialog');
+    const targetTile = dialog.locator(`div[title="${targetName}"]`).first();
+    await expect(targetTile).toBeVisible();
+    await targetTile.click();
+
+    // Deck should now show the converted target card (with actions menu available)
+    const convertedDeckCard = getDeckCardContainerByName(page, targetName);
+    await expect(convertedDeckCard.getByRole('button', { name: 'メニュー' })).toBeVisible();
+
+    // Converted list should show the original card for restoration
+    const convertedSection = page.getByRole('heading', { name: '変換したカード' }).locator('..');
+    const originalTile = convertedSection.locator(`div[title="${originalName}"]`).first();
+    await expect(originalTile).toBeVisible();
+
+    // Restore the original card from the converted list
+    await originalTile.click();
+
+    // Deck shows the original card again and converted list entry disappears
+    const restoredDeckCard = getDeckCardContainerByName(page, originalName);
+    await expect(restoredDeckCard.getByRole('button', { name: 'メニュー' })).toBeVisible();
+    await expect(convertedSection.locator(`div[title="${originalName}"]`)).toHaveCount(0);
   });
 });

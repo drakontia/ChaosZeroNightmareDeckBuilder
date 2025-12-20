@@ -170,16 +170,23 @@ export function CardSelector({ character, onAddCard, onRestoreCard, removedCards
           </div>
         )}
 
-        {/* Converted Cards */}
+        {/* Converted Cards: show ORIGINAL card, click to restore */}
         {convertedCards && convertedCards.size > 0 && (
           <div className="space-y-3">
             <h3 className="text-lg font-semibold">変換したカード</h3>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
               {Array.from(convertedCards.entries()).map(([originalId, convertedId]) => {
-                const card = getCardById(convertedId);
-                if (!card) return null;
-                if (!matchesQuery(card)) return null;
-                return renderConvertedTile(card);
+                const originalCard = getCardById(originalId);
+                if (!originalCard) return null;
+                if (!matchesQuery(originalCard)) return null;
+                const translatedName = t(`cards.${originalCard.id}.name`, { defaultValue: originalCard.name });
+                return renderCardTile(originalCard, {
+                  keyPrefix: 'converted',
+                  onClick: () => onRestoreCard(originalCard),
+                  title: `${translatedName}（変換済み）`,
+                  subtitle: '変換済み',
+                  showFullDescription: true,
+                });
               })}
             </div>
           </div>

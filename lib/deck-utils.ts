@@ -1,14 +1,23 @@
-import { CardType, DeckCard, Deck, GodType } from "@/types";
+import { CardType, DeckCard, Deck } from "@/types";
 import { GOD_HIRAMEKI_EFFECTS } from "@/lib/god-hirameki";
 import { getCardById } from "@/lib/data";
 
 // Helper function to get card info based on hirameki level and god hirameki
-export function getCardInfo(card: DeckCard, egoLevel: number = 0, hasPotential: boolean = false): {
+export function getCardInfo(
+  card: DeckCard,
+  egoLevel: number = 0,
+  hasPotential: boolean = false,
+  convertedCards?: Map<string, string>
+): {
   cost: number;
   description: string;
   statuses?: string[]; // Return raw status array for translation
 } {
-  const variation = card.hiramekiVariations[card.selectedHiramekiLevel] || card.hiramekiVariations[0];
+  // If this card has been converted, use the target card's variations for info
+  const convertedId = convertedCards?.get(card.id);
+  const baseCard = convertedId ? (getCardById(convertedId) ?? card) : card;
+
+  const variation = baseCard.hiramekiVariations[card.selectedHiramekiLevel] || baseCard.hiramekiVariations[0];
   
   let cost = variation.cost;
   let description = variation.description;

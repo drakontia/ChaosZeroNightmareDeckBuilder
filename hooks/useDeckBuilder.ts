@@ -109,28 +109,25 @@ export function useDeckBuilder() {
 
   const restoreCard = useCallback((card: Card) => {
     setDeck(prev => {
-      // Check if this card was converted from another card
-      const originalCardId = Array.from(prev.convertedCards.entries())
-        .find(([_, convertedId]) => convertedId === card.id)?.[0];
-
-      if (originalCardId) {
-        // This is a converted card being restored - remove the conversion and restore original
+      // If this is an ORIGINAL that has been converted, revert conversion
+      const convertedId = prev.convertedCards.get(card.id);
+      if (convertedId) {
         const newConvertedCards = new Map(prev.convertedCards);
-        newConvertedCards.delete(originalCardId);
+        newConvertedCards.delete(card.id);
 
-        // Find and replace the converted card with original in the deck
-        const convertedCardIndex = prev.cards.findIndex(c => c.id === card.id);
-        if (convertedCardIndex !== -1) {
+        // Replace the converted card in the deck with the original
+        const convertedIndex = prev.cards.findIndex(c => c.id === convertedId);
+        const restoredDeckCard: DeckCard = {
+          ...card,
+          deckId: `${card.id}_${Date.now()}_${Math.random()}`,
+          selectedHiramekiLevel: 0,
+          godHiramekiType: null,
+          godHiramekiEffectId: null
+        };
+
+        if (convertedIndex !== -1) {
           const newCards = [...prev.cards];
-          const restoredCard: DeckCard = {
-            ...card,
-            deckId: `${card.id}_${Date.now()}_${Math.random()}`,
-            selectedHiramekiLevel: 0,
-            godHiramekiType: null,
-            godHiramekiEffectId: null
-          };
-          newCards[convertedCardIndex] = restoredCard;
-
+          newCards[convertedIndex] = restoredDeckCard;
           return {
             ...prev,
             cards: newCards,
@@ -138,8 +135,10 @@ export function useDeckBuilder() {
           };
         }
 
+        // Converted card is no longer in deck; add the original back
         return {
           ...prev,
+          cards: [...prev.cards, restoredDeckCard],
           convertedCards: newConvertedCards
         };
       }
