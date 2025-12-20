@@ -2,6 +2,7 @@
 
 import { useTranslations, useLocale } from 'next-intl';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 import { useDeckBuilder } from "@/hooks/useDeckBuilder";
 import { CardType } from "@/types";
 import { CharacterSelector } from "./CharacterSelector";
@@ -15,13 +16,15 @@ import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 import { Button } from "./ui/button";
 import { Field, FieldLabel, FieldGroup, FieldSet } from "./ui/field";
 import { Input } from './ui/input';
-import { Brain, CardSim, Clock12, Share2 } from 'lucide-react';
+import { Brain, CardSim, Clock12, Share2, Save as SaveIcon, FolderOpen } from 'lucide-react';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { Camera } from 'lucide-react';
 import { decodeDeckShare } from "@/lib/deck-share";
 import { Deck } from "@/types";
 import { useShareDeck } from "@/hooks/useShareDeck";
 import { useExportDeckImage } from "@/hooks/useExportDeckImage";
+import { useDeckSaveLoad } from "@/hooks/useDeckSaveLoad";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "./ui/dialog";
 
 export type DeckBuilderProps = {
   shareId?: string;
@@ -36,9 +39,6 @@ export function DeckBuilder({ shareId }: DeckBuilderProps) {
   const [shareError, setShareError] = useState<string | null>(null);
   const hasLoadedShare = useRef(false);
   const deckCaptureRef = useRef<HTMLDivElement | null>(null);
-
-  const { isSharing, handleShareDeck: shareHandler } = useShareDeck();
-  const { isExporting, handleExportDeckImage: exportHandler } = useExportDeckImage();
 
   const {
     deck,
@@ -58,6 +58,18 @@ export function DeckBuilder({ shareId }: DeckBuilderProps) {
     togglePotential
   } = useDeckBuilder(sharedDeck ?? undefined);
 
+  const { isSharing, handleShareDeck: shareHandler } = useShareDeck();
+  const { isExporting, handleExportDeckImage: exportHandler } = useExportDeckImage();
+  const {
+    savedList,
+    loadOpen,
+    setLoadOpen,
+    handleSaveDeck,
+    openLoadDialog,
+    handleLoadDeck,
+    handleDeleteSaved,
+  } = useDeckSaveLoad({ deck, setName, setSharedDeck, setShareError, t });
+
   useEffect(() => {
     if (!shareId || hasLoadedShare.current) return;
     const decoded = decodeDeckShare(shareId);
@@ -68,8 +80,6 @@ export function DeckBuilder({ shareId }: DeckBuilderProps) {
     }
     hasLoadedShare.current = true;
   }, [shareId, t]);
-
-
 
   const handleShareDeck = useCallback(() => {
     shareHandler(deck);
@@ -89,7 +99,9 @@ export function DeckBuilder({ shareId }: DeckBuilderProps) {
           <div className="flex justify-between items-start mb-2">
             <div>
               <h1 className="text-3xl md:text-4xl font-bold mb-2">
-                {t('app.title')}
+                <Link href="/" className="hover:underline">
+                  {t('app.title')}
+                </Link>
               </h1>
               <p className="text-gray-600 dark:text-gray-400">
                 {t('app.description')}
@@ -111,6 +123,7 @@ export function DeckBuilder({ shareId }: DeckBuilderProps) {
           <FieldGroup className="lg:col-span-12 grid grid-cols-1 lg:grid-cols-12 gap-4">
             <Field orientation={'horizontal'} className="lg:col-span-4">
               <Input
+                id="deck-name"
                 type="text"
                 value={deck.name ?? ""}
                 onChange={(e) => setName(e.target.value)}
@@ -119,6 +132,25 @@ export function DeckBuilder({ shareId }: DeckBuilderProps) {
               />
             </Field>
             <div className="lg:col-span-8 flex justify-end gap-2">
+              <Button
+                onClick={handleSaveDeck}
+                variant="secondary"
+                disabled={!deck.character}
+                title={t('deck.save', { defaultValue: 'デッキを保存' })}
+                aria-label={t('deck.save', { defaultValue: 'デッキを保存' })}
+              >
+                <SaveIcon className="mr-2 h-4 w-4" />
+                {t('deck.save', { defaultValue: 'デッキを保存' })}
+              </Button>
+              <Button
+                onClick={openLoadDialog}
+                variant="secondary"
+                title={t('deck.load', { defaultValue: 'デッキを読み込み' })}
+                aria-label={t('deck.load', { defaultValue: 'デッキを読み込み' })}
+              >
+                <FolderOpen className="mr-2 h-4 w-4" />
+                {t('deck.load', { defaultValue: 'デッキを読み込み' })}
+              </Button>
               <Button
                 onClick={handleShareDeck}
                 variant="secondary"
@@ -226,6 +258,39 @@ export function DeckBuilder({ shareId }: DeckBuilderProps) {
           </div>
           </FieldSet>
         </div>
+
+        {/* Load dialog */}
+        <Dialog open={loadOpen} onOpenChange={setLoadOpen}>
+          <DialogContent>
+            <DialogHeader>
+              <DialogTitle>{t('deck.loadTitle', { defaultValue: '保存されたデッキを読み込み' })}</DialogTitle>
+            </DialogHeader>
+            <div className="space-y-2 max-h-80 overflow-auto">
+              {savedList.length === 0 ? (
+                <div className="text-sm text-muted-foreground">
+                  {t('deck.noSavedDecks', { defaultValue: '保存されたデッキはありません' })}
+                </div>
+              ) : (
+                savedList.map(({ name, savedAt }) => (
+                  <div key={name} className="flex items-center justify-between rounded border p-2 gap-2">
+                    <div className="min-w-0">
+                      <div className="font-medium truncate">{name}</div>
+                      <div className="text-xs text-muted-foreground">{new Date(savedAt).toLocaleString()}</div>
+                    </div>
+                    <div className="flex gap-2">
+                      <Button variant="secondary" onClick={() => handleLoadDeck(name)}>
+                        {t('deck.load', { defaultValue: '呼び出し' })}
+                      </Button>
+                      <Button variant="destructive" onClick={() => handleDeleteSaved(name)}>
+                        {t('common.delete', { defaultValue: '削除' })}
+                      </Button>
+                    </div>
+                  </div>
+                ))
+              )}
+            </div>
+          </DialogContent>
+        </Dialog>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
           <div className="lg:col-span-12">

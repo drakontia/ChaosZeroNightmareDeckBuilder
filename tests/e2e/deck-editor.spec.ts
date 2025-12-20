@@ -46,7 +46,7 @@ test.describe('Deck Editor', () => {
 
   test('should export deck image', async ({ page }) => {
     await page.goto('/');
-    const exportBtn = page.getByRole('button', { name: 'デッキ画像を保存' });
+    const exportBtn = page.getByRole('button', { name: '画像エクスポート' });
     await expect(exportBtn).toBeVisible();
 
     const downloadPromise = page.waitForEvent('download');
@@ -174,7 +174,7 @@ test.describe('Deck Editor', () => {
     await addFirstHiramekiCard(page);
 
     // Clear deck
-    await page.getByRole('button', { name: 'デッキをクリア' }).click();
+    await page.getByRole('button', { name: 'クリア' }).click();
 
     // Verify deck is cleared
     await expect(page.getByText('キャラクターを選択すると開始カードが表示されます')).toBeVisible();
@@ -277,7 +277,7 @@ test.describe('Deck Editor', () => {
     await expect(totalCardsField.locator('span.text-primary').filter({ hasText: '5' })).toBeVisible();
 
     // Click share and capture alert
-    const shareBtn = page.getByRole('button', { name: 'デッキを共有' });
+    const shareBtn = page.getByRole('button', { name: '共有' });
     await expect(shareBtn).toBeEnabled();
 
     const alertPromise = new Promise<string>((resolve) => {
@@ -305,5 +305,47 @@ test.describe('Deck Editor', () => {
     // Verify the previously added card is present in the shared deck
     const sharedDeckCard = getDeckCardContainerByName(page, addedCardName);
     await expect(sharedDeckCard).toBeVisible();
+  });
+
+  test('should save and load deck via localStorage', async ({ page }) => {
+    await page.goto('/');
+
+    const saveBtn = page.getByRole('button', { name: '保存' });
+    await expect(saveBtn).toBeDisabled();
+
+    await selectCharacterAndWeapon(page);
+    await addFirstHiramekiCard(page);
+
+    await expect(saveBtn).toBeEnabled();
+
+    await page.evaluate(() => {
+      (window as any).__alerts = [];
+      window.alert = (msg?: string) => {
+        (window as any).__alerts.push(msg ?? '');
+      };
+      window.prompt = () => 'e2e-save';
+    });
+
+    await saveBtn.click();
+
+    const alerts = await page.evaluate(() => (window as any).__alerts as string[]);
+    expect(alerts[0]).toContain('保存');
+
+    // Clear to simulate loading later
+    await page.getByRole('button', { name: 'クリア' }).click();
+    await expect(page.getByText('キャラクターを選択すると開始カードが表示されます')).toBeVisible();
+
+    // Open load dialog and load the saved deck
+    await page.getByRole('button', { name: '読込' }).click();
+    const dialog = page.getByRole('dialog');
+    const row = dialog.locator('div').filter({ hasText: 'e2e-save' }).first();
+    await expect(row).toBeVisible();
+    await row.getByRole('button', { name: '読込' }).click();
+
+    // Verify restored deck
+    await expect(page.getByText('チズル').first()).toBeVisible();
+    const totalCardsField = page.getByRole('group').filter({ hasText: 'カード枚数' });
+    await expect(totalCardsField.locator('span.text-primary', { hasText: /^5$/ })).toBeVisible();
+    await expect(page.locator('#deck-name')).toHaveValue('e2e-save');
   });
 });
