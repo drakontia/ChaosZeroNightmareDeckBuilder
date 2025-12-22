@@ -195,7 +195,27 @@ export function useDeckBuilder(initialDeck?: Deck) {
 
   const undoCard = useCallback((deckId: string) => {
     setDeck(prev => {
-      // Simply remove the card from deck without adding to removedCards
+      const cardToUndo = prev.cards.find(card => card.deckId === deckId);
+      if (!cardToUndo) return prev;
+
+      // If this is a copied card, decrement the copy count
+      if (cardToUndo.isCopied) {
+        const newCopiedCards = new Map(prev.copiedCards);
+        const currentCount = newCopiedCards.get(cardToUndo.id) || 0;
+        if (currentCount > 1) {
+          newCopiedCards.set(cardToUndo.id, currentCount - 1);
+        } else {
+          newCopiedCards.delete(cardToUndo.id);
+        }
+
+        return {
+          ...prev,
+          cards: prev.cards.filter(card => card.deckId !== deckId),
+          copiedCards: newCopiedCards
+        };
+      }
+
+      // For non-copied cards, simply remove from deck
       return {
         ...prev,
         cards: prev.cards.filter(card => card.deckId !== deckId)
@@ -206,12 +226,17 @@ export function useDeckBuilder(initialDeck?: Deck) {
   const copyCard = useCallback((deckId: string) => {
     setDeck(prev => {
       const cardToCopy = prev.cards.find(c => c.deckId === deckId);
-      const variation = cardToCopy?.hiramekiVariations[cardToCopy.selectedHiramekiLevel] ?? cardToCopy?.hiramekiVariations[0];
+      if (!cardToCopy || cardToCopy.isBasicCard) {
+        return prev; // Can't copy basic cards
+      }
+      
+      const variation = cardToCopy.hiramekiVariations?.[cardToCopy.selectedHiramekiLevel] ?? cardToCopy.hiramekiVariations?.[0];
       const effectiveStatuses = (variation?.statuses && variation.statuses.length > 0)
         ? variation.statuses
-        : cardToCopy?.statuses;
-      if (!cardToCopy || cardToCopy.isBasicCard || effectiveStatuses?.includes(CardStatus.UNIQUE)) {
-        return prev; // Can't copy basic or unique-status cards
+        : cardToCopy.statuses;
+      
+      if (effectiveStatuses?.includes(CardStatus.UNIQUE)) {
+        return prev; // Can't copy unique-status cards
       }
 
       // Create a copy with a new deckId
