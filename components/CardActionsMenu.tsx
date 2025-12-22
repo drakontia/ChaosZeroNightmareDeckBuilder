@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { CircleX, Undo2, Copy, ArrowRightLeft, Menu } from "lucide-react";
-import { DeckCard, Card, JobType } from "@/types";
+import { DeckCard, CznCard, JobType, CardStatus } from "@/types";
 import { ConversionModal } from "./ConversionModal";
 import { Button } from "./ui/button";
 
@@ -11,7 +11,7 @@ interface CardActionsMenuProps {
   allowedJob?: JobType;
   onRemoveCard: (deckId: string) => void;
   onCopyCard: (deckId: string) => void;
-  onConvertCard: (deckId: string, targetCard: Card) => void;
+  onConvertCard: (deckId: string, targetCard: CznCard) => void;
   onUndoCard: (deckId: string) => void;
 }
 
@@ -26,13 +26,18 @@ export function CardActionsMenu({
   const t = useTranslations();
   const [isOpen, setIsOpen] = useState(false);
   const [isConversionModalOpen, setIsConversionModalOpen] = useState(false);
+  const variation = card.hiramekiVariations[card.selectedHiramekiLevel] ?? card.hiramekiVariations[0];
+  const effectiveStatuses = (variation?.statuses && variation.statuses.length > 0)
+    ? variation.statuses
+    : card.statuses;
+  const canCopy = !card.isBasicCard && !effectiveStatuses.includes(CardStatus.UNIQUE);
 
   const handleConvertClick = () => {
     setIsOpen(false);
     setIsConversionModalOpen(true);
   };
 
-  const handleConversionSelect = (targetCard: Card) => {
+  const handleConversionSelect = (targetCard: CznCard) => {
     onConvertCard(card.deckId, targetCard);
     setIsConversionModalOpen(false);
   };
@@ -63,7 +68,7 @@ export function CardActionsMenu({
           >
             <CircleX className="h-5 w-5" />
           </Button>
-          {!card.isBasicCard && (
+          {canCopy && (
             <Button
               type="button"
               variant="outline"

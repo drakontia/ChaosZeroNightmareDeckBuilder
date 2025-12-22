@@ -1,4 +1,4 @@
-import { Card, CardType, CardCategory } from "@/types";
+import { CznCard, CardType, CardCategory } from "@/types";
 
 /**
  * Forbidden Cards
@@ -9,7 +9,7 @@ import { Card, CardType, CardCategory } from "@/types";
  * 
  * The name and description fields below serve as fallback values when translations are not available.
  */
-export const FORBIDDEN_CARDS: Card[] = [
+export const FORBIDDEN_CARDS: CznCard[] = [
   {
     id: "forbidden_card_1",
     name: "禁呪", // Fallback

@@ -1,4 +1,4 @@
-import { Card, CardType, CardCategory, JobType } from "@/types";
+import { CznCard, CardType, CardCategory, JobType } from "@/types";
 
 /**
  * Shared Cards
@@ -9,7 +9,7 @@ import { Card, CardType, CardCategory, JobType } from "@/types";
  * 
  * The name and description fields below serve as fallback values when translations are not available.
  */
-export const SHARED_CARDS: Card[] = [
+export const SHARED_CARDS: CznCard[] = [
   {
     id: "shared_card_1",
     name: "全体攻撃", // Fallback

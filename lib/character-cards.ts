@@ -1,4 +1,4 @@
-import { Card, CardType, CardCategory, CardStatus } from "@/types";
+import { CznCard, CardType, CardCategory, CardStatus } from "@/types";
 
 /**
  * Character Cards
@@ -9,7 +9,7 @@ import { Card, CardType, CardCategory, CardStatus } from "@/types";
  * 
  * The name and description fields below serve as fallback values when translations are not available.
  */
-export const CHARACTER_CARDS: Card[] = [
+export const CHARACTER_CARDS: CznCard[] = [
   // Luke's starting cards
   {
     id: "luke_starting_1",

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useCallback, useEffect } from "react";
-import { Character, Equipment, Card, DeckCard, Deck, EquipmentType, GodType, CardType } from "@/types";
+import { Character, Equipment, CznCard, DeckCard, Deck, EquipmentType, GodType, CardType, CardStatus } from "@/types";
 import { getCharacterStartingCards } from "@/lib/data";
 
 const createEmptyDeck = (): Deck => ({
@@ -74,7 +74,7 @@ export function useDeckBuilder(initialDeck?: Deck) {
     });
   }, []);
 
-  const addCard = useCallback((card: Card) => {
+  const addCard = useCallback((card: CznCard) => {
     setDeck(prev => {
       // Check if hirameki card already exists in deck or has been removed
       if (card.type === CardType.CHARACTER) {
@@ -118,7 +118,7 @@ export function useDeckBuilder(initialDeck?: Deck) {
     });
   }, []);
 
-  const restoreCard = useCallback((card: Card) => {
+  const restoreCard = useCallback((card: CznCard) => {
     setDeck(prev => {
       // If this is an ORIGINAL that has been converted, revert conversion
       const convertedId = prev.convertedCards.get(card.id);
@@ -202,8 +202,12 @@ export function useDeckBuilder(initialDeck?: Deck) {
   const copyCard = useCallback((deckId: string) => {
     setDeck(prev => {
       const cardToCopy = prev.cards.find(c => c.deckId === deckId);
-      if (!cardToCopy || cardToCopy.isBasicCard) {
-        return prev; // Can't copy basic cards
+      const variation = cardToCopy?.hiramekiVariations[cardToCopy.selectedHiramekiLevel] ?? cardToCopy?.hiramekiVariations[0];
+      const effectiveStatuses = (variation?.statuses && variation.statuses.length > 0)
+        ? variation.statuses
+        : cardToCopy?.statuses;
+      if (!cardToCopy || cardToCopy.isBasicCard || effectiveStatuses?.includes(CardStatus.UNIQUE)) {
+        return prev; // Can't copy basic or unique-status cards
       }
 
       // Create a copy with a new deckId
@@ -226,7 +230,7 @@ export function useDeckBuilder(initialDeck?: Deck) {
     });
   }, []);
 
-  const convertCard = useCallback((deckId: string, targetCard: Card) => {
+  const convertCard = useCallback((deckId: string, targetCard: CznCard) => {
     setDeck(prev => {
       const cardToConvert = prev.cards.find(c => c.deckId === deckId);
       if (!cardToConvert) {

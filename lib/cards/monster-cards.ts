@@ -1,4 +1,4 @@
-import { Card, CardType, CardCategory, JobType } from "@/types";
+import { CznCard, CardType, CardCategory, JobType } from "@/types";
 
 /**
  * Monster Cards
@@ -9,7 +9,7 @@ import { Card, CardType, CardCategory, JobType } from "@/types";
  * 
  * The name and description fields below serve as fallback values when translations are not available.
  */
-export const MONSTER_CARDS: Card[] = [
+export const MONSTER_CARDS: CznCard[] = [
   {
     id: "monster_card_1",
     name: "モンスター召喚", // Fallback

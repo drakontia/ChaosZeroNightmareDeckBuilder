@@ -2,7 +2,7 @@
 import { useTranslations } from 'next-intl';
 import { Card as UiCard, CardContent } from "./ui/card";
 import { CardFrame } from "./CardFrame";
-import { Card, CardType, JobType } from "@/types";
+import { CznCard, CardType, JobType } from "@/types";
 import { getAddableCards } from "@/lib/data";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "./ui/accordion";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "./ui/dialog";
@@ -10,7 +10,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from "./ui/dialog";
 interface ConversionModalProps {
   isOpen: boolean;
   onClose: () => void;
-  onSelectCard: (card: Card) => void;
+  onSelectCard: (card: CznCard) => void;
   allowedJob?: JobType;
 }
 
@@ -26,7 +26,7 @@ export function ConversionModal({ isOpen, onClose, onSelectCard, allowedJob }: C
   const sharedCards = conversionCards.filter(c => c.type === CardType.SHARED);
   const forbiddenCards = conversionCards.filter(c => c.type === CardType.FORBIDDEN);
 
-  const renderCardTile = (card: Card) => {
+  const renderCardTile = (card: CznCard) => {
     const baseVariation = card.hiramekiVariations[0];
     const translatedName = t(`cards.${card.id}.name`, { defaultValue: card.name });
     const description = t(`cards.${card.id}.descriptions.0`, { defaultValue: baseVariation.description });

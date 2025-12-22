@@ -135,7 +135,7 @@ export interface GodHiramekiDefinition {
   gods: GodType[] | "all"; // Applicable gods or all
 }
 
-export interface Card {
+export interface CznCard {
   id: string;
   name: string;
   type: CardType;
@@ -150,7 +150,7 @@ export interface Card {
 }
 
 // Deck state
-export interface DeckCard extends Card {
+export interface DeckCard extends CznCard {
   deckId: string; // unique ID for this card in the deck
   selectedHiramekiLevel: number; // 0 = base, 1-5 for variations
   godHiramekiType: GodType | null; // Which god's hirameki is applied (null = none)

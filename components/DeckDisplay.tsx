@@ -4,7 +4,7 @@ import { CardFrame } from './CardFrame';
 import { HiramekiControls } from './HiramekiControls';
 import { CardActionsMenu } from './CardActionsMenu';
 
-import { DeckCard, GodType, Card, JobType } from "@/types";
+import { DeckCard, GodType, CznCard, JobType } from "@/types";
 import { Card as UiCard } from "./ui/card";
 import { getCardInfo } from "@/lib/deck-utils";
 import { GOD_HIRAMEKI_EFFECTS } from "@/lib/god-hirameki";
@@ -17,7 +17,7 @@ interface DeckDisplayProps {
   onRemoveCard: (deckId: string) => void;
   onUndoCard: (deckId: string) => void;
   onCopyCard: (deckId: string) => void;
-  onConvertCard: (deckId: string, targetCard: Card) => void;
+  onConvertCard: (deckId: string, targetCard: CznCard) => void;
   onUpdateHirameki: (deckId: string, hiramekiLevel: number) => void;
   onSetGodHirameki: (deckId: string, godType: GodType | null) => void;
   onSetGodHiramekiEffect: (deckId: string, effectId: string | null) => void;

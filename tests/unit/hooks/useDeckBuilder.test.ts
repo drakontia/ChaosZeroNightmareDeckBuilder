@@ -1,7 +1,7 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest';
 import { renderHook, act, waitFor } from '@testing-library/react';
 import { useDeckBuilder } from '@/hooks/useDeckBuilder';
-import { CardType, EquipmentType, GodType } from '@/types';
+import { CardStatus, CardType, EquipmentType, GodType, CardCategory } from '@/types';
 import * as dataModule from '@/lib/data';
 
 // Mock data module
@@ -75,7 +75,7 @@ describe('useDeckBuilder', () => {
       id: 'card-1',
       name: 'Test Card',
       type: CardType.SHARED,
-      category: 'ATTACK' as any,
+      category: CardCategory.ATTACK,
       statuses: []
     } as any;
 
@@ -95,7 +95,7 @@ describe('useDeckBuilder', () => {
       id: 'char-card-1',
       name: 'Character Card',
       type: CardType.CHARACTER,
-      category: 'ATTACK' as any,
+      category: CardCategory.ATTACK,
       statuses: []
     } as any;
 
@@ -113,7 +113,7 @@ describe('useDeckBuilder', () => {
       id: 'card-1',
       name: 'Test Card',
       type: CardType.SHARED,
-      category: 'ATTACK' as any,
+      category: CardCategory.ATTACK,
       statuses: []
     } as any;
 
@@ -139,7 +139,7 @@ describe('useDeckBuilder', () => {
       id: 'card-1',
       name: 'Test Card',
       type: CardType.SHARED,
-      category: 'ATTACK' as any,
+      category: CardCategory.ATTACK,
       statuses: [],
       hiramekiVariations: Array(4).fill({})
     } as any;
@@ -165,7 +165,7 @@ describe('useDeckBuilder', () => {
       id: 'card-1',
       name: 'Test Card',
       type: CardType.SHARED,
-      category: 'ATTACK' as any,
+      category: CardCategory.ATTACK,
       statuses: []
     } as any;
 
@@ -191,7 +191,7 @@ describe('useDeckBuilder', () => {
       id: 'card-1',
       name: 'Test Card',
       type: CardType.SHARED,
-      category: 'ATTACK' as any,
+      category: CardCategory.ATTACK,
       statuses: []
     } as any;
 
@@ -216,7 +216,7 @@ describe('useDeckBuilder', () => {
       id: 'card-1',
       name: 'Test Card',
       type: CardType.SHARED,
-      category: 'ATTACK' as any,
+      category: CardCategory.ATTACK,
       statuses: [],
       isBasicCard: false
     } as any;
@@ -244,7 +244,7 @@ describe('useDeckBuilder', () => {
       id: 'card-1',
       name: 'Test Card',
       type: CardType.SHARED,
-      category: 'ATTACK' as any,
+      category: CardCategory.ATTACK,
       statuses: [],
       isBasicCard: true
     } as any;
@@ -264,13 +264,47 @@ describe('useDeckBuilder', () => {
     expect(result.current.deck.cards).toHaveLength(1);
   });
 
+  it('should not copy cards when current hirameki variation is UNIQUE', async () => {
+    const { result } = renderHook(() => useDeckBuilder());
+    const mockCard = {
+      id: 'card-unique-hirameki',
+      name: 'Test Card',
+      type: CardType.SHARED,
+      category: CardCategory.ATTACK,
+      statuses: [],
+      hiramekiVariations: [
+        { level: 0, cost: 0, description: 'base', statuses: [] },
+        { level: 1, cost: 1, description: 'unique', statuses: [CardStatus.UNIQUE] }
+      ]
+    } as any;
+
+    let deckId = '';
+
+    act(() => {
+      result.current.addCard(mockCard);
+    });
+    await waitFor(() => expect(result.current.deck.cards).toHaveLength(1));
+    deckId = result.current.deck.cards[0].deckId;
+
+    act(() => {
+      result.current.updateCardHirameki(deckId, 1);
+    });
+
+    act(() => {
+      result.current.copyCard(deckId);
+    });
+
+    expect(result.current.deck.cards).toHaveLength(1);
+    expect(result.current.deck.copiedCards.get('card-unique-hirameki')).toBeUndefined();
+  });
+
   it('should convert card', async () => {
     const { result } = renderHook(() => useDeckBuilder());
     const mockCard = {
       id: 'card-1',
       name: 'Test Card',
       type: CardType.SHARED,
-      category: 'ATTACK' as any,
+      category: CardCategory.ATTACK,
       statuses: []
     } as any;
 
@@ -278,7 +312,7 @@ describe('useDeckBuilder', () => {
       id: 'card-2',
       name: 'Target Card',
       type: CardType.SHARED,
-      category: 'ATTACK' as any,
+      category: CardCategory.ATTACK,
       statuses: []
     } as any;
 
@@ -305,7 +339,7 @@ describe('useDeckBuilder', () => {
       id: 'card-1',
       name: 'Test Card',
       type: CardType.SHARED,
-      category: 'ATTACK' as any,
+      category: CardCategory.ATTACK,
       statuses: []
     } as any;
 

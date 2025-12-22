@@ -1,5 +1,5 @@
 import { CHARACTERS, EQUIPMENT, getCardById } from "@/lib/data";
-import { Card, Deck, DeckCard, Equipment, EquipmentType } from "@/types";
+import { CznCard, Deck, DeckCard, Equipment, EquipmentType } from "@/types";
 
 interface SharedDeckCard {
   id: string;
@@ -66,7 +66,7 @@ const createDeckId = (prefix: string): string => {
   return `${prefix}_${Date.now()}_${Math.random()}`;
 };
 
-const pickCard = (cardId: string): Card | null => getCardById(cardId) ?? null;
+const pickCard = (cardId: string): CznCard | null => getCardById(cardId) ?? null;
 
 const pickEquipment = (id: string | null | undefined, type: EquipmentType): Equipment | null => {
   if (!id) return null;
@@ -106,7 +106,7 @@ export function encodeDeckShare(deck: Deck): string {
   return toBase64Url(json);
 }
 
-const toDeckCard = (card: Card, shared: SharedDeckCard): DeckCard => {
+const toDeckCard = (card: CznCard, shared: SharedDeckCard): DeckCard => {
   const maxLevel = Math.max(0, card.hiramekiVariations.length - 1);
   const safeLevel = Math.min(Math.max(shared.selectedHiramekiLevel ?? 0, 0), maxLevel);
   return {

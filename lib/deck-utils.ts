@@ -1,4 +1,4 @@
-import { CardType, DeckCard, Deck } from "@/types";
+import { CardType, DeckCard, Deck, CardStatus, CardCategory } from "@/types";
 import { GOD_HIRAMEKI_EFFECTS } from "@/lib/god-hirameki";
 import { getCardById } from "@/lib/data";
 
@@ -9,10 +9,10 @@ export function getCardInfo(
   hasPotential: boolean = false,
   convertedCards?: Map<string, string>
 ): {
-  cost: number;
+  cost: number | "X";
   description: string;
-  category: import("@/types").CardCategory;
-  statuses?: string[]; // Return raw status array for translation
+  category: CardCategory;
+  statuses?: CardStatus[]; // Return raw status array for translation
 } {
   // If this card has been converted, use the target card's variations for info
   const convertedId = convertedCards?.get(card.id);
@@ -49,7 +49,7 @@ export function getCardInfo(
     const effect = GOD_HIRAMEKI_EFFECTS.find(e => e.id === card.godHiramekiEffectId);
     if (effect) {
       description = `${description}\n${effect.additionalEffect}`;
-      if (effect.costModifier !== undefined) {
+      if (effect.costModifier !== undefined && typeof cost === "number") {
         cost += effect.costModifier;
       }
     }

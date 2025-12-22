@@ -1,7 +1,7 @@
 "use client";
 import { useTranslations } from 'next-intl';
 
-import { Card, CardType, Character } from "@/types";
+import { CznCard, CardType, Character } from "@/types";
 import { getCharacterHiramekiCards, getAddableCards, getCardById } from "@/lib/data";
 import { Card as UiCard, CardContent } from "./ui/card";
 import { CardFrame } from "./CardFrame";
@@ -9,8 +9,8 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "./
 
 interface CardSelectorProps {
   character: Character | null;
-  onAddCard: (card: Card) => void;
-  onRestoreCard: (card: Card) => void;
+  onAddCard: (card: CznCard) => void;
+  onRestoreCard: (card: CznCard) => void;
   removedCards?: Map<string, number>;
   convertedCards?: Map<string, string>;
   presentHiramekiIds?: Set<string>;
@@ -31,7 +31,7 @@ export function CardSelector({ character, onAddCard, onRestoreCard, removedCards
     for (const id of removedCards.keys()) hiddenHiramekiIds.add(id);
   }
   const query = (searchQuery || '').toLowerCase().trim();
-  const matchesQuery = (card: Card) => {
+  const matchesQuery = (card: CznCard) => {
     if (!query) return true;
     const name = t(`cards.${card.id}.name`, { defaultValue: card.name }).toLowerCase();
     const baseDesc = t(`cards.${card.id}.descriptions.0`, { defaultValue: card.hiramekiVariations[0]?.description || '' }).toLowerCase();
@@ -58,7 +58,7 @@ export function CardSelector({ character, onAddCard, onRestoreCard, removedCards
 
   // 共通のカードタイル描画関数
   const renderCardTile = (
-    card: Card,
+    card: CznCard,
     options: {
       keyPrefix?: string;
       onClick?: () => void;
@@ -101,13 +101,13 @@ export function CardSelector({ character, onAddCard, onRestoreCard, removedCards
     );
   };
 
-  const renderCardButton = (card: Card) => {
+  const renderCardButton = (card: CznCard) => {
     return renderCardTile(card, {
       onClick: () => onAddCard(card),
     });
   };
 
-  const renderRemovedTile = (card: Card, count: number) => {
+  const renderRemovedTile = (card: CznCard, count: number) => {
     const translatedName = t(`cards.${card.id}.name`, { defaultValue: card.name });
     return renderCardTile(card, {
       keyPrefix: 'removed',
@@ -116,7 +116,7 @@ export function CardSelector({ character, onAddCard, onRestoreCard, removedCards
     });
   };
 
-  const renderConvertedTile = (card: Card) => {
+  const renderConvertedTile = (card: CznCard) => {
     const translatedName = t(`cards.${card.id}.name`, { defaultValue: card.name });
     return renderCardTile(card, {
       keyPrefix: 'converted',
