@@ -45,7 +45,9 @@ export function useDeckBuilder(initialDeck?: Deck) {
       return {
         ...prev,
         character,
-        cards: deckCards
+        cards: deckCards,
+        removedCards: new Map(),
+        convertedCards: new Map()
       };
     });
   }, []);
