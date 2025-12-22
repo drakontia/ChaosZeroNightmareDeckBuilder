@@ -48,6 +48,7 @@ export function useDeckBuilder(initialDeck?: Deck) {
         character,
         cards: deckCards,
         removedCards: new Map(),
+        copiedCards: new Map(),
         convertedCards: new Map()
       };
     });
