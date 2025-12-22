@@ -40,7 +40,7 @@ export function DeckDisplay({ cards, egoLevel, hasPotential, allowedJob, onRemov
     <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
       {cards.map((card) => {
         const cardInfo = getCardInfo(card, egoLevel, hasPotential);
-        const isBasicCard = card.isBasicCard === true;
+        const hasNoHirameki = card.hiramekiVariations.length === 1;
         const nameId = `cards.${card.id}.name`;
         const nameFallback = card.name;
 
@@ -55,7 +55,7 @@ export function DeckDisplay({ cards, egoLevel, hasPotential, allowedJob, onRemov
           }
         }
 
-        const leftControls = !isBasicCard ? (
+        const leftControls = !hasNoHirameki ? (
           <HiramekiControls
             card={card}
             egoLevel={egoLevel}
