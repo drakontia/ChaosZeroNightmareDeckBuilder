@@ -263,8 +263,9 @@ describe('calculateFaintMemory', () => {
     expect(calculateFaintMemory(baseDeck)).toBe(40); // 20 (shared) + 20 (god)
   });
 
-  it('should calculate removed cards correctly', () => {
+  it('should calculate removed cards correctly with multiple removals per card', () => {
     // Sequential removal: 1st=0, 2nd=10, 3rd=30, 4th=50, 5th+=70
+    // Total 15 removals (1+2+3+4+5):
     // card-1: 1 removal = removal #1 = 0
     // card-2: 2 removals = removal #2, #3 = 10 + 30 = 40
     // card-3: 3 removals = removal #4, #5, #6 = 50 + 70 + 70 = 190
@@ -343,11 +344,16 @@ describe('calculateFaintMemory', () => {
   });
 
   it('should calculate copied cards correctly', () => {
+    // Sequential copy: 1st=0, 2nd=10, 3rd=30, 4th=50, 5th+=70
+    // card-1: 1 copy = copy #1 = 0
+    // card-2: 2 copies = copy #2, #3 = 10 + 30 = 40
+    // card-3: 3 copies = copy #4, #5, #6 = 50 + 70 + 70 = 190
+    // total = 0 + 40 + 190 = 230
     baseDeck.copiedCards.set('card-1', 1);
     baseDeck.copiedCards.set('card-2', 2);
     baseDeck.copiedCards.set('card-3', 3);
     
-    expect(calculateFaintMemory(baseDeck)).toBe(0 + 10 + 30);
+    expect(calculateFaintMemory(baseDeck)).toBe(230);
   });
 
   it('should add 10pt for each converted card', () => {
@@ -381,8 +387,8 @@ describe('calculateFaintMemory', () => {
     });
     // 20 (shared) + 10 (hirameki) + 20 (god hirameki) = 50
 
-    // Add removed card
-    baseDeck.removedCards.set('card-1', 2); // +10
+    // Add removed card: card-1 removed 2 times = removal #1, #2 = 0 + 10 = 10
+    baseDeck.removedCards.set('card-1', 2);
 
     // Add converted card
     baseDeck.convertedCards.set('card-2', 'converted-2'); // +10
