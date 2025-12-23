@@ -1,10 +1,10 @@
 "use client";
-import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { CircleX, Undo2, Copy, ArrowRightLeft, Menu } from "lucide-react";
 import { DeckCard, CznCard, JobType, CardStatus } from "@/types";
 import { ConversionModal } from "./ConversionModal";
 import { Button } from "./ui/button";
+import { useCardActionsMenu } from "@/hooks/useCardActionsMenu";
 
 interface CardActionsMenuProps {
   card: DeckCard;
@@ -24,23 +24,21 @@ export function CardActionsMenu({
   onUndoCard
 }: CardActionsMenuProps) {
   const t = useTranslations();
-  const [isOpen, setIsOpen] = useState(false);
-  const [isConversionModalOpen, setIsConversionModalOpen] = useState(false);
+  const {
+    isOpen,
+    setIsOpen,
+    isConversionModalOpen,
+    setIsConversionModalOpen,
+    handleConvertClick,
+    handleConversionSelect,
+    closeMenu,
+  } = useCardActionsMenu({ onConvertCard, deckId: card.deckId });
+
   const variation = card.hiramekiVariations[card.selectedHiramekiLevel] ?? card.hiramekiVariations[0];
   const effectiveStatuses = (variation?.statuses && variation.statuses.length > 0)
     ? variation.statuses
     : card.statuses;
   const canCopy = !card.isBasicCard && !effectiveStatuses.includes(CardStatus.UNIQUE);
-
-  const handleConvertClick = () => {
-    setIsOpen(false);
-    setIsConversionModalOpen(true);
-  };
-
-  const handleConversionSelect = (targetCard: CznCard) => {
-    onConvertCard(card.deckId, targetCard);
-    setIsConversionModalOpen(false);
-  };
 
   return (
     <>
@@ -62,7 +60,7 @@ export function CardActionsMenu({
             variant="destructive"
             size="icon"
             className="rounded-full"
-            onClick={() => { onRemoveCard(card.deckId); setIsOpen(false); }}
+            onClick={() => { onRemoveCard(card.deckId); closeMenu(); }}
             aria-label={t("common.delete", { defaultValue: "削除" })}
             title={t("common.delete", { defaultValue: "削除" })}
           >
@@ -74,7 +72,7 @@ export function CardActionsMenu({
               variant="outline"
               size="icon"
               className="rounded-full"
-              onClick={() => { onCopyCard(card.deckId); setIsOpen(false); }}
+              onClick={() => { onCopyCard(card.deckId); closeMenu(); }}
               aria-label={t("common.copy", { defaultValue: "コピー" })}
               title={t("common.copy", { defaultValue: "コピー" })}
             >
@@ -98,7 +96,7 @@ export function CardActionsMenu({
               variant="outline"
               size="icon"
               className="rounded-full"
-              onClick={() => { onUndoCard(card.deckId); setIsOpen(false); }}
+              onClick={() => { onUndoCard(card.deckId); closeMenu(); }}
               aria-label={t("actions.undo", { defaultValue: "戻す" })}
               title={t("actions.undo", { defaultValue: "戻す" })}
             >

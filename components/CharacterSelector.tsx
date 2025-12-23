@@ -1,15 +1,15 @@
 "use client";
 
-import { useState } from "react";
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
-import { Character, JobType } from "@/types";
+import { Character } from "@/types";
 import { Button } from "./ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "./ui/dialog";
 import { Field } from "./ui/field";
 import { getJobIcon } from "@/lib/jobIcons";
 import { getElementIcon } from "@/lib/elementIcons";
 import { Eye, EyeOff } from "lucide-react";
+import { useCharacterSelection } from "@/hooks/useCharacterSelection";
 
 const formatEgoLevel = (level?: number) => String(level ?? 0).padStart(2, "0");
 
@@ -23,24 +23,13 @@ interface CharacterSelectorProps {
 
 export function CharacterSelector({ characters, selectedCharacter, onSelect, hasPotential, onTogglePotential }: CharacterSelectorProps) {
   const t = useTranslations();
-  const [isOpen, setIsOpen] = useState(false);
-  const [egoLevels, setEgoLevels] = useState<Record<string, number>>({});
-
-  const getEgoLevel = (character: Character) => egoLevels[character.id] ?? character.egoLevel ?? 0;
-
-  const handleEgoIncrement = (character: Character, syncSelect = false) => {
-    const current = getEgoLevel(character);
-    const next = current >= 6 ? 0 : current + 1;
-    setEgoLevels((prev) => ({ ...prev, [character.id]: next }));
-    if (syncSelect || selectedCharacter?.id === character.id) {
-      onSelect({ ...character, egoLevel: next });
-    }
-  };
-
-  const handleSelect = (character: Character) => {
-    onSelect(character);
-    setIsOpen(false);
-  };
+  const {
+    isOpen,
+    setIsOpen,
+    getEgoLevel,
+    handleEgoIncrement,
+    handleSelect,
+  } = useCharacterSelection({ selectedCharacter, onSelect });
 
   return (
     <Field className="mb-6">
