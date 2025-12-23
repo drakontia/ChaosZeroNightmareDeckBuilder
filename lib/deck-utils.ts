@@ -132,25 +132,25 @@ export function calculateFaintMemory(deck: Deck): number {
       }
     }
 
-    // Attribute points for removed cards (optional snapshot-based)
+    // Attribute points for removed cards (snapshot-based)
     const snapshot: RemovedCardEntry | null = typeof entry === "number" ? null : entry as RemovedCardEntry;
     if (snapshot && count > 0) {
-      const cardType = snapshot.type ?? removedCard?.type;
-      // Type acquisition points
+      const cardType = snapshot.type;
+      // Type acquisition points (per card)
       if (cardType === CardType.SHARED) {
-        points += 20 * count;
+        points += 20;
       } else if (cardType === CardType.MONSTER) {
-        points += 80 * count;
+        points += 80;
       } else if (cardType === CardType.FORBIDDEN) {
-        points += 20 * count;
+        points += 20;
       }
-      // Hirameki points for shared/monster
+      // Hirameki points for shared/monster (per card)
       if ((cardType === CardType.SHARED || cardType === CardType.MONSTER) && (snapshot.selectedHiramekiLevel ?? 0) > 0) {
-        points += 10 * count;
+        points += 10;
       }
-      // God hirameki points
+      // God hirameki points (per card)
       if (snapshot.godHiramekiType && snapshot.godHiramekiEffectId && !snapshot.isBasicCard) {
-        points += 20 * count;
+        points += 20;
       }
     }
   }
@@ -181,26 +181,25 @@ export function calculateFaintMemory(deck: Deck): number {
       points += basePoints;
     }
 
-    // Attribute points for copied cards (optional snapshot-based)
+    // Attribute points for copied cards (snapshot-based)
     const snapshot: CopiedCardEntry | null = typeof entry === "number" ? null : entry as CopiedCardEntry;
     if (snapshot && count > 0) {
-      const copiedCard = getCardById(cardId);
-      const cardType = snapshot.type ?? copiedCard?.type;
-      // Type acquisition points
+      const cardType = snapshot.type;
+      // Type acquisition points (per copy)
       if (cardType === CardType.SHARED) {
-        points += 20 * count;
+        points += 20;
       } else if (cardType === CardType.MONSTER) {
-        points += 80 * count;
+        points += 80;
       } else if (cardType === CardType.FORBIDDEN) {
-        points += 20 * count;
+        points += 20;
       }
-      // Hirameki points for shared/monster
+      // Hirameki points for shared/monster (per copy)
       if ((cardType === CardType.SHARED || cardType === CardType.MONSTER) && (snapshot.selectedHiramekiLevel ?? 0) > 0) {
-        points += 10 * count;
+        points += 10;
       }
-      // God hirameki points
+      // God hirameki points (per copy)
       if (snapshot.godHiramekiType && snapshot.godHiramekiEffectId && !snapshot.isBasicCard) {
-        points += 20 * count;
+        points += 20;
       }
     }
   }

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useCallback, useEffect } from "react";
-import { Character, Equipment, CznCard, DeckCard, Deck, EquipmentType, GodType, CardType, CardStatus } from "@/types";
+import { Character, Equipment, CznCard, DeckCard, Deck, EquipmentType, GodType, CardType, CardStatus, RemovedCardEntry, CopiedCardEntry } from "@/types";
 import { getCharacterStartingCards } from "@/lib/data";
 import { sortDeckCards } from "@/lib/deck-utils";
 
@@ -110,11 +110,21 @@ export function useDeckBuilder(initialDeck?: Deck) {
       const cardToRemove = prev.cards.find(card => card.deckId === deckId);
       if (!cardToRemove) return prev;
 
-      // Update removedCards count
+      // Update removedCards with snapshot
       const newRemovedCards = new Map(prev.removedCards);
       const entry = newRemovedCards.get(cardToRemove.id);
       const currentCount = typeof entry === 'number' ? entry : (entry?.count || 0);
-      newRemovedCards.set(cardToRemove.id, currentCount + 1);
+      
+      // Save snapshot with card attributes at removal time
+      const snapshot: RemovedCardEntry = {
+        count: currentCount + 1,
+        type: cardToRemove.type,
+        selectedHiramekiLevel: cardToRemove.selectedHiramekiLevel,
+        godHiramekiType: cardToRemove.godHiramekiType,
+        godHiramekiEffectId: cardToRemove.godHiramekiEffectId,
+        isBasicCard: cardToRemove.isBasicCard
+      };
+      newRemovedCards.set(cardToRemove.id, snapshot);
 
       return {
         ...prev,
@@ -250,11 +260,21 @@ export function useDeckBuilder(initialDeck?: Deck) {
         copiedFromCardId: cardToCopy.copiedFromCardId ?? cardToCopy.id
       };
 
-      // Track in copiedCards Map
+      // Track in copiedCards Map with snapshot
       const newCopiedCards = new Map(prev.copiedCards);
       const entry = newCopiedCards.get(cardToCopy.id);
       const currentCount = typeof entry === 'number' ? entry : (entry?.count || 0);
-      newCopiedCards.set(cardToCopy.id, currentCount + 1);
+      
+      // Save snapshot with card attributes at copy time
+      const snapshot: CopiedCardEntry = {
+        count: currentCount + 1,
+        type: cardToCopy.type,
+        selectedHiramekiLevel: cardToCopy.selectedHiramekiLevel,
+        godHiramekiType: cardToCopy.godHiramekiType,
+        godHiramekiEffectId: cardToCopy.godHiramekiEffectId,
+        isBasicCard: cardToCopy.isBasicCard
+      };
+      newCopiedCards.set(cardToCopy.id, snapshot);
 
       return {
         ...prev,

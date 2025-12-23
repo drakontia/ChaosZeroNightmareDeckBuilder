@@ -130,7 +130,9 @@ describe('useDeckBuilder', () => {
     });
 
     expect(result.current.deck.cards).toHaveLength(0);
-    expect(result.current.deck.removedCards.get('card-1')).toBe(1);
+    const removedEntry = result.current.deck.removedCards.get('card-1');
+    expect(typeof removedEntry === 'object' && removedEntry !== null).toBe(true);
+    expect((removedEntry as any).count).toBe(1);
   });
 
   it('should update hirameki level', async () => {
@@ -234,7 +236,9 @@ describe('useDeckBuilder', () => {
     });
 
     expect(result.current.deck.cards).toHaveLength(2);
-    expect(result.current.deck.copiedCards.get('card-1')).toBe(1);
+    const copiedEntry = result.current.deck.copiedCards.get('card-1');
+    expect(typeof copiedEntry === 'object' && copiedEntry !== null).toBe(true);
+    expect((copiedEntry as any).count).toBe(1);
     const copied = result.current.deck.cards.find(card => card.isCopied);
     expect(copied?.isCopied).toBe(true);
     expect(copied?.copiedFromCardId).toBe('card-1');

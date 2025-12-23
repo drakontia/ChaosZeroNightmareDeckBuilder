@@ -474,7 +474,25 @@ describe('calculateFaintMemory (removed/copied attribute handling)', () => {
     // 1st copy (shared): base 0
     deck.copiedCards.set('shared_01', 1);
     expect(calculateFaintMemory(deck)).toBe(0);
+  });
+});
 
+describe('calculateFaintMemory (snapshot attribute handling)', () => {
+  let deck: Deck;
+
+  beforeEach(() => {
+    deck = {
+      character: null,
+      equipment: { weapon: null, armor: null, pendant: null },
+      cards: [],
+      egoLevel: 0,
+      hasPotential: false,
+      createdAt: new Date(),
+      removedCards: new Map(),
+      copiedCards: new Map(),
+      convertedCards: new Map()
+    };
+  });
 
   it('should add attribute points for removed cards when snapshot provided', () => {
     // Removed shared card with hirameki level 2 and god effect, count=2
@@ -488,9 +506,9 @@ describe('calculateFaintMemory (removed/copied attribute handling)', () => {
     });
 
     // Sequence base points: removal #1=0, #2=10 => 10
-    // Attribute points per removal: shared(20)+hirameki(10)+god(20)=50 -> 50*2=100
-    // Total expected: 10 + 100 = 110
-    expect(calculateFaintMemory(deck)).toBe(110);
+    // Attribute points: shared(20)+hirameki(10)+god(20)=50
+    // Total expected: 10 + 50 = 60
+    expect(calculateFaintMemory(deck)).toBe(60);
   });
 
   it('should add attribute points for copied cards when snapshot provided', () => {
@@ -505,19 +523,8 @@ describe('calculateFaintMemory (removed/copied attribute handling)', () => {
     });
 
     // Sequence base points: copy #1=0, #2=10, #3=30 => 40
-    // Attribute points per copy: monster(80)+hirameki(10)=90 -> 90*3=270
-    // Total expected: 40 + 270 = 310
-    expect(calculateFaintMemory(deck)).toBe(310);
-  });
-    // 1st + 2nd copy (shared + monster): 0 + 10 = 10
-    deck.copiedCards.clear();
-    deck.copiedCards.set('shared_01', 1);
-    deck.copiedCards.set('monster_01', 1);
-    expect(calculateFaintMemory(deck)).toBe(10);
-
-    // Two copies of a shared card: 0 + 10 = 10
-    deck.copiedCards.clear();
-    deck.copiedCards.set('shared_01', 2);
-    expect(calculateFaintMemory(deck)).toBe(10);
+    // Attribute points: monster(80)+hirameki(10)=90
+    // Total expected: 40 + 90 = 130
+    expect(calculateFaintMemory(deck)).toBe(130);
   });
 });
