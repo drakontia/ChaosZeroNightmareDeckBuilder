@@ -77,6 +77,50 @@ export const SHARED_CARDS: CznCard[] = [
     ]
   },
   {
+    id: "shared_64",
+    name: "フリュード",
+    type: CardType.SHARED,
+    category: CardCategory.ATTACK,
+    statuses: [],
+    allowedJobs: "all",
+    hiramekiVariations: [
+      { level: 0, cost: 1, description: "ダメージ70%\n苦痛4" }
+    ]
+  },
+  {
+    id: "shared_65",
+    name: "	天上の裁き",
+    type: CardType.SHARED,
+    category: CardCategory.ATTACK,
+    statuses: [CardStatus.EXHAUST],
+    allowedJobs: "all",
+    hiramekiVariations: [
+      { level: 0, cost: 2, description: "ダメージ350%\n報復3" }
+    ]
+  },
+  {
+    id: "shared_66",
+    name: "損傷戦術",
+    type: CardType.SHARED,
+    category: CardCategory.ATTACK,
+    statuses: [CardStatus.EXHAUST],
+    allowedJobs: "all",
+    hiramekiVariations: [
+      { level: 0, cost: 2, description: "ダメージ200%\n対象がシールド所持中の場合、ダメージ量+80%\n損傷2" }
+    ]
+  },
+  {
+    id: "shared_67",
+    name: "伝染",
+    type: CardType.SHARED,
+    category: CardCategory.ATTACK,
+    statuses: [CardStatus.EXHAUST],
+    allowedJobs: "all",
+    hiramekiVariations: [
+      { level: 0, cost: 2, description: "汚染を2枚生成\n固定ダメージ200%\n手札のカード数に応じてダメージ量+30%" }
+    ]
+  },
+  {
     id: "shared_07",
     name: "HA-00",
     type: CardType.SHARED,
@@ -85,6 +129,72 @@ export const SHARED_CARDS: CznCard[] = [
     allowedJobs: "all",
     hiramekiVariations: [
       { level: 0, cost: 2, description: "ランダムな敵にダメージ100%×4\nヒットした対象に脆弱1または、弱体化1" }
+    ]
+  },
+  {
+    id: "shared_68",
+    name: "教団の聖書ページ",
+    type: CardType.SHARED,
+    category: CardCategory.SKILL,
+    statuses: [CardStatus.EXHAUST2],
+    allowedJobs: "all",
+    hiramekiVariations: [
+      { level: 0, cost: 0, description: "このカード消滅時、ドロー2" }
+    ]
+  },
+  {
+    id: "shared_69",
+    name: "激しい好き嫌い",
+    type: CardType.SHARED,
+    category: CardCategory.SKILL,
+    statuses: [CardStatus.EXHAUST],
+    allowedJobs: "all",
+    hiramekiVariations: [
+      { level: 0, cost: 1, description: "手札のカードを1枚消滅\n治療100%" }
+    ]
+  },
+  {
+    id: "shared_70",
+    name: "変異の霊薬",
+    type: CardType.SHARED,
+    category: CardCategory.SKILL,
+    statuses: [CardStatus.EXHAUST],
+    allowedJobs: "all",
+    hiramekiVariations: [
+      { level: 0, cost: 1, description: "捨て札に一時的な変異を3枚生成\n1ターンの間、士気3" }
+    ]
+  },
+  {
+    id: "shared_71",
+    name: "深淵花",
+    type: CardType.SHARED,
+    category: CardCategory.SKILL,
+    statuses: [CardStatus.EXHAUST],
+    allowedJobs: "all",
+    hiramekiVariations: [
+      { level: 0, cost: 1, description: "HP減少10%\n次に使用する攻撃カードのダメージ量30%増加\nHPが10%以下の場合、使用不可" }
+    ]
+  },
+  {
+    id: "shared_72",
+    name: "香ばしい餌",
+    type: CardType.SHARED,
+    category: CardCategory.SKILL,
+    statuses: [CardStatus.EXHAUST],
+    allowedJobs: "all",
+    hiramekiVariations: [
+      { level: 0, cost: 1, description: "敵全体に弱体化;1\n敵数に応じて弱体化追加" }
+    ]
+  },
+  {
+    id: "shared_73",
+    name: "巣の心臓",
+    type: CardType.SHARED,
+    category: CardCategory.UPGRADE,
+    statuses: [],
+    allowedJobs: "all",
+    hiramekiVariations: [
+      { level: 0, cost: 1, description: "鼓動1\nターン開始時、鼓動1(最大4重複)" }
     ]
   },
   // For striker and vanguard jobs
@@ -277,6 +387,18 @@ export const SHARED_CARDS: CznCard[] = [
   },
   // For Ranger and Hunter jobs
   {
+    id: "shared_62",
+    name: "クイックドロー",
+    type: CardType.SHARED,
+    category: CardCategory.ATTACK,
+    statuses: [CardStatus.INITIATION, CardStatus.EXHAUST],
+    allowedJobs: [JobType.RANGER, JobType.HUNTER],
+    hiramekiVariations: [
+      { level: 0, cost: 0, description: "ダメージ150%\n標識1" }
+    ]
+  },
+
+  {
     id: "shared_27",
     name: "とっておきの一発",
     type: CardType.SHARED,
@@ -453,6 +575,17 @@ export const SHARED_CARDS: CznCard[] = [
     ]
   },
   // For Controller and Psionic jobs
+  {
+    id: "shared_63",
+    name: "直観点火",
+    type: CardType.SHARED,
+    category: CardCategory.UPGRADE,
+    statuses: [],
+    allowedJobs: [JobType.CONTROLLER, JobType.PSIONIC],
+    hiramekiVariations: [
+      { level: 0, cost: 1, description: "カード生成時、ランダムでひらめき付与(各ターン1回)" }
+    ]
+  },
   {
     id: "shared_45",
     name: "攻撃せよ！",
