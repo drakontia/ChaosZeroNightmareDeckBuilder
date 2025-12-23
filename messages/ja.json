@@ -121,6 +121,9 @@
     "remove": "除去",
     "copy": "コピー"
   },
+  "conversion": {
+    "selectCardHint": "変換先のカードを選択してください"
+  },
   "character": {
     "title": "キャラクター",
     "select": "キャラクターを選択",

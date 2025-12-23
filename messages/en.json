@@ -120,6 +120,9 @@
     "remove": "Remove",
     "copy": "Copy"
   },
+  "conversion": {
+    "selectCardHint": "Select a card to convert to"
+  },
   "character": {
     "title": "Character",
     "select": "Select Character",

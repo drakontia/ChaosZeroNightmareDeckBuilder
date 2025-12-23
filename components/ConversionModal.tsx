@@ -63,7 +63,7 @@ export function ConversionModal({ isOpen, onClose, onSelectCard, allowedJob }: C
         </DialogHeader>
         <div className="space-y-6">
           <p className="text-sm text-muted-foreground">
-            変換先のカードを選択してください
+            {t("conversion.selectCardHint")}
           </p>
           
           <Accordion type="multiple" className="w-full" defaultValue={["shared", "forbidden"]}>

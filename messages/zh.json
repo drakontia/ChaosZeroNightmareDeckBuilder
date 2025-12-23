@@ -121,6 +121,9 @@
     "remove": "移除",
     "copy": "复制"
   },
+  "conversion": {
+    "selectCardHint": "请选择要转换的卡牌"
+  },
   "character": {
     "title": "角色",
     "select": "选择角色",
