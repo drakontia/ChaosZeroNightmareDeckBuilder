@@ -10,6 +10,104 @@ import { CznCard, CardType, CardCategory, CardStatus } from "@/types";
  * The name and description fields below serve as fallback values when translations are not available.
  */
 export const CHARACTER_CARDS: CznCard[] = [
+  // Sereniel's starting cards
+  {
+    id: "sereniel_starting_1",
+    name: "パルス攻撃", // Fallback: See messages/*.json for translations
+    type: CardType.CHARACTER,
+    category: CardCategory.ATTACK,
+    statuses: [],
+    isBasicCard: true,
+    isStartingCard: true,
+    imgUrl: "/images/cards/sereniel_starting_1.png",
+    hiramekiVariations: [
+      { level: 0, cost: 1, description: "ダメージ100%" } // Fallback
+    ]
+  },
+  {
+    id: "sereniel_starting_2",
+    name: "パルス攻撃", // Fallback
+    type: CardType.CHARACTER,
+    category: CardCategory.ATTACK,
+    statuses: [],
+    isBasicCard: true,
+    isStartingCard: true,
+    imgUrl: "/images/cards/sereniel_starting_1.png",
+    hiramekiVariations: [
+      { level: 0, cost: 1, description: "ダメージ100%" } // Fallback
+    ]
+  },
+  {
+    id: "sereniel_starting_3",
+    name: "マグネティックフィールド", // Fallback
+    type: CardType.CHARACTER,
+    category: CardCategory.SKILL,
+    statuses: [],
+    isBasicCard: true,
+    isStartingCard: true,
+    imgUrl: "/images/cards/sereniel_starting_3.png",
+    hiramekiVariations: [
+      { level: 0, cost: 1, description: "シールド100%" } // Fallback
+    ]
+  },
+  {
+    id: "sereniel_starting_4",
+    name: "ホーミングレーザー", // Fallback
+    type: CardType.CHARACTER,
+    category: CardCategory.ATTACK,
+    statuses: [],
+    isBasicCard: false,
+    isStartingCard: true,
+    imgUrl: "/images/cards/sereniel_starting_4.png",
+    hiramekiVariations: [ // Fallback descriptions
+      { level: 0, cost: 0, description: "ダメージ100%\n残光2\n大破時、墓地から手札に移動" },
+    ]
+  },
+  // Sereniel's hirameki cards
+  {
+    id: "sereniel_hirameki_1",
+    name: "プラズマミサイル", // Fallback
+    type: CardType.CHARACTER,
+    category: CardCategory.ATTACK,
+    statuses: [],
+    imgUrl: "/images/cards/sereniel_hirameki_1.png",
+    hiramekiVariations: [ // Fallback descriptions
+      { level: 0, cost: 1, description: "ダメージ120%\n強靱度ダメージ0.5\n対象が大破していない場合、もう1回発動" },
+    ]
+  },
+  {
+    id: "sereniel_hirameki_2",
+    name: "シャイニングコア", // Fallback
+    type: CardType.CHARACTER,
+    category: CardCategory.SKILL,
+    statuses: [],
+    imgUrl: "/images/cards/sereniel_hirameki_2.png",
+    hiramekiVariations: [ // Fallback descriptions
+      { level: 0, cost: 1, description: "ホーミングレーザーL 2枚生成"},
+    ]
+  },
+  {
+    id: "sereniel_hirameki_3",
+    name: "コバルトライト", // Fallback
+    type: CardType.CHARACTER,
+    category: CardCategory.ATTACK,
+    statuses: [],
+    imgUrl: "/images/cards/sereniel_hirameki_3.png",
+    hiramekiVariations: [ // Fallback descriptions
+      { level: 0, cost: 3, description: "ランダムな敵にダメージ120%x4\nヒットごとに強靱度ダメージ1" },
+    ]
+  },
+  {
+    id: "sereniel_hirameki_4",
+    name: "ペイル・シューティングスター", // Fallback
+    type: CardType.CHARACTER,
+    category: CardCategory.ATTACK,
+    statuses: [],
+    imgUrl: "/images/cards/sereniel_hirameki_4.png",
+    hiramekiVariations: [ // Fallback descriptions
+      { level: 0, cost: 2, description: "ダメージ150%\n山札と墓地のホーミングレーザー3枚発動" },
+    ]
+  },
   // Luke's starting cards
   {
     id: "luke_starting_1",

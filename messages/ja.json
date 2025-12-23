@@ -132,6 +132,7 @@
     "faintMemory": "曖昧な記憶",
     "egoManifest": "エゴ発現",
     "potential": "潜在力",
+    "sereniel": "セレニエル",
     "chizuru": "チズル",
     "yuki": "ユキ",
     "luke": "ルーク",
@@ -158,6 +159,54 @@
     "rei": "レイ"
   },
   "cards": {
+    "sereniel_starting_1": {
+      "name": "パルス攻撃",
+      "descriptions": {
+        "0": "ダメージ100%"
+      }
+    },
+    "sereniel_starting_2": {
+      "name": "パルス攻撃",
+      "descriptions": {
+        "0": "ダメージ100%"
+      }
+    },
+    "sereniel_starting_3": {
+      "name": "マグネティックフィールド",
+      "descriptions": {
+        "0": "シールド100%"
+      }
+    },
+    "luke _starting_4": {
+      "name": "ホーミングレーザー",
+      "descriptions": {
+        "0": "ダメージ100%\n残光2\n大破時、墓地から手札に移動"
+      }
+    },
+    "sereniel_hirameki_1": {
+      "name": "プラズマミサイル",
+      "descriptions": {
+        "0": "ダメージ120%\n強靱度ダメージ0.5\n対象が大破していない場合、もう1回発動"
+      }
+    },
+    "sereniel_hirameki_2": {
+      "name": "シャイニングコア",
+      "descriptions": {
+        "0": "ホーミングレーザーL 2枚生成"
+      }
+    },
+    "sereniel_hirameki_3": {
+      "name": "コバルトライト",
+      "descriptions": {
+        "0": "ランダムな敵にダメージ120%x4\nヒットごとに強靱度ダメージ1"
+      }
+    },
+    "sereniel_hirameki_4": {
+      "name": "ペイル・シューティングスター",
+      "descriptions": {
+        "0": "ダメージ150%\n山札と墓地のホーミングレーザー3枚発動"
+      }
+    },
     "luke_starting_1": {
       "name": "単発射撃",
       "descriptions": {
