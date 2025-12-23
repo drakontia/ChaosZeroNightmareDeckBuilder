@@ -432,7 +432,6 @@ export const SHARED_CARDS: CznCard[] = [
       { level: 0, cost: 0, description: "ダメージ150%\n標識1" }
     ]
   },
-
   {
     id: "shared_27",
     name: "とっておきの一発",
@@ -511,7 +510,7 @@ export const SHARED_CARDS: CznCard[] = [
     type: CardType.SHARED,
     category: CardCategory.SKILL,
     statuses: [CardStatus.RETAIN, CardStatus.EXHAUST],
-    allowedJobs: [JobType.STRIKER, JobType.VANGUARD],
+    allowedJobs: [JobType.RANGER, JobType.HUNTER],
     imgUrl: "/images/cards/shared_33.png",
     hiramekiVariations: [
       { level: 0, cost: 1, description: "士気2\n敵全体に士気2" }
@@ -523,7 +522,7 @@ export const SHARED_CARDS: CznCard[] = [
     type: CardType.SHARED,
     category: CardCategory.SKILL,
     statuses: [CardStatus.RETRIEVE],
-    allowedJobs: [JobType.STRIKER, JobType.VANGUARD],
+    allowedJobs: [JobType.RANGER, JobType.HUNTER],
     imgUrl: "/images/cards/shared_34.png",
     hiramekiVariations: [
       { level: 0, cost: 1, description: "敵全体に損傷2" }
@@ -535,7 +534,7 @@ export const SHARED_CARDS: CznCard[] = [
     type: CardType.SHARED,
     category: CardCategory.UPGRADE,
     statuses: [],
-    allowedJobs: [JobType.STRIKER, JobType.VANGUARD],
+    allowedJobs: [JobType.RANGER, JobType.HUNTER],
     imgUrl: "/images/cards/shared_35.png",
     hiramekiVariations: [
       { level: 0, cost: 2, description: "ターン開始時、手札のランダムな攻撃カードを1枚、1ターンの間ダメージ量を+50%" }
@@ -547,10 +546,11 @@ export const SHARED_CARDS: CznCard[] = [
     type: CardType.SHARED,
     category: CardCategory.ATTACK,
     statuses: [],
-    allowedJobs: [JobType.STRIKER, JobType.VANGUARD],
+    allowedJobs: [JobType.RANGER, JobType.HUNTER],
     imgUrl: "/images/cards/shared_36.png",
     hiramekiVariations: [
-      { level: 0, cost: 0, description: "ダメージ80%\nドロー1" }
+      { level: 0, cost: 0, description: "ダメージ80%\nドロー1" },
+      { level: 1, cost: 0, description: "ダメージ80%\nドロー1\n対象に標識1" }
     ]
   },
   {
@@ -559,7 +559,7 @@ export const SHARED_CARDS: CznCard[] = [
     type: CardType.SHARED,
     category: CardCategory.ATTACK,
     statuses: [CardStatus.INITIATION, CardStatus.EXHAUST],
-    allowedJobs: [JobType.STRIKER, JobType.VANGUARD],
+    allowedJobs: [JobType.RANGER, JobType.HUNTER],
     imgUrl: "/images/cards/shared_37.png",
     hiramekiVariations: [
       { level: 0, cost: 0, description: "敵全体にダメー200%" }
