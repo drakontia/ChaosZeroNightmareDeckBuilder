@@ -168,7 +168,7 @@ export default async function Image({
                 display: 'flex',
                 flexDirection: 'column',
                 width: '165px',
-                height: '340px',
+                height: '248px',
                 backgroundColor: '#ffffff',
                 borderRadius: '8px',
                 border: '2px solid #e5e7eb',
