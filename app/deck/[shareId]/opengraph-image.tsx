@@ -11,14 +11,10 @@ export const size = {
 };
 
 export const contentType = 'image/png';
+import { loadMessages } from '@/lib/loadMessages';
 
 async function getLocaleMessages(locale: string) {
-  try {
-    return (await import(`@/messages/${locale}.json`)).default;
-  } catch {
-    return (await import(`@/messages/ja.json`)).default;
-  }
-}
+
 
 export default async function Image({
   params,
@@ -36,7 +32,7 @@ export default async function Image({
 
     const cookieStore = await cookies();
     const locale = cookieStore.get('NEXT_LOCALE')?.value || 'ja';
-    const messages = await getLocaleMessages(locale);
+    const messages = loadMessages(locale);
 
     const t = (key: string, fallback: string) => {
       const keys = key.split('.');
