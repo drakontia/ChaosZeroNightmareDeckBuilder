@@ -8,6 +8,7 @@ import { Button } from "./ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "./ui/dialog";
 import { Field, FieldGroup, FieldLabel } from "./ui/field";
 import { Swords } from "lucide-react";
+import { InfoDialog } from "./InfoDialog";
 
 interface EquipmentSelectorProps {
   equipment: Equipment[];
@@ -100,14 +101,18 @@ export function EquipmentSelector({ equipment, selectedEquipment, onSelect }: Eq
                           className="object-cover"
                           sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
                         />
+                        {/* インフォメーションマークを画像右上に絶対配置 */}
+                        {item.description && (
+                          <InfoDialog
+                            description={t(item.description)}
+                            rarity={t(item.rarity)}
+                            t={t}
+                          />
+                        )}
                       </div>
                     )}
                     <div className="flex flex-col w-full">
                       <span className="text-base font-semibold">{t(item.name)}</span>
-                      <span className="text-xs text-muted-foreground">{t(item.rarity)}</span>
-                      {item.description && (
-                        <span className="text-xs text-muted-foreground/80 mt-1">{t(item.description)}</span>
-                      )}
                     </div>
                   </Button>
                 ))}

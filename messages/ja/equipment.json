@@ -2,7 +2,9 @@
     "equipment": {
         "title": "獲得装備",
         "none": "なし",
+        "info": "詳細情報",
         "rarity": {
+            "name": "レアリティ",
             "mythical": "神話",
             "legendary": "伝説",
             "rare": "希少"

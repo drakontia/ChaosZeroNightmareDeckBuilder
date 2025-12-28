@@ -1,8 +1,10 @@
 {
-    "equipment": {
+  "equipment": {
     "title": "Obtained Equipment",
     "none": "None",
+    "info": "Details",
     "rarity": {
+      "name": "Rarity",
       "mythical": "Mythical",
       "legendary": "Legendary",
       "rare": "Rare"
