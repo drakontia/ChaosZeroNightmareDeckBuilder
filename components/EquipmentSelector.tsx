@@ -55,10 +55,9 @@ export function EquipmentSelector({ equipment, selectedEquipment, onSelect }: Eq
                     </div>
                   )}
                   <div
-                    className="relative z-10 flex flex-col text-center pr-2 pl-2"
+                    className="absolute bottom-1 z-10 flex flex-col text-center pr-2 pl-2"
                   >
                     <span className="text-sm font-semibold text-white">{t(selected.name)}</span>
-                    <span className="text-sm text-white">{t(`${selected.rarity}`)}</span>
                   </div>
                 </>
               ) : (
