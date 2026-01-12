@@ -162,6 +162,67 @@ describe('useDeckBuilderStore', () => {
     expect(copied?.copiedFromCardId).toBe(card.id);
   });
 
+  it('copyCardでカードがcopiedCardsに記録される', () => {
+    const card = getTestCard();
+    act(() => {
+      useDeckBuilderStore.getState().setCharacter(CHARACTERS[0]);
+      useDeckBuilderStore.getState().addCard(card);
+      useDeckBuilderStore.getState().copyCard(card.deckId);
+    });
+    const deck = useDeckBuilderStore.getState().deck!;
+    // copiedCardsに記録されている
+    expect(deck.copiedCards.has(card.id)).toBe(true);
+    const entry = deck.copiedCards.get(card.id);
+    expect(entry).toBeDefined();
+    // スナップショットの場合、countが1であることを確認
+    if (typeof entry === 'object') {
+      expect(entry.count).toBe(1);
+      expect(entry.type).toBe(card.type);
+      expect(entry.selectedHiramekiLevel).toBe(card.selectedHiramekiLevel);
+    }
+  });
+
+  it('copyCardで同じカードを複数回コピーするとcountが増える', () => {
+    const card = getTestCard();
+    act(() => {
+      useDeckBuilderStore.getState().setCharacter(CHARACTERS[0]);
+      useDeckBuilderStore.getState().addCard(card);
+      useDeckBuilderStore.getState().copyCard(card.deckId);
+      useDeckBuilderStore.getState().copyCard(card.deckId);
+      useDeckBuilderStore.getState().copyCard(card.deckId);
+    });
+    const deck = useDeckBuilderStore.getState().deck!;
+    // copiedCardsに記録されている
+    expect(deck.copiedCards.has(card.id)).toBe(true);
+    const entry = deck.copiedCards.get(card.id);
+    // スナップショットの場合、countが3であることを確認
+    if (typeof entry === 'object') {
+      expect(entry.count).toBe(3);
+    }
+  });
+
+  it('copyCardでヒラメキと神ヒラメキを持つカードをコピーするとスナップショットに記録される', () => {
+    const card = {
+      ...getTestCard(),
+      selectedHiramekiLevel: 2,
+      godHiramekiType: GodType.KILKEN,
+      godHiramekiEffectId: 'godhirameki_1',
+    };
+    act(() => {
+      useDeckBuilderStore.getState().setCharacter(CHARACTERS[0]);
+      useDeckBuilderStore.getState().addCard(card);
+      useDeckBuilderStore.getState().copyCard(card.deckId);
+    });
+    const deck = useDeckBuilderStore.getState().deck!;
+    const entry = deck.copiedCards.get(card.id);
+    // スナップショットにヒラメキと神ヒラメキ情報が記録されている
+    if (typeof entry === 'object') {
+      expect(entry.selectedHiramekiLevel).toBe(2);
+      expect(entry.godHiramekiType).toBe(GodType.KILKEN);
+      expect(entry.godHiramekiEffectId).toBe('godhirameki_1');
+    }
+  });
+
   it('convertCardでカードが変換されconvertedCardsに記録される', () => {
     const card = getTestCard();
     // 変換先カードをCHARACTERS[0]のstartingCards[0]で仮定
@@ -195,5 +256,92 @@ describe('useDeckBuilderStore', () => {
     expect(deck.cards.some(c => c.id === targetId)).toBe(false);
     // convertedCardsからも削除
     expect(deck.convertedCards.has(card.id)).toBe(false);
+  });
+
+  it('removeCardでカードがremovedCardsに記録される', () => {
+    const card = getTestCard();
+    act(() => {
+      useDeckBuilderStore.getState().setCharacter(CHARACTERS[0]);
+      useDeckBuilderStore.getState().addCard(card);
+      useDeckBuilderStore.getState().removeCard(card.deckId);
+    });
+    const deck = useDeckBuilderStore.getState().deck!;
+    // カードがデッキから削除されている
+    expect(deck.cards.find(c => c.deckId === card.deckId)).toBeUndefined();
+    // removedCardsに記録されている
+    expect(deck.removedCards.has(card.id)).toBe(true);
+    const entry = deck.removedCards.get(card.id);
+    expect(entry).toBeDefined();
+    // スナップショットの場合、countが1であることを確認
+    if (typeof entry === 'object') {
+      expect(entry.count).toBe(1);
+      expect(entry.type).toBe(card.type);
+      expect(entry.selectedHiramekiLevel).toBe(card.selectedHiramekiLevel);
+    }
+  });
+
+  it('removeCardで同じカードを複数回削除するとcountが増える', () => {
+    const card = getTestCard();
+    act(() => {
+      useDeckBuilderStore.getState().setCharacter(CHARACTERS[0]);
+      useDeckBuilderStore.getState().addCard(card);
+      useDeckBuilderStore.getState().addCard({
+        ...card,
+        deckId: 'test_card_2',
+      });
+      useDeckBuilderStore.getState().removeCard(card.deckId);
+      useDeckBuilderStore.getState().removeCard('test_card_2');
+    });
+    const deck = useDeckBuilderStore.getState().deck!;
+    // removedCardsに記録されている
+    expect(deck.removedCards.has(card.id)).toBe(true);
+    const entry = deck.removedCards.get(card.id);
+    // スナップショットの場合、countが2であることを確認
+    if (typeof entry === 'object') {
+      expect(entry.count).toBe(2);
+    }
+  });
+
+  it('undoCardでカードがremovedCardsに記録される', () => {
+    const card = getTestCard();
+    act(() => {
+      useDeckBuilderStore.getState().setCharacter(CHARACTERS[0]);
+      useDeckBuilderStore.getState().addCard(card);
+      useDeckBuilderStore.getState().undoCard(card.deckId);
+    });
+    const deck = useDeckBuilderStore.getState().deck!;
+    // カードがデッキから削除されている
+    expect(deck.cards.find(c => c.deckId === card.deckId)).toBeUndefined();
+    // removedCardsに記録されている
+    expect(deck.removedCards.has(card.id)).toBe(true);
+    const entry = deck.removedCards.get(card.id);
+    expect(entry).toBeDefined();
+    // スナップショットの場合、countが1であることを確認
+    if (typeof entry === 'object') {
+      expect(entry.count).toBe(1);
+      expect(entry.type).toBe(card.type);
+    }
+  });
+
+  it('removeCardでヒラメキと神ヒラメキを持つカードを削除するとスナップショットに記録される', () => {
+    const card = {
+      ...getTestCard(),
+      selectedHiramekiLevel: 2,
+      godHiramekiType: GodType.KILKEN,
+      godHiramekiEffectId: 'godhirameki_1',
+    };
+    act(() => {
+      useDeckBuilderStore.getState().setCharacter(CHARACTERS[0]);
+      useDeckBuilderStore.getState().addCard(card);
+      useDeckBuilderStore.getState().removeCard(card.deckId);
+    });
+    const deck = useDeckBuilderStore.getState().deck!;
+    const entry = deck.removedCards.get(card.id);
+    // スナップショットにヒラメキと神ヒラメキ情報が記録されている
+    if (typeof entry === 'object') {
+      expect(entry.selectedHiramekiLevel).toBe(2);
+      expect(entry.godHiramekiType).toBe(GodType.KILKEN);
+      expect(entry.godHiramekiEffectId).toBe('godhirameki_1');
+    }
   });
 });

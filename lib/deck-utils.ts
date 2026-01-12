@@ -190,7 +190,7 @@ export function calculateFaintMemory(deck: Deck | null | undefined): number {
     const snapshot: CopiedCardEntry | null = typeof entry === "number" ? null : entry as CopiedCardEntry;
     if (snapshot && count > 0 && !originalCardInDeck) {
       const cardType = snapshot.type;
-      // Type acquisition points (per copy)
+      // Type acquisition points (one-time for all copies of this card)
       if (cardType === CardType.SHARED) {
         points += 20;
       } else if (cardType === CardType.MONSTER) {
@@ -198,11 +198,11 @@ export function calculateFaintMemory(deck: Deck | null | undefined): number {
       } else if (cardType === CardType.FORBIDDEN) {
         points += 20;
       }
-      // Hirameki points for shared/monster (per copy)
+      // Hirameki points for shared/monster (one-time for all copies of this card)
       if ((cardType === CardType.SHARED || cardType === CardType.MONSTER) && (snapshot.selectedHiramekiLevel ?? 0) > 0) {
         points += 10;
       }
-      // God hirameki points (per copy)
+      // God hirameki points (one-time for all copies of this card)
       if (snapshot.godHiramekiType && snapshot.godHiramekiEffectId && !snapshot.isBasicCard) {
         points += 20;
       }

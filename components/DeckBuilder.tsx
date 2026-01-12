@@ -263,7 +263,7 @@ export function DeckBuilder({ shareId }: DeckBuilderProps) {
                     <Field orientation={'horizontal'}>
                       <FieldLabel className='text-base lg:text-2xl text-gray-500'><Brain />{t('character.faintMemory')}</FieldLabel>
                       <div className="flex justify-between items-center p-1">
-                        <span className="text-base lg:text-2xl font-bold text-gray-500">{faintMemoryPoints} points</span>
+                        <span className="text-base lg:text-2xl font-bold text-gray-500" data-testid="faint-memory-points">{faintMemoryPoints} points</span>
                       </div>
                     </Field>
                   </FieldGroup>

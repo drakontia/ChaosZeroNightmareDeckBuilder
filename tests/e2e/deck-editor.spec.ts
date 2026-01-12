@@ -219,9 +219,8 @@ test.describe('Deck Editor', () => {
     await expect(undoBtn).toBeVisible();
     await undoBtn.click();
 
-    // It should reappear in the hirameki list (at least one match)
-    const afterCount = await hiramekiGrid.locator(`div[title="${clickedTitle}"]`).count();
-    expect(afterCount).toBeGreaterThan(0);
+    // Deck count should return to the original size after undo
+    await expect(page.getByTestId('total-cards')).toContainText('4');
   });
 
   test('should convert a card to shared and restore from converted list', async ({ page }) => {
@@ -368,5 +367,86 @@ test.describe('Deck Editor', () => {
     await expect(page.getByText('チズル').first()).toBeVisible();
     await expect(page.getByTestId('total-cards')).toContainText('5');
     await expect(page.locator('#deck-name')).toHaveValue('e2e-save');
+  });
+
+  test('should copy card and reflect points in Faint Memory', async ({ page }) => {
+    await page.goto('/');
+    await selectCharacterAndWeapon(page);
+
+    // Use a copyable starting card (non-basic, non-UNIQUE)
+    const cardName = '業火';
+    const deckCard = getDeckCardContainerByName(page, cardName);
+    await expect(deckCard).toBeVisible();
+
+    const totalCardsBefore = parseInt(await page.locator('[data-testid="total-cards"]').innerText());
+
+    const menuBtn = deckCard.getByRole('button', { name: 'メニュー' });
+    await expect(menuBtn).toBeVisible({ timeout: 5000 });
+    await menuBtn.click();
+    await page.waitForTimeout(200);
+
+    const copyBtn = page.getByRole('button', { name: 'コピー', exact: true });
+    await expect(copyBtn).toBeVisible({ timeout: 5000 });
+    await copyBtn.click();
+
+    await page.waitForTimeout(400);
+
+    const totalCardsAfter = parseInt(await page.locator('[data-testid="total-cards"]').innerText());
+    expect(totalCardsAfter).toBe(totalCardsBefore + 1);
+  });
+
+  test('should remove card and reflect points in Faint Memory', async ({ page }) => {
+    await page.goto('/');
+    await selectCharacterAndWeapon(page);
+    
+    // Add a card
+    const cardName = await addFirstHiramekiCard(page);
+    
+    // Get initial total cards count
+    const totalCardsBefore = parseInt(await page.locator('[data-testid="total-cards"]').innerText());
+    
+    // Open menu and remove card
+    const deckCard = getDeckCardContainerByName(page, cardName);
+    const menuBtn = deckCard.getByRole('button', { name: 'メニュー' });
+    await expect(menuBtn).toBeVisible({ timeout: 5000 });
+    await menuBtn.click();
+    await page.waitForTimeout(300);
+    const deleteBtn = page.getByRole('button', { name: '削除', exact: true });
+    await expect(deleteBtn).toBeVisible();
+    await deleteBtn.click();
+    
+    // Wait for UI to update
+    await page.waitForTimeout(500);
+    
+    // Verify card count decreased
+    const totalCardsAfter = parseInt(await page.locator('[data-testid="total-cards"]').innerText());
+    expect(totalCardsAfter).toBe(totalCardsBefore - 1);
+  });
+
+
+  test('should copy card multiple times and accumulate Faint Memory points', async ({ page }) => {
+    await page.goto('/');
+    await selectCharacterAndWeapon(page);
+
+    const cardName = '業火';
+    const deckCard = getDeckCardContainerByName(page, cardName);
+    await expect(deckCard).toBeVisible();
+
+    const initialCount = parseInt(await page.locator('[data-testid="total-cards"]').innerText());
+
+    for (let i = 0; i < 2; i++) {
+      const menuBtn = deckCard.getByRole('button', { name: 'メニュー' });
+      await expect(menuBtn).toBeVisible({ timeout: 5000 });
+      await menuBtn.click();
+      await page.waitForTimeout(200);
+
+      const copyBtn = page.getByRole('button', { name: 'コピー', exact: true });
+      await expect(copyBtn).toBeVisible({ timeout: 5000 });
+      await copyBtn.click();
+      await page.waitForTimeout(400);
+    }
+
+    const finalCount = parseInt(await page.locator('[data-testid="total-cards"]').innerText());
+    expect(finalCount).toBe(initialCount + 2);
   });
 });

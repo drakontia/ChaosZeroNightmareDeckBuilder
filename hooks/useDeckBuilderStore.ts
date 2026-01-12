@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import type { Character, Deck, Equipment, EquipmentType, DeckCard, GodType } from "@/types";
+import type { Character, Deck, Equipment, EquipmentType, DeckCard, GodType, CopiedCardEntry, RemovedCardEntry } from "@/types";
 import { getCardById, CHARACTERS } from "@/lib/data";
 
 interface DeckBuilderStore {
@@ -27,17 +27,17 @@ export const useDeckBuilderStore = create<DeckBuilderStore>((set) => ({
   egoLevels: {},
   setCharacter: (character) => {
     set((state) => {
-      const startingCards = character.startingCards?.map(id => {
+      const startingCards: DeckCard[] = (character.startingCards?.flatMap(id => {
         const base = getCardById(id);
-        if (!base) return undefined;
-        return {
+        if (!base) return [];
+        return [{
           ...base,
           deckId: `${id}_${Date.now()}_${Math.random()}`,
           selectedHiramekiLevel: 0,
           godHiramekiType: null,
           godHiramekiEffectId: null,
-        };
-      }).filter(Boolean) ?? [];
+        }];
+      }) ?? []) as DeckCard[];
       if (!state.deck) {
         // デッキが未初期化なら新規作成
         return {
@@ -101,8 +101,30 @@ export const useDeckBuilderStore = create<DeckBuilderStore>((set) => ({
   removeCard: (deckId) => {
     set((state) => {
       if (!state.deck) return {};
+      const cardToRemove = state.deck.cards.find((c) => c.deckId === deckId);
+      if (!cardToRemove) return {};
+      
+      // Track removal in removedCards map with snapshot of current card state
+      const newRemoved = new Map(state.deck.removedCards);
+      const existing = newRemoved.get(cardToRemove.id);
+      const currentCount = typeof existing === "number" ? existing : (existing?.count ?? 0);
+      
+      const snapshot: RemovedCardEntry = {
+        count: currentCount + 1,
+        type: cardToRemove.type,
+        selectedHiramekiLevel: cardToRemove.selectedHiramekiLevel,
+        godHiramekiType: cardToRemove.godHiramekiType,
+        godHiramekiEffectId: cardToRemove.godHiramekiEffectId,
+        isBasicCard: cardToRemove.isBasicCard,
+      };
+      newRemoved.set(cardToRemove.id, snapshot);
+      
       return {
-        deck: { ...state.deck, cards: state.deck.cards.filter(c => c.deckId !== deckId) },
+        deck: { 
+          ...state.deck, 
+          cards: state.deck.cards.filter(c => c.deckId !== deckId),
+          removedCards: newRemoved,
+        },
       };
     });
   },
@@ -184,10 +206,29 @@ export const useDeckBuilderStore = create<DeckBuilderStore>((set) => ({
   undoCard: (deckId) => {
     set((state) => {
       if (!state.deck) return {};
+      const cardToRemove = state.deck.cards.find((c) => c.deckId === deckId);
+      if (!cardToRemove) return {};
+      
+      // Track removal in removedCards map with snapshot of current card state
+      const newRemoved = new Map(state.deck.removedCards);
+      const existing = newRemoved.get(cardToRemove.id);
+      const currentCount = typeof existing === "number" ? existing : (existing?.count ?? 0);
+      
+      const snapshot: RemovedCardEntry = {
+        count: currentCount + 1,
+        type: cardToRemove.type,
+        selectedHiramekiLevel: cardToRemove.selectedHiramekiLevel,
+        godHiramekiType: cardToRemove.godHiramekiType,
+        godHiramekiEffectId: cardToRemove.godHiramekiEffectId,
+        isBasicCard: cardToRemove.isBasicCard,
+      };
+      newRemoved.set(cardToRemove.id, snapshot);
+      
       return {
         deck: {
           ...state.deck,
           cards: state.deck.cards.filter((c) => c.deckId !== deckId),
+          removedCards: newRemoved,
         },
       };
     });
@@ -203,10 +244,25 @@ export const useDeckBuilderStore = create<DeckBuilderStore>((set) => ({
         isCopied: true,
         copiedFromCardId: card.id,
       };
+      // Track copy in copiedCards map with snapshot of current card state
+      const newCopied = new Map(state.deck.copiedCards);
+      const existing = newCopied.get(card.id);
+      const currentCount = typeof existing === "number" ? existing : (existing?.count ?? 0);
+      
+      const snapshot: CopiedCardEntry = {
+        count: currentCount + 1,
+        type: card.type,
+        selectedHiramekiLevel: card.selectedHiramekiLevel,
+        godHiramekiType: card.godHiramekiType,
+        godHiramekiEffectId: card.godHiramekiEffectId,
+        isBasicCard: card.isBasicCard,
+      };
+      newCopied.set(card.id, snapshot);
       return {
         deck: {
           ...state.deck,
           cards: [...state.deck.cards, copy],
+          copiedCards: newCopied,
         },
       };
     });
