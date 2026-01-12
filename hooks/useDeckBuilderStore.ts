@@ -145,8 +145,11 @@ export const useDeckBuilderStore = create<DeckBuilderStore>((set) => ({
       }
       // 既に同じdeckIdのカードが存在しない場合のみ追加
       if (newCards.some(c => c.deckId === card.deckId)) return {};
+      // Remove from removedCards when restoring
+      const newRemoved = new Map(state.deck.removedCards);
+      newRemoved.delete(card.id);
       return {
-        deck: { ...state.deck, cards: [...newCards, card], convertedCards: newConverted },
+        deck: { ...state.deck, cards: [...newCards, card], convertedCards: newConverted, removedCards: newRemoved },
       };
     });
   },
