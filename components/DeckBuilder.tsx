@@ -44,6 +44,7 @@ export function DeckBuilder({ shareId }: DeckBuilderProps) {
   const updateCardHirameki = useDeckBuilderStore((s) => s.updateCardHirameki);
   const setCardGodHirameki = useDeckBuilderStore((s) => s.setCardGodHirameki);
   const setCardGodHiramekiEffect = useDeckBuilderStore((s) => s.setCardGodHiramekiEffect);
+  const setCardHiddenHirameki = useDeckBuilderStore((s) => s.setCardHiddenHirameki);
   const reset = useDeckBuilderStore((s) => s.reset);
   const undoCard = useDeckBuilderStore((s) => s.undoCard);
   const copyCard = useDeckBuilderStore((s) => s.copyCard);
@@ -297,6 +298,7 @@ export function DeckBuilder({ shareId }: DeckBuilderProps) {
                     onUpdateHirameki={updateCardHirameki}
                     onSetGodHirameki={setCardGodHirameki}
                     onSetGodHiramekiEffect={setCardGodHiramekiEffect}
+                    onSetHiddenHirameki={setCardHiddenHirameki}
                   />
 
                 </CardContent>
@@ -362,6 +364,7 @@ export function DeckBuilder({ shareId }: DeckBuilderProps) {
                         selectedHiramekiLevel: 0,
                         godHiramekiType: null,
                         godHiramekiEffectId: null,
+                        selectedHiddenHiramekiId: null,
                       };
                       addCard(deckCard);
                     }}
@@ -372,6 +375,7 @@ export function DeckBuilder({ shareId }: DeckBuilderProps) {
                         selectedHiramekiLevel: 0,
                         godHiramekiType: null,
                         godHiramekiEffectId: null,
+                        selectedHiddenHiramekiId: null,
                       };
                       restoreCard(deckCard);
                     }}

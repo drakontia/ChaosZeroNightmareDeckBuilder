@@ -8,6 +8,7 @@ import { DeckCard, GodType, CznCard, JobType, CardStatus } from "@/types";
 import { Card } from "./ui/card";
 import { getCardInfo, sortDeckCards } from "@/lib/deck-utils";
 import { GOD_HIRAMEKI_EFFECTS } from "@/lib/god-hirameki";
+import { HIDDEN_HIRAMEKI_EFFECTS } from "@/lib/hidden-hirameki";
 
 interface DeckDisplayProps {
   cards: DeckCard[];
@@ -21,9 +22,10 @@ interface DeckDisplayProps {
   onUpdateHirameki: (deckId: string, hiramekiLevel: number) => void;
   onSetGodHirameki: (deckId: string, godType: GodType | null) => void;
   onSetGodHiramekiEffect: (deckId: string, effectId: string | null) => void;
+  onSetHiddenHirameki: (deckId: string, hiddenHiramekiId: string | null) => void;
 }
 
-export function DeckDisplay({ cards, egoLevel, hasPotential, allowedJob, onRemoveCard, onUndoCard, onCopyCard, onConvertCard, onUpdateHirameki, onSetGodHirameki, onSetGodHiramekiEffect }: DeckDisplayProps) {
+export function DeckDisplay({ cards, egoLevel, hasPotential, allowedJob, onRemoveCard, onUndoCard, onCopyCard, onConvertCard, onUpdateHirameki, onSetGodHirameki, onSetGodHiramekiEffect, onSetHiddenHirameki }: DeckDisplayProps) {
   const t = useTranslations();
 
   // Sort cards to maintain consistent order: Character (Starting -> Hirameki) -> Shared -> Monster -> Forbidden
@@ -55,6 +57,15 @@ export function DeckDisplay({ cards, egoLevel, hasPotential, allowedJob, onRemov
             godEffectFallback = effect.additionalEffect;
           }
         }
+        let hiddenEffectId: string | undefined;
+        let hiddenEffectFallback: string | undefined;
+        if (card.selectedHiddenHiramekiId) {
+          const effect = HIDDEN_HIRAMEKI_EFFECTS.find(e => e.id === card.selectedHiddenHiramekiId);
+          if (effect) {
+            hiddenEffectId = effect.id;
+            hiddenEffectFallback = effect.additionalEffect;
+          }
+        }
         const displayStatuses = [...(cardInfo.statuses ?? [])];
         if (card.isCopied) {
           displayStatuses.push(CardStatus.COPIED);
@@ -67,6 +78,7 @@ export function DeckDisplay({ cards, egoLevel, hasPotential, allowedJob, onRemov
             onUpdateHirameki={onUpdateHirameki}
             onSetGodHirameki={onSetGodHirameki}
             onSetGodHiramekiEffect={onSetGodHiramekiEffect}
+            onSetHiddenHirameki={onSetHiddenHirameki}
           />
         ) : undefined;
         return (
@@ -83,6 +95,8 @@ export function DeckDisplay({ cards, egoLevel, hasPotential, allowedJob, onRemov
               descriptionFallback={cardInfo.description}
               godEffectId={godEffectId}
               godEffectFallback={godEffectFallback}
+              hiddenEffectId={hiddenEffectId}
+              hiddenEffectFallback={hiddenEffectFallback}
               statuses={displayStatuses.map(s => t(`status.${s}`))}
               isCopied={card.isCopied}
               leftControls={leftControls}
@@ -101,5 +115,5 @@ export function DeckDisplay({ cards, egoLevel, hasPotential, allowedJob, onRemov
         );
       })}
     </div>
-    );
-  }
+  );
+}

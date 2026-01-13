@@ -163,6 +163,7 @@ const toDeckCard = (card: CznCard, shared: SharedDeckCard): DeckCard => {
     godHiramekiEffectId: shared.godHiramekiEffectId ?? null,
     isCopied: shared.isCopied,
     copiedFromCardId: shared.copiedFromCardId,
+    selectedHiddenHiramekiId: null,
   };
 };
 

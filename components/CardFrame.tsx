@@ -25,6 +25,8 @@ interface CardFrameProps {
   descriptionFallback?: string;
   godEffectId?: string;
   godEffectFallback?: string;
+  hiddenEffectId?: string;
+  hiddenEffectFallback?: string;
   statuses?: string[];
   className?: string;
   leftControls?: ReactNode;
@@ -47,6 +49,8 @@ export function CardFrame({
   descriptionFallback,
   godEffectId,
   godEffectFallback,
+  hiddenEffectId,
+  hiddenEffectFallback,
   statuses,
   className,
   leftControls,
@@ -125,6 +129,11 @@ export function CardFrame({
           {godEffectId && (
             <div className="mt-2">
               {t(`godEffects.${godEffectId}`, { defaultValue: godEffectFallback ?? "" })}
+            </div>
+          )}
+          {hiddenEffectId && (
+            <div className="mt-2">
+              {t(`hiddenEffects.${hiddenEffectId}`, { defaultValue: hiddenEffectFallback ?? "" })}
             </div>
           )}
         </div>

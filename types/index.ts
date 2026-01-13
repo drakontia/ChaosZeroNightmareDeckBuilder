@@ -136,6 +136,13 @@ export interface GodHiramekiDefinition {
   gods: GodType[] | "all"; // Applicable gods or all
 }
 
+// Hidden Hirameki definition (common effect like God Hirameki, no gods field)
+export interface HiddenHiramekiDefinition {
+  id: string;              // Effect id (matches i18n key under hiddenEffects)
+  additionalEffect: string; // Fallback description
+  costModifier?: number;   // Optional cost change
+}
+
 export interface CznCard {
   id: string;
   name: string;
@@ -156,6 +163,7 @@ export interface DeckCard extends CznCard {
   selectedHiramekiLevel: number; // 0 = base, 1-5 for variations
   godHiramekiType: GodType | null; // Which god's hirameki is applied (null = none)
   godHiramekiEffectId: string | null; // Which specific effect of that god is applied
+  selectedHiddenHiramekiId: string | null; // Hidden hirameki effect ID (null = none)
   isCopied?: boolean; // True if this is a copied card
   copiedFromCardId?: string; // Original card id this copy was created from
 }
@@ -165,6 +173,7 @@ export interface RemovedCardEntry {
   count: number;
   type?: CardType; // Optional: card type at removal
   selectedHiramekiLevel?: number;
+  selectedHiddenHiramekiId?: string | null; // Hidden hirameki at removal time
   godHiramekiType?: GodType | null;
   godHiramekiEffectId?: string | null;
   isBasicCard?: boolean;
@@ -174,6 +183,7 @@ export interface CopiedCardEntry {
   count: number;
   type?: CardType; // Optional: card type at copy time
   selectedHiramekiLevel?: number;
+  selectedHiddenHiramekiId?: string | null; // Hidden hirameki at copy time
   godHiramekiType?: GodType | null;
   godHiramekiEffectId?: string | null;
   isBasicCard?: boolean;
@@ -183,6 +193,7 @@ export interface ConvertedCardEntry {
   convertedToId: string; // The target card ID it was converted to
   originalType?: CardType; // Original card type before conversion
   selectedHiramekiLevel?: number; // Hirameki level at conversion time
+  selectedHiddenHiramekiId?: string | null; // Hidden hirameki at conversion time
   godHiramekiType?: GodType | null; // God hirameki at conversion time
   godHiramekiEffectId?: string | null; // God effect at conversion time
   isBasicCard?: boolean;

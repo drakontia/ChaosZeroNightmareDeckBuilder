@@ -5,8 +5,10 @@ import { Lightbulb, LightbulbOff, Zap, ZapOff } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { DeckCard, GodType } from "@/types";
 import { GOD_HIRAMEKI_EFFECTS } from "@/lib/god-hirameki";
+import { HIDDEN_HIRAMEKI_EFFECTS } from "@/lib/hidden-hirameki";
 import { Button } from "./ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "./ui/dialog";
+import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "./ui/accordion";
 import { CardFrame } from "./CardFrame";
 import { getCardInfo } from "@/lib/deck-utils";
 
@@ -19,6 +21,7 @@ interface HiramekiControlsProps {
   onUpdateHirameki: (deckId: string, hiramekiLevel: number) => void;
   onSetGodHirameki: (deckId: string, godType: GodType | null) => void;
   onSetGodHiramekiEffect: (deckId: string, effectId: string | null) => void;
+  onSetHiddenHirameki: (deckId: string, hiddenHiramekiId: string | null) => void;
 }
 
 export function HiramekiControls({ 
@@ -28,6 +31,7 @@ export function HiramekiControls({
   onUpdateHirameki, 
   onSetGodHirameki,
   onSetGodHiramekiEffect,
+  onSetHiddenHirameki,
 }: HiramekiControlsProps) {
   const t = useTranslations();
   const [openHirameki, setOpenHirameki] = useState(false);
@@ -40,7 +44,7 @@ export function HiramekiControls({
     }
   }, [openGod, card.godHiramekiType]);
   
-  const isHiramekiActive = card.selectedHiramekiLevel > 0;
+  const isHiramekiActive = card.selectedHiramekiLevel > 0 || card.selectedHiddenHiramekiId !== null;
   const isGodActive = Boolean(card.godHiramekiType);
   const maxHiramekiLevel = card.hiramekiVariations.length - 1;
 
@@ -92,41 +96,94 @@ export function HiramekiControls({
             <DialogTitle>{t("card.hirameki")}</DialogTitle>
             <button
               type="button"
-              onClick={() => { onUpdateHirameki(card.deckId, 0); setOpenHirameki(false); }}
+              onClick={() => { onUpdateHirameki(card.deckId, 0); onSetHiddenHirameki(card.deckId, null); setOpenHirameki(false); }}
               className="absolute right-16 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground"
             >
               <span className="text-sm font-medium">{t('common.remove', { defaultValue: '外す' })}</span>
               <span className="sr-only">{t('common.remove', { defaultValue: '外す' })}</span>
             </button>
           </DialogHeader>
-          <div className="p-6 pt-0 overflow-y-auto max-h-[65vh] grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-            {Array.from({ length: maxHiramekiLevel }, (_, i) => i + 1).map((level) => {
-              const preview: DeckCard = { ...card, selectedHiramekiLevel: level } as DeckCard;
-              const info = getCardInfo(preview, egoLevel, hasPotential);
-              return (
-                <button
-                  key={level}
-                  className={cn("rounded-md", card.selectedHiramekiLevel === level ? "ring-2 ring-primary" : "")}
-                  onClick={() => { onUpdateHirameki(card.deckId, level); setOpenHirameki(false); }}
-                  title={`Lv${level}`}
-                >
-                  <CardFrame
-                    imgUrl={card.imgUrl}
-                    alt={card.name}
-                    cost={info.cost}
-                    nameId={`cards.${card.id}.name`}
-                    nameFallback={card.name}
-                    category={t(`category.${info.category ?? card.category}`)}
-                    categoryId={info.category ?? card.category}
-                    descriptionId={`cards.${card.id}.descriptions.${level}`}
-                    descriptionFallback={info.description}
-                    statuses={info.statuses?.map(s => t(`status.${s}`))}
-                    className="border"
-                    variant="default"
-                  />
-                </button>
-              );
-            })}
+          <div className="p-6 pt-0 overflow-y-auto max-h-[65vh]">
+            {/* 通常のヒラメキ */}
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mb-6">
+              {Array.from({ length: maxHiramekiLevel }, (_, i) => i + 1).map((level) => {
+                const preview: DeckCard = { ...card, selectedHiramekiLevel: level, selectedHiddenHiramekiId: null } as DeckCard;
+                const info = getCardInfo(preview, egoLevel, hasPotential);
+                return (
+                  <button
+                    key={level}
+                    className={cn("rounded-md", card.selectedHiramekiLevel === level && card.selectedHiddenHiramekiId === null ? "ring-2 ring-primary" : "")}
+                    onClick={() => { onUpdateHirameki(card.deckId, level); onSetHiddenHirameki(card.deckId, null); setOpenHirameki(false); }}
+                    title={`Lv${level}`}
+                  >
+                    <CardFrame
+                      imgUrl={card.imgUrl}
+                      alt={card.name}
+                      cost={info.cost}
+                      nameId={`cards.${card.id}.name`}
+                      nameFallback={card.name}
+                      category={t(`category.${info.category ?? card.category}`)}
+                      categoryId={info.category ?? card.category}
+                      descriptionId={`cards.${card.id}.descriptions.${level}`}
+                      descriptionFallback={info.description}
+                      statuses={info.statuses?.map(s => t(`status.${s}`))}
+                      className="border"
+                      variant="default"
+                    />
+                  </button>
+                );
+              })}
+            </div>
+
+            {/* 隠しヒラメキセクション（Lv0の時のみ表示） */}
+            {HIDDEN_HIRAMEKI_EFFECTS.length > 0 && card.selectedHiramekiLevel === 0 && card.selectedHiddenHiramekiId === null && (
+              <Accordion type="single" collapsible className="mt-6">
+                <AccordionItem value="hidden-hirameki">
+                  <AccordionTrigger className="text-lg font-semibold">
+                    {t("card.hiddenHirameki", { defaultValue: "隠しヒラメキ" })}
+                  </AccordionTrigger>
+                  <AccordionContent className="pb-4">
+                    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+                      {HIDDEN_HIRAMEKI_EFFECTS.map((hiddenEffect) => {
+                        const preview: DeckCard = { 
+                          ...card, 
+                          selectedHiddenHiramekiId: hiddenEffect.id
+                        } as DeckCard;
+                        const info = getCardInfo(preview, egoLevel, hasPotential);
+                        return (
+                          <button
+                            key={`hidden-${hiddenEffect.id}`}
+                            className={cn("rounded-md", card.selectedHiddenHiramekiId === hiddenEffect.id ? "ring-2 ring-purple-400" : "")}
+                            onClick={() => { 
+                              onSetHiddenHirameki(card.deckId, hiddenEffect.id); 
+                              setOpenHirameki(false); 
+                            }}
+                            title={hiddenEffect.id}
+                          >
+                            <CardFrame
+                              imgUrl={card.imgUrl}
+                              alt={card.name}
+                              cost={info.cost}
+                              nameId={`cards.${card.id}.name`}
+                              nameFallback={card.name}
+                              category={t(`category.${info.category ?? card.category}`)}
+                              categoryId={info.category ?? card.category}
+                              descriptionId={`cards.${card.id}.descriptions.0`}
+                              descriptionFallback={card.hiramekiVariations[0].description}
+                              hiddenEffectId={hiddenEffect.id}
+                              hiddenEffectFallback={hiddenEffect.additionalEffect}
+                              statuses={info.statuses?.map(s => t(`status.${s}`))}
+                              className="border border-purple-300"
+                              variant="default"
+                            />
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </AccordionContent>
+                </AccordionItem>
+              </Accordion>
+            )}
           </div>
         </DialogContent>
       </Dialog>

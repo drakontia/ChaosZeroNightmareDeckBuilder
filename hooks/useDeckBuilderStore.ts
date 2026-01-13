@@ -16,6 +16,7 @@ interface DeckBuilderStore {
   updateCardHirameki: (deckId: string, level: number) => void;
   setCardGodHirameki: (deckId: string, godType: GodType | null) => void;
   setCardGodHiramekiEffect: (deckId: string, effectId: string | null) => void;
+  setCardHiddenHirameki: (deckId: string, hiddenHiramekiId: string | null) => void;
   undoCard: (deckId: string) => void;
   copyCard: (deckId: string) => void;
   convertCard: (deckId: string, targetCardId: string) => void;
@@ -36,6 +37,7 @@ export const useDeckBuilderStore = create<DeckBuilderStore>((set) => ({
           selectedHiramekiLevel: 0,
           godHiramekiType: null,
           godHiramekiEffectId: null,
+          selectedHiddenHiramekiId: null,
         }];
       }) ?? []) as DeckCard[];
       if (!state.deck) {
@@ -206,6 +208,19 @@ export const useDeckBuilderStore = create<DeckBuilderStore>((set) => ({
       };
     });
   },
+  setCardHiddenHirameki: (deckId, hiddenHiramekiId) => {
+    set((state) => {
+      if (!state.deck) return {};
+      return {
+        deck: {
+          ...state.deck,
+          cards: state.deck.cards.map((card) =>
+            card.deckId === deckId ? { ...card, selectedHiddenHiramekiId: hiddenHiramekiId } : card
+          ),
+        },
+      };
+    });
+  },
   undoCard: (deckId) => {
     set((state) => {
       if (!state.deck) return {};
@@ -283,6 +298,7 @@ export const useDeckBuilderStore = create<DeckBuilderStore>((set) => ({
         selectedHiramekiLevel: 0,
         godHiramekiType: null,
         godHiramekiEffectId: null,
+        selectedHiddenHiramekiId: null,
       };
       const cardIndex = state.deck.cards.findIndex((c) => c.deckId === deckId);
       const newCards = [...state.deck.cards];

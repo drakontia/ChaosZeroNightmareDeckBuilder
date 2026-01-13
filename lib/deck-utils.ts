@@ -1,5 +1,6 @@
 import { CardType, DeckCard, Deck, CardStatus, CardCategory, RemovedCardEntry, CopiedCardEntry, ConvertedCardEntry } from "@/types";
 import { GOD_HIRAMEKI_EFFECTS } from "@/lib/god-hirameki";
+import { HIDDEN_HIRAMEKI_EFFECTS } from "@/lib/hidden-hirameki";
 import { getCardById } from "@/lib/data";
 
 // Helper function to get card info based on hirameki level and god hirameki
@@ -18,6 +19,7 @@ export function getCardInfo(
   const convertedId = convertedCards?.get(card.id);
   const baseCard = convertedId ? (getCardById(convertedId) ?? card) : card;
 
+  // Regular hirameki handling (with hidden hirameki as additional effect)
   const variation = baseCard.hiramekiVariations[card.selectedHiramekiLevel] || baseCard.hiramekiVariations[0];
   
   let cost = variation.cost;
@@ -26,6 +28,19 @@ export function getCardInfo(
   const statuses = (variation.statuses && variation.statuses.length > 0)
     ? variation.statuses
     : (baseCard.statuses && baseCard.statuses.length > 0 ? baseCard.statuses : undefined);
+
+  // Apply hidden hirameki if present and at base level (Lv0 only)
+  if (card.selectedHiddenHiramekiId && card.selectedHiramekiLevel === 0) {
+    const hiddenEffect = HIDDEN_HIRAMEKI_EFFECTS.find(e => e.id === card.selectedHiddenHiramekiId);
+    if (hiddenEffect) {
+      // Append hidden effect to description
+      description = `${description}\n${hiddenEffect.additionalEffect}`;
+      // Apply cost modifier if present
+      if (hiddenEffect.costModifier !== undefined && typeof cost === 'number') {
+        cost = cost + hiddenEffect.costModifier;
+      }
+    }
+  }
 
   // Apply ego level variations
   if (variation.egoVariations && variation.egoVariations[egoLevel]) {
@@ -86,8 +101,9 @@ export function calculateFaintMemory(deck: Deck | null | undefined): number {
         points += 20;
       }
 
-      // Hirameki on shared/monster cards: +10pt (character cards are 0pt)
-      if ((card.type === CardType.SHARED || card.type === CardType.MONSTER) && card.selectedHiramekiLevel > 0) {
+      // Hirameki (including hidden hirameki) on shared/monster cards: +10pt (character cards are 0pt)
+      if ((card.type === CardType.SHARED || card.type === CardType.MONSTER) && 
+          (card.selectedHiramekiLevel > 0 || (card.selectedHiddenHiramekiId != null && card.selectedHiddenHiramekiId !== ''))) {
         points += 10;
       }
     }
@@ -145,8 +161,9 @@ export function calculateFaintMemory(deck: Deck | null | undefined): number {
       } else if (cardType === CardType.FORBIDDEN) {
         points += 20;
       }
-      // Hirameki points for shared/monster (per card)
-      if ((cardType === CardType.SHARED || cardType === CardType.MONSTER) && (snapshot.selectedHiramekiLevel ?? 0) > 0) {
+      // Hirameki (including hidden hirameki) points for shared/monster (per card)
+      if ((cardType === CardType.SHARED || cardType === CardType.MONSTER) && 
+          ((snapshot.selectedHiramekiLevel ?? 0) > 0 || (snapshot.selectedHiddenHiramekiId != null && snapshot.selectedHiddenHiramekiId !== ''))) {
         points += 10;
       }
       // God hirameki points (per card)
@@ -198,8 +215,9 @@ export function calculateFaintMemory(deck: Deck | null | undefined): number {
       } else if (cardType === CardType.FORBIDDEN) {
         points += 20;
       }
-      // Hirameki points for shared/monster (one-time for all copies of this card)
-      if ((cardType === CardType.SHARED || cardType === CardType.MONSTER) && (snapshot.selectedHiramekiLevel ?? 0) > 0) {
+      // Hirameki (including hidden hirameki) points for shared/monster (one-time for all copies of this card)
+      if ((cardType === CardType.SHARED || cardType === CardType.MONSTER) && 
+          ((snapshot.selectedHiramekiLevel ?? 0) > 0 || (snapshot.selectedHiddenHiramekiId != null && snapshot.selectedHiddenHiramekiId !== ''))) {
         points += 10;
       }
       // God hirameki points (one-time for all copies of this card)
@@ -220,8 +238,8 @@ export function calculateFaintMemory(deck: Deck | null | undefined): number {
       // Preserve points from the ORIGINAL card state at conversion time
       const originalType = snapshot.originalType;
       if (originalType === CardType.SHARED || originalType === CardType.MONSTER) {
-        // Hirameki points from original card
-        if ((snapshot.selectedHiramekiLevel ?? 0) > 0) {
+        // Hirameki (including hidden hirameki) points from original card
+        if ((snapshot.selectedHiramekiLevel ?? 0) > 0 || (snapshot.selectedHiddenHiramekiId != null && snapshot.selectedHiddenHiramekiId !== '')) {
           points += 10;
         }
       }
