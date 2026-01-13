@@ -586,7 +586,7 @@ export const CHARACTER_CARDS: CznCard[] = [
       { level: 2, cost: 0, description: "1ターンの間、黒雲態勢保存<wbr/>黒雲態勢：1ターンの間、自分の攻撃カードのダメージ量+30%" },
       { level: 3, cost: 1, description: "1ターンの間、黒雲態勢保存<wbr/>黒雲奥義：滅1枚を生成、そのカードに蒸発8)付与" },
       { level: 4, cost: 1, description: "ターン開始時、黒雲態勢を獲得" },
-      { level: 5, cost: 1, description: "黒雲態勢状態の場合、リンの攻撃カードダメージ50%増加" }
+      { level: 5, cost: 1, category: CardCategory.UPGRADE, description: "黒雲態勢状態の場合、リンの攻撃カードダメージ50%増加" }
     ]
   },
   {
