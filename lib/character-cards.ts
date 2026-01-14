@@ -1970,7 +1970,7 @@ export const CHARACTER_CARDS: CznCard[] = [
       { level: 2, cost: 1, description: "ダメージ150%<wbr/>標識2<wbr/>対象が標識状態の場合、標識2追加"},
       { level: 3, cost: 1, category: CardCategory.SKILL, description: "シールド150%<wbr/>敵全体標識2"},
       { level: 4, cost: 1, category: CardCategory.SKILL, description: "シールド150%<wbr/>感応：ドロー1"},
-      { level: 5, cost: 1, description: "大破時、対象に挟み撃ち200%" }
+      { level: 5, cost: 1, category: CardCategory.UPGRADE, description: "大破時、対象に挟み撃ち200%" }
     ]
   },
   {
