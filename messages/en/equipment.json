@@ -3,449 +3,449 @@
     "armor": {
       "title": "Armor",
       "scouts_combat_boots": {
-        "description": "敵を倒すと固定シールド60%",
-        "name": "斥候の軍靴"
+        "description": "Fixed shield 60% when defeating an enemy",
+        "name": "Scouts Combat Boots"
       },
       "lush_seaweed_armor": {
-        "description": "シールド獲得時、固定シールド30%",
-        "name": "生い茂った海草の鎧"
+        "description": "When gaining a shield, a fixed shield of 30%",
+        "name": "Lush Seaweed Armor"
       },
       "assault_gauntlets": {
-        "description": "戦闘開始時、反撃3",
-        "name": "強襲ガントレット"
+        "description": "Counter at the start of the fight 3",
+        "name": "Assault Gauntlets"
       },
       "survivors_hood": {
-        "description": "戦闘開始時、固定シールド140%",
-        "name": "生存者のフード"
+        "description": "Fixed Shield 140% at start of combat",
+        "name": "Survivors Hood"
       },
       "titan_combat_suit": {
-        "description": "ダメージを受けると、HP2%回復（各ターン1回）",
-        "name": "タイタン戦闘アーマー"
+        "description": "When taking damage, regain 2% HP (once per turn)",
+        "name": "Titan Combat Suit"
       },
       "gladiators_helmet": {
-        "description": "戦闘開始時、ダメージ減少2",
-        "name": "剣闘士のヘルメット"
+        "description": "Damage Reduction 2 at the start of the fight",
+        "name": "Gladiators Helmet"
       },
       "standard_gas_mask": {
-        "description": "戦闘開始時、免疫1",
-        "name": "標準型ガスマスク"
+        "description": "At the start of the fight, Immunity 1",
+        "name": "Standard Gas Mask"
       },
       "assault_boots": {
-        "description": "戦闘開始2ターン後、次のターン開始時に固定シールド200%",
-        "name": "強襲ブーツ"
+        "description": "200% fixed shield at the start of the next turn after 2 turns of combat",
+        "name": "Assault Boots"
       },
       "reinforced_combat_suit": {
-        "description": "ターン終了時、シールドがない場合、固定シールド60%",
-        "name": "補強型戦闘アーマー"
+        "description": "60% fixed shield if no shield at end of turn",
+        "name": "Reinforced Combat Suit"
       },
       "cloud_walking_shoes": {
-        "description": "味方が大破時、固定シールド40%",
-        "name": "雲の上を歩く靴"
+        "description": "Fixed shield 40% when allies are wrecked",
+        "name": "Cloud Walking Shoes"
       },
       "psionic_combat_suit": {
-        "description": "カード消滅時、固定シールド30%",
-        "name": "サイオニック戦闘アーマー"
+        "description": "30% fixed shield when card is extinguished",
+        "name": "Psionic Combat Suit"
       },
       "shell_of_aberration": {
-        "description": "防御力+12%。ストレス増加時、50%の確率で1減少して受ける",
-        "name": "奇妙な殻"
+        "description": "+12% Defense. 50% Chance to receive 1 Reduction when Stress is increased",
+        "name": "Shell of Aberration"
       },
       "disaster_shroud": {
-        "description": "防御力+12％。全戦闘員崩壊の回復に必要なカード数1枚減少",
-        "name": "災厄の聖骸布"
+        "description": "+12% Defense. Reduce the number of cards required to heal all combatants",
+        "name": "Disaster Shroud"
       },
       "resolute_gauntlets": {
-        "description": "カオス教団との戦闘開始時、ダメージ量+20%、ダメージ減少1",
-        "name": "決死のガントレット"
+        "description": "+20% Damage and 1 Damage Reduction at the start of combat against the Chaos Order",
+        "name": "Resolute Gauntlets"
       },
       "wolves_banes_spine": {
-        "description": "会心攻撃時、固定シールド10%",
-        "name": "ウルブス・ヴェインの背骨"
+        "description": "Fixed shield 10% when attacking with Lucky Hit",
+        "name": "Wolves Bane's Spine"
       },
       "shield_of_the_watcher": {
-        "description": "ダメージを受けると攻撃者に標識1",
-        "name": "注視する盾"
+        "description": "Signal to attacker when taking damage 1",
+        "name": "Shield of the Watcher"
       },
       "the_chosen_vessel": {
-        "description": "戦闘開始3ターン後、次のターン開始時に固定シールド250%",
-        "name": "器となる者"
+        "description": "250% fixed shield at the start of the next turn after 3 turns of combat",
+        "name": "The Chosen Vessel"
       },
       "cursed_doll": {
-        "description": "ターン開始時、手札の状態異常、呪いカードの数に応じて治癒60%",
-        "name": "呪われた人形"
+        "description": "At the start of your turn, heal 60% depending on hand status abnormality and number of curse cards",
+        "name": "Cursed Doll"
       },
       "torture_toolbox": {
-        "description": "ターン開始時、敵全体の行動カウント3増加",
-        "name": "拷問道具箱"
+        "description": "At the start of your turn, add 3 Action Counts for all enemies",
+        "name": "Torture Toolbox"
       },
       "chains_of_obsession": {
-        "description": "攻撃カード使用時、HP減少1%、固定シールド60%",
-        "name": "強迫の枷"
+        "description": "When using attack cards, HP decreases by 1%, fixed shield by 60%",
+        "name": "Chains of Obsession"
       },
       "wild_fur_cloak": {
-        "description": "ターン開始時、反撃1",
-        "name": "野性の毛皮マント"
+        "description": "At the start of your turn, counterattack 1",
+        "name": "Wild Fur Cloak"
       },
       "kentris_chitin_armor": {
-        "description": "味方のシールド獲得量15％増加",
-        "name": "ケントリスキチン甲冑"
+        "description": "Allied Shield Capture +15%",
+        "name": "Kentris Chitin Armor"
       },
       "crustacean_fluider": {
-        "description": "ダメージを受けると1ターン後、次のターン開始時に固定シールド60%",
-        "name": "フリュードの甲殻"
+        "description": "60% fixed shield at start of next turn after 1 turn when taking damage",
+        "name": "Crustacean Fluider"
       },
       "growing_carapace": {
-        "description": "ターン開始時、固定シールド40%",
-        "name": "成長する甲殻"
+        "description": "40% fixed shield at start of turn",
+        "name": "Growing Carapace"
       },
       "dance_of_the_night_butterflies": {
-        "description": "大破時、固定シールド60%",
-        "name": "夜蝶の舞い"
+        "description": "Fixed shield 60% when wrecked",
+        "name": "Dance of the Night Butterflies"
       },
       "wings_of_the_swarm": {
-        "description": "戦闘開始時、免疫2",
-        "name": "群体の羽"
+        "description": "At the start of the fight, Immunity 2",
+        "name": "Wings of the Swarm"
       },
       "contaminated_helmet": {
-        "description": "最大HP+6%。防御力+12%",
-        "name": "汚染されたヘルメット"
+        "description": "+6% Max HP. +12% Defense",
+        "name": "Contaminated Helmet"
       },
       "mss_scope": {
-        "description": "1ターン中、デバフ効果を付与した場合、ターン終了時固定シールド80%",
-        "name": "M.S.Sスコープ"
+        "description": "When inflicting a negative effect for 1 turn, a fixed shield of 80% at the end of the turn",
+        "name": "M.S.S Scope"
       },
       "regenerative_ribcage": {
-        "description": "最大HP+12%",
-        "name": "再生型の肋骨"
+        "description": "+12% Max HP",
+        "name": "Regenerative Ribcage"
       },
       "gluttonous_tailcoat": {
-        "description": "ダメージを受けると、1ターンの間次のターン開始時に固定シールド80%",
-        "name": "意地汚い燕尾服"
+        "description": "When taking damage, a flat shield of 80% at the start of the next turn for 1 turn",
+        "name": "Gluttonous Tailcoat"
       },
       "fragment_of_the_empty_void": {
-        "description": "戦闘開始時、3枚まで破棄、その枚数に応じてドロー",
-        "name": "虚ろな空虚の破片"
+        "description": "At the start of the battle, destroy up to 3 cards, and draw according to the number of cards",
+        "name": "Fragment of the Empty Void"
       },
       "mask_of_evil_spirits": {
-        "description": "ダメージを受けると、1ターンの間、次のターン開始時に固定シールド60%",
-        "name": "悪霊の仮面"
+        "description": "When taking damage, a flat shield of 60% at the start of the next turn for 1 turn",
+        "name": "Mask of Evil Spirits"
       },
       "immortal_scale": {
-        "description": "能力で反撃獲得時、反撃1追加",
-        "name": "不滅の鱗"
+        "description": "Adds 1 Counter when gaining Counter with Ability",
+        "name": "Immortal Scale"
       },
       "fairy_kings_crown": {
-        "description": "会心率+6%",
-        "name": "妖精王の冠"
+        "description": "Will heart rate +6%",
+        "name": "Fairy King's Crown"
       },
       "wings_of_light": {
-        "description": "エゴポイントが3以下の時、会心攻撃を与えるとエゴポイント0.2獲得",
-        "name": "光の翼"
+        "description": "When the Ego Points are 3 or less, gain 0.2 Ego Points when attacking with Convergence",
+        "name": "Wings of Light"
       },
       "ring_of_the_seraphim": {
-        "description": "強化カード使用時、1ターンの間、ダメージ量+30%",
-        "name": "天使の輪"
+        "description": "When using a Reinforcement Card, +30% Damage for 1 turn",
+        "name": "Ring of the Seraphim"
       },
       "star_lit_cloak": {
-        "description": "受けるダメージ量10%減少（各ターン1回）",
-        "name": "星明かりの宿るマント"
+        "description": "Reduce damage taken by 10% (once per turn)",
+        "name": "Star Lit Cloak"
       },
       "mask_of_flames": {
-        "description": "脆弱対象へのダメージ量35%増加",
-        "name": "炎の仮面"
+        "description": "+35% damage to vulnerable targets",
+        "name": "Mask of Flames"
       },
       "twisted_discipline": {
-        "description": "アクションポイントを10以上使用時、免疫2(各戦闘1回)",
-        "name": "歪んだ規律"
+        "description": "Immune 2 (once per fight) when using 10 + Action Points",
+        "name": "Twisted Discipline"
       },
       "primordial_discipline": {
-        "description": "戦闘開始時、免疫2",
-        "name": "太古の規律"
+        "description": "At the start of the fight, Immunity 2",
+        "name": "Primordial Discipline"
       },
       "consecrated_halo": {
-        "description": "シールド獲得量25％増加",
-        "name": "聖別された光輪"
+        "description": "+25% Shield Capture",
+        "name": "Consecrated Halo"
       },
       "incomplete_carapace": {
-        "description": "ターン終了時、手札のカードが3枚以上なら固定シールド140%",
-        "name": "不完全甲殻"
+        "description": "At the end of your turn, if you have 3 or more cards in your hand, shield 140%",
+        "name": "Incomplete Carapace"
       },
       "brainwave_blocking_helmet": {
-        "description": "能力でドロー時、固定シールド40%",
-        "name": "脳波遮断ヘルメット"
+        "description": "40% Fixed Shield when Drawing with Ability",
+        "name": "Brainwave Blocking Helmet"
       },
       "wings_of_freedom": {
-        "description": "攻撃を受けた時、ダメージ量10％増加（最大3回重複）",
-        "name": "自由の翼"
+        "description": "+10% damage when being attacked (up to 3 duplicates)",
+        "name": "Wings of Freedom"
       },
       "rocket_adorned_cape": {
-        "description": "戦闘開始時、ダメージ減少1、ドロー1",
-        "name": "ロケットの飾り付きマント"
+        "description": "1 Damage Reduction, 1 Draw at the start of the fight",
+        "name": "Rocket Adorned Cape"
       }
     },
     "info": "Details",
     "none": "None",
     "pendant": {
       "absolute_zero_tetrahedron": {
-        "description": "戦闘開始時、シールド獲得量+20％",
-        "name": "絶対零度の四面体"
+        "description": "+20% Shield Acquisition at the start of the fight",
+        "name": "Absolute Zero Tetrahedron"
       },
       "administrator_id_badge": {
-        "description": "戦闘開始時、回避1",
-        "name": "管理者身分証"
+        "description": "At the start of the fight, Evade 1",
+        "name": "Administrator ID Badge"
       },
       "amorphous_cube": {
-        "description": "ダメージ量+25%",
-        "name": "非定型キューブ"
+        "description": "+25% Damage",
+        "name": "Amorphous Cube"
       },
       "bloodstone_of_the_void": {
-        "description": "攻撃カード使用時に与ダメージの6%分HP回復（各ターン1回）",
-        "name": "空虚な血石"
+        "description": "When using Attack Cards, regain 6% of the damage dealt (once per turn)",
+        "name": "Bloodstone of the Void"
       },
       "bloody_pendant": {
-        "description": "最大HP+10％。戦闘終了時最大HPが50%未満なら最大HPの8％回復。戦闘終了時最大HPが50%以上ならストレスが高い戦闘員のストレス5減少",
-        "name": "錯乱のダイス"
+        "description": "When using a copied card, do not reduce the count of all enemy actions for 1 turn (once per fight)",
+        "name": "Bloody Pendant"
       },
       "bone_ring_of_wildfire": {
-        "description": "強化カード使用時、1ターンの間、ダメージ量+30%",
-        "name": "野火を抱える骨の指輪"
+        "description": "When using a Reinforcement Card, +30% Damage for 1 turn",
+        "name": "Bone Ring of Wildfire"
       },
       "call_of_the_ancient_spirit": {
-        "description": "会心攻撃時、治癒10%",
-        "name": "古の魂の呼びかけ"
+        "description": "Heal 10% when Lucky Hit",
+        "name": "Call of the Ancient Spirit"
       },
       "chaos_bible": {
-        "description": "最大HP+10％。戦闘開始時、アクションポイント1獲得、ドロー1",
-        "name": "乱数の玉"
+        "description": "Battle Start After 4 turns, deal 400% fixed damage to all enemies at the start of the next turn",
+        "name": "Chaos Bible"
       },
       "clover_of_the_forest": {
-        "description": "カードで回復時1ターンの間、味方の攻撃力+10%（最大1回重複）",
-        "name": "森のクローバー"
+        "description": "When healed by a card, allies get +10% Attack for 1 turn (up to 1 stack)",
+        "name": "Clover of the Forest"
       },
       "corroded_core": {
-        "description": "攻撃をシールドで完璧に防いだ場合、敵全体に損傷1（各ターン1回）",
-        "name": "浸食コア"
+        "description": "Deal 1 damage to all enemies (once per turn) if shielded perfectly",
+        "name": "Corroded Core"
       },
       "corrupted_core": {
-        "description": "防御力+15%、シールド20%保存",
-        "name": "堕落コア"
+        "description": "+15% Defense, Save 20% Shield",
+        "name": "Corrupted Core"
       },
       "crimson_bloodstone": {
-        "description": " 攻撃カード使用時に与ダメージの9%分HP回復（ターンごとに1回）",
-        "name": "赤い血石"
+        "description": "Recover 9% of Damage when using Attack Cards (1 per turn)",
+        "name": "Crimson Bloodstone"
       },
       "dice_of_chaos": {
-        "description": "ターン終了時、「ランダムな敵に固定ダメージ40%×2～6」か「味方に固定ダメージ200%」のうちランダムで1個の効果発動",
-        "name": "混沌のダイス"
+        "description": "At the end of your turn, trigger 1 random effect of \"40% fixed damage to a random enemy x2-6\" or \"200% fixed damage to allies\"",
+        "name": "Dice of Chaos"
       },
       "dice_of_derangement": {
-        "description": "最大HP+10%。戦闘終了時最大HPが50%未満なら最大HPの8%回復。戦闘終了時最大HPが50%以上ならストレスが高い戦闘員のストレス5減少",
-        "name": "錯乱のダイス"
+        "description": "+10% Max Health. Recover 8% of your Max Health if your Max Health is less than 50% at the end of combat. Stressful fighters have 5 less stress if their max HP is more than 50% at the end of the fight",
+        "name": "Dice of Derangement"
       },
       "dimensional_cube": {
-        "description": "カードを捨てるとき、1ターンの間、ダメージ量＋10%",
-        "name": "次元のキューブ"
+        "description": "+10% damage for 1 turn when discarding cards",
+        "name": "Dimensional Cube"
       },
       "dormant_seeds": {
-        "description": "シールド獲得時、固定シールド100%（各ターン1回）",
-        "name": "冬眠する種"
+        "description": "When gaining a shield, a fixed shield of 100% (once per turn)",
+        "name": "Dormant Seeds"
       },
       "emblem_of_an_exceptional_entity": {
-        "description": "ダメージ量+30%\n受けるストレス0に変更（各戦闘1回）",
-        "name": "優秀な個体の証"
+        "description": "+30% Damage\nChange to 0 Stress (once per fight)",
+        "name": "Emblem of an Exceptional Entity"
       },
       "eternal_stone": {
-        "description": "ターン開始時、敵の数に応じて固定シールド25%",
-        "name": "風化しない石"
+        "description": "25% fixed shield at start of turn based on number of enemies",
+        "name": "Eternal Stone"
       },
       "eye_of_gluttony": {
-        "description": "ダメージ量+40%、ターン終了時30%の確率で手札のカードを1枚消滅",
-        "name": "貪食の目"
+        "description": "Damage +40%, 30% chance to vanish 1 card in hand at end of turn",
+        "name": "Eye of Gluttony"
       },
       "eye_of_the_eyeless": {
-        "description": "基本攻撃カードのダメージ量40%増加",
-        "name": "目なき者の瞳"
+        "description": "Increase damage of Basic Attack Cards by 40%",
+        "name": "Eye of the Eyeless"
       },
       "eye_of_the_punisher": {
-        "description": "敵が1人の場合、ダメージ量30%増加",
-        "name": "懲罰者の目"
+        "description": "Damage +30% if 1 enemy",
+        "name": "Eye of the Punisher"
       },
       "first_aid_kit": {
-        "description": "戦闘終了時、回復5%",
-        "name": "救急キット"
+        "description": "At the end of combat, heal 5%",
+        "name": "First Aid Kit"
       },
       "flower_of_dead_souls": {
-        "description": "ターンごとに、2枚目の攻撃カードからダメージ量20%増加",
-        "name": "亡魂の花"
+        "description": "Increase damage by 20% every turn from the second attack card",
+        "name": "Flower of Dead Souls"
       },
       "forbidden_bible": {
-        "description": "戦闘開始4ターン後、次のターン開始時に敵全体に固定ダメージ550%",
-        "name": "禁止された聖書"
+        "description": "After 4 turns of combat, deal 550% fixed damage to all enemies at the start of your next turn",
+        "name": "Forbidden Bible"
       },
       "gloomy_primes_eye": {
-        "description": "シールド 獲得量+40%",
-        "name": "グルーミープライムの目"
+        "description": "+40% Shield Capture",
+        "name": "Gloomy Prime's Eye"
       },
       "grey_orb": {
-        "description": "戦闘開始時、ダメージ減少3",
-        "name": "グレイの球体"
+        "description": "Damage Reduction 3 at the start of the fight",
+        "name": "Grey Orb"
       },
       "guardian_core": {
-        "description": "攻撃力+15％、最大HP+10％",
-        "name": "鼓動する卵"
+        "description": "Fixed Shield 60% (once per turn) against any enemy attacked by the Behavior Alert",
+        "name": "Guardian Core"
       },
       "heart_of_gold": {
-        "description": "戦闘終了時にHPが50%以下なら、8％回復",
-        "name": "黄金の心臓"
+        "description": "Recover 8% if HP is less than 50% at the end of the fight",
+        "name": "Heart of Gold"
       },
       "heart_of_the_jewel": {
-        "description": "xをx+1として適用",
-        "name": "宝石の心臓"
+        "description": "apply x as x +1",
+        "name": "Heart of the Jewel"
       },
       "hyperimmunity_hormone": {
-        "description": "能力でドロー時、1ターンの間、シールド獲得量+25%（各ターン2回）",
-        "name": "過剰免疫ホルモン"
+        "description": "While Drawing with Ability, gain +25% Shield for 1 turn (2 per turn)",
+        "name": "Hyperimmunity Hormone"
       },
       "kiraks_core": {
-        "description": "ターン開始時、最大HPの40%未満なら回復5%",
-        "name": "キーロックの核"
+        "description": "At the start of your turn, recover 5% if less than 40% of your max HP",
+        "name": "Kirak's Core"
       },
       "lead_colored_holy_water": {
-        "description": "大破時、対象に損傷2",
-        "name": "鉛色の聖水"
+        "description": "Wrecked, Wounded 2",
+        "name": "Lead-Colored Holy Water"
       },
       "lepidolas_wing": {
-        "description": "戦闘開始時、回避1",
-        "name": "レピドラの翼"
+        "description": "At the start of the fight, Evade 1",
+        "name": "Lepidola's Wing"
       },
       "madmans_masterpiece": {
-        "description": "精鋭戦闘開始時、ダメージ量+50%",
-        "name": "狂った芸術家の芸術作品"
+        "description": "+50% Damage at the start of Elite Combat",
+        "name": "Madman's Masterpiece"
       },
       "magic_infused_sapphire": {
-        "description": "戦闘開始時、開戦カードが手札にある場合、敵全体に強靭度ダメージ1",
-        "name": "魔力が宿ったサファイア"
+        "description": "At the start of the fight, if you have an opening card in your hand, deal 1 Strong Damage to all enemies",
+        "name": "Magic-Infused Sapphire"
       },
       "moon_of_destruction": {
-        "description": "戦闘開始時、敵全体に固定ダメージ200%",
-        "name": "破壊の月"
+        "description": "At the start of combat, deal 200% fixed damage to all enemies",
+        "name": "Moon of Destruction"
       },
       "mss_data_pad": {
-        "description": "ニヒルムとの戦闘開始時、敵全体に脆弱2",
-        "name": "M.S.Sデータパッド"
+        "description": "Vulnerable to all enemies at the start of combat against the Nihilum 2",
+        "name": "M.S.S Data Pad"
       },
       "mss_data_pad_se": {
-        "description": "ニヒルムとの戦闘開始時、敵全体に脆弱3",
-        "name": "M.S.SデータパッドSE"
+        "description": "Vulnerable to all enemies at the start of combat against the Nihilum 3",
+        "name": "M.S.S Data Pad SE"
       },
       "multifaceted_parallel_universe_nexus": {
-        "description": "ターン開始時、手札にあるランダムな主導カード1枚発動",
-        "name": "多面平衡宇宙連結体"
+        "description": "At the start of your turn, trigger a random lead card in your hand",
+        "name": "Multifaceted Parallel Universe Nexus"
       },
       "natural_predator": {
-        "description": "大破時、次に使用する攻撃カード1枚のダメージ量+100%",
-        "name": "先天的捕食者"
+        "description": "When wrecked, the next attack card used will deal +100% damage",
+        "name": "Natural Predator"
       },
       "natures_gift": {
-        "description": "ターン終了時、治癒40%",
-        "name": "自然の賜りもの"
+        "description": "40% heal at end of turn",
+        "name": "Nature's Gift"
       },
       "nerve_hacking_module": {
-        "description": "味方が禁忌カード使用時、ダメージ量+20%、シールド獲得量+20%(各戦闘2回) ",
-        "name": "神経ハッキングモジュール"
+        "description": "When an ally uses a taboo card, damage +20% and shield gain +20% (2 per battle)",
+        "name": "Nerve Hacking Module"
       },
       "orders_emblem": {
-        "description": " カオス教団との戦闘時、防御力+15%",
-        "name": "教団の証"
+        "description": "+15% Defense when fighting the Chaos Order",
+        "name": "Order's Emblem"
       },
       "palasias_orb": {
-        "description": "カードで脆弱付与時、対象に弱体化1",
-        "name": "恥ずかしがり屋の庭師の玉"
+        "description": "Impair the subject when weakened by a card 1",
+        "name": "Palasia's Orb"
       },
       "poachers_pathfinder": {
-        "description": "セクレドとの戦闘時、ダメージ量+25%、敵全体に脆弱2",
-        "name": "密猟者のパスファインダー"
+        "description": "+25% Damage when fighting Secrets, all enemies vulnerable 2",
+        "name": "Poacher's Pathfinder"
       },
       "proof_of_initiation": {
-        "description": "カオス教団との戦闘時、防御力+10%",
-        "name": "入信の証"
+        "description": "+10% Defense when fighting the Order of Chaos",
+        "name": "Proof of Initiation"
       },
       "pulsating_egg": {
-        "description": "攻撃力+15%、最大HP+10%",
-        "name": "鼓動する卵"
+        "description": "+15% Atk, +10% Max HP",
+        "name": "Pulsating Egg"
       },
       "quantum_collector": {
-        "description": "味方が強化カードを使用時、1ターンの間、ダメージ量、シールド獲得量、治癒量が20%増加",
-        "name": "量子コレクター"
+        "description": "When an ally uses a Enhancement Card, increase damage, shield gain, and heal by 20% for 1 turn",
+        "name": "Quantum Collector"
       },
       "revelations_of_futility": {
-        "description": "攻撃カード使用時、固定シールド20%（各ターン10回）",
-        "name": "虚無の啓示録"
+        "description": "20% fixed shield when using attack cards (10 times per turn)",
+        "name": "Revelations of Futility"
       },
       "rune_chord": {
-        "description": "ターン終了時、保存したカードがある場合、固定シールド60%",
-        "name": "ルーンコード"
+        "description": "At the end of your turn, if you have a saved card, a fixed shield of 60%",
+        "name": "Rune Chord"
       },
       "soul_orb": {
-        "description": "カード消滅時、敵全体に強靭度ダメージ1（各戦闘1回）",
-        "name": "魂の玉"
+        "description": "When a card is destroyed, deal 1 Strong Damage to all enemies (once per battle)",
+        "name": "Soul Orb"
       },
       "source_of_the_forbidden": {
-        "description": "攻撃を受けた時、攻撃者に脆弱、弱体化、損傷のうち、ランダムで1個付与（各ターン3回）",
-        "name": "禁忌の根源"
+        "description": "When being attacked, randomly deal 1 of the Attacker's Vulnerability, Impair, and Damage (3 per turn)",
+        "name": "Source of the Forbidden"
       },
       "sphere_of_randomness": {
-        "description": "最大HP+10%。戦闘開始時、アクションポイント1獲得、ドロー1",
-        "name": "乱数の玉"
+        "description": "+10% Max HP. Gain 1 Action Point and 1 Draw at the start of the fight",
+        "name": "Sphere of Randomness"
       },
       "superconductive_protein": {
-        "description": "戦闘開始時、手札のカード1枚が1ターンの間、コスト0に変更",
-        "name": "超伝導タンパク質"
+        "description": "At the start of battle, change 1 card in hand to cost 0 for 1 turn",
+        "name": "Superconductive Protein"
       },
       "the_famished_ones_belly": {
-        "description": "カード消滅時、ダメージ量+25%、回復5%（各戦闘1回）",
-        "name": "飢えた者の腹"
+        "description": "When the card is destroyed, the damage amount is +25%, and healing is 5% (once per battle)",
+        "name": "The Famished One's Belly"
       },
       "the_golden_rule": {
-        "description": "ダメージ量+20%、シールド 獲得量+20%",
-        "name": "黄金律"
+        "description": "+20% Damage, +20% Shield Acquisition",
+        "name": "The Golden Rule"
       },
       "time_regulator": {
-        "description": "装備している戦闘員がひらめき発動",
-        "name": "時間調整器"
+        "description": "Activate Equipped Combatant Inspiration",
+        "name": "Time Regulator"
       },
       "title": "Pendant",
       "torch_that_should_not_be_extinguished": {
-        "description": "シールド所持中にターン開始時、固定シールド80%",
-        "name": "消えてはならない灯"
+        "description": "Fixed Shield 80% at start of turn while having a shield",
+        "name": "Torch That Should Not Be Extinguished"
       },
       "unconfirmed_recovery_ampule": {
-        "description": "味方が禁忌カード使用時、最大HPの3%回復、固定シールド80%",
-        "name": "未確認アンプル"
+        "description": "When an ally uses a contraindication card, they regain 3% of their max HP and 80% of their fixed shield",
+        "name": "Unconfirmed Recovery Ampule"
       },
       "verdant_day": {
-        "description": "奇数ターンに攻撃力+8%、防御力+12%",
-        "name": "深緑の昼"
+        "description": "+8% Atk and +12% Def on Odd Turns",
+        "name": "Verdant Day"
       },
       "verdant_night": {
-        "description": "偶数ターンに攻撃力+12%、防御力+8%",
-        "name": "深緑の夜"
+        "description": "+12% Atk and +8% Def on even turns",
+        "name": "Verdant Night"
       },
       "verdant_shackles": {
-        "description": "攻撃力+12%、防御力+12%",
-        "name": "深緑の羈絆"
+        "description": "+12% Atk, +12% Def",
+        "name": "Verdant Shackles"
       },
       "vladeus_reactor": {
-        "description": "強化カード使用時、ダメージ減少1",
-        "name": "ヴィアデウス原子炉"
+        "description": "Damage Reduction 1 when using Reinforcement Cards",
+        "name": "Vladeus Reactor"
       },
       "voracious_swarm": {
-        "description": "ダメージを受けると攻撃者に苦痛4",
-        "name": "捕食する群体"
+        "description": "Pain the Attacker when taking damage 4",
+        "name": "Voracious Swarm"
       },
       "water_drops_of_the_goddess": {
-        "description": "戦闘開始時、セーブ１",
-        "name": "女神の雫"
+        "description": "At the start of the fight, Save 1",
+        "name": "Water Drops of the Goddess"
       }
     },
     "rarity": {
@@ -458,236 +458,236 @@
     "weapon": {
       "title": "Weapon",
       "obsidian_sword": {
-        "description": "ダメージ量12%増加",
-        "name": "黒曜石の剣"
+        "description": "Damage increased by 12%",
+        "name": "Obsidian Sword"
       },
       "gastronomicon": {
-        "description": "コスト2以上の攻撃カードを使用時、対象に苦痛3",
-        "name": "ガストロノミコン"
+        "description": "Pain On Target When Using Attack Cards Costing 2 or More 3",
+        "name": "Gastronomicon"
       },
       "m85_military_grenade": {
-        "description": "強化カード使用時、敵全体固定ダメージ150%",
-        "name": "M85軍用手榴弾"
+        "description": "When using a Reinforcement Card, all enemies deal 150% fixed damage",
+        "name": "M85 Military Grenade"
       },
       "big_game_hunter": {
-        "description": "コスト2以上の攻撃カードを使用時、対象に苦痛3",
-        "name": "ガストロノミコン"
+        "description": "For each fight, increase the strength damage of the first attack card used by 100%",
+        "name": "Big Game Hunter"
       },
       "torch_of_wrath": {
-        "description": "戦闘開始時、ランダムな敵に標識2",
-        "name": "お怒りの松明"
+        "description": "At the start of the fight, target a random enemy for Signal 2",
+        "name": "Torch of Wrath"
       },
       "bone_cutter": {
-        "description": "各戦闘で、最初に使用する攻撃カードの強靭度ダメージ100%増加",
-        "name": "大物狩人"
+        "description": "Damage +30% when hitting targets with Impair",
+        "name": "Bone Cutter"
       },
       "flashbang": {
-        "description": "戦闘開始時、ランダムな敵に弱体化3",
-        "name": "閃光弾"
+        "description": "At the start of the fight, Impair against a random enemy 3",
+        "name": "Flashbang"
       },
       "command_108": {
-        "description": "攻撃カードのダメージ量40%増加（各戦闘1回）",
-        "name": "命令：108号"
+        "description": "Increase attack card damage by 40% (1 per battle)",
+        "name": "Command 108"
       },
       "the_fading_flower_of_life": {
-        "description": "最大HPの場合、ダメージ量+40%",
-        "name": "枯れた生命の花"
+        "description": "Damage +40% for Max Health",
+        "name": "The Fading Flower of Life"
       },
       "crimson_sword": {
-        "description": "ターゲッティング攻撃カードでダメージを与えた対象に、苦痛3（各ターン1回）",
-        "name": "赤い剣"
+        "description": "Deal 3 Pain (once per turn) to targets that deal damage with Targeting Attack Cards",
+        "name": "Crimson Sword"
       },
       "second_method": {
-        "description": "追加攻撃ダメージ量+35%",
-        "name": "第2の手段"
+        "description": "+35% Extra Attack Damage",
+        "name": "Second Method"
       },
       "sneering_dagger": {
-        "description": "敵を倒した時、敵全体に脆弱2",
-        "name": "嘲笑う短剣"
+        "description": "Vulnerable to All Enemies when Defeating an Enemy 2",
+        "name": "Sneering Dagger"
       },
       "rfs_17": {
-        "description": "コストが０の攻撃カードの会心率+10％",
+        "description": "Attack Cards with 0 Cost have +10% Heart Rate",
         "name": "RFS-17"
       },
       "mountain_of_corpses": {
-        "description": "攻撃カードのダメージ量25%増加（各ターン1回）",
-        "name": "屍山血海"
+        "description": "Increase Attack Card damage by 25% (once per turn)",
+        "name": "Mountain of Corpses"
       },
       "intellect_of_discord": {
-        "description": "攻撃力+18%。大破時、味方のストレス1減少",
-        "name": "混沌の指摘"
+        "description": "+18% Atk. Reduce allied stress by 1 when wrecking",
+        "name": "Intellect of Discord"
       },
       "tentacles_of_chaos": {
-        "description": "味方の攻撃力+8%。撃破時、ストレスが高い戦闘員のストレス2減少",
-        "name": "混沌した時代の触手"
+        "description": "Allies get +8% Attack. When defeating, stressful fighters get 2 less stress",
+        "name": "Tentacles of Chaos"
       },
       "steelers_dagger": {
-        "description": "敵を倒すと5～10クレジット獲得（各戦闘1回）",
-        "name": "ステラーの短刀"
+        "description": "Earn 5-10 Credits for defeating an enemy (1 per battle)",
+        "name": "Steeler's Dagger"
       },
       "dull_bone_blade": {
-        "description": "攻撃力10%、会心率-5%",
-        "name": "鋭い骨刀"
+        "description": "10% ATK, -5% heart rate",
+        "name": "Dull Bone Blade"
       },
       "natures_hostility": {
-        "description": "敵を倒した時、敵全体に固定ダメージ200%",
-        "name": "自然の敵意"
+        "description": "Deal 200% fixed damage to all enemies when you defeat them",
+        "name": "Nature's Hostility"
       },
       "mutated_claws": {
-        "description": "状態異常、呪いカードのドロー時、1ターンの間ダメージ量+15%",
-        "name": "変異した爪"
+        "description": "+15% Damage for 1 turn when Drawing Abnormal Condition or Curse Cards",
+        "name": "Mutated Claws"
       },
       "executioners_edge": {
-        "description": "最大HPの50%以下の対象へのダメージ量35%増加",
-        "name": "処刑者の刃"
+        "description": "Damage to targets with less than 50% of their max HP +35%",
+        "name": "Executioner's Edge"
       },
       "ritual_dagger": {
-        "description": "敵を倒すと攻撃カードのダメージ量+25%（最大2回）",
-        "name": "祭礼用の短剣"
+        "description": "+25% Attack Card damage when killing an enemy (max 2)",
+        "name": "Ritual Dagger"
       },
       "esophagus_of_madness": {
-        "description": "苦痛状態の対象へのダメージ量20%増加",
-        "name": "凶器の咽頭"
+        "description": "+20% damage to targets with pain",
+        "name": "Esophagus of Madness"
       },
       "dark_grips_claws": {
-        "description": "全体攻撃のダメージ量25%増加",
-        "name": "闇の掌中の爪"
+        "description": "Overall Attack Damage +25%",
+        "name": "Dark Grips Claws"
       },
       "mutated_order": {
-        "description": "行動前の対象へのダメージ量25%増加",
-        "name": "変異の権能"
+        "description": "+25% damage to targets before action",
+        "name": "Power of Mutation"
       },
       "bug_killer": {
-        "description": "攻撃カード使用時、対象に苦痛1（各ターン1回）。インベーダーとの戦闘の場合、苦痛2追加",
-        "name": "バグキラー"
+        "description": "When using an Attack Card, the target gets 1 Pain (once per turn). Adds 2 Pain when fighting Invaders",
+        "name": "Bug Killer"
       },
       "violet_butterflys_whip": {
-        "description": "コスト1以下の攻撃カードのダメージ量20%増加",
-        "name": "紫蝶のムチ"
+        "description": "Increase damage of attack cards costing 1 or less by 20%",
+        "name": "Violet Butterfly's Whip"
       },
       "abyssal_bug_tooth": {
-        "description": "会心攻撃時、対象に50%の確率で苦痛1",
-        "name": "奈落の虫の歯"
+        "description": "When attacking Consciousness, 50% chance to cause Pain to the target 1",
+        "name": "Abyssal Bug Tooth"
       },
       "the_destruction_of_erysichthon": {
-        "description": "攻撃カード使用時、5%の確率でヒット数1回追加",
-        "name": "エリュシクトーンの破滅"
+        "description": "5% chance to add 1 hit when using Attack Cards",
+        "name": "The Destruction of Erysichthon"
       },
       "formicas_perfect_spear": {
-        "description": "敵数に応じてダメージ量7%増加。全体攻撃のダメージ量10%増加",
-        "name": "完全なフォルミカの槍"
+        "description": "Damage increased by 7% based on number of enemies. Overall Attack Damage +10%",
+        "name": "Formica's Perfect Spear"
       },
       "lepidolas_whip": {
-        "description": "コスト1以下の攻撃カードのダメージ量25%増加",
-        "name": "レピドラのムチ"
+        "description": "Increase damage of attack cards costing less than 1 by 25%",
+        "name": "Lepidola's Whip"
       },
       "twin_swords_of_greater_and_lesser_evil": {
-        "description": "大破状態の対象へのダメージ量30%増加",
-        "name": "大顎と小顎の両手剣"
+        "description": "Damage dealt to targets in Battered state +30%",
+        "name": "Twin Swords of Greater and Lesser Evil"
       },
       "shell_bug_horn": {
-        "description": "会心ダメージ+12%",
-        "name": "甲殻虫の角"
+        "description": "+12% Lucky Hit Damage",
+        "name": "Shell Bug Horn"
       },
       "dream_of_the_devoured": {
-        "description": "カード消滅時、次に使用するカードのダメージ量25%増加（最大1回重複）",
-        "name": "喰われた者の夢"
+        "description": "When the card disappears, the damage amount of the next card used is increased by 25% (up to 1 duplicate)",
+        "name": "Dream of the Devoured"
       },
       "unexploded_plasma_bomb": {
-        "description": "カード消滅時、ランダムな敵に固定ダメージ40%",
-        "name": "不発したプラズマボンバー"
+        "description": "Deals 40% flat damage to a random enemy when the card is destroyed",
+        "name": "Unexploded Plasma Bomb"
       },
       "blood_giant_claw": {
-        "description": "敵数に応じてダメージ量6%増加",
-        "name": "ブラッドジャイアントクロー"
+        "description": "Damage increased by 6% depending on the number of enemies",
+        "name": "Blood Giant Claw"
       },
       "void_of_the_devourer": {
-        "description": "カード消滅時、次に使用するカードのダメージ量35%増加（最大1回重複）",
-        "name": "吞み込んだ者の空虚"
+        "description": "When the card disappears, the damage amount of the next card used is increased by 35% (up to 1 duplicate)",
+        "name": "Void of the Devourer"
       },
       "foggy_crystal_ball": {
-        "description": "コスト0の攻撃カードのダメージ量40%増加",
-        "name": "霧がかかった水晶玉"
+        "description": "Cost 0 attack card damage +40%",
+        "name": "Foggy Crystal Ball"
       },
       "formicas_broken_spear": {
-        "description": "敵数に応じてダメージ量6%増加",
-        "name": "破損したフォルミカの槍"
+        "description": "Damage increased by 6% depending on the number of enemies",
+        "name": "Broken Formica's Spear"
       },
       "dagger_that_tricked_the_shadow": {
-        "description": "会心ダメージ+12% ",
-        "name": "影を騙した短剣"
+        "description": "+12% Lucky Hit Damage",
+        "name": "Dagger That Tricked the Shadow"
       },
       "sword_reflected_in_the_lake": {
-        "description": "手札のカードが6枚以上の場合、ダメージ量25%増加",
-        "name": "湖に捧げた剣"
+        "description": "+25% damage if 6 or more cards in hand",
+        "name": "Sword Reflected in the Lake"
       },
       "sun_setting_bow": {
-        "description": "コストが2以上の攻撃カードはダメージ量30%増加（各ターン1回）",
-        "name": "太陽を撃ち落とした弓"
+        "description": "Attack cards with a cost of 2 or more deal 30% more damage (once per turn)",
+        "name": "Sun Setting Bow"
       },
       "branch_of_the_sacred_tree": {
-        "description": "治癒または回復時、治癒量の35%分、敵全体に固定ダメージ",
-        "name": "神木の枝"
+        "description": "When healed or healed, deal 35% of the healing amount as fixed damage to all enemies",
+        "name": "Branch of the Sacred Tree"
       },
       "the_flower_of_life": {
-        "description": "最大HPの場合、ダメージ量+50%",
-        "name": "生命の花"
+        "description": "Damage +50% for Max Health",
+        "name": "The Flower of Life"
       },
       "branch_of_the_evil_tree": {
-        "description": "治癒または回復時、回復量の50%分、ランダムな敵に固定ダメージ",
-        "name": "悪木の枝"
+        "description": "When healed or healed, deal 50% of the healing amount as fixed damage to a random enemy",
+        "name": "Branch of the Evil Tree"
       },
       "cavalry_of_lightning": {
-        "description": "シールド所持中の対象にダメージを与えると、次に使用する攻撃カードのダメージ量+100%",
-        "name": "電撃のランス"
+        "description": "When dealing damage to a target with a shield, the next attack card used will deal +100% of the damage",
+        "name": "Lance of Lightning"
       },
       "branch_of_eternity": {
-        "description": "治癒または回復時、回復量の50%分、敵全体に固定ダメージ",
-        "name": "永劫の枝"
+        "description": "When healed or recovered, deal 50% of the healing amount as fixed damage to all enemies",
+        "name": "Branch of Eternity"
       },
       "rune_lance": {
-        "description": "アクションポイントを5以上使用時、ダメージ量、シールド獲得量、治癒量+25%(各戦闘1回)",
-        "name": "ルーンランス"
+        "description": "When using 5 or more Action Points, Damage, Shield Acquisition, and Healing +25% (once per fight)",
+        "name": "Rune Lance"
       },
       "flame_of_purification": {
-        "description": "カードが消滅するとき、ランダムな敵に報復1（各ターン2回）",
-        "name": "浄化の炎"
+        "description": "Retaliate 1 against a random enemy when the card is extinguished (2 times per turn)",
+        "name": "Flame of Purification"
       },
       "trumpet_of_revelation": {
-        "description": "カードでドロー時、1ターンの間、ダメージ量+20%（各ターン2回）",
-        "name": "啓示のラッパ"
+        "description": "When drawing with a card, +20% damage for 1 turn (2 times each turn)",
+        "name": "Trumpet of Revelation"
       },
       "singing_sword": {
-        "description": "会心ダメージ+12％",
-        "name": "影を騙した短剣"
+        "description": "+15% Atk. If you deal damage to a target with a shield, retaliate against the target 1",
+        "name": "Singing Sword"
       },
       "radiant_orb": {
-        "description": "シールド所持中の対象にダメージ量25%",
-        "name": "光り輝く宝珠"
+        "description": "25% Damage to Targets with Shields",
+        "name": "Radiant Orb"
       },
       "overcurrent_shock_unit": {
-        "description": "能力でドロー時、ランダムな敵に固定ダメージ50%",
-        "name": "過電流ショッカー"
+        "description": "Deals 50% fixed damage to a random enemy when drawing with ability",
+        "name": "Overcurrent Shock Unit"
       },
       "mutant_predator_spike": {
-        "description": "手札のカードが4枚以上の場合、ダメージ量30%増加",
-        "name": "変種捕食体の突起"
+        "description": "Damage +30% if 4 or more cards in hand",
+        "name": "Mutant Predator Spike"
       },
       "w_52_dopamine_injector": {
-        "description": "最大HPの場合、ダメージ量+50％",
-        "name": "生命の花"
+        "description": "When drawing with abilities, increase damage by 20% for 1 turn (2 times each turn)",
+        "name": "W-52 Dopamine Injector"
       },
       "mutagenic_wave_amplifier": {
-        "description": "状態異常、呪いカードのドロー時、1ターンの間、ダメージ量+12%",
-        "name": "変異波動増幅器"
+        "description": "Damage +12% for 1 turn when Drawing Abnormal Condition or Curse Cards",
+        "name": "Mutagenic Wave Amplifier"
       },
       "replica_core": {
-        "description": "シールド所持中の対象にダメージを与えると、次に使用する攻撃カードのダメージ量+100%",
-        "name": "電撃のランス"
+        "description": "When you draw your card with an ability, that card gets +50% damage for 1 turn",
+        "name": "Replica Core"
       },
       "chimeranite": {
-        "description": "治癒または回復時、回復量の50％分、敵全体に固定ダメージ",
-        "name": "永劫の枝"
+        "description": "When drawing with abilities, increase the damage of your attack cards by 35% for 1 turn (once per turn)",
+        "name": "Chimeranite"
       }
     }
   }

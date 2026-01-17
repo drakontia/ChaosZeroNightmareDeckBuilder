@@ -1,5 +1,73 @@
 {
   "cards": {
+    "narja_starting_1": {
+      "name": "NA: Attack Response",
+      "descriptions": {
+        "0": "100% Defense Dependent Damage"
+      }
+    },
+    "narja_starting_2": {
+      "name": "NA: Protective response",
+      "descriptions": {
+        "0": "Healing 100%"
+      }
+    },
+    "narja_starting_3": {
+      "name": "NA: Protective response",
+      "descriptions": {
+        "0": "Healing 100%"
+      }
+    },
+    "narja_starting_4": {
+      "name": "Flail of Hunger",
+      "descriptions": {
+        "0": "3x 30% Armor Dependent Damage\nInduction: Devour 4",
+        "1": "4x 30% Armor Dependent Damage\nInduction: Devour 6",
+        "2": "2x 30% Armor Dependent Damage\nAt the start of your turn, if you triggered Devour 3 or more times in the previous turn, move it to your hand\nInduction: Devour 1",
+        "3": "3x 50% Defense Dependent Damage\nAdd 1 hit for every 4 Devours you have (max 3)",
+        "4": "Reduce Gluttony by up to 5\n+40% damage for the next attack card used for those minutes\n5 If reduced, predate 3",
+        "5": "Shield 60%\nReduce Gluttony by up to 3\nRepeat according to the number"
+      }
+    },
+    "narja_hirameki_1": {
+      "name": "Limitless Hunger",
+      "descriptions": {
+        "0": "The next 2 Gluttony activations reduce the cost of a random card in your hand by 1 for 1 turn",
+        "1": "Devour 3\nThe next 2 Gluttony activations reduce the cost of a random card in your hand by 1 for 1 turn",
+        "2": "2 random cards in hand cost 1 less for 1 turn",
+        "3": "When Gluttony is triggered 3 times per turn, the cost is reduced by 1 until you use a random card in your hand (once per turn)",
+        "4": "+100% Defense Dependent Damage for 1 turn",
+        "5": "Devour 7\n+40% Damage to the next Perfect Diet whenever Devour is activated for 1 turn"
+      }
+    },
+    "narja_hirameki_2": {
+      "name": "Active Controls",
+      "descriptions": {
+        "0": "If Devour is Below 6, Devour 6\nAbove 6, Predate 2",
+        "1": "If Devour is Below 6, Devour 9\nPredatory 6 + 3",
+        "2": "Move to hand if full meal is in pile\nIf in a graveyard, Morale 3 for 1 turn",
+        "3": "Devour for 2 turns whenever target's action count decreases 1",
+        "4": "Devour 10\nSelect an attack card\nWhenever that card moves into your hand, Predate 1",
+        "5": "Devour 1 whenever a Basic Attack card hits\n+60% Damage to Basic Attack Cards"
+      }
+    },
+    "narja_hirameki_3": {
+      "name": "Realm of Devour",
+      "descriptions": {
+        "0": "Deal 100% Defense Dependent Damage to all enemies\nThe target will receive +100% strength damage until the next major destruction",
+        "1": "Deal 100% Defense Dependent Damage to all enemies\nThe target will receive +100% strength damage until the next Haymaker, Haymaker, and Devour 3",
+        "2": "Deal 100% Defense Dependent Damage to all enemies\nTarget gets +100% Defense Dependent Damage for 2 turns",
+        "3": "Deal 150% Defense Dependent Damage to all enemies\n40% heal on next 5 hits",
+        "4": "Deal 320% Defense Dependent Damage to all enemies\nActivate again if there is Devour and Predation",
+        "5": "200% healing with every full meal"
+      }
+    },
+    "narja_hirameki_4": {
+      "name": "Complete Diet",
+      "descriptions": {
+        "0": "When devour is reduced, cost is reduced by 1 until use, and healing amount is +30% (up to 10)\nDeal 160% Defense Dependent Damage to all enemies\nHealing 100%\nPredatory 4"
+      }
+    },
     "sereniel_starting_1": {
       "name": "Pulse Fire",
       "descriptions": {
@@ -1701,743 +1769,687 @@
       }
     },
     "shared_01": {
-      "name": "加虐性",
+      "name": "Sadism",
       "descriptions": {
-        "0": "敵全体に脆弱1\n手札のランダムな攻撃カード1枚が1ターンの間コスト1減少"
+        "0": "All Enemies Fragile1\nHand RandomAttackCard1 piece for 1 TurnCost1 Decrease"
       }
     },
     "shared_02": {
-      "name": "睡眠の実",
+      "name": "Sleep Fruit",
       "descriptions": {
-        "0": "ランダムな戦闘員のストレスを5減少"
+        "0": "Reduce Random Combatant's Stress by 5"
       }
     },
     "shared_03": {
-      "name": "戦闘準備",
+      "name": "Battle Preparation",
       "descriptions": {
-        "0": "ランダムなデランショップカード1枚生成\n1ターンの間、そのカードのコスト0に変更"
+        "0": "Generate 1 Random Deran Shop Card\nChange the cost of that card to 0 for 1 turn"
       }
     },
     "shared_06": {
-      "name": "超再生",
+      "name": "Super Regeneration",
       "descriptions": {
-        "0": "次のターン開始時に治癒300%\n自分には脆弱1"
+        "0": "300% heal at start of next turn\nVulnerable to Me 1"
       }
     },
     "shared_07": {
       "name": "HA-00",
       "descriptions": {
-        "0": "ランダムな敵にダメージ100%×4\nヒットした対象に脆弱1または、弱体化1"
+        "0": "Deal 100% Damage to Random Enemy x4\nVulnerable 1 or Impaired 1"
       }
     },
     "shared_08": {
-      "name": "圧倒",
+      "name": "Overwhelm",
       "descriptions": {
-        "0": "敵全体にダメージ100%×3\n山札に過負荷を2枚生成"
+        "0": "All Enemies Damage100%×3\nDeck Overload 2 pieceGenerate"
       }
     },
     "shared_09": {
-      "name": "トゲの盾",
+      "name": "Thorn Shield",
       "descriptions": {
-        "0": "敵全体に防御依存ダメージ100%\n破壊：ヒット数1回追加"
+        "0": "Deal 100% Defense Dependent Damage to all enemies\nSabotage: 1 hit added"
       }
     },
     "shared_10": {
-      "name": "重い強打",
+      "name": "Heavy Bludgeoning",
       "descriptions": {
-        "0": "ダメージ200%\n脆弱2\n弱体化2"
+        "0": "Damage200%\nFragile2\nWeakness2"
       }
     },
     "shared_11": {
-      "name": "渾身",
+      "name": "Full body",
       "descriptions": {
-        "0": "防御依存ダメージ100%×2\n決意の数に応じてダメージ量+20%"
+        "0": "100% Defense Dmg x2\nDamage +20% depending on the number of Resolutions"
       }
     },
     "shared_12": {
-      "name": "激怒",
+      "name": "Anger",
       "descriptions": {
-        "0": "ダメージ300%\n手札に他の戦闘員のカードがない場合、このカードのコスト2減少"
+        "0": "300% DMG\nDecrease the cost of this card by 2 if there is no other combatant card in hand"
       }
     },
     "shared_13": {
-      "name": "タックル",
+      "name": "Tackle",
       "descriptions": {
-        "0": "防御既存ダメージ400%\nHPが最大の場合、このカードのコストを1減少"
+        "0": "400% Defense Existing Damage\nDecrease the cost of this card by 1 if your health is at its maximum"
       }
     },
     "shared_14": {
-      "name": "守りの叫び",
+      "name": "Shout for Defence",
       "descriptions": {
-        "0": "シールド130%\nシールドがない場合シールド100%追加"
+        "0": "130% Shield\n100% more shields if shields are not present"
       }
     },
     "shared_15": {
-      "name": "堅個だ",
+      "name": "The sturdy one.",
       "descriptions": {
-        "0": "シールド150%\n連続：次のターン開始時固定シールド150%"
+        "0": "150% Shield\nConsecutive: 150% fixed shield at start of next turn"
       }
     },
     "shared_16": {
-      "name": "執拗な忍耐",
+      "name": "Relentless patience",
       "descriptions": {
-        "0": "シールド350%"
+        "0": "Shield 350%"
       }
     },
     "shared_17": {
-      "name": "魔力暴走",
+      "name": "Mana Runaway",
       "descriptions": {
-        "0": "免疫2"
+        "0": "Immunity2"
       }
     },
     "shared_18": {
       "name": "肉弾戦",
       "descriptions": {
-        "0": "防御依存ダメージ200%\nクリスタライズ2"
+        "0": "200% Defense Dependent Damage\nCrystalize 2"
       }
     },
     "shared_19": {
-      "name": "神聖な一撃",
+      "name": "Sacred Shot",
       "descriptions": {
-        "0": "ダメージ200%\n強靭度ダメージ2"
+        "0": "200% DMG\nStrongness Damage 2"
       }
     },
     "shared_20": {
-      "name": "エネルギーバリア",
+      "name": "Energy Barrier",
       "descriptions": {
-        "0": "シールド100%\nアクションポイント1獲得"
+        "0": "100% shield\nEarn 1 Action Point"
       }
     },
     "shared_21": {
-      "name": "カモフラージュ",
+      "name": "CAMOUFLAGE",
       "descriptions": {
-        "0": "回避1\n次のターンドロー2"
+        "0": "Parry 1\nNext Turndraw 2"
       }
     },
     "shared_22": {
-      "name": "鉄壁",
+      "name": "Iron Wall",
       "descriptions": {
-        "0": "決意1\n不屈1"
+        "0": "Determination 1\nIndomitable 1"
       }
     },
     "shared_23": {
-      "name": "踏みにじる",
+      "name": "Trample",
       "descriptions": {
-        "0": "ダメージ150%×2\nドロー1"
+        "0": "150% DMG x 2\nDraw 1"
       }
     },
     "shared_24": {
-      "name": "ケンカ好き",
+      "name": "Quarrelsome",
       "descriptions": {
-        "0": "手札に攻撃カードがない場合ドロー2"
+        "0": "NO attack cards IN hand draw 2"
       }
     },
     "shared_25": {
-      "name": "殻形成細胞",
+      "name": "Shell forming cells",
       "descriptions": {
-        "0": "シールド70%\n手札のカードに応じてシールド+25%"
+        "0": "Shield 70%\nShield +25% depending on the card in hand"
       }
     },
     "shared_26": {
-      "name": "攻撃性の突然変異",
+      "name": "Aggressive mutations",
       "descriptions": {
-        "0": "自分の攻撃カードドロー1\n1ターンの間、そのカードのダメージ量+50%"
+        "0": "Your Attack Card Draw 1\nThat card gets +50% damage for 1 turn"
       }
     },
     "shared_27": {
-      "name": "とっておきの一発",
+      "name": "Precious shot",
       "descriptions": {
-        "0": "ダメージ100%\n保存：ダメージ量を＋50%"
+        "0": "100% DMG\nSave: +50% damage"
       }
     },
     "shared_28": {
-      "name": "跳躍攻撃",
+      "name": "Jumping Attack",
       "descriptions": {
-        "0": "ダメージ200%\nインスピレーション:コスト1減少,ドロー1"
+        "0": "200% DMG\nInspiration: Cost 1 Reduction, Draw 1"
       }
     },
     "shared_29": {
-      "name": "頭蓋骨強打",
+      "name": "Skull Bludgeoning",
       "descriptions": {
-        "0": "ダメージ200%\n弱点攻撃：ダメージ量+50%"
+        "0": "200% DMG\nVulnerable Attacks: +50% Damage",
+        "1": "ダメージ200%\n弱点攻撃：ダメージ量+50%\n行動カウント2増加"
       }
     },
     "shared_30": {
-      "name": "連続攻撃",
+      "name": "Streak",
       "descriptions": {
-        "0": "ダメージ50%×3"
+        "0": "50% Damage x3"
       }
     },
     "shared_31": {
-      "name": "破滅",
+      "name": "Doom",
       "descriptions": {
-        "0": "ダメージ300%\n破棄1"
+        "0": "300% DMG\nDiscard 1"
       }
     },
     "shared_32": {
-      "name": "衝撃",
+      "name": "Impact",
       "descriptions": {
-        "0": "敵全体にダメージ200%\n脆弱2"
+        "0": "Deal 200% Damage to all enemies\nFragile 2"
       }
     },
     "shared_33": {
-      "name": "交渉",
+      "name": "Negotiation.",
       "descriptions": {
-        "0": "士気2\n敵全体に士気2"
+        "0": "Morale 2\nMorale on All Enemies 2"
       }
     },
     "shared_34": {
-      "name": "酸性ガス",
+      "name": "$-Acidic gas",
       "descriptions": {
-        "0": "敵全体に損傷2"
+        "0": "Damage All Enemies 2"
       }
     },
     "shared_35": {
-      "name": "覚悟",
+      "name": "Prepare",
       "descriptions": {
-        "0": "ターン開始時、手札のランダムな攻撃カードを1枚、1ターンの間ダメージ量を+50%"
+        "0": "At the start of your turn, get 1 random attack card in your hand +50% damage for 1 turn"
       }
     },
     "shared_36": {
-      "name": "スピード連射",
+      "name": "Speeding Fire",
       "descriptions": {
-        "0": "ダメージ80%\nドロー1"
+        "0": "80% damage\nDraw 1",
+        "1": "80% damage\nDraw 1\nTarget: Mark 1",
+        "2": "80% damage\nDraw 1\nTarget: Weaken 1",
+        "3": "80% damage\nDraw 1\nTarget: Pain 2"
       }
     },
     "shared_37": {
-      "name": "機動射撃",
+      "name": "Mobile Shooting",
       "descriptions": {
-        "0": "敵全体にダメー200%"
+        "0": "Damage 200% to all enemies",
+        "1": "Damage 200% to all enemies\nNext turn, Action Point 1",
+        "2": "Damage 200% to all enemies\nNext turn, Draw 1",
+        "3": "Damage 200% to all enemies\nAll enemies Pain 2",
+        "4": "Damage 200% to all enemies\nAll enemies Mark 2"
       }
     },
     "shared_38": {
-      "name": "奇襲",
+      "name": "Ambush",
       "descriptions": {
-        "0": "ダメージ80%\n大破時このカードを墓地から手札に移動"
+        "0": "80% damage\nMove this card from the graveyard to your hand during the Wreck",
+        "1": "80% damage\nMove this card from the graveyard to your hand during the Wreck\nTarget: Pain 2"
       }
     },
     "shared_39": {
-      "name": "必殺の射撃",
+      "name": "Special Shooting",
       "descriptions": {
-        "0": "ダメージ350%\n次のターン開始時、ドロー1"
+        "0": "350% DMG\nAt the start of your next turn, Draw 1",
+        "1": "350% damage\nAt the start of your next turn, Draw 1\nTarget: Mark 2"
       }
     },
     "shared_40": {
-      "name": "戦術対応",
+      "name": "Tactical Response",
       "descriptions": {
-        "0": "シールド保持中の対象にダメージ量15%増加"
+        "0": "Damage +15% to subjects with shields"
       }
     },
     "shared_41": {
-      "name": "精密照準",
+      "name": "Precise Aim",
       "descriptions": {
-        "0": "ダメージ120%\nドロー1\n手札のカードを1枚選択、そのカードを山札の一番上に移動"
+        "0": "120% DMG\nDraw 1\nSelect a card in your hand and move it to the top of the deck",
+        "1": "120% damage\nDraw 1\nSelect a card in your hand and move it to the top of the deck\nTarget: Weaken 1"
       }
     },
     "shared_42": {
-      "name": "照準射撃",
+      "name": "Targeting",
       "descriptions": {
-        "0": "ダメージ400%\nチャージ：クレジット20獲得"
+        "0": "400% DMG\nCharge: Earn 20 Credits",
+        "1": "400% damage\nCharge: Earn 20 Credits\nAction Point 1"
       }
     },
     "shared_43": {
-      "name": "筋肉強化進化体",
+      "name": "Muscle Enhancement Evolution",
       "descriptions": {
-        "0": "ダメージ80%×2\nインスピレーション：ヒット数2回追加"
+        "0": "80% Damage x2\nInspiration: Added 2 hits"
       }
     },
     "shared_44": {
-      "name": "感染性ウイルス",
+      "name": "Infectious virus",
       "descriptions": {
-        "0": "ダメージ120%×1\n感応：ヒット数1回追加（最大5重複）"
+        "0": "120% DMG x 1\nInduction: 1 hit added (up to 5 duplicates)"
       }
     },
     "shared_45": {
-      "name": "攻撃せよ！",
+      "name": "Viper 34.",
       "descriptions": {
-        "0": "山札の攻撃カードを1枚選択、そのカードを手札に移動"
+        "0": "Select a stack attack card and move it to your hand"
       }
     },
     "shared_46": {
-      "name": "集結",
+      "name": "Assemble",
       "descriptions": {
-        "0": "ドロー1\n敵全体の行動カウントを3追加"
+        "0": "Draw 1\nAdd 3 Action Counts for all enemies"
       }
     },
     "shared_47": {
-      "name": "反撃準備",
+      "name": "Prepare to Fight Back",
       "descriptions": {
-        "0": "エゴスキルスロットを他のエゴスキルに変更"
+        "0": "Change Ego Skill Slot to another Ego Skill"
       }
     },
     "shared_48": {
-      "name": "懺悔",
+      "name": "Confession",
       "descriptions": {
-        "0": "士気1減少\n決意1減少"
+        "0": "Morale 1 Decrease\nResolve 1 Decrease"
       }
     },
     "shared_49": {
-      "name": "戦略の再構成",
+      "name": "Strategy Reconfiguration",
       "descriptions": {
-        "0": "次に使うエゴスキルのコストが1減少"
+        "0": "Reduce the cost of the next Ego Skill by 1"
       }
     },
     "shared_50": {
-      "name": "解消の風",
+      "name": "Wind of Dissolution",
       "descriptions": {
-        "0": "敵全体に苦痛2\n手札の状態異常、呪いカードを2枚まで選択して消滅"
+        "0": "Pain all enemies 2\nThe status of the hand is abnormal, select up to 2 curse cards to disappear"
       }
     },
     "shared_51": {
-      "name": "お金でメンタルヘルス",
+      "name": "Mental health with money",
       "descriptions": {
-        "0": "治癒200%\nHPが最大の場合、クレジットを30獲得"
+        "0": "Healing 200%\nIf Max Health, Earn 30 Credits"
       }
     },
     "shared_52": {
-      "name": "救急キット",
+      "name": "First-aid? A bandage?",
       "descriptions": {
-        "0": "治癒250%"
+        "0": "Healing250%"
       }
     },
     "shared_53": {
-      "name": "直感点火",
+      "name": "Intuitive Ignition",
       "descriptions": {
-        "0": "カード生成時、ランダムでひらめき付与（各ターン1回）"
+        "0": "Randomly inflicts Inspire on card generation (once per turn)"
       }
     },
     "shared_54": {
-      "name": "栄光の抵抗",
+      "name": "Glorious Resistance",
       "descriptions": {
-        "0": "ターン開始時、味方に最大HP10%固定ダメージ、アクションポイント1獲得"
+        "0": "At the start of your turn, deal fixed damage to allies up to 10% of their max HP and earn 1 action point"
       }
     },
     "shared_55": {
-      "name": "原子分解",
+      "name": "Atomic decomposition",
       "descriptions": {
-        "0": "敵全体貫通ダメージ230%"
+        "0": "All enemies get 230% Piercing Damage"
       }
     },
     "shared_56": {
-      "name": "空虚の放浪者",
+      "name": "Void Rogue",
       "descriptions": {
-        "0": "1ターンの間対象の行動カウントが減少しない"
+        "0": "Target action count does not decrease for 1 turn"
       }
     },
     "shared_57": {
-      "name": "再活用",
+      "name": "Repurposing",
       "descriptions": {
-        "0": "エゴポイントが2以上の場合、アクションポイントを1獲得、エゴポイントが2減少"
+        "0": "If 2 or more Ego Points, gain 1 Action Point and reduce Ego Points by 2"
       }
     },
     "shared_58": {
-      "name": "戦略の開始点",
+      "name": "Starting point of the strategy",
       "descriptions": {
-        "0": "エゴポイント2獲得"
+        "0": "Earn 2 Ego Points"
       }
     },
     "shared_59": {
-      "name": "闇の知識",
+      "name": "Knowledge of Darkness",
       "descriptions": {
-        "0": "ドロー1\nそのカードを発動"
+        "0": "Draw 1\nActivate that card"
       }
     },
     "shared_60": {
-      "name": "装備カバン",
+      "name": "Gear Bag",
       "descriptions": {
-        "0": "ドロー2"
+        "0": "Draw 2"
       }
     },
     "shared_61": {
-      "name": "再整備",
+      "name": "Refit",
       "descriptions": {
-        "0": "ドロー3"
-      }
-    },
-    "forbidden_card_2": {
-      "name": "禁忌:自由の手招き",
-      "descriptions": {
-        "0": "手札のランダムなカード1枚のコスト1減少"
-      }
-    },
-    "forbidden_card_3": {
-      "name": "禁忌:使い捨ての自我",
-      "descriptions": {
-        "0": "ドロー1、そのカードのコストに応じて、ドロー"
-      }
-    },
-    "forbidden_card_4": {
-      "name": "禁忌:虚無の導き",
-      "descriptions": {
-        "0": "能力でドロー時、治癒40％、ランダムな戦闘員のストレス1減少"
-      }
-    },
-    "forbidden_card_5": {
-      "name": "禁忌:暴力の歓喜",
-      "descriptions": {
-        "0": "ダメージ150%x4\n能力でドロー時、このカードのコスト1減少"
-      }
-    },
-    "forbidden_card_6": {
-      "name": "禁忌:憤怒の肖像",
-      "descriptions": {
-        "0": "ダメージ70%x1\n手札のカード4枚ごとにヒット数1回追加\nヒット数に応じてドロー1"
-      }
-    },
-    "forbidden_card_7": {
-      "name": "禁忌:刻まれた悪意",
-      "descriptions": {
-        "0": "ドロー1\n手札のランダムカード発動2"
-      }
-    },
-    "monster_01": {
-      "name": "恥ずかしがり屋の庭師",
-      "descriptions": {
-        "0": "ダメージ50%×4\n標識3"
-      }
-    },
-    "monster_02": {
-      "name": "鬱陶しい代父",
-      "descriptions": {
-        "0": "ダメージ50%×4\n苦痛6"
-      }
-    },
-    "monster_03": {
-      "name": "オートマタカヴァリエ",
-      "descriptions": {
-        "0": "ダメージ150%\n脆弱4"
-      }
-    },
-    "monster_04": {
-      "name": "羽の人面獣",
-      "descriptions": {
-        "0": "ランダムな敵にダメージ50%×5"
-      }
-    },
-    "monster_05": {
-      "name": "ウルブズ・ヴェイン",
-      "descriptions": {
-        "0": "敵全体にダメージ120%\n弱体化2\n損傷2"
-      }
-    },
-    "monster_06": {
-      "name": "闇の掌中",
-      "descriptions": {
-        "0": "ダメージ120%×2\n撃破：ランダムな敵にダメージ120%×2"
-      }
-    },
-    "monster_07": {
-      "name": "セブンアームズ",
-      "descriptions": {
-        "0": "ダメージ120%\n対象の行動カウントが5以上の場合、アクションポイント2獲得"
-      }
-    },
-    "monster_08": {
-      "name": "ロットンリッパー",
-      "descriptions": {
-        "0": "ダメージ160%\n行動カウント1増加"
-      }
-    },
-    "monster_09": {
-      "name": "苦痛の熾天使",
-      "descriptions": {
-        "0": "ダメージ250%\n手札にこのカードだけがある場合、コスト2減少"
-      }
-    },
-    "monster_10": {
-      "name": "ソルジャープライム",
-      "descriptions": {
-        "0": "ダメージ300%\n大破時、アクションポイント2獲得"
-      }
-    },
-    "monster_11": {
-      "name": "ビームシューター",
-      "descriptions": {
-        "0": "ダメージ350%\n対象がシールド保持中の場合、ダメージ量＋50%"
-      }
-    },
-    "monster_12": {
-      "name": "空虚な飢え",
-      "descriptions": {
-        "0": "士気2\n士気2減少"
-      }
-    },
-    "monster_13": {
-      "name": "奈落の虫",
-      "descriptions": {
-        "0": "士気1減少\n決意3減少"
-      }
-    },
-    "monster_14": {
-      "name": "冷ややかな代父",
-      "descriptions": {
-        "0": "山札のカードをしたから1枚発動\n手札のカードを1枚選択、そのカードを山札の一番下に移動"
-      }
-    },
-    "monster_15": {
-      "name": "悪霊サラマンダー",
-      "descriptions": {
-        "0": "ドロー4"
-      }
-    },
-    "monster_16": {
-      "name": "精霊フェニックス",
-      "descriptions": {
-        "0": "決意2\n減少したHPに応じて、シールド獲得"
-      }
-    },
-    "monster_17": {
-      "name": "精霊キャフォックス",
-      "descriptions": {
-        "0": "山札から1枚を選択しドロー\nそのカード1枚を手札にコピー"
-      }
-    },
-    "monster_18": {
-      "name": "トラッパー",
-      "descriptions": {
-        "0": "シールド120%、脆弱1\n対象が行動しなかった場合シールド獲得量+120%、脆弱1追加"
-      }
-    },
-    "monster_19": {
-      "name": "カルティストアービター",
-      "descriptions": {
-        "0": "シールド140%\n次のターン開始時、敵全体の行動カウント2増加"
-      }
-    },
-    "monster_20": {
-      "name": "消失の飢え",
-      "descriptions": {
-        "0": "ドロー1\n手札のカードがない場合、4追加"
-      }
-    },
-    "monster_21": {
-      "name": "スローター",
-      "descriptions": {
-        "0": "シールド200%\n獲得したシールドに応じて、敵全体にダメージ"
-      }
-    },
-    "monster_22": {
-      "name": "アルビトゥム",
-      "descriptions": {
-        "0": "受けるダメージ量-15%(各ターン1回)"
-      }
-    },
-    "monster_23": {
-      "name": "陰気な代母",
-      "descriptions": {
-        "0": "ターン終了時、ランダムな敵にダメージ200%"
-      }
-    },
-    "monster_24": {
-      "name": "悪霊デュラハン",
-      "descriptions": {
-        "0": "ターゲティング攻撃カード使用時、対象に苦痛1"
-      }
-    },
-    "monster_25": {
-      "name": "甲殻虫",
-      "descriptions": {
-        "0": "クリスタライズ5"
-      }
-    },
-    "monster_26": {
-      "name": "ドミニオン",
-      "descriptions": {
-        "0": "ターン開始時士気1"
-      }
-    },
-    "narja_starting_1": {
-      "name": "NA：攻撃反応",
-      "descriptions": {
-        "0": "防御依存ダメージ100%"
-      }
-    },
-    "narja_starting_2": {
-      "name": "NA：保護反応",
-      "descriptions": {
-        "0": "治癒100%"
-      }
-    },
-    "narja_starting_3": {
-      "name": "NA：保護反応",
-      "descriptions": {
-        "0": "治癒100%"
-      }
-    },
-    "narja_starting_4": {
-      "name": "飢餓の枷",
-      "descriptions": {
-        "0": "防御依存ダメージ30% x 3\n感応：貪食4",
-        "1": "防御依存ダメージ30% x 4\n感応：貪食6",
-        "2": "防御依存ダメージ30% x 2\nターン開始時、前のターンで貪食を3回以上発動した場合、手札へ移動\n感応：貪食1",
-        "3": "防御依存ダメージ50% x 3\n所持中の貪食4ごとにヒット1回追加(最大3回)",
-        "4": "貪食が最大5減小\nその数分、次に使用する攻撃カードのダメージ+40%\n5減小した場合、捕食3",
-        "5": "シールド60%\n貪食が最大3減小\nその数に応じて繰り返す"
-      }
-    },
-    "narja_hirameki_1": {
-      "name": "限りなき飢え",
-      "descriptions": {
-        "0": "次の2回の貪食発動時、手札のランダムなカード1枚が1ターンの間、コスト1減小",
-        "1": "貪食3\n次の2回の貪食発動時、手札のランダムなカード1枚が1ターンの間、コスト1減小",
-        "2": "手札のランダムなカード2枚が1ターンの間、コスト1減小",
-        "3": "1ターンの間に貪食3回発動時、手札のランダムなカード1枚使用時までコスト1減小(各ターン1回)",
-        "4": "1ターンの間、防御依存ダメージ+100%",
-        "5": "貪食7\n1ターンの間、貪食が発動するたびに、次の完全な食事のダメージ量+40%"
-      }
-    },
-    "narja_hirameki_2": {
-      "name": "アクティブコントロール",
-      "descriptions": {
-        "0": "貪食が6未満なら、貪食6\n6以上なら、捕食2",
-        "1": "貪食が6未満なら、貪食9\n6以上なら、捕食3",
-        "2": "完全な食事が山札にある場合、手札に移動\n墓地にある場合、1ターンの間、士気3",
-        "3": "2ターンの間、対象の行動カウントが減少するたびに貪食1",
-        "4": "貪食10\n攻撃カードを1枚選択\nそのカードが手札へ移動するたびに、捕食1",
-        "5": "基本攻撃カードでヒットするたびに貪食1\n基本攻撃カードのダメージ量+60%"
-      }
-    },
-    "narja_hirameki_3": {
-      "name": "貪食の領域",
-      "descriptions": {
-        "0": "敵全体に防御依存ダメージ100%\n対象は次の大破時まで、受ける強靱度ダメージ100%増加",
-        "1": "敵全体に防御依存ダメージ100%\n対象は次の大破時まで、受ける強靱度ダメージ100%増加、大破時、貪食3",
-        "2": "敵全体に防御依存ダメージ100%\n2ターンの間、対象が受ける防御依存ダメージ+100%",
-        "3": "敵全体に防御依存ダメージ150%\n次の5回対象をヒット時治癒40%",
-        "4": "敵全体に防御依存ダメージ320%\n貪食と捕食がある場合もう1回発動",
-        "5": "完全な食事を使用するたびに、治癒200%"
-      }
-    },
-    "narja_hirameki_4": {
-      "name": "完全な食事",
-      "descriptions": {
-        "0": "貪食が減少すると、使用時までコスト1減小、治癒量+30%(最大10)\n敵全体に防御依存ダメージ160%\n治癒100%\n捕食4"
+        "0": "Draw 3"
       }
     },
     "shared_62": {
-      "name": "クイックドロー",
+      "name": "Quick Draw",
       "descriptions": {
-        "0": "ダメージ150%\n標識1"
+        "0": "Damage150%\nMark1"
       }
     },
     "shared_63": {
-      "name": "直観点火",
+      "name": "Intuitive Ignition",
       "descriptions": {
-        "0": "カード生成時、ランダムでひらめき付与(各ターン1回)"
+        "0": "Randomly inflicts Inspire on card generation (once per turn)"
       }
     },
     "shared_64": {
-      "name": "フリュード",
+      "name": "Fleude",
       "descriptions": {
-        "0": "ダメージ70%\n苦痛4"
+        "0": "Damage70%\nAgony4"
       }
     },
     "shared_65": {
-      "name": "天上の裁き",
+      "name": "Judgment in Heaven",
       "descriptions": {
-        "0": "ダメージ350%\n報復3"
+        "0": "350% DMG\nRetribution 3"
       }
     },
     "shared_66": {
-      "name": "損傷戦術",
+      "name": "Damage Tactics",
       "descriptions": {
-        "0": "ダメージ200%\n対象がシールド所持中の場合、ダメージ量+80%\n損傷2"
+        "0": "200% DMG\nIf the target has a shield, damage +80%\nInjury 2"
       }
     },
     "shared_67": {
-      "name": "伝染",
+      "name": "Contagion",
       "descriptions": {
-        "0": "汚染を2枚生成\n固定ダメージ200%\n手札のカード数に応じてダメージ量+30%"
+        "0": "Generate 2 Contamination\n200% fixed damage\nDamage +30% depending on the number of cards in hand"
       }
     },
     "shared_68": {
-      "name": "教団の聖書ページ",
+      "name": "Religion Bible Page",
       "descriptions": {
-        "0": "このカード消滅時、ドロー2"
+        "0": "When this card disappears, Draw 2"
       }
     },
     "shared_69": {
-      "name": "激しい好き嫌い",
+      "name": "Fierce likes and dislik",
       "descriptions": {
-        "0": "手札のカードを1枚消滅\n治療100%"
+        "0": "Destroy 1 card in hand\nHeal 100%"
       }
     },
     "shared_70": {
-      "name": "変異の霊薬",
+      "name": "Mutant Elixir",
       "descriptions": {
-        "0": "捨て札に一時的な変異を3枚生成\n1ターンの間、士気3"
+        "0": "Generate 3 temporary mutations on discards\nMorale 3 for 1 turn"
       }
     },
     "shared_71": {
-      "name": "深淵花",
+      "name": "Abyssal Flower",
       "descriptions": {
-        "0": "HP減少10%\n次に使用する攻撃カードのダメージ量30%増加\nHPが10%以下の場合、使用不可"
+        "0": "10% Health Decrease\nIncrease the damage of the next attack card used by 30%\nUnavailable if health is less than 10%"
       }
     },
     "shared_72": {
-      "name": "香ばしい餌",
+      "name": "Fragrant food",
       "descriptions": {
-        "0": "敵全体に弱体化;1\n敵数に応じて弱体化追加"
+        "0": "Impair to All Enemies; 1\nImpair added based on the number of enemies"
       }
     },
     "shared_73": {
-      "name": "巣の心臓",
+      "name": "Heart of the Nest",
       "descriptions": {
-        "0": "鼓動1\nターン開始時、鼓動1(最大4重複)"
+        "0": "Beating 1\nBeating 1 at start of turn (up to 4 duplicates)"
+      }
+    },
+    "monster_01": {
+      "name": "Bashful Gardener",
+      "descriptions": {
+        "0": "Damage50%×4\nMark3"
+      }
+    },
+    "monster_02": {
+      "name": "Frustrating stepfather",
+      "descriptions": {
+        "0": "Damage50%×4\nAgony6"
+      }
+    },
+    "monster_03": {
+      "name": "Automata Cavalier",
+      "descriptions": {
+        "0": "Damage150%\nFragile4"
+      }
+    },
+    "monster_04": {
+      "name": "Feathered Face Beast",
+      "descriptions": {
+        "0": "Deal 50% Damage to Random Enemy x5"
+      }
+    },
+    "monster_05": {
+      "name": "Wolves Vane",
+      "descriptions": {
+        "0": "Deal 120% Damage to all enemies\nEnervate 2\nInjury 2"
+      }
+    },
+    "monster_06": {
+      "name": "In the palm of darkness",
+      "descriptions": {
+        "0": "120% DMG x 2\nDestroy: 120% Damage to Random Enemy x2"
+      }
+    },
+    "monster_07": {
+      "name": "Seven Arms",
+      "descriptions": {
+        "0": "120% DMG\nEarn 2 Action Points if the target action count is 5 or more"
+      }
+    },
+    "monster_08": {
+      "name": "Rotton Ripper",
+      "descriptions": {
+        "0": "160% DMG\nAction count increased by 1"
+      }
+    },
+    "monster_09": {
+      "name": "Fiery Angel of Pain",
+      "descriptions": {
+        "0": "250% DMG\nCost 2 reduction if you only have this card in your hand"
+      }
+    },
+    "monster_10": {
+      "name": "Soldier Prime",
+      "descriptions": {
+        "0": "300% DMG\nGain 2 Action Points on Havoc"
+      }
+    },
+    "monster_11": {
+      "name": "Beam Shooter",
+      "descriptions": {
+        "0": "350% DMG\nDamage +50% if subject is shielded"
+      }
+    },
+    "monster_12": {
+      "name": "Empty Hunger",
+      "descriptions": {
+        "0": "Morale 2\nMorale 2 Decrease"
+      }
+    },
+    "monster_13": {
+      "name": "Naraku no Mushi",
+      "descriptions": {
+        "0": "Morale 1 Decrease\nResolve 3 Decrease"
+      }
+    },
+    "monster_14": {
+      "name": "A frosty father-in-law",
+      "descriptions": {
+        "0": "Activate 1 card because you played a pile of cards\nSelect a card in your hand and move it to the bottom of the deck"
+      }
+    },
+    "monster_15": {
+      "name": "Fiend Salamander",
+      "descriptions": {
+        "0": "Draw 4"
+      }
+    },
+    "monster_16": {
+      "name": "Spirit Phoenix",
+      "descriptions": {
+        "0": "Determination 2\nGain shields based on reduced health"
+      }
+    },
+    "monster_17": {
+      "name": "Spirit Caffox",
+      "descriptions": {
+        "0": "Select a Draw from the Pile\nCopy that card to your hand"
+      }
+    },
+    "monster_18": {
+      "name": "... Trapper.",
+      "descriptions": {
+        "0": "120% Shield, Fragile 1\n+120% shield gain and 1 vulnerability added if the target fails to act"
+      }
+    },
+    "monster_19": {
+      "name": "Cartist Arbiter",
+      "descriptions": {
+        "0": "Shield 140%\nAt the start of your next turn, add 2 Action Counts for all enemies"
+      }
+    },
+    "monster_20": {
+      "name": "Vanishing Hunger",
+      "descriptions": {
+        "0": "Draw 1\nAdd 4 if you don't have a card in your hand"
+      }
+    },
+    "monster_21": {
+      "name": "Slaughter",
+      "descriptions": {
+        "0": "Shield 200%\nDamage all enemies based on shields gained"
+      }
+    },
+    "monster_22": {
+      "name": "Albitum",
+      "descriptions": {
+        "0": "Damage taken -15% (once per turn)"
+      }
+    },
+    "monster_23": {
+      "name": "Melancholy surrogate mother",
+      "descriptions": {
+        "0": "At the end of your turn, deal 200% damage to a random enemy"
+      }
+    },
+    "monster_24": {
+      "name": "Fiend Durahan",
+      "descriptions": {
+        "0": "Pain When Using Targeting Attack Cards 1"
+      }
+    },
+    "monster_25": {
+      "name": "Beetle",
+      "descriptions": {
+        "0": "Crystalize 5"
+      }
+    },
+    "monster_26": {
+      "name": "Dominion",
+      "descriptions": {
+        "0": "Start of Turn Morale 1"
       }
     },
     "forbidden_card_1": {
-      "name": "禁忌:永生の飢え",
+      "name": "Forbidden: Eternal Hunger",
       "descriptions": {
-        "0": "感応:ドロー1、アクションポイント1獲得"
+        "0": "Response: Draw 1, +1 AP"
+      }
+    },
+    "forbidden_card_2": {
+      "name": "Forbidden: Gesture of Freedom",
+      "descriptions": {
+        "0": "Decrease Cost of 1 random card in hand by 1"
+      }
+    },
+    "forbidden_card_3": {
+      "name": "Forbidden: Disposable ego",
+      "descriptions": {
+        "0": "Draw 1, Draw for each Cost of that card"
+      }
+    },
+    "forbidden_card_4": {
+      "name": "Forbidden: Guidance of Falling",
+      "descriptions": {
+        "0": "When Drawing by Ability, Heal 40% and -1 Stress of a random Combatants by 1"
+      }
+    },
+    "forbidden_card_5": {
+      "name": "Forbidden: Ecstasy of Violence",
+      "descriptions": {
+        "0": "150% Damage x 4\nWhen drawing by ability, Cost of this card -1."
+      }
+    },
+    "forbidden_card_6": {
+      "name": "Forbidden: Portrait of Fury",
+      "descriptions": {
+        "0": "70% Damage\nFor every 4 cards in hand, +1 Hit.\nDraw 1 for each Hit."
+      }
+    },
+    "forbidden_card_7": {
+      "name": "Forbidden: Engraved Malice",
+      "descriptions": {
+        "0": "Draw 1\nActivate 2 random card(s) from hand."
       }
     },
     "forbidden_card_8": {
-      "name": "筋肉強化進化体",
+      "name": "Muscle Enhancement Evolver",
       "descriptions": {
-        "0": "ダメージ80%×2\nインスピレーション:ヒット数2回増加"
+        "0": "Attack 80% x2 Damage\nInspiration: +2 hits"
       }
     },
     "forbidden_card_9": {
-      "name": "感染性ウイルス",
+      "name": "Propagative Virus",
       "descriptions": {
-        "0": "ダメージ120%×1\n感化:ヒット数1回増加(最大5重複)"
+        "0": "Damage 120% x 1\nResponse: +1 Hit (Max 5 stacks)"
       }
     },
     "forbidden_card_10": {
-      "name": "攻撃性の突然変異",
+      "name": "Aggressive Mutant",
       "descriptions": {
-        "0": "自分の攻撃カードドロー1、1ターンの間、そのカードのダメージ量+50%"
+        "0": "Draw 1 own Attack Card(s).\nFor 1 turn, +50% Damage Amount."
       }
     },
     "forbidden_card_11": {
-      "name": "殻形成細胞",
+      "name": "Shell-Forming cells",
       "descriptions": {
-        "0": "シールド70%\n手札のカードに応じてシールド+25%"
+        "0": "70% Shield\nFor each card in hand, +25% Shield."
       }
     },
     "forbidden_card_12": {
-      "name": "強制略奪",
+      "name": "Confiscation",
       "descriptions": {
-        "0": "ドロー1\n山札または捨て札から、ランダムな禁忌カード1枚を手元に移動"
+        "0": "Draw 1\nFrom Draw Pile or Discard Pile, move 1 random Forbidden Card(s) into hand."
       }
     },
     "forbidden_card_13": {
-      "name": "禁じられたアルゴリズム",
+      "name": "Forbidden Algorithm",
       "descriptions": {
-        "0": "手札にランダムな禁忌カードを1枚生成"
+        "0": "Create 1 random Forbidden Card(s) in hand."
       }
     },
     "forbidden_card_14": {
-      "name": "自己発電実験",
+      "name": "Self-generating experiments",
       "descriptions": {
-        "0": "手札のカードが6枚以上の時、ランダムなカード1枚1ターンのコスト0（ターンごとに1回）"
+        "0": "When 6 or more cards in your hand, changes the Cost of 1 random Card in hand to 0 for 1 turn (1 time per turn)."
       }
     },
     "forbidden_card_15": {
-      "name": "強制学習装置",
+      "name": "Forced Learning Apparatus",
       "descriptions": {
-        "0": "カード4枚使用時、ドロー1（ターンごとに1回）"
+        "0": "Upon using 4 cards, Draw 1 (1 time for each turn)"
       }
     }
   }
