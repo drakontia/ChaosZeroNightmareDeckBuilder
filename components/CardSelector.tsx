@@ -126,7 +126,7 @@ export function CardSelector({ character, onAddCard, onRestoreCard, removedCards
     const translatedName = t(`cards.${card.id}.name`, { defaultValue: card.name });
     return renderCardTile(card, {
       keyPrefix: 'converted',
-      className: '',
+      onClick: () => onRestoreCard(card),
       title: `${translatedName}（変換済み）`,
       subtitle: '変換済み',
       showFullDescription: true,
@@ -185,14 +185,7 @@ export function CardSelector({ character, onAddCard, onRestoreCard, removedCards
                 const originalCard = getCardById(originalId);
                 if (!originalCard) return null;
                 if (!matchesQuery(originalCard)) return null;
-                const translatedName = t(`cards.${originalCard.id}.name`, { defaultValue: originalCard.name });
-                return renderCardTile(originalCard, {
-                  keyPrefix: 'converted',
-                  onClick: () => onRestoreCard(originalCard),
-                  title: `${translatedName}（変換済み）`,
-                  subtitle: '変換済み',
-                  showFullDescription: true,
-                });
+                return renderConvertedTile(originalCard);
               })}
             </div>
           </div>
