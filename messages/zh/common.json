@@ -18,7 +18,8 @@
     "godSelect": "选择神灵感",
     "god": "请选择使用哪个神的灵感",
     "level": "Lv",
-    "search": "搜索卡牌"
+    "search": "搜索卡牌",
+    "hiddenHirameki": "隠しヒラメキ"
   },
   "deck": {
     "title": "卡组",
@@ -129,7 +130,6 @@
     "title": "角色",
     "select": "选择角色",
     "job": "职业",
-    "vagueMemory": "模糊的记忆",
     "faintMemory": "模糊的记忆",
     "egoManifest": "自我显现",
     "potential": "潜力",
@@ -156,6 +156,35 @@
     "beryl": "贝伦尔",
     "cassius": "卡西乌斯",
     "owen": "欧文",
-    "rei": "丽"
+    "rei": "丽",
+    "narja": "ナージャ",
+    "sereniel": "セレニエル"
+  },
+  "hiddenEffects": {
+    "hiddenhirameki_01": "アクションポイント1獲得",
+    "hiddenhirameki_02": "ドロー1",
+    "hiddenhirameki_03": "ドロー2",
+    "hiddenhirameki_04": "強靭度ダメージ1",
+    "hiddenhirameki_05": "1ターンの間、士気2",
+    "hiddenhirameki_06": "1ターンの間、決意1",
+    "hiddenhirameki_07": "1ターンの間、決意2",
+    "hiddenhirameki_08": "1ターンの間、決意3",
+    "hiddenhirameki_09": "1ターンの間、決意4",
+    "hiddenhirameki_10": "1ターンの間、不屈1",
+    "hiddenhirameki_11": "士気1",
+    "hiddenhirameki_12": "決意1",
+    "hiddenhirameki_13": "決意2",
+    "hiddenhirameki_14": "ダメージ減少1",
+    "hiddenhirameki_15": "対象に苦痛2",
+    "hiddenhirameki_16": "対象に標識1",
+    "hiddenhirameki_17": "対象に弱体化1",
+    "hiddenhirameki_18": "敵全体に脆弱1",
+    "hiddenhirameki_19": "敵全体苦痛1",
+    "hiddenhirameki_20": "敵全体弱体化1",
+    "hiddenhirameki_21": "敵全体標識1",
+    "hiddenhirameki_22": "ターン開始時、敵全体に苦痛2",
+    "hiddenhirameki_23": "ターン終了時、シールド20%",
+    "hiddenhirameki_24": "行動カウント2増加",
+    "hiddenhirameki_25": "敵全体行動カウント1増加"
   }
 }
