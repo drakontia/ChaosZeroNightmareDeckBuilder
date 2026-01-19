@@ -26,6 +26,7 @@ import { useShareDeck } from "@/hooks/useShareDeck";
 import { useExportDeckImage } from "@/hooks/useExportDeckImage";
 import { useDeckSaveLoad } from "@/hooks/useDeckSaveLoad";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "./ui/dialog";
+import { Footer } from './Footer';
 
 export type DeckBuilderProps = {
   shareId?: string;
@@ -392,6 +393,9 @@ export function DeckBuilder({ shareId }: DeckBuilderProps) {
             </Card>
           </div>
         </div>
+
+        {/* Footer */}
+        <Footer />
       </div>
     </div>
   );
