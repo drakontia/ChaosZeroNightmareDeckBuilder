@@ -97,8 +97,8 @@ export function EquipmentSelector({ equipment, selectedEquipment, onSelect }: Eq
               )}
             </Button>
           </DialogTrigger>
-          <DialogContent className="w-[80vw] max-w-5xl max-h-[80vh] overflow-hidden">
-            <DialogHeader className="flex-row items-center justify-between space-y-0">
+          <DialogContent className="p-4 md:p-6 w-[80vw] max-w-5xl max-h-[90vh] overflow-hidden flex flex-col gap-2">
+            <DialogHeader className="flex-row items-center justify-between space-y-0 shrink-0">
               <DialogTitle>{t(titleKey)}</DialogTitle>
               <Button
                 variant="ghost"
@@ -107,24 +107,25 @@ export function EquipmentSelector({ equipment, selectedEquipment, onSelect }: Eq
                   onSelect(null, type);
                   setOpenType(null);
                 }}
+                className="pr-8"
               >
                 {t('common.remove', { defaultValue: '外す' })}
               </Button>
             </DialogHeader>
-            <div className="p-6 pt-0 overflow-y-auto lg:max-h-[60vh]">
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4">
+            <div className="p-2 md:p-6 pt-0 overflow-y-auto flex-1 min-h-0">
+              <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-2">
                 {items.map((item) => (
                   <Button
                     key={item.id}
                     variant={selected?.id === item.id ? "secondary" : "outline"}
-                    className="h-auto flex-col justify-start p-4 text-center relative"
+                    className="h-auto flex-col justify-start p-2 text-center relative"
                     onClick={() => {
                       onSelect(item, type);
                       setOpenType(null);
                     }}
                   >
                     {item.imgUrl && (
-                      <div className="relative w-full aspect-square rounded-md overflow-hidden bg-muted mb-3">
+                      <div className="relative w-full aspect-square rounded-md overflow-hidden bg-muted">
                         <Image
                           src={getImageSrc(item.imgUrl, item.id)}
                           alt={t(item.name)}
@@ -143,7 +144,7 @@ export function EquipmentSelector({ equipment, selectedEquipment, onSelect }: Eq
                       </div>
                     )}
                     <div className="flex flex-col w-full">
-                      <span className="text-base font-semibold">{t(item.name)}</span>
+                      <span className="text-xs md:text-sm">{t(item.name)}</span>
                     </div>
                   </Button>
                 ))}

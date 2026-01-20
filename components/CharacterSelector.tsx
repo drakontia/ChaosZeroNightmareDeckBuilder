@@ -145,12 +145,12 @@ export function CharacterSelector({ characters, character, onSelect, hasPotentia
           </Button>
         </DialogTrigger>
 
-        <DialogContent className="max-w-6xl max-h-[85vh] overflow-hidden">
+        <DialogContent className="w-[90vw] max-w-6xl max-h-[90vh] overflow-hidden p-4">
           <DialogHeader>
             <DialogTitle>{t('character.select')}</DialogTitle>
           </DialogHeader>
-          <div className="p-6 pt-0 overflow-y-auto max-h-[65vh]">
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          <div className="p-2 pt-0 overflow-y-auto max-h-[65vh]">
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2">
               {characters.map((character) => (
                 <Button
                   key={character.id}
@@ -170,21 +170,21 @@ export function CharacterSelector({ characters, character, onSelect, hasPotentia
                         onError={() => handleImageError(character.id)}
                       />
                       {/* Rarity gradient band */}
-                       <div className={`absolute inset-y-0 left-0 w-5 ${character.rarity === '★5'
+                       <div className={`absolute inset-y-0 left-0 w-2 sm:w-5 ${character.rarity === '★5'
                           ? 'bg-linear-to-b from-purple-600 to-transparent'
                           : character.rarity === '★4'
                             ? 'bg-linear-to-b from-yellow-600 to-transparent'
                             : ''
                         }`} />
                       {/* Job, element icons and ego level */}
-                      <div className="absolute top-1 left-5 z-20 flex flex-col items-center gap-1">
+                      <div className="absolute top-1 left-2 sm:left-5 z-20 flex flex-col items-center gap-1">
                         {getJobIcon(character.job) && (
                           <Image
                             src={getJobIcon(character.job)}
                             alt={character.job}
                               width={24}
                               height={24}
-                              className="w-5 h-5"
+                              className="w-3 sm:w-5 h-3 sm:h-5"
                           />
                         )}
                         {getElementIcon(character.element) && (
@@ -193,7 +193,7 @@ export function CharacterSelector({ characters, character, onSelect, hasPotentia
                             alt={character.element ?? "element"}
                               width={18}
                               height={18}
-                              className="w-5 h-5"
+                              className="w-3 sm:w-5 h-3 sm:h-5"
                           />
                         )}
                         <div
@@ -211,9 +211,9 @@ export function CharacterSelector({ characters, character, onSelect, hasPotentia
                               handleEgoIncrement(character, character?.id === character.id);
                             }
                           }}
-                            className="px-1.5 py-0.5 rounded border-2 border-white bg-black/80 cursor-pointer pointer-events-auto"
+                            className="px-0.5 sm:px-1.5 py-0.5 rounded border-2 border-white bg-black/80 cursor-pointer pointer-events-auto"
                         >
-                            <span className="text-xs font-semibold leading-none text-white w-5 h-5">
+                            <span className="text-xs font-semibold leading-none text-white w-3 sm:w-5 h-3 sm:h-5">
                             {formatEgoLevel(getEgoLevel(character))}
                           </span>
                         </div>
