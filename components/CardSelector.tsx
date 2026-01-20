@@ -154,7 +154,7 @@ export function CardSelector({ character, onAddCard, onRestoreCard, removedCards
 
   return (
     <Card>
-      <CardContent className="space-y-6">
+      <CardContent className="p-4 lg:p-6 space-y-6">
         {!character && characterHiramekiCards.length === 0 && (
           <div className="text-sm text-muted-foreground text-center p-4">
             {t("character.select")}

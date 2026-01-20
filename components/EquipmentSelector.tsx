@@ -55,7 +55,7 @@ export function EquipmentSelector({ equipment, selectedEquipment, onSelect }: Eq
           <DialogTrigger asChild>
             <Button
               variant="outline"
-              className="w-full h-16 lg:h-32 border-double bg-gray-500 relative overflow-hidden"
+              className="w-full h-20 sm:h-16 lg:h-24 xl:h-32 border-double bg-gray-500 relative overflow-hidden"
             >
               {selected ? (
                 <>
@@ -159,7 +159,7 @@ export function EquipmentSelector({ equipment, selectedEquipment, onSelect }: Eq
   return (
     <FieldGroup className="pt-4 lg:pt-12 gap-2">
       <FieldLabel className="text-base lg:text-2xl text-gray-500"><Swords />{t('equipment.title')}</FieldLabel>
-      <div className="grid grid-cols-3 gap-6">
+      <div className="grid grid-cols-3 gap-2">
         {renderEquipmentSection(EquipmentType.WEAPON, "equipment.weapon.title")}
         {renderEquipmentSection(EquipmentType.ARMOR, "equipment.armor.title")}
         {renderEquipmentSection(EquipmentType.PENDANT, "equipment.pendant.title")}

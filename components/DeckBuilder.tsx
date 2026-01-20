@@ -344,17 +344,17 @@ export function DeckBuilder({ shareId }: DeckBuilderProps) {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
           <div className="lg:col-span-12">
             <Card>
-              <CardHeader className="flex flex-row items-center justify-between">
+              <CardHeader className="flex flex-row items-center justify-between p-4">
                 <CardTitle>{t('card.add')}</CardTitle>
                 <Input
                   type="text"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-64"
+                  className="w-32 sm:w-64"
                   placeholder={t('card.search')}
                 />
               </CardHeader>
-              <CardContent className="p-6">
+              <CardContent className="p-4 lg:p-6 pt-2">
                 {/* Card Selection for adding cards */}
                   <CardSelector
                     character={deck.character}
