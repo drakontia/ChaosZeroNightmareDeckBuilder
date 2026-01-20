@@ -594,7 +594,7 @@ export const CHARACTER_CARDS: CznCard[] = [
     name: "黒雲奥義：黒舞", // Fallback
     type: CardType.CHARACTER,
     category: CardCategory.ATTACK,
-    statuses: [CardStatus.UNIQUE, CardStatus.BULLET],
+    statuses: [],
     imgUrl: "/images/cards/rin_hirameki_4.png",
     hiramekiVariations: [ // Fallback descriptions
       { level: 0, cost: 1, description: "ダメージ80%<wbr/>黒雲態勢：手札のスキルカード数に応じてヒット数1回追加(最大5回)" },
