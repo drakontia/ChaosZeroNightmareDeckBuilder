@@ -538,7 +538,7 @@ export const SHARED_CARDS: CznCard[] = [
     allowedJobs: [JobType.RANGER, JobType.HUNTER],
     imgUrl: "/images/cards/shared_37.png",
     hiramekiVariations: [
-      { level: 0, cost: 0, description: "敵全体にダメー200%" }
+      { level: 0, cost: 0, description: "敵全体にダメージ200%" }
     ]
   },
   {

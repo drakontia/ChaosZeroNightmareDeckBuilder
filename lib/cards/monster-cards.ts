@@ -151,7 +151,7 @@ export const MONSTER_CARDS: CznCard[] = [
     allowedJobs: "all",
     imgUrl: "/images/cards/monster_12.png",
     hiramekiVariations: [
-      { level: 0, cost: 0, description: "士気2\n士気2減少" }
+      { level: 0, cost: 0, description: "士気2\n敵の士気-2" }
     ]
   },
   {
