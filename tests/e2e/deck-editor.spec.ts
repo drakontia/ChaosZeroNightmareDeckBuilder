@@ -119,10 +119,12 @@ test.describe('Deck Editor', () => {
     await expect(godBtn).toBeVisible();
     await godBtn.click();
 
-    // Choose a god in the horizontal group, then pick first effect preview
+    // 新しいドロップダウンUIから神を選択し、最初の効果プレビューをクリック
     const dialog = page.getByRole('dialog');
-    const kilkenBtn = dialog.getByRole('button', { name: 'キルケン' });
-    await kilkenBtn.first().click();
+    const godDropdown = dialog.getByRole('button', { name: '神ヒラメキ選択' }).first();
+    await godDropdown.click();
+    const kilkenOption = page.getByRole('menuitem', { name: 'キルケン' }).first();
+    await kilkenOption.click();
     const effectTile = dialog.locator('button[title]').first();
     const effectText = await effectTile.innerText();
     const effectSnippet = effectText.split('\n')[0]?.trim();
