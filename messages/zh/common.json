@@ -9,6 +9,7 @@
     "addCard": "卡牌选择",
     "startingCards": "起始卡牌",
     "hiramekiCards": "灵感卡牌",
+    "characterCards": "角色卡牌",
     "sharedCards": "共用卡牌",
     "monsterCards": "怪物卡牌",
     "forbiddenCards": "禁忌卡牌",
@@ -124,7 +125,6 @@
     "copy": "复制"
   },
   "conversion": {
-    "selectCardHint": "请选择要转换的卡牌"
   },
   "character": {
     "title": "角色",

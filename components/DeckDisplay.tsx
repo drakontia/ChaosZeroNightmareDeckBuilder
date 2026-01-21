@@ -18,7 +18,7 @@ interface DeckDisplayProps {
   onRemoveCard: (deckId: string) => void;
   onUndoCard: (deckId: string) => void;
   onCopyCard: (deckId: string) => void;
-  onConvertCard: (deckId: string, targetCard: CznCard) => void;
+  onConvertCard: (deckId: string, targetCard: CznCard, options?: { asExclusion?: boolean }) => void;
   onUpdateHirameki: (deckId: string, hiramekiLevel: number) => void;
   onSetGodHirameki: (deckId: string, godType: GodType | null) => void;
   onSetGodHiramekiEffect: (deckId: string, effectId: string | null) => void;

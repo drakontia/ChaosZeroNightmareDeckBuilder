@@ -12,6 +12,7 @@
     "sharedCards": "共用カード",
     "monsterCards": "モンスターカード",
     "forbiddenCards": "禁忌カード",
+    "characterCards": "キャラクターカード",
     "basicCard": "基本カード（ヒラメキなし）",
     "hirameki": "ヒラメキ",
     "godHirameki": "神ヒラメキ",
@@ -151,7 +152,6 @@
     "copy": "コピー"
   },
   "conversion": {
-    "selectCardHint": "変換先のカードを選択してください"
   },
   "character": {
     "title": "キャラクター",

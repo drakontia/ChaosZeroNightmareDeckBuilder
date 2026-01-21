@@ -2451,6 +2451,12 @@
       "descriptions": {
         "0": "Upon using 4 cards, Draw 1 (1 time for each turn)"
       }
+    },
+    "__exclusion__": {
+      "name": "Exclusion Card",
+      "descriptions": {
+        "0": "Convert as exclusion: record the original as excluded. The target is not added to the deck. Faint Memory +0."
+      }
     }
   }
 }

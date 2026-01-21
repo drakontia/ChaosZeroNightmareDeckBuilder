@@ -19,7 +19,7 @@ interface DeckBuilderStore {
   setCardHiddenHirameki: (deckId: string, hiddenHiramekiId: string | null) => void;
   undoCard: (deckId: string) => void;
   copyCard: (deckId: string) => void;
-  convertCard: (deckId: string, targetCardId: string) => void;
+  convertCard: (deckId: string, targetCardId: string, options?: { asExclusion?: boolean }) => void;
   reset: () => void;
 }
 
@@ -361,33 +361,41 @@ export const useDeckBuilderStore = create<DeckBuilderStore>((set) => ({
       };
     });
   },
-  convertCard: (deckId, targetCardId) => {
+  convertCard: (deckId, targetCardId, options) => {
     set((state) => {
       if (!state.deck) return {};
+      const asExclusion = options?.asExclusion ?? false;
       const cardToConvert = state.deck.cards.find((c) => c.deckId === deckId);
       if (!cardToConvert) return {};
       const target = getCardById(targetCardId);
-      if (!target) return {};
-      const convertedCard = {
-        ...target,
-        deckId: `${target.id}_${Date.now()}_${Math.random()}`,
-        selectedHiramekiLevel: 0,
-        godHiramekiType: null,
-        godHiramekiEffectId: null,
-        selectedHiddenHiramekiId: null,
-      };
+      if (!target && !asExclusion) return {};
       const cardIndex = state.deck.cards.findIndex((c) => c.deckId === deckId);
       const newCards = [...state.deck.cards];
-      newCards[cardIndex] = convertedCard;
+      // 排除変換の場合は変換先をデッキに追加しない
+      if (!asExclusion && target) {
+        const convertedCard = {
+          ...target,
+          deckId: `${target.id}_${Date.now()}_${Math.random()}`,
+          selectedHiramekiLevel: 0,
+          godHiramekiType: null,
+          godHiramekiEffectId: null,
+          selectedHiddenHiramekiId: null,
+        };
+        newCards[cardIndex] = convertedCard;
+      } else {
+        newCards.splice(cardIndex, 1);
+      }
       // Track conversion with snapshot of original card state
       const newConverted = new Map(state.deck.convertedCards);
       const snapshot = {
-        convertedToId: target.id,
+        convertedToId: target?.id ?? targetCardId,
         originalType: cardToConvert.type,
         selectedHiramekiLevel: cardToConvert.selectedHiramekiLevel,
+        selectedHiddenHiramekiId: cardToConvert.selectedHiddenHiramekiId,
         godHiramekiType: cardToConvert.godHiramekiType,
         godHiramekiEffectId: cardToConvert.godHiramekiEffectId,
         isBasicCard: cardToConvert.isBasicCard,
+        excluded: asExclusion,
       };
       newConverted.set(cardToConvert.id, snapshot);
       return {

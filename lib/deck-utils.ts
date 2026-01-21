@@ -229,14 +229,30 @@ export function calculateFaintMemory(deck: Deck | null | undefined): number {
 
   // Points for converted cards with original card attribute preservation
   for (const [originalId, entry] of deck.convertedCards.entries()) {
-    // Base conversion points: +10pt per conversion
-    points += 10;
-
     // Check if entry is a snapshot (ConvertedCardEntry)
     const snapshot: ConvertedCardEntry | null = typeof entry === "string" ? null : entry as ConvertedCardEntry;
+    
+    // Exclusion conversions do not count as conversions for points
+    const isExclusion = snapshot?.excluded ?? false;
+    
+    // 通常変換のみ: 変換行動の+10ptを加算（排除変換では加算しない）
+    if (!isExclusion) {
+      points += 10;
+    }
+
+    // 元カードの属性ポイントは排除変換でも通常変換でも加算
     if (snapshot) {
       // Preserve points from the ORIGINAL card state at conversion time
       const originalType = snapshot.originalType;
+      
+      // Add points for the ORIGINAL card type (preserved at conversion time)
+      if (originalType === CardType.SHARED || originalType === CardType.FORBIDDEN) {
+        points += 20;
+      } else if (originalType === CardType.MONSTER) {
+        points += 80;
+      }
+      // Note: CHARACTER type has no base type points
+      
       if (originalType === CardType.SHARED || originalType === CardType.MONSTER) {
         // Hirameki (including hidden hirameki) points from original card
         if ((snapshot.selectedHiramekiLevel ?? 0) > 0 || (snapshot.selectedHiddenHiramekiId != null && snapshot.selectedHiddenHiramekiId !== '')) {

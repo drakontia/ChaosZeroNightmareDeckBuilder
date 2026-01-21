@@ -56,7 +56,6 @@ export function CardFrame({
   className,
   leftControls,
   rightControls,
-  variant = "default",
   isCopied = false,
 }: CardFrameProps) {
   const t = useTranslations();

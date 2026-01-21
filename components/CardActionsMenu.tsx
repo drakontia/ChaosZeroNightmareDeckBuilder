@@ -11,7 +11,7 @@ interface CardActionsMenuProps {
   allowedJob?: JobType;
   onRemoveCard: (deckId: string) => void;
   onCopyCard: (deckId: string) => void;
-  onConvertCard: (deckId: string, targetCard: CznCard) => void;
+  onConvertCard: (deckId: string, targetCard: CznCard, options?: { asExclusion?: boolean }) => void;
   onUndoCard: (deckId: string) => void;
 }
 

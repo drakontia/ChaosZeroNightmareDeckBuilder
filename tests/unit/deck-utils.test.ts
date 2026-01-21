@@ -576,9 +576,9 @@ describe('calculateFaintMemory (snapshot attribute handling)', () => {
 
     // Deck card points: type(80) + hirameki(10) = 90
     // Base conversion: +10pt
-    // Original card preserved points: hirameki(10) + god(20) = 30
-    // Total: 90 + 10 + 30 = 130
-    expect(calculateFaintMemory(deck)).toBe(130);
+    // Original card preserved points: type(20) + hirameki(10) + god(20) = 50
+    // Total: 90 + 10 + 50 = 150
+    expect(calculateFaintMemory(deck)).toBe(150);
   });
 
   it('should preserve conversion points even after converted card is removed', () => {
@@ -597,9 +597,9 @@ describe('calculateFaintMemory (snapshot attribute handling)', () => {
 
     // Base conversion: +10pt
     // Converted-to card not in deck: no points
-    // Original card preserved points: hirameki(10) = 10
-    // Total: 10 + 0 + 10 = 20
-    expect(calculateFaintMemory(deck)).toBe(20);
+    // Original card preserved points: type(20) + hirameki(10) = 30
+    // Total: 10 + 0 + 30 = 40
+    expect(calculateFaintMemory(deck)).toBe(40);
   });
 
   it('should subtract conversion points when conversion is undone', () => {
@@ -637,15 +637,15 @@ describe('calculateFaintMemory (snapshot attribute handling)', () => {
       isBasicCard: false
     });
 
-    // With conversion: type(80) + conversion(10) + original_hirameki(10) = 100
+    // With conversion: type(80) + conversion(10) + original_type(20) + original_hirameki(10) = 120
     const pointsBeforeUndo = calculateFaintMemory(deck);
-    expect(pointsBeforeUndo).toBe(100);
+    expect(pointsBeforeUndo).toBe(120);
 
     // After undoing the conversion (removing from convertedCards)
     deck.convertedCards.delete('shared_01');
 
     // Without conversion: type(80) only = 80
-    // The +10pt conversion and +10pt original hirameki should be gone
+    // The +10pt conversion, +20pt original type, and +10pt original hirameki should be gone
     const pointsAfterUndo = calculateFaintMemory(deck);
     expect(pointsAfterUndo).toBe(80);
   });
@@ -685,15 +685,15 @@ describe('calculateFaintMemory (snapshot attribute handling)', () => {
       isBasicCard: false
     });
 
-    // After conversion: shared(20) + hirameki(10) + conversion(10) + preserved_hirameki(10) = 50
+    // After conversion: shared(20) + hirameki(10) + conversion(10) + preserved_type(20) + preserved_hirameki(10) = 70
     const pointsWithConversion = calculateFaintMemory(deck);
-    expect(pointsWithConversion).toBe(50);
+    expect(pointsWithConversion).toBe(70);
 
     // When undoing conversion
     deck.convertedCards.delete('shared_01');
 
     // After undo: shared(20) + hirameki(10) = 30
-    // The +10pt conversion and +10pt preserved hirameki should be gone
+    // The +10pt conversion, +20pt preserved type, and +10pt preserved hirameki should be gone
     const pointsAfterUndo = calculateFaintMemory(deck);
     expect(pointsAfterUndo).toBe(30);
   });
@@ -1022,5 +1022,98 @@ describe('calculateFaintMemory (copy double-counting issue)', () => {
 
     // Only type(20) from original card
     expect(calculateFaintMemory(deck)).toBe(20);
+  });
+
+  it('should NOT add conversion points for exclusion conversions', () => {
+    // Scenario: converted a shared card with hirameki to exclusion
+    // Original card NO LONGER in deck (converted away)
+    deck.cards = [];
+
+    // Exclusion conversion: excluded flag = true
+    deck.convertedCards.set('shared_01', {
+      convertedToId: '__exclusion__',
+      originalType: CardType.SHARED,
+      selectedHiramekiLevel: 1,
+      godHiramekiType: null,
+      godHiramekiEffectId: null,
+      isBasicCard: false,
+      excluded: true // This is the key flag
+    });
+
+    // Expected:
+    // - Conversion base points: 0pt (because excluded = true)
+    // - Original card type: 20pt (shared)
+    // - Original card hirameki: 10pt (Lv1+)
+    // Total: 0 + 20 + 10 = 30pt
+    expect(calculateFaintMemory(deck)).toBe(30);
+  });
+
+  it('should add conversion points for normal (non-exclusion) conversions', () => {
+    // Scenario: converted a shared card with hirameki to another card
+    // Original card NO LONGER in deck, converted card IS in deck
+    deck.cards = [
+      {
+        id: 'forbidden_02',
+        deckId: 'forbidden_02_deck',
+        name: 'Forbidden Card 2',
+        type: CardType.FORBIDDEN,
+        category: CardCategory.ATTACK,
+        statuses: [],
+        selectedHiramekiLevel: 0,
+        godHiramekiType: null,
+        godHiramekiEffectId: null,
+        selectedHiddenHiramekiId: null,
+        isBasicCard: false,
+        hiramekiVariations: [
+          {
+            level: 0,
+            cost: 5,
+            description: 'Base'
+          }
+        ]
+      }
+    ];
+
+    // Normal conversion: excluded flag = false (or omitted)
+    deck.convertedCards.set('shared_01', {
+      convertedToId: 'forbidden_02',
+      originalType: CardType.SHARED,
+      selectedHiramekiLevel: 1,
+      godHiramekiType: null,
+      godHiramekiEffectId: null,
+      isBasicCard: false,
+      excluded: false // Normal conversion
+    });
+
+    // Expected:
+    // Converted card in deck: type(20) = 20pt
+    // Conversion base points: 10pt (not excluded)
+    // Original card type: 20pt (shared)
+    // Original card hirameki: 10pt (Lv1+)
+    // Total: 20 + 10 + 20 + 10 = 60pt
+    expect(calculateFaintMemory(deck)).toBe(60);
+  });
+
+  it('should handle exclusion conversion with god hirameki correctly', () => {
+    // Scenario: converted a shared card with hirameki + god hirameki to exclusion
+    deck.cards = [];
+
+    deck.convertedCards.set('shared_02', {
+      convertedToId: '__exclusion__',
+      originalType: CardType.SHARED,
+      selectedHiramekiLevel: 2,
+      godHiramekiType: GodType.KILKEN,
+      godHiramekiEffectId: 'godhirameki_1',
+      isBasicCard: false,
+      excluded: true
+    });
+
+    // Expected:
+    // - Conversion base points: 0pt (excluded)
+    // - Original card type: 20pt (shared)
+    // - Original card hirameki: 10pt (Lv2+)
+    // - Original card god hirameki: 20pt
+    // Total: 0 + 20 + 10 + 20 = 50pt
+    expect(calculateFaintMemory(deck)).toBe(50);
   });
 });

@@ -2,7 +2,7 @@ import { useState, useCallback } from "react";
 import { CznCard } from "@/types";
 
 interface UseCardActionsMenuProps {
-  onConvertCard: (deckId: string, targetCard: CznCard) => void;
+  onConvertCard: (deckId: string, targetCard: CznCard, options?: { asExclusion?: boolean }) => void;
   deckId: string;
 }
 
@@ -16,7 +16,8 @@ export function useCardActionsMenu({ onConvertCard, deckId }: UseCardActionsMenu
   }, []);
 
   const handleConversionSelect = useCallback((targetCard: CznCard) => {
-    onConvertCard(deckId, targetCard);
+    const asExcl = targetCard.id === "__exclusion__";
+    onConvertCard(deckId, targetCard, { asExclusion: asExcl });
     setIsConversionModalOpen(false);
   }, [onConvertCard, deckId]);
 

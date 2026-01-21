@@ -87,8 +87,8 @@ export function DeckBuilder({ shareId }: DeckBuilderProps) {
   }, [sharedDeck, setDeck]);
 
   // DeckDisplay用: (deckId: string, targetCard: CznCard) => void にラップ
-  const handleConvertCard = useCallback((deckId: string, targetCard: CznCard) => {
-    convertCard(deckId, targetCard.id);
+  const handleConvertCard = useCallback((deckId: string, targetCard: CznCard, options?: { asExclusion?: boolean }) => {
+    convertCard(deckId, targetCard.id, options);
   }, [convertCard]);
 
   const { isSharing, handleShareDeck: shareHandler } = useShareDeck();

@@ -246,7 +246,7 @@ describe('deck-share', () => {
           ['c2', { count: 1, type: CardType.MONSTER, selectedHiramekiLevel: 2, godHiramekiType: GodType.SECLAID }]
         ]),
         convertedCards: new Map([
-          ['c3', { convertedToId: 'c4', originalType: CardType.FORBIDDEN, selectedHiramekiLevel: 3, godHiramekiType: GodType.DIALOS }]
+          ['c3', { convertedToId: 'c4', originalType: CardType.FORBIDDEN, selectedHiramekiLevel: 3, godHiramekiType: GodType.DIALOS, excluded: true }]
         ])
       };
       const encoded = encodeDeckShare(deck);
@@ -270,6 +270,7 @@ describe('deck-share', () => {
       expect((converted as any).originalType).toBe(CardType.FORBIDDEN);
       expect((converted as any).selectedHiramekiLevel).toBe(3);
       expect((converted as any).godHiramekiType).toBe(GodType.DIALOS);
+      expect((converted as any).excluded).toBe(true);
     });
   });
 });

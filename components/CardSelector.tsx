@@ -24,13 +24,16 @@ export function CardSelector({ character, onAddCard, onRestoreCard, removedCards
   const characterHiramekiCards = character ? getCharacterHiramekiCards(character) : [];
   const addableCards = getAddableCards(character?.job);
 
-  // ヒラメキカードの表示制御：デッキに存在・削除済みは非表示
+  // ヒラメキカードの表示制御：デッキに存在・削除済み・変換済みは非表示
   const hiddenHiramekiIds = new Set<string>();
   if (presentHiramekiIds) {
     for (const id of presentHiramekiIds.values()) hiddenHiramekiIds.add(id);
   }
   if (removedCards) {
     for (const id of removedCards.keys()) hiddenHiramekiIds.add(id);
+  }
+  if (convertedCards) {
+    for (const id of convertedCards.keys()) hiddenHiramekiIds.add(id);
   }
   const query = (searchQuery || '').toLowerCase().trim();
   const matchesQuery = (card: CznCard) => {
@@ -66,17 +69,13 @@ export function CardSelector({ character, onAddCard, onRestoreCard, removedCards
       onClick?: () => void;
       className?: string;
       title?: string;
-      subtitle?: string;
-      showFullDescription?: boolean;
     } = {}
   ) => {
     const {
       keyPrefix = '',
       onClick,
       className = 'cursor-pointer',
-      title,
-      subtitle,
-      showFullDescription = true
+      title
     } = options;
     const baseVariation = card.hiramekiVariations[0];
     const rawStatuses = (baseVariation.statuses && baseVariation.statuses.length > 0)
@@ -85,11 +84,7 @@ export function CardSelector({ character, onAddCard, onRestoreCard, removedCards
     const key = keyPrefix ? `${keyPrefix}-${card.id}` : card.id;
     const translatedName = t(`cards.${card.id}.name`, { defaultValue: card.name });
     const cardTitle = title || translatedName;
-
     const statuses = rawStatuses?.map(s => t(`status.${s}`));
-    const description = showFullDescription
-      ? t(`cards.${card.id}.descriptions.0`, { defaultValue: baseVariation.description })
-      : undefined;
 
     return (
       <Card key={key} className={`cursor-pointer ${className}`} onClick={onClick} title={cardTitle}>
@@ -99,10 +94,8 @@ export function CardSelector({ character, onAddCard, onRestoreCard, removedCards
           cost={baseVariation.cost}
           nameId={`cards.${card.id}.name`}
           nameFallback={card.name}
-          category={subtitle || t(`category.${card.category}`)}
+          category={t(`category.${card.category}`)}
           categoryId={card.category}
-          descriptionId={`cards.${card.id}.descriptions.0`}
-          descriptionFallback={baseVariation.description}
           statuses={statuses}
         />
       </Card>
@@ -129,9 +122,7 @@ export function CardSelector({ character, onAddCard, onRestoreCard, removedCards
     return renderCardTile(card, {
       keyPrefix: 'converted',
       onClick: () => onRestoreCard(card),
-      title: `${translatedName}（変換済み）`,
-      subtitle: '変換済み',
-      showFullDescription: true,
+      title: translatedName,
     });
   };
 

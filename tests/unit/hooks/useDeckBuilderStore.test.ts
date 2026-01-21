@@ -241,6 +241,26 @@ describe('useDeckBuilderStore', () => {
     expect(deck.convertedCards.has(card.id)).toBe(true);
   });
 
+  it('convertCardで排除として変換すると変換先カードはデッキに入らない', () => {
+    const card = getTestCard();
+    const targetId = CHARACTERS[0].hiramekiCards[0];
+    act(() => {
+      useDeckBuilderStore.getState().setCharacter(CHARACTERS[0]);
+      useDeckBuilderStore.getState().addCard(card);
+      useDeckBuilderStore.getState().convertCard(card.deckId, targetId, { asExclusion: true });
+    });
+
+    const deck = useDeckBuilderStore.getState().deck!;
+    expect(deck.cards.some(c => c.id === targetId)).toBe(false);
+    expect(deck.cards.some(c => c.id === card.id)).toBe(false);
+
+    const entry = deck.convertedCards.get(card.id);
+    expect(entry).toBeDefined();
+    if (typeof entry === 'object') {
+      expect((entry as any).excluded).toBe(true);
+    }
+  });
+
   it('restoreCardで変換カードが復元される', () => {
     const card = getTestCard();
     const targetId = CHARACTERS[0].startingCards[0];

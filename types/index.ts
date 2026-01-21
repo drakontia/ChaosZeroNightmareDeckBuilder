@@ -197,6 +197,7 @@ export interface ConvertedCardEntry {
   godHiramekiType?: GodType | null; // God hirameki at conversion time
   godHiramekiEffectId?: string | null; // God effect at conversion time
   isBasicCard?: boolean;
+  excluded?: boolean; // Converted as temporary exclusion card (not added to deck)
 }
 
 export interface Deck {

@@ -2,7 +2,7 @@
 import { useTranslations } from 'next-intl';
 import { Card } from "./ui/card";
 import { CardFrame } from "./CardFrame";
-import { CznCard, CardType, JobType } from "@/types";
+import { CznCard, CardType, JobType, CardCategory } from "@/types";
 import { getAddableCards } from "@/lib/data";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "./ui/accordion";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "./ui/dialog";
@@ -17,14 +17,29 @@ interface ConversionModalProps {
 export function ConversionModal({ isOpen, onClose, onSelectCard, allowedJob }: ConversionModalProps) {
   const t = useTranslations();
   
-  // Get all addable cards and filter to shared and forbidden only
+  // 変換候補: 共用 / 禁忌のみ
   const allAddableCards = getAddableCards(allowedJob);
   const conversionCards = allAddableCards.filter(
     card => card.type === CardType.SHARED || card.type === CardType.FORBIDDEN
   );
-
   const sharedCards = conversionCards.filter(c => c.type === CardType.SHARED);
   const forbiddenCards = conversionCards.filter(c => c.type === CardType.FORBIDDEN);
+
+  // 排除カード（UI専用の疑似カード。選択時は除外変換として扱う）
+  const exclusionCard: CznCard = {
+    id: "__exclusion__",
+    name: t("cards.__exclusion__.name"),
+    type: CardType.SHARED,
+    category: CardCategory.SKILL,
+    statuses: [],
+    hiramekiVariations: [
+      {
+        level: 0,
+        cost: 0,
+        description: t("cards.__exclusion__.descriptions.0")
+      }
+    ]
+  };
 
   const renderCardTile = (card: CznCard) => {
     const baseVariation = card.hiramekiVariations[0];
@@ -64,11 +79,8 @@ export function ConversionModal({ isOpen, onClose, onSelectCard, allowedJob }: C
           <DialogTitle>{t("common.convert", { defaultValue: "変換" })}</DialogTitle>
         </DialogHeader>
         <div className="space-y-6">
-          <p className="text-sm text-muted-foreground">
-            {t("conversion.selectCardHint")}
-          </p>
-          
           <Accordion type="multiple" className="w-full" defaultValue={["shared", "forbidden"]}>
+
             {/* Shared Cards */}
             {sharedCards.length > 0 && (
               <AccordionItem value="shared">
@@ -77,7 +89,7 @@ export function ConversionModal({ isOpen, onClose, onSelectCard, allowedJob }: C
                 </AccordionTrigger>
                 <AccordionContent>
                   <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
-                    {sharedCards.map(card => renderCardTile(card))}
+                    {[...sharedCards, exclusionCard].map(card => renderCardTile(card))}
                   </div>
                 </AccordionContent>
               </AccordionItem>
