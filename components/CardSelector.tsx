@@ -85,6 +85,7 @@ export function CardSelector({ character, onAddCard, onRestoreCard, removedCards
     const translatedName = t(`cards.${card.id}.name`, { defaultValue: card.name });
     const cardTitle = title || translatedName;
     const statuses = rawStatuses?.map(s => t(`status.${s}`));
+    const description = t(`cards.${card.id}.descriptions.0`, { defaultValue: baseVariation.description })
 
     return (
       <Card key={key} className={`cursor-pointer ${className}`} onClick={onClick} title={cardTitle}>
@@ -96,6 +97,8 @@ export function CardSelector({ character, onAddCard, onRestoreCard, removedCards
           nameFallback={card.name}
           category={t(`category.${card.category}`)}
           categoryId={card.category}
+          descriptionId={`cards.${card.id}.descriptions.0`}
+          descriptionFallback={baseVariation.description}
           statuses={statuses}
         />
       </Card>
