@@ -167,7 +167,7 @@ export function DeckBuilder({ shareId }: DeckBuilderProps) {
         </div>
       )}
 
-        <div ref={deckCaptureRef}>
+        <main ref={deckCaptureRef}>
           <FieldSet className="grid grid-cols-1 sm:grid-cols-6 lg:grid-cols-12 gap-6 mb-6 p-3 lg:p-6 rounded-xl border bg-card">
             {/* Top side - Deck name, Deck control */}
             <FieldGroup className="sm:col-span-6 lg:col-span-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-12 gap-4">
@@ -319,7 +319,7 @@ export function DeckBuilder({ shareId }: DeckBuilderProps) {
               </Card>
             </div>
           </FieldSet>
-        </div>
+        </main>
 
         {/* Load dialog */}
         <Dialog open={loadOpen} onOpenChange={setLoadOpen}>
