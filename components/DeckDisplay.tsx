@@ -42,7 +42,7 @@ export function DeckDisplay({ cards, egoLevel, hasPotential, allowedJob, onRemov
   }
 
   return (
-    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+    <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-3 xl:grid-cols-4 gap-4">
       {sortedCards.map((card) => {
         const cardInfo = getCardInfo(card, egoLevel, hasPotential);
         const hasNoHirameki = card.hiramekiVariations.length === 1;

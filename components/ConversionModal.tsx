@@ -76,7 +76,7 @@ export function ConversionModal({ isOpen, onClose, onSelectCard, allowedJob }: C
                   {t("card.sharedCards")}
                 </AccordionTrigger>
                 <AccordionContent>
-                  <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 pt-3">
+                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
                     {sharedCards.map(card => renderCardTile(card))}
                   </div>
                 </AccordionContent>
@@ -90,7 +90,7 @@ export function ConversionModal({ isOpen, onClose, onSelectCard, allowedJob }: C
                   {t("card.forbiddenCards")}
                 </AccordionTrigger>
                 <AccordionContent>
-                  <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 pt-3">
+                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
                     {forbiddenCards.map(card => renderCardTile(card))}
                   </div>
                 </AccordionContent>

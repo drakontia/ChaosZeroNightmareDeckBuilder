@@ -131,6 +131,10 @@ export function DeckBuilder({ shareId }: DeckBuilderProps) {
 
   const faintMemoryPoints = deck ? calculateFaintMemory(deck) : 0;
 
+  // 統一されたテキストスタイル定数
+  const statLabelClass = "text-sm sm:text-base md:text-lg lg:text-xl text-gray-500";
+  const statValueClass = "text-sm sm:text-base md:text-lg lg:text-xl font-bold text-gray-500";
+
   // Hooks呼び出し後に初期化中判定（必ず1箇所のみ）
   if (!deck) {
     return <div className="min-h-screen flex items-center justify-center text-lg">Loading...</div>;
@@ -139,9 +143,13 @@ export function DeckBuilder({ shareId }: DeckBuilderProps) {
     <div className="min-h-screen p-4 lg:p-8 bg-gray-50 dark:bg-gray-900">
       <div className="max-w-400 mx-auto">
         <header className="mb-6">
-          <div className="flex justify-between items-start mb-2">
-            <div>
-              <h1 className="text-2xl lg:text-4xl font-bold mb-2">
+          <div className="flex flex-col sm:flex-row sm:justify-between items-end sm:items-start gap-2 mb-2">
+            <div className="flex items-center gap-3 w-full sm:w-auto justify-end order-1 sm:order-2">
+              <iframe src="https://github.com/sponsors/drakontia/button" title="Sponsor drakontia" height="32" width="114" style={{border: 0, borderRadius: '6px'}}></iframe>
+              <LanguageSwitcher currentLocale={locale} />
+            </div>
+            <div className="order-2 sm:order-1 w-full sm:w-auto">
+              <h1 className="text-xl sm:text-2xl lg:text-4xl font-bold mb-2">
                 <Link href="/" className="hover:underline">
                   {t('app.title')}
                 </Link>
@@ -150,7 +158,6 @@ export function DeckBuilder({ shareId }: DeckBuilderProps) {
                 {t('app.description')}
               </p>
             </div>
-            <LanguageSwitcher currentLocale={locale} />
           </div>
         </header>
 
@@ -163,8 +170,8 @@ export function DeckBuilder({ shareId }: DeckBuilderProps) {
         <div ref={deckCaptureRef}>
           <FieldSet className="grid grid-cols-1 sm:grid-cols-6 lg:grid-cols-12 gap-6 mb-6 p-3 lg:p-6 rounded-xl border bg-card">
             {/* Top side - Deck name, Deck control */}
-            <FieldGroup className="sm:col-span-6 lg:col-span-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-4">
-              <Field orientation={'horizontal'} className="col-span-1 lg:col-span-4">
+            <FieldGroup className="sm:col-span-6 lg:col-span-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-12 gap-4">
+              <Field orientation={'horizontal'} className="col-span-1 md:col-span-4 lg:col-span-4">
                 <Input
                   id="deck-name"
                   type="text"
@@ -173,11 +180,11 @@ export function DeckBuilder({ shareId }: DeckBuilderProps) {
                     setDeck({ ...deck, name: e.target.value });
                     setName(e.target.value);
                   }}
-                  className="text-2xl h-12 font-bold"
+                  className="text-base sm:text-lg md:text-xl lg:text-2xl h-12 font-bold"
                   placeholder={t('deck.namePlaceholder')}
                 />
               </Field>
-              <div className="col-span-1 lg:col-span-8 flex justify-end gap-2">
+              <div className="col-span-1 md:col-span-8 lg:col-span-8 flex justify-end gap-2">
                 <Button
                   onClick={handleSaveDeck}
                   variant="secondary"
@@ -228,63 +235,69 @@ export function DeckBuilder({ shareId }: DeckBuilderProps) {
             </FieldGroup>
 
             {/* Left side - Character, Points, Equipment */}
-            <div className="sm:col-span-2 lg:col-span-4 space-y-6">
+            <div className="sm:col-span-6 lg:col-span-4 space-y-6">
               {/* Character Selection */}
               <Card>
-                <CardContent className="p-2 lg:p-6">
-                  <CharacterSelector
-                    characters={CHARACTERS}
-                    character={deck.character}
-                    onSelect={setCharacter}
-                    hasPotential={deck.hasPotential}
-                    onTogglePotential={() => setPotential(!deck.hasPotential)}
-                  />
+                <CardContent className="p-2 lg:p-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-4">
+                    {/* 左列: キャラクター画像 */}
+                    <div>
+                      <CharacterSelector
+                        characters={CHARACTERS}
+                        character={deck.character}
+                        onSelect={setCharacter}
+                        hasPotential={deck.hasPotential}
+                        onTogglePotential={() => setPotential(!deck.hasPotential)}
+                      />
+                    </div>
 
-                  {/* Points/Stats Section */}
-                  <FieldGroup className='gap-2'>
-                    <Field orientation={'horizontal'} className='border-b'>
-                      <FieldLabel className='text-base lg:text-2xl text-gray-500 align-middle'><Clock12 className='align-middle' />{t('deck.createdDate')}</FieldLabel>
-                      <div className="flex justify-between items-center p-1">
-                        <span className="text-base lg:text-2xl font-bold text-gray-500">
-                          {(() => {
-                            const d = new Date(deck.createdAt);
-                            const yy = String(d.getFullYear()).slice(-2);
-                            const mm = String(d.getMonth() + 1).padStart(2, '0');
-                            const dd = String(d.getDate()).padStart(2, '0');
-                            return `${yy}.${mm}.${dd}`;
-                          })()}
-                        </span>
-                      </div>
-                    </Field>
-                    <Field orientation={'horizontal'} className='border-b' data-testid="total-cards">
-                      <FieldLabel className='text-base lg:text-2xl text-gray-500'><CardSim />{t('deck.totalCards')}</FieldLabel>
-                      <div className="flex justify-between items-center p-1">
-                        <span className="text-base lg:text-2xl font-bold text-gray-500">{deck.cards.length}</span>
-                      </div>
-                    </Field>
-                    <Field orientation={'horizontal'} data-testid="faint-memory">
-                      <FieldLabel className='text-base lg:text-2xl text-gray-500'><Brain />{t('character.faintMemory')}</FieldLabel>
-                      <div className="flex justify-between items-center p-1">
-                        <span className="text-base lg:text-2xl font-bold text-gray-500" data-testid="faint-memory-points">{faintMemoryPoints} points</span>
-                      </div>
-                    </Field>
-                  </FieldGroup>
-                  <EquipmentSelector
-                    equipment={EQUIPMENT}
-                    selectedEquipment={deck.equipment}
-                    onSelect={(equipment: Equipment | null, type?: EquipmentType) => {
-                      if (type) selectEquipment(type, equipment);
-                    }}
-                  />
+                    {/* 右列: 情報と装備 */}
+                    <div className="space-y-4">
+                      {/* Points/Stats Section */}
+                      <FieldGroup className='gap-2'>
+                        <Field orientation={'horizontal'} className='border-b'>
+                          <FieldLabel className={`${statLabelClass} align-middle`}><Clock12 className='align-middle' />{t('deck.createdDate')}</FieldLabel>
+                          <div className="flex justify-between items-center p-1">
+                            <span className={statValueClass}>
+                              {(() => {
+                                const d = new Date(deck.createdAt);
+                                const yy = String(d.getFullYear()).slice(-2);
+                                const mm = String(d.getMonth() + 1).padStart(2, '0');
+                                const dd = String(d.getDate()).padStart(2, '0');
+                                return `${yy}.${mm}.${dd}`;
+                              })()}
+                            </span>
+                          </div>
+                        </Field>
+                        <Field orientation={'horizontal'} className='border-b' data-testid="total-cards">
+                          <FieldLabel className={statLabelClass}><CardSim />{t('deck.totalCards')}</FieldLabel>
+                          <div className="flex justify-between items-center p-1">
+                            <span className={statValueClass}>{deck.cards.length}</span>
+                          </div>
+                        </Field>
+                        <Field orientation={'horizontal'} data-testid="faint-memory">
+                          <FieldLabel className={statLabelClass}><Brain />{t('character.faintMemory')}</FieldLabel>
+                          <div className="flex justify-between items-center p-1">
+                            <span className={statValueClass} data-testid="faint-memory-points">{faintMemoryPoints} points</span>
+                          </div>
+                        </Field>
+                      </FieldGroup>
+                      {/* Equipment Section */}
+                      <EquipmentSelector
+                        equipment={EQUIPMENT}
+                        selectedEquipment={deck.equipment}
+                        onSelect={(equipment: Equipment | null, type?: EquipmentType) => {
+                          if (type) selectEquipment(type, equipment);
+                        }}
+                      />
+                    </div>
+                  </div>
                 </CardContent>
               </Card>
-
-
-              {/* Equipment Section */}
             </div>
 
             {/* Right side - Cards in 4-column grid */}
-            <div className="sm:col-span-4 lg:col-span-8 space-y-6">
+            <div className="sm:col-span-6 lg:col-span-8 space-y-6">
               <Card>
                 <CardContent className="p-2 lg:p-6">
                   <DeckDisplay

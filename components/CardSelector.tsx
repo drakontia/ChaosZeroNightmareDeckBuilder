@@ -7,6 +7,8 @@ import { Card, CardContent } from "./ui/card";
 import { CardFrame } from "./CardFrame";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "./ui/accordion";
 
+const cardGridClass = "grid grid-cols-2 sm:grid-cols-4 xl:grid-cols-6 gap-4";
+
 interface CardSelectorProps {
   character: Character | null;
   onAddCard: (card: CznCard) => void;
@@ -144,7 +146,7 @@ export function CardSelector({ character, onAddCard, onRestoreCard, removedCards
           {getCardTypeLabel(cardType)}
         </AccordionTrigger>
         <AccordionContent>
-          <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-4 pt-3">
+          <div className={cardGridClass}>
             {filteredCards.map(card => renderCardButton(card))}
           </div>
         </AccordionContent>
@@ -165,7 +167,7 @@ export function CardSelector({ character, onAddCard, onRestoreCard, removedCards
         {removedCards && removedCards.size > 0 && (
           <div className="space-y-3">
             <h3 className="text-lg font-semibold">削除したカード</h3>
-            <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-4">
+            <div className={cardGridClass}>
               {Array.from(removedCards.entries()).map(([id, entry]) => {
                 const card = getCardById(id);
                 if (!card) return null;
@@ -180,7 +182,7 @@ export function CardSelector({ character, onAddCard, onRestoreCard, removedCards
         {convertedCards && convertedCards.size > 0 && (
           <div className="space-y-3">
             <h3 className="text-lg font-semibold">変換したカード</h3>
-            <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-4">
+            <div className={cardGridClass}>
               {Array.from(convertedCards.entries()).map(([originalId, entry]) => {
                 const originalCard = getCardById(originalId);
                 if (!originalCard) return null;
@@ -195,7 +197,7 @@ export function CardSelector({ character, onAddCard, onRestoreCard, removedCards
         {visibleCharacterHiramekiCards.length > 0 && (
           <div className="space-y-3">
             <h3 className="text-lg font-semibold">ヒラメキカード</h3>
-            <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-4">
+            <div className={cardGridClass}>
               {visibleCharacterHiramekiCards.map(card => renderCardButton(card))}
             </div>
           </div>

@@ -16,6 +16,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from 
 import { Field, FieldGroup, FieldLabel } from "./ui/field";
 import { Swords } from "lucide-react";
 import { InfoDialog } from "./InfoDialog";
+import { DialogCloseButton } from "./DialogCloseButton";
 
 interface EquipmentSelectorProps {
   equipment: Equipment[];
@@ -97,22 +98,17 @@ export function EquipmentSelector({ equipment, selectedEquipment, onSelect }: Eq
               )}
             </Button>
           </DialogTrigger>
-          <DialogContent className="p-4 md:p-6 w-[80vw] max-w-5xl max-h-[90vh] overflow-hidden flex flex-col gap-2">
+          <DialogContent className="max-h-[90vh] overflow-hidden w-[80vw] max-w-5xl flex flex-col">
             <DialogHeader className="flex-row items-center justify-between space-y-0 shrink-0">
               <DialogTitle>{t(titleKey)}</DialogTitle>
-              <Button
-                variant="ghost"
-                size="sm"
+              <DialogCloseButton
                 onClick={() => {
                   onSelect(null, type);
                   setOpenType(null);
                 }}
-                className="pr-8"
-              >
-                {t('common.remove', { defaultValue: '外す' })}
-              </Button>
+              />
             </DialogHeader>
-            <div className="p-2 md:p-6 pt-0 overflow-y-auto flex-1 min-h-0">
+            <div className="flex-1 p-2 md:p-6 pt-0 overflow-y-auto">
               <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-2">
                 {items.map((item) => (
                   <Button
