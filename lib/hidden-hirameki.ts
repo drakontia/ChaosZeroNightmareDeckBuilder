@@ -21,6 +21,7 @@ export const HIDDEN_HIRAMEKI_EFFECTS: HiddenHiramekiDefinition[] = [
       { id: "hiddenhirameki_27", additionalEffect: "1ターンの間、不屈2" },
       { id: "hiddenhirameki_11", additionalEffect: "士気1" },
       { id: "hiddenhirameki_26", additionalEffect: "不屈1" },
+      { id: "hiddenhirameki_32", additionalEffect: "不屈2" },
       { id: "hiddenhirameki_12", additionalEffect: "決意1" },
       { id: "hiddenhirameki_13", additionalEffect: "決意2" },
       { id: "hiddenhirameki_14", additionalEffect: "ダメージ減少1" },
