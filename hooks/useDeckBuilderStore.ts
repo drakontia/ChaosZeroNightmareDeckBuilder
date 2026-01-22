@@ -1,6 +1,6 @@
 import { create } from "zustand";
 import type { Character, Deck, Equipment, EquipmentType, DeckCard, GodType, CopiedCardEntry, RemovedCardEntry } from "@/types";
-import { getCardById, CHARACTERS } from "@/lib/data";
+import { getCardById, CHARACTERS } from "@/lib/card";
 
 interface DeckBuilderStore {
   deck: Deck | null;

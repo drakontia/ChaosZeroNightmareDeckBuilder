@@ -11,7 +11,7 @@ import { EquipmentSelector } from "./EquipmentSelector";
 import { CardSelector } from "./CardSelector";
 import { DeckDisplay } from "./DeckDisplay";
 import { LanguageSwitcher } from "./LanguageSwitcher";
-import { CHARACTERS, EQUIPMENT } from "@/lib/data";
+import { CHARACTERS, EQUIPMENT } from "@/lib/card";
 import { calculateFaintMemory } from "@/lib/calculateFaintMemory";
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 import { Button } from "./ui/button";

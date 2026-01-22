@@ -1,5 +1,5 @@
 import { Deck, CardType, RemovedCardEntry, CopiedCardEntry, ConvertedCardEntry } from "@/types";
-import { getCardById } from "./data";
+import { getCardById } from "./card";
 
 // Calculate Faint Memory points based on deck edits
 

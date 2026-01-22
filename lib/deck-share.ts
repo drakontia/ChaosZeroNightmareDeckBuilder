@@ -1,4 +1,4 @@
-import { CHARACTERS, EQUIPMENT, getCardById } from "@/lib/data";
+import { CHARACTERS, EQUIPMENT, getCardById } from "@/lib/card";
 import { CznCard, Deck, DeckCard, Equipment, EquipmentType } from "@/types";
 
 interface SharedDeckCard {

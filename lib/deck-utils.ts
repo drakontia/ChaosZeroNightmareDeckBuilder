@@ -1,7 +1,7 @@
 import { CardType, DeckCard, CardStatus, CardCategory } from "@/types";
 import { GOD_HIRAMEKI_EFFECTS } from "@/lib/god-hirameki";
 import { HIDDEN_HIRAMEKI_EFFECTS } from "@/lib/hidden-hirameki";
-import { getCardById } from "@/lib/data";
+import { getCardById } from "@/lib/card";
 
 // Helper function to get card info based on hirameki level and god hirameki
 export function getCardInfo(

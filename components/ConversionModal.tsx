@@ -3,7 +3,7 @@ import { useTranslations } from 'next-intl';
 import { Card } from "./ui/card";
 import { CardFrame } from "./CardFrame";
 import { CznCard, CardType, JobType, CardCategory } from "@/types";
-import { getAddableCards } from "@/lib/data";
+import { getAddableCards } from "@/lib/card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "./ui/accordion";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "./ui/dialog";
 

@@ -2,7 +2,7 @@
 import { useTranslations } from 'next-intl';
 
 import { CznCard, CardType, Character, RemovedCardEntry, ConvertedCardEntry } from "@/types";
-import { getCharacterHiramekiCards, getAddableCards, getCardById } from "@/lib/data";
+import { getCharacterHiramekiCards, getAddableCards, getCardById } from "@/lib/card";
 import { Card, CardContent } from "./ui/card";
 import { CardFrame } from "./CardFrame";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "./ui/accordion";
