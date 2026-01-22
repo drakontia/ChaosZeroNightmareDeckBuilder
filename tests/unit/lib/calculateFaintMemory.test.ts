@@ -123,7 +123,7 @@ describe('calculateFaintMemory', () => {
     expect(calculateFaintMemory(baseDeck)).toBe(20);
   });
 
-  it('should add 10pt for hirameki on shared/monster card', () => {
+  it('should add 10pt for hirameki on shared card only (not monster)', () => {
     const variation: HiramekiVariation = {
       level: 0,
       cost: 0,
@@ -145,6 +145,54 @@ describe('calculateFaintMemory', () => {
       hiramekiVariations: [variation]
     });
     expect(calculateFaintMemory(baseDeck)).toBe(30); // 20 + 10
+  });
+
+  it('should NOT add hirameki points for monster cards', () => {
+    const variation: HiramekiVariation = {
+      level: 0,
+      cost: 0,
+      description: ''
+    };
+
+    baseDeck.cards.push({
+      deckId: '1',
+      id: 'monster-1',
+      name: 'Monster Card',
+      type: CardType.MONSTER,
+      category: CardCategory.ATTACK,
+      statuses: [],
+      selectedHiramekiLevel: 2, // Has hirameki but should NOT add points
+      godHiramekiType: null,
+      godHiramekiEffectId: null,
+      selectedHiddenHiramekiId: null,
+      isBasicCard: false,
+      hiramekiVariations: [variation]
+    });
+    expect(calculateFaintMemory(baseDeck)).toBe(80); // 80 only, no hirameki bonus
+  });
+
+  it('should NOT add hirameki points for monster cards with hidden hirameki', () => {
+    const variation: HiramekiVariation = {
+      level: 0,
+      cost: 0,
+      description: ''
+    };
+
+    baseDeck.cards.push({
+      deckId: '1',
+      id: 'monster-1',
+      name: 'Monster Card',
+      type: CardType.MONSTER,
+      category: CardCategory.ATTACK,
+      statuses: [],
+      selectedHiramekiLevel: 0,
+      godHiramekiType: null,
+      godHiramekiEffectId: null,
+      selectedHiddenHiramekiId: 'hidden-1', // Has hidden hirameki but should NOT add points
+      isBasicCard: false,
+      hiramekiVariations: [variation]
+    });
+    expect(calculateFaintMemory(baseDeck)).toBe(80); // 80 only, no hidden hirameki bonus
   });
 
   it('should add 20pt for god hirameki', () => {
@@ -434,9 +482,9 @@ describe('calculateFaintMemory (snapshot attribute handling)', () => {
     });
 
     // Sequence base points: copy #1=0, #2=10, #3=30 => 40
-    // Attribute points: monster(80)+hirameki(10)=90
-    // Total expected: 40 + 90 = 130
-    expect(calculateFaintMemory(deck)).toBe(130);
+    // Attribute points: monster(80) only (monster cards do NOT get hirameki points)
+    // Total expected: 40 + 80 = 120
+    expect(calculateFaintMemory(deck)).toBe(120);
   });
 
   it('should add conversion points with snapshot attributes', () => {
@@ -475,11 +523,11 @@ describe('calculateFaintMemory (snapshot attribute handling)', () => {
       isBasicCard: false
     });
 
-    // Deck card points: type(80) + hirameki(10) = 90
+    // Deck card points: type(80) only (monster hirameki does NOT count) = 80
     // Base conversion: +10pt
     // Original card preserved points: type(20) + hirameki(10) + god(20) = 50
-    // Total: 90 + 10 + 50 = 150
-    expect(calculateFaintMemory(deck)).toBe(150);
+    // Total: 80 + 10 + 50 = 140
+    expect(calculateFaintMemory(deck)).toBe(140);
   });
 
   it('should preserve conversion points even after converted card is removed', () => {
@@ -766,15 +814,15 @@ describe('calculateFaintMemory (copy double-counting issue)', () => {
       isBasicCard: false
     });
 
-    // Current deck card: type(80) + hirameki(10) + god(20) = 110
+    // Current deck card: type(80) + god(20) = 100 (monster hirameki does NOT count)
     // Copy sequence: copy #1=0, #2=10, #3=30 = 40
     // Copy snapshot should NOT be added since original is in deck
-    // Expected: 110 + 40 = 150
+    // Expected: 100 + 40 = 140
 
     const points = calculateFaintMemory(deck);
 
     // Fixed: snapshot should not add type/hirameki/god if original in deck
-    expect(points).toBe(150);
+    expect(points).toBe(140);
   });
 
   it('should handle undo copy correctly - removing copy should clear copiedCards entry', () => {
@@ -888,8 +936,8 @@ describe('calculateFaintMemory (copy double-counting issue)', () => {
       isBasicCard: false
     });
 
-    // type(80) + hirameki(10) + god(20) + copy(0 + 10 + 30) = 150
-    expect(calculateFaintMemory(deck)).toBe(150);
+    // type(80) + god(20) + copy(0 + 10 + 30) = 140 (monster hirameki does NOT count)
+    expect(calculateFaintMemory(deck)).toBe(140);
   });
 
   it('should correctly calculate points after all copies are undone', () => {

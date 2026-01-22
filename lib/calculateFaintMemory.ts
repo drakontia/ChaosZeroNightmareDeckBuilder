@@ -30,8 +30,9 @@ export function calculateFaintMemory(deck: Deck | null | undefined): number {
         points += 20;
       }
 
-      // Hirameki (including hidden hirameki) on shared/monster cards: +10pt (character cards are 0pt)
-      if ((card.type === CardType.SHARED || card.type === CardType.MONSTER) &&
+      // Hirameki (including hidden hirameki) on shared cards: +10pt (character cards are 0pt)
+      // Note: Monster cards do NOT receive hirameki points (current specification)
+      if (card.type === CardType.SHARED &&
         (card.selectedHiramekiLevel > 0 || (card.selectedHiddenHiramekiId != null && card.selectedHiddenHiramekiId !== ''))) {
         points += 10;
       }
@@ -90,8 +91,9 @@ export function calculateFaintMemory(deck: Deck | null | undefined): number {
       } else if (cardType === CardType.FORBIDDEN) {
         points += 20;
       }
-      // Hirameki (including hidden hirameki) points for shared/monster (per card)
-      if ((cardType === CardType.SHARED || cardType === CardType.MONSTER) &&
+      // Hirameki (including hidden hirameki) points for shared cards only (per card)
+      // Note: Monster cards do NOT receive hirameki points (current specification)
+      if (cardType === CardType.SHARED &&
         ((snapshot.selectedHiramekiLevel ?? 0) > 0 || (snapshot.selectedHiddenHiramekiId != null && snapshot.selectedHiddenHiramekiId !== ''))) {
         points += 10;
       }
@@ -144,8 +146,9 @@ export function calculateFaintMemory(deck: Deck | null | undefined): number {
       } else if (cardType === CardType.FORBIDDEN) {
         points += 20;
       }
-      // Hirameki (including hidden hirameki) points for shared/monster (one-time for all copies of this card)
-      if ((cardType === CardType.SHARED || cardType === CardType.MONSTER) &&
+      // Hirameki (including hidden hirameki) points for shared cards only (one-time for all copies of this card)
+      // Note: Monster cards do NOT receive hirameki points (current specification)
+      if (cardType === CardType.SHARED &&
         ((snapshot.selectedHiramekiLevel ?? 0) > 0 || (snapshot.selectedHiddenHiramekiId != null && snapshot.selectedHiddenHiramekiId !== ''))) {
         points += 10;
       }
@@ -181,8 +184,9 @@ export function calculateFaintMemory(deck: Deck | null | undefined): number {
         points += 80;
       }
       // Note: CHARACTER type has no base type points
-      if (originalType === CardType.SHARED || originalType === CardType.MONSTER) {
-        // Hirameki (including hidden hirameki) points from original card
+      // Hirameki (including hidden hirameki) points from original card (shared cards only)
+      // Note: Monster cards do NOT receive hirameki points (current specification)
+      if (originalType === CardType.SHARED) {
         if ((snapshot.selectedHiramekiLevel ?? 0) > 0 || (snapshot.selectedHiddenHiramekiId != null && snapshot.selectedHiddenHiramekiId !== '')) {
           points += 10;
         }

@@ -137,7 +137,7 @@ describe('Hidden Hirameki (Unified Structure)', () => {
       expect(calculateFaintMemory(baseDeck)).toBe(30); // 20 (shared) + 10 (hidden hirameki)
     });
 
-    it('should add 10pt for hidden hirameki on monster card', () => {
+    it('should NOT add hirameki points for hidden hirameki on monster card', () => {
       const firstHiddenEffect = HIDDEN_HIRAMEKI_EFFECTS[0];
       baseDeck.cards.push({
         deckId: '1',
@@ -153,7 +153,7 @@ describe('Hidden Hirameki (Unified Structure)', () => {
         isBasicCard: false,
         hiramekiVariations: [variation]
       });
-      expect(calculateFaintMemory(baseDeck)).toBe(90); // 80 (monster) + 10 (hidden hirameki)
+      expect(calculateFaintMemory(baseDeck)).toBe(80); // 80 (monster) only, no hidden hirameki points
     });
 
     it('should not add points for hidden hirameki on character card', () => {
