@@ -1,6 +1,7 @@
 import { describe, it, expect, beforeEach } from 'vitest';
 import { DeckCard, CardType, CardCategory, Deck, HiramekiVariation } from '@/types';
-import { getCardInfo, calculateFaintMemory } from '@/lib/deck-utils';
+import { getCardInfo } from '@/lib/deck-utils';
+import { calculateFaintMemory } from "@/lib/calculateFaintMemory";
 import { HIDDEN_HIRAMEKI_EFFECTS } from '@/lib/hidden-hirameki';
 
 describe('Hidden Hirameki (Unified Structure)', () => {

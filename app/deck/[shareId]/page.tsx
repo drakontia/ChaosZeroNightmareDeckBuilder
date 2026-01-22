@@ -1,6 +1,6 @@
 import { DeckBuilder } from '@/components/DeckBuilder';
 import { decodeDeckShare } from '@/lib/deck-share';
-import { calculateFaintMemory } from '@/lib/deck-utils';
+import { calculateFaintMemory } from "@/lib/calculateFaintMemory";
 import { getLocale, getTranslations } from 'next-intl/server';
 import type { Metadata, ResolvingMetadata } from 'next';
 

@@ -1,7 +1,8 @@
 import { ImageResponse } from 'next/og';
 import { getTranslations } from 'next-intl/server';
 import { decodeDeckShare } from '@/lib/deck-share';
-import { calculateFaintMemory, getCardInfo } from '@/lib/deck-utils';
+import { getCardInfo } from '@/lib/deck-utils';
+import { calculateFaintMemory } from "@/lib/calculateFaintMemory";
 import { cookies } from 'next/headers';
 
 export const runtime = 'nodejs';

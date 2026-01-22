@@ -12,7 +12,7 @@ import { CardSelector } from "./CardSelector";
 import { DeckDisplay } from "./DeckDisplay";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { CHARACTERS, EQUIPMENT } from "@/lib/data";
-import { calculateFaintMemory } from "@/lib/deck-utils";
+import { calculateFaintMemory } from "@/lib/calculateFaintMemory";
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 import { Button } from "./ui/button";
 import { Field, FieldLabel, FieldGroup, FieldSet } from "./ui/field";
