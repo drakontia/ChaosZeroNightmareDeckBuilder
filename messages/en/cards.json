@@ -1927,8 +1927,7 @@
     "shared_29": {
       "name": "Skull Bludgeoning",
       "descriptions": {
-        "0": "200% DMG\nVulnerable Attacks: +50% Damage",
-        "1": "ダメージ200%\n弱点攻撃：ダメージ量+50%\n行動カウント2増加"
+        "0": "200% DMG\nVulnerable Attacks: +50% Damage"
       }
     },
     "shared_30": {
@@ -1970,34 +1969,25 @@
     "shared_36": {
       "name": "Speeding Fire",
       "descriptions": {
-        "0": "80% damage\nDraw 1",
-        "1": "80% damage\nDraw 1\nTarget: Mark 1",
-        "2": "80% damage\nDraw 1\nTarget: Weaken 1",
-        "3": "80% damage\nDraw 1\nTarget: Pain 2"
+        "0": "80% damage\nDraw 1"
       }
     },
     "shared_37": {
       "name": "Mobile Shooting",
       "descriptions": {
-        "0": "Damage 200% to all enemies",
-        "1": "Damage 200% to all enemies\nNext turn, Action Point 1",
-        "2": "Damage 200% to all enemies\nNext turn, Draw 1",
-        "3": "Damage 200% to all enemies\nAll enemies Pain 2",
-        "4": "Damage 200% to all enemies\nAll enemies Mark 2"
+        "0": "Damage 200% to all enemies"
       }
     },
     "shared_38": {
       "name": "Ambush",
       "descriptions": {
-        "0": "80% damage\nMove this card from the graveyard to your hand during the Wreck",
-        "1": "80% damage\nMove this card from the graveyard to your hand during the Wreck\nTarget: Pain 2"
+        "0": "80% damage\nMove this card from the graveyard to your hand during the Wreck"
       }
     },
     "shared_39": {
       "name": "Special Shooting",
       "descriptions": {
-        "0": "350% DMG\nAt the start of your next turn, Draw 1",
-        "1": "350% damage\nAt the start of your next turn, Draw 1\nTarget: Mark 2"
+        "0": "350% DMG\nAt the start of your next turn, Draw 1"
       }
     },
     "shared_40": {
@@ -2009,15 +1999,13 @@
     "shared_41": {
       "name": "Precise Aim",
       "descriptions": {
-        "0": "120% DMG\nDraw 1\nSelect a card in your hand and move it to the top of the deck",
-        "1": "120% damage\nDraw 1\nSelect a card in your hand and move it to the top of the deck\nTarget: Weaken 1"
+        "0": "120% DMG\nDraw 1\nSelect a card in your hand and move it to the top of the deck"
       }
     },
     "shared_42": {
       "name": "Targeting",
       "descriptions": {
-        "0": "400% DMG\nCharge: Earn 20 Credits",
-        "1": "400% damage\nCharge: Earn 20 Credits\nAction Point 1"
+        "0": "400% DMG\nCharge: Earn 20 Credits"
       }
     },
     "shared_43": {
