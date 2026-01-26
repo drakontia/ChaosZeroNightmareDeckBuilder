@@ -498,11 +498,11 @@ export const SHARED_CARDS: CznCard[] = [
     name: "酸性ガス",
     type: CardType.SHARED,
     category: CardCategory.SKILL,
-    statuses: [CardStatus.RETRIEVE],
+    statuses: [CardStatus.RETRIEVE, CardStatus.EXHAUST],
     allowedJobs: [JobType.RANGER, JobType.HUNTER],
     imgUrl: "/images/cards/shared_34.png",
     hiramekiVariations: [
-      { level: 0, cost: 1, description: "敵全体に損傷2" }
+      { level: 0, cost: 0, description: "敵全体に損傷3" }
     ]
   },
   {
@@ -574,7 +574,7 @@ export const SHARED_CARDS: CznCard[] = [
     allowedJobs: [JobType.RANGER, JobType.HUNTER],
     imgUrl: "/images/cards/shared_40.png",
     hiramekiVariations: [
-      { level: 0, cost: 1, description: "シールド保持中の対象にダメージ量15%増加" }
+      { level: 0, cost: 1, description: "シールド所持中の対象に、ダメージ量25%増加(最大1)" }
     ]
   },
   {
@@ -619,7 +619,7 @@ export const SHARED_CARDS: CznCard[] = [
     name: "集結",
     type: CardType.SHARED,
     category: CardCategory.SKILL,
-    statuses: [CardStatus.HASTE],
+    statuses: [CardStatus.HASTE, CardStatus.EXHAUST2],
     allowedJobs: [JobType.CONTROLLER, JobType.PSIONIC],
     imgUrl: "/images/cards/shared_46.png",
     hiramekiVariations: [
@@ -739,7 +739,7 @@ export const SHARED_CARDS: CznCard[] = [
     name: "空虚の放浪者",
     type: CardType.SHARED,
     category: CardCategory.SKILL,
-    statuses: [],
+    statuses: [CardStatus.EXHAUST],
     allowedJobs: [JobType.CONTROLLER, JobType.PSIONIC],
     imgUrl: "/images/cards/shared_56.png",
     hiramekiVariations: [
