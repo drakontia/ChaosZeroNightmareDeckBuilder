@@ -60,6 +60,13 @@ export enum CardType {
   FORBIDDEN = "forbidden" // 禁忌カード
 }
 
+// Monster card grade types
+export enum CardGrade {
+  COMMON = "common",    // Common: 20pt
+  RARE = "rare",      // Rare: 50pt
+  LEGEND = "legendary"     // Legend: 80pt
+}
+
 // Card category types
 export enum CardCategory {
   ATTACK = "attack",       // 攻撃
@@ -149,6 +156,7 @@ export interface CznCard {
   type: CardType;
   category: CardCategory; // Attack, Enhancement, or Skill
   statuses: CardStatus[]; // Card status effects
+  grade?: CardGrade; // Monster card grade: COMMON (20pt), RARE (50pt), LEGEND (80pt)
   isBasicCard?: boolean; // True for the 3 basic cards that can't have hirameki
   isStartingCard?: boolean; // True for character's 4 starting cards
   allowedJobs?: JobType[] | "all"; // For shared/monster/forbidden cards
@@ -172,6 +180,7 @@ export interface DeckCard extends CznCard {
 export interface RemovedCardEntry {
   count: number;
   type?: CardType; // Optional: card type at removal
+  grade?: CardGrade; // Grade at removal time (for monster cards)
   selectedHiramekiLevel?: number;
   selectedHiddenHiramekiId?: string | null; // Hidden hirameki at removal time
   godHiramekiType?: GodType | null;
@@ -182,6 +191,7 @@ export interface RemovedCardEntry {
 export interface CopiedCardEntry {
   count: number;
   type?: CardType; // Optional: card type at copy time
+  grade?: CardGrade; // Grade at copy time (for monster cards)
   selectedHiramekiLevel?: number;
   selectedHiddenHiramekiId?: string | null; // Hidden hirameki at copy time
   godHiramekiType?: GodType | null;
@@ -192,6 +202,7 @@ export interface CopiedCardEntry {
 export interface ConvertedCardEntry {
   convertedToId: string; // The target card ID it was converted to
   originalType?: CardType; // Original card type before conversion
+  originalGrade?: CardGrade; // Original grade before conversion (for monster cards)
   selectedHiramekiLevel?: number; // Hirameki level at conversion time
   selectedHiddenHiramekiId?: string | null; // Hidden hirameki at conversion time
   godHiramekiType?: GodType | null; // God hirameki at conversion time
