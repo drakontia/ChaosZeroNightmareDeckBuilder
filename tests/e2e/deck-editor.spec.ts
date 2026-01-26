@@ -643,10 +643,10 @@ test.describe('Deck Builder', () => {
     await copyBtn.click();
     await page.waitForTimeout(400);
 
-    // Get points after copy (first copy adds 20 points for copied shared card attribute)
+    // Get points after copy (V2: 1回目/2回目のコピーは0pt)
     const afterCopyText = await page.locator('[data-testid="faint-memory"]').innerText();
     const afterCopyPoints = parseInt(afterCopyText.replace(/[^0-9]/g, ''));
-    expect(afterCopyPoints).toBe(initialPoints + 20); // First copy of shared card = 0 (copy base) + 20 (shared attribute)
+    expect(afterCopyPoints).toBe(initialPoints);
 
     // Undo the copied card using the card name
     const cardContainerToUndo = getDeckCardContainerByName(page, cardName);
@@ -693,10 +693,10 @@ test.describe('Deck Builder', () => {
       await page.waitForTimeout(400);
     }
 
-    // Points after 3 copies: (0+20) + (10+20) + (30+20) = 100
+    // Points after 3 copies: 0 + 0 + 40 = 40
     const after3CopiesText = await page.locator('[data-testid="faint-memory"]').innerText();
     const after3CopiesPoints = parseInt(after3CopiesText.replace(/[^0-9]/g, ''));
-    expect(after3CopiesPoints).toBe(initialPoints + 100);
+    expect(after3CopiesPoints).toBe(initialPoints + 40);
 
     // Undo one copy (undo the last added copy - 3rd copy)
     const allMenuButtons = page.locator('button[aria-label="メニュー"]');
@@ -708,10 +708,10 @@ test.describe('Deck Builder', () => {
     await undoBtn.click();
     await page.waitForTimeout(1500);
 
-    // Points after undoing 1 copy: (0+20) + (10+20) = 50
+    // Points after undoing 1 copy: 0 + 0 = 0
     const after2CopiesText = await page.locator('[data-testid="faint-memory"]').innerText();
     const after2CopiesPoints = parseInt(after2CopiesText.replace(/[^0-9]/g, ''));
-    expect(after2CopiesPoints).toBe(initialPoints + 50);
+    expect(after2CopiesPoints).toBe(initialPoints);
 
     // Undo another copy (undo the 2nd copy)
     menuButtonCount = await page.locator('button[aria-label="メニュー"]').count();
@@ -722,10 +722,10 @@ test.describe('Deck Builder', () => {
     await undoBtn.click();
     await page.waitForTimeout(1500);
 
-    // Points after undoing 2 copies: (0+20) = 20
+    // Points after undoing 2 copies: 0
     const after1CopyText = await page.locator('[data-testid="faint-memory"]').innerText();
     const after1CopyPoints = parseInt(after1CopyText.replace(/[^0-9]/g, ''));
-    expect(after1CopyPoints).toBe(initialPoints + 20);
+    expect(after1CopyPoints).toBe(initialPoints);
 
     // Undo the last copy (undo the 1st copy)
     menuButtonCount = await page.locator('button[aria-label="メニュー"]').count();
