@@ -2823,12 +2823,12 @@ export const CHARACTER_CARDS: CznCard[] = [
     statuses: [],
     imgUrl: "/images/cards/cassius_hirameki_3.png",
     hiramekiVariations: [ // Fallback descriptions
-      { level: 0, cost: 2, description: "ダメージ240%<wbr/>完了したクエストの回数に応じてコスト減少" },
-      { level: 1, cost: 2, description: "	ダメージ360%<wbr/>完了したクエストの回数に応じてコスト減少" },
-      { level: 2, cost: 2, description: "敵全体にダメージ300%<wbr/>完了したクエストの回数に応じてコスト減少" },
-      { level: 3, cost: 0, description: "ダメージ80%<wbr/>完了したクエストの回数に応じて、ダメージ量+80%" },
-      { level: 4, cost: 2, category: CardCategory.UPGRADE, description: "クエストカード使用時、治癒100%、ランダムな敵に固定ダメージ100%" },
-      { level: 5, cost: 2, category: CardCategory.UPGRADE, description: "クエスト完了時、クエストカードを1枚生成" }
+      { level: 0, cost: 2, description: "ダメージ240%<wbr/>1ターンの間、士気1減少<wbr/>完了したクエストの回数に応じてコスト減少" },
+      { level: 1, cost: 2, description: "	ダメージ360%<wbr/>1ターンの間、士気1減少<wbr/>完了したクエストの回数に応じてコスト減少" },
+      { level: 2, cost: 2, description: "敵全体にダメージ300%<wbr/>1ターンの間、士気1減少<wbr/>完了したクエストの回数に応じてコスト減少" },
+      { level: 3, cost: 0, description: "ダメージ80%<wbr/>完了したクエストの回数に応じて、ダメージ量+80%(最大5回)" },
+      { level: 4, cost: 2, category: CardCategory.UPGRADE, description: "クエストカード使用時、治癒100%、ランダムな敵に固定ダメージ100%", statuses: [CardStatus.UNIQUE] },
+      { level: 5, cost: 2, category: CardCategory.UPGRADE, description: "ターン開始時、強化されたクエストカードを1枚生成", statuses: [CardStatus.UNIQUE] }
     ]
   },
   {
