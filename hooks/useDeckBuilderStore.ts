@@ -5,12 +5,15 @@ import { getCardById, CHARACTERS } from "@/lib/card";
 interface DeckBuilderStore {
   deck: Deck | null;
   egoLevels: Record<string, number>;
+  removeLimitReached: boolean;
+  copyLimitReached: boolean;
   setCharacter: (character: Character) => void;
   setDeck: (deck: Deck) => void;
   setEgoLevel: (characterId: string, level: number) => void;
   setPotential: (hasPotential: boolean) => void;
   addCard: (card: DeckCard) => void;
   removeCard: (deckId: string) => void;
+  clearRemoveLimitAlert: () => void;
   restoreCard: (card: DeckCard) => void;
   selectEquipment: (type: EquipmentType, equipment: Equipment | null) => void;
   updateCardHirameki: (deckId: string, level: number) => void;
@@ -19,6 +22,7 @@ interface DeckBuilderStore {
   setCardHiddenHirameki: (deckId: string, hiddenHiramekiId: string | null) => void;
   undoCard: (deckId: string) => void;
   copyCard: (deckId: string) => void;
+  clearCopyLimitAlert: () => void;
   convertCard: (deckId: string, targetCardId: string, options?: { asExclusion?: boolean }) => void;
   reset: () => void;
 }
@@ -26,6 +30,8 @@ interface DeckBuilderStore {
 export const useDeckBuilderStore = create<DeckBuilderStore>((set) => ({
   deck: null,
   egoLevels: {},
+  removeLimitReached: false,
+  copyLimitReached: false,
   setCharacter: (character) => {
     set((state) => {
       const startingCards: DeckCard[] = (character.startingCards?.flatMap(id => {
@@ -116,6 +122,14 @@ export const useDeckBuilderStore = create<DeckBuilderStore>((set) => ({
       if (!state.deck) return {};
       const cardToRemove = state.deck.cards.find((c) => c.deckId === deckId);
       if (!cardToRemove) return {};
+
+      const totalRemoved = Array.from(state.deck.removedCards.values()).reduce((sum: number, entry) => {
+        if (typeof entry === 'number') return sum + entry;
+        return sum + (entry.count ?? 0);
+      }, 0);
+      if (totalRemoved >= 5) {
+        return { removeLimitReached: true };
+      }
       
       // Track removal in removedCards map with snapshot of current card state
       const newRemoved = new Map(state.deck.removedCards);
@@ -125,6 +139,7 @@ export const useDeckBuilderStore = create<DeckBuilderStore>((set) => ({
       const snapshot: RemovedCardEntry = {
         count: currentCount + 1,
         type: cardToRemove.type,
+        grade: cardToRemove.grade,
         selectedHiramekiLevel: cardToRemove.selectedHiramekiLevel,
         godHiramekiType: cardToRemove.godHiramekiType,
         godHiramekiEffectId: cardToRemove.godHiramekiEffectId,
@@ -138,9 +153,11 @@ export const useDeckBuilderStore = create<DeckBuilderStore>((set) => ({
           cards: state.deck.cards.filter(c => c.deckId !== deckId),
           removedCards: newRemoved,
         },
+        removeLimitReached: false,
       };
     });
   },
+  clearRemoveLimitAlert: () => set({ removeLimitReached: false }),
   restoreCard: (card) => {
     set((state) => {
       if (!state.deck) return {};
@@ -332,6 +349,15 @@ export const useDeckBuilderStore = create<DeckBuilderStore>((set) => ({
       if (!state.deck) return {};
       const card = state.deck.cards.find((c) => c.deckId === deckId);
       if (!card) return {};
+
+      const totalCopied = Array.from(state.deck.copiedCards.values()).reduce((sum: number, entry) => {
+        if (typeof entry === 'number') return sum + entry;
+        return sum + (entry.count ?? 0);
+      }, 0);
+      if (totalCopied >= 4) {
+        return { copyLimitReached: true };
+      }
+
       const copy: DeckCard = {
         ...card,
         deckId: `${card.id}_${Date.now()}_${Math.random()}`,
@@ -346,6 +372,7 @@ export const useDeckBuilderStore = create<DeckBuilderStore>((set) => ({
       const snapshot: CopiedCardEntry = {
         count: currentCount + 1,
         type: card.type,
+        grade: card.grade,
         selectedHiramekiLevel: card.selectedHiramekiLevel,
         godHiramekiType: card.godHiramekiType,
         godHiramekiEffectId: card.godHiramekiEffectId,
@@ -358,9 +385,11 @@ export const useDeckBuilderStore = create<DeckBuilderStore>((set) => ({
           cards: [...state.deck.cards, copy],
           copiedCards: newCopied,
         },
+        copyLimitReached: false,
       };
     });
   },
+  clearCopyLimitAlert: () => set({ copyLimitReached: false }),
   convertCard: (deckId, targetCardId, options) => {
     set((state) => {
       if (!state.deck) return {};
@@ -390,6 +419,7 @@ export const useDeckBuilderStore = create<DeckBuilderStore>((set) => ({
       const snapshot = {
         convertedToId: target?.id ?? targetCardId,
         originalType: cardToConvert.type,
+        originalGrade: cardToConvert.grade,
         selectedHiramekiLevel: cardToConvert.selectedHiramekiLevel,
         selectedHiddenHiramekiId: cardToConvert.selectedHiddenHiramekiId,
         godHiramekiType: cardToConvert.godHiramekiType,
@@ -407,5 +437,5 @@ export const useDeckBuilderStore = create<DeckBuilderStore>((set) => ({
       };
     });
   },
-  reset: () => set({ deck: null, egoLevels: {} }),
+  reset: () => set({ deck: null, egoLevels: {}, removeLimitReached: false, copyLimitReached: false }),
 }));
