@@ -228,7 +228,7 @@ export const MONSTER_CARDS: CznCard[] = [
     allowedJobs: "all",
     imgUrl: "/images/cards/monster_17.png",
     hiramekiVariations: [
-      { level: 0, cost: 1, description: "山札から1枚を選択しドロー\nそのカード1枚を手札にコピー" }
+      { level: 0, cost: 1, description: "山札から1枚を選択しドロー\nそのカードに回収付与" }
     ]
   },
   {
