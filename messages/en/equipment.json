@@ -454,6 +454,9 @@
       "name": "Rarity",
       "rare": "Rare"
     },
+    "duplicate": {
+      "warning": "Another mythical equipment cannot be selected because one is already equipped in {type}"
+    },
     "title": "Obtained Equipment",
     "weapon": {
       "title": "Weapon",

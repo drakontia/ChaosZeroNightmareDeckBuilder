@@ -454,6 +454,9 @@
       "name": "稀有性",
       "rare": "稀有"
     },
+    "duplicate": {
+      "warning": "由于{type}已装备神话级装备,无法选择其他神话级装备"
+    },
     "title": "装备",
     "weapon": {
       "title": "武器",

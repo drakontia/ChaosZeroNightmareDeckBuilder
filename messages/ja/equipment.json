@@ -3,6 +3,9 @@
         "title": "獲得装備",
         "none": "なし",
         "info": "詳細情報",
+        "duplicate": {
+            "warning": "{type}で神話級装備が選択されているため、別の神話級装備は選択できません"
+        },
         "rarity": {
             "name": "レアリティ",
             "mythical": "神話",

@@ -454,6 +454,9 @@
       "name": "희귀",
       "rare": "희귀"
     },
+    "duplicate": {
+      "warning": "{type}에 신화급 장비가 이미 장착되어 있어 다른 신화급 장비를 선택할 수 없습니다"
+    },
     "title": "장비",
     "weapon": {
       "title": "무기",
