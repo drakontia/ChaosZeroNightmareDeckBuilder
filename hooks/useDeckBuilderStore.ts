@@ -7,6 +7,7 @@ interface DeckBuilderStore {
   egoLevels: Record<string, number>;
   removeLimitReached: boolean;
   copyLimitReached: boolean;
+  conversionLimitReached: boolean;
   setCharacter: (character: Character) => void;
   setDeck: (deck: Deck) => void;
   setEgoLevel: (characterId: string, level: number) => void;
@@ -24,6 +25,7 @@ interface DeckBuilderStore {
   copyCard: (deckId: string) => void;
   clearCopyLimitAlert: () => void;
   convertCard: (deckId: string, targetCardId: string, options?: { asExclusion?: boolean }) => void;
+  clearConversionLimitAlert: () => void;
   reset: () => void;
 }
 
@@ -32,6 +34,7 @@ export const useDeckBuilderStore = create<DeckBuilderStore>((set) => ({
   egoLevels: {},
   removeLimitReached: false,
   copyLimitReached: false,
+  conversionLimitReached: false,
   setCharacter: (character) => {
     set((state) => {
       const startingCards: DeckCard[] = (character.startingCards?.flatMap(id => {
@@ -123,11 +126,15 @@ export const useDeckBuilderStore = create<DeckBuilderStore>((set) => ({
       const cardToRemove = state.deck.cards.find((c) => c.deckId === deckId);
       if (!cardToRemove) return {};
 
-      const totalRemoved = Array.from(state.deck.removedCards.values()).reduce((sum: number, entry) => {
+      // Check integrated removal+conversion limit (max 5 total)
+      const removedCount = Array.from(state.deck.removedCards.values()).reduce((sum: number, entry) => {
         if (typeof entry === 'number') return sum + entry;
         return sum + (entry.count ?? 0);
       }, 0);
-      if (totalRemoved >= 5) {
+      const convertedCount = Array.from(state.deck.convertedCards.values()).length;
+      const totalRemovalAndConversion = removedCount + convertedCount;
+      
+      if (totalRemovalAndConversion >= 5) {
         return { removeLimitReached: true };
       }
       
@@ -398,6 +405,18 @@ export const useDeckBuilderStore = create<DeckBuilderStore>((set) => ({
       if (!cardToConvert) return {};
       const target = getCardById(targetCardId);
       if (!target && !asExclusion) return {};
+
+      // Check integrated removal+conversion limit (max 5 total)
+      const removedCount = Array.from(state.deck.removedCards.values()).reduce((sum: number, entry) => {
+        if (typeof entry === 'number') return sum + entry;
+        return sum + (entry.count ?? 0);
+      }, 0);
+      const convertedCount = Array.from(state.deck.convertedCards.values()).length;
+      const totalRemovalAndConversion = removedCount + convertedCount;
+      
+      if (totalRemovalAndConversion >= 5) {
+        return { conversionLimitReached: true };
+      }
       const cardIndex = state.deck.cards.findIndex((c) => c.deckId === deckId);
       const newCards = [...state.deck.cards];
       // 排除変換の場合は変換先をデッキに追加しない
@@ -434,8 +453,10 @@ export const useDeckBuilderStore = create<DeckBuilderStore>((set) => ({
           cards: newCards,
           convertedCards: newConverted,
         },
+        conversionLimitReached: false,
       };
     });
   },
-  reset: () => set({ deck: null, egoLevels: {}, removeLimitReached: false, copyLimitReached: false }),
+  clearConversionLimitAlert: () => set({ conversionLimitReached: false }),
+  reset: () => set({ deck: null, egoLevels: {}, removeLimitReached: false, copyLimitReached: false, conversionLimitReached: false }),
 }));

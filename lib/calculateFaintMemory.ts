@@ -108,6 +108,7 @@ export function calculateFaintMemory(deck: Deck | null | undefined): number {
     if (snapshot && count > 0 && !originalCardInDeck) {
       const cardType = snapshot.type;
       // Type acquisition points (one-time for all copies of this card)
+      // Only add if original is not in deck
       if (cardType === CardType.SHARED) {
         points += 20;
       } else if (cardType === CardType.MONSTER) {
