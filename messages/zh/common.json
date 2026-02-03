@@ -45,6 +45,8 @@
     "exportImage": "导出图片",
     "exportImageFailed": "图片导出失败",
     "totalCards": "卡牌数量",
+    "copiedCards": "复制数量",
+    "removedCards": "移除数量",
     "totalCost": "总费用",
     "noDeck": "卡组为空",
     "selectCharacterHint": "选择角色后会显示起始卡牌",

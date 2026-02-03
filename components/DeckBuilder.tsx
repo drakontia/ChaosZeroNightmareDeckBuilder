@@ -18,7 +18,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 import { Button } from "./ui/button";
 import { Field, FieldLabel, FieldGroup, FieldSet } from "./ui/field";
 import { Input } from './ui/input';
-import { Brain, CardSim, Clock12, Share2, Save as SaveIcon, FolderOpen, Eraser } from 'lucide-react';
+import { Brain, CardSim, Clock12, Share2, Save as SaveIcon, FolderOpen, Eraser, Book, BookCopy, BookX } from 'lucide-react';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { Camera } from 'lucide-react';
 import { decodeDeckShare } from "@/lib/deck-share";
@@ -300,15 +300,27 @@ export function DeckBuilder({ shareId }: DeckBuilderProps) {
                           </div>
                         </Field>
                         <Field orientation={'horizontal'} className='border-b' data-testid="total-cards">
-                          <FieldLabel className={statLabelClass}><CardSim />{t('deck.totalCards')}</FieldLabel>
+                          <FieldLabel className={statLabelClass}><Book />{t('deck.totalCards')}</FieldLabel>
                           <div className="flex justify-between items-center p-1">
                             <span className={statValueClass}>{deck.cards.length}</span>
                           </div>
                         </Field>
-                        <Field orientation={'horizontal'} data-testid="faint-memory">
+                        <Field orientation={'horizontal'} className='border-b' data-testid="faint-memory">
                           <FieldLabel className={statLabelClass}><Brain />{t('character.faintMemory')}</FieldLabel>
                           <div className="flex justify-between items-center p-1">
                             <span className={statValueClass} data-testid="faint-memory-points">{faintMemoryPoints} points</span>
+                          </div>
+                        </Field>
+                        <Field orientation={'horizontal'} className='border-b' data-testid="copied-cards">
+                          <FieldLabel className={statLabelClass}><BookCopy />{t('deck.copiedCards')}</FieldLabel>
+                          <div className="flex justify-between items-center p-1">
+                            <span className={statValueClass}>{deck.copiedCards.size}</span>
+                          </div>
+                        </Field>
+                        <Field orientation={'horizontal'} data-testid="removed-cards">
+                          <FieldLabel className={statLabelClass}><BookX />{t('deck.removedCards')}</FieldLabel>
+                          <div className="flex justify-between items-center p-1">
+                            <span className={statValueClass}>{deck.removedCards.size}</span>
                           </div>
                         </Field>
                       </FieldGroup>

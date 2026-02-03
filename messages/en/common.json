@@ -106,6 +106,8 @@
     "sharePrompt": "Share URL",
     "title": "Deck",
     "totalCards": "Card Count",
+    "copiedCards": "Copied Cards",
+    "removedCards": "Removed Cards",
     "totalCost": "Total Cost"
   },
   "god": {

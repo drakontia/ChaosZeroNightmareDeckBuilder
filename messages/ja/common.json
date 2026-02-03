@@ -45,6 +45,8 @@
     "exportImage": "エクスポート",
     "exportImageFailed": "画像エクスポートに失敗しました",
     "totalCards": "カード数",
+    "copiedCards": "コピー枚数",
+    "removedCards": "削除枚数",
     "totalCost": "合計コスト",
     "noDeck": "デッキが空です",
     "selectCharacterHint": "キャラクターを選択すると開始カードが表示されます",

@@ -45,6 +45,8 @@
     "exportImage": "이미지 내보내기",
     "exportImageFailed": "이미지 내보내기 실패",
     "totalCards": "카드 수",
+    "copiedCards": "복사된 카드",
+    "removedCards": "제거된 카드",
     "totalCost": "총 비용",
     "noDeck": "덱이 비어있습니다",
     "selectCharacterHint": "캐릭터를 선택하면 시작 카드가 표시됩니다",
