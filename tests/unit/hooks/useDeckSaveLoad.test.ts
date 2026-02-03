@@ -15,30 +15,16 @@ describe('useDeckSaveLoad', () => {
   let error: string | null = null;
 
   beforeEach(() => {
-    // localStorageをモック
-    const store: Record<string, string> = {};
-    const mockLocalStorage = {
-      getItem: (key: string) => store[key] || null,
-      setItem: (key: string, value: string) => { store[key] = value; },
-      removeItem: (key: string) => { delete store[key]; },
-      clear: () => { Object.keys(store).forEach(k => delete store[k]); },
-      length: 0,
-      key: (index: number) => null
-    };
-    Object.defineProperty(global, 'localStorage', {
-      value: mockLocalStorage,
-      writable: true
-    });
-    // window.promptとwindow.alertをモック
-    Object.defineProperty(global, 'window', {
-      value: {
-        localStorage: mockLocalStorage,
-        prompt: vi.fn((message: string, defaultValue: string) => defaultValue),
-        alert: vi.fn(),
-        confirm: vi.fn(() => true)
-      },
-      writable: true
-    });
+    window.localStorage.clear();
+    const promptMock = vi.fn((message: string, defaultValue: string) => defaultValue);
+    const alertMock = vi.fn();
+    const confirmMock = vi.fn(() => true);
+    window.prompt = promptMock as any;
+    window.alert = alertMock as any;
+    window.confirm = confirmMock as any;
+    vi.stubGlobal('prompt', promptMock);
+    vi.stubGlobal('alert', alertMock);
+    vi.stubGlobal('confirm', confirmMock);
     sharedDeck = null;
     name = '';
     error = null;
@@ -72,5 +58,96 @@ describe('useDeckSaveLoad', () => {
     });
     expect(sharedDeck).not.toBeNull();
     expect(sharedDeck?.character?.id).toBe('chizuru');
+  });
+
+  it('openLoadDialogは不正な保存データを無視する', () => {
+    const { result } = renderHook(() => useDeckSaveLoad({ deck, setName, setSharedDeck, setShareError, t }));
+    window.localStorage.setItem('cznde:savedDecks', '{invalid-json');
+
+    act(() => {
+      result.current.openLoadDialog();
+    });
+
+    expect(result.current.savedList).toHaveLength(0);
+    expect(result.current.loadOpen).toBe(true);
+  });
+
+  it('保存済みがある場合に上書き確認でキャンセルすると保存されない', () => {
+    const { result } = renderHook(() => useDeckSaveLoad({ deck, setName, setSharedDeck, setShareError, t }));
+    const stored = JSON.stringify({
+      [deck.name]: { id: 'existing', savedAt: new Date('2024-01-01T00:00:00Z').toISOString() }
+    });
+    window.localStorage.setItem('cznde:savedDecks', stored);
+    window.confirm = vi.fn(() => false) as any;
+
+    act(() => {
+      result.current.handleSaveDeck();
+    });
+
+    const after = window.localStorage.getItem('cznde:savedDecks');
+    expect(after).toBe(stored);
+    expect(window.confirm).toHaveBeenCalled();
+    expect(window.alert).not.toHaveBeenCalled();
+  });
+
+  it('保存済みがある場合に上書き確認でOKすると保存される', () => {
+    const { result } = renderHook(() => useDeckSaveLoad({ deck, setName, setSharedDeck, setShareError, t }));
+    const stored = JSON.stringify({
+      [deck.name]: { id: 'existing', savedAt: new Date('2024-01-01T00:00:00Z').toISOString() }
+    });
+    window.localStorage.setItem('cznde:savedDecks', stored);
+    window.confirm = vi.fn(() => true) as any;
+
+    act(() => {
+      result.current.handleSaveDeck();
+    });
+
+    const after = window.localStorage.getItem('cznde:savedDecks');
+    expect(after).not.toBeNull();
+    expect(window.confirm).toHaveBeenCalled();
+    expect(window.alert).toHaveBeenCalled();
+  });
+
+  it('存在しないデッキの読み込みはエラーを通知する', () => {
+    const { result } = renderHook(() => useDeckSaveLoad({ deck, setName, setSharedDeck, setShareError, t }));
+
+    act(() => {
+      result.current.handleLoadDeck('missing');
+    });
+
+    expect(sharedDeck).toBeNull();
+    expect(window.alert).toHaveBeenCalled();
+  });
+
+  it('削除確認でキャンセルすると保存データは残る', () => {
+    const { result } = renderHook(() => useDeckSaveLoad({ deck, setName, setSharedDeck, setShareError, t }));
+    const stored = JSON.stringify({
+      [deck.name]: { id: 'existing', savedAt: new Date('2024-01-01T00:00:00Z').toISOString() }
+    });
+    window.localStorage.setItem('cznde:savedDecks', stored);
+    window.confirm = vi.fn(() => false) as any;
+
+    act(() => {
+      result.current.handleDeleteSaved(deck.name);
+    });
+
+    const after = window.localStorage.getItem('cznde:savedDecks');
+    expect(after).toBe(stored);
+  });
+
+  it('削除確認でOKすると保存データが削除される', () => {
+    const { result } = renderHook(() => useDeckSaveLoad({ deck, setName, setSharedDeck, setShareError, t }));
+    const stored = JSON.stringify({
+      [deck.name]: { id: 'existing', savedAt: new Date('2024-01-01T00:00:00Z').toISOString() }
+    });
+    window.localStorage.setItem('cznde:savedDecks', stored);
+    window.confirm = vi.fn(() => true) as any;
+
+    act(() => {
+      result.current.handleDeleteSaved(deck.name);
+    });
+
+    const after = window.localStorage.getItem('cznde:savedDecks');
+    expect(after).toBe(JSON.stringify({}));
   });
 });

@@ -1,21 +1,27 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import { DeckDisplay } from '@/components/DeckDisplay';
-import { CardType, CardCategory, CardStatus, DeckCard } from '@/types';
+import { CardType, CardCategory, CardStatus, DeckCard, GodType } from '@/types';
 import { NextIntlClientProvider } from 'next-intl';
+import { GOD_HIRAMEKI_EFFECTS } from '@/lib/god-hirameki';
+import { HIDDEN_HIRAMEKI_EFFECTS } from '@/lib/hidden-hirameki';
 
 // Mock components
+let cardFrameProps: any[] = [];
+
 vi.mock('@/components/CardFrame', () => ({
-  CardFrame: ({ isCopied, statuses, name, leftControls, rightControls }: any) => (
-    <div data-testid="card-frame">
-      <div data-testid="card-name">{name}</div>
-      {isCopied && <div data-testid="is-copied">Flipped</div>}
-      {statuses && statuses.length > 0 && (
-        <div data-testid="statuses">{statuses.join(', ')}</div>
+  CardFrame: (props: any) => (
+    <div data-testid="card-frame" data-props-count={cardFrameProps.push(props)}>
+      <div data-testid="card-name">{props.name}</div>
+      {props.isCopied && <div data-testid="is-copied">Flipped</div>}
+      {props.statuses && props.statuses.length > 0 && (
+        <div data-testid="statuses">{props.statuses.join(', ')}</div>
       )}
+      {props.godEffectId && <div data-testid="god-effect">{props.godEffectId}</div>}
+      {props.hiddenEffectId && <div data-testid="hidden-effect">{props.hiddenEffectId}</div>}
       {/* Render controls to allow tests to detect them */}
-      <div data-testid="left-controls">{leftControls}</div>
-      <div data-testid="right-controls">{rightControls}</div>
+      <div data-testid="left-controls">{props.leftControls}</div>
+      <div data-testid="right-controls">{props.rightControls}</div>
     </div>
   )
 }));
@@ -107,6 +113,7 @@ describe('DeckDisplay - Copied Card Feature', () => {
 
   beforeEach(() => {
     vi.clearAllMocks();
+    cardFrameProps = [];
   });
 
   it('should display "copied" status for copied cards', () => {
@@ -126,6 +133,20 @@ describe('DeckDisplay - Copied Card Feature', () => {
 
     const statuses = screen.getByTestId('statuses');
     expect(statuses.textContent).toContain('Copied');
+  });
+
+  it('should render empty state when no cards', () => {
+    renderWithIntl(
+      <DeckDisplay
+        cards={[]}
+        egoLevel={0}
+        hasPotential={false}
+        {...mockHandlers}
+      />
+    );
+
+    expect(screen.getByText('Select a character')).toBeDefined();
+    expect(screen.queryByTestId('card-frame')).toBeNull();
   });
 
   it('should not display "copied" status for non-copied cards', () => {
@@ -291,5 +312,31 @@ describe('DeckDisplay - Copied Card Feature', () => {
     );
 
     expect(screen.getByTestId('hirameki-controls')).toBeDefined();
+  });
+
+  it('should pass hidden/god hirameki effect ids and fallbacks to CardFrame', () => {
+    const godEffect = GOD_HIRAMEKI_EFFECTS[0];
+    const hiddenEffect = HIDDEN_HIRAMEKI_EFFECTS[0];
+    const cardWithEffects = createMockCard({
+      deckId: 'deck-effects',
+      godHiramekiType: GodType.KILKEN,
+      godHiramekiEffectId: godEffect.id,
+      selectedHiddenHiramekiId: hiddenEffect.id,
+    });
+
+    renderWithIntl(
+      <DeckDisplay
+        cards={[cardWithEffects]}
+        egoLevel={0}
+        hasPotential={false}
+        {...mockHandlers}
+      />
+    );
+
+    const lastProps = cardFrameProps[cardFrameProps.length - 1];
+    expect(lastProps.godEffectId).toBe(godEffect.id);
+    expect(lastProps.godEffectFallback).toBe(godEffect.additionalEffect);
+    expect(lastProps.hiddenEffectId).toBe(hiddenEffect.id);
+    expect(lastProps.hiddenEffectFallback).toBe(hiddenEffect.additionalEffect);
   });
 });

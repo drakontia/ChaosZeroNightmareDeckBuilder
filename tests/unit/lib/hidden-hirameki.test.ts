@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach } from 'vitest';
-import { DeckCard, CardType, CardCategory, Deck, HiramekiVariation } from '@/types';
+import { DeckCard, CardType, CardCategory, CardGrade, Deck, HiramekiVariation } from '@/types';
 import { getCardInfo } from '@/lib/deck-utils';
 import { calculateFaintMemory } from "@/lib/calculateFaintMemory";
 import { HIDDEN_HIRAMEKI_EFFECTS } from '@/lib/hidden-hirameki';
@@ -134,7 +134,7 @@ describe('Hidden Hirameki (Unified Structure)', () => {
         isBasicCard: false,
         hiramekiVariations: [variation]
       });
-      expect(calculateFaintMemory(baseDeck)).toBe(30); // 20 (shared) + 10 (hidden hirameki)
+      expect(calculateFaintMemory(baseDeck)).toBe(20); // 20 (shared), no hirameki points in V2
     });
 
     it('should NOT add hirameki points for hidden hirameki on monster card', () => {
@@ -144,6 +144,7 @@ describe('Hidden Hirameki (Unified Structure)', () => {
         id: 'monster-1',
         name: 'Monster Card',
         type: CardType.MONSTER,
+        grade: CardGrade.LEGEND,
         category: CardCategory.ATTACK,
         statuses: [],
         selectedHiramekiLevel: 0,
@@ -153,7 +154,7 @@ describe('Hidden Hirameki (Unified Structure)', () => {
         isBasicCard: false,
         hiramekiVariations: [variation]
       });
-      expect(calculateFaintMemory(baseDeck)).toBe(80); // 80 (monster) only, no hidden hirameki points
+      expect(calculateFaintMemory(baseDeck)).toBe(80); // 80 (legend monster), no hirameki points
     });
 
     it('should not add points for hidden hirameki on character card', () => {
@@ -209,8 +210,8 @@ describe('Hidden Hirameki (Unified Structure)', () => {
         hiramekiVariations: [variation]
       });
 
-      // Both should add same hirameki points
-      expect(calculateFaintMemory(baseDeck)).toBe(60); // 20+10 (regular) + 20+10 (hidden)
+      // Both shared cards = 20pt each, no hirameki points in V2
+      expect(calculateFaintMemory(baseDeck)).toBe(40); // 20 (shared 1) + 20 (shared 2)
     });
   });
 });

@@ -60,6 +60,17 @@ describe('useDeckBuilderStore', () => {
     expect(deck?.cards.length).toBeGreaterThan(0);
   });
 
+  it('setCharacterは既存デッキのcharacterとcardsを更新する', () => {
+    act(() => {
+      useDeckBuilderStore.getState().setCharacter(CHARACTERS[0]);
+      useDeckBuilderStore.getState().setCharacter(CHARACTERS[1]);
+    });
+
+    const deck = useDeckBuilderStore.getState().deck;
+    expect(deck?.character?.id).toBe(CHARACTERS[1].id);
+    expect(deck?.cards.length).toBeGreaterThan(0);
+  });
+
   it('addCard/removeCardでcardsが変化する', () => {
     const card = getTestCard();
     act(() => {
@@ -73,6 +84,29 @@ describe('useDeckBuilderStore', () => {
     });
     const afterLength = useDeckBuilderStore.getState().deck?.cards.length || 0;
     expect(afterLength).toBe(initialLength - 1);
+  });
+
+  it('setDeckでcharacterがidの場合に正規化されcreatedAtがDateになる', () => {
+    const deck = {
+      name: 'stringdeck',
+      character: CHARACTERS[0].id,
+      equipment: { weapon: null, armor: null, pendant: null },
+      cards: [],
+      egoLevel: 0,
+      hasPotential: false,
+      createdAt: '2024-01-01T00:00:00.000Z',
+      removedCards: new Map(),
+      copiedCards: new Map(),
+      convertedCards: new Map(),
+    } as any;
+
+    act(() => {
+      useDeckBuilderStore.getState().setDeck(deck);
+    });
+
+    const normalized = useDeckBuilderStore.getState().deck;
+    expect(normalized?.character?.id).toBe(CHARACTERS[0].id);
+    expect(normalized?.createdAt).toBeInstanceOf(Date);
   });
 
   it('selectEquipmentで装備が更新される', () => {
@@ -139,6 +173,17 @@ describe('useDeckBuilderStore', () => {
     });
     const updated = useDeckBuilderStore.getState().deck?.cards.find(c => c.deckId === card.deckId);
     expect(updated?.godHiramekiEffectId).toBe('effect-1');
+  });
+
+  it('setCardHiddenHiramekiでselectedHiddenHiramekiIdが更新される', () => {
+    const card = getTestCard();
+    act(() => {
+      useDeckBuilderStore.getState().setCharacter(CHARACTERS[0]);
+      useDeckBuilderStore.getState().addCard(card);
+      useDeckBuilderStore.getState().setCardHiddenHirameki(card.deckId, 'hiddenhirameki_01');
+    });
+    const updated = useDeckBuilderStore.getState().deck?.cards.find(c => c.deckId === card.deckId);
+    expect(updated?.selectedHiddenHiramekiId).toBe('hiddenhirameki_01');
   });
 
   it('undoCardでカードが削除される', () => {
@@ -259,6 +304,29 @@ describe('useDeckBuilderStore', () => {
     if (typeof entry === 'object') {
       expect((entry as any).excluded).toBe(true);
     }
+  });
+
+  it('undoCardで変換されたカードを元に戻す', () => {
+    const card = getTestCard();
+    const targetId = CHARACTERS[0].startingCards[0];
+
+    act(() => {
+      useDeckBuilderStore.getState().setCharacter(CHARACTERS[0]);
+      useDeckBuilderStore.getState().addCard(card);
+      useDeckBuilderStore.getState().convertCard(card.deckId, targetId);
+    });
+
+    const deckBefore = useDeckBuilderStore.getState().deck!;
+    const convertedCard = deckBefore.cards.find(c => c.id === targetId);
+    expect(convertedCard).toBeDefined();
+
+    act(() => {
+      useDeckBuilderStore.getState().undoCard(convertedCard!.deckId);
+    });
+
+    const deckAfter = useDeckBuilderStore.getState().deck!;
+    expect(deckAfter.cards.some(c => c.id === card.id)).toBe(true);
+    expect(deckAfter.convertedCards.has(card.id)).toBe(false);
   });
 
   it('restoreCardで変換カードが復元される', () => {
@@ -461,6 +529,46 @@ describe('useDeckBuilderStore', () => {
     if (typeof entry === 'object') {
       expect(entry.count).toBe(2);
     }
+  });
+
+  it('copyCardでコピー上限を超えるとcopyLimitReachedになる', () => {
+    const card = getTestCard();
+
+    act(() => {
+      useDeckBuilderStore.getState().setCharacter(CHARACTERS[0]);
+      useDeckBuilderStore.getState().addCard(card);
+      useDeckBuilderStore.getState().copyCard(card.deckId);
+      useDeckBuilderStore.getState().copyCard(card.deckId);
+      useDeckBuilderStore.getState().copyCard(card.deckId);
+      useDeckBuilderStore.getState().copyCard(card.deckId);
+      useDeckBuilderStore.getState().copyCard(card.deckId);
+    });
+
+    expect(useDeckBuilderStore.getState().copyLimitReached).toBe(true);
+  });
+
+  it('clearCopyLimitAlertでcopyLimitReachedが解除される', () => {
+    useDeckBuilderStore.setState({ copyLimitReached: true });
+    act(() => {
+      useDeckBuilderStore.getState().clearCopyLimitAlert();
+    });
+    expect(useDeckBuilderStore.getState().copyLimitReached).toBe(false);
+  });
+
+  it('clearRemoveLimitAlertでremoveLimitReachedが解除される', () => {
+    useDeckBuilderStore.setState({ removeLimitReached: true });
+    act(() => {
+      useDeckBuilderStore.getState().clearRemoveLimitAlert();
+    });
+    expect(useDeckBuilderStore.getState().removeLimitReached).toBe(false);
+  });
+
+  it('clearConversionLimitAlertでconversionLimitReachedが解除される', () => {
+    useDeckBuilderStore.setState({ conversionLimitReached: true });
+    act(() => {
+      useDeckBuilderStore.getState().clearConversionLimitAlert();
+    });
+    expect(useDeckBuilderStore.getState().conversionLimitReached).toBe(false);
   });
 
   describe('integrated removal+conversion limit (max 5)', () => {

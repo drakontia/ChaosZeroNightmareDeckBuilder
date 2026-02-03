@@ -1367,3 +1367,155 @@ describe('calculateFaintMemory (排除変換)', () => {
     expect(calculateFaintMemory(deck)).toBe(20);
   });
 });
+
+describe('calculateFaintMemory (追加カバレッジ)', () => {
+  it('removedCardsのスナップショットでモンスターと神ヒラメキを加算する', () => {
+    const deck: Deck = {
+      name: 'test',
+      character: null,
+      equipment: { weapon: null, armor: null, pendant: null },
+      cards: [],
+      egoLevel: 0,
+      hasPotential: false,
+      createdAt: new Date(),
+      removedCards: new Map([
+        [
+          'shared_01',
+          {
+            count: 1,
+            type: CardType.MONSTER,
+            grade: CardGrade.RARE,
+            selectedHiramekiLevel: 0,
+            godHiramekiType: GodType.KILKEN,
+            godHiramekiEffectId: 'godhirameki_1',
+            isBasicCard: false,
+          },
+        ],
+      ]),
+      copiedCards: new Map(),
+      convertedCards: new Map(),
+    };
+
+    expect(calculateFaintMemory(deck)).toBe(70); // 50 (rare monster) + 20 (god)
+  });
+
+  it('removedCardsのスナップショットで禁忌カードの加算を行う', () => {
+    const deck: Deck = {
+      name: 'test',
+      character: null,
+      equipment: { weapon: null, armor: null, pendant: null },
+      cards: [],
+      egoLevel: 0,
+      hasPotential: false,
+      createdAt: new Date(),
+      removedCards: new Map([
+        ['shared_01', { count: 1, type: CardType.FORBIDDEN, selectedHiramekiLevel: 0 }],
+      ]),
+      copiedCards: new Map(),
+      convertedCards: new Map(),
+    };
+
+    expect(calculateFaintMemory(deck)).toBe(20);
+  });
+
+  it('copiedCardsのスナップショットで禁忌カードと神ヒラメキを加算する', () => {
+    const deck: Deck = {
+      name: 'test',
+      character: null,
+      equipment: { weapon: null, armor: null, pendant: null },
+      cards: [
+        {
+          deckId: 'copy-1',
+          id: 'forbidden_01',
+          name: 'Forbidden',
+          type: CardType.FORBIDDEN,
+          category: CardCategory.SKILL,
+          statuses: [],
+          selectedHiramekiLevel: 0,
+          godHiramekiType: null,
+          godHiramekiEffectId: null,
+          selectedHiddenHiramekiId: null,
+          isBasicCard: false,
+          isCopied: true,
+          copiedFromCardId: 'forbidden_01',
+          hiramekiVariations: [{ level: 0, cost: 0, description: '' }],
+        },
+      ],
+      egoLevel: 0,
+      hasPotential: false,
+      createdAt: new Date(),
+      removedCards: new Map(),
+      copiedCards: new Map([
+        [
+          'forbidden_01',
+          {
+            count: 1,
+            type: CardType.FORBIDDEN,
+            selectedHiramekiLevel: 0,
+            godHiramekiType: GodType.KILKEN,
+            godHiramekiEffectId: 'godhirameki_1',
+            isBasicCard: false,
+          },
+        ],
+      ]),
+      convertedCards: new Map(),
+    };
+
+    expect(calculateFaintMemory(deck)).toBe(60); // 20 (deck forbidden) + 20 (snapshot forbidden) + 20 (god)
+  });
+
+  it('convertedCardsで開始カードの基本ポイントを加算する', () => {
+    const deck: Deck = {
+      name: 'test',
+      character: null,
+      equipment: { weapon: null, armor: null, pendant: null },
+      cards: [],
+      egoLevel: 0,
+      hasPotential: false,
+      createdAt: new Date(),
+      removedCards: new Map(),
+      copiedCards: new Map(),
+      convertedCards: new Map([
+        [
+          'luke_starting_1',
+          {
+            convertedToId: 'shared_01',
+            originalType: CardType.SHARED,
+            selectedHiramekiLevel: 0,
+            excluded: false,
+          },
+        ],
+      ]),
+    };
+
+    expect(calculateFaintMemory(deck)).toBe(40); // 20 (starting) + 20 (shared type)
+  });
+
+  it('convertedCardsでモンスターのグレード加算を行う', () => {
+    const deck: Deck = {
+      name: 'test',
+      character: null,
+      equipment: { weapon: null, armor: null, pendant: null },
+      cards: [],
+      egoLevel: 0,
+      hasPotential: false,
+      createdAt: new Date(),
+      removedCards: new Map(),
+      copiedCards: new Map(),
+      convertedCards: new Map([
+        [
+          'shared_01',
+          {
+            convertedToId: 'monster_01',
+            originalType: CardType.MONSTER,
+            originalGrade: CardGrade.LEGEND,
+            selectedHiramekiLevel: 0,
+            excluded: false,
+          },
+        ],
+      ]),
+    };
+
+    expect(calculateFaintMemory(deck)).toBe(80);
+  });
+});

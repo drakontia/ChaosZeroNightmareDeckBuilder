@@ -1,5 +1,12 @@
-import { describe, it, expect, beforeEach } from 'vitest';
-import { getCardInfo } from '../../../lib/deck-utils';
+import { describe, it, expect, beforeEach, vi } from 'vitest';
+
+vi.mock('@/lib/hidden-hirameki', () => ({
+  HIDDEN_HIRAMEKI_EFFECTS: [
+    { id: 'hidden_hirameki_cost_minus_1', additionalEffect: 'cost -1', costModifier: -1 }
+  ]
+}));
+
+import { getCardInfo, sortDeckCards } from '@/lib/deck-utils';
 import { CardType, CardCategory, CardStatus, GodType, DeckCard, HiramekiVariation } from '@/types';
 
 describe('getCardInfo', () => {
@@ -147,5 +154,48 @@ describe('getCardInfo', () => {
     
     const info = getCardInfo(baseCard);
     expect(info.cost).toBe(0); // Should be 0, not -1 (1 + (-1) + (-1))
+  });
+
+  it('should apply hidden hirameki cost modifier when defined', () => {
+    const variation: HiramekiVariation = {
+      level: 0,
+      cost: 5,
+      description: 'Base description'
+    };
+    baseCard.hiramekiVariations = [variation];
+    baseCard.selectedHiramekiLevel = 0;
+    baseCard.selectedHiddenHiramekiId = 'hidden_hirameki_cost_minus_1';
+
+    const info = getCardInfo(baseCard);
+    expect(info.cost).toBe(4);
+  });
+});
+
+describe('sortDeckCards', () => {
+  it('should place starting character cards before hirameki character cards', () => {
+    const starting: DeckCard = {
+      deckId: 'start-1',
+      id: 'char-start',
+      name: 'Start',
+      type: CardType.CHARACTER,
+      category: CardCategory.ATTACK,
+      statuses: [],
+      selectedHiramekiLevel: 0,
+      godHiramekiType: null,
+      godHiramekiEffectId: null,
+      selectedHiddenHiramekiId: null,
+      isBasicCard: false,
+      isStartingCard: true,
+      hiramekiVariations: [{ level: 0, cost: 1, description: 'Base' }]
+    };
+    const hirameki: DeckCard = {
+      ...starting,
+      deckId: 'hira-1',
+      id: 'char-hira',
+      isStartingCard: false,
+    };
+
+    const result = sortDeckCards([hirameki, starting]);
+    expect(result[0].id).toBe('char-start');
   });
 });
