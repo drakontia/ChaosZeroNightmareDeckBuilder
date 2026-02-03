@@ -19,6 +19,7 @@ function getMonsterCardPoints(grade?: CardGrade): number {
 export function calculateFaintMemory(deck: Deck | null | undefined): number {
   if (!deck || !Array.isArray(deck.cards)) return 0;
   let points = 0;
+  const activeCopiedCards = deck.cards.filter(card => card.isCopied);
   // Points for cards in the deck
   const cards = deck.cards;
   for (const card of cards) {
@@ -85,30 +86,25 @@ export function calculateFaintMemory(deck: Deck | null | undefined): number {
   }
 
   // Points for copied cards
-  // Calculate copy points based on sequential copy order across all cards
-  let copyIndex = 0;
+  // V2: copy points 0/0/40 (1st, 2nd = 0pt, 3rd以降 = 40pt)
+  // Copied cards that were removed or converted are NOT counted.
+  const activeCopyCount = Math.min(activeCopiedCards.length, 4);
+  if (activeCopyCount >= 3) {
+    points += (activeCopyCount - 2) * 40;
+  }
+
   for (const [cardId, entry] of deck.copiedCards.entries()) {
     const count = typeof entry === "number" ? entry : (entry.count ?? 0);
-    // Apply points for each copy of this card
-    for (let i = 0; i < count; i++) {
-      copyIndex++;
-
-      // V2: copy points 0/0/40 (1st, 2nd = 0pt, 3rd以降 = 40pt)
-      if (copyIndex >= 3) {
-        points += 40;
-      }
-    }
+    const originalCardInDeck = deck.cards.some(c => c.id === cardId && !c.isCopied);
+    const activeCopyCountForCard = activeCopiedCards.filter(c => c.copiedFromCardId === cardId || c.id === cardId).length;
 
     // Attribute points for copied cards (snapshot-based)
     // ONLY add these if the original card is NOT currently in the deck
-    // If original is in deck, its points are already counted in the deck.cards loop above
-    const originalCardInDeck = deck.cards.some(c => c.id === cardId);
-
+    // AND at least one copied card still exists in the deck
     const snapshot: CopiedCardEntry | null = typeof entry === "number" ? null : entry as CopiedCardEntry;
-    if (snapshot && count > 0 && !originalCardInDeck) {
+    if (snapshot && count > 0 && !originalCardInDeck && activeCopyCountForCard > 0) {
       const cardType = snapshot.type;
       // Type acquisition points (one-time for all copies of this card)
-      // Only add if original is not in deck
       if (cardType === CardType.SHARED) {
         points += 20;
       } else if (cardType === CardType.MONSTER) {

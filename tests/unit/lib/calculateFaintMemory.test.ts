@@ -275,16 +275,81 @@ describe('calculateFaintMemory', () => {
   });
 
   it('should calculate copied cards correctly', () => {
-    // V2 copy points: 1st/2nd=0, 3rd以降=40
-    // card-1: 1 copy = copy #1 = 0
-    // card-2: 2 copies = copy #2, #3 = 0 + 40 = 40
-    // card-3: 3 copies = copy #4, #5, #6 = 40 + 40 + 40 = 120
-    // total = 0 + 40 + 120 = 160
-    baseDeck.copiedCards.set('card-1', 1);
-    baseDeck.copiedCards.set('card-2', 2);
-    baseDeck.copiedCards.set('card-3', 3);
+    const variation: HiramekiVariation = {
+      level: 0,
+      cost: 0,
+      description: ''
+    };
 
-    expect(calculateFaintMemory(baseDeck)).toBe(160);
+    // V2 copy points: 1st/2nd=0, 3rd/4th=40 (最大4回)
+    baseDeck.cards.push(
+      {
+        deckId: 'copy-1',
+        id: 'char-copy-1',
+        name: 'Copied Character 1',
+        type: CardType.CHARACTER,
+        category: CardCategory.ATTACK,
+        statuses: [],
+        selectedHiramekiLevel: 0,
+        godHiramekiType: null,
+        godHiramekiEffectId: null,
+        selectedHiddenHiramekiId: null,
+        isBasicCard: false,
+        hiramekiVariations: [variation],
+        isCopied: true,
+        copiedFromCardId: 'card-1'
+      },
+      {
+        deckId: 'copy-2',
+        id: 'char-copy-2',
+        name: 'Copied Character 2',
+        type: CardType.CHARACTER,
+        category: CardCategory.ATTACK,
+        statuses: [],
+        selectedHiramekiLevel: 0,
+        godHiramekiType: null,
+        godHiramekiEffectId: null,
+        selectedHiddenHiramekiId: null,
+        isBasicCard: false,
+        hiramekiVariations: [variation],
+        isCopied: true,
+        copiedFromCardId: 'card-2'
+      },
+      {
+        deckId: 'copy-3',
+        id: 'char-copy-3',
+        name: 'Copied Character 3',
+        type: CardType.CHARACTER,
+        category: CardCategory.ATTACK,
+        statuses: [],
+        selectedHiramekiLevel: 0,
+        godHiramekiType: null,
+        godHiramekiEffectId: null,
+        selectedHiddenHiramekiId: null,
+        isBasicCard: false,
+        hiramekiVariations: [variation],
+        isCopied: true,
+        copiedFromCardId: 'card-3'
+      },
+      {
+        deckId: 'copy-4',
+        id: 'char-copy-4',
+        name: 'Copied Character 4',
+        type: CardType.CHARACTER,
+        category: CardCategory.ATTACK,
+        statuses: [],
+        selectedHiramekiLevel: 0,
+        godHiramekiType: null,
+        godHiramekiEffectId: null,
+        selectedHiddenHiramekiId: null,
+        isBasicCard: false,
+        hiramekiVariations: [variation],
+        isCopied: true,
+        copiedFromCardId: 'card-3'
+      }
+    );
+
+    expect(calculateFaintMemory(baseDeck)).toBe(80);
   });
 
   it('should add 10pt for each converted card', () => {
@@ -406,8 +471,29 @@ describe('calculateFaintMemory (removed/copied attribute handling)', () => {
   });
 
   it('should NOT add shared/monster/god/hirameki points for copied cards (only sequence base points apply)', () => {
-    // 1st copy (shared): base 0
-    deck.copiedCards.set('shared_01', 1);
+    const variation: HiramekiVariation = {
+      level: 0,
+      cost: 0,
+      description: ''
+    };
+
+    // 1st copy: base 0
+    deck.cards.push({
+      deckId: 'copy-1',
+      id: 'char-copy-1',
+      name: 'Copied Character',
+      type: CardType.CHARACTER,
+      category: CardCategory.ATTACK,
+      statuses: [],
+      selectedHiramekiLevel: 0,
+      godHiramekiType: null,
+      godHiramekiEffectId: null,
+      selectedHiddenHiramekiId: null,
+      isBasicCard: false,
+      hiramekiVariations: [variation],
+      isCopied: true,
+      copiedFromCardId: 'shared_01'
+    });
     expect(calculateFaintMemory(deck)).toBe(0);
   });
 });
@@ -446,6 +532,63 @@ describe('calculateFaintMemory (snapshot attribute handling)', () => {
   });
 
   it('should add attribute points for copied cards when snapshot provided', () => {
+    const variation: HiramekiVariation = {
+      level: 0,
+      cost: 0,
+      description: ''
+    };
+
+    deck.cards.push(
+      {
+        deckId: 'copy-1',
+        id: 'char-copy-1',
+        name: 'Copied Character 1',
+        type: CardType.CHARACTER,
+        category: CardCategory.ATTACK,
+        statuses: [],
+        selectedHiramekiLevel: 0,
+        godHiramekiType: null,
+        godHiramekiEffectId: null,
+        selectedHiddenHiramekiId: null,
+        isBasicCard: false,
+        hiramekiVariations: [variation],
+        isCopied: true,
+        copiedFromCardId: 'monster_01'
+      },
+      {
+        deckId: 'copy-2',
+        id: 'char-copy-2',
+        name: 'Copied Character 2',
+        type: CardType.CHARACTER,
+        category: CardCategory.ATTACK,
+        statuses: [],
+        selectedHiramekiLevel: 0,
+        godHiramekiType: null,
+        godHiramekiEffectId: null,
+        selectedHiddenHiramekiId: null,
+        isBasicCard: false,
+        hiramekiVariations: [variation],
+        isCopied: true,
+        copiedFromCardId: 'monster_01'
+      },
+      {
+        deckId: 'copy-3',
+        id: 'char-copy-3',
+        name: 'Copied Character 3',
+        type: CardType.CHARACTER,
+        category: CardCategory.ATTACK,
+        statuses: [],
+        selectedHiramekiLevel: 0,
+        godHiramekiType: null,
+        godHiramekiEffectId: null,
+        selectedHiddenHiramekiId: null,
+        isBasicCard: false,
+        hiramekiVariations: [variation],
+        isCopied: true,
+        copiedFromCardId: 'monster_01'
+      }
+    );
+
     // Copied monster card with hirameki level 1, no god, count=3
     deck.copiedCards.set('monster_01', {
       count: 3,
@@ -643,6 +786,12 @@ describe('calculateFaintMemory (copy double-counting issue)', () => {
   });
 
   it('should NOT double-count points when original card remains in deck after copy', () => {
+    const variation: HiramekiVariation = {
+      level: 0,
+      cost: 5,
+      description: 'Base'
+    };
+
     // Shared card with hirameki level 1 in deck
     deck.cards = [
       {
@@ -657,13 +806,23 @@ describe('calculateFaintMemory (copy double-counting issue)', () => {
         godHiramekiEffectId: null,
         selectedHiddenHiramekiId: null,
         isBasicCard: false,
-        hiramekiVariations: [
-          {
-            level: 0,
-            cost: 5,
-            description: 'Base'
-          }
-        ]
+        hiramekiVariations: [variation]
+      },
+      {
+        id: 'char-copy-1',
+        deckId: 'shared_01_copy_1',
+        name: 'Copied Character',
+        type: CardType.CHARACTER,
+        category: CardCategory.ATTACK,
+        statuses: [],
+        selectedHiramekiLevel: 0,
+        godHiramekiType: null,
+        godHiramekiEffectId: null,
+        selectedHiddenHiramekiId: null,
+        isBasicCard: false,
+        hiramekiVariations: [variation],
+        isCopied: true,
+        copiedFromCardId: 'shared_01'
       }
     ];
 
@@ -693,7 +852,30 @@ describe('calculateFaintMemory (copy double-counting issue)', () => {
     // Scenario: Card was copied while in deck with certain attributes, then original was removed
     // In this case, we should count the snapshot attributes
 
-    deck.cards = []; // Original card removed from deck
+    deck.cards = [
+      {
+        id: 'char-copy-1',
+        deckId: 'shared_01_copy_1',
+        name: 'Copied Character',
+        type: CardType.CHARACTER,
+        category: CardCategory.ATTACK,
+        statuses: [],
+        selectedHiramekiLevel: 0,
+        godHiramekiType: null,
+        godHiramekiEffectId: null,
+        selectedHiddenHiramekiId: null,
+        isBasicCard: false,
+        hiramekiVariations: [
+          {
+            level: 0,
+            cost: 5,
+            description: 'Base'
+          }
+        ],
+        isCopied: true,
+        copiedFromCardId: 'shared_01'
+      }
+    ]; // Original card removed, copy remains
 
     deck.copiedCards.set('shared_01', {
       count: 1,
@@ -711,6 +893,12 @@ describe('calculateFaintMemory (copy double-counting issue)', () => {
   });
 
   it('should NOT double-count when copy has different attributes than current deck card', () => {
+    const variation: HiramekiVariation = {
+      level: 0,
+      cost: 5,
+      description: 'Base'
+    };
+
     // Card was copied at hirameki Lv1, then original was upgraded to Lv2
     deck.cards = [
       {
@@ -725,13 +913,23 @@ describe('calculateFaintMemory (copy double-counting issue)', () => {
         godHiramekiEffectId: null,
         selectedHiddenHiramekiId: null,
         isBasicCard: false,
-        hiramekiVariations: [
-          {
-            level: 0,
-            cost: 5,
-            description: 'Base'
-          }
-        ]
+        hiramekiVariations: [variation]
+      },
+      {
+        id: 'char-copy-1',
+        deckId: 'shared_01_copy_1',
+        name: 'Copied Character',
+        type: CardType.CHARACTER,
+        category: CardCategory.ATTACK,
+        statuses: [],
+        selectedHiramekiLevel: 0,
+        godHiramekiType: null,
+        godHiramekiEffectId: null,
+        selectedHiddenHiramekiId: null,
+        isBasicCard: false,
+        hiramekiVariations: [variation],
+        isCopied: true,
+        copiedFromCardId: 'shared_01'
       }
     ];
 
@@ -757,6 +955,12 @@ describe('calculateFaintMemory (copy double-counting issue)', () => {
   });
 
   it('should handle multiple copies with original still in deck', () => {
+    const variation: HiramekiVariation = {
+      level: 0,
+      cost: 5,
+      description: 'Base'
+    };
+
     // Original card in deck
     deck.cards = [
       {
@@ -772,13 +976,55 @@ describe('calculateFaintMemory (copy double-counting issue)', () => {
         godHiramekiEffectId: 'godhirameki_1',
         selectedHiddenHiramekiId: null,
         isBasicCard: false,
-        hiramekiVariations: [
-          {
-            level: 0,
-            cost: 5,
-            description: 'Base'
-          }
-        ]
+        hiramekiVariations: [variation]
+      },
+      {
+        id: 'char-copy-1',
+        deckId: 'monster_01_copy_1',
+        name: 'Copied Character 1',
+        type: CardType.CHARACTER,
+        category: CardCategory.ATTACK,
+        statuses: [],
+        selectedHiramekiLevel: 0,
+        godHiramekiType: null,
+        godHiramekiEffectId: null,
+        selectedHiddenHiramekiId: null,
+        isBasicCard: false,
+        hiramekiVariations: [variation],
+        isCopied: true,
+        copiedFromCardId: 'monster_01'
+      },
+      {
+        id: 'char-copy-2',
+        deckId: 'monster_01_copy_2',
+        name: 'Copied Character 2',
+        type: CardType.CHARACTER,
+        category: CardCategory.ATTACK,
+        statuses: [],
+        selectedHiramekiLevel: 0,
+        godHiramekiType: null,
+        godHiramekiEffectId: null,
+        selectedHiddenHiramekiId: null,
+        isBasicCard: false,
+        hiramekiVariations: [variation],
+        isCopied: true,
+        copiedFromCardId: 'monster_01'
+      },
+      {
+        id: 'char-copy-3',
+        deckId: 'monster_01_copy_3',
+        name: 'Copied Character 3',
+        type: CardType.CHARACTER,
+        category: CardCategory.ATTACK,
+        statuses: [],
+        selectedHiramekiLevel: 0,
+        godHiramekiType: null,
+        godHiramekiEffectId: null,
+        selectedHiddenHiramekiId: null,
+        isBasicCard: false,
+        hiramekiVariations: [variation],
+        isCopied: true,
+        copiedFromCardId: 'monster_01'
       }
     ];
 
@@ -880,6 +1126,12 @@ describe('calculateFaintMemory (copy double-counting issue)', () => {
   });
 
   it('should handle multiple undo operations reducing copy count progressively', () => {
+    const variation: HiramekiVariation = {
+      level: 0,
+      cost: 5,
+      description: 'Base'
+    };
+
     // Original card in deck
     deck.cards = [
       {
@@ -895,13 +1147,55 @@ describe('calculateFaintMemory (copy double-counting issue)', () => {
         godHiramekiEffectId: 'godhirameki_1',
         selectedHiddenHiramekiId: null,
         isBasicCard: false,
-        hiramekiVariations: [
-          {
-            level: 0,
-            cost: 5,
-            description: 'Base'
-          }
-        ]
+        hiramekiVariations: [variation]
+      },
+      {
+        id: 'char-copy-1',
+        deckId: 'monster_01_copy_1',
+        name: 'Copied Character 1',
+        type: CardType.CHARACTER,
+        category: CardCategory.ATTACK,
+        statuses: [],
+        selectedHiramekiLevel: 0,
+        godHiramekiType: null,
+        godHiramekiEffectId: null,
+        selectedHiddenHiramekiId: null,
+        isBasicCard: false,
+        hiramekiVariations: [variation],
+        isCopied: true,
+        copiedFromCardId: 'monster_01'
+      },
+      {
+        id: 'char-copy-2',
+        deckId: 'monster_01_copy_2',
+        name: 'Copied Character 2',
+        type: CardType.CHARACTER,
+        category: CardCategory.ATTACK,
+        statuses: [],
+        selectedHiramekiLevel: 0,
+        godHiramekiType: null,
+        godHiramekiEffectId: null,
+        selectedHiddenHiramekiId: null,
+        isBasicCard: false,
+        hiramekiVariations: [variation],
+        isCopied: true,
+        copiedFromCardId: 'monster_01'
+      },
+      {
+        id: 'char-copy-3',
+        deckId: 'monster_01_copy_3',
+        name: 'Copied Character 3',
+        type: CardType.CHARACTER,
+        category: CardCategory.ATTACK,
+        statuses: [],
+        selectedHiramekiLevel: 0,
+        godHiramekiType: null,
+        godHiramekiEffectId: null,
+        selectedHiddenHiramekiId: null,
+        isBasicCard: false,
+        hiramekiVariations: [variation],
+        isCopied: true,
+        copiedFromCardId: 'monster_01'
       }
     ];
 
