@@ -649,9 +649,10 @@ test.describe('Deck Builder', () => {
     const afterCopyPoints = parseInt(afterCopyText.replace(/[^0-9]/g, ''));
     expect(afterCopyPoints).toBe(initialPoints + 20); // 共用カード属性が1回加算される
 
-    // Undo the copied card using the card name
-    const cardContainerToUndo = getDeckCardContainerByName(page, cardName);
-    await cardContainerToUndo.getByRole('button', { name: 'メニュー' }).first().click();
+    // Undo the copied card (the most recently added card)
+    const allMenuButtons = page.locator('button[aria-label="メニュー"]');
+    const menuButtonCount = await allMenuButtons.count();
+    await allMenuButtons.nth(menuButtonCount - 1).click();
     await page.waitForTimeout(300);
     const undoBtn = page.getByRole('button', { name: '戻す' });
     await expect(undoBtn).toBeVisible({ timeout: 10000 });

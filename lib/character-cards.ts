@@ -3081,4 +3081,122 @@ export const CHARACTER_CARDS: CznCard[] = [
       { level: 0, cost: 1, description: "ダメージ250%<wbr/>1ターンの間、士気2" },
     ]
   },
+  // Nine's starting cards
+  {
+    id: "nine_starting_1",
+    name: "斬撃", // Fallback
+    type: CardType.CHARACTER,
+    category: CardCategory.ATTACK,
+    statuses: [],
+    isBasicCard: true,
+    isStartingCard: true,
+    imgUrl: "/images/cards/nine_starting_1.png",
+    hiramekiVariations: [
+      { level: 0, cost: 1, description: "防御依存ダメージ100%" } // Fallback
+    ]
+  },
+  {
+    id: "nine_starting_2",
+    name: "斬撃", // Fallback
+    type: CardType.CHARACTER,
+    category: CardCategory.ATTACK,
+    statuses: [],
+    isBasicCard: true,
+    isStartingCard: true,
+    imgUrl: "/images/cards/nine_starting_1.png",
+    hiramekiVariations: [
+      { level: 0, cost: 1, description: "防御依存ダメージ100%" } // Fallback
+    ]
+  },
+  {
+    id: "nine_starting_3",
+    name: "刀背受け", // Fallback
+    type: CardType.CHARACTER,
+    category: CardCategory.SKILL,
+    statuses: [],
+    isBasicCard: true,
+    isStartingCard: true,
+    imgUrl: "/images/cards/nine_starting_3.png",
+    hiramekiVariations: [
+      { level: 0, cost: 1, description: "シールド100%" } // Fallback
+    ]
+  },
+  {
+    id: "nine_starting_4",
+    name: "破砕", // Fallback
+    type: CardType.CHARACTER,
+    category: CardCategory.ATTACK,
+    statuses: [CardStatus.UNIQUE, CardStatus.INITIATION, CardStatus.EXHAUST, CardStatus.EPHEMERAL],
+    isBasicCard: false,
+    isStartingCard: true,
+    imgUrl: "/images/cards/nine_starting_4.png",
+    hiramekiVariations: [ // Fallback descriptions
+      { level: 0, cost: 3, name: "破砕", description: "防御依存ダメージ350%、焼却：破砕Lv.1を1枚生成" },
+      { level: 1, cost: 3, name: "破砕(鉄甲)", description: "防御依存ダメージ400%、シールド200%、焼却：破砕(鉄甲)Lv.1を1枚生成" },
+      { level: 2, cost: 3, name: "破砕(極強)", description: "防御依存ダメージ300%、焼却：破砕(極強)Lv.1を1枚生成" },
+      { level: 3, cost: 3, name: "破砕(閃光)", description: "防御依存ダメージ400%、焼却：破砕(閃光)Lv.1を1枚生成", statuses: [CardStatus.UNIQUE, CardStatus.INITIATION, CardStatus.IGNITION, CardStatus.EXHAUST, CardStatus.RETAIN] },
+      { level: 4, cost: 3, name: "破砕(根絶)", description: "敵全体に防御依存ダメージ400%、対象の数に応じて、ダメージ量10%減小、焼却：破砕(根絶)Lv.1を1枚生成" },
+      { level: 5, cost: 3, name: "破砕(奇襲)", description: "防御依存ダメージ400%、味方が反撃時、このカード発動、焼却：破砕(奇襲)Lv.1を1枚生成", statuses: [CardStatus.UNIQUE, CardStatus.INITIATION, CardStatus.EXHAUST, CardStatus.RETAIN] }
+    ]
+  },
+  // Nine's hirameki cards
+  {
+    id: "nine_hirameki_1",
+    name: "熟練の一撃", // Fallback
+    type: CardType.CHARACTER,
+    category: CardCategory.ATTACK,
+    statuses: [],
+    imgUrl: "/images/cards/nine_hirameki_1.png",
+    hiramekiVariations: [ // Fallback descriptions
+      { level: 0, cost: 1, description: "防御依存ダメージ140%、ダメージ依存シールド20%、1ターンの間消滅カードのダメージ量20%増加" },
+      { level: 1, cost: 1, description: "防御依存ダメージ210%、ダメージ依存シールド20%、1ターンの間消滅カードのダメージ量30%増加" },
+      { level: 2, cost: 1, description: "防御依存ダメージ210%、ダメージ依存シールド20%、今回のターンに消滅したカードがある場合、このカードを1ターンの間、使用時までダメージ量30%増加" },
+      { level: 3, cost: 1, description: "防御依存ダメージ210%、ダメージ依存シールド20%、1ターンの間、スキルカードのシールド獲得量30%増加" },
+      { level: 4, cost: 1, description: "防御依存ダメージ140%、ダメージ依存シールド20%、手札の消滅カード数に応じてダメージ量+60%" },
+      { level: 5, cost: 1, description: "防御依存ダメージ210%、ダメージ依存シールド20%、1ターンの間消滅カード発動時、反撃1" }
+    ]
+  },
+  {
+    id: "nine_hirameki_2",
+    name: "会心の一撃", // Fallback
+    type: CardType.CHARACTER,
+    category: CardCategory.ATTACK,
+    statuses: [],
+    imgUrl: "/images/cards/nine_hirameki_2.png",
+    hiramekiVariations: [ // Fallback descriptions
+      { level: 0, cost: 1, description: "防御依存ダメージ140%、手札のコストが最も高い消滅カードのコストに応じて、ダメージ量20%増加、そのカード消滅" },
+      { level: 1, cost: 1, description: "防御依存ダメージ210%、手札のコストが最も高い消滅カードのコストに応じて、ダメージ量30%増加、そのカード消滅" },
+      { level: 2, cost: 2, description: "防御依存ダメージ260%、手札のコストが最も高い消滅カードのコストに応じて、ダメージ量20%増加" },
+      { level: 3, cost: 5, description: "手札の破砕カードを最終段階に変更", statuses: [CardStatus.UNIQUE, CardStatus.IGNITION, CardStatus.RETAIN] },
+      { level: 4, cost: 1, category: CardCategory.SKILL, description: "手札のランダムな他の戦闘員の消滅カード2枚消滅、その数に応じて次に使用する自分の攻撃カード使用時までダメージ量30%増加" },
+      { level: 5, cost: 1, description: "防御依存ダメージ210%、反撃を所持中の味方数に応じて、ダメージ量80%増加", statuses: [CardStatus.RETAIN] }
+    ]
+  },
+  {
+    id: "nine_hirameki_3",
+    name: "逆転の刃", // Fallback
+    type: CardType.CHARACTER,
+    category: CardCategory.UPGRADE,
+    statuses: [CardStatus.UNIQUE],
+    imgUrl: "/images/cards/nine_hirameki_3.png",
+    hiramekiVariations: [ // Fallback descriptions
+      { level: 0, cost: 0, description: "能力でシールド獲得時、刃研ぎ1" },
+      { level: 1, cost: 0, description: "カード消滅時、刃研ぎ1" },
+      { level: 2, cost: 0, description: "シールド獲得量15%増加、能力でシールド獲得時、刃研ぎ1" },
+      { level: 3, cost: 0, description: "能力でシールド獲得時、刃研ぎ1", statuses: [CardStatus.INITIATION, CardStatus.UNIQUE] },
+      { level: 4, cost: 0, description: "反撃獲得時、刃研ぎ1" },
+      { level: 5, cost: 0, description: "ターン開始時、手札の破砕カード1回発動" }
+    ]
+  },
+  {
+    id: "nine_hirameki_4",
+    name: "闘志", // Fallback
+    type: CardType.CHARACTER,
+    category: CardCategory.SKILL,
+    statuses: [],
+    imgUrl: "/images/cards/nine_hirameki_4.png",
+    hiramekiVariations: [ // Fallback descriptions
+      { level: 0, cost: 1, description: "手札のコストが最も高い自分の攻撃カード1枚発動、そのカード消滅" }
+    ]
+  },
 ];

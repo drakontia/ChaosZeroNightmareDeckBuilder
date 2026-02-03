@@ -90,10 +90,12 @@ export enum CardStatus {
   RETRIEVE = "retrieve",    // 回収
   RETRIEVE2 = "retrieve2",    // 回収2
   RETRIEVE3 = "retrieve3",    // 回収3
+  EPHEMERAL = "ephemeral",   // 蒸発
   BULLET = "bullet",        // 弾丸
   WEAKNESS_ATTACK = "weakness_attack", // 弱点攻撃
   PULVERIZE = "pulverize",     // 粉砕
   BIND = "bind",               // 結束
+  IGNITION = "ignition",         // 点火
   COPIED = "copied"            // コピー済み
 }
 
@@ -101,6 +103,7 @@ export enum CardStatus {
 export interface HiramekiVariation {
   level: number; // 0 = base, 1-5 for character cards, 1-3 for other cards
   cost: number | "X"; // "X" allows variable-cost cards defined by effect text
+  name?: string; // Optional name override for this Hirameki level
   description: string;
   // Hiramekiでカテゴリが変化する場合の上書き
   category?: CardCategory;

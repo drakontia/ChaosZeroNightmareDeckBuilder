@@ -23,6 +23,7 @@ describe('getCardInfo', () => {
     const variation1: HiramekiVariation = {
       level: 1,
       cost: 6,
+      name: 'Variant Name',
       description: 'Hirameki level 1',
       egoVariations: {
         3: {
@@ -54,6 +55,7 @@ describe('getCardInfo', () => {
 
   it('should return base card info', () => {
     const info = getCardInfo(baseCard);
+    expect(info.name).toBe('Test Card');
     expect(info.cost).toBe(5);
     expect(info.description).toBe('Base description');
     expect(info.statuses).toContain(CardStatus.INITIATION);
@@ -62,6 +64,7 @@ describe('getCardInfo', () => {
   it('should return hirameki level 1 info', () => {
     baseCard.selectedHiramekiLevel = 1;
     const info = getCardInfo(baseCard);
+    expect(info.name).toBe('Variant Name');
     expect(info.cost).toBe(6);
     expect(info.description).toBe('Hirameki level 1');
   });

@@ -16,6 +16,23 @@ interface ConversionModalProps {
 
 export function ConversionModal({ isOpen, onClose, onSelectCard, allowedJob }: ConversionModalProps) {
   const t = useTranslations();
+  const getCardNameInfo = (card: CznCard, level: number = 0) => {
+    const levelKey = `cards.${card.id}.name.${level}`;
+    const variationName = card.hiramekiVariations[level]?.name;
+    if (variationName) {
+      return {
+        name: t(levelKey, { defaultValue: variationName }),
+        nameId: levelKey,
+        nameFallback: variationName,
+      };
+    }
+    const baseKey = `cards.${card.id}.name`;
+    return {
+      name: t(baseKey, { defaultValue: card.name }),
+      nameId: baseKey,
+      nameFallback: card.name,
+    };
+  };
   
   // 変換候補: 共用 / 禁忌のみ
   const allAddableCards = getAddableCards(allowedJob);
@@ -43,7 +60,7 @@ export function ConversionModal({ isOpen, onClose, onSelectCard, allowedJob }: C
 
   const renderCardTile = (card: CznCard) => {
     const baseVariation = card.hiramekiVariations[0];
-    const translatedName = t(`cards.${card.id}.name`, { defaultValue: card.name });
+    const { name: translatedName, nameId, nameFallback } = getCardNameInfo(card);
     const description = t(`cards.${card.id}.descriptions.0`, { defaultValue: baseVariation.description });
     const statuses = baseVariation.statuses?.map(s => t(`status.${s}`));
 
@@ -61,8 +78,8 @@ export function ConversionModal({ isOpen, onClose, onSelectCard, allowedJob }: C
           imgUrl={card.imgUrl}
           alt={translatedName}
           cost={baseVariation.cost}
-          nameId={`cards.${card.id}.name`}
-          nameFallback={card.name}
+          nameId={nameId}
+          nameFallback={nameFallback}
           category={t(`category.${card.category}`)}
           categoryId={card.category}
           description={description}

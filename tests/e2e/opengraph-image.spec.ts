@@ -1,4 +1,20 @@
-import { test, expect, Page } from '@playwright/test';
+import { test, expect, Page, APIRequestContext } from '@playwright/test';
+
+const getWithRetry = async (request: APIRequestContext, url: string, retries: number = 2) => {
+  let lastError: unknown;
+  for (let attempt = 0; attempt <= retries; attempt += 1) {
+    try {
+      return await request.get(url);
+    } catch (error) {
+      lastError = error;
+      if (attempt >= retries) {
+        throw error;
+      }
+      await new Promise((resolve) => setTimeout(resolve, 500 * (attempt + 1)));
+    }
+  }
+  throw lastError;
+};
 
 // ヘルパー関数：キャラクターと武器を選択
 const selectCharacterAndWeapon = async (page: Page) => {
@@ -88,7 +104,7 @@ test.describe('OpenGraph Image Generation', () => {
     const shareId = await shareDeckAndGetShareId(page);
     const ogImageUrl = `http://localhost:3000/deck/${shareId}/opengraph-image`;
     
-    const response = await request.get(ogImageUrl);
+    const response = await getWithRetry(request, ogImageUrl);
     expect(response.status()).toBe(200);
     expect(response.headers()['content-type']).toBe('image/png');
     
@@ -106,7 +122,7 @@ test.describe('OpenGraph Image Generation', () => {
     const invalidShareId = 'invalid-share-id-123';
     const ogImageUrl = `http://localhost:3000/deck/${invalidShareId}/opengraph-image`;
     
-    const response = await request.get(ogImageUrl);
+    const response = await getWithRetry(request, ogImageUrl);
     expect(response.status()).toBe(404);
   });
 
@@ -140,7 +156,7 @@ test.describe('OpenGraph Image Generation', () => {
     const shareId = await shareDeckAndGetShareId(page);
     const ogImageUrl = `http://localhost:3000/deck/${shareId}/opengraph-image`;
     
-    const response = await request.get(ogImageUrl);
+    const response = await getWithRetry(request, ogImageUrl);
     expect(response.status()).toBe(200);
     expect(response.headers()['content-type']).toBe('image/png');
     

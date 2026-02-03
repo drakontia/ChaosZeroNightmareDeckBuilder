@@ -42,6 +42,7 @@
     "chizuru": "Chizuru",
     "egoManifest": "Ego Manifestation",
     "faintMemory": "Faint Memory",
+    "nine": "Nine",
     "haru": "Haru",
     "hugo": "Hugo",
     "job": "Job",
@@ -182,6 +183,7 @@
     "exhaust": "Exhaust",
     "exhaust2": "Exhaust2",
     "exhaust3": "Exhaust3",
+    "ephemeral": "Ephemeral",
     "finale": "Finale",
     "haste": "Haste",
     "initiation": "Initiation",
@@ -192,6 +194,7 @@
     "retrieve2": "Retrieve2",
     "retrieve3": "Retrieve3",
     "unique": "Unique",
-    "weakness_attack": "Weakness Attack"
+    "weakness_attack": "Weakness Attack",
+    "ignition": "Ignition"
   }
 }

@@ -339,4 +339,28 @@ describe('DeckDisplay - Copied Card Feature', () => {
     expect(lastProps.hiddenEffectId).toBe(hiddenEffect.id);
     expect(lastProps.hiddenEffectFallback).toBe(hiddenEffect.additionalEffect);
   });
+
+  it('should use name.<level> key when hirameki variation name is present', () => {
+    const cardWithName: DeckCard = {
+      ...createMockCard({ deckId: 'deck-name' }),
+      selectedHiramekiLevel: 1,
+      hiramekiVariations: [
+        { level: 0, cost: 2, description: 'Base description', statuses: [] },
+        { level: 1, cost: 3, description: 'Lv1 description', name: 'Variant Name', statuses: [] }
+      ]
+    };
+
+    renderWithIntl(
+      <DeckDisplay
+        cards={[cardWithName]}
+        egoLevel={0}
+        hasPotential={false}
+        {...mockHandlers}
+      />
+    );
+
+    const lastProps = cardFrameProps[cardFrameProps.length - 1];
+    expect(lastProps.nameId).toBe('cards.test-card.name.1');
+    expect(lastProps.nameFallback).toBe('Variant Name');
+  });
 });

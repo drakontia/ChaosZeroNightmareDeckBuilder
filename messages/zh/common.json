@@ -94,6 +94,7 @@
     "exhaust": "消灭",
     "exhaust2": "消灭2",
     "exhaust3": "消灭3",
+    "ephemeral": "短暂",
     "retain": "保留",
     "retrieve": "回收",
     "retrieve2": "回收2",
@@ -107,7 +108,8 @@
     "bullet": "子弹",
     "weakness_attack": "弱点攻击",
     "pulverize": "粉碎",
-    "bind": "结束"
+    "bind": "结束",
+    "ignition": "点火"
   },
   "actions": {
     "add": "添加",
@@ -133,6 +135,7 @@
     "faintMemory": "模糊的记忆",
     "egoManifest": "自我显现",
     "potential": "潜力",
+    "nine": "奈因",
     "chizuru": "千鶴",
     "yuki": "雪",
     "luke": "卢克",

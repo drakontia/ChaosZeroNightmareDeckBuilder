@@ -1768,6 +1768,81 @@
         "0": "Damage 250%\n"
       }
     },
+    "nine_starting_1": {
+      "name": "Slash",
+      "descriptions": {
+        "0": "Defense Dependent Damage 100%"
+      }
+    },
+    "nine_starting_2": {
+      "name": "Slash",
+      "descriptions": {
+        "0": "Defense Dependent Damage 100%"
+      }
+    },
+    "nine_starting_3": {
+      "name": "Blade Back Receive",
+      "descriptions": {
+        "0": "Shield 100%"
+      }
+    },
+    "nine_starting_4": {
+      "name": {
+        "0": "Crushing Strike",
+        "1": "Crushing Strike (Iron Shield)",
+        "2": "Crushing Strike (Extreme Power)",
+        "3": "Crushing Strike (Flash)",
+        "4": "Crushing Strike (Annihilation)",
+        "5": "Crushing Strike (Ambush)"
+      },
+      "descriptions": {
+        "0": "Defense Dependent Damage 350%, Immolation: Generate Crushing Strike Lv.1 x1",
+        "1": "Defense Dependent Damage 400%, Shield 200%, Immolation: Generate Crushing Strike (Iron Shield) Lv.1 x1",
+        "2": "Defense Dependent Damage 300%, Immolation: Generate Crushing Strike (Extreme Power) Lv.1 x1",
+        "3": "Defense Dependent Damage 400%, Immolation: Generate Crushing Strike (Flash) Lv.1 x1",
+        "4": "All Enemies Defense Dependent Damage 400%, Damage -10% per target, Immolation: Generate Crushing Strike (Annihilation) Lv.1 x1",
+        "5": "Defense Dependent Damage 400%, When Ally Counterattacks, This Card Activates, Immolation: Generate Crushing Strike (Ambush) Lv.1 x1"
+      }
+    },
+    "nine_hirameki_1": {
+      "name": "Skilled Strike",
+      "descriptions": {
+        "0": "Defense Dependent Damage 140%, Shield from Damage 20%, For 1 Turn Exhaust Card Damage +20%",
+        "1": "Defense Dependent Damage 210%, Shield from Damage 20%, For 1 Turn Exhaust Card Damage +30%",
+        "2": "Defense Dependent Damage 210%, Shield from Damage 20%, If Exhaust Card Used This Turn, This Card Damage +30% Until Used For 1 Turn",
+        "3": "Defense Dependent Damage 210%, Shield from Damage 20%, For 1 Turn Skill Card Shield Gain +30%",
+        "4": "Defense Dependent Damage 140%, Shield from Damage 20%, Damage +60% per Exhaust Card in Hand",
+        "5": "Defense Dependent Damage 210%, Shield from Damage 20%, For 1 Turn When Exhaust Card Activates, Counterattack 1"
+      }
+    },
+    "nine_hirameki_2": {
+      "name": "Critical Strike",
+      "descriptions": {
+        "0": "Defense Dependent Damage 140%, Damage +20% per Highest Cost Exhaust Card in Hand, Exhaust That Card",
+        "1": "Defense Dependent Damage 210%, Damage +30% per Highest Cost Exhaust Card in Hand, Exhaust That Card",
+        "2": "Defense Dependent Damage 260%, Damage +20% per Highest Cost Exhaust Card in Hand",
+        "3": "Change Crushing Strike Cards in Hand to Final Stage",
+        "4": "Exhaust 2 Random Other Fighter's Exhaust Cards in Hand, Next Attack Card Damage +30% Until Used",
+        "5": "Defense Dependent Damage 210%, Damage +80% per Counterattack-Holding Ally"
+      }
+    },
+    "nine_hirameki_3": {
+      "name": "Reversal Blade",
+      "descriptions": {
+        "0": "Blade Polish 1 when Shield Gained by Ability",
+        "1": "Blade Polish 1 when Card Exhausted",
+        "2": "Shield Gain +15%, Blade Polish 1 when Shield Gained by Ability",
+        "3": "Blade Polish 1 when Shield Gained by Ability",
+        "4": "Blade Polish 1 when Counterattack Gained",
+        "5": "At Turn Start, Activate 1 Crushing Strike Card in Hand"
+      }
+    },
+    "nine_hirameki_4": {
+      "name": "Fighting Spirit",
+      "descriptions": {
+        "0": "Activate 1 Highest Cost Own Attack Card in Hand, Exhaust That Card"
+      }
+    },
     "shared_01": {
       "name": "Sadism",
       "descriptions": {

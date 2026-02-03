@@ -128,6 +128,7 @@
     "exhaust": "消滅",
     "exhaust2": "消滅2",
     "exhaust3": "消滅3",
+    "ephemeral": "蒸発",
     "retain": "保存",
     "retrieve": "回収",
     "retrieve2": "回収2",
@@ -141,7 +142,8 @@
     "bullet": "弾丸",
     "weakness_attack": "弱点攻撃",
     "pulverize": "粉砕",
-    "bind": "結束"
+    "bind": "結束",
+    "ignition": "点火"
   },
   "actions": {
     "add": "追加",
@@ -167,6 +169,7 @@
     "faintMemory": "曖昧な記憶",
     "egoManifest": "エゴ発現",
     "potential": "潜在力",
+    "nine": "ナイン",
     "narja": "ナージャ",
     "sereniel": "セレニエル",
     "chizuru": "チズル",
