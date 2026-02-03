@@ -270,7 +270,7 @@ export const CHARACTER_CARDS: CznCard[] = [
     isStartingCard: true,
     imgUrl: "/images/cards/khalipe_starting_2.png",
     hiramekiVariations: [
-      { level: 0, cost: 2, description: "防御依存ダメージ180%" } // Fallback
+      { level: 0, cost: 2, description: "防御依存ダメージ200%" } // Fallback
     ]
   },
   {
@@ -296,8 +296,8 @@ export const CHARACTER_CARDS: CznCard[] = [
     isStartingCard: true,
     imgUrl: "/images/cards/khalipe_starting_4.png",
     hiramekiVariations: [ // Fallback descriptions
-      { level: 0, cost: 3, description: "敵全体に防御依存ダメージ100%<wbr/>シールド80%<wbr/>銀色の帳7)1" },
-      { level: 1, cost: 3, description: "敵全体に防御依存ダメージ210%<wbr/>銀色の帳1" },
+      { level: 0, cost: 3, description: "敵全体に防御依存ダメージ120%<wbr/>シールド80%<wbr/>銀色の帳7)1" },
+      { level: 1, cost: 3, description: "敵全体に防御依存ダメージ240%<wbr/>銀色の帳1" },
       { level: 2, cost: 3, description: "シールド200%<wbr/>銀色の帳1"},
       { level: 3, cost: 3, description: "敵全体に防御依存ダメージ150%<wbr/>シールド120%<wbr/>銀色の帳1"},
       { level: 4, cost: 3, description: "敵全体に防御依存ダメージ150%<wbr/>銀色の帳1<wbr/>保存：シールド80%" },
@@ -329,12 +329,12 @@ export const CHARACTER_CARDS: CznCard[] = [
     statuses: [],
     imgUrl: "/images/cards/khalipe_hirameki_2.png",
     hiramekiVariations: [ // Fallback descriptions
-      { level: 0, cost: 2, description: "シールド200%<wbr/>敵全体に強靭度ダメージ1"},
-      { level: 1, cost: 2, description: "シールド250%<wbr/>敵全体に強靭度ダメージ1<wbr/>大破状態の敵数に応じてダメージ減少1"},
-      { level: 2, cost: 2, description: "シールド250%<wbr/>敵全体に強靭度ダメージ1<wbr/>大破状態の敵に、脆弱2、そうでない場合、弱体化2"},
-      { level: 3, cost: 2, description: "シールド250%<wbr/>敵全体に強靭度ダメージ2"},
-      { level: 4, cost: 2, description: "シールド200%<wbr/>敵全体に強靭度ダメージ1<wbr/>手札のカード数に応じてシールド獲得量+40%"},
-      { level: 5, cost: 2, description: "シールド250%<wbr/>敵全体に強靭度ダメージ1<wbr/>敵全体の行動カウント5追加"}
+      { level: 0, cost: 2, description: "シールド240%<wbr/>敵全体に強靭度ダメージ1"},
+      { level: 1, cost: 2, description: "シールド300%<wbr/>敵全体に強靭度ダメージ1<wbr/>大破状態の敵数に応じてダメージ減少1"},
+      { level: 2, cost: 2, description: "シールド300%<wbr/>敵全体に強靭度ダメージ1<wbr/>大破状態の敵に、脆弱2、そうでない場合、弱体化2"},
+      { level: 3, cost: 2, description: "シールド300%<wbr/>敵全体に強靭度ダメージ2"},
+      { level: 4, cost: 2, description: "シールド240%<wbr/>敵全体に強靭度ダメージ1<wbr/>手札のカード数に応じてシールド獲得量+40%"},
+      { level: 5, cost: 2, description: "シールド300%<wbr/>敵全体に強靭度ダメージ1<wbr/>敵全体の行動カウント5追加"}
     ]
   },
   {
@@ -431,12 +431,12 @@ export const CHARACTER_CARDS: CznCard[] = [
     statuses: [],
     imgUrl: "/images/cards/magna_hirameki_1.png",
     hiramekiVariations: [ // Fallback descriptions
-      { level: 0, cost: 2, description: "防御依存ダメージ210%<wbr/>与ダメージの50%分、固定シールドを獲得（最大HPの20%を超えることはできない）" },
-      { level: 1, cost: 2, description: "防御依存ダメージ315%<wbr/>与ダメージの50%分固定シールドを獲得（最大HPの20%を超えることはできない）"},
-      { level: 2, cost: 2, description: "防御依存ダメージ210%<wbr/>脆弱12)3"},
-      { level: 3, cost: 2, description: "防御依存ダメージ315%<wbr/>シールド所持中の場合、ダメージ量50%増加"},
-      { level: 4, cost: 2, description: "敵全体に防御依存ダメージ210%<wbr/>与ダメージの50%分固定シールドを獲得（最大HPの20%を超えることはできない）"},
-      { level: 5, cost: 3, description: "防御依存ダメージ400%<wbr/>与ダメージの50%分固定シールドを獲得（最大HPの20%を超えることはできない）<wbr/>1ターンの間、シールド保存14)1", statuses: [CardStatus.EXHAUST] }
+      { level: 0, cost: 2, description: "防御依存ダメージ300%<wbr/>与ダメージの50%分、固定シールドを獲得（最大HPの20%を超えることはできない）" },
+      { level: 1, cost: 2, description: "防御依存ダメージ450%<wbr/>与ダメージの50%分固定シールドを獲得（最大HPの20%を超えることはできない）"},
+      { level: 2, cost: 2, description: "防御依存ダメージ300%<wbr/>脆弱12)3"},
+      { level: 3, cost: 2, description: "防御依存ダメージ450%<wbr/>シールド所持中の場合、ダメージ量50%増加"},
+      { level: 4, cost: 2, description: "敵全体に防御依存ダメージ300%<wbr/>与ダメージの50%分固定シールドを獲得（最大HPの20%を超えることはできない）"},
+      { level: 5, cost: 2, description: "防御依存ダメージ400%<wbr/>与ダメージの50%分固定シールドを獲得（最大HPの20%を超えることはできない）<wbr/>1ターンの間、シールド保存14)1", statuses: [CardStatus.EXHAUST2] }
     ]
   },
   {
@@ -447,12 +447,12 @@ export const CHARACTER_CARDS: CznCard[] = [
     statuses: [],
     imgUrl: "/images/cards/magna_hirameki_2.png",
     hiramekiVariations: [ // Fallback descriptions
-      { level: 0, cost: 2, description: "シールド100%<wbr/>反撃2<wbr/>1ターンの間、反撃の対象が敵全体に適用"},
-      { level: 1, cost: 2, description: "シールド150%<wbr/>反撃3<wbr/>1ターンの間、反撃の対象が敵全体に適用"},
-      { level: 2, cost: 2, description: "シールド150%<wbr/>自分が所持中の反撃の数に応じてシールド獲得量+30%<wbr/>反撃2" },
-      { level: 3, cost: 2, category: CardCategory.UPGRADE, description: "反撃対象が敵全体に適用" },
-      { level: 4, cost: 2, category: CardCategory.ATTACK, description: "シールド100%<wbr/>所持中のシールドに応じて敵全体にダメージ" },
-      { level: 5, cost: 2, description: "シールド100%<wbr/>反撃2<wbr/>2ターンの間、反撃の対象が敵全体に適用" }
+      { level: 0, cost: 2, description: "シールド180%<wbr/>反撃2<wbr/>1ターンの間、反撃の対象が敵全体に適用"},
+      { level: 1, cost: 2, description: "シールド270%<wbr/>反撃3<wbr/>1ターンの間、反撃の対象が敵全体に適用"},
+      { level: 2, cost: 2, description: "シールド180%<wbr/>自分が所持中の反撃の数に応じてシールド獲得量+30%<wbr/>反撃2" },
+      { level: 3, cost: 2, category: CardCategory.UPGRADE, description: "反撃対象が敵全体に適用", statuses: [CardStatus.LEAD] },
+      { level: 4, cost: 2, category: CardCategory.ATTACK, description: "シールド180%<wbr/>所持中のシールドに応じて敵全体にダメージ" },
+      { level: 5, cost: 2, description: "シールド240%<wbr/>反撃2<wbr/>2ターンの間、反撃の対象が敵全体に適用" }
     ]
   },
   {
@@ -549,7 +549,7 @@ export const CHARACTER_CARDS: CznCard[] = [
     statuses: [],
     imgUrl: "/images/cards/rin_hirameki_1.png",
     hiramekiVariations: [ // Fallback descriptions
-      { level: 0, cost: 0, description: "シールド100%<wbr/>自分のカード、ドロー2" },
+      { level: 0, cost: 0, description: "シールド120%<wbr/>自分のカード、ドロー2" },
       { level: 1, cost: 0, description: "自分のカード、ドロー1<wbr/>黒雲態勢獲得"},
       { level: 2, cost: 0, description: "自分のカードをドロー1<wbr/>黒雲態勢：1ターンの間、そのカードのコスト1減少"},
       { level: 3, cost: 0, description: "自分の攻撃カードドロー1<wbr/>黒雲態勢：1ターンの間、そのカードのダメージ量50%増加"},
@@ -581,9 +581,9 @@ export const CHARACTER_CARDS: CznCard[] = [
     statuses: [],
     imgUrl: "/images/cards/rin_hirameki_3.png",
     hiramekiVariations: [ // Fallback descriptions
-      { level: 0, cost: 1, description: "1ターンの間、黒雲態勢保存7)<wbr/>黒雲態勢：1ターンの間、自分の攻撃カードのダメージ量+30%" },
-      { level: 1, cost: 1, description: "1ターンの間、黒雲態勢保存<wbr/>黒雲態勢：1ターンの間、自分の攻撃カードのダメージ量+60%" },
-      { level: 2, cost: 0, description: "1ターンの間、黒雲態勢保存<wbr/>黒雲態勢：1ターンの間、自分の攻撃カードのダメージ量+30%" },
+      { level: 0, cost: 1, description: "1ターンの間、黒雲態勢保存7)<wbr/>黒雲態勢：1ターンの間、自分の攻撃カードのダメージ量+40%" },
+      { level: 1, cost: 1, description: "1ターンの間、黒雲態勢保存<wbr/>黒雲態勢：1ターンの間、自分の攻撃カードのダメージ量+80%" },
+      { level: 2, cost: 0, description: "1ターンの間、黒雲態勢保存<wbr/>黒雲態勢：1ターンの間、自分の攻撃カードのダメージ量+40%" },
       { level: 3, cost: 1, description: "1ターンの間、黒雲態勢保存<wbr/>黒雲奥義：滅1枚を生成、そのカードに蒸発8)付与" },
       { level: 4, cost: 1, description: "ターン開始時、黒雲態勢を獲得" },
       { level: 5, cost: 1, category: CardCategory.UPGRADE, description: "黒雲態勢状態の場合、リンの攻撃カードダメージ50%増加" }
@@ -597,7 +597,7 @@ export const CHARACTER_CARDS: CznCard[] = [
     statuses: [],
     imgUrl: "/images/cards/rin_hirameki_4.png",
     hiramekiVariations: [ // Fallback descriptions
-      { level: 0, cost: 1, description: "ダメージ80%<wbr/>黒雲態勢：手札のスキルカード数に応じてヒット数1回追加(最大5回)" },
+      { level: 0, cost: 1, description: "ダメージ120%<wbr/>黒雲態勢：手札のスキルカード数に応じてヒット数1回追加(最大5回)" },
     ]
   },
   // Orlea's starting cards
@@ -1122,9 +1122,9 @@ export const CHARACTER_CARDS: CznCard[] = [
     isBasicCard: false,
     isStartingCard: true,
     hiramekiVariations: [ // Fallback descriptions
-      { level: 0, cost: 1, description: "他の戦闘員が強化またはスキルカード使用時、狩猟の開始1" },
+      { level: 0, cost: 0, description: "他の戦闘員が強化またはスキルカード使用時、狩猟の開始1" },
       { level: 1, cost: 0, description: "他の戦闘員が強化またはスキルカード使用時、狩猟の開始1", statuses: [] },
-      { level: 2, cost: 1, description: "他の戦闘員が強化またはスキルカード使用時、狩猟の開始1<wbr/>50%の確率で狩猟の開始1追加", statuses: []},
+      { level: 2, cost: 0, description: "他の戦闘員が強化またはスキルカード使用時、狩猟の開始1<wbr/>50%の確率で狩猟の開始1追加", statuses: []},
       { level: 3, cost: 1, description: "他の戦闘員が強化またはスキルカード使用時、狩猟の開始1<wbr/>狩猟の開始が発動すると対象に挟み撃ち6)50%", statuses: []},
       { level: 4, cost: 0, category: CardCategory.SKILL, description: "手札のスキル数に応じて狩猟の開始", statuses: [] },
       { level: 5, cost: 1, description: "強化またはスキルカード使用時、狩猟の開始1", statuses: []}
@@ -1155,10 +1155,10 @@ export const CHARACTER_CARDS: CznCard[] = [
     statuses: [CardStatus.HASTE],
     imgUrl: "/images/cards/hugo_hirameki_2.png",
     hiramekiVariations: [ // Fallback descriptions
-      { level: 0, cost: 1, description: "ダメージ80%×2<wbr/>狩猟の開始状態の場合、攻撃カードを1枚ドロー" },
+      { level: 0, cost: 1, description: "ダメージ100%×2<wbr/>狩猟の開始状態の場合、攻撃カードを1枚ドロー" },
       { level: 1, cost: 1, description: "ダメージ120%×2<wbr/>狩猟の開始状態の場合、攻撃カードを1枚ドロー" },
       { level: 2, cost: 1, description: "ダメージ80%×2<wbr/>狩猟の開始状態の場合、ヒット数1回追加" },
-      { level: 3, cost: 1, description: "ダメージ100%×2<wbr/>狩猟の開始状態の場合、ドロー2" },
+      { level: 3, cost: 1, description: "ダメージ120%×2<wbr/>狩猟の開始状態の場合、ドロー2" },
       { level: 4, cost: 1, description: "ダメージ60%×3<wbr/>狩猟の開始状態の場合、敵全体の行動カウント1増加" },
       { level: 5, cost: 1, description: "ダメージ120%<wbr/>狩猟の開始最大5減少、その数に応じてヒット数1回追加" }
     ]
@@ -1240,12 +1240,12 @@ export const CHARACTER_CARDS: CznCard[] = [
     isBasicCard: false,
     isStartingCard: true,
     hiramekiVariations: [ // Fallback descriptions
-      { level: 0, cost: 2, description: "ダメージ240%<wbr/>このカードの使用数に応じてダメージ量＋60%（最大5）" },
-      { level: 1, cost: 2, description: "ダメージ320%<wbr/>このカードの使用数に応じてダメージ量＋90%（最大5）" },
-      { level: 2, cost: 2, description: "ダメージ280%<wbr/>連続4)：ヒット数1回追加"},
+      { level: 0, cost: 2, description: "ダメージ300%<wbr/>このカードの使用数に応じてダメージ量＋80%（最大10）" },
+      { level: 1, cost: 2, description: "ダメージ400%<wbr/>このカードの使用数に応じてダメージ量＋90%（最大10）" },
+      { level: 2, cost: 2, description: "ダメージ320%<wbr/>連続4)：ヒット数1回追加"},
       { level: 3, cost: 3, description: "ダメージ350%<wbr/>他の戦闘員のカードを全て破棄、その数に応じてダメージ量＋100%", statuses: [CardStatus.RETAIN, CardStatus.PULVERIZE] },
-      { level: 4, cost: 2, description: "ダメージ300%<wbr/>このカードの使用数に応じてダメージ量＋60%（最大5）<wbr/>山札に、このカードを生成（各戦闘2回）" },
-      { level: 5, cost: 2, description: "ダメージ300%<wbr/>このカードの使用数に応じてダメージ量＋60%（最大5）<wbr/>会心攻撃時手札に移動（各ターン1回）"}
+      { level: 4, cost: 2, description: "ダメージ300%<wbr/>このカードの使用数に応じてダメージ量＋80%（最大10）<wbr/>山札に、このカードを生成（各戦闘2回）" },
+      { level: 5, cost: 2, description: "ダメージ300%<wbr/>このカードの使用数に応じてダメージ量＋80%（最大10）<wbr/>会心攻撃時手札に移動（各ターン1回）"}
     ]
   },
   // Haru's hirameki cards
@@ -1305,7 +1305,10 @@ export const CHARACTER_CARDS: CznCard[] = [
     statuses: [CardStatus.RETAIN],
     imgUrl: "/images/cards/haru_hirameki_4.png",
     hiramekiVariations: [ // Fallback descriptions
-      { level: 0, cost: 0, description: "手札のアンカーシュート<wbr/>1ターンの間、コスト1増加<wbr/>ダメージ量70%増加" },
+      { level: 0, cost: 0, description: "手札のアンカーシュート<wbr/>ダメージ量80%増加" },
+      { level: 1, cost: 0, description: "手札のアンカーシュート<wbr/>ダメージ量80%増加" },
+      { level: 2, cost: 0, description: "手札のアンカーシュート<wbr/>ダメージ量100%増加" },
+      { level: 3, cost: 0, description: "手札のアンカーシュート<wbr/>ダメージ量120%増加" },
     ]
   },
   // kayron's starting cards
@@ -1493,10 +1496,10 @@ export const CHARACTER_CARDS: CznCard[] = [
     statuses: [],
     imgUrl: "/images/cards/yuki_hirameki_1.png",
     hiramekiVariations: [ // Fallback descriptions
-      { level: 0, cost: 2, description: "敵全体ダメージ180%<wbr/>インスピレーション：コスト1減少" },
-      { level: 1, cost: 2, description: "敵全体ダメージ270%<wbr/>インスピレーション：コスト1減少"},
-      { level: 2, cost: 2, description: "敵全体ダメージ180%<wbr/>インスピレーション：コスト2減少"},
-      { level: 3, cost: 2, description: "敵全体ダメージ180%<wbr/>インスピレーション：ヒット数1回増加"},
+      { level: 0, cost: 2, description: "敵全体ダメージ210%<wbr/>インスピレーション：コスト1減少" },
+      { level: 1, cost: 2, description: "敵全体ダメージ315%<wbr/>インスピレーション：コスト1減少"},
+      { level: 2, cost: 2, description: "敵全体ダメージ210%<wbr/>インスピレーション：コスト2減少"},
+      { level: 3, cost: 2, description: "敵全体ダメージ210%<wbr/>インスピレーション：ヒット数1回増加"},
       { level: 4, cost: 2, description: "ダメージ320%<wbr/>1ターンの間、ドローした自分のカード数に応じて、ダメージ量+60%(最大3)", statuses: [CardStatus.RETAIN] },
       { level: 5, cost: 3, description: "敵全体ダメージ300%<wbr/>このカードの使用時、コスト1減少" }
     ]
@@ -1509,11 +1512,11 @@ export const CHARACTER_CARDS: CznCard[] = [
     statuses: [CardStatus.RETAIN],
     imgUrl: "/images/cards/yuki_hirameki_2.png",
     hiramekiVariations: [ // Fallback descriptions
-      { level: 0, cost: 1, description: "ダメージ150%<wbr/>手札のランダムな自分のカード1枚のインスピレーション効果有効化"},
+      { level: 0, cost: 1, description: "ダメージ180%<wbr/>手札のランダムな自分のカード1枚のインスピレーション効果有効化"},
       { level: 1, cost: 1, description: "ダメージ180%<wbr/>手札の自分のカード1枚選択、インスピレーション効果有効化"},
-      { level: 2, cost: 1, description: "ダメージ180%<wbr/>手札のランダムな自分のカード1枚のインスピレーション効果有効化", statuses: [CardStatus.RETAIN, CardStatus.RETRIEVE] },
+      { level: 2, cost: 1, description: "ダメージ210%<wbr/>手札のランダムな自分のカード1枚のインスピレーション効果有効化", statuses: [CardStatus.RETAIN, CardStatus.RETRIEVE] },
       { level: 3, cost: 1, category: CardCategory.SKILL, description: "手札の自分のカードすべてのインスピレーション効果を有効化", statuses: [] },
-      { level: 4, cost: 1, description: "ダメージ150%<wbr/>インスピレーション効果を持つカードをドロー1", statuses: [] },
+      { level: 4, cost: 1, description: "ダメージ180%<wbr/>インスピレーション効果を持つカードをドロー1", statuses: [] },
       { level: 5, cost: 1, description: "ダメージ260%<wbr/>インスピレーション：コスト1減少", statuses: [] }
     ]
   },
@@ -1525,9 +1528,9 @@ export const CHARACTER_CARDS: CznCard[] = [
     statuses: [CardStatus.UNIQUE],
     imgUrl: "/images/cards/yuki_hirameki_3.png",
     hiramekiVariations: [ // Fallback descriptions
-      { level: 0, cost: 1, description: "自分のインスピレーション効果が有効化したカードを使用したとき、敵全体にダメージ60%" },
-      { level: 1, cost: 1, description: "自分のインスピレーション効果が有効化したカードを使用したとき、敵全体にダメージ90%" },
-      { level: 2, cost: 0, description: "自分のインスピレーション効果が有効化したカードを使用したとき、敵全体にダメージ60%", statuses: [CardStatus.UNIQUE, CardStatus.INITIATION] },
+      { level: 0, cost: 1, description: "自分のインスピレーション効果が有効化したカードを使用したとき、敵全体にダメージ80%" },
+      { level: 1, cost: 1, description: "自分のインスピレーション効果が有効化したカードを使用したとき、敵全体にダメージ120%" },
+      { level: 2, cost: 0, description: "自分のインスピレーション効果が有効化したカードを使用したとき、敵全体にダメージ80%", statuses: [CardStatus.UNIQUE, CardStatus.INITIATION] },
       { level: 3, cost: 1, description: "自分のインスピレーション効果が有効化したカードを使用したとき、ランダムな敵にダメージ130%" },
       { level: 4, cost: 1, description: "自分のすべての攻撃カードのダメージ量30%増加" },
       { level: 5, cost: 1, description: "ターン開始時、手札のランダムなカード1枚のインスピレーション効果を有効化" }
@@ -1628,11 +1631,11 @@ export const CHARACTER_CARDS: CznCard[] = [
     imgUrl: "/images/cards/chizuru_hirameki_2.png",
     hiramekiVariations: [ // Fallback descriptions
       { level: 0, cost: 2, description: "ターン開始時、拘束を獲得<wbr/>ランダムな他の戦闘員のカード1枚、使用時までコスト1減少"},
-      { level: 1, cost: 2, description: "ターン開始時、拘束を獲得<wbr/>ランダムなカード2枚使用時までコスト1減少"},
+      { level: 1, cost: 1, description: "ターン開始時、拘束を獲得<wbr/>ランダムなカード2枚使用時までコスト1減少"},
       { level: 2, cost: 2, description: "ターン開始時、拘束を獲得<wbr/>月影+使用時、次に使用するカード1枚使用時までコスト1減少" },
       { level: 3, cost: 2, description: "ターン開始時、拘束を獲得<wbr/>ランダムな他の戦闘員のカード2枚発動" },
       { level: 4, cost: 2, description: "ターン開始時、拘束を獲得<wbr/>ランダムな主導カード2枚発動" },
-      { level: 5, cost: 2, description: "ターン開始時、拘束を獲得<wbr/>コストが最も高いカードのコスト2減少" }
+      { level: 5, cost: 1, description: "ターン開始時、拘束を獲得<wbr/>コストが最も高いカードのコスト2減少" }
     ]
   },
   {
@@ -1643,10 +1646,10 @@ export const CHARACTER_CARDS: CznCard[] = [
     statuses: [CardStatus.HASTE],
     imgUrl: "/images/cards/chizuru_hirameki_3.png",
     hiramekiVariations: [ // Fallback descriptions
-      { level: 0, cost: 1, description: "ダメージ60%×3<wbr/>次に使用する結束カードのダメージ量+30%" },
-      { level: 1, cost: 1, description: "ダメージ50%×4<wbr/>次に使用する結束カードのダメージ量+40%" },
-      { level: 2, cost: 1, description: "ダメージ180%<wbr/>次に使用する結束カードのダメージ量+60%" },
-      { level: 3, cost: 1, description: "ダメージ60%×3<wbr/>手札に他のカードがない場合、ヒット数2回追加" },
+      { level: 0, cost: 1, description: "ダメージ70%×3<wbr/>次に使用する結束カードのダメージ量+30%" },
+      { level: 1, cost: 1, description: "ダメージ60%×4<wbr/>次に使用する結束カードのダメージ量+40%" },
+      { level: 2, cost: 1, description: "ダメージ215%<wbr/>次に使用する結束カードのダメージ量+60%" },
+      { level: 3, cost: 1, description: "ダメージ70%×3<wbr/>手札に他のカードがない場合、ヒット数2回追加" },
       { level: 4, cost: 1, category: CardCategory.SKILL, description: "真月2枚生成<wbr/>そのカードに消滅付与<wbr/>使用時までコスト1減少" },
       { level: 5, cost: 1, description: "月影+のダメージ+40%<wbr/>ターン開始時、鬼火3", statuses: [CardStatus.UNIQUE] }
     ]
@@ -1659,7 +1662,7 @@ export const CHARACTER_CARDS: CznCard[] = [
     statuses: [CardStatus.BIND, CardStatus.RETAIN],
     imgUrl: "/images/cards/chizuru_hirameki_4.png",
     hiramekiVariations: [ // Fallback descriptions
-      { level: 0, cost: 1, description: "ダメージ50%<wbr/>結束の重複数に応じてダメージ量+20%" },
+      { level: 0, cost: 1, description: "ダメージ70%<wbr/>結束の重複数に応じてダメージ量+20%" },
     ]
   },
   // Narja's starting cards
@@ -1830,11 +1833,11 @@ export const CHARACTER_CARDS: CznCard[] = [
     isBasicCard: false,
     isStartingCard: true,
     hiramekiVariations: [ // Fallback descriptions
-      { level: 0, cost: 1, description: "デシベル1<wbr/>山札の一番上のカードを1枚発動" },
-      { level: 1, cost: 1, description: "デシベル1<wbr/>山札の一番上のカードを3枚確認、1枚選択し発動"},
-      { level: 2, cost: 1, description: "デシベル1<wbr/>山札の一番上のカードを1枚発動<wbr/>そのカードのコストに応じてデシベル" },
-      { level: 3, cost: 1, description: "デシベル1<wbr/>山札の一番上のカードを所有中の戦闘員が、ランダムな敵に追加攻撃6)120%<wbr/>そのカードが発動" },
-      { level: 4, cost: 1, description: "デシベル2<wbr/>山札の一番上のカードを3枚破棄" },
+      { level: 0, cost: 1, description: "デシベル2<wbr/>山札の一番上のカードを1枚発動" },
+      { level: 1, cost: 1, description: "デシベル2<wbr/>山札の一番上のカードを3枚確認、1枚選択し発動"},
+      { level: 2, cost: 1, description: "デシベル2<wbr/>山札の一番上のカードを1枚発動<wbr/>そのカードのコストに応じてデシベル" },
+      { level: 3, cost: 1, description: "デシベル2<wbr/>山札の一番上のカードを所有中の戦闘員が、ランダムな敵に追加攻撃6)120%<wbr/>そのカードが発動" },
+      { level: 4, cost: 1, description: "デシベル3<wbr/>山札の一番上のカードを3枚破棄" },
       { level: 5, cost: 2, description: "山札の一番上のカードを1枚発動<wbr/>デシベル状態ならデシベル1減少、1枚追加で発動"}
     ]
   },
@@ -1863,12 +1866,12 @@ export const CHARACTER_CARDS: CznCard[] = [
     statuses: [CardStatus.RETAIN],
     imgUrl: "/images/cards/nia_hirameki_2.png",
     hiramekiVariations: [ // Fallback descriptions
-      { level: 0, cost: 2, description: "治癒120%<wbr/>1ターンの間カードを破棄したときデシベル1"},
-      { level: 1, cost: 2, description: "治癒150%<wbr/>デシベル2<wbr/>破棄されるときにも発動", statuses: []},
-      { level: 2, cost: 2, description: "治癒120%<wbr/>1ターンの間、手札のカードを破棄した時、治癒100%、デシベル1" },
+      { level: 0, cost: 1, description: "治癒120%<wbr/>1ターンの間カードを破棄したときデシベル1、弾力1"},
+      { level: 1, cost: 2, description: "治癒200%<wbr/>デシベル2、弾力2<wbr/>破棄されるときにも発動", statuses: []},
+      { level: 2, cost: 1, description: "治癒150%<wbr/>1ターンの間、手札のカードを破棄した時、治癒100%、デシベル1" },
       { level: 3, cost: 2, description: "1ターンの間、手札のカードを破棄した時、そのカードを所有中の戦闘員はランダムな敵に追加攻撃100%" },
-      { level: 4, cost: 2, description: "治癒200%<wbr/>次に発動するデシベルの効果が1回追加で発動", statuses: [] },
-      { level: 5, cost: 2, category: CardCategory.UPGRADE, description: "カードの破棄時、デシベル1", statuses: [] }
+      { level: 4, cost: 2, description: "治癒200%<wbr/>デシベル2<wbr/>次に発動するデシベルの効果が1回追加で発動", statuses: [] },
+      { level: 5, cost: 2, category: CardCategory.UPGRADE, description: "カードの破棄時、デシベル1、弾力1", statuses: [] }
     ]
   },
   {
@@ -2823,8 +2826,8 @@ export const CHARACTER_CARDS: CznCard[] = [
     statuses: [],
     imgUrl: "/images/cards/cassius_hirameki_3.png",
     hiramekiVariations: [ // Fallback descriptions
-      { level: 0, cost: 2, description: "ダメージ240%<wbr/>1ターンの間、士気1減少<wbr/>完了したクエストの回数に応じてコスト減少" },
-      { level: 1, cost: 2, description: "	ダメージ360%<wbr/>1ターンの間、士気1減少<wbr/>完了したクエストの回数に応じてコスト減少" },
+      { level: 0, cost: 2, description: "ダメージ280%<wbr/>1ターンの間、士気1減少<wbr/>完了したクエストの回数に応じてコスト減少" },
+      { level: 1, cost: 2, description: "	ダメージ420%<wbr/>1ターンの間、士気1減少<wbr/>完了したクエストの回数に応じてコスト減少" },
       { level: 2, cost: 2, description: "敵全体にダメージ300%<wbr/>1ターンの間、士気1減少<wbr/>完了したクエストの回数に応じてコスト減少" },
       { level: 3, cost: 0, description: "ダメージ80%<wbr/>完了したクエストの回数に応じて、ダメージ量+80%(最大5回)" },
       { level: 4, cost: 2, category: CardCategory.UPGRADE, description: "クエストカード使用時、治癒100%、ランダムな敵に固定ダメージ100%", statuses: [CardStatus.UNIQUE] },
@@ -3043,12 +3046,12 @@ export const CHARACTER_CARDS: CznCard[] = [
     statuses: [CardStatus.EXHAUST],
     imgUrl: "/images/cards/rei_hirameki_2.png",
     hiramekiVariations: [ // Fallback descriptions
-      { level: 0, cost: 0, description: "手札のカードを1枚選択し、消滅<wbr/>治癒100%<wbr/>ドロー1"},
-      { level: 1, cost: 0, description: "手札のカードを1枚選択し、消滅<wbr/>治癒150%<wbr/>ドロー1", statuses: [CardStatus.EXHAUST2]},
-      { level: 2, cost: 0, description: "治癒150%<wbr/>ドロー2", statuses: [CardStatus.RETAIN, CardStatus.EXHAUST] },
-      { level: 3, cost: 0, description: "手札のカードを2枚まで選択し、消滅、その枚数に応じて、ドロー" },
-      { level: 4, cost: 0, description: "山札から1枚まで選択し、消滅、その枚数に応じて、ドロー" },
-      { level: 5, cost: 0, description: "手札のカードを2枚選択し、消滅、空虚カードを1枚選択し、ドロー" }
+      { level: 0, cost: 0, description: "手札のカードを1枚選択し、消滅<wbr/>治癒200%<wbr/>ドロー1"},
+      { level: 1, cost: 0, description: "手札のカードを1枚選択し、消滅<wbr/>治癒200%<wbr/>ドロー1", statuses: [CardStatus.EXHAUST2]},
+      { level: 2, cost: 0, description: "治癒200%<wbr/>ドロー2", statuses: [CardStatus.RETAIN, CardStatus.EXHAUST] },
+      { level: 3, cost: 0, description: "治癒150%<wbr/>手札のカードを2枚まで選択し、消滅、その数に応じて、ドロー" },
+      { level: 4, cost: 0, description: "治癒150%<wbr/>山札から1枚まで選択し、消滅、その数に応じて、ドロー" },
+      { level: 5, cost: 0, description: "治癒150%<wbr/>手札のカードを2枚選択し、消滅、空虚カードを1枚選択し、ドロー" }
     ]
   },
   {

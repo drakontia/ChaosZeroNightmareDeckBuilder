@@ -1041,11 +1041,11 @@
     "nia_starting_4": {
       "name": "G code",
       "descriptions": {
-        "0": "decibel 1\n",
-        "1": "decibel 1\n",
-        "2": "decibel 1\n",
-        "3": "decibel 1\n",
-        "4": "decibel 2\n",
+        "0": "decibel 2\n",
+        "1": "decibel 2\n",
+        "2": "decibel 2\n",
+        "3": "decibel 2\n",
+        "4": "decibel 3\n",
         "5": "Activate the top card of the deck\n"
       }
     },
@@ -1063,11 +1063,11 @@
     "nia_hirameki_2": {
       "name": "soul leaf",
       "descriptions": {
-        "0": "Healing 120%\n",
-        "1": "Healing 150%\n",
-        "2": "Healing 120%\n",
+        "0": "Healing 150%\ndecibel 1, elasticity 1\n",
+        "1": "Healing 200%\ndecibel 2, elasticity 2\n",
+        "2": "Healing 150%\n",
         "3": "For 1 turn, when you discard a card in your hand, the combatant who owns that card will have an additional 100% attack on a random enemy.",
-        "4": "Healing 200%\n",
+        "4": "Healing 200%\ndecibel 2\n",
         "5": "When discarding a card, decibel 1"
       }
     },
