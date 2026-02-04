@@ -51,7 +51,11 @@
     "noDeck": "デッキが空です",
     "selectCharacterHint": "キャラクターを選択すると開始カードが表示されます",
     "namePlaceholder": "デッキ名",
-    "createdDate": "保存日"
+    "createdDate": "保存日",
+    "removeLimitTitle": "排除上限に達しました",
+    "removeLimitMessage": "排除は5回までです。これ以上排除できません。",
+    "copyLimitTitle": "コピー上限に達しました",
+    "copyLimitMessage": "コピーは4回までです。これ以上コピーできません。"
   },
   "rarity": {
     "★5": "★5",
@@ -157,6 +161,7 @@
   },
   "common": {
     "open": "開く",
+    "close": "閉じる",
     "delete": "削除",
     "convert": "変換",
     "remove": "除去",

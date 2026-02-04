@@ -158,15 +158,15 @@ export function DeckBuilder({ shareId }: DeckBuilderProps) {
     <div className="min-h-screen p-4 lg:p-8 bg-gray-50 dark:bg-gray-900">
       <LimitAlert
         isOpen={removeLimitReached}
-        title={t('alert.removeLimitTitle', { defaultValue: '排除上限に達しました' })}
-        message={t('alert.removeLimitMessage', { defaultValue: '排除は5回までです。これ以上排除できません。' })}
+        title={t('deck.removeLimitTitle', { defaultValue: '排除上限に達しました' })}
+        message={t('deck.removeLimitMessage', { defaultValue: '排除は5回までです。これ以上排除できません。' })}
         onClose={clearRemoveLimitAlert}
         closeLabel={t('common.close', { defaultValue: '閉じる' })}
       />
       <LimitAlert
         isOpen={copyLimitReached}
-        title={t('alert.copyLimitTitle', { defaultValue: 'コピー上限に達しました' })}
-        message={t('alert.copyLimitMessage', { defaultValue: 'コピーは4回までです。これ以上コピーできません。' })}
+        title={t('deck.copyLimitTitle', { defaultValue: 'コピー上限に達しました' })}
+        message={t('deck.copyLimitMessage', { defaultValue: 'コピーは4回までです。これ以上コピーできません。' })}
         onClose={clearCopyLimitAlert}
         closeLabel={t('common.close', { defaultValue: '閉じる' })}
       />
