@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeEach } from 'vitest';
+import { describe, it, expect, beforeEach, vi } from 'vitest';
 import { encodeDeckShare, decodeDeckShare } from '@/lib/deck-share';
 import { Deck, CardType, CardCategory, GodType, EquipmentType } from '@/types';
 
@@ -151,6 +151,17 @@ describe('deck-share', () => {
       expect(decoded!.createdAt).toBeInstanceOf(Date);
       expect(decoded!.createdAt.toISOString()).toBe('2024-01-01T12:00:00.000Z');
     });
+
+    it('should return null for unsupported version', () => {
+      const payload = { v: 2, k: [] };
+      const encoded = Buffer.from(JSON.stringify(payload), 'utf-8')
+        .toString('base64')
+        .replace(/\+/g, '-')
+        .replace(/\//g, '_')
+        .replace(/=+$/, '');
+      const decoded = decodeDeckShare(encoded);
+      expect(decoded).toBeNull();
+    });
   });
 
   describe('encoding/decoding round trip', () => {
@@ -218,6 +229,71 @@ describe('deck-share', () => {
       const encoded = encodeDeckShare(mockDeck);
       // Encoded string should be reasonably short (less than 1000 chars for typical decks)
       expect(encoded.length).toBeLessThan(1000);
+    });
+  });
+
+  describe('encoding fallbacks', () => {
+    it('should fall back to TextEncoder path when Buffer.from fails', () => {
+      const originalBuffer = global.Buffer;
+      const originalBufferFrom = global.Buffer?.from;
+      const originalBtoa = (global as any).btoa;
+
+      const safeBtoa = (data: string) => originalBufferFrom!(data, 'binary').toString('base64');
+      (global as any).btoa = originalBtoa ?? safeBtoa;
+      if (global.Buffer) {
+        global.Buffer.from = (() => { throw new Error('force'); }) as any;
+      }
+
+      const encoded = encodeDeckShare(mockDeck);
+      expect(typeof encoded).toBe('string');
+
+      if (originalBuffer && originalBufferFrom) {
+        global.Buffer = originalBuffer;
+        global.Buffer.from = originalBufferFrom;
+      }
+      (global as any).btoa = originalBtoa;
+    });
+
+    it('should fall back to atob/TextDecoder path when Buffer.from fails', () => {
+      const encoded = encodeDeckShare(mockDeck);
+      const originalBuffer = global.Buffer;
+      const originalBufferFrom = global.Buffer?.from;
+      const originalAtob = (global as any).atob;
+
+      const safeAtob = (data: string) => originalBufferFrom!(data, 'base64').toString('binary');
+      (global as any).atob = originalAtob ?? safeAtob;
+      if (global.Buffer) {
+        global.Buffer.from = (() => { throw new Error('force'); }) as any;
+      }
+
+      const decoded = decodeDeckShare(encoded);
+      expect(decoded).not.toBeNull();
+
+      if (originalBuffer && originalBufferFrom) {
+        global.Buffer = originalBuffer;
+        global.Buffer.from = originalBufferFrom;
+      }
+      (global as any).atob = originalAtob;
+    });
+
+    it('should use fallback deckId when crypto.randomUUID is unavailable', () => {
+      vi.stubGlobal('crypto', undefined as any);
+
+      const encoded = encodeDeckShare(mockDeck);
+      const decoded = decodeDeckShare(encoded)!;
+      expect(decoded.cards[0].deckId.startsWith(`${decoded.cards[0].id}_`)).toBe(true);
+
+      vi.unstubAllGlobals();
+    });
+
+    it('should handle non-Date createdAt values safely', () => {
+      const deckWithInvalidDate = {
+        ...mockDeck,
+        createdAt: 12345 as any,
+      };
+      const encoded = encodeDeckShare(deckWithInvalidDate);
+      const decoded = decodeDeckShare(encoded);
+      expect(decoded?.createdAt).toBeInstanceOf(Date);
     });
   });
 

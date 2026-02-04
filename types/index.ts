@@ -60,6 +60,13 @@ export enum CardType {
   FORBIDDEN = "forbidden" // 禁忌カード
 }
 
+// Monster card grade types
+export enum CardGrade {
+  COMMON = "common",    // Common: 20pt
+  RARE = "rare",      // Rare: 50pt
+  LEGEND = "legendary"     // Legend: 80pt
+}
+
 // Card category types
 export enum CardCategory {
   ATTACK = "attack",       // 攻撃
@@ -83,10 +90,12 @@ export enum CardStatus {
   RETRIEVE = "retrieve",    // 回収
   RETRIEVE2 = "retrieve2",    // 回収2
   RETRIEVE3 = "retrieve3",    // 回収3
+  EPHEMERAL = "ephemeral",   // 蒸発
   BULLET = "bullet",        // 弾丸
   WEAKNESS_ATTACK = "weakness_attack", // 弱点攻撃
   PULVERIZE = "pulverize",     // 粉砕
   BIND = "bind",               // 結束
+  IGNITION = "ignition",         // 点火
   COPIED = "copied"            // コピー済み
 }
 
@@ -94,6 +103,7 @@ export enum CardStatus {
 export interface HiramekiVariation {
   level: number; // 0 = base, 1-5 for character cards, 1-3 for other cards
   cost: number | "X"; // "X" allows variable-cost cards defined by effect text
+  name?: string; // Optional name override for this Hirameki level
   description: string;
   // Hiramekiでカテゴリが変化する場合の上書き
   category?: CardCategory;
@@ -149,6 +159,7 @@ export interface CznCard {
   type: CardType;
   category: CardCategory; // Attack, Enhancement, or Skill
   statuses: CardStatus[]; // Card status effects
+  grade?: CardGrade; // Monster card grade: COMMON (20pt), RARE (50pt), LEGEND (80pt)
   isBasicCard?: boolean; // True for the 3 basic cards that can't have hirameki
   isStartingCard?: boolean; // True for character's 4 starting cards
   allowedJobs?: JobType[] | "all"; // For shared/monster/forbidden cards
@@ -172,6 +183,7 @@ export interface DeckCard extends CznCard {
 export interface RemovedCardEntry {
   count: number;
   type?: CardType; // Optional: card type at removal
+  grade?: CardGrade; // Grade at removal time (for monster cards)
   selectedHiramekiLevel?: number;
   selectedHiddenHiramekiId?: string | null; // Hidden hirameki at removal time
   godHiramekiType?: GodType | null;
@@ -182,6 +194,7 @@ export interface RemovedCardEntry {
 export interface CopiedCardEntry {
   count: number;
   type?: CardType; // Optional: card type at copy time
+  grade?: CardGrade; // Grade at copy time (for monster cards)
   selectedHiramekiLevel?: number;
   selectedHiddenHiramekiId?: string | null; // Hidden hirameki at copy time
   godHiramekiType?: GodType | null;
@@ -192,6 +205,7 @@ export interface CopiedCardEntry {
 export interface ConvertedCardEntry {
   convertedToId: string; // The target card ID it was converted to
   originalType?: CardType; // Original card type before conversion
+  originalGrade?: CardGrade; // Original grade before conversion (for monster cards)
   selectedHiramekiLevel?: number; // Hirameki level at conversion time
   selectedHiddenHiramekiId?: string | null; // Hidden hirameki at conversion time
   godHiramekiType?: GodType | null; // God hirameki at conversion time

@@ -60,6 +60,17 @@ describe('useDeckBuilderStore', () => {
     expect(deck?.cards.length).toBeGreaterThan(0);
   });
 
+  it('setCharacterは既存デッキのcharacterとcardsを更新する', () => {
+    act(() => {
+      useDeckBuilderStore.getState().setCharacter(CHARACTERS[0]);
+      useDeckBuilderStore.getState().setCharacter(CHARACTERS[1]);
+    });
+
+    const deck = useDeckBuilderStore.getState().deck;
+    expect(deck?.character?.id).toBe(CHARACTERS[1].id);
+    expect(deck?.cards.length).toBeGreaterThan(0);
+  });
+
   it('addCard/removeCardでcardsが変化する', () => {
     const card = getTestCard();
     act(() => {
@@ -73,6 +84,29 @@ describe('useDeckBuilderStore', () => {
     });
     const afterLength = useDeckBuilderStore.getState().deck?.cards.length || 0;
     expect(afterLength).toBe(initialLength - 1);
+  });
+
+  it('setDeckでcharacterがidの場合に正規化されcreatedAtがDateになる', () => {
+    const deck = {
+      name: 'stringdeck',
+      character: CHARACTERS[0].id,
+      equipment: { weapon: null, armor: null, pendant: null },
+      cards: [],
+      egoLevel: 0,
+      hasPotential: false,
+      createdAt: '2024-01-01T00:00:00.000Z',
+      removedCards: new Map(),
+      copiedCards: new Map(),
+      convertedCards: new Map(),
+    } as any;
+
+    act(() => {
+      useDeckBuilderStore.getState().setDeck(deck);
+    });
+
+    const normalized = useDeckBuilderStore.getState().deck;
+    expect(normalized?.character?.id).toBe(CHARACTERS[0].id);
+    expect(normalized?.createdAt).toBeInstanceOf(Date);
   });
 
   it('selectEquipmentで装備が更新される', () => {
@@ -139,6 +173,17 @@ describe('useDeckBuilderStore', () => {
     });
     const updated = useDeckBuilderStore.getState().deck?.cards.find(c => c.deckId === card.deckId);
     expect(updated?.godHiramekiEffectId).toBe('effect-1');
+  });
+
+  it('setCardHiddenHiramekiでselectedHiddenHiramekiIdが更新される', () => {
+    const card = getTestCard();
+    act(() => {
+      useDeckBuilderStore.getState().setCharacter(CHARACTERS[0]);
+      useDeckBuilderStore.getState().addCard(card);
+      useDeckBuilderStore.getState().setCardHiddenHirameki(card.deckId, 'hiddenhirameki_01');
+    });
+    const updated = useDeckBuilderStore.getState().deck?.cards.find(c => c.deckId === card.deckId);
+    expect(updated?.selectedHiddenHiramekiId).toBe('hiddenhirameki_01');
   });
 
   it('undoCardでカードが削除される', () => {
@@ -259,6 +304,29 @@ describe('useDeckBuilderStore', () => {
     if (typeof entry === 'object') {
       expect((entry as any).excluded).toBe(true);
     }
+  });
+
+  it('undoCardで変換されたカードを元に戻す', () => {
+    const card = getTestCard();
+    const targetId = CHARACTERS[0].startingCards[0];
+
+    act(() => {
+      useDeckBuilderStore.getState().setCharacter(CHARACTERS[0]);
+      useDeckBuilderStore.getState().addCard(card);
+      useDeckBuilderStore.getState().convertCard(card.deckId, targetId);
+    });
+
+    const deckBefore = useDeckBuilderStore.getState().deck!;
+    const convertedCard = deckBefore.cards.find(c => c.id === targetId);
+    expect(convertedCard).toBeDefined();
+
+    act(() => {
+      useDeckBuilderStore.getState().undoCard(convertedCard!.deckId);
+    });
+
+    const deckAfter = useDeckBuilderStore.getState().deck!;
+    expect(deckAfter.cards.some(c => c.id === card.id)).toBe(true);
+    expect(deckAfter.convertedCards.has(card.id)).toBe(false);
   });
 
   it('restoreCardで変換カードが復元される', () => {
@@ -461,5 +529,190 @@ describe('useDeckBuilderStore', () => {
     if (typeof entry === 'object') {
       expect(entry.count).toBe(2);
     }
+  });
+
+  it('copyCardでコピー上限を超えるとcopyLimitReachedになる', () => {
+    const card = getTestCard();
+
+    act(() => {
+      useDeckBuilderStore.getState().setCharacter(CHARACTERS[0]);
+      useDeckBuilderStore.getState().addCard(card);
+      useDeckBuilderStore.getState().copyCard(card.deckId);
+      useDeckBuilderStore.getState().copyCard(card.deckId);
+      useDeckBuilderStore.getState().copyCard(card.deckId);
+      useDeckBuilderStore.getState().copyCard(card.deckId);
+      useDeckBuilderStore.getState().copyCard(card.deckId);
+    });
+
+    expect(useDeckBuilderStore.getState().copyLimitReached).toBe(true);
+  });
+
+  it('clearCopyLimitAlertでcopyLimitReachedが解除される', () => {
+    useDeckBuilderStore.setState({ copyLimitReached: true });
+    act(() => {
+      useDeckBuilderStore.getState().clearCopyLimitAlert();
+    });
+    expect(useDeckBuilderStore.getState().copyLimitReached).toBe(false);
+  });
+
+  it('clearRemoveLimitAlertでremoveLimitReachedが解除される', () => {
+    useDeckBuilderStore.setState({ removeLimitReached: true });
+    act(() => {
+      useDeckBuilderStore.getState().clearRemoveLimitAlert();
+    });
+    expect(useDeckBuilderStore.getState().removeLimitReached).toBe(false);
+  });
+
+  it('clearConversionLimitAlertでconversionLimitReachedが解除される', () => {
+    useDeckBuilderStore.setState({ conversionLimitReached: true });
+    act(() => {
+      useDeckBuilderStore.getState().clearConversionLimitAlert();
+    });
+    expect(useDeckBuilderStore.getState().conversionLimitReached).toBe(false);
+  });
+
+  describe('integrated removal+conversion limit (max 5)', () => {
+    it('should prevent conversion when removal+conversion count reaches 5', () => {
+      const character = CHARACTERS[0];
+      const card1 = getTestCard();
+      const card2 = { ...getTestCard(), id: 'shared_02', deckId: 'test_card_2' };
+      const card3 = { ...getTestCard(), id: 'shared_03', deckId: 'test_card_3' };
+      const card4 = { ...getTestCard(), id: 'shared_04', deckId: 'test_card_4' };
+      const card5 = { ...getTestCard(), id: 'shared_05', deckId: 'test_card_5' };
+      const card6 = { ...getTestCard(), id: 'shared_06', deckId: 'test_card_6' };
+
+      act(() => {
+        useDeckBuilderStore.getState().setCharacter(character);
+        useDeckBuilderStore.getState().addCard(card1);
+        useDeckBuilderStore.getState().addCard(card2);
+        useDeckBuilderStore.getState().addCard(card3);
+        useDeckBuilderStore.getState().addCard(card4);
+        useDeckBuilderStore.getState().addCard(card5);
+        useDeckBuilderStore.getState().addCard(card6);
+      });
+
+      // Remove 3 cards: totalRemoved = 3
+      act(() => {
+        useDeckBuilderStore.getState().removeCard(card1.deckId);
+      });
+      expect(useDeckBuilderStore.getState().deck!.removedCards.size).toBe(1);
+
+      act(() => {
+        useDeckBuilderStore.getState().removeCard(card2.deckId);
+      });
+      expect(useDeckBuilderStore.getState().deck!.removedCards.size).toBe(2);
+
+      act(() => {
+        useDeckBuilderStore.getState().removeCard(card3.deckId);
+      });
+      expect(useDeckBuilderStore.getState().deck!.removedCards.size).toBe(3);
+
+      // Convert 2 cards: totalConversion = 2, total = 3 + 2 = 5
+      act(() => {
+        useDeckBuilderStore.getState().convertCard(card4.deckId, 'forbidden_card_1');
+      });
+      expect(useDeckBuilderStore.getState().conversionLimitReached).toBe(false);
+      expect(useDeckBuilderStore.getState().deck!.convertedCards.size).toBe(1);
+
+      act(() => {
+        useDeckBuilderStore.getState().convertCard(card5.deckId, 'forbidden_card_2');
+      });
+      expect(useDeckBuilderStore.getState().conversionLimitReached).toBe(false);
+      expect(useDeckBuilderStore.getState().deck!.convertedCards.size).toBe(2);
+
+      // Try to convert one more: should be blocked (total = 6)
+      act(() => {
+        useDeckBuilderStore.getState().convertCard(card6.deckId, 'forbidden_card_3');
+      });
+      expect(useDeckBuilderStore.getState().conversionLimitReached).toBe(true);
+      expect(useDeckBuilderStore.getState().deck!.convertedCards.size).toBe(2); // Should still be 2
+    });
+
+    it('should prevent removal when removal+conversion count reaches 5', () => {
+      const character = CHARACTERS[0];
+      const card1 = getTestCard();
+      const card2 = { ...getTestCard(), id: 'shared_02', deckId: 'test_card_2' };
+      const card3 = { ...getTestCard(), id: 'shared_03', deckId: 'test_card_3' };
+      const card4 = { ...getTestCard(), id: 'shared_04', deckId: 'test_card_4' };
+      const card5 = { ...getTestCard(), id: 'shared_05', deckId: 'test_card_5' };
+      const card6 = { ...getTestCard(), id: 'shared_06', deckId: 'test_card_6' };
+
+      act(() => {
+        useDeckBuilderStore.getState().setCharacter(character);
+        useDeckBuilderStore.getState().addCard(card1);
+        useDeckBuilderStore.getState().addCard(card2);
+        useDeckBuilderStore.getState().addCard(card3);
+        useDeckBuilderStore.getState().addCard(card4);
+        useDeckBuilderStore.getState().addCard(card5);
+        useDeckBuilderStore.getState().addCard(card6);
+      });
+
+      // Convert 2 cards: totalConversion = 2
+      act(() => {
+        useDeckBuilderStore.getState().convertCard(card1.deckId, 'forbidden_card_1');
+      });
+      expect(useDeckBuilderStore.getState().deck!.convertedCards.size).toBe(1);
+
+      act(() => {
+        useDeckBuilderStore.getState().convertCard(card2.deckId, 'forbidden_card_2');
+      });
+      expect(useDeckBuilderStore.getState().deck!.convertedCards.size).toBe(2);
+
+      // Remove 3 cards: totalRemoved = 3, total = 2 + 3 = 5
+      act(() => {
+        useDeckBuilderStore.getState().removeCard(card3.deckId);
+        useDeckBuilderStore.getState().removeCard(card4.deckId);
+        useDeckBuilderStore.getState().removeCard(card5.deckId);
+      });
+      expect(useDeckBuilderStore.getState().removeLimitReached).toBe(false);
+      expect(useDeckBuilderStore.getState().deck!.removedCards.size).toBe(3);
+
+      // Try to remove one more: should be blocked
+      act(() => {
+        useDeckBuilderStore.getState().removeCard(card6.deckId);
+      });
+      expect(useDeckBuilderStore.getState().removeLimitReached).toBe(true);
+
+      // Verify card was NOT removed
+      const deck = useDeckBuilderStore.getState().deck!;
+      expect(deck.removedCards.size).toBe(3); // Still 3, not 4
+      expect(deck.cards.find(c => c.deckId === card6.deckId)).toBeDefined(); // Original still in deck
+    });
+
+    it('should allow different combinations of removal/conversion up to 5 total', () => {
+      const character = CHARACTERS[0];
+      const cards = Array.from({ length: 7 }, (_, i) => ({
+        ...getTestCard(),
+        id: `shared_${String(i + 1).padStart(2, '0')}`,
+        deckId: `test_card_${i}`,
+      }));
+
+      act(() => {
+        useDeckBuilderStore.getState().setCharacter(character);
+        cards.forEach(card => useDeckBuilderStore.getState().addCard(card));
+      });
+
+      // Remove 1, Convert 1, Remove 1, Convert 1, Remove 1 = total 5
+      act(() => {
+        useDeckBuilderStore.getState().removeCard(cards[0].deckId);
+        useDeckBuilderStore.getState().convertCard(cards[1].deckId, 'forbidden_card_1');
+        useDeckBuilderStore.getState().removeCard(cards[2].deckId);
+        useDeckBuilderStore.getState().convertCard(cards[3].deckId, 'forbidden_card_2');
+        useDeckBuilderStore.getState().removeCard(cards[4].deckId);
+      });
+
+      const deck = useDeckBuilderStore.getState().deck!;
+      expect(deck.removedCards.size).toBe(3);
+      expect(deck.convertedCards.size).toBe(2);
+      expect(useDeckBuilderStore.getState().removeLimitReached).toBe(false);
+      expect(useDeckBuilderStore.getState().conversionLimitReached).toBe(false);
+
+      // Try one more removal: should fail
+      act(() => {
+        useDeckBuilderStore.getState().removeCard(cards[5].deckId);
+      });
+      expect(useDeckBuilderStore.getState().removeLimitReached).toBe(true);
+      expect(deck.removedCards.size).toBe(3); // Still 3
+    });
   });
 });

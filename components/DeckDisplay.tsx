@@ -48,8 +48,11 @@ export function DeckDisplay({ cards, egoLevel, hasPotential, allowedJob, onRemov
         const supportsHiramekiControls =
           card.hiramekiVariations.length > 0 &&
           (card.type !== CardType.CHARACTER || card.hiramekiVariations.length > 1);
-        const nameId = `cards.${card.id}.name`;
-        const nameFallback = card.name;
+        const variationName = card.hiramekiVariations[card.selectedHiramekiLevel]?.name;
+        const nameId = variationName
+          ? `cards.${card.id}.name.${card.selectedHiramekiLevel}`
+          : `cards.${card.id}.name`;
+        const nameFallback = variationName ?? cardInfo.name;
         let godEffectId: string | undefined;
         let godEffectFallback: string | undefined;
         if (card.godHiramekiType && card.godHiramekiEffectId) {

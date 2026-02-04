@@ -1,11 +1,25 @@
-import { Deck, CardType, RemovedCardEntry, CopiedCardEntry, ConvertedCardEntry } from "@/types";
+import { Deck, CardType, CardGrade, RemovedCardEntry, CopiedCardEntry, ConvertedCardEntry } from "@/types";
 import { getCardById } from "./card";
 
 // Calculate Faint Memory points based on deck edits
 
+// Helper function to calculate monster card points based on grade
+function getMonsterCardPoints(grade?: CardGrade): number {
+  switch (grade) {
+    case CardGrade.RARE:
+      return 50;
+    case CardGrade.LEGEND:
+      return 80;
+    case CardGrade.COMMON:
+    default:
+      return 20;
+  }
+}
+
 export function calculateFaintMemory(deck: Deck | null | undefined): number {
   if (!deck || !Array.isArray(deck.cards)) return 0;
   let points = 0;
+  const activeCopiedCards = deck.cards.filter(card => card.isCopied);
   // Points for cards in the deck
   const cards = deck.cards;
   for (const card of cards) {
@@ -20,22 +34,16 @@ export function calculateFaintMemory(deck: Deck | null | undefined): number {
         points += 20;
       }
 
-      // Monster card acquisition: +80pt
+      // Monster card acquisition: points based on grade (一般/20pt, 希少/50pt, 伝説/80pt)
       if (card.type === CardType.MONSTER) {
-        points += 80;
+        points += getMonsterCardPoints(card.grade);
       }
 
       // Forbidden card: +20pt (always saved)
       if (card.type === CardType.FORBIDDEN) {
         points += 20;
       }
-
-      // Hirameki (including hidden hirameki) on shared cards: +10pt (character cards are 0pt)
-      // Note: Monster cards do NOT receive hirameki points (current specification)
-      if (card.type === CardType.SHARED &&
-        (card.selectedHiramekiLevel > 0 || (card.selectedHiddenHiramekiId != null && card.selectedHiddenHiramekiId !== ''))) {
-        points += 10;
-      }
+      // V2: Hirameki points for shared cards removed (shared cards no longer gain hirameki points)
     }
 
     // God Hirameki: +20pt (uniformly applied after type-specific points)
@@ -45,38 +53,16 @@ export function calculateFaintMemory(deck: Deck | null | undefined): number {
   }
 
   // Points for removed cards
-  // Calculate removal points based on sequential removal order across all cards
-  let removalIndex = 0;
+  // V2 rule: Starting cards = 20pt each, others = 0pt
+  // Attribute points (type/hirameki/god hirameki) are still calculated from snapshot
   for (const [cardId, entry] of deck.removedCards.entries()) {
-    const removedCard = getCardById(cardId);
     const count = typeof entry === "number" ? entry : (entry.count ?? 0);
-    // Check if card is character type by card data
-    const isCharacter = removedCard?.type === CardType.CHARACTER;
+    const cardData = getCardById(cardId);
+    const isStartingCard = cardData?.isStartingCard ?? false;
 
-    // Apply points for each removal of this card
-    for (let i = 0; i < count; i++) {
-      removalIndex++;
-
-      // Base points based on removal sequence number
-      let basePoints = 0;
-      if (removalIndex === 1) {
-        basePoints = 0;
-      } else if (removalIndex === 2) {
-        basePoints = 10;
-      } else if (removalIndex === 3) {
-        basePoints = 30;
-      } else if (removalIndex === 4) {
-        basePoints = 50;
-      } else if (removalIndex >= 5) {
-        basePoints = 70;
-      }
-
-      // Character card removal: base points + 20pt bonus
-      if (isCharacter) {
-        points += basePoints + 20;
-      } else {
-        points += basePoints;
-      }
+    // V2: 開始カードのみ1枚につき20pt、その他は0pt
+    if (isStartingCard) {
+      points += count * 20;
     }
 
     // Attribute points for removed cards (snapshot-based)
@@ -87,16 +73,11 @@ export function calculateFaintMemory(deck: Deck | null | undefined): number {
       if (cardType === CardType.SHARED) {
         points += 20;
       } else if (cardType === CardType.MONSTER) {
-        points += 80;
+        points += getMonsterCardPoints(snapshot.grade);
       } else if (cardType === CardType.FORBIDDEN) {
         points += 20;
       }
-      // Hirameki (including hidden hirameki) points for shared cards only (per card)
-      // Note: Monster cards do NOT receive hirameki points (current specification)
-      if (cardType === CardType.SHARED &&
-        ((snapshot.selectedHiramekiLevel ?? 0) > 0 || (snapshot.selectedHiddenHiramekiId != null && snapshot.selectedHiddenHiramekiId !== ''))) {
-        points += 10;
-      }
+      // V2: Hirameki points for shared cards removed (shared cards no longer gain hirameki points)
       // God hirameki points (per card)
       if (snapshot.godHiramekiType && snapshot.godHiramekiEffectId && !snapshot.isBasicCard) {
         points += 20;
@@ -105,53 +86,33 @@ export function calculateFaintMemory(deck: Deck | null | undefined): number {
   }
 
   // Points for copied cards
-  // Calculate copy points based on sequential copy order across all cards
-  let copyIndex = 0;
+  // V2: copy points 0/0/40 (1st, 2nd = 0pt, 3rd以降 = 40pt)
+  // Copied cards that were removed or converted are NOT counted.
+  const activeCopyCount = Math.min(activeCopiedCards.length, 4);
+  if (activeCopyCount >= 3) {
+    points += (activeCopyCount - 2) * 40;
+  }
+
   for (const [cardId, entry] of deck.copiedCards.entries()) {
     const count = typeof entry === "number" ? entry : (entry.count ?? 0);
-    // Apply points for each copy of this card
-    for (let i = 0; i < count; i++) {
-      copyIndex++;
-
-      // Base points based on copy sequence number
-      let basePoints = 0;
-      if (copyIndex === 1) {
-        basePoints = 0;
-      } else if (copyIndex === 2) {
-        basePoints = 10;
-      } else if (copyIndex === 3) {
-        basePoints = 30;
-      } else if (copyIndex === 4) {
-        basePoints = 50;
-      } else if (copyIndex >= 5) {
-        basePoints = 70;
-      }
-
-      points += basePoints;
-    }
+    const originalCardInDeck = deck.cards.some(c => c.id === cardId && !c.isCopied);
+    const activeCopyCountForCard = activeCopiedCards.filter(c => c.copiedFromCardId === cardId || c.id === cardId).length;
 
     // Attribute points for copied cards (snapshot-based)
     // ONLY add these if the original card is NOT currently in the deck
-    // If original is in deck, its points are already counted in the deck.cards loop above
-    const originalCardInDeck = deck.cards.some(c => c.id === cardId);
-
+    // AND at least one copied card still exists in the deck
     const snapshot: CopiedCardEntry | null = typeof entry === "number" ? null : entry as CopiedCardEntry;
-    if (snapshot && count > 0 && !originalCardInDeck) {
+    if (snapshot && count > 0 && !originalCardInDeck && activeCopyCountForCard > 0) {
       const cardType = snapshot.type;
       // Type acquisition points (one-time for all copies of this card)
       if (cardType === CardType.SHARED) {
         points += 20;
       } else if (cardType === CardType.MONSTER) {
-        points += 80;
+        points += getMonsterCardPoints(snapshot.grade);
       } else if (cardType === CardType.FORBIDDEN) {
         points += 20;
       }
-      // Hirameki (including hidden hirameki) points for shared cards only (one-time for all copies of this card)
-      // Note: Monster cards do NOT receive hirameki points (current specification)
-      if (cardType === CardType.SHARED &&
-        ((snapshot.selectedHiramekiLevel ?? 0) > 0 || (snapshot.selectedHiddenHiramekiId != null && snapshot.selectedHiddenHiramekiId !== ''))) {
-        points += 10;
-      }
+      // V2: Hirameki points for shared cards removed (shared cards no longer gain hirameki points)
       // God hirameki points (one-time for all copies of this card)
       if (snapshot.godHiramekiType && snapshot.godHiramekiEffectId && !snapshot.isBasicCard) {
         points += 20;
@@ -159,44 +120,30 @@ export function calculateFaintMemory(deck: Deck | null | undefined): number {
     }
   }
 
-  // Points for converted cards with original card attribute preservation
+  // Points for converted cards (treated as removals in V2)
   for (const [originalId, entry] of deck.convertedCards.entries()) {
-    // Check if entry is a snapshot (ConvertedCardEntry)
     const snapshot: ConvertedCardEntry | null = typeof entry === "string" ? null : entry as ConvertedCardEntry;
+    const originalCard = getCardById(originalId);
+    const isStartingCard = originalCard?.isStartingCard ?? false;
 
-    // Exclusion conversions do not count as conversions for points
-    const isExclusion = snapshot?.excluded ?? false;
-
-    // 通常変換のみ: 変換行動の+10ptを加算（排除変換では加算しない）
-    if (!isExclusion) {
-      points += 10;
+    // 変換も排除として計算: 開始カードなら1枚20pt、それ以外は0pt
+    if (isStartingCard) {
+      points += 20;
     }
 
-    // 元カードの属性ポイントは排除変換でも通常変換でも加算
+    // 属性ポイントはスナップショットから従来通り加算
     if (snapshot) {
-      // Preserve points from the ORIGINAL card state at conversion time
       const originalType = snapshot.originalType;
-
-      // Add points for the ORIGINAL card type (preserved at conversion time)
       if (originalType === CardType.SHARED || originalType === CardType.FORBIDDEN) {
         points += 20;
       } else if (originalType === CardType.MONSTER) {
-        points += 80;
+        points += getMonsterCardPoints(snapshot.originalGrade);
       }
-      // Note: CHARACTER type has no base type points
-      // Hirameki (including hidden hirameki) points from original card (shared cards only)
-      // Note: Monster cards do NOT receive hirameki points (current specification)
-      if (originalType === CardType.SHARED) {
-        if ((snapshot.selectedHiramekiLevel ?? 0) > 0 || (snapshot.selectedHiddenHiramekiId != null && snapshot.selectedHiddenHiramekiId !== '')) {
-          points += 10;
-        }
-      }
-      // God hirameki points from original card
-      if (snapshot.godHiramekiType && snapshot.godHiramekiEffectId && !snapshot.isBasicCard) {
+      // V2: Hirameki points for shared cards removed (shared cards no longer gain hirameki points)
+      // God hirameki points
+      if ((snapshot.godHiramekiType && snapshot.godHiramekiEffectId && !snapshot.isBasicCard)) {
         points += 20;
       }
-      // Note: Converted-to card points are already calculated in deck.cards loop above
-      // We only need to preserve the original card's attribute points here
     }
   }
 

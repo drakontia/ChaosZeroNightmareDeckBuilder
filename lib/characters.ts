@@ -2,6 +2,26 @@ import { Character, ElementType, JobType } from "@/types";
 
 export const CHARACTERS: Character[] = [
   {
+    id: "nine",
+    name: "character.nine",
+    rarity: "★5",
+    job: JobType.VANGUARD,
+    element: ElementType.ORDER,
+    imgUrl: "/images/characters/character_nine.png",
+    startingCards: ["nine_starting_1", "nine_starting_2", "nine_starting_3", "nine_starting_4"],
+    hiramekiCards: ["nine_hirameki_1", "nine_hirameki_2", "nine_hirameki_3", "nine_hirameki_4"]
+  },
+  {
+    id: "narja",
+    name: "character.narja",
+    rarity: "★5",
+    job: JobType.CONTROLLER,
+    element: ElementType.INSTINCT,
+    imgUrl: "/images/characters/character_narja.png",
+    startingCards: ["narja_starting_1", "narja_starting_2", "narja_starting_3", "narja_starting_4"],
+    hiramekiCards: ["narja_hirameki_1", "narja_hirameki_2", "narja_hirameki_3", "narja_hirameki_4"]
+  },
+  {
     id: "sereniel",
     name: "character.sereniel",
     rarity: "★5",
@@ -142,16 +162,6 @@ export const CHARACTERS: Character[] = [
     hiramekiCards: ["kayron_hirameki_1", "kayron_hirameki_2", "kayron_hirameki_3", "kayron_hirameki_4"]
   },
   {
-    id: "narja",
-    name: "character.narja",
-    rarity: "★5",
-    job: JobType.CONTROLLER,
-    element: ElementType.INSTINCT,
-    imgUrl: "/images/characters/character_narja.png",
-    startingCards: ["narja_starting_1", "narja_starting_2", "narja_starting_3", "narja_starting_4"],
-    hiramekiCards: ["narja_hirameki_1", "narja_hirameki_2", "narja_hirameki_3", "narja_hirameki_4"]
-  },
-  {
     id: "nia",
     name: "character.nia",
     rarity: "★4",
@@ -251,7 +261,7 @@ export const CHARACTERS: Character[] = [
     startingCards: ["owen_starting_1", "owen_starting_2", "owen_starting_3", "owen_starting_4"],
     hiramekiCards: ["owen_hirameki_1", "owen_hirameki_2", "owen_hirameki_3", "owen_hirameki_4"]
   },
-    {
+  {
     id: "rei",
     name: "character.rei",
     rarity: "★4",

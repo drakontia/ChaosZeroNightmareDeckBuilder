@@ -11,13 +11,14 @@ import { EquipmentSelector } from "./EquipmentSelector";
 import { CardSelector } from "./CardSelector";
 import { DeckDisplay } from "./DeckDisplay";
 import { LanguageSwitcher } from "./LanguageSwitcher";
+import { LimitAlert } from "./LimitAlert";
 import { CHARACTERS, EQUIPMENT } from "@/lib/card";
 import { calculateFaintMemory } from "@/lib/calculateFaintMemory";
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 import { Button } from "./ui/button";
 import { Field, FieldLabel, FieldGroup, FieldSet } from "./ui/field";
 import { Input } from './ui/input';
-import { Brain, CardSim, Clock12, Share2, Save as SaveIcon, FolderOpen, Eraser } from 'lucide-react';
+import { Brain, CardSim, Clock12, Share2, Save as SaveIcon, FolderOpen, Eraser, Book, BookCopy, BookX } from 'lucide-react';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { Camera } from 'lucide-react';
 import { decodeDeckShare } from "@/lib/deck-share";
@@ -58,6 +59,10 @@ export function DeckBuilder({ shareId }: DeckBuilderProps) {
   const [deckName, setName] = useState("");
   const [sharedDeck, setSharedDeck] = useState<Deck | null>(null);
   const [shareError, setShareError] = useState<string | null>(null);
+  const removeLimitReached = useDeckBuilderStore((s) => s.removeLimitReached);
+  const copyLimitReached = useDeckBuilderStore((s) => s.copyLimitReached);
+  const clearRemoveLimitAlert = useDeckBuilderStore((s) => s.clearRemoveLimitAlert);
+  const clearCopyLimitAlert = useDeckBuilderStore((s) => s.clearCopyLimitAlert);
   const hasLoadedShare = useRef(false);
   const deckCaptureRef = useRef<HTMLDivElement | null>(null);
 
@@ -90,6 +95,16 @@ export function DeckBuilder({ shareId }: DeckBuilderProps) {
   const handleConvertCard = useCallback((deckId: string, targetCard: CznCard, options?: { asExclusion?: boolean }) => {
     convertCard(deckId, targetCard.id, options);
   }, [convertCard]);
+
+  const handleRemoveCard = useCallback((deckId: string) => {
+    if (!deck) return;
+    removeCard(deckId);
+  }, [deck, removeCard]);
+
+  const handleCopyCard = useCallback((deckId: string) => {
+    if (!deck) return;
+    copyCard(deckId);
+  }, [copyCard, deck]);
 
   const { isSharing, handleShareDeck: shareHandler } = useShareDeck();
   const { isExporting, handleExportDeckImage: exportHandler } = useExportDeckImage();
@@ -141,6 +156,21 @@ export function DeckBuilder({ shareId }: DeckBuilderProps) {
   }
   return (
     <div className="min-h-screen p-4 lg:p-8 bg-gray-50 dark:bg-gray-900">
+      <LimitAlert
+        isOpen={removeLimitReached}
+        title={t('alert.removeLimitTitle', { defaultValue: '排除上限に達しました' })}
+        message={t('alert.removeLimitMessage', { defaultValue: '排除は5回までです。これ以上排除できません。' })}
+        onClose={clearRemoveLimitAlert}
+        closeLabel={t('common.close', { defaultValue: '閉じる' })}
+      />
+      <LimitAlert
+        isOpen={copyLimitReached}
+        title={t('alert.copyLimitTitle', { defaultValue: 'コピー上限に達しました' })}
+        message={t('alert.copyLimitMessage', { defaultValue: 'コピーは4回までです。これ以上コピーできません。' })}
+        onClose={clearCopyLimitAlert}
+        closeLabel={t('common.close', { defaultValue: '閉じる' })}
+      />
+      
       <div className="max-w-400 mx-auto">
         <header className="mb-6">
           <div className="flex flex-col sm:flex-row sm:justify-between items-end sm:items-start gap-2 mb-2">
@@ -270,15 +300,27 @@ export function DeckBuilder({ shareId }: DeckBuilderProps) {
                           </div>
                         </Field>
                         <Field orientation={'horizontal'} className='border-b' data-testid="total-cards">
-                          <FieldLabel className={statLabelClass}><CardSim />{t('deck.totalCards')}</FieldLabel>
+                          <FieldLabel className={statLabelClass}><Book />{t('deck.totalCards')}</FieldLabel>
                           <div className="flex justify-between items-center p-1">
                             <span className={statValueClass}>{deck.cards.length}</span>
                           </div>
                         </Field>
-                        <Field orientation={'horizontal'} data-testid="faint-memory">
+                        <Field orientation={'horizontal'} className='border-b' data-testid="faint-memory">
                           <FieldLabel className={statLabelClass}><Brain />{t('character.faintMemory')}</FieldLabel>
                           <div className="flex justify-between items-center p-1">
                             <span className={statValueClass} data-testid="faint-memory-points">{faintMemoryPoints} points</span>
+                          </div>
+                        </Field>
+                        <Field orientation={'horizontal'} className='border-b' data-testid="copied-cards">
+                          <FieldLabel className={statLabelClass}><BookCopy />{t('deck.copiedCards')}</FieldLabel>
+                          <div className="flex justify-between items-center p-1">
+                            <span className={statValueClass}>{deck.copiedCards.size}</span>
+                          </div>
+                        </Field>
+                        <Field orientation={'horizontal'} data-testid="removed-cards">
+                          <FieldLabel className={statLabelClass}><BookX />{t('deck.removedCards')}</FieldLabel>
+                          <div className="flex justify-between items-center p-1">
+                            <span className={statValueClass}>{deck.removedCards.size}</span>
                           </div>
                         </Field>
                       </FieldGroup>
@@ -305,9 +347,9 @@ export function DeckBuilder({ shareId }: DeckBuilderProps) {
                     egoLevel={deck.egoLevel}
                     hasPotential={deck.hasPotential}
                     allowedJob={deck.character?.job}
-                    onRemoveCard={removeCard}
+                    onRemoveCard={handleRemoveCard}
                     onUndoCard={undoCard}
-                    onCopyCard={copyCard}
+                    onCopyCard={handleCopyCard}
                     onConvertCard={handleConvertCard}
                     onUpdateHirameki={updateCardHirameki}
                     onSetGodHirameki={setCardGodHirameki}

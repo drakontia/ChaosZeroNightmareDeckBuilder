@@ -21,6 +21,23 @@ interface CardSelectorProps {
 
 export function CardSelector({ character, onAddCard, onRestoreCard, removedCards, convertedCards, presentHiramekiIds, searchQuery }: CardSelectorProps) {
   const t = useTranslations();
+  const getCardNameInfo = (card: CznCard, level: number = 0) => {
+    const variationName = card.hiramekiVariations[level]?.name;
+    const levelKey = `cards.${card.id}.name.${level}`;
+    if (variationName) {
+      return {
+        name: t(levelKey, { defaultValue: variationName }),
+        nameId: levelKey,
+        nameFallback: variationName,
+      };
+    }
+    const baseKey = `cards.${card.id}.name`;
+    return {
+      name: t(baseKey, { defaultValue: card.name }),
+      nameId: baseKey,
+      nameFallback: card.name,
+    };
+  };
   const characterHiramekiCards = character ? getCharacterHiramekiCards(character) : [];
   const addableCards = getAddableCards(character?.job);
 
@@ -38,7 +55,7 @@ export function CardSelector({ character, onAddCard, onRestoreCard, removedCards
   const query = (searchQuery || '').toLowerCase().trim();
   const matchesQuery = (card: CznCard) => {
     if (!query) return true;
-    const name = t(`cards.${card.id}.name`, { defaultValue: card.name }).toLowerCase();
+    const name = getCardNameInfo(card).name.toLowerCase();
     const baseDesc = t(`cards.${card.id}.descriptions.0`, { defaultValue: card.hiramekiVariations[0]?.description || '' }).toLowerCase();
     const category = t(`category.${card.category}`).toLowerCase();
     return name.includes(query) || baseDesc.includes(query) || category.includes(query);
@@ -82,7 +99,7 @@ export function CardSelector({ character, onAddCard, onRestoreCard, removedCards
       ? baseVariation.statuses
       : card.statuses;
     const key = keyPrefix ? `${keyPrefix}-${card.id}` : card.id;
-    const translatedName = t(`cards.${card.id}.name`, { defaultValue: card.name });
+    const { name: translatedName, nameId, nameFallback } = getCardNameInfo(card);
     const cardTitle = title || translatedName;
     const statuses = rawStatuses?.map(s => t(`status.${s}`));
     const description = t(`cards.${card.id}.descriptions.0`, { defaultValue: baseVariation.description })
@@ -93,8 +110,8 @@ export function CardSelector({ character, onAddCard, onRestoreCard, removedCards
           imgUrl={card.imgUrl}
           alt={translatedName}
           cost={baseVariation.cost}
-          nameId={`cards.${card.id}.name`}
-          nameFallback={card.name}
+          nameId={nameId}
+          nameFallback={nameFallback}
           category={t(`category.${card.category}`)}
           categoryId={card.category}
           descriptionId={`cards.${card.id}.descriptions.0`}
@@ -112,7 +129,7 @@ export function CardSelector({ character, onAddCard, onRestoreCard, removedCards
   };
 
   const renderRemovedTile = (card: CznCard) => {
-    const translatedName = t(`cards.${card.id}.name`, { defaultValue: card.name });
+    const translatedName = getCardNameInfo(card).name;
     return renderCardTile(card, {
       keyPrefix: 'removed',
       onClick: () => onRestoreCard(card),
@@ -121,7 +138,7 @@ export function CardSelector({ character, onAddCard, onRestoreCard, removedCards
   };
 
   const renderConvertedTile = (card: CznCard) => {
-    const translatedName = t(`cards.${card.id}.name`, { defaultValue: card.name });
+    const translatedName = getCardNameInfo(card).name;
     return renderCardTile(card, {
       keyPrefix: 'converted',
       onClick: () => onRestoreCard(card),

@@ -10,6 +10,7 @@ export function getCardInfo(
   hasPotential: boolean = false,
   convertedCards?: Map<string, string>
 ): {
+  name: string;
   cost: number | "X";
   description: string;
   category: CardCategory;
@@ -22,6 +23,7 @@ export function getCardInfo(
   // Regular hirameki handling (with hidden hirameki as additional effect)
   const variation = baseCard.hiramekiVariations[card.selectedHiramekiLevel] || baseCard.hiramekiVariations[0];
   
+  const name = variation.name ?? baseCard.name;
   let cost = variation.cost;
   let description = variation.description;
   const category = variation.category ?? baseCard.category;
@@ -75,7 +77,7 @@ export function getCardInfo(
     cost = 0;
   }
 
-  return { cost, description, category, statuses };
+  return { name, cost, description, category, statuses };
 }
 
 // Sort cards by type: Character (Starting -> Hirameki) -> Shared -> Monster -> Forbidden

@@ -45,6 +45,8 @@
     "exportImage": "이미지 내보내기",
     "exportImageFailed": "이미지 내보내기 실패",
     "totalCards": "카드 수",
+    "copiedCards": "복사된 카드",
+    "removedCards": "제거된 카드",
     "totalCost": "총 비용",
     "noDeck": "덱이 비어있습니다",
     "selectCharacterHint": "캐릭터를 선택하면 시작 카드가 표시됩니다",
@@ -94,6 +96,7 @@
     "exhaust": "소멸",
     "exhaust2": "소멸2",
     "exhaust3": "소멸3",
+    "ephemeral": "일시적",
     "retain": "보존",
     "retrieve": "회수",
     "retrieve2": "회수2",
@@ -107,7 +110,8 @@
     "bullet": "탄환",
     "weakness_attack": "약점 공격",
     "pulverize": "분쇄",
-    "bind": "결속"
+    "bind": "결속",
+    "ignition": "점화"
   },
   "actions": {
     "add": "추가",
@@ -133,6 +137,7 @@
     "faintMemory": "희미한 기억",
     "egoManifest": "자아 발현",
     "potential": "잠재력",
+    "nine": "나인",
     "chizuru": "치즈루",
     "yuki": "유키",
     "luke": "루크",

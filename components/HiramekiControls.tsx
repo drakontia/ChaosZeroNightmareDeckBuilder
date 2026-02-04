@@ -111,6 +111,11 @@ export function HiramekiControls({
               {Array.from({ length: maxHiramekiLevel }, (_, i) => i + 1).map((level) => {
                 const preview: DeckCard = { ...card, selectedHiramekiLevel: level, selectedHiddenHiramekiId: null } as DeckCard;
                 const info = getCardInfo(preview, egoLevel, hasPotential);
+                const variationName = card.hiramekiVariations[level]?.name;
+                const nameId = variationName
+                  ? `cards.${card.id}.name.${level}`
+                  : `cards.${card.id}.name`;
+                const nameFallback = variationName ?? info.name;
                 return (
                   <button
                     key={level}
@@ -122,8 +127,8 @@ export function HiramekiControls({
                       imgUrl={card.imgUrl}
                       alt={card.name}
                       cost={info.cost}
-                      nameId={`cards.${card.id}.name`}
-                      nameFallback={card.name}
+                      nameId={nameId}
+                      nameFallback={nameFallback}
                       category={t(`category.${info.category ?? card.category}`)}
                       categoryId={info.category ?? card.category}
                       descriptionId={`cards.${card.id}.descriptions.${level}`}
@@ -151,6 +156,11 @@ export function HiramekiControls({
                           selectedHiddenHiramekiId: hiddenEffect.id
                         } as DeckCard;
                         const info = getCardInfo(preview, egoLevel, hasPotential);
+                        const variationName = card.hiramekiVariations[card.selectedHiramekiLevel]?.name;
+                        const nameId = variationName
+                          ? `cards.${card.id}.name.${card.selectedHiramekiLevel}`
+                          : `cards.${card.id}.name`;
+                        const nameFallback = variationName ?? info.name;
                         return (
                           <button
                             key={`hidden-${hiddenEffect.id}`}
@@ -165,8 +175,8 @@ export function HiramekiControls({
                               imgUrl={card.imgUrl}
                               alt={card.name}
                               cost={info.cost}
-                              nameId={`cards.${card.id}.name`}
-                              nameFallback={card.name}
+                              nameId={nameId}
+                              nameFallback={nameFallback}
                               category={t(`category.${info.category ?? card.category}`)}
                               categoryId={info.category ?? card.category}
                               descriptionId={`cards.${card.id}.descriptions.0`}
@@ -223,6 +233,11 @@ export function HiramekiControls({
               {GOD_HIRAMEKI_EFFECTS.filter(e => e.gods === "all" || e.gods.includes(selectedGod ?? GodType.KILKEN)).map((effect) => {
                 const activeGod = selectedGod ?? GodType.KILKEN;
                 const baseInfo = getCardInfo(card, egoLevel, hasPotential);
+                const variationName = card.hiramekiVariations[card.selectedHiramekiLevel]?.name;
+                const nameId = variationName
+                  ? `cards.${card.id}.name.${card.selectedHiramekiLevel}`
+                  : `cards.${card.id}.name`;
+                const nameFallback = variationName ?? baseInfo.name;
                 const costWithGod = (typeof baseInfo.cost === 'number' ? baseInfo.cost : parseInt(baseInfo.cost, 10)) + (effect.costModifier ?? 0);
                 const isSelected = card.godHiramekiType === activeGod && card.godHiramekiEffectId === effect.id;
                 return (
@@ -236,8 +251,8 @@ export function HiramekiControls({
                       imgUrl={card.imgUrl}
                       alt={card.name}
                       cost={costWithGod}
-                      nameId={`cards.${card.id}.name`}
-                      nameFallback={card.name}
+                      nameId={nameId}
+                      nameFallback={nameFallback}
                       category={t(`category.${baseInfo.category ?? card.category}`)}
                       categoryId={baseInfo.category ?? card.category}
                       descriptionId={`cards.${card.id}.descriptions.${card.selectedHiramekiLevel}`}

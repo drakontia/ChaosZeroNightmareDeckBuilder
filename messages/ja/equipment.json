@@ -291,7 +291,7 @@
             },
             "psionic_combat_suit": {
                 "name": "サイオニック戦闘アーマー",
-                "description": "カード消滅時、固定シールド30%"
+                "description": "カード消滅時、固定シールド30%(各ターン5回)"
             },
             "shell_of_aberration": {
                 "name": "奇妙な殻",
@@ -419,7 +419,7 @@
             },
             "brainwave_blocking_helmet": {
                 "name": "脳波遮断ヘルメット",
-                "description": "能力でドロー時、固定シールド40%"
+                "description": "能力でドロー時、固定シールド40%(各ターン5回)"
             },
             "wings_of_freedom": {
                 "name": "自由の翼",

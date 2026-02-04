@@ -1,6 +1,7 @@
 # ChaosZeroNitghmareDeckBuilder
 
 ゲーム「カオスゼロナイトメア」のカードデッキを作成・編集できる攻略補助サイトです。
+サイト：https://czn-deck-builder.drakontia.com/
 
 ## 機能
 
