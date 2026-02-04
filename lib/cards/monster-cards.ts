@@ -348,4 +348,30 @@ export const MONSTER_CARDS: CznCard[] = [
       { level: 0, cost: 2, description: "ターン開始時士気1" }
     ]
   },
+  {
+    id: "vine_lord",
+    name: "ヴァインロード",
+    type: CardType.MONSTER,
+    category: CardCategory.SKILL,
+    grade: CardGrade.RARE,
+    statuses: [CardStatus.EXHAUST3],
+    allowedJobs: "all",
+    imgUrl: "/images/cards/vine_lord.png",
+    hiramekiVariations: [
+      { level: 0, cost: 0, description: "自分の消滅カードドロー2" }
+    ]
+  },
+  {
+    id: "cyborg_automaton",
+    name: "サイボーグ・オートマトン",
+    type: CardType.MONSTER,
+    category: CardCategory.ATTACK,
+    grade: CardGrade.COMMON,
+    statuses: [],
+    allowedJobs: "all",
+    imgUrl: "/images/cards/cyborg_automaton.png",
+    hiramekiVariations: [
+      { level: 0, cost: 5, description: "防御依存ダメージ600%\n焼却：このカード発動" }
+    ]
+  },
 ];

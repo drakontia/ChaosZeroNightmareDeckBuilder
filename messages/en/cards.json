@@ -2425,6 +2425,18 @@
         "0": "Start of Turn Morale 1"
       }
     },
+    "vine_lord": {
+        "name": "Vine Lord",
+        "descriptions": {
+            "0": "Draw 2 for each of your vanishing cards"
+        }
+    },
+    "cyborg_automaton": {
+        "name": "Cyborg Automaton",
+        "descriptions": {
+            "0": "Defense-dependent damage 600%\nIncinerate: Activate this card"
+        }
+    },
     "forbidden_card_1": {
       "name": "Forbidden: Eternal Hunger",
       "descriptions": {
@@ -2514,6 +2526,54 @@
       "descriptions": {
         "0": "Upon using 4 cards, Draw 1 (1 time for each turn)"
       }
+    },
+    "spore_harvester": {
+        "name": "Spore Harvester",
+        "descriptions": {
+            "0": "Incinerate: Generate 2 Contaminated Spores\nPreserve: Generate 1 Contaminated Spore"
+        }
+    },
+    "nutrient_absorption": {
+        "name": "Nutrient Absorption",
+        "descriptions": {
+            "0": "Select 1 card in hand to vanish\nReduce the cost of 1 random card in hand by 1 for 1 turn based on the cost of that card"
+        }
+    },
+    "residual_herb": {
+        "name": "Residual Herb",
+        "descriptions": {
+            "0": "Shield 60%\nIncinerate: Generate 1 Contaminated Spore"
+        }
+    },
+    "forests_hunger": {
+        "name": "Forest's Hunger",
+        "descriptions": {
+            "0": "Defense-dependent damage 300%\nVanish all vanishing cards in hand, increase damage amount by 25% based on the number"
+        }
+    },
+    "forgotten_grave": {
+        "name": "Forgotten Grave",
+        "descriptions": {
+            "0": "When the cost of this card is reduced, increase own Critical Rate by 10% for 1 turn\nIncinerate: Generate 1 Contaminated Spore"
+        }
+    },
+    "mushroom_ammo": {
+        "name": "Mushroom Ammo",
+        "descriptions": {
+            "0": "Damage 450%\nSpore propagation effect doubled"
+        }
+    },
+    "one_with_all": {
+        "name": "One with All",
+        "descriptions": {
+            "0": "Select and activate 1 card from hand, deck, or discard pile\nFor 1 turn, when damage, shield, or healing is activated by a card, remove unusable status"
+        }
+    },
+    "natures_gift": {
+        "name": "Nature's Gift",
+        "descriptions": {
+            "0": "Heal 20% based on the number of cards in hand\nTuning: Generate 1 Contaminated Spore based on the number of cards in hand"
+        }
     },
     "__exclusion__": {
       "name": "Exclusion Card",
