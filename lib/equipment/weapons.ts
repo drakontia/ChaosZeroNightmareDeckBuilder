@@ -464,5 +464,45 @@ export const WEAPONS: Equipment[] = [
     rarity: "equipment.rarity.mythical",
     description: "equipment.weapon.chimeranite.description",
     imgUrl: "/images/equipment/weapons/chimeranite.png"
+  },
+  {
+    id: "millennium_arbor",
+    name: "equipment.weapon.millennium_arbor.name",
+    type: EquipmentType.WEAPON,
+    rarity: "equipment.rarity.rare",
+    description: "equipment.weapon.millennium_arbor.description",
+    imgUrl: "/images/equipment/weapons/millennium_arbor.png"
+  },
+  {
+    id: "sword_of_judgment",
+    name: "equipment.weapon.sword_of_judgment.name",
+    type: EquipmentType.WEAPON,
+    rarity: "equipment.rarity.rare",
+    description: "equipment.weapon.sword_of_judgment.description",
+    imgUrl: "/images/equipment/weapons/sword_of_judgment.png"
+  },
+  {
+    id: "veiled_thorn",
+    name: "equipment.weapon.veiled_thorn.name",
+    type: EquipmentType.WEAPON,
+    rarity: "equipment.rarity.legendary",
+    description: "equipment.weapon.veiled_thorn.description",
+    imgUrl: "/images/equipment/weapons/veiled_thorn.png"
+  },
+  {
+    id: "pale_eternal_flame",
+    name: "equipment.weapon.pale_eternal_flame.name",
+    type: EquipmentType.WEAPON,
+    rarity: "equipment.rarity.legendary",
+    description: "equipment.weapon.pale_eternal_flame.description",
+    imgUrl: "/images/equipment/weapons/pale_eternal_flame.png"
+  },
+  {
+    id: "brilliant_eternal_flame",
+    name: "equipment.weapon.brilliant_eternal_flame.name",
+    type: EquipmentType.WEAPON,
+    rarity: "equipment.rarity.mythical",
+    description: "equipment.weapon.brilliant_eternal_flame.description",
+    imgUrl: "/images/equipment/weapons/brilliant_eternal_flame.png"
   }
 ];

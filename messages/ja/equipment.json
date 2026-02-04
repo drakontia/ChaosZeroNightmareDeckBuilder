@@ -245,6 +245,26 @@
             "chimeranite": {
                 "name": "キメルナイト",
                 "description": "能力でドロー時、1ターンの間、自分の攻撃カードのダメージ量35%増加（各ターン1回）"
+            },
+            "millennium_arbor": {
+                "name": "千年木",
+                "description": "コスト3以上のカード発動時、ランダムな敵に脆弱1"
+            },
+            "sword_of_judgment": {
+                "name": "審判の剣",
+                "description": "カード消滅時、1ターンの間、ダメージ量10%増加(各ターン1回)"
+            },
+            "veiled_thorn": {
+                "name": "ぼやけたトゲ",
+                "description": "1ターンの間、味方がダメージを与えなかった場合、次のターン開始時、1ターンの間、ダメージ量50%増加"
+            },
+            "pale_eternal_flame": {
+                "name": "青白い永劫の炎",
+                "description": "カード消滅時、1ターンの間、味方のダメージ10%増加(各ターン1回)"
+            },
+            "brilliant_eternal_flame": {
+                "name": "輝かしい永劫の炎",
+                "description": "コスト2以上の消滅カードのダメージ量40%増加"
             }
         },
         "armor": {
@@ -428,6 +448,30 @@
             "rocket_adorned_cape": {
                 "name": "ロケットの飾り付きマント",
                 "description": "戦闘開始時、ダメージ減少1、ドロー1"
+            },
+            "vine_camouflage": {
+                "name": "蔓の迷彩服",
+                "description": "ターン開始時、HPが30%以下の場合、回避1(各戦闘2回)"
+            },
+            "moss_armor": {
+                "name": "苔の鎧",
+                "description": "1ターンの間、味方が攻撃カードを発動せずにターン終了時、固定シールド100%"
+            },
+            "shining_lyre": {
+                "name": "輝くリラ",
+                "description": "ターン開始時、味方消滅カードが手札にある場合、固定シールド60%"
+            },
+            "phytotype_synthetic": {
+                "name": "植物型義体",
+                "description": "シールド獲得時、1ターンの間、次に発動する攻撃カード1枚のダメージ量20%増加(各ターン2回)"
+            },
+            "robe_of_oblivion": {
+                "name": "忘却のローブ",
+                "description": "消滅カードでシールド獲得時、1ターンの間、ダメージ量20%増加(各ターン1回)"
+            },
+            "vine_lords_mask": {
+                "name": "ヴァインロードの仮面",
+                "description": "味方の能力で消滅カードドロー時、固定シールド80%(各ターン2回)"
             }
         },
         "pendant": {
@@ -691,6 +735,38 @@
             "source_of_the_forbidden": {
                 "name": "禁忌の根源",
                 "description": "攻撃を受けた時、攻撃者に脆弱、弱体化、損傷のうち、ランダムで1個付与（各ターン3回）"
+            },
+            "plant_doll": {
+                "name": "植物人形",
+                "description": "スキルカード4枚消滅時、ランダムな味方のストレス1減少"
+            },
+            "golden_bell": {
+                "name": "金色の瞳",
+                "description": "戦闘開始時、ランダムな味方のストレス3減少"
+            },
+            "summoned_lump_of_light": {
+                "name": "召喚された光の塊",
+                "description": "3回目に生成された攻撃カード1ターンの間、ダメージ量+30%増加"
+            },
+            "lightless_stem": {
+                "name": "光を失った茎",
+                "description": "治癒量15%増加"
+            },
+            "leaf_of_the_world_tree": {
+                "name": "世界樹の葉",
+                "description": "コスト2以上のカード3枚使用時、保存1"
+            },
+            "luminescent_shroom": {
+                "name": "発光キノコ",
+                "description": "6回目に生成された攻撃カード1ターンの間、胞子増殖効果2倍"
+            },
+            "shining_world_tree_stem": {
+                "name": "輝く世界樹の茎",
+                "description": "治癒量25%増加"
+            },
+            "liberated_essence": {
+                "name": "解放されたエッセンス",
+                "description": "ターン開始時、手札のランダウな消滅カード1枚を1ターンの間、コスト1減少"
             }
         }
     }

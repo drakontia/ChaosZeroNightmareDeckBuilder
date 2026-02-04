@@ -360,5 +360,53 @@ export const ARMORS: Equipment[] = [
     rarity: "equipment.rarity.legendary",
     description: "equipment.armor.rocket_adorned_cape.description",
     imgUrl: "/images/equipment/armors/rocket_adorned_cape.png"
+  },
+  {
+    id: "vine_camouflage",
+    name: "equipment.armor.vine_camouflage.name",
+    type: EquipmentType.ARMOR,
+    rarity: "equipment.rarity.rare",
+    description: "equipment.armor.vine_camouflage.description",
+    imgUrl: "/images/equipment/armors/vine_camouflage.png"
+  },
+  {
+    id: "moss_armor",
+    name: "equipment.armor.moss_armor.name",
+    type: EquipmentType.ARMOR,
+    rarity: "equipment.rarity.rare",
+    description: "equipment.armor.moss_armor.description",
+    imgUrl: "/images/equipment/armors/moss_armor.png"
+  },
+  {
+    id: "shining_lyre",
+    name: "equipment.armor.shining_lyre.name",
+    type: EquipmentType.ARMOR,
+    rarity: "equipment.rarity.rare",
+    description: "equipment.armor.shining_lyre.description",
+    imgUrl: "/images/equipment/armors/shining_lyre.png"
+  },
+  {
+    id: "phytotype_synthetic",
+    name: "equipment.armor.phytotype_synthetic.name",
+    type: EquipmentType.ARMOR,
+    rarity: "equipment.rarity.legendary",
+    description: "equipment.armor.phytotype_synthetic.description",
+    imgUrl: "/images/equipment/armors/phytotype_synthetic.png"
+  },
+  {
+    id: "robe_of_oblivion",
+    name: "equipment.armor.robe_of_oblivion.name",
+    type: EquipmentType.ARMOR,
+    rarity: "equipment.rarity.legendary",
+    description: "equipment.armor.robe_of_oblivion.description",
+    imgUrl: "/images/equipment/armors/robe_of_oblivion.png"
+  },
+  {
+    id: "vine_lords_mask",
+    name: "equipment.armor.vine_lords_mask.name",
+    type: EquipmentType.ARMOR,
+    rarity: "equipment.rarity.legendary",
+    description: "equipment.armor.vine_lords_mask.description",
+    imgUrl: "/images/equipment/armors/vine_lords_mask.png"
   }
 ];

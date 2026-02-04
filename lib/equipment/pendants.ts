@@ -520,5 +520,69 @@ export const PENDANTS: Equipment[] = [
     rarity: "equipment.rarity.legendary",
     description: "equipment.pendant.source_of_the_forbidden.description",
     imgUrl: "/images/equipment/pendants/source_of_the_forbidden.png"
+  },
+  {
+    id: "plant_doll",
+    name: "equipment.pendant.plant_doll.name",
+    type: EquipmentType.PENDANT,
+    rarity: "equipment.rarity.rare",
+    description: "equipment.pendant.plant_doll.description",
+    imgUrl: "/images/equipment/pendants/plant_doll.png"
+  },
+  {
+    id: "golden_bell",
+    name: "equipment.pendant.golden_bell.name",
+    type: EquipmentType.PENDANT,
+    rarity: "equipment.rarity.rare",
+    description: "equipment.pendant.golden_bell.description",
+    imgUrl: "/images/equipment/pendants/golden_bell.png"
+  },
+  {
+    id: "summoned_lump_of_light",
+    name: "equipment.pendant.summoned_lump_of_light.name",
+    type: EquipmentType.PENDANT,
+    rarity: "equipment.rarity.rare",
+    description: "equipment.pendant.summoned_lump_of_light.description",
+    imgUrl: "/images/equipment/pendants/summoned_lump_of_light.png"
+  },
+  {
+    id: "lightless_stem",
+    name: "equipment.pendant.lightless_stem.name",
+    type: EquipmentType.PENDANT,
+    rarity: "equipment.rarity.rare",
+    description: "equipment.pendant.lightless_stem.description",
+    imgUrl: "/images/equipment/pendants/lightless_stem.png"
+  },
+  {
+    id: "leaf_of_the_world_tree",
+    name: "equipment.pendant.leaf_of_the_world_tree.name",
+    type: EquipmentType.PENDANT,
+    rarity: "equipment.rarity.legendary",
+    description: "equipment.pendant.leaf_of_the_world_tree.description",
+    imgUrl: "/images/equipment/pendants/leaf_of_the_world_tree.png"
+  },
+  {
+    id: "luminescent_shroom",
+    name: "equipment.pendant.luminescent_shroom.name",
+    type: EquipmentType.PENDANT,
+    rarity: "equipment.rarity.legendary",
+    description: "equipment.pendant.luminescent_shroom.description",
+    imgUrl: "/images/equipment/pendants/luminescent_shroom.png"
+  },
+  {
+    id: "shining_world_tree_stem",
+    name: "equipment.pendant.shining_world_tree_stem.name",
+    type: EquipmentType.PENDANT,
+    rarity: "equipment.rarity.legendary",
+    description: "equipment.pendant.shining_world_tree_stem.description",
+    imgUrl: "/images/equipment/pendants/shining_world_tree_stem.png"
+  },
+  {
+    id: "liberated_essence",
+    name: "equipment.pendant.liberated_essence.name",
+    type: EquipmentType.PENDANT,
+    rarity: "equipment.rarity.mythical",
+    description: "equipment.pendant.liberated_essence.description",
+    imgUrl: "/images/equipment/pendants/liberated_essence.png"
   }
 ];
