@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 カード画像のトリミングスクリプト
-public/images/cards/ 内の各スクリーンショットからカード部分だけを抽出します
+public/images/cards_cropped/ 内の全てのカード画像をトリミングして public/images/cards/ に配置します
 """
 
 import os
@@ -109,14 +109,14 @@ def main():
     # パス設定
     script_dir = Path(__file__).parent
     project_root = script_dir.parent
-    input_dir = project_root / 'public' / 'images' / 'cards'
-    output_dir = project_root / 'public' / 'images' / 'cards_cropped'
+    input_dir = project_root / 'public' / 'images' / 'cards_cropped'
+    output_dir = project_root / 'public' / 'images' / 'cards'
     
     # 出力ディレクトリを作成
     output_dir.mkdir(parents=True, exist_ok=True)
     
-    # PNG ファイルを取得（「スクリーンショット」で始まるファイルのみ）
-    image_files = sorted([f for f in input_dir.glob('*.png') if f.name.startswith('スクリーンショット')])
+    # PNG ファイルを取得（全ての PNG ファイル）
+    image_files = sorted([f for f in input_dir.glob('*.png')])
     
     if not image_files:
         print("No PNG files found in", input_dir)
