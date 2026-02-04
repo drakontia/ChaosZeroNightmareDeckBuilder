@@ -35,8 +35,8 @@ test.describe('Hirameki Controls (non-character cards)', () => {
     const monsterSection = page.getByRole('heading', { name: 'モンスターカード' }).locator('..');
     await monsterSection.getByText('恥ずかしがり屋の庭師', { exact: true }).first().click({ timeout: 10_000 });
 
-    await openAccordion(page, '禁忌カード');
-    const forbiddenSection = page.getByRole('heading', { name: '禁忌カード' }).locator('..');
+    await openAccordion(page, 'シーズンカード');
+    const forbiddenSection = page.getByRole('heading', { name: 'シーズンカード' }).locator('..');
     await forbiddenSection.getByText('禁じられたアルゴリズム', { exact: true }).first().click({ timeout: 10_000 });
 
     // Verify controls exist on each deck card with shorter timeout
