@@ -4,6 +4,7 @@ import { ReactNode, useState } from "react";
 import { useTranslations } from "next-intl";
 import { cn } from "@/lib/utils";
 import { Zap } from "lucide-react";
+import { CardGrade } from "@/types";
 
 // カテゴリアイコンのマッピング
 const CATEGORY_ICONS: Record<string, string> = {
@@ -34,6 +35,7 @@ interface CardFrameProps {
   rightControls?: ReactNode;
   variant?: "default" | "compact";
   isCopied?: boolean; // Whether this card is a copy
+  grade?: CardGrade; // Card grade for color styling
 }
 
 export function CardFrame({
@@ -57,12 +59,20 @@ export function CardFrame({
   leftControls,
   rightControls,
   isCopied = false,
+  grade,
 }: CardFrameProps) {
   const t = useTranslations();
   const [imageError, setImageError] = useState(false);
   
   const displayName = nameId ? t(nameId, { defaultValue: nameFallback ?? name ?? "" }) : (name ?? "");
   const displayAlt = displayName || alt || "";
+  
+  // Determine name color based on grade
+  const nameColorClass = grade === CardGrade.RARE
+    ? "text-cyan-400"
+    : grade === CardGrade.LEGEND
+    ? "text-amber-400"
+    : "text-white";
 
   return (
     <div className={cn("relative overflow-hidden aspect-2/3 rounded-md", className)}>
@@ -85,7 +95,7 @@ export function CardFrame({
           <div className="text-lg sm:text-2xl lg:text-4xl xl:text-5xl font-extrabold text-white underline underline-offset-4 decoration-1 text-shadow-2xl align-middle leading-none">{cost}</div>
         </div>
         <div className="min-w-0 flex-1 text-left">
-          <div className="text-xs sm:text-base lg:text-lg text-white text-shadow-2xl truncate" title={displayName}>{displayName}</div>
+          <div className={cn("text-xs sm:text-base lg:text-lg text-shadow-2xl truncate", nameColorClass)} title={displayName}>{displayName}</div>
           <div className="text-xs lg:text-base text-white/90 text-shadow-4xl flex items-center gap-1 h-6 lg:h-8 ">
             {categoryId && CATEGORY_ICONS[categoryId.toLowerCase()] && (
               <Image
