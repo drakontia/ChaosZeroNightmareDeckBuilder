@@ -104,6 +104,7 @@ export function DeckDisplay({ cards, egoLevel, hasPotential, allowedJob, onRemov
               hiddenEffectFallback={hiddenEffectFallback}
               statuses={displayStatuses.map(s => t(`status.${s}`))}
               isCopied={card.isCopied}
+              grade={card.grade}
               leftControls={leftControls}
               rightControls={
                 <CardActionsMenu

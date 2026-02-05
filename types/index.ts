@@ -214,13 +214,19 @@ export interface ConvertedCardEntry {
   excluded?: boolean; // Converted as temporary exclusion card (not added to deck)
 }
 
+export interface EquipmentSlot {
+  item: Equipment | null;
+  refinement: boolean;
+  godHammerEquipmentId: string | null; // 選択した神のハンマー効果の装備ID (null = 未選択)
+}
+
 export interface Deck {
   name?: string;
   character: Character | null;
   equipment: {
-    weapon: Equipment | null;
-    armor: Equipment | null;
-    pendant: Equipment | null;
+    weapon: EquipmentSlot | null;
+    armor: EquipmentSlot | null;
+    pendant: EquipmentSlot | null;
   };
   cards: DeckCard[];
   egoLevel: number; // 0-6, Ego Manifestation level

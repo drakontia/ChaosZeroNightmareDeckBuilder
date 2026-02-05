@@ -33,7 +33,11 @@ describe('useDeckBuilderStore', () => {
     const deck = {
       name: 'testdeck',
       character: CHARACTERS[0],
-      equipment: { weapon: null, armor: null, pendant: null },
+      equipment: {
+        weapon: { item: null, refinement: false, godHammerEquipmentId: null },
+        armor: { item: null, refinement: false, godHammerEquipmentId: null },
+        pendant: { item: null, refinement: false, godHammerEquipmentId: null }
+      },
       cards: [],
       egoLevel: 1,
       hasPotential: true,
@@ -90,7 +94,11 @@ describe('useDeckBuilderStore', () => {
     const deck = {
       name: 'stringdeck',
       character: CHARACTERS[0].id,
-      equipment: { weapon: null, armor: null, pendant: null },
+      equipment: {
+        weapon: { item: null, refinement: false, godHammerEquipmentId: null },
+        armor: { item: null, refinement: false, godHammerEquipmentId: null },
+        pendant: { item: null, refinement: false, godHammerEquipmentId: null }
+      },
       cards: [],
       egoLevel: 0,
       hasPotential: false,
@@ -114,7 +122,7 @@ describe('useDeckBuilderStore', () => {
       useDeckBuilderStore.getState().setCharacter(CHARACTERS[0]);
       useDeckBuilderStore.getState().selectEquipment(EquipmentType.WEAPON, { id: 'weapon_1', name: '武器', type: EquipmentType.WEAPON, rarity: 'R' });
     });
-    expect(useDeckBuilderStore.getState().deck?.equipment.weapon?.id).toBe('weapon_1');
+    expect(useDeckBuilderStore.getState().deck?.equipment.weapon?.item?.id).toBe('weapon_1');
   });
 
   it('resetで初期状態に戻る', () => {

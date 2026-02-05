@@ -117,6 +117,7 @@ export function CardSelector({ character, onAddCard, onRestoreCard, removedCards
           descriptionId={`cards.${card.id}.descriptions.0`}
           descriptionFallback={baseVariation.description}
           statuses={statuses}
+          grade={card.grade}
         />
       </Card>
     );

@@ -3,7 +3,9 @@
 import { useState, useEffect } from "react";
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
-import { Equipment, EquipmentType } from "@/types";
+import { Equipment, EquipmentType, EquipmentSlot } from "@/types";
+import { toast } from 'sonner';
+import { HardHat, Hammer } from 'lucide-react';
 
 // 装備タイプごとのプレースホルダー画像
 const EQUIPMENT_PLACEHOLDER: Record<EquipmentType, string> = {
@@ -14,7 +16,7 @@ const EQUIPMENT_PLACEHOLDER: Record<EquipmentType, string> = {
 import { Button } from "./ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "./ui/dialog";
 import { Field, FieldGroup, FieldLabel } from "./ui/field";
-import { Swords, AlertCircle } from "lucide-react";
+import { Swords } from "lucide-react";
 import { InfoDialog } from "./InfoDialog";
 import { DialogCloseButton } from "./DialogCloseButton";
 
@@ -26,28 +28,38 @@ const isMythicalEquipment = (equipment: Equipment): boolean => {
 interface EquipmentSelectorProps {
   equipment: Equipment[];
   selectedEquipment: {
-    weapon: Equipment | null;
-    armor: Equipment | null;
-    pendant: Equipment | null;
+    weapon: EquipmentSlot | null;
+    armor: EquipmentSlot | null;
+    pendant: EquipmentSlot | null;
   };
   onSelect: (equipment: Equipment | null, type?: EquipmentType) => void;
+  onRefinementChange?: (type: EquipmentType, value: boolean) => void;
+  onGodHammerChange?: (type: EquipmentType, equipmentId: string | null) => void;
 }
 
-export function EquipmentSelector({ equipment, selectedEquipment, onSelect }: EquipmentSelectorProps) {
+export function EquipmentSelector({ equipment, selectedEquipment, onSelect, onRefinementChange, onGodHammerChange }: EquipmentSelectorProps) {
   const t = useTranslations();
   const [openType, setOpenType] = useState<EquipmentType | null>(null);
   const [imageErrors, setImageErrors] = useState<Set<string>>(new Set());
-  const [mythicalWarning, setMythicalWarning] = useState<{ show: boolean; conflictType?: EquipmentType }>({ show: false });
+  // ローカル状態は表示用のみ。実際の保存はストアで行う
+  const [godHammerDescriptions, setGodHammerDescriptions] = useState<Record<string, string>>({});
 
-  // 警告を3秒後に自動的に消す
+  // 保存されているgodHammerEquipmentIdから説明文を復元
   useEffect(() => {
-    if (mythicalWarning.show) {
-      const timer = setTimeout(() => {
-        setMythicalWarning({ show: false });
-      }, 3000);
-      return () => clearTimeout(timer);
+    const newDescriptions: Record<string, string> = {};
+    const types: EquipmentType[] = [EquipmentType.WEAPON, EquipmentType.ARMOR, EquipmentType.PENDANT];
+    
+    for (const type of types) {
+      const slot = selectedEquipment[type];
+      if (slot?.godHammerEquipmentId) {
+        const eq = equipment.find(e => e.id === slot.godHammerEquipmentId);
+        if (eq?.description) {
+          newDescriptions[type] = t(eq.description);
+        }
+      }
     }
-  }, [mythicalWarning.show]);
+    setGodHammerDescriptions(newDescriptions);
+  }, [selectedEquipment, equipment, t]);
 
   const handleImageError = (equipmentId: string) => {
     setImageErrors(prev => new Set(prev).add(equipmentId));
@@ -63,8 +75,8 @@ export function EquipmentSelector({ equipment, selectedEquipment, onSelect }: Eq
 
   // 他の種類で選択されている神話級装備を検索
   const getSelectedMythicalType = (): EquipmentType | null => {
-    for (const [type, selected] of Object.entries(selectedEquipment) as [EquipmentType, Equipment | null][]) {
-      if (selected && isMythicalEquipment(selected)) {
+    for (const [type, slot] of Object.entries(selectedEquipment) as [EquipmentType, EquipmentSlot][]) {
+      if (slot.item && isMythicalEquipment(slot.item)) {
         return type;
       }
     }
@@ -78,9 +90,11 @@ export function EquipmentSelector({ equipment, selectedEquipment, onSelect }: Eq
       const selectedMythicalType = getSelectedMythicalType();
       // すでに別の種類で神話級装備が選ばれている場合
       if (selectedMythicalType && selectedMythicalType !== type) {
-        setMythicalWarning({
-          show: true,
-          conflictType: selectedMythicalType
+        toast.error(t('equipment.duplicate.warning', {
+          type: t(`equipment.${selectedMythicalType}.title`)
+        }), {
+          duration: 3000,
+          position: "top-center"
         });
         return; // モーダルを閉じない
       }
@@ -89,13 +103,16 @@ export function EquipmentSelector({ equipment, selectedEquipment, onSelect }: Eq
     // 通常の処理
     onSelect(item, type);
     setOpenType(null);
-    setMythicalWarning({ show: false });
   };
 
   const renderEquipmentSection = (type: EquipmentType, titleKey: string) => {
     const items = getEquipmentByType(type);
-    const selected = selectedEquipment[type];
+    const slot = selectedEquipment[type];
+    const selected = slot?.item;
     const isOpen = openType === type;
+
+    // slotがnullの場合は空のスロットを表示
+    const refinement = slot?.refinement ?? false;
 
     return (
       <Field>
@@ -117,11 +134,41 @@ export function EquipmentSelector({ equipment, selectedEquipment, onSelect }: Eq
                         sizes="100%"
                         onError={() => handleImageError(selected.id)}
                       />
-                      {selected.description && (
+                      {/* 精錬と神のハンマーアイコン（神のハンマー優先表示） */}
+                      <div className="absolute top-1 right-1 z-10 flex gap-1">
+                        {slot?.godHammerEquipmentId ? (
+                          <div className="rounded-full bg-black/60 p-1">
+                            <Hammer size={16} className="text-orange-400" />
+                          </div>
+                        ) : refinement ? (
+                          <div className="rounded-full bg-black/60 p-1">
+                            <HardHat size={16} className="text-orange-400" />
+                          </div>
+                        ) : null}
+                      </div>
+                      {selected.description && slot && (
                         <InfoDialog
                           description={t(selected.description)}
                           rarity={t(selected.rarity)}
                           triggerAsChild
+                          showEnhancements={true}
+                          refinement={refinement}
+                          onRefinementChange={(value) => onRefinementChange?.(type, value)}
+                          equipment={equipment}
+                          godHammerDescription={godHammerDescriptions[type] || ''}
+                          onGodHammerDescriptionSelect={(description) => {
+                            setGodHammerDescriptions({
+                              ...godHammerDescriptions,
+                              [type]: description,
+                            });
+                            // 説明文から装備IDを逆引きして保存
+                            if (description) {
+                              const foundEquipment = equipment.find(eq => eq.description && t(eq.description) === description);
+                              onGodHammerChange?.(type, foundEquipment?.id || null);
+                            } else {
+                              onGodHammerChange?.(type, null);
+                            }
+                          }}
                         />
                       )}
                     </div>
@@ -149,16 +196,6 @@ export function EquipmentSelector({ equipment, selectedEquipment, onSelect }: Eq
             <DialogHeader className="flex-row items-center justify-between space-y-0 shrink-0">
               <div className="flex items-center gap-3">
                 <DialogTitle>{t(titleKey)}</DialogTitle>
-                {mythicalWarning.show && openType === type && (
-                  <div className="flex items-center gap-2 text-sm animate-in fade-in duration-200">
-                    <AlertCircle className="w-4 h-4 shrink-0 text-red-600" />
-                    <span className="text-red-600 font-medium">
-                      {t('equipment.duplicate.warning', {
-                        type: t(`equipment.${mythicalWarning.conflictType}.title`)
-                      })}
-                    </span>
-                  </div>
-                )}
               </div>
               <DialogCloseButton
                 onClick={() => {
@@ -211,7 +248,7 @@ export function EquipmentSelector({ equipment, selectedEquipment, onSelect }: Eq
   };
 
   return (
-    <FieldGroup className="pt-4 lg:pt-12 gap-2">
+    <FieldGroup className="pt-4 gap-2">
       <FieldLabel className="text-base lg:text-2xl text-gray-500"><Swords />{t('equipment.title')}</FieldLabel>
       <div className="grid grid-cols-3 gap-2">
         {renderEquipmentSection(EquipmentType.WEAPON, "equipment.weapon.title")}

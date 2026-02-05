@@ -101,11 +101,11 @@ export function encodeDeckShare(deck: Deck): string {
     v: DEFAULT_VERSION,
     ...(deck.name && { n: deck.name }),
     ...(deck.character && { c: deck.character.id }),
-    ...((deck.equipment.weapon || deck.equipment.armor || deck.equipment.pendant) && {
+    ...((deck.equipment.weapon?.item || deck.equipment.armor?.item || deck.equipment.pendant?.item) && {
       e: {
-        ...(deck.equipment.weapon && { w: deck.equipment.weapon.id }),
-        ...(deck.equipment.armor && { a: deck.equipment.armor.id }),
-        ...(deck.equipment.pendant && { p: deck.equipment.pendant.id }),
+        ...(deck.equipment.weapon?.item && { w: deck.equipment.weapon.item.id }),
+        ...(deck.equipment.armor?.item && { a: deck.equipment.armor.item.id }),
+        ...(deck.equipment.pendant?.item && { p: deck.equipment.pendant.item.id }),
       },
     }),
     k: deck.cards.map((card) => ({
@@ -189,9 +189,21 @@ export function decodeDeckShare(value: string): Deck | null {
     const character = payload.c ? pickCharacter(payload.c) : null;
 
     const equipment = {
-      weapon: payload.e?.w ? pickEquipment(payload.e.w, EquipmentType.WEAPON) : null,
-      armor: payload.e?.a ? pickEquipment(payload.e.a, EquipmentType.ARMOR) : null,
-      pendant: payload.e?.p ? pickEquipment(payload.e.p, EquipmentType.PENDANT) : null,
+      weapon: {
+        item: payload.e?.w ? pickEquipment(payload.e.w, EquipmentType.WEAPON) : null,
+        refinement: false,
+        godHammerEquipmentId: null,
+      },
+      armor: {
+        item: payload.e?.a ? pickEquipment(payload.e.a, EquipmentType.ARMOR) : null,
+        refinement: false,
+        godHammerEquipmentId: null,
+      },
+      pendant: {
+        item: payload.e?.p ? pickEquipment(payload.e.p, EquipmentType.PENDANT) : null,
+        refinement: false,
+        godHammerEquipmentId: null,
+      },
     };
 
     const cards: DeckCard[] = (payload.k ?? [])

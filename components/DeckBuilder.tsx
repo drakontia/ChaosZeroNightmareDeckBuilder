@@ -11,18 +11,18 @@ import { EquipmentSelector } from "./EquipmentSelector";
 import { CardSelector } from "./CardSelector";
 import { DeckDisplay } from "./DeckDisplay";
 import { LanguageSwitcher } from "./LanguageSwitcher";
-import { LimitAlert } from "./LimitAlert";
 import { CHARACTERS, EQUIPMENT } from "@/lib/card";
 import { calculateFaintMemory } from "@/lib/calculateFaintMemory";
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 import { Button } from "./ui/button";
 import { Field, FieldLabel, FieldGroup, FieldSet } from "./ui/field";
 import { Input } from './ui/input';
-import { Brain, CardSim, Clock12, Share2, Save as SaveIcon, FolderOpen, Eraser, Book, BookCopy, BookX } from 'lucide-react';
+import { Brain, Clock12, Share2, Save as SaveIcon, FolderOpen, Eraser, Book, BookCopy, BookX } from 'lucide-react';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { Camera } from 'lucide-react';
 import { decodeDeckShare } from "@/lib/deck-share";
 import { Deck } from "@/types";
+import { toast } from 'sonner';
 import { useShareDeck } from "@/hooks/useShareDeck";
 import { useExportDeckImage } from "@/hooks/useExportDeckImage";
 import { useDeckSaveLoad } from "@/hooks/useDeckSaveLoad";
@@ -43,6 +43,8 @@ export function DeckBuilder({ shareId }: DeckBuilderProps) {
   const removeCard = useDeckBuilderStore((s) => s.removeCard);
   const restoreCard = useDeckBuilderStore((s) => s.restoreCard);
   const selectEquipment = useDeckBuilderStore((s) => s.selectEquipment);
+  const setEquipmentRefinement = useDeckBuilderStore((s) => s.setEquipmentRefinement);
+  const setEquipmentGodHammer = useDeckBuilderStore((s) => s.setEquipmentGodHammer);
   const updateCardHirameki = useDeckBuilderStore((s) => s.updateCardHirameki);
   const setCardGodHirameki = useDeckBuilderStore((s) => s.setCardGodHirameki);
   const setCardGodHiramekiEffect = useDeckBuilderStore((s) => s.setCardGodHiramekiEffect);
@@ -61,8 +63,10 @@ export function DeckBuilder({ shareId }: DeckBuilderProps) {
   const [shareError, setShareError] = useState<string | null>(null);
   const removeLimitReached = useDeckBuilderStore((s) => s.removeLimitReached);
   const copyLimitReached = useDeckBuilderStore((s) => s.copyLimitReached);
+  const conversionLimitReached = useDeckBuilderStore((s) => s.conversionLimitReached);
   const clearRemoveLimitAlert = useDeckBuilderStore((s) => s.clearRemoveLimitAlert);
   const clearCopyLimitAlert = useDeckBuilderStore((s) => s.clearCopyLimitAlert);
+  const clearConversionLimitAlert = useDeckBuilderStore((s) => s.clearConversionLimitAlert);
   const hasLoadedShare = useRef(false);
   const deckCaptureRef = useRef<HTMLDivElement | null>(null);
 
@@ -72,7 +76,11 @@ export function DeckBuilder({ shareId }: DeckBuilderProps) {
       setDeck({
         name: '',
         character: null,
-        equipment: { weapon: null, armor: null, pendant: null },
+        equipment: {
+          weapon: { item: null, refinement: false, godHammerEquipmentId: null },
+          armor: { item: null, refinement: false, godHammerEquipmentId: null },
+          pendant: { item: null, refinement: false, godHammerEquipmentId: null },
+        },
         cards: [],
         egoLevel: 0,
         hasPotential: false,
@@ -90,6 +98,40 @@ export function DeckBuilder({ shareId }: DeckBuilderProps) {
       setDeck(sharedDeck);
     }
   }, [sharedDeck, setDeck]);
+
+  // 制限アラートをToastで表示
+  useEffect(() => {
+    if (removeLimitReached) {
+      toast.warning(t('deck.removeLimitTitle', { defaultValue: '排除上限に達しました' }), {
+        description: t('deck.removeLimitMessage', { defaultValue: '排除は5回までです。これ以上排除できません。' }),
+        duration: 4000,
+        position: "top-center"
+      });
+      clearRemoveLimitAlert();
+    }
+  }, [removeLimitReached, clearRemoveLimitAlert]);
+
+  useEffect(() => {
+    if (copyLimitReached) {
+      toast.warning(t('deck.copyLimitTitle', { defaultValue: 'コピー上限に達しました' }), {
+        description: t('deck.copyLimitMessage', { defaultValue: 'コピーは4回までです。これ以上コピーできません。' }),
+        duration: 4000,
+        position: "top-center"
+      });
+      clearCopyLimitAlert();
+    }
+  }, [copyLimitReached, clearCopyLimitAlert]);
+
+  useEffect(() => {
+    if (conversionLimitReached) {
+      toast.warning(t('deck.conversionLimitTitle', { defaultValue: '変換上限に達しました' }), {
+        description: t('deck.conversionLimitMessage', { defaultValue: '変換は5回までです。これ以上変換できません。' }),
+        duration: 4000,
+        position: "top-center"
+      });
+      clearConversionLimitAlert();
+    }
+  }, [conversionLimitReached, clearConversionLimitAlert]);
 
   // DeckDisplay用: (deckId: string, targetCard: CznCard) => void にラップ
   const handleConvertCard = useCallback((deckId: string, targetCard: CznCard, options?: { asExclusion?: boolean }) => {
@@ -113,11 +155,43 @@ export function DeckBuilder({ shareId }: DeckBuilderProps) {
     savedList,
     loadOpen,
     setLoadOpen,
-    handleSaveDeck,
+    handleSaveDeck: saveHandler,
     openLoadDialog,
     handleLoadDeck,
     handleDeleteSaved,
   } = useDeckSaveLoad({ deck: deck ?? undefined, setName, setSharedDeck, setShareError, t });
+
+  // 装備の検証（神のハンマーが有効で精錬がオフの場合に警告）
+  const validateEquipment = useCallback(() => {
+    if (!deck) return true;
+    const equipmentTypes: Array<'weapon' | 'armor' | 'pendant'> = ['weapon', 'armor', 'pendant'];
+    for (const type of equipmentTypes) {
+      const slot = deck.equipment[type];
+      if (slot?.item && slot.godHammerEquipmentId && !slot.refinement) {
+        toast.warning(t('equipment.godHammerWithoutRefinement.title', { defaultValue: '精錬が選択されていません' }), {
+          description: t('equipment.godHammerWithoutRefinement.message', { 
+            defaultValue: '神のハンマーが有効な装備に精錬が選択されていません。精錬を有効にすることを推奨します。'
+          }),
+          duration: 5000,
+          position: "top-center"
+        });
+        return false;
+      }
+    }
+    return true;
+  }, [deck, t]);
+
+  // 保存時の検証付きハンドラ
+  const handleSaveDeck = useCallback(() => {
+    if (!validateEquipment()) return;
+    saveHandler();
+  }, [validateEquipment, saveHandler]);
+
+  // 画像エクスポート時の検証付きハンドラ
+  const handleExportImage = useCallback(() => {
+    if (!validateEquipment()) return;
+    exportHandler(deckCaptureRef, deck?.name || 'deck');
+  }, [validateEquipment, exportHandler, deck?.name]);
 
   // 共有デッキ読み込み（shareIdがある場合のみ1回だけ）
   useEffect(() => {
@@ -136,8 +210,25 @@ export function DeckBuilder({ shareId }: DeckBuilderProps) {
 
 
   const handleShareDeck = useCallback(() => {
-    if (deck) shareHandler(deck);
-  }, [deck, shareHandler]);
+    if (!deck) return;
+    // 神のハンマーが有効で精錬がオフの装備をチェック
+    const equipmentTypes: Array<'weapon' | 'armor' | 'pendant'> = ['weapon', 'armor', 'pendant'];
+    for (const type of equipmentTypes) {
+      const slot = deck.equipment[type];
+      if (slot?.item && slot.godHammerEquipmentId && !slot.refinement) {
+        toast.warning(t('equipment.godHammerWithoutRefinement.title', { defaultValue: '精錬が選択されていません' }), {
+          description: t('equipment.godHammerWithoutRefinement.message', { 
+            defaultValue: '神のハンマーが有効な装備に精錬が選択されていません。精錬を有効にすることを推奨します。',
+            type: t(`equipment.${type}.title`)
+          }),
+          duration: 5000,
+          position: "top-center"
+        });
+        return; // 共有を中断しない（警告のみ）
+      }
+    }
+    shareHandler(deck);
+  }, [deck, shareHandler, t]);
 
   const handleClearDeck = useCallback(() => {
     reset();
@@ -156,21 +247,6 @@ export function DeckBuilder({ shareId }: DeckBuilderProps) {
   }
   return (
     <div className="min-h-screen p-4 lg:p-8 bg-gray-50 dark:bg-gray-900">
-      <LimitAlert
-        isOpen={removeLimitReached}
-        title={t('deck.removeLimitTitle', { defaultValue: '排除上限に達しました' })}
-        message={t('deck.removeLimitMessage', { defaultValue: '排除は5回までです。これ以上排除できません。' })}
-        onClose={clearRemoveLimitAlert}
-        closeLabel={t('common.close', { defaultValue: '閉じる' })}
-      />
-      <LimitAlert
-        isOpen={copyLimitReached}
-        title={t('deck.copyLimitTitle', { defaultValue: 'コピー上限に達しました' })}
-        message={t('deck.copyLimitMessage', { defaultValue: 'コピーは4回までです。これ以上コピーできません。' })}
-        onClose={clearCopyLimitAlert}
-        closeLabel={t('common.close', { defaultValue: '閉じる' })}
-      />
-      
       <div className="max-w-400 mx-auto">
         <header className="mb-6">
           <div className="flex flex-col sm:flex-row sm:justify-between items-end sm:items-start gap-2 mb-2">
@@ -245,7 +321,7 @@ export function DeckBuilder({ shareId }: DeckBuilderProps) {
                   <span className="hidden lg:inline">{t('deck.share')}</span>
                 </Button>
                 <Button
-                  onClick={() => exportHandler(deckCaptureRef, deck.name || 'deck')}
+                  onClick={handleExportImage}
                   variant="secondary"
                   disabled={isExporting}
                   title={t('deck.exportImage')}
@@ -330,6 +406,12 @@ export function DeckBuilder({ shareId }: DeckBuilderProps) {
                         selectedEquipment={deck.equipment}
                         onSelect={(equipment: Equipment | null, type?: EquipmentType) => {
                           if (type) selectEquipment(type, equipment);
+                        }}
+                        onRefinementChange={(type: EquipmentType, value: boolean) => {
+                          setEquipmentRefinement(type, value);
+                        }}
+                        onGodHammerChange={(type: EquipmentType, equipmentId: string | null) => {
+                          setEquipmentGodHammer(type, equipmentId);
                         }}
                       />
                     </div>

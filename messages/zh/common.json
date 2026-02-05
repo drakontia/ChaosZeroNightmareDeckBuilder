@@ -45,13 +45,19 @@
     "exportImage": "导出图片",
     "exportImageFailed": "图片导出失败",
     "totalCards": "卡牌数量",
-    "copiedCards": "复制数量",
-    "removedCards": "移除数量",
+    "copiedCards": "复制",
+    "removedCards": "移除",
     "totalCost": "总费用",
     "noDeck": "卡组为空",
     "selectCharacterHint": "选择角色后会显示起始卡牌",
     "namePlaceholder": "卡组名称",
-    "createdDate": "创建日期"
+    "createdDate": "创建日期",
+    "removeLimitTitle": "已达到移除限制",
+    "removeLimitMessage": "移除最多5次。无法进行更多移除。",
+    "copyLimitTitle": "已达到复制限制",
+    "copyLimitMessage": "复制最多4次。无法进行更多复制。",
+    "conversionLimitTitle": "已达到转换限制",
+    "conversionLimitMessage": "转换最多5次。无法进行更多转换。"
   },
   "rarity": {
     "★5": "★5",

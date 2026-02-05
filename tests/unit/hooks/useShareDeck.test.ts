@@ -7,7 +7,11 @@ describe('useShareDeck (functional)', () => {
     const mockDeck: Deck = {
       name: 'Test Deck',
       character: null,
-      equipment: { weapon: null, armor: null, pendant: null },
+      equipment: {
+        weapon: { item: null, refinement: false, godHammerEquipmentId: null },
+        armor: { item: null, refinement: false, godHammerEquipmentId: null },
+        pendant: { item: null, refinement: false, godHammerEquipmentId: null }
+      },
       cards: [],
       egoLevel: 0,
       hasPotential: false,
@@ -26,7 +30,11 @@ describe('useShareDeck (functional)', () => {
     const mockDeck: Deck = {
       name: 'Test Deck',
       character: null,
-      equipment: { weapon: null, armor: null, pendant: null },
+      equipment: {
+        weapon: { item: null, refinement: false, godHammerEquipmentId: null },
+        armor: { item: null, refinement: false, godHammerEquipmentId: null },
+        pendant: { item: null, refinement: false, godHammerEquipmentId: null }
+      },
       cards: [],
       egoLevel: 0,
       hasPotential: false,

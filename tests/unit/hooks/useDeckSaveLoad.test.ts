@@ -35,7 +35,11 @@ describe('useDeckSaveLoad', () => {
     deck = {
       name: 'testdeck',
       character: CHARACTERS.find(c => c.id === 'chizuru')!,
-      equipment: { weapon: null, armor: null, pendant: null },
+      equipment: {
+        weapon: { item: null, refinement: false, godHammerEquipmentId: null },
+        armor: { item: null, refinement: false, godHammerEquipmentId: null },
+        pendant: { item: null, refinement: false, godHammerEquipmentId: null }
+      },
       cards: [],
       egoLevel: 0,
       hasPotential: false,
@@ -75,7 +79,7 @@ describe('useDeckSaveLoad', () => {
   it('保存済みがある場合に上書き確認でキャンセルすると保存されない', () => {
     const { result } = renderHook(() => useDeckSaveLoad({ deck, setName, setSharedDeck, setShareError, t }));
     const stored = JSON.stringify({
-      [deck.name]: { id: 'existing', savedAt: new Date('2024-01-01T00:00:00Z').toISOString() }
+      'testdeck': { id: 'existing', savedAt: new Date('2024-01-01T00:00:00Z').toISOString() }
     });
     window.localStorage.setItem('cznde:savedDecks', stored);
     window.confirm = vi.fn(() => false) as any;
@@ -93,7 +97,7 @@ describe('useDeckSaveLoad', () => {
   it('保存済みがある場合に上書き確認でOKすると保存される', () => {
     const { result } = renderHook(() => useDeckSaveLoad({ deck, setName, setSharedDeck, setShareError, t }));
     const stored = JSON.stringify({
-      [deck.name]: { id: 'existing', savedAt: new Date('2024-01-01T00:00:00Z').toISOString() }
+      'testdeck': { id: 'existing', savedAt: new Date('2024-01-01T00:00:00Z').toISOString() }
     });
     window.localStorage.setItem('cznde:savedDecks', stored);
     window.confirm = vi.fn(() => true) as any;
@@ -122,13 +126,13 @@ describe('useDeckSaveLoad', () => {
   it('削除確認でキャンセルすると保存データは残る', () => {
     const { result } = renderHook(() => useDeckSaveLoad({ deck, setName, setSharedDeck, setShareError, t }));
     const stored = JSON.stringify({
-      [deck.name]: { id: 'existing', savedAt: new Date('2024-01-01T00:00:00Z').toISOString() }
+      'testdeck': { id: 'existing', savedAt: new Date('2024-01-01T00:00:00Z').toISOString() }
     });
     window.localStorage.setItem('cznde:savedDecks', stored);
     window.confirm = vi.fn(() => false) as any;
 
     act(() => {
-      result.current.handleDeleteSaved(deck.name);
+      result.current.handleDeleteSaved('testdeck');
     });
 
     const after = window.localStorage.getItem('cznde:savedDecks');
@@ -138,13 +142,13 @@ describe('useDeckSaveLoad', () => {
   it('削除確認でOKすると保存データが削除される', () => {
     const { result } = renderHook(() => useDeckSaveLoad({ deck, setName, setSharedDeck, setShareError, t }));
     const stored = JSON.stringify({
-      [deck.name]: { id: 'existing', savedAt: new Date('2024-01-01T00:00:00Z').toISOString() }
+      'testdeck': { id: 'existing', savedAt: new Date('2024-01-01T00:00:00Z').toISOString() }
     });
     window.localStorage.setItem('cznde:savedDecks', stored);
     window.confirm = vi.fn(() => true) as any;
 
     act(() => {
-      result.current.handleDeleteSaved(deck.name);
+      result.current.handleDeleteSaved('testdeck');
     });
 
     const after = window.localStorage.getItem('cznde:savedDecks');

@@ -45,13 +45,19 @@
     "exportImage": "이미지 내보내기",
     "exportImageFailed": "이미지 내보내기 실패",
     "totalCards": "카드 수",
-    "copiedCards": "복사된 카드",
-    "removedCards": "제거된 카드",
+    "copiedCards": "복사된",
+    "removedCards": "제거된",
     "totalCost": "총 비용",
     "noDeck": "덱이 비어있습니다",
     "selectCharacterHint": "캐릭터를 선택하면 시작 카드가 표시됩니다",
     "namePlaceholder": "덱 이름",
-    "createdDate": "생성일"
+    "createdDate": "생성일",
+    "removeLimitTitle": "제거 한도에 도달했습니다",
+    "removeLimitMessage": "제거는 최대 5회까지 가능합니다. 더 이상 제거할 수 없습니다.",
+    "copyLimitTitle": "복사 한도에 도달했습니다",
+    "copyLimitMessage": "복사는 최대 4회까지 가능합니다. 더 이상 복사할 수 없습니다.",
+    "conversionLimitTitle": "변환 한도에 도달했습니다",
+    "conversionLimitMessage": "변환은 최대 5회까지 가능합니다. 더 이상 변환할 수 없습니다."
   },
   "rarity": {
     "★5": "★5",

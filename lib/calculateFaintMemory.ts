@@ -20,6 +20,18 @@ export function calculateFaintMemory(deck: Deck | null | undefined): number {
   if (!deck || !Array.isArray(deck.cards)) return 0;
   let points = 0;
   const activeCopiedCards = deck.cards.filter(card => card.isCopied);
+  
+  // Points for equipment enhancements (refinement and god hammer)
+  // Each equipment slot can have +10pt for refinement and +10pt for god hammer
+  const equipmentTypes: Array<'weapon' | 'armor' | 'pendant'> = ['weapon', 'armor', 'pendant'];
+  for (const type of equipmentTypes) {
+    const slot = deck.equipment[type];
+    if (slot?.item) { // Only count if equipment is selected
+      if (slot.refinement) points += 10;
+      if (slot.godHammerEquipmentId) points += 10; // 選択された装備IDがあれば+10pt
+    }
+  }
+  
   // Points for cards in the deck
   const cards = deck.cards;
   for (const card of cards) {

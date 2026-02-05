@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeEach } from 'vitest';
 import { calculateFaintMemory } from "@/lib/calculateFaintMemory";
-import { CardCategory, CardGrade, CardType, Deck, GodType, HiramekiVariation } from '@/types';
+import { CardCategory, CardGrade, CardType, Deck, GodType, HiramekiVariation, Equipment, EquipmentType } from '@/types';
 
 describe('calculateFaintMemory', () => {
   let baseDeck: Deck;
@@ -9,9 +9,9 @@ describe('calculateFaintMemory', () => {
     baseDeck = {
       character: null,
       equipment: {
-        weapon: null,
-        armor: null,
-        pendant: null
+        weapon: { item: null, refinement: false, godHammerEquipmentId: null },
+        armor: { item: null, refinement: false, godHammerEquipmentId: null },
+        pendant: { item: null, refinement: false, godHammerEquipmentId: null }
       },
       cards: [],
       egoLevel: 0,
@@ -442,7 +442,7 @@ describe('calculateFaintMemory (removed/copied attribute handling)', () => {
   beforeEach(() => {
     deck = {
       character: null,
-      equipment: { weapon: null, armor: null, pendant: null },
+      equipment: { weapon: { item: null, refinement: false, godHammerEquipmentId: null }, armor: { item: null, refinement: false, godHammerEquipmentId: null }, pendant: { item: null, refinement: false, godHammerEquipmentId: null } },
       cards: [],
       egoLevel: 0,
       hasPotential: false,
@@ -504,7 +504,7 @@ describe('calculateFaintMemory (snapshot attribute handling)', () => {
   beforeEach(() => {
     deck = {
       character: null,
-      equipment: { weapon: null, armor: null, pendant: null },
+      equipment: { weapon: { item: null, refinement: false, godHammerEquipmentId: null }, armor: { item: null, refinement: false, godHammerEquipmentId: null }, pendant: { item: null, refinement: false, godHammerEquipmentId: null } },
       cards: [],
       egoLevel: 0,
       hasPotential: false,
@@ -774,7 +774,7 @@ describe('calculateFaintMemory (copy double-counting issue)', () => {
   beforeEach(() => {
     deck = {
       character: null,
-      equipment: { weapon: null, armor: null, pendant: null },
+      equipment: { weapon: { item: null, refinement: false, godHammerEquipmentId: null }, armor: { item: null, refinement: false, godHammerEquipmentId: null }, pendant: { item: null, refinement: false, godHammerEquipmentId: null } },
       cards: [],
       egoLevel: 0,
       hasPotential: false,
@@ -1342,7 +1342,7 @@ describe('calculateFaintMemory (排除変換)', () => {
     const deck: Deck = {
       name: 'test',
       character: null,
-      equipment: { weapon: null, armor: null, pendant: null },
+      equipment: { weapon: { item: null, refinement: false, godHammerEquipmentId: null }, armor: { item: null, refinement: false, godHammerEquipmentId: null }, pendant: { item: null, refinement: false, godHammerEquipmentId: null } },
       cards: [],
       egoLevel: 0,
       hasPotential: false,
@@ -1373,7 +1373,7 @@ describe('calculateFaintMemory (追加カバレッジ)', () => {
     const deck: Deck = {
       name: 'test',
       character: null,
-      equipment: { weapon: null, armor: null, pendant: null },
+      equipment: { weapon: { item: null, refinement: false, godHammerEquipmentId: null }, armor: { item: null, refinement: false, godHammerEquipmentId: null }, pendant: { item: null, refinement: false, godHammerEquipmentId: null } },
       cards: [],
       egoLevel: 0,
       hasPotential: false,
@@ -1403,7 +1403,7 @@ describe('calculateFaintMemory (追加カバレッジ)', () => {
     const deck: Deck = {
       name: 'test',
       character: null,
-      equipment: { weapon: null, armor: null, pendant: null },
+      equipment: { weapon: { item: null, refinement: false, godHammerEquipmentId: null }, armor: { item: null, refinement: false, godHammerEquipmentId: null }, pendant: { item: null, refinement: false, godHammerEquipmentId: null } },
       cards: [],
       egoLevel: 0,
       hasPotential: false,
@@ -1422,7 +1422,7 @@ describe('calculateFaintMemory (追加カバレッジ)', () => {
     const deck: Deck = {
       name: 'test',
       character: null,
-      equipment: { weapon: null, armor: null, pendant: null },
+      equipment: { weapon: { item: null, refinement: false, godHammerEquipmentId: null }, armor: { item: null, refinement: false, godHammerEquipmentId: null }, pendant: { item: null, refinement: false, godHammerEquipmentId: null } },
       cards: [
         {
           deckId: 'copy-1',
@@ -1468,7 +1468,7 @@ describe('calculateFaintMemory (追加カバレッジ)', () => {
     const deck: Deck = {
       name: 'test',
       character: null,
-      equipment: { weapon: null, armor: null, pendant: null },
+      equipment: { weapon: { item: null, refinement: false, godHammerEquipmentId: null }, armor: { item: null, refinement: false, godHammerEquipmentId: null }, pendant: { item: null, refinement: false, godHammerEquipmentId: null } },
       cards: [],
       egoLevel: 0,
       hasPotential: false,
@@ -1495,7 +1495,7 @@ describe('calculateFaintMemory (追加カバレッジ)', () => {
     const deck: Deck = {
       name: 'test',
       character: null,
-      equipment: { weapon: null, armor: null, pendant: null },
+      equipment: { weapon: { item: null, refinement: false, godHammerEquipmentId: null }, armor: { item: null, refinement: false, godHammerEquipmentId: null }, pendant: { item: null, refinement: false, godHammerEquipmentId: null } },
       cards: [],
       egoLevel: 0,
       hasPotential: false,
@@ -1517,5 +1517,96 @@ describe('calculateFaintMemory (追加カバレッジ)', () => {
     };
 
     expect(calculateFaintMemory(deck)).toBe(80);
+  });
+
+  describe('equipment enhancements', () => {
+    let baseDeck: Deck;
+
+    beforeEach(() => {
+      baseDeck = {
+        character: null,
+        equipment: {
+          weapon: { item: null, refinement: false, godHammerEquipmentId: null },
+          armor: { item: null, refinement: false, godHammerEquipmentId: null },
+          pendant: { item: null, refinement: false, godHammerEquipmentId: null }
+        },
+        cards: [],
+        egoLevel: 0,
+        hasPotential: false,
+        createdAt: new Date(),
+        removedCards: new Map(),
+        copiedCards: new Map(),
+        convertedCards: new Map()
+      };
+    });
+
+    it('should add 10pt for equipment refinement', () => {
+      const mockEquipment: Equipment = { id: 'weapon-1', name: 'Test Weapon', type: EquipmentType.WEAPON, rarity: 'common' };
+      baseDeck.equipment.weapon = { item: mockEquipment, refinement: true, godHammerEquipmentId: null };
+
+      expect(calculateFaintMemory(baseDeck)).toBe(10);
+    });
+
+    it('should add 10pt for equipment god hammer', () => {
+      const mockEquipment: Equipment = { id: 'weapon-1', name: 'Test Weapon', type: EquipmentType.WEAPON, rarity: 'common' };
+      baseDeck.equipment.weapon = { item: mockEquipment, refinement: false, godHammerEquipmentId: 'hammer-effect-1' };
+
+      expect(calculateFaintMemory(baseDeck)).toBe(10);
+    });
+
+    it('should add 20pt for both refinement and god hammer on same equipment', () => {
+      const mockEquipment: Equipment = { id: 'weapon-1', name: 'Test Weapon', type: EquipmentType.WEAPON, rarity: 'common' };
+      baseDeck.equipment.weapon = { item: mockEquipment, refinement: true, godHammerEquipmentId: 'hammer-effect-1' };
+
+      expect(calculateFaintMemory(baseDeck)).toBe(20);
+    });
+
+    it('should add 60pt for all three equipment types with both enhancements', () => {
+      const mockWeapon: Equipment = { id: 'weapon-1', name: 'Test Weapon', type: EquipmentType.WEAPON, rarity: 'common' };
+      const mockArmor: Equipment = { id: 'armor-1', name: 'Test Armor', type: EquipmentType.ARMOR, rarity: 'common' };
+      const mockPendant: Equipment = { id: 'pendant-1', name: 'Test Pendant', type: EquipmentType.PENDANT, rarity: 'common' };
+
+      baseDeck.equipment.weapon = { item: mockWeapon, refinement: true, godHammerEquipmentId: 'hammer-effect-1' };
+      baseDeck.equipment.armor = { item: mockArmor, refinement: true, godHammerEquipmentId: 'hammer-effect-2' };
+      baseDeck.equipment.pendant = { item: mockPendant, refinement: true, godHammerEquipmentId: 'hammer-effect-3' };
+
+      expect(calculateFaintMemory(baseDeck)).toBe(60); // 20 each * 3
+    });
+
+    it('should not add points if equipment is not selected', () => {
+      baseDeck.equipment.weapon = { item: null, refinement: true, godHammerEquipmentId: 'hammer-effect-1' };
+      baseDeck.equipment.armor = { item: null, refinement: true, godHammerEquipmentId: 'hammer-effect-2' };
+      baseDeck.equipment.pendant = { item: null, refinement: true, godHammerEquipmentId: 'hammer-effect-3' };
+
+      expect(calculateFaintMemory(baseDeck)).toBe(0);
+    });
+
+    it('should combine equipment and card points', () => {
+      const mockEquipment: Equipment = { id: 'weapon-1', name: 'Test Weapon', type: EquipmentType.WEAPON, rarity: 'common' };
+      baseDeck.equipment.weapon = { item: mockEquipment, refinement: true, godHammerEquipmentId: null };
+
+      const variation: HiramekiVariation = {
+        level: 0,
+        cost: 0,
+        description: ''
+      };
+
+      baseDeck.cards.push({
+        deckId: '1',
+        id: 'shared-1',
+        name: 'Shared Card',
+        type: CardType.SHARED,
+        category: CardCategory.ATTACK,
+        statuses: [],
+        selectedHiramekiLevel: 0,
+        godHiramekiType: null,
+        godHiramekiEffectId: null,
+        selectedHiddenHiramekiId: null,
+        isBasicCard: false,
+        hiramekiVariations: [variation]
+      });
+
+      expect(calculateFaintMemory(baseDeck)).toBe(30); // 10 (equipment refinement) + 20 (shared card)
+    });
   });
 });

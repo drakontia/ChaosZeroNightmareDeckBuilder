@@ -17,6 +17,8 @@ interface DeckBuilderStore {
   clearRemoveLimitAlert: () => void;
   restoreCard: (card: DeckCard) => void;
   selectEquipment: (type: EquipmentType, equipment: Equipment | null) => void;
+  setEquipmentRefinement: (type: EquipmentType, value: boolean) => void;
+  setEquipmentGodHammer: (type: EquipmentType, equipmentId: string | null) => void;
   updateCardHirameki: (deckId: string, level: number) => void;
   setCardGodHirameki: (deckId: string, godType: GodType | null) => void;
   setCardGodHiramekiEffect: (deckId: string, effectId: string | null) => void;
@@ -55,7 +57,11 @@ export const useDeckBuilderStore = create<DeckBuilderStore>((set) => ({
           deck: {
             name: '',
             character,
-            equipment: { weapon: null, armor: null, pendant: null },
+            equipment: {
+              weapon: null,
+              armor: null,
+              pendant: null,
+            },
             cards: startingCards,
             egoLevel: 0,
             hasPotential: false,
@@ -90,13 +96,35 @@ export const useDeckBuilderStore = create<DeckBuilderStore>((set) => ({
         ? deck.createdAt
         : new Date(deck.createdAt as any);
     
+    // equipment の正規化。古い形式 (Equipment | null) から新しい形式 (EquipmentSlot | null) へ
+    const normalizedEquipment = {
+      weapon: !deck.equipment.weapon
+        ? null
+        : ('item' in deck.equipment.weapon
+            ? deck.equipment.weapon
+            : { item: deck.equipment.weapon as any, refinement: false, godHammerEquipmentId: null }),
+      armor: !deck.equipment.armor
+        ? null
+        : ('item' in deck.equipment.armor
+            ? deck.equipment.armor
+            : { item: deck.equipment.armor as any, refinement: false, godHammerEquipmentId: null }),
+      pendant: !deck.equipment.pendant
+        ? null
+        : ('item' in deck.equipment.pendant
+            ? deck.equipment.pendant
+            : { item: deck.equipment.pendant as any, refinement: false, godHammerEquipmentId: null }),
+    };
+    
     let newDeck = deck;
     if (charObj || !(deck.createdAt instanceof Date)) {
       newDeck = { 
-        ...deck, 
+        ...deck,
+        equipment: normalizedEquipment,
         ...(charObj && { character: charObj }),
         ...(!(deck.createdAt instanceof Date) && { createdAt: normalizedCreatedAt })
       };
+    } else {
+      newDeck = { ...deck, equipment: normalizedEquipment };
     }
     set({ deck: newDeck });
   },
@@ -198,7 +226,49 @@ export const useDeckBuilderStore = create<DeckBuilderStore>((set) => ({
           ...state.deck,
           equipment: {
             ...state.deck.equipment,
-            [type]: equipment,
+            [type]: equipment ? {
+              item: equipment,
+              refinement: false,
+              godHammerEquipmentId: null,
+            } : null,
+          },
+        },
+      };
+    });
+  },
+  setEquipmentRefinement: (type, value) => {
+    set((state) => {
+      if (!state.deck) return {};
+      const slot = state.deck.equipment[type];
+      if (!slot) return {};
+      return {
+        deck: {
+          ...state.deck,
+          equipment: {
+            ...state.deck.equipment,
+            [type]: {
+              ...slot,
+              refinement: value,
+            },
+          },
+        },
+      };
+    });
+  },
+  setEquipmentGodHammer: (type, equipmentId) => {
+    set((state) => {
+      if (!state.deck) return {};
+      const slot = state.deck.equipment[type];
+      if (!slot) return {};
+      return {
+        deck: {
+          ...state.deck,
+          equipment: {
+            ...state.deck.equipment,
+            [type]: {
+              ...slot,
+              godHammerEquipmentId: equipmentId,
+            },
           },
         },
       };
