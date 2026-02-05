@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
+import "./globals.css";
 import { NextIntlClientProvider } from 'next-intl';
 import { getLocale, getMessages } from 'next-intl/server';
 import { Analytics } from '@vercel/analytics/next';
-import "./globals.css";
+import { Toaster } from '@/components/ui/sonner';
 
 export const metadata: Metadata = {
   title: "カオスゼロナイトメア デッキビルダー",
@@ -23,6 +24,7 @@ export default async function RootLayout({
       <body>
         <NextIntlClientProvider messages={messages}>
           {children}
+          <Toaster />
         </NextIntlClientProvider>
         <Analytics />
       </body>

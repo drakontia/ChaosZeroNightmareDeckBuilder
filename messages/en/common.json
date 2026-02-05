@@ -113,7 +113,9 @@
     "removeLimitTitle": "Reached removal limit",
     "removeLimitMessage": "Removal is limited to 5 times. You cannot remove any more.",
     "copyLimitTitle": "Reached copy limit",
-    "copyLimitMessage": "Copying is limited to 4 times. You cannot copy any more."
+    "copyLimitMessage": "Copying is limited to 4 times. You cannot copy any more.",
+    "conversionLimitTitle": "Reached conversion limit",
+    "conversionLimitMessage": "Conversion is limited to 5 times. You cannot convert any more."
 
   },
   "god": {

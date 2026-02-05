@@ -1,5 +1,11 @@
 {
   "equipment": {
+    "refinement": "精錬",
+    "godHammer": "神のハンマー",
+    "godHammerWithoutRefinement": {
+      "title": "未选择精炼",
+      "message": "已启用神之锤的装备未选择精炼。建议启用精炼。"
+    },
     "armor": {
       "title": "防具",
       "scouts_combat_boots": {

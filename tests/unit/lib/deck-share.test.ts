@@ -18,9 +18,9 @@ describe('deck-share', () => {
         imgUrl: ''
       } as any,
       equipment: {
-        weapon: { id: 'obsidian_sword', name: 'equipment.weapon.obsidian_sword.name', type: EquipmentType.WEAPON, rarity: 'equipment.rarity.rare' },
-        armor: null,
-        pendant: null
+        weapon: { item: { id: 'obsidian_sword', name: 'equipment.weapon.obsidian_sword.name', type: EquipmentType.WEAPON, rarity: 'equipment.rarity.rare' }, refinement: false, godHammerEquipmentId: null },
+        armor: { item: null, refinement: false, godHammerEquipmentId: null },
+        pendant: { item: null, refinement: false, godHammerEquipmentId: null }
       },
       cards: [
         {
@@ -81,7 +81,11 @@ describe('deck-share', () => {
       const emptyDeck: Deck = {
         name: '',
         character: null,
-        equipment: { weapon: null, armor: null, pendant: null },
+        equipment: {
+          weapon: { item: null, refinement: false, godHammerEquipmentId: null },
+          armor: { item: null, refinement: false, godHammerEquipmentId: null },
+          pendant: { item: null, refinement: false, godHammerEquipmentId: null }
+        },
         cards: [],
         egoLevel: 0,
         hasPotential: false,
@@ -121,8 +125,8 @@ describe('deck-share', () => {
       const encoded = encodeDeckShare(mockDeck);
       const decoded = decodeDeckShare(encoded);
 
-      expect(decoded!.equipment.weapon?.id).toBe('obsidian_sword');
-      expect(decoded!.equipment.armor).toBeNull();
+      expect(decoded!.equipment.weapon?.item?.id).toBe('obsidian_sword');
+      expect(decoded!.equipment.armor?.item).toBeNull();
     });
 
     it('should preserve maps data', () => {
@@ -310,7 +314,11 @@ describe('deck-share', () => {
           hiramekiCards: [],
           imgUrl: ''
         } as any,
-        equipment: { weapon: null, armor: null, pendant: null },
+        equipment: {
+          weapon: { item: null, refinement: false, godHammerEquipmentId: null },
+          armor: { item: null, refinement: false, godHammerEquipmentId: null },
+          pendant: { item: null, refinement: false, godHammerEquipmentId: null }
+        },
         cards: [],
         egoLevel: 0,
         hasPotential: false,

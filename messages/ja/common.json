@@ -55,7 +55,9 @@
     "removeLimitTitle": "排除上限に達しました",
     "removeLimitMessage": "排除は5回までです。これ以上排除できません。",
     "copyLimitTitle": "コピー上限に達しました",
-    "copyLimitMessage": "コピーは4回までです。これ以上コピーできません。"
+    "copyLimitMessage": "コピーは4回までです。これ以上コピーできません。",
+    "conversionLimitTitle": "変換上限に達しました",
+    "conversionLimitMessage": "変換は5回までです。これ以上変換できません。"
   },
   "rarity": {
     "★5": "★5",

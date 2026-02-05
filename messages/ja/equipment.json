@@ -3,6 +3,12 @@
         "title": "獲得装備",
         "none": "なし",
         "info": "詳細情報",
+        "refinement": "精錬",
+        "godHammer": "神のハンマー",
+        "godHammerWithoutRefinement": {
+            "title": "精錬が選択されていません",
+            "message": "神のハンマーが有効な装備に精錬が選択されていません。精錬を有効にすることを推奨します。"
+        },
         "duplicate": {
             "warning": "{type}で神話級装備が選択されているため、別の神話級装備は選択できません"
         },

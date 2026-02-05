@@ -1,5 +1,11 @@
 {
   "equipment": {
+    "refinement": "Refinement",
+    "godHammer": "God's Hammer",
+    "godHammerWithoutRefinement": {
+      "title": "Refinement Not Selected",
+      "message": "Refinement is not selected for equipment with God's Hammer active. It is recommended to enable refinement."
+    },
     "armor": {
       "title": "Armor",
       "scouts_combat_boots": {
