@@ -2575,6 +2575,30 @@
             "0": "Heal 20% based on the number of cards in hand\nTuning: Generate 1 Contaminated Spore based on the number of cards in hand"
         }
     },
+    "azure_lumen": {
+        "name": "Azure Lumen",
+        "descriptions": {
+            "0": "Vanish 1 vanishing card in hand"
+        }
+    },
+    "crimson_lumen": {
+        "name": "Crimson Lumen",
+        "descriptions": {
+            "0": "Damage 300% to all enemies"
+        }
+    },
+    "amber_lumen": {
+        "name": "Amber Lumen",
+        "descriptions": {
+            "0": "Heal 150%\nTuning: Shield 150%"
+        }
+    },
+    "ebony_lumen": {
+        "name": "Ebony Lumen",
+        "descriptions": {
+            "0": "Incinerate: Draw 3\nGenerate 1 Broken Ebony Lumen"
+        }
+    },
     "__exclusion__": {
       "name": "Exclusion Card",
       "descriptions": {

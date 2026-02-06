@@ -2575,6 +2575,30 @@
                 "0": "手札のカード数に応じて、治癒20%\n調律：手札のカード数に応じて、汚染された胞子1枚生成"
             }
         },
+        "azure_lumen": {
+            "name": "青いルーメン",
+            "descriptions": {
+                "0": "手札の消滅カード1枚消滅"
+            }
+        },
+        "crimson_lumen": {
+            "name": "赤いルーメン",
+            "descriptions": {
+                "0": "敵全体にダメージ300%"
+            }
+        },
+        "amber_lumen": {
+            "name": "黄のルーメン",
+            "descriptions": {
+                "0": "治癒150%\n調律：シールド150%"
+            }
+        },
+        "ebony_lumen": {
+            "name": "黒いルーメン",
+            "descriptions": {
+                "0": "焼却:ドロー3\n壊れた黒いルーメン1枚生成"
+            }
+        },
         "__exclusion__": {
             "name": "排除カード",
             "descriptions": {

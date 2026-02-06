@@ -1,5 +1,17 @@
 {
   "equipment": {
+    "rarity": {
+      "legendary": "Legendary",
+      "mythical": "Mythical",
+      "name": "Rarity",
+      "rare": "Rare"
+    },
+    "duplicate": {
+      "warning": "Another mythical equipment cannot be selected because one is already equipped in {type}"
+    },
+    "title": "Obtained Equipment",
+    "info": "Details",
+    "none": "None",
     "refinement": "Refinement",
     "godHammer": "God's Hammer",
     "godHammerWithoutRefinement": {
@@ -211,10 +223,16 @@
       "vine_lords_mask": {
           "name": "ヴァインロードの仮面",
           "description": "味方の能力で消滅カードドロー時、固定シールド80%(各ターン2回)"
+      },
+      "victors_laurel": {
+          "name": "勝者の月桂冠",
+          "description": "反撃ダメージ量40%増加"
+      },
+      "shield_of_ashen_sacrifice": {
+          "name": "色あせた犠牲の盾",
+          "description": "ダメージを完全に防ぐと、次のターン開始時、盾爆発1枚生成"
       }
     },
-    "info": "Details",
-    "none": "None",
     "pendant": {
       "absolute_zero_tetrahedron": {
         "description": "+20% Shield Acquisition at the start of the fight",
@@ -508,18 +526,28 @@
       "liberated_essence": {
           "name": "解放されたエッセンス",
           "description": "ターン開始時、手札のランダウな消滅カード1枚を1ターンの間、コスト1減少"
+      },
+      "combat_drum": {
+          "name": "戦闘用太鼓",
+          "description": "スキルカード5枚生成時、次に発動する味方カードのダメージ量20%増加(最大1重複)"
+      },
+      "gladiators_medallion": {
+          "name": "剣闘士の証",
+          "description": "カードでシールド3回獲得時、敵全体に固定ダメージ100%"
+      },
+      "rage_potion": {
+          "name": "激怒ポーション",
+          "description": "攻撃カード4回発動時、次に発動する攻撃カードのダメージ量40%増加"
+      },
+      "launcher_of_ruined_honor": {
+          "name": "崩れた名誉の発射機",
+          "description": "偶数ターンごとに重打撃1枚生成"
+      },
+      "charger_of_weathered_glory": {
+          "name": "古びた栄光の充電器",
+          "description": "アクションポイント1以上のままターンを終了すると、次のターン開始時にチャージ一撃1枚生成"
       }
     },
-    "rarity": {
-      "legendary": "Legendary",
-      "mythical": "Mythical",
-      "name": "Rarity",
-      "rare": "Rare"
-    },
-    "duplicate": {
-      "warning": "Another mythical equipment cannot be selected because one is already equipped in {type}"
-    },
-    "title": "Obtained Equipment",
     "weapon": {
       "title": "Weapon",
       "obsidian_sword": {
@@ -773,6 +801,18 @@
       "brilliant_eternal_flame": {
           "name": "輝かしい永劫の炎",
           "description": "コスト2以上の消滅カードのダメージ量40%増加"
+      },
+      "harp_of_conflict": {
+          "name": "闘争のハープ",
+          "description": "1ターンの間、味方カードでダメージ、シールド、治癒をすべて発動時、1ターンの間、味方ダメージ量15%増加"
+      },
+      "arm_of_lost_valor": {
+          "name": "消えた勇気の腕",
+          "description": "1ターンの間、攻撃カードを発動せずにターン終了時、ロケットパンチ1枚生成"
+      },
+      "harpoon_case_of_broken_resolve": {
+          "name": "折れた意志の銛筒",
+          "description": "奇数ターンごとに貫き1枚生成"
       }
     }
   }

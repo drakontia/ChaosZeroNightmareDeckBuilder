@@ -521,6 +521,7 @@ export const PENDANTS: Equipment[] = [
     description: "equipment.pendant.source_of_the_forbidden.description",
     imgUrl: "/images/equipment/pendants/source_of_the_forbidden.png"
   },
+  // Season 2 Pendants
   {
     id: "plant_doll",
     name: "equipment.pendant.plant_doll.name",
@@ -584,5 +585,45 @@ export const PENDANTS: Equipment[] = [
     rarity: "equipment.rarity.mythical",
     description: "equipment.pendant.liberated_essence.description",
     imgUrl: "/images/equipment/pendants/liberated_essence.png"
-  }
+  },
+  {
+    id: "combat_drum",
+    name: "equipment.pendant.combat_drum.name",
+    type: EquipmentType.PENDANT,
+    rarity: "equipment.rarity.legendary",
+    description: "equipment.pendant.combat_drum.description",
+    imgUrl: "/images/equipment/pendants/combat_drum.png"
+  },
+  {
+    id: "gladiators_medallion",
+    name: "equipment.pendant.gladiators_medallion.name",
+    type: EquipmentType.PENDANT,
+    rarity: "equipment.rarity.legendary",
+    description: "equipment.pendant.gladiators_medallion.description",
+    imgUrl: "/images/equipment/pendants/gladiators_medallion.png"
+  },
+  {
+    id: "rage_potion",
+    name: "equipment.pendant.rage_potion.name",
+    type: EquipmentType.PENDANT,
+    rarity: "equipment.rarity.legendary",
+    description: "equipment.pendant.rage_potion.description",
+    imgUrl: "/images/equipment/pendants/rage_potion.png"
+  },
+  {
+    id: "launcher_of_ruined_honor",
+    name: "equipment.pendant.launcher_of_ruined_honor.name",
+    type: EquipmentType.PENDANT,
+    rarity: "equipment.rarity.rare",
+    description: "equipment.pendant.launcher_of_ruined_honor.description",
+    imgUrl: "/images/equipment/pendants/launcher_of_ruined_honor.png"
+  },
+  {
+    id: "charger_of_weathered_glory",
+    name: "equipment.pendant.charger_of_weathered_glory.name",
+    type: EquipmentType.PENDANT,
+    rarity: "equipment.rarity.rare",
+    description: "equipment.pendant.charger_of_weathered_glory.description",
+    imgUrl: "/images/equipment/pendants/charger_of_weathered_glory.png"
+  },
 ];
