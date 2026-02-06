@@ -806,4 +806,53 @@ export const SHARED_CARDS: CznCard[] = [
       { level: 0, cost: 1, description: "ドロー3" }
     ]
   },
+  // Season 2 Shared Cards
+  {
+    id: "azure_lumen",
+    name: "青いルーメン",
+    type: CardType.SHARED,
+    category: CardCategory.SKILL,
+    statuses: [CardStatus.RETAIN, CardStatus.EXHAUST],
+    allowedJobs: "all",
+    imgUrl: "/images/cards/azure_lumen.png",
+    hiramekiVariations: [
+      { level: 0, cost: 0, description: "手札の消滅カード1枚消滅" }
+    ]
+  },
+  {
+    id: "crimson_lumen",
+    name: "赤いルーメン",
+    type: CardType.SHARED,
+    category: CardCategory.ATTACK,
+    statuses: [CardStatus.IGNITION, CardStatus.EXHAUST],
+    allowedJobs: "all",
+    imgUrl: "/images/cards/crimson_lumen.png",
+    hiramekiVariations: [
+      { level: 0, cost: 3, description: "敵全体にダメージ300%" }
+    ]
+  },
+  {
+    id: "amber_lumen",
+    name: "黄のルーメン",
+    type: CardType.SHARED,
+    category: CardCategory.SKILL,
+    statuses: [CardStatus.EXHAUST],
+    allowedJobs: "all",
+    imgUrl: "/images/cards/amber_lumen.png",
+    hiramekiVariations: [
+      { level: 0, cost: 1, description: "治癒150%\n調律：シールド150%" }
+    ]
+  },
+  {
+    id: "ebony_lumen",
+    name: "黒いルーメン",
+    type: CardType.SHARED,
+    category: CardCategory.SKILL,
+    statuses: [CardStatus.EXHAUST],
+    allowedJobs: "all",
+    imgUrl: "/images/cards/ebony_lumen.png",
+    hiramekiVariations: [
+      { level: 0, cost: 3, description: "焼却:ドロー3\n壊れた黒いルーメン1枚生成" }
+    ]
+  },
 ];

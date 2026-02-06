@@ -361,6 +361,7 @@ export const ARMORS: Equipment[] = [
     description: "equipment.armor.rocket_adorned_cape.description",
     imgUrl: "/images/equipment/armors/rocket_adorned_cape.png"
   },
+  // Season 2 Armors
   {
     id: "vine_camouflage",
     name: "equipment.armor.vine_camouflage.name",
@@ -408,5 +409,21 @@ export const ARMORS: Equipment[] = [
     rarity: "equipment.rarity.legendary",
     description: "equipment.armor.vine_lords_mask.description",
     imgUrl: "/images/equipment/armors/vine_lords_mask.png"
-  }
+  },
+  {
+    id: "victors_laurel",
+    name: "equipment.armor.victors_laurel.name",
+    type: EquipmentType.ARMOR,
+    rarity: "equipment.rarity.legendary",
+    description: "equipment.armor.victors_laurel.description",
+    imgUrl: "/images/equipment/armors/victors_laurel.png"
+  },
+  {
+    id: "shield_of_ashen_sacrifice",
+    name: "equipment.armor.shield_of_ashen_sacrifice.name",
+    type: EquipmentType.ARMOR,
+    rarity: "equipment.rarity.rare",
+    description: "equipment.armor.shield_of_ashen_sacrifice.description",
+    imgUrl: "/images/equipment/armors/shield_of_ashen_sacrifice.png"
+  },
 ];

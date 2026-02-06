@@ -465,6 +465,7 @@ export const WEAPONS: Equipment[] = [
     description: "equipment.weapon.chimeranite.description",
     imgUrl: "/images/equipment/weapons/chimeranite.png"
   },
+  // Season 2
   {
     id: "millennium_arbor",
     name: "equipment.weapon.millennium_arbor.name",
@@ -504,5 +505,29 @@ export const WEAPONS: Equipment[] = [
     rarity: "equipment.rarity.mythical",
     description: "equipment.weapon.brilliant_eternal_flame.description",
     imgUrl: "/images/equipment/weapons/brilliant_eternal_flame.png"
-  }
+  },
+  {
+    id: "harp_of_conflict",
+    name: "equipment.weapon.harp_of_conflict.name",
+    type: EquipmentType.WEAPON,
+    rarity: "equipment.rarity.legendary",
+    description: "equipment.weapon.harp_of_conflict.description",
+    imgUrl: "/images/equipment/weapons/harp_of_conflict.png"
+  },
+  {
+    id: "arm_of_lost_valor",
+    name: "equipment.weapon.arm_of_lost_valor.name",
+    type: EquipmentType.WEAPON,
+    rarity: "equipment.rarity.rare",
+    description: "equipment.weapon.arm_of_lost_valor.description",
+    imgUrl: "/images/equipment/weapons/arm_of_lost_valor.png"
+  },
+  {
+    id: "harpoon_case_of_broken_resolve",
+    name: "equipment.weapon.harpoon_case_of_broken_resolve.name",
+    type: EquipmentType.WEAPON,
+    rarity: "equipment.rarity.rare",
+    description: "equipment.weapon.harpoon_case_of_broken_resolve.description",
+    imgUrl: "/images/equipment/weapons/harpoon_case_of_broken_resolve.png"
+  },
 ];
