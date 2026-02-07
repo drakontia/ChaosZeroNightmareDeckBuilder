@@ -540,7 +540,7 @@
             },
             "dimensional_cube": {
                 "name": "次元のキューブ",
-                "description": "カードを捨てるとき、1ターンの間、ダメージ量＋10%"
+                "description": "カードを捨てるとき、1ターンの間、ダメージ量＋15%(最大3重複)"
             },
             "water_drops_of_the_goddess": {
                 "name": "女神の雫",
