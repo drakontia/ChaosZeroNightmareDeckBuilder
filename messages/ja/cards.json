@@ -1,5 +1,53 @@
 {
     "cards": {
+        "tiphera_starting_1": {
+            "name": "物質分解",
+            "descriptions": {
+                "0": "防御依存ダメージ100%"
+            }
+        },
+        "tiphera_starting_2": {
+            "name": "障壁展開",
+            "descriptions": {
+                "0": "治癒100%"
+            }
+        },
+        "tiphera_starting_3": {
+            "name": "障壁展開",
+            "descriptions": {
+                "0": "治癒100%"
+            }
+        },
+        "tiphera_starting_4": {
+            "name": "クアンタムシード",
+            "descriptions": {
+                "0": "治癒100%\n山札に創造カードを2枚生成、その中から1枚ドロー"
+            }
+        },
+        "tiphera_hirameki_1": {
+            "name": "形状結集",
+            "descriptions": {
+                "0": "創造カード ドロー2\nそのカードの効果のうち1つがランダムで1ターンの間2倍"
+            }
+        },
+        "tiphera_hirameki_2": {
+            "name": "創造と破壊",
+            "descriptions": {
+                "0": "防御依存ダメージ120%\nシールド80%\n治癒80%\n調律：すべての効果2倍"
+            }
+        },
+        "tiphera_hirameki_3": {
+            "name": "対生成",
+            "descriptions": {
+                "0": "創造カードを2枚生成するたび、捨て札に同じカードを1枚生成"
+            }
+        },
+        "tiphera_hirameki_4": {
+            "name": "事象の地平線",
+            "descriptions": {
+                "0": "アクションポイント1\nドロー1\n次に使用する攻撃カードの最初のヒットダメージ量40%増加"
+            }
+        },
         "narja_starting_1": {
             "name": "NA：攻撃反応",
             "descriptions": {

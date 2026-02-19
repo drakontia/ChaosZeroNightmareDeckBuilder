@@ -10,6 +10,104 @@ import { CznCard, CardType, CardCategory, CardStatus } from "@/types";
  * The name and description fields below serve as fallback values when translations are not available.
  */
 export const CHARACTER_CARDS: CznCard[] = [
+  // Tiphera's starting cards
+  {
+    id: "tiphera_starting_1",
+    name: "物質分解", // Fallback: See messages/*.json for translations
+    type: CardType.CHARACTER,
+    category: CardCategory.ATTACK,
+    statuses: [],
+    isBasicCard: true,
+    isStartingCard: true,
+    imgUrl: "/images/cards/tiphera_starting_1.png",
+    hiramekiVariations: [
+      { level: 0, cost: 1, description: "防御依存ダメージ100%" } // Fallback
+    ]
+  },
+  {
+    id: "tiphera_starting_2",
+    name: "障壁展開", // Fallback
+    type: CardType.CHARACTER,
+    category: CardCategory.SKILL,
+    statuses: [],
+    isBasicCard: true,
+    isStartingCard: true,
+    imgUrl: "/images/cards/tiphera_starting_2.png",
+    hiramekiVariations: [
+      { level: 0, cost: 1, description: "治癒100%" } // Fallback
+    ]
+  },
+  {
+    id: "tiphera_starting_3",
+    name: "障壁展開", // Fallback
+    type: CardType.CHARACTER,
+    category: CardCategory.SKILL,
+    statuses: [],
+    isBasicCard: true,
+    isStartingCard: true,
+    imgUrl: "/images/cards/tiphera_starting_2.png",
+    hiramekiVariations: [
+      { level: 0, cost: 1, description: "治癒100%" } // Fallback
+    ]
+  },
+  {
+    id: "tiphera_starting_4",
+    name: "クアンタムシード ", // Fallback
+    type: CardType.CHARACTER,
+    category: CardCategory.SKILL,
+    statuses: [],
+    isBasicCard: false,
+    isStartingCard: true,
+    imgUrl: "/images/cards/tiphera_starting_4.png",
+    hiramekiVariations: [ // Fallback descriptions
+      { level: 0, cost: 0, description: "治癒100%\n山札に創造カードを2枚生成、その中から1枚ドロー" },
+    ]
+  },
+  // Tiphera's hirameki cards
+  {
+    id: "tiphera_hirameki_1",
+    name: "形状結集", // Fallback
+    type: CardType.CHARACTER,
+    category: CardCategory.SKILL,
+    statuses: [CardStatus.RETAIN],
+    imgUrl: "/images/cards/tiphera_hirameki_1.png",
+    hiramekiVariations: [ // Fallback descriptions
+      { level: 0, cost: 1, description: "創造カード ドロー2、そのカードの効果のうち1つがランダムで1ターンの間2倍" },
+    ]
+  },
+  {
+    id: "tiphera_hirameki_2",
+    name: "創造と破壊", // Fallback
+    type: CardType.CHARACTER,
+    category: CardCategory.ATTACK,
+    statuses: [],
+    imgUrl: "/images/cards/tiphera_hirameki_2.png",
+    hiramekiVariations: [ // Fallback descriptions
+      { level: 0, cost: 1, description: "防御依存ダメージ120%、シールド80%、治癒80%、調律：すべての効果2倍"},
+    ]
+  },
+  {
+    id: "tiphera_hirameki_3",
+    name: "対生成", // Fallback
+    type: CardType.CHARACTER,
+    category: CardCategory.UPGRADE,
+    statuses: [CardStatus.UNIQUE],
+    imgUrl: "/images/cards/tiphera_hirameki_3.png",
+    hiramekiVariations: [ // Fallback descriptions
+      { level: 0, cost: 1, description: "創造カードを2枚生成するたび、捨て札に同じカードを1枚生成" },
+    ]
+  },
+  {
+    id: "tiphera_hirameki_4",
+    name: "事象の地平線", // Fallback
+    type: CardType.CHARACTER,
+    category: CardCategory.SKILL,
+    statuses: [CardStatus.UNIQUE, CardStatus.FORM_UPGRADE],
+    imgUrl: "/images/cards/tiphera_hirameki_4.png",
+    hiramekiVariations: [ // Fallback descriptions
+      { level: 0, cost: 2, description: "アクションポイント1、ドロー1、次に使用する攻撃カードの最初のヒットダメージ量40%増加" },
+    ]
+  },
   // Sereniel's starting cards
   {
     id: "sereniel_starting_1",
