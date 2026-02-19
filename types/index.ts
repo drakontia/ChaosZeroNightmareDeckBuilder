@@ -96,7 +96,8 @@ export enum CardStatus {
   PULVERIZE = "pulverize",     // 粉砕
   BIND = "bind",               // 結束
   IGNITION = "ignition",         // 点火
-  COPIED = "copied"            // コピー済み
+  COPIED = "copied",            // コピー済み
+  FORM_UPGRADE = "form_upgrade",    // 形状強化
 }
 
 // Hirameki variation for a card

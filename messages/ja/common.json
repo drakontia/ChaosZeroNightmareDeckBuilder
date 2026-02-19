@@ -151,7 +151,8 @@
     "weakness_attack": "弱点攻撃",
     "pulverize": "粉砕",
     "bind": "結束",
-    "ignition": "点火"
+    "ignition": "点火",
+    "form_upgrade": "形状強化"
   },
   "actions": {
     "add": "追加",
@@ -178,6 +179,7 @@
     "faintMemory": "曖昧な記憶",
     "egoManifest": "エゴ発現",
     "potential": "潜在力",
+    "tiphera": "ティペラ",
     "nine": "ナイン",
     "narja": "ナージャ",
     "sereniel": "セレニエル",
