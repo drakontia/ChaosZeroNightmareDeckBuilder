@@ -93,14 +93,18 @@ export function InfoDialog({
                       key={effect.id}
                       onClick={() => onRefinementChange?.(effect.id)}
                     >
-                      {effect.description}
+                      {t(`equipment.refinementEffects.${effect.id}`, {
+                        defaultValue: effect.description,
+                      })}
                     </DropdownMenuItem>
                   ))}
                 </DropdownMenuContent>
               </DropdownMenu>
               {refinement && (
                 <span className="text-xs text-muted-foreground">
-                  {REFINEMENT_EFFECTS.find(e => e.id === refinement)?.description || ''}
+                  {t(`equipment.refinementEffects.${refinement}`, {
+                    defaultValue: REFINEMENT_EFFECTS.find(e => e.id === refinement)?.description || '',
+                  })}
                 </span>
               )}
             </div>

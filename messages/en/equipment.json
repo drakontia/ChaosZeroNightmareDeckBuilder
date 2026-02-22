@@ -18,6 +18,28 @@
       "title": "Refinement Not Selected",
       "message": "Refinement is not selected for equipment with God's Hammer active. It is recommended to enable refinement."
     },
+    "refinementEffects": {
+      "refinement_01": "When storing or extinguishing a card, deal 100% fixed damage to a random enemy (once per turn)",
+      "refinement_02": "When hunting a turn while you have a shield, deal 100% fixed damage to all enemies",
+      "refinement_03": "At the start of the turn, 30% chance to draw 1 extinguished card",
+      "refinement_04": "At the start of combat, draw 1 of your extinguished cards",
+      "refinement_05": "When drawing an extinguished card with an ability, trigger immediately (once per turn)",
+      "refinement_06": "Attack card damage +20%",
+      "refinement_07": "Shield gain and healing +15%",
+      "refinement_08": "When you completely block damage, at the start of the next turn, allies' damage +10% for 1 turn (once per turn)",
+      "refinement_09": "At the start of combat, if you have 33+ cards, attack card damage +30%",
+      "refinement_10": "At the start of combat, if you have 18+ cards, attack card damage +30%",
+      "refinement_11": "Extinguish card damage +25%",
+      "refinement_12": "Attack cards with cost 2+ deal +25% damage",
+      "refinement_13": "At the start of combat, Preservation 1",
+      "refinement_14": "When using an attack card on a vulnerable enemy, crit rate +15%",
+      "refinement_15": "If you deal no damage for 1 turn, at the start of the next turn, damage +50% for 1 turn",
+      "refinement_16": "At the start of the turn, deal 60% fixed damage to a random enemy based on the number of allied extinguished cards in hand",
+      "refinement_17": "On counterattack, deal 100% fixed damage to all enemies (once per turn)",
+      "refinement_18": "When gaining a shield, fixed shield 100% (once per turn)",
+      "refinement_19": "When using a card with cost 3+, gain 1 action point (once per turn)",
+      "refinement_20": "If you have 1+ action point at end of turn, inflict Vulnerable 1 on all enemies"
+    },
     "armor": {
       "title": "Armor",
       "scouts_combat_boots": {

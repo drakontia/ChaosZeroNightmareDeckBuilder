@@ -63,7 +63,9 @@ export function EquipmentSelector({ equipment, selectedEquipment, onSelect, onRe
       if (slot?.refinement) {
         const refinement = REFINEMENT_EFFECTS.find(e => e.id === slot.refinement);
         if (refinement) {
-          newRefinementDescriptions[type] = refinement.description;
+          newRefinementDescriptions[type] = t(`equipment.refinementEffects.${refinement.id}`, {
+            defaultValue: refinement.description,
+          });
         }
       }
     }
