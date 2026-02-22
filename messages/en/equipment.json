@@ -28,7 +28,7 @@
       "refinement_07": "Shield gain and healing +15%",
       "refinement_08": "When you completely block damage, at the start of the next turn, allies' damage +10% for 1 turn (once per turn)",
       "refinement_09": "At the start of combat, if you have 33+ cards, attack card damage +30%",
-      "refinement_10": "At the start of combat, if you have 18+ cards, attack card damage +30%",
+      "refinement_10": "At the start of combat, if you have 18 or fewer cards, attack card damage +30%",
       "refinement_11": "Extinguish card damage +25%",
       "refinement_12": "Attack cards with cost 2+ deal +25% damage",
       "refinement_13": "At the start of combat, Preservation 1",
