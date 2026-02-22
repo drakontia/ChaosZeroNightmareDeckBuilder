@@ -217,7 +217,7 @@ export interface ConvertedCardEntry {
 
 export interface EquipmentSlot {
   item: Equipment | null;
-  refinement: boolean;
+  refinement: string | null; // 精錬IDまたは null (null = 未選択)
   godHammerEquipmentId: string | null; // 選択した神のハンマー効果の装備ID (null = 未選択)
 }
 
@@ -239,4 +239,7 @@ export interface Deck {
   convertedCards: Map<string, string | ConvertedCardEntry>; // originalCardId -> convertedCardId or snapshot entry
 }
 
-
+export interface Refinement {
+  id: string;
+  description: string;
+}

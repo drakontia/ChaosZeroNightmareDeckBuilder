@@ -77,9 +77,9 @@ export function DeckBuilder({ shareId }: DeckBuilderProps) {
         name: '',
         character: null,
         equipment: {
-          weapon: { item: null, refinement: false, godHammerEquipmentId: null },
-          armor: { item: null, refinement: false, godHammerEquipmentId: null },
-          pendant: { item: null, refinement: false, godHammerEquipmentId: null },
+          weapon: { item: null, refinement: null, godHammerEquipmentId: null },
+          armor: { item: null, refinement: null, godHammerEquipmentId: null },
+          pendant: { item: null, refinement: null, godHammerEquipmentId: null },
         },
         cards: [],
         egoLevel: 0,
@@ -407,8 +407,8 @@ export function DeckBuilder({ shareId }: DeckBuilderProps) {
                         onSelect={(equipment: Equipment | null, type?: EquipmentType) => {
                           if (type) selectEquipment(type, equipment);
                         }}
-                        onRefinementChange={(type: EquipmentType, value: boolean) => {
-                          setEquipmentRefinement(type, value);
+                        onRefinementChange={(type: EquipmentType, refinementId: string | null) => {
+                          setEquipmentRefinement(type, refinementId);
                         }}
                         onGodHammerChange={(type: EquipmentType, equipmentId: string | null) => {
                           setEquipmentGodHammer(type, equipmentId);

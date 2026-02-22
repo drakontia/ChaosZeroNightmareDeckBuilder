@@ -17,7 +17,7 @@ interface DeckBuilderStore {
   clearRemoveLimitAlert: () => void;
   restoreCard: (card: DeckCard) => void;
   selectEquipment: (type: EquipmentType, equipment: Equipment | null) => void;
-  setEquipmentRefinement: (type: EquipmentType, value: boolean) => void;
+  setEquipmentRefinement: (type: EquipmentType, value: string | null) => void;
   setEquipmentGodHammer: (type: EquipmentType, equipmentId: string | null) => void;
   updateCardHirameki: (deckId: string, level: number) => void;
   setCardGodHirameki: (deckId: string, godType: GodType | null) => void;
@@ -102,17 +102,17 @@ export const useDeckBuilderStore = create<DeckBuilderStore>((set) => ({
         ? null
         : ('item' in deck.equipment.weapon
             ? deck.equipment.weapon
-            : { item: deck.equipment.weapon as any, refinement: false, godHammerEquipmentId: null }),
+            : { item: deck.equipment.weapon as any, refinement: null, godHammerEquipmentId: null }),
       armor: !deck.equipment.armor
         ? null
         : ('item' in deck.equipment.armor
             ? deck.equipment.armor
-            : { item: deck.equipment.armor as any, refinement: false, godHammerEquipmentId: null }),
+            : { item: deck.equipment.armor as any, refinement: null, godHammerEquipmentId: null }),
       pendant: !deck.equipment.pendant
         ? null
         : ('item' in deck.equipment.pendant
             ? deck.equipment.pendant
-            : { item: deck.equipment.pendant as any, refinement: false, godHammerEquipmentId: null }),
+            : { item: deck.equipment.pendant as any, refinement: null, godHammerEquipmentId: null }),
     };
     
     let newDeck = deck;
@@ -228,7 +228,7 @@ export const useDeckBuilderStore = create<DeckBuilderStore>((set) => ({
             ...state.deck.equipment,
             [type]: equipment ? {
               item: equipment,
-              refinement: false,
+              refinement: null,
               godHammerEquipmentId: null,
             } : null,
           },
@@ -248,7 +248,7 @@ export const useDeckBuilderStore = create<DeckBuilderStore>((set) => ({
             ...state.deck.equipment,
             [type]: {
               ...slot,
-              refinement: value,
+              refinement: value, // value can be refinement ID string or null
             },
           },
         },

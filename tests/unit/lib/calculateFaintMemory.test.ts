@@ -9,9 +9,9 @@ describe('calculateFaintMemory', () => {
     baseDeck = {
       character: null,
       equipment: {
-        weapon: { item: null, refinement: false, godHammerEquipmentId: null },
-        armor: { item: null, refinement: false, godHammerEquipmentId: null },
-        pendant: { item: null, refinement: false, godHammerEquipmentId: null }
+        weapon: { item: null, refinement: null, godHammerEquipmentId: null },
+        armor: { item: null, refinement: null, godHammerEquipmentId: null },
+        pendant: { item: null, refinement: null, godHammerEquipmentId: null }
       },
       cards: [],
       egoLevel: 0,
@@ -442,7 +442,7 @@ describe('calculateFaintMemory (removed/copied attribute handling)', () => {
   beforeEach(() => {
     deck = {
       character: null,
-      equipment: { weapon: { item: null, refinement: false, godHammerEquipmentId: null }, armor: { item: null, refinement: false, godHammerEquipmentId: null }, pendant: { item: null, refinement: false, godHammerEquipmentId: null } },
+      equipment: { weapon: { item: null, refinement: null, godHammerEquipmentId: null }, armor: { item: null, refinement: null, godHammerEquipmentId: null }, pendant: { item: null, refinement: null, godHammerEquipmentId: null } },
       cards: [],
       egoLevel: 0,
       hasPotential: false,
@@ -504,7 +504,7 @@ describe('calculateFaintMemory (snapshot attribute handling)', () => {
   beforeEach(() => {
     deck = {
       character: null,
-      equipment: { weapon: { item: null, refinement: false, godHammerEquipmentId: null }, armor: { item: null, refinement: false, godHammerEquipmentId: null }, pendant: { item: null, refinement: false, godHammerEquipmentId: null } },
+      equipment: { weapon: { item: null, refinement: null, godHammerEquipmentId: null }, armor: { item: null, refinement: null, godHammerEquipmentId: null }, pendant: { item: null, refinement: null, godHammerEquipmentId: null } },
       cards: [],
       egoLevel: 0,
       hasPotential: false,
@@ -774,7 +774,7 @@ describe('calculateFaintMemory (copy double-counting issue)', () => {
   beforeEach(() => {
     deck = {
       character: null,
-      equipment: { weapon: { item: null, refinement: false, godHammerEquipmentId: null }, armor: { item: null, refinement: false, godHammerEquipmentId: null }, pendant: { item: null, refinement: false, godHammerEquipmentId: null } },
+      equipment: { weapon: { item: null, refinement: null, godHammerEquipmentId: null }, armor: { item: null, refinement: null, godHammerEquipmentId: null }, pendant: { item: null, refinement: null, godHammerEquipmentId: null } },
       cards: [],
       egoLevel: 0,
       hasPotential: false,
@@ -1342,7 +1342,7 @@ describe('calculateFaintMemory (排除変換)', () => {
     const deck: Deck = {
       name: 'test',
       character: null,
-      equipment: { weapon: { item: null, refinement: false, godHammerEquipmentId: null }, armor: { item: null, refinement: false, godHammerEquipmentId: null }, pendant: { item: null, refinement: false, godHammerEquipmentId: null } },
+      equipment: { weapon: { item: null, refinement: null, godHammerEquipmentId: null }, armor: { item: null, refinement: null, godHammerEquipmentId: null }, pendant: { item: null, refinement: null, godHammerEquipmentId: null } },
       cards: [],
       egoLevel: 0,
       hasPotential: false,
@@ -1373,7 +1373,7 @@ describe('calculateFaintMemory (追加カバレッジ)', () => {
     const deck: Deck = {
       name: 'test',
       character: null,
-      equipment: { weapon: { item: null, refinement: false, godHammerEquipmentId: null }, armor: { item: null, refinement: false, godHammerEquipmentId: null }, pendant: { item: null, refinement: false, godHammerEquipmentId: null } },
+      equipment: { weapon: { item: null, refinement: null, godHammerEquipmentId: null }, armor: { item: null, refinement: null, godHammerEquipmentId: null }, pendant: { item: null, refinement: null, godHammerEquipmentId: null } },
       cards: [],
       egoLevel: 0,
       hasPotential: false,
@@ -1403,7 +1403,7 @@ describe('calculateFaintMemory (追加カバレッジ)', () => {
     const deck: Deck = {
       name: 'test',
       character: null,
-      equipment: { weapon: { item: null, refinement: false, godHammerEquipmentId: null }, armor: { item: null, refinement: false, godHammerEquipmentId: null }, pendant: { item: null, refinement: false, godHammerEquipmentId: null } },
+      equipment: { weapon: { item: null, refinement: null, godHammerEquipmentId: null }, armor: { item: null, refinement: null, godHammerEquipmentId: null }, pendant: { item: null, refinement: null, godHammerEquipmentId: null } },
       cards: [],
       egoLevel: 0,
       hasPotential: false,
@@ -1422,7 +1422,7 @@ describe('calculateFaintMemory (追加カバレッジ)', () => {
     const deck: Deck = {
       name: 'test',
       character: null,
-      equipment: { weapon: { item: null, refinement: false, godHammerEquipmentId: null }, armor: { item: null, refinement: false, godHammerEquipmentId: null }, pendant: { item: null, refinement: false, godHammerEquipmentId: null } },
+      equipment: { weapon: { item: null, refinement: null, godHammerEquipmentId: null }, armor: { item: null, refinement: null, godHammerEquipmentId: null }, pendant: { item: null, refinement: null, godHammerEquipmentId: null } },
       cards: [
         {
           deckId: 'copy-1',
@@ -1468,7 +1468,7 @@ describe('calculateFaintMemory (追加カバレッジ)', () => {
     const deck: Deck = {
       name: 'test',
       character: null,
-      equipment: { weapon: { item: null, refinement: false, godHammerEquipmentId: null }, armor: { item: null, refinement: false, godHammerEquipmentId: null }, pendant: { item: null, refinement: false, godHammerEquipmentId: null } },
+      equipment: { weapon: { item: null, refinement: null, godHammerEquipmentId: null }, armor: { item: null, refinement: null, godHammerEquipmentId: null }, pendant: { item: null, refinement: null, godHammerEquipmentId: null } },
       cards: [],
       egoLevel: 0,
       hasPotential: false,
@@ -1495,7 +1495,7 @@ describe('calculateFaintMemory (追加カバレッジ)', () => {
     const deck: Deck = {
       name: 'test',
       character: null,
-      equipment: { weapon: { item: null, refinement: false, godHammerEquipmentId: null }, armor: { item: null, refinement: false, godHammerEquipmentId: null }, pendant: { item: null, refinement: false, godHammerEquipmentId: null } },
+      equipment: { weapon: { item: null, refinement: null, godHammerEquipmentId: null }, armor: { item: null, refinement: null, godHammerEquipmentId: null }, pendant: { item: null, refinement: null, godHammerEquipmentId: null } },
       cards: [],
       egoLevel: 0,
       hasPotential: false,
@@ -1526,9 +1526,9 @@ describe('calculateFaintMemory (追加カバレッジ)', () => {
       baseDeck = {
         character: null,
         equipment: {
-          weapon: { item: null, refinement: false, godHammerEquipmentId: null },
-          armor: { item: null, refinement: false, godHammerEquipmentId: null },
-          pendant: { item: null, refinement: false, godHammerEquipmentId: null }
+          weapon: { item: null, refinement: null, godHammerEquipmentId: null },
+          armor: { item: null, refinement: null, godHammerEquipmentId: null },
+          pendant: { item: null, refinement: null, godHammerEquipmentId: null }
         },
         cards: [],
         egoLevel: 0,
@@ -1549,7 +1549,7 @@ describe('calculateFaintMemory (追加カバレッジ)', () => {
 
     it('should add 10pt for equipment god hammer', () => {
       const mockEquipment: Equipment = { id: 'weapon-1', name: 'Test Weapon', type: EquipmentType.WEAPON, rarity: 'common' };
-      baseDeck.equipment.weapon = { item: mockEquipment, refinement: false, godHammerEquipmentId: 'hammer-effect-1' };
+      baseDeck.equipment.weapon = { item: mockEquipment, refinement: null, godHammerEquipmentId: 'hammer-effect-1' };
 
       expect(calculateFaintMemory(baseDeck)).toBe(10);
     });

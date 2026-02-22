@@ -191,17 +191,17 @@ export function decodeDeckShare(value: string): Deck | null {
     const equipment = {
       weapon: {
         item: payload.e?.w ? pickEquipment(payload.e.w, EquipmentType.WEAPON) : null,
-        refinement: false,
+        refinement: null,
         godHammerEquipmentId: null,
       },
       armor: {
         item: payload.e?.a ? pickEquipment(payload.e.a, EquipmentType.ARMOR) : null,
-        refinement: false,
+        refinement: null,
         godHammerEquipmentId: null,
       },
       pendant: {
         item: payload.e?.p ? pickEquipment(payload.e.p, EquipmentType.PENDANT) : null,
-        refinement: false,
+        refinement: null,
         godHammerEquipmentId: null,
       },
     };

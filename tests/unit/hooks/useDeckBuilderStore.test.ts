@@ -34,9 +34,9 @@ describe('useDeckBuilderStore', () => {
       name: 'testdeck',
       character: CHARACTERS[0],
       equipment: {
-        weapon: { item: null, refinement: false, godHammerEquipmentId: null },
-        armor: { item: null, refinement: false, godHammerEquipmentId: null },
-        pendant: { item: null, refinement: false, godHammerEquipmentId: null }
+        weapon: { item: null, refinement: null, godHammerEquipmentId: null },
+        armor: { item: null, refinement: null, godHammerEquipmentId: null },
+        pendant: { item: null, refinement: null, godHammerEquipmentId: null }
       },
       cards: [],
       egoLevel: 1,
@@ -95,9 +95,9 @@ describe('useDeckBuilderStore', () => {
       name: 'stringdeck',
       character: CHARACTERS[0].id,
       equipment: {
-        weapon: { item: null, refinement: false, godHammerEquipmentId: null },
-        armor: { item: null, refinement: false, godHammerEquipmentId: null },
-        pendant: { item: null, refinement: false, godHammerEquipmentId: null }
+        weapon: { item: null, refinement: null, godHammerEquipmentId: null },
+        armor: { item: null, refinement: null, godHammerEquipmentId: null },
+        pendant: { item: null, refinement: null, godHammerEquipmentId: null }
       },
       cards: [],
       egoLevel: 0,
