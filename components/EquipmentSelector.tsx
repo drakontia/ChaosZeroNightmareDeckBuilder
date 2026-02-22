@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { Equipment, EquipmentType, EquipmentSlot } from "@/types";
 import { toast } from 'sonner';
 import { HardHat, Hammer } from 'lucide-react';
+import { REFINEMENT_EFFECTS } from "@/lib/refinement";
 
 // 装備タイプごとのプレースホルダー画像
 const EQUIPMENT_PLACEHOLDER: Record<EquipmentType, string> = {
@@ -33,7 +34,7 @@ interface EquipmentSelectorProps {
     pendant: EquipmentSlot | null;
   };
   onSelect: (equipment: Equipment | null, type?: EquipmentType) => void;
-  onRefinementChange?: (type: EquipmentType, value: boolean) => void;
+  onRefinementChange?: (type: EquipmentType, refinementId: string | null) => void;
   onGodHammerChange?: (type: EquipmentType, equipmentId: string | null) => void;
 }
 
@@ -43,10 +44,12 @@ export function EquipmentSelector({ equipment, selectedEquipment, onSelect, onRe
   const [imageErrors, setImageErrors] = useState<Set<string>>(new Set());
   // ローカル状態は表示用のみ。実際の保存はストアで行う
   const [godHammerDescriptions, setGodHammerDescriptions] = useState<Record<string, string>>({});
+  const [refinementDescriptions, setRefinementDescriptions] = useState<Record<string, string>>({});
 
-  // 保存されているgodHammerEquipmentIdから説明文を復元
+  // 保存されているgodHammerEquipmentIdと精錬IDから説明文を復元
   useEffect(() => {
     const newDescriptions: Record<string, string> = {};
+    const newRefinementDescriptions: Record<string, string> = {};
     const types: EquipmentType[] = [EquipmentType.WEAPON, EquipmentType.ARMOR, EquipmentType.PENDANT];
     
     for (const type of types) {
@@ -57,8 +60,17 @@ export function EquipmentSelector({ equipment, selectedEquipment, onSelect, onRe
           newDescriptions[type] = t(eq.description);
         }
       }
+      if (slot?.refinement) {
+        const refinement = REFINEMENT_EFFECTS.find(e => e.id === slot.refinement);
+        if (refinement) {
+          newRefinementDescriptions[type] = t(`equipment.refinementEffects.${refinement.id}`, {
+            defaultValue: refinement.description,
+          });
+        }
+      }
     }
     setGodHammerDescriptions(newDescriptions);
+    setRefinementDescriptions(newRefinementDescriptions);
   }, [selectedEquipment, equipment, t]);
 
   const handleImageError = (equipmentId: string) => {
@@ -112,7 +124,7 @@ export function EquipmentSelector({ equipment, selectedEquipment, onSelect, onRe
     const isOpen = openType === type;
 
     // slotがnullの場合は空のスロットを表示
-    const refinement = slot?.refinement ?? false;
+    const refinement = slot?.refinement ?? null;
 
     return (
       <Field>
@@ -153,7 +165,7 @@ export function EquipmentSelector({ equipment, selectedEquipment, onSelect, onRe
                           triggerAsChild
                           showEnhancements={true}
                           refinement={refinement}
-                          onRefinementChange={(value) => onRefinementChange?.(type, value)}
+                          onRefinementChange={(refinementId) => onRefinementChange?.(type, refinementId)}
                           equipment={equipment}
                           godHammerDescription={godHammerDescriptions[type] || ''}
                           onGodHammerDescriptionSelect={(description) => {

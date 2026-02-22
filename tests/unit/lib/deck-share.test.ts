@@ -18,9 +18,9 @@ describe('deck-share', () => {
         imgUrl: ''
       } as any,
       equipment: {
-        weapon: { item: { id: 'obsidian_sword', name: 'equipment.weapon.obsidian_sword.name', type: EquipmentType.WEAPON, rarity: 'equipment.rarity.rare' }, refinement: false, godHammerEquipmentId: null },
-        armor: { item: null, refinement: false, godHammerEquipmentId: null },
-        pendant: { item: null, refinement: false, godHammerEquipmentId: null }
+        weapon: { item: { id: 'obsidian_sword', name: 'equipment.weapon.obsidian_sword.name', type: EquipmentType.WEAPON, rarity: 'equipment.rarity.rare' }, refinement: null, godHammerEquipmentId: null },
+        armor: { item: null, refinement: null, godHammerEquipmentId: null },
+        pendant: { item: null, refinement: null, godHammerEquipmentId: null }
       },
       cards: [
         {
@@ -82,9 +82,9 @@ describe('deck-share', () => {
         name: '',
         character: null,
         equipment: {
-          weapon: { item: null, refinement: false, godHammerEquipmentId: null },
-          armor: { item: null, refinement: false, godHammerEquipmentId: null },
-          pendant: { item: null, refinement: false, godHammerEquipmentId: null }
+          weapon: { item: null, refinement: null, godHammerEquipmentId: null },
+          armor: { item: null, refinement: null, godHammerEquipmentId: null },
+          pendant: { item: null, refinement: null, godHammerEquipmentId: null }
         },
         cards: [],
         egoLevel: 0,
@@ -315,9 +315,9 @@ describe('deck-share', () => {
           imgUrl: ''
         } as any,
         equipment: {
-          weapon: { item: null, refinement: false, godHammerEquipmentId: null },
-          armor: { item: null, refinement: false, godHammerEquipmentId: null },
-          pendant: { item: null, refinement: false, godHammerEquipmentId: null }
+          weapon: { item: null, refinement: null, godHammerEquipmentId: null },
+          armor: { item: null, refinement: null, godHammerEquipmentId: null },
+          pendant: { item: null, refinement: null, godHammerEquipmentId: null }
         },
         cards: [],
         egoLevel: 0,

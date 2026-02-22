@@ -42,6 +42,7 @@
     "chizuru": "Chizuru",
     "egoManifest": "Ego Manifestation",
     "faintMemory": "Faint Memory",
+    "tiphera": "Tiphera",
     "nine": "Nine",
     "haru": "Haru",
     "hugo": "Hugo",
@@ -205,6 +206,7 @@
     "retrieve3": "Retrieve3",
     "unique": "Unique",
     "weakness_attack": "Weakness Attack",
-    "ignition": "Ignition"
+    "ignition": "Ignition",
+    "form_upgrade": "Form Upgrade"
   }
 }

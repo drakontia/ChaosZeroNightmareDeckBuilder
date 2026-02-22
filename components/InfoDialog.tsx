@@ -3,17 +3,17 @@ import { Info, Hammer, HardHat } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { Popover, PopoverTrigger, PopoverContent } from "./ui/popover";
 import { Toggle } from "./ui/toggle";
-import { Switch } from "./ui/switch";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger, DropdownMenuSeparator } from "./ui/dropdown-menu";
 import { Equipment } from "@/types";
+import { REFINEMENT_EFFECTS } from "@/lib/refinement";
 
 interface InfoDialogProps {
   description: string;
   rarity: string;
   triggerAsChild?: boolean;
   showEnhancements?: boolean;
-  refinement?: boolean;
-  onRefinementChange?: (value: boolean) => void;
+  refinement?: string | null;
+  onRefinementChange?: (refinementId: string | null) => void;
   equipment?: Equipment[];
   godHammerDescription?: string;
   onGodHammerDescriptionSelect?: (description: string) => void;
@@ -24,7 +24,7 @@ export function InfoDialog({
   rarity, 
   triggerAsChild,
   showEnhancements = false,
-  refinement = false,
+  refinement = null,
   onRefinementChange,
   equipment = [],
   godHammerDescription = '',
@@ -65,28 +65,51 @@ export function InfoDialog({
         
         {showEnhancements && (
           <div className="space-y-3">
-            {/* 精錬トグル */}
+            {/* 精錬ドロップダウン */}
             <div 
               className="flex items-center gap-2"
               onClick={e => e.stopPropagation()}
               onMouseDown={e => e.stopPropagation()}
             >
-              <Toggle
-                pressed={refinement}
-                onPressedChange={onRefinementChange}
-                aria-label={t('equipment.refinement', { defaultValue: '精錬' })}
-                className="flex items-center gap-2 px-3 py-2"
-              >
-                <HardHat size={16} className={refinement ? 'text-orange-400' : ''} />
-              </Toggle>
-              <Switch
-                checked={refinement}
-                onCheckedChange={onRefinementChange}
-                aria-label={t('equipment.refinement', { defaultValue: '精錬' })}
-              />
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Toggle
+                    pressed={!!refinement}
+                    aria-label={t('equipment.refinement', { defaultValue: '精錬' })}
+                    className="flex items-center gap-2 px-3 py-2"
+                  >
+                    <HardHat size={16} className={refinement ? 'text-orange-400' : ''} />
+                  </Toggle>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="start">
+                  <DropdownMenuItem
+                    onClick={() => onRefinementChange?.(null)}
+                  >
+                    {t('common.remove', { defaultValue: '除去' })}
+                  </DropdownMenuItem>
+                  <DropdownMenuSeparator />
+                  {REFINEMENT_EFFECTS.map((effect) => (
+                    <DropdownMenuItem
+                      key={effect.id}
+                      onClick={() => onRefinementChange?.(effect.id)}
+                    >
+                      {t(`equipment.refinementEffects.${effect.id}`, {
+                        defaultValue: effect.description,
+                      })}
+                    </DropdownMenuItem>
+                  ))}
+                </DropdownMenuContent>
+              </DropdownMenu>
+              {refinement && (
+                <span className="text-xs text-muted-foreground">
+                  {t(`equipment.refinementEffects.${refinement}`, {
+                    defaultValue: REFINEMENT_EFFECTS.find(e => e.id === refinement)?.description || '',
+                  })}
+                </span>
+              )}
             </div>
             
-            {/* 神のハンマートグル */}
+            {/* 神のハンマードロップダウン */}
             <div 
               className="flex items-center gap-2"
               onClick={e => e.stopPropagation()}
