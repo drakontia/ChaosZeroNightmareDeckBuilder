@@ -60,7 +60,12 @@ export const CHARACTER_CARDS: CznCard[] = [
     isStartingCard: true,
     imgUrl: "/images/cards/tiphera_starting_4.png",
     hiramekiVariations: [ // Fallback descriptions
-      { level: 0, cost: 0, description: "治癒100%\n山札に創造カードを2枚生成、その中から1枚ドロー" },
+      { level: 0, cost: 0, description: "治癒100%\n山札に創造カードを2枚生成\nその中から1枚ドロー" },
+      { level: 0, cost: 0, description: "治癒150%\n山札に創造カードを3枚生成\nその中から1枚ドロー" },
+      { level: 0, cost: 0, description: "治癒100%\n創造カードを1枚選択\n手札と山札に1枚ずつ生成" },
+      { level: 0, cost: 0, description: "ドロー1\n生成される創造カード予測\n創造カード1枚生成\n予測が当たった場合、山札に残り生成" },
+      { level: 0, cost: 1, description: "山札に創造カードを3枚生成\nその中から1枚ドロー\nランダムな自分のカード1枚保存効果2回発動" },
+      { level: 0, cost: 1, category: CardCategory.UPGRADE, description: "創造カード1枚生成\nアクションポイントが0の場合、\n手札と山札に想像カード1枚ずつ生成\n(各ターン1回)", statuses: [CardStatus.UNIQUE] },
     ]
   },
   // Tiphera's hirameki cards
@@ -72,7 +77,12 @@ export const CHARACTER_CARDS: CznCard[] = [
     statuses: [CardStatus.RETAIN],
     imgUrl: "/images/cards/tiphera_hirameki_1.png",
     hiramekiVariations: [ // Fallback descriptions
-      { level: 0, cost: 1, description: "創造カード ドロー2、そのカードの効果のうち1つがランダムで1ターンの間2倍" },
+      { level: 0, cost: 1, description: "創造カード ドロー2\nそのカードの効果のうち1つがランダムで1ターンの間2倍" },
+      { level: 0, cost: 1, description: "創造カード3枚ドロー\nそのカードの効果のうち1つがランダムで1ターンの間2倍" },
+      { level: 0, cost: 1, description: "創造カード4枚ドロー\n手札の消滅カード1枚選択し、消滅" },
+      { level: 0, cost: 0, description: "手札のすべての創造カードを\n他の創造カードに変更\n保存：創造カード1枚ドロー" },
+      { level: 0, cost: 1, description: "すべてのカードの消滅カード\n3枚まで選択し、消滅\nその数に応じて、消滅カードドロー" },
+      { level: 0, cost: 1, description: "創造カード1枚ドロー\n同じカードを連続で引くまで繰り返す\n(最大6回)" }
     ]
   },
   {
@@ -83,7 +93,12 @@ export const CHARACTER_CARDS: CznCard[] = [
     statuses: [],
     imgUrl: "/images/cards/tiphera_hirameki_2.png",
     hiramekiVariations: [ // Fallback descriptions
-      { level: 0, cost: 1, description: "防御依存ダメージ120%、シールド80%、治癒80%、調律：すべての効果2倍"},
+      { level: 0, cost: 1, description: "防御依存ダメージ120%\nシールド80%\n治癒80%\n調律：すべての効果2倍"},
+      { level: 0, cost: 1, description: "防御依存ダメージ180%\nシールド100%\n治癒100%\n調律：すべての効果2倍"},
+      { level: 0, cost: 5, description: "防御依存ダメージ50%\nカード消滅時、このカードは1ターンの間、使用時までコスト1減少"},
+      { level: 0, cost: 2, description: "防御依存ダメージ160%\nシールド40%\n治癒40%\n保存：発動時まですべての効果100%増加(最大4回)", statuses: [CardStatus.RETAIN]},
+      { level: 0, cost: 1, category: CardCategory.UPGRADE, description: "アクションポイントが0の場合、\n創造と破壊1枚生成\nそのカードのコスト1減少、消滅付与(各ターン1回)", statuses: [CardStatus.UNIQUE] },
+      { level: 0, cost: 5, description: "このカードのコストに応じて防御依存ダメージ150%\nカード消滅時、このカードのコスト1～9ランダムに変更"}
     ]
   },
   {
@@ -94,7 +109,12 @@ export const CHARACTER_CARDS: CznCard[] = [
     statuses: [CardStatus.UNIQUE],
     imgUrl: "/images/cards/tiphera_hirameki_3.png",
     hiramekiVariations: [ // Fallback descriptions
-      { level: 0, cost: 1, description: "創造カードを2枚生成するたび、捨て札に同じカードを1枚生成" },
+      { level: 0, cost: 1, description: "創造カードを2枚生成時\n捨て札に同じカードを1枚生成" },
+      { level: 0, cost: 1, description: "創造カードを2枚生成時\n捨て札に同じカードを1枚生成", statuses: [CardStatus.UNIQUE, CardStatus.INITIATION] },
+      { level: 0, cost: 1, description: "創造カードを3枚生成時\n手札に同じカードを1枚生成\nそのカードに保存付与", statuses: [CardStatus.UNIQUE, CardStatus.INITIATION] },
+      { level: 0, cost: 1, description: "創造：□発動時、捨て札に他の創造カード\n1枚生成", statuses: [CardStatus.UNIQUE, CardStatus.INITIATION] },
+      { level: 0, cost: 1, category: CardCategory.SKILL, description: "創造カード1枚ずつ生成\n次に消滅する創造カード\n1枚生成" },
+      { level: 0, cost: 1, description: "創造カードが手札に移動時、\nそのカードをコピーし、ランダムな効果を排除(各ターン5回)", statuses: [CardStatus.UNIQUE, CardStatus.INITIATION] }
     ]
   },
   {
