@@ -2,8 +2,8 @@ import { Refinement } from "@/types";
 
 // Unified God Hirameki effects list with applicable gods per effect
 export const REFINEMENT_EFFECTS: Refinement[] = [
-  { id: "refinement_01", description: "カード保存、消滅時、ランダムな敵意固定ダメージ100%(各ターン1回)"},
-  { id: "refinement_02", description: "シールドを所持した状態でターン狩猟時、敵全体に固定ダメージ100%"},
+  { id: "refinement_01", description: "カード保存、消滅時、ランダムな敵意固定ダメージ100%(各ターン2回)"},
+  { id: "refinement_02", description: "ターン開始時とターン終了後にシールドがある場合、敵全体に固定ダメージ100%"},
   { id: "refinement_03", description: "ターン開始時、30%の確率で、消滅カードをドロー1"},
   { id: "refinement_04", description: "戦闘開始時、自分の消滅カードをドロー1"},
   { id: "refinement_05", description: "消滅カードを能力でドロー時、即座に発動(各ターン1回)"},
@@ -18,8 +18,12 @@ export const REFINEMENT_EFFECTS: Refinement[] = [
   { id: "refinement_14", description: "脆弱状態の敵に攻撃カード発動時、会心率+15%"},
   { id: "refinement_15", description: "1ターンの間、ダメージを与えなかった場合、次のターン開始時、1ターンの間、ダメージ量50%増加"},
   { id: "refinement_16", description: "ターン開始時、手札の味方消滅カード数に応じて、ランダムな敵に固定ダメージ60%"},
-  { id: "refinement_17", description: "反撃時、敵全体に固定ダメージ100%(各ターン1回)"},
+  { id: "refinement_17", description: "反撃時、敵全体に防御依存ダメージ200%(各ターン1回)"},
   { id: "refinement_18", description: "シールド獲得時、固定シールド100%(各ターン1回)"},
   { id: "refinement_19", description: "コスト3以上のカード発動時、アクションポイント1(各ターン1回)"},
-  { id: "refinement_20", description: "アクションポイント1以上を所持した状態でターン終了時、敵全体に脆弱1"}
+  { id: "refinement_20", description: "アクションポイント1以上を所持した状態でターン終了時、敵全体に脆弱1"},
+  { id: "refinement_21", description: "コスト1以下の攻撃カードのダメージ量+30%"},
+  { id: "refinement_22", description: "追加攻撃のダメージ量25%増加"},
+  { id: "refinement_23", description: "能力で自分の攻撃カードをドロー時、そのカードは1ターンの間、ダメージ量50%増加"},
+  { id: "refinement_24", description: "防御依存ダメージ量+30%"}
 ];
