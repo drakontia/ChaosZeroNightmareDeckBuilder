@@ -10,6 +10,124 @@ import { CznCard, CardType, CardCategory, CardStatus } from "@/types";
  * The name and description fields below serve as fallback values when translations are not available.
  */
 export const CHARACTER_CARDS: CznCard[] = [
+  // Rita's starting cards
+  {
+    id: "rita_starting_1",
+    name: "時間加速", // Fallback: See messages/*.json for translations
+    type: CardType.CHARACTER,
+    category: CardCategory.ATTACK,
+    statuses: [],
+    isBasicCard: true,
+    isStartingCard: true,
+    imgUrl: "/images/cards/rita_starting_1.png",
+    hiramekiVariations: [
+      { level: 0, cost: 3, description: "ダメージ350%" } // Fallback
+    ]
+  },
+  {
+    id: "rita_starting_2",
+    name: "時間加速", // Fallback
+    type: CardType.CHARACTER,
+    category: CardCategory.ATTACK,
+    statuses: [],
+    isBasicCard: true,
+    isStartingCard: true,
+    imgUrl: "/images/cards/rita_starting_1.png",
+    hiramekiVariations: [
+      { level: 0, cost: 3, description: "ダメージ350%" } // Fallback
+    ]
+  },
+  {
+    id: "rita_starting_3",
+    name: "巻き戻し", // Fallback
+    type: CardType.CHARACTER,
+    category: CardCategory.SKILL,
+    statuses: [],
+    isBasicCard: true,
+    isStartingCard: true,
+    imgUrl: "/images/cards/rita_starting_3.png",
+    hiramekiVariations: [
+      { level: 0, cost: 1, description: "治癒100%" } // Fallback
+    ]
+  },
+  {
+    id: "rita_starting_4",
+    name: "記録者", // Fallback
+    type: CardType.CHARACTER,
+    category: CardCategory.UPGRADE,
+    statuses: [CardStatus.UNIQUE, CardStatus.INITIATION],
+    isBasicCard: false,
+    isStartingCard: true,
+    imgUrl: "/images/cards/rita_starting_4.png",
+    hiramekiVariations: [ // Fallback descriptions
+      { level: 0, cost: 1, description: "カード発動時、そのカードのコストに応じて\n時間記録1" },
+      { level: 0, cost: 1, description: "カード発動時、そのカードのコストに応じて\n時間記録1\n時間超越排除時、時間記録3" },
+      { level: 0, cost: 1, description: "カード発動時、そのカードのコストに応じて\n時間記録1\nターン終了時、時間超越の数に応じてランダムな敵にダメージ100%" },
+      { level: 0, cost: 1, description: "カード消滅時、\n時間記録1" },
+      { level: 0, cost: 1, description: "カード発動時、そのカードのコストに応じて\n時間記録1\nカード破棄時、\n時間記録1" },
+      { level: 0, cost: 1, description: "カード発動時、そのカードのコストに応じて\n時間記録1\n保存効果発動時、\n時間記録1" },
+    ]
+  },
+  // Rita's hirameki cards
+  {
+    id: "rita_hirameki_1",
+    name: "時間軸破壊", // Fallback
+    type: CardType.CHARACTER,
+    category: CardCategory.ATTACK,
+    statuses: [],
+    imgUrl: "/images/cards/rita_hirameki_1.png",
+    hiramekiVariations: [ // Fallback descriptions
+      { level: 0, cost: 2, description: "ダメージ300%\n手札のカードの合計コストに応じて\nダメージ量20%増加\n(最大200%)" },
+      { level: 0, cost: 2, description: "ダメージ450%\n手札のカードの合計コストに応じて\nダメージ量20%増加\n(最大200%)" },
+      { level: 0, cost: 1, description: "ダメージ300%\n手札のコスト1以下のカード数に応じて\nダメージ量30%増加" },
+      { level: 0, cost: 3, description: "次に使用する\n自分の攻撃カード3枚の\nダメージ量100%増加" },
+      { level: 0, cost: 3, description: "ダメージ400%\n脆弱2\n時間超越獲得時、\nこのカードが手札にある場合、発動", statuses: [CardStatus.RETAIN] },
+      { level: 0, cost: 2, description: "ダメージ250%\n手札のすべての運命の刻印\nコスト4に変更" }
+    ]
+  },
+  {
+    id: "rita_hirameki_2",
+    name: "収束する未来", // Fallback
+    type: CardType.CHARACTER,
+    category: CardCategory.SKILL,
+    statuses: [],
+    imgUrl: "/images/cards/rita_hirameki_2.png",
+    hiramekiVariations: [ // Fallback descriptions
+      { level: 0, cost: 1, description: "手札のコスト2以下のカード1枚が使用時までコスト1増加、\nコスト3のランダムなカード\n1枚発動" },
+      { level: 0, cost: 0, description: "手札のコスト2以下のカード1枚が使用時までコスト1増加、\nコスト3のランダムなカード\n1枚発動" },
+      { level: 0, cost: 0, description: "手札のコスト3のランダムな攻撃カード\n1枚発動" },
+      { level: 0, cost: 3, description: "山札のコスト3のランダムなカード\n1枚発動" },
+      { level: 0, cost: 2, description: "手札のコスト2のランダムなカード\n2枚発動" },
+      { level: 0, cost: 3, category: CardCategory.UPGRADE, description: "コストが増加したカードを直接使用時、\nランダムな敵に\nダメージ300%", statuses: [CardStatus.UNIQUE] }
+    ]
+  },
+  {
+    id: "rita_hirameki_3",
+    name: "クロノサークル", // Fallback
+    type: CardType.CHARACTER,
+    category: CardCategory.SKILL,
+    statuses: [],
+    imgUrl: "/images/cards/rita_hirameki_3.png",
+    hiramekiVariations: [ // Fallback descriptions
+      { level: 0, cost: 1, description: "運命の刻印を2枚生成" },
+      { level: 0, cost: 1, description: "運命の刻印を3枚生成" },
+      { level: 0, cost: 1, description: "運命の刻印を2枚生成\n保存：運命の刻印を1枚生成", statuses: [CardStatus.RETAIN] },
+      { level: 0, cost: 2, category: CardCategory.UPGRADE, description: "時間超越獲得時、自分の基本カードをすべて手札に移動", statuses: [CardStatus.UNIQUE] },
+      { level: 0, cost: 1, description: "すべてのカードの消滅カード1枚選択して消滅、そのカードのコストに応じて\n運命の刻印を生成" },
+      { level: 0, cost: 3, category: CardCategory.UPGRADE, description: "時間超越獲得時、コスト2の攻撃カード\nドロー3", statuses: [CardStatus.UNIQUE] }
+    ]
+  },
+  {
+    id: "rita_hirameki_4",
+    name: "タイムパラドックス", // Fallback
+    type: CardType.CHARACTER,
+    category: CardCategory.SKILL,
+    statuses: [CardStatus.UNIQUE],
+    imgUrl: "/images/cards/rita_hirameki_4.png",
+    hiramekiVariations: [ // Fallback descriptions
+      { level: 0, cost: 0, description: "時間記録すべて減少\nその数に応じて時間超越" },
+    ]
+  },
   // Tiphera's starting cards
   {
     id: "tiphera_starting_1",
@@ -770,7 +888,7 @@ export const CHARACTER_CARDS: CznCard[] = [
     hiramekiVariations: [ // Fallback descriptions
       { level: 0, cost: 1, description: "創造物★を2枚生成" },
       { level: 1, cost: 1, description: "創造物★を3枚生成" },
-      { level: 2, cost: 2, description: "創造物★を2枚生成<wbr/>ターン開始時創造物★1枚生成", statuses: [CardStatus.INITIATION, CardStatus.LEAD] },
+      { level: 2, cost: 2, category: CardCategory.UPGRADE, description: "創造物★を2枚生成<wbr/>ターン開始時創造物★1枚生成", statuses: [CardStatus.INITIATION, CardStatus.LEAD] },
       { level: 3, cost: 1, description: "ふかちゃん★、創造物★を1枚ずつ生成<wbr/>次にふかちゃん使用時ふかちゃん★を生成"},
       { level: 4, cost: 1, description: "素早いちゃん★、創造物★を1枚ずつ生成<wbr/>次に使用する素早いちゃんのダメージ量が40%増加" },
       { level: 5, cost: 1, description: "丈夫ちゃん★、創造物★を1枚ずつ生成<wbr/>次に丈夫ちゃん使用時シールド150%"}

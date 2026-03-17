@@ -2,6 +2,16 @@ import { Character, ElementType, JobType } from "@/types";
 
 export const CHARACTERS: Character[] = [
   {
+    id: "rita",
+    name: "character.rita",
+    rarity: "★5",
+    job: JobType.PSIONIC,
+    element: ElementType.JUSTICE,
+    imgUrl: "/images/characters/character_rita.png",
+    startingCards: ["rita_starting_1", "rita_starting_2", "rita_starting_3", "rita_starting_4"],
+    hiramekiCards: ["rita_hirameki_1", "rita_hirameki_2", "rita_hirameki_3", "rita_hirameki_4"]
+  },
+  {
     id: "tiphera",
     name: "character.tiphera",
     rarity: "★5",
