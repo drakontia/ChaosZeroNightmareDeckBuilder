@@ -524,6 +524,10 @@
             "shield_of_ashen_sacrifice": {
                 "name": "色あせた犠牲の盾",
                 "description": "ダメージを完全に防ぐと、次のターン開始時、盾爆発1枚生成"
+            },
+            "bangle_of_valor": {
+                "name": "勇猛のブレスレット",
+                "description": "味方の闘技場カードダメージ量20%増加\n戦闘開始時、忘れ去られた剣1枚生成"
             }
         },
         "pendant": {

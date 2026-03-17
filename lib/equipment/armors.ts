@@ -426,4 +426,12 @@ export const ARMORS: Equipment[] = [
     description: "equipment.armor.shield_of_ashen_sacrifice.description",
     imgUrl: "/images/equipment/armors/shield_of_ashen_sacrifice.png"
   },
+  {
+    id: "bangle_of_valor",
+    name: "equipment.armor.bangle_of_valor.name",
+    type: EquipmentType.ARMOR,
+    rarity: "equipment.rarity.mythical",
+    description: "equipment.armor.bangle_of_valor.description",
+    imgUrl: "/images/equipment/armors/bangle_of_valor.png"
+  },
 ];
