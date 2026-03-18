@@ -80,7 +80,7 @@ export const CHARACTER_CARDS: CznCard[] = [
       { level: 0, cost: 2, description: "ダメージ300%\n手札のカードの合計コストに応じて\nダメージ量20%増加\n(最大200%)" },
       { level: 0, cost: 2, description: "ダメージ450%\n手札のカードの合計コストに応じて\nダメージ量20%増加\n(最大200%)" },
       { level: 0, cost: 1, description: "ダメージ300%\n手札のコスト1以下のカード数に応じて\nダメージ量30%増加" },
-      { level: 0, cost: 3, description: "次に使用する\n自分の攻撃カード3枚の\nダメージ量100%増加" },
+      { level: 0, cost: 3, category: CardCategory.SKILL, description: "次に使用する\n自分の攻撃カード3枚の\nダメージ量100%増加" },
       { level: 0, cost: 3, description: "ダメージ400%\n脆弱2\n時間超越獲得時、\nこのカードが手札にある場合、発動", statuses: [CardStatus.RETAIN] },
       { level: 0, cost: 2, description: "ダメージ250%\n手札のすべての運命の刻印\nコスト4に変更" }
     ]
