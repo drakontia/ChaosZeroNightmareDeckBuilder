@@ -12,7 +12,7 @@
     "coverage": "vitest run --coverage",
     "test:ui": "vitest --ui",
     "test:playwright": "playwright test",
-    "commitmsg": "commitlint -e $GIT_PARAMS"
+    "prepare": "husky"
   },
   "dependencies": {
     "@radix-ui/react-accordion": "^1.2.12",
