@@ -42,8 +42,8 @@
     "chizuru": "Chizuru",
     "egoManifest": "Ego Manifestation",
     "faintMemory": "Faint Memory",
-    "tiphera": "Tiphera",
     "rita": "Rita",
+    "tiphera": "Tiphera",
     "nine": "Nine",
     "haru": "Haru",
     "hugo": "Hugo",
@@ -79,8 +79,6 @@
     "open": "Open",
     "close": "Close",
     "remove": "Remove"
-  },
-  "conversion": {
   },
   "deck": {
     "clear": "Clear",
@@ -118,7 +116,6 @@
     "copyLimitMessage": "Copying is limited to 4 times. You cannot copy any more.",
     "conversionLimitTitle": "Reached conversion limit",
     "conversionLimitMessage": "Conversion is limited to 5 times. You cannot convert any more."
-
   },
   "god": {
     "dialos": "Dialos",

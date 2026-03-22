@@ -38,7 +38,11 @@
       "refinement_17": "On counterattack, deal 100% fixed damage to all enemies (once per turn)",
       "refinement_18": "When gaining a shield, fixed shield 100% (once per turn)",
       "refinement_19": "When using a card with cost 3+, gain 1 action point (once per turn)",
-      "refinement_20": "If you have 1+ action point at end of turn, inflict Vulnerable 1 on all enemies"
+      "refinement_20": "If you have 1+ action point at end of turn, inflict Vulnerable 1 on all enemies",
+      "refinement_21": "Attack card damage +30% for cards with cost 1 or less",
+      "refinement_22": "Additional attack damage +25%",
+      "refinement_23": "When drawing your own attack card with an ability, that card's damage +50% for 1 turn",
+      "refinement_24": "Defense-dependent damage +30%"
     },
     "armor": {
       "title": "Armor",
