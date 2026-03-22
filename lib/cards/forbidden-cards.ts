@@ -335,4 +335,16 @@ export const FORBIDDEN_CARDS: CznCard[] = [
       { level: 0, cost: 3, description: "焼却:ドロー3\n壊れた黒いルーメン1枚生成" }
     ]
   },
+  {
+    id: "flame_of_eternity",
+    name: "永劫の火種",
+    type: CardType.FORBIDDEN,
+    category: CardCategory.UPGRADE,
+    statuses: [],
+    allowedJobs: "all",
+    imgUrl: "/images/cards/flame_of_eternity.png",
+    hiramekiVariations: [
+      { level: 0, cost: 2, description: "コストが1以上のカード\nダメージ量40%増加\n攻撃カードコスト1増加" }
+    ]
+  },
 ];
