@@ -534,7 +534,7 @@ export const CHARACTER_CARDS: CznCard[] = [
     hiramekiVariations: [ // Fallback descriptions
       { level: 0, cost: 3, description: "敵全体に防御依存ダメージ120%<wbr/>シールド100%<wbr/>銀色の帳7)1" },
       { level: 1, cost: 3, description: "敵全体に防御依存ダメージ280%<wbr/>銀色の帳1" },
-      { level: 2, cost: 3, description: "シールド280%<wbr/>銀色の帳1"},
+      { level: 2, cost: 3, category: CardCategory.SKILL,description: "シールド280%<wbr/>銀色の帳1"},
       { level: 3, cost: 3, description: "敵全体に防御依存ダメージ180%<wbr/>シールド150%<wbr/>銀色の帳1"},
       { level: 4, cost: 3, description: "敵全体に防御依存ダメージ180%<wbr/>銀色の帳1<wbr/>保存：シールド100%" },
       { level: 5, cost: 3, description: "敵全体に防御依存ダメージ180%<wbr/>銀色の帳1<wbr/>手札のカード数に応じて、シールド40%"}
@@ -594,7 +594,7 @@ export const CHARACTER_CARDS: CznCard[] = [
     name: "絶対守護", // Fallback
     type: CardType.CHARACTER,
     category: CardCategory.SKILL,
-    statuses: [CardStatus.FINALE],
+    statuses: [CardStatus.FINALE, CardStatus.RETAIN],
     imgUrl: "/images/cards/khalipe_hirameki_4.png",
     hiramekiVariations: [ // Fallback descriptions
       { level: 0, cost: "X", description: "X分のシールド100%<wbr/>1ターンの間、手札のすべてのカード保存" },
