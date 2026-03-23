@@ -597,7 +597,11 @@ export const CHARACTER_CARDS: CznCard[] = [
     statuses: [CardStatus.FINALE],
     imgUrl: "/images/cards/khalipe_hirameki_4.png",
     hiramekiVariations: [ // Fallback descriptions
-      { level: 0, cost: "X", description: "X分のシールド100%<wbr/>1ターンの間、手札のすべてのカード保存" },
+      { level: 0, cost: "X", description: "X分のシールド100%<wbr/>1ターンの間、手札のすべてのカード保存",
+        egoVariations: {
+          1: { statuses: [CardStatus.FINALE, CardStatus.RETAIN], description: "X分のシールド120%\n1ターンの間、手札のすべてのカード保存" }
+        }
+      }
     ]
   },
   // Magna's starting cards

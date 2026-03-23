@@ -112,6 +112,7 @@ export interface HiramekiVariation {
   // Variations based on Ego Manifestation level
   egoVariations?: {
     [egoLevel: number]: {
+      statuses?: CardStatus[]; // Optional status override for this Ego level
       description: string;
       cost?: number;
     };
