@@ -40,6 +40,7 @@
     "beryl": "Beryl",
     "cassius": "Cassius",
     "chizuru": "Chizuru",
+    "diana": "Diana",
     "egoManifest": "Ego Manifestation",
     "faintMemory": "Faint Memory",
     "rita": "Rita",
@@ -186,6 +187,7 @@
   "status": {
     "bind": "Bind",
     "bullet": "Bullet",
+    "serenity": "Serenity",
     "celestial": "Celestial",
     "combo": "Combo",
     "copied": "Copied",

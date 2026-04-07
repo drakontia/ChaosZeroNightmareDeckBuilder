@@ -11,6 +11,124 @@ import { CznCard, CardType, CardCategory, CardStatus } from "@/types";
  */
 export const CHARACTER_CARDS: CznCard[] = [
   // Rita's starting cards
+  // Diana's starting cards
+  {
+    id: "diana_starting_1",
+    name: "撹乱射撃", // Fallback
+    type: CardType.CHARACTER,
+    category: CardCategory.ATTACK,
+    statuses: [],
+    isBasicCard: true,
+    isStartingCard: true,
+    imgUrl: "/images/cards/diana_starting_1.png",
+    hiramekiVariations: [
+      { level: 0, cost: 1, description: "ダメージ100%" }
+    ]
+  },
+  {
+    id: "diana_starting_2",
+    name: "撹乱射撃", // Fallback
+    type: CardType.CHARACTER,
+    category: CardCategory.ATTACK,
+    statuses: [],
+    isBasicCard: true,
+    isStartingCard: true,
+    imgUrl: "/images/cards/diana_starting_1.png",
+    hiramekiVariations: [
+      { level: 0, cost: 1, description: "ダメージ100%" }
+    ]
+  },
+  {
+    id: "diana_starting_3",
+    name: "私を守って", // Fallback
+    type: CardType.CHARACTER,
+    category: CardCategory.SKILL,
+    statuses: [],
+    isBasicCard: true,
+    isStartingCard: true,
+    imgUrl: "/images/cards/diana_starting_3.png",
+    hiramekiVariations: [
+      { level: 0, cost: 1, description: "治癒100%" }
+    ]
+  },
+  {
+    id: "diana_starting_4",
+    name: "心を込めて！", // Fallback
+    type: CardType.CHARACTER,
+    category: CardCategory.ATTACK,
+    statuses: [CardStatus.SERENITY],
+    isBasicCard: false,
+    isStartingCard: true,
+    imgUrl: "/images/cards/diana_starting_4.png",
+    hiramekiVariations: [ // Fallback descriptions
+      { level: 0, cost: 1, description: "ダメージ100%\nハートブレイカーを2枚生成" },
+      { level: 1, cost: 1, description: "ダメージ150%\nハートブレイカーを3枚生成" },
+      { level: 2, cost: 1, description: "ダメージ150%\nハートブレイカーを1枚生成\n消滅弾丸カードをドロー2" },
+      { level: 3, cost: 1, description: "ダメージ150%\n手札のコスト1以下のすべての消滅カードをハートブレイカーに変更" },
+      { level: 4, cost: 2, category: CardCategory.SKILL, description: "ハートブレイカーを2枚生成\n手札のすべての消滅弾丸カードに安息付与" },
+      { level: 5, cost: 3, category: CardCategory.UPGRADE, description: "ターン開始時、ハートブレイカーを2枚生成\n所持中のハート弾丸が5枚以下の場合、1枚さらに生成" }
+    ]
+  },
+  // Diana's hirameki cards
+  {
+    id: "diana_hirameki_1",
+    name: "おいでミルクボン", // Fallback
+    type: CardType.CHARACTER,
+    category: CardCategory.SKILL,
+    statuses: [],
+    imgUrl: "/images/cards/diana_hirameki_1.png",
+    hiramekiVariations: [ // Fallback descriptions
+      { level: 0, cost: 1, description: "ハートシェイカーを2枚生成" },
+      { level: 1, cost: 1, description: "ハートシェイカーを2枚生成\n他の戦闘員が次の3回、追加攻撃時、対象に共鳴1" },
+      { level: 2, cost: 1, description: "手札のカードを2枚まで破棄\n破棄した数+1分ハートシェイカーを生成" },
+      { level: 3, cost: 0, description: "手札のコスト0の消滅カードをランダムハート弾丸に変更" },
+      { level: 4, cost: 1, description: "ハート弾丸を1枚ずつ生成\n手札の異なる弾丸カード数に応じてランダムな敵に共鳴1" },
+      { level: 5, cost: 1, statuses: [CardStatus.RETAIN, CardStatus.UNIQUE], description: "手札のハートシェイカーをハートブレイカーに変更\n保存：ハートシェイカーを1枚生成" }
+    ]
+  },
+  {
+    id: "diana_hirameki_2",
+    name: "浄化のピストル", // Fallback
+    type: CardType.CHARACTER,
+    category: CardCategory.ATTACK,
+    statuses: [CardStatus.BULLET, CardStatus.SERENITY],
+    imgUrl: "/images/cards/diana_hirameki_2.png",
+    hiramekiVariations: [ // Fallback descriptions
+      { level: 0, cost: 1, description: "ダメージ120%\n破壊された場合、対象に自分の共鳴1回さらに発動" },
+      { level: 1, cost: 1, description: "ダメージ180%\n共鳴3\n破壊された場合、対象に自分の共鳴5回さらに発動" },
+      { level: 2, cost: 1, description: "ダメージ180%\n次の5回、迅速攻撃カードを使用時、対象に共鳴1" },
+      { level: 3, cost: 1, statuses: [CardStatus.SERENITY], description: "ダメージ180%\n対象が所持中の自分の共鳴10回発動" },
+      { level: 4, cost: 1, description: "ダメージ180%\n今回のターンで破棄した弾丸数に応じてダメージ量+100%" },
+      { level: 5, cost: 1, description: "敵全体にダメージ180%\n破壊された場合、敵全体が所持中の共鳴2回発動" }
+    ]
+  },
+  {
+    id: "diana_hirameki_3",
+    name: "芽生える愛", // Fallback
+    type: CardType.CHARACTER,
+    category: CardCategory.SKILL,
+    statuses: [],
+    imgUrl: "/images/cards/diana_hirameki_3.png",
+    hiramekiVariations: [ // Fallback descriptions
+      { level: 0, cost: 1, description: "安息カードドロー1\n破棄2" },
+      { level: 1, cost: 1, description: "安息カードドロー1\n破棄1\n破棄したカードが他の戦闘員のカードの場合、ハート弾丸を2枚生成" },
+      { level: 2, cost: 1, description: "安息カードドロー1\n破棄2\n破棄したカードの合計コストに応じて敵全体に共鳴1（最大6）" },
+      { level: 3, cost: 1, description: "手札の弾丸カードを3枚まで破棄\n破棄数+1分安息カードをドロー" },
+      { level: 4, cost: 1, description: "手札の弾丸カードをすべて破棄\nその数に応じてランダムな敵に追加攻撃80%" },
+      { level: 5, cost: 3, category: CardCategory.UPGRADE, statuses: [CardStatus.SERENITY, CardStatus.UNIQUE], description: "手札に自分の安息カードがない場合、自分の安息カードドロー1（各ターン1回）" }
+    ]
+  },
+  {
+    id: "diana_hirameki_4",
+    name: "解放された心", // Fallback
+    type: CardType.CHARACTER,
+    category: CardCategory.ATTACK,
+    statuses: [],
+    imgUrl: "/images/cards/diana_hirameki_4.png",
+    hiramekiVariations: [ // Fallback descriptions
+      { level: 0, cost: 2, description: "消滅弾丸カードを2枚ドロー\nダメージ300%\n手札の異なる弾丸カード数に応じてダメージ量30%増加" }
+    ]
+  },
   {
     id: "rita_starting_1",
     name: "時間加速", // Fallback: See messages/*.json for translations
@@ -3435,5 +3553,5 @@ export const CHARACTER_CARDS: CznCard[] = [
     hiramekiVariations: [ // Fallback descriptions
       { level: 0, cost: 1, description: "手札のコストが最も高い自分の攻撃カード1枚発動、そのカード消滅" }
     ]
-  },
+  }
 ];
