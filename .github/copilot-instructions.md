@@ -125,14 +125,18 @@
 - 神ヒラメキ: `GodHiramekiDefinition` は統一構造で、`gods` 配列で適用可能な神を指定
 
 ## ファイル構成（主要）
-- `app/` … Next.js App Router
+- `app/` … Next.js App Router（`app/deck/[shareId]/` がデッキ共有ルート）
 - `components/` … UI/ロジックコンポーネント（`DeckBuilder.tsx`, `DeckDisplay.tsx`, `CardSelector.tsx` 等）
-- `hooks/` … 状態管理（`useDeckBuilder.ts`）
-- `lib/` … ドメインデータ/ユーティリティ
-- `messages/` … 多言語 JSON（ja/en/zh/ko）
-- `tests/` … Playwright/Vitest テスト
-- `types/` … 型定義
+- `hooks/` … 状態管理（`useDeckBuilderStore.ts` が Zustand ストア本体）
+- `lib/` … ドメインデータ/ユーティリティ（`calculateFaintMemory.ts`, `deck-utils.ts`, `god-hirameki.ts`, `hidden-hirameki.ts` 等）
+- `messages/` … 多言語 JSON（`ja/`, `en/`, `zh/`, `ko/` の各ディレクトリ）
+- `tests/unit/` … Vitest ユニットテスト、`tests/e2e/` … Playwright E2E テスト
+- `types/` … 型定義（`types/index.ts` が唯一の型定義ファイル）
 - `scripts/` … データ入力支援スクリプト
+
+### `@` パスエイリアス
+`@` はプロジェクトルート（`./`）を指します（`./src` ではない）。
+例: `import { useDeckBuilderStore } from "@/hooks/useDeckBuilderStore"`
 
 ## アーキテクチャ指針
 
@@ -224,9 +228,12 @@
   ```
 - ユニットテスト（必須）
   ```bash
-  pnpm test            # Vitest 実行
+  pnpm test                                          # Vitest 全件実行
+  pnpm vitest run tests/unit/lib/deck-utils.test.ts  # 単一ファイル実行
+  pnpm vitest run --reporter=verbose calculateFaint  # ファイル名パターン指定
   pnpm test:ui         # Vitest UI（必要時）
   ```
+  - Vitest の対象: `lib/**/*.test.ts` および `tests/**/*.test.{ts,tsx}`（lib ディレクトリ内に共置可能）
 - E2E（必要に応じて変更影響が UI に及ぶ場合に）
   ```bash
   pnpm test:playwright # Playwright 実行
@@ -308,6 +315,7 @@ import styles from './Home.module.css';
   - 復元時は変換先をデッキから除外し、元カードを復元すること
 - ヒラメキ UI: レベル選択（キャラ最大6段階、その他最大4段階）。説明・コスト・カテゴリー・ステータスを連動更新。
   - 隠しヒラメキ：　隠しヒラメキは全てのカードで共通している。そのため、ヒラメキの選択画面で表示されているカードの下に隠しヒラメキのボタンを表示する。ボタンをクリックすると、隠しひらめきの説明とコスト、カテゴリー、ステータスが反映されたカードが並んで表示され、選択できるようにする。
+  - **重要**: 隠しヒラメキは `selectedHiramekiLevel === 0`（基本レベル）のときのみ適用される（`lib/deck-utils.ts` の `getCardInfo` 参照）。
 - 神ヒラメキ: 2段階選択（神→効果）。効果に応じたコスト修正を反映。神ヒラメキの効果を説明の下に追加で表示する。
 - 曖昧な記憶: `lib/deck-utils.ts` のルールに従い、行動ごとの加点を正しく計算。
 
@@ -380,8 +388,8 @@ import styles from './Home.module.css';
 このドキュメントを常に最新に保ち、新しい技術選定や設計変更があった場合は適宜更新してください。GitHub Copilot や AI ツールは、このドキュメントを参照することで、プロジェクトのコンテキストを正確に理解し、より適切なコード提案を行うことができます。
 
 ## 参考
-- 仕様: `SPECIFICATION.md`
-- 型/ロジック: `types/index.ts`, `hooks/useDeckBuilder.ts`, `lib/*`
+- 仕様: `SPECIFICATION.md`、シーズン2調整: `docs/season2.md`
+- 型/ロジック: `types/index.ts`, `hooks/useDeckBuilderStore.ts`, `lib/*`
 - UI: `components/*`
 - テスト: `tests/*`
 

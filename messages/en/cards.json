@@ -2746,6 +2746,74 @@
       "descriptions": {
         "0": "Convert as exclusion: record the original as excluded. The target is not added to the deck. Faint Memory +0."
       }
+    },
+    "diana_starting_1": {
+        "name": "Disruption Shot",
+        "descriptions": {
+            "0": "Damage 100%"
+        }
+    },
+    "diana_starting_2": {
+        "name": "Disruption Shot",
+        "descriptions": {
+            "0": "Damage 100%"
+        }
+    },
+    "diana_starting_3": {
+        "name": "Protect Me",
+        "descriptions": {
+            "0": "Heal 100%"
+        }
+    },
+    "diana_starting_4": {
+        "name": "With All My Heart!",
+        "descriptions": {
+            "0": "Damage 100%\nGenerate 2 Heart Breakers",
+            "1": "Damage 150%\nGenerate 3 Heart Breakers",
+            "2": "Damage 150%\nGenerate 1 Heart Breaker\nDraw 2 Vanishing Bullet cards",
+            "3": "Damage 150%\nChange all Vanishing cards in hand with Cost 1 or less to Heart Breakers",
+            "4": "Generate 2 Heart Breakers\nGrant Serenity to all Vanishing Bullet cards in hand",
+            "5": "At the start of each turn, generate 2 Heart Breakers\nIf you hold 5 or fewer Heart Bullets, generate 1 more"
+        }
+    },
+    "diana_hirameki_1": {
+        "name": "Come, Milkpom",
+        "descriptions": {
+            "0": "Generate 2 Heart Shakers",
+            "1": "Generate 2 Heart Shakers\nOther combatants' next 3 additional attacks resonate with the target 1 time",
+            "2": "Destroy up to 2 cards in hand\nGenerate Heart Shakers equal to the number destroyed +1",
+            "3": "Change all Cost 0 Vanishing cards in hand to random Heart Bullets",
+            "4": "Generate 1 Heart Bullet of each type\nResonate a random enemy 1 time based on the number of different Bullet cards in hand",
+            "5": "Change Heart Shakers in hand to Heart Breakers\nRetain: Generate 1 Heart Shaker"
+        }
+    },
+    "diana_hirameki_2": {
+        "name": "Purifying Pistol",
+        "descriptions": {
+            "0": "Damage 120%\nIf destroyed, activate this card's Resonance on the target 1 more time",
+            "1": "Damage 180%\nResonate 3\nIf destroyed, activate your Resonance on the target 5 more times",
+            "2": "Damage 180%\nFor the next 5 times a Swift Attack card is used, resonate the target 1 time",
+            "3": "Damage 180%\nActivate your Resonance on the target 10 times",
+            "4": "Damage 180%\nIncrease Damage by +100% based on the number of Bullet cards discarded this turn",
+            "5": "Damage 180% to all enemies\nIf destroyed, activate Resonance on all enemies 2 times"
+        }
+    },
+    "diana_hirameki_3": {
+        "name": "Budding Love",
+        "descriptions": {
+            "0": "Draw 1 Serenity card\nDestroy 2",
+            "1": "Draw 1 Serenity card\nDestroy 1\nIf the destroyed card belongs to another combatant, generate 2 Heart Bullets",
+            "2": "Draw 1 Serenity card\nDestroy 2\nResonate all enemies 1 time based on total cost of destroyed cards (max 6)",
+            "3": "Destroy up to 3 Bullet cards in hand\nDraw Serenity cards equal to the number destroyed +1",
+            "4": "Destroy all Bullet cards in hand\nAdditional attack on a random enemy for 80% based on the number destroyed",
+            "5": "If you have no Serenity cards in hand, draw 1 of your Serenity cards (once per turn)"
+        }
+    },
+    "diana_hirameki_4": {
+        "name": "Liberated Heart",
+        "descriptions": {
+            "0": "Draw 2 Vanishing Bullet cards\nDamage 300%\nIncrease Damage by 30% for each different Bullet card type in hand"
+        }
     }
   }
 }

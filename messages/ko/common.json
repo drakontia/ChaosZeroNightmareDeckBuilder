@@ -114,6 +114,7 @@
     "lead": "주도",
     "haste": "신속",
     "bullet": "탄환",
+    "serenity": "안식",
     "weakness_attack": "약점 공격",
     "pulverize": "분쇄",
     "bind": "결속",
@@ -169,7 +170,8 @@
     "owen": "오웬",
     "rei": "레이",
     "narja": "ナージャ",
-    "sereniel": "セレニエル"
+    "sereniel": "セレニエル",
+    "diana": "ディアナ"
   },
   "hiddenEffects": {
     "hiddenhirameki_01": "アクションポイント1獲得",
