@@ -94,12 +94,12 @@ export const CHARACTER_CARDS: CznCard[] = [
     statuses: [CardStatus.BULLET, CardStatus.SERENITY],
     imgUrl: "/images/cards/diana_hirameki_2.png",
     hiramekiVariations: [ // Fallback descriptions
-      { level: 0, cost: 1, description: "ダメージ120%\n破壊された場合、対象に自分の共鳴1回さらに発動" },
-      { level: 1, cost: 1, description: "ダメージ180%\n共鳴3\n破壊された場合、対象に自分の共鳴5回さらに発動" },
+      { level: 0, cost: 1, description: "ダメージ120%\n共鳴2\n破棄された場合、対象に自分の共鳴3回さらに発動" },
+      { level: 1, cost: 1, description: "ダメージ180%\n共鳴3\n破棄された場合、対象に自分の共鳴5回さらに発動" },
       { level: 2, cost: 1, description: "ダメージ180%\n次の5回、迅速攻撃カードを使用時、対象に共鳴1" },
       { level: 3, cost: 1, statuses: [CardStatus.SERENITY], description: "ダメージ180%\n対象が所持中の自分の共鳴10回発動" },
       { level: 4, cost: 1, description: "ダメージ180%\n今回のターンで破棄した弾丸数に応じてダメージ量+100%" },
-      { level: 5, cost: 1, description: "敵全体にダメージ180%\n破壊された場合、敵全体が所持中の共鳴2回発動" }
+      { level: 5, cost: 1, description: "敵全体にダメージ180%\n破棄された場合、敵全体が所持中の共鳴2回発動" }
     ]
   },
   {
@@ -112,8 +112,8 @@ export const CHARACTER_CARDS: CznCard[] = [
     hiramekiVariations: [ // Fallback descriptions
       { level: 0, cost: 1, description: "安息カードドロー1\n破棄2" },
       { level: 1, cost: 1, description: "安息カードドロー1\n破棄1\n破棄したカードが他の戦闘員のカードの場合、ハート弾丸を2枚生成" },
-      { level: 2, cost: 1, description: "安息カードドロー1\n破棄2\n破棄したカードの合計コストに応じて敵全体に共鳴1（最大6）" },
-      { level: 3, cost: 1, description: "手札の弾丸カードを3枚まで破棄\n破棄数+1分安息カードをドロー" },
+      { level: 2, cost: 1, description: "安息カードドロー1\n破棄2\n破棄したカードの合計コストに応じて敵全体に共鳴1\n（最大6）" },
+      { level: 3, cost: 1, description: "手札の弾丸カードを3枚まで破棄\n破棄数-1分安息カードをドロー" },
       { level: 4, cost: 1, description: "手札の弾丸カードをすべて破棄\nその数に応じてランダムな敵に追加攻撃80%" },
       { level: 5, cost: 3, category: CardCategory.UPGRADE, statuses: [CardStatus.SERENITY, CardStatus.UNIQUE], description: "手札に自分の安息カードがない場合、自分の安息カードドロー1（各ターン1回）" }
     ]
