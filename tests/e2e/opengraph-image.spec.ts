@@ -19,8 +19,8 @@ const getWithRetry = async (request: APIRequestContext, url: string, retries: nu
 // ヘルパー関数：キャラクターと武器を選択
 const selectCharacterAndWeapon = async (page: Page) => {
   await page.getByRole('button', { name: 'キャラクターを選択' }).click();
-  await page.getByRole('button', { name: 'チズル' }).waitFor({ state: 'visible' });
-  await page.getByRole('button', { name: 'チズル' }).click();
+  await page.getByRole('button', { name: 'チズル', exact: true }).waitFor({ state: 'visible' });
+  await page.getByRole('button', { name: 'チズル', exact: true }).click();
   await page.getByRole('button', { name: '武器' }).click();
   await page.getByRole('button', { name: 'ガストロノミコン' }).click();
 };
@@ -55,11 +55,6 @@ const shareDeckAndGetShareId = async (page: Page) => {
 
   await shareBtn.click();
   const alertMessage = await alertPromise;
-  
-  // エラーが発生した場合はコンソールログを出力
-  if (!alertMessage.includes('共有URLをコピーしました')) {
-    console.log('Console errors:', consoleErrors);
-  }
   
   expect(alertMessage).toContain('共有URLをコピーしました');
 

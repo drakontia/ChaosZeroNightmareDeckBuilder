@@ -88,6 +88,29 @@ describe('Hidden Hirameki (Unified Structure)', () => {
       expect(info.cost).toBe(1);
       expect(info.description).toBe('Base description');
     });
+
+    it('should preserve hidden hirameki on base-level ego variations', () => {
+      const firstHiddenEffect = HIDDEN_HIRAMEKI_EFFECTS[0];
+      testCard.selectedHiramekiLevel = 0;
+      testCard.selectedHiddenHiramekiId = firstHiddenEffect.id;
+      testCard.hiramekiVariations = [
+        {
+          level: 0,
+          cost: 1,
+          description: 'Base description',
+          egoVariations: {
+            1: {
+              description: 'Base ego variation',
+            },
+          },
+        },
+      ];
+
+      const info = getCardInfo(testCard, 1);
+
+      expect(info.description).toContain('Base ego variation');
+      expect(info.description).toContain(firstHiddenEffect.additionalEffect);
+    });
   });
 
   describe('calculateFaintMemory with hidden hirameki', () => {

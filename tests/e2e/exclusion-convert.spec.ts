@@ -2,8 +2,8 @@ import { test, expect, Page } from '@playwright/test';
 
 const selectCharacterAndWeapon = async (page: Page) => {
   await page.getByRole('button', { name: 'キャラクターを選択' }).click();
-  await page.getByRole('button', { name: 'チズル' }).waitFor({ state: 'visible' });
-  await page.getByRole('button', { name: 'チズル' }).click();
+  await page.getByRole('button', { name: 'チズル', exact: true }).waitFor({ state: 'visible' });
+  await page.getByRole('button', { name: 'チズル', exact: true }).click();
 
   await page.getByRole('button', { name: '武器' }).click();
   await page.getByRole('button', { name: 'ガストロノミコン' }).click();

@@ -1,32 +1,44 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { Character } from "@/types";
 
 interface UseCharacterSelectionProps {
   character: Character | null;
   onSelect: (character: Character) => void;
+  onEgoLevelChange?: (level: number) => void;
 }
 
-export function useCharacterSelection({ character, onSelect }: UseCharacterSelectionProps) {
+export function useCharacterSelection({ character, onSelect, onEgoLevelChange }: UseCharacterSelectionProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [egoLevels, setEgoLevels] = useState<Record<string, number>>({});
+
+  useEffect(() => {
+    if (!character) {
+      return;
+    }
+
+    setEgoLevels((prev) => ({
+      ...prev,
+      [character.id]: character.egoLevel ?? 0,
+    }));
+  }, [character]);
 
   const getEgoLevel = useCallback((character: Character) => {
     return egoLevels[character.id] ?? character.egoLevel ?? 0;
   }, [egoLevels]);
 
-  const handleEgoIncrement = useCallback((character: Character, syncSelect = false) => {
-    const current = getEgoLevel(character);
+  const handleEgoIncrement = useCallback((targetCharacter: Character, syncSelect = false) => {
+    const current = getEgoLevel(targetCharacter);
     const next = current >= 6 ? 0 : current + 1;
-    setEgoLevels((prev) => ({ ...prev, [character.id]: next }));
-    if (syncSelect || character?.id === character.id) {
-      onSelect({ ...character, egoLevel: next });
+    setEgoLevels((prev) => ({ ...prev, [targetCharacter.id]: next }));
+    if (syncSelect || character?.id === targetCharacter.id) {
+      onEgoLevelChange?.(next);
     }
-  }, [getEgoLevel, character, onSelect]);
+  }, [character, getEgoLevel, onEgoLevelChange]);
 
-  const handleSelect = useCallback((character: Character) => {
-    onSelect(character);
+  const handleSelect = useCallback((targetCharacter: Character) => {
+    onSelect({ ...targetCharacter, egoLevel: getEgoLevel(targetCharacter) });
     setIsOpen(false);
-  }, [onSelect]);
+  }, [getEgoLevel, onSelect]);
 
   return {
     isOpen,

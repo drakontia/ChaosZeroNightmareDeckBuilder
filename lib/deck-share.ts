@@ -1,11 +1,15 @@
 import { CHARACTERS, EQUIPMENT, getCardById } from "@/lib/card";
-import { CznCard, Deck, DeckCard, Equipment, EquipmentType } from "@/types";
+import { normalizeEquipmentEngravingId } from "@/lib/equipment-engraving";
+import { normalizePersonaCardEngravings, VALID_PERSONA_ENGRAVING_ALIGNMENTS } from "@/lib/persona";
+import { Character, CznCard, Deck, DeckCard, Equipment, EquipmentType, PersonaEngraving, PersonaEngravingAlignment } from "@/types";
 
 interface SharedDeckCard {
   id: string;
   selectedHiramekiLevel?: number;
   godHiramekiType?: DeckCard["godHiramekiType"];
   godHiramekiEffectId?: DeckCard["godHiramekiEffectId"];
+  selectedHiddenHiramekiId?: DeckCard["selectedHiddenHiramekiId"];
+  personaEngravings?: DeckCard["personaEngravings"];
   isCopied?: boolean;
   copiedFromCardId?: string;
 }
@@ -20,6 +24,15 @@ interface SharedDeckPayload {
     w?: string | null;
     a?: string | null;
     p?: string | null;
+    wr?: string | null;
+    ar?: string | null;
+    pr?: string | null;
+    wh?: string | null;
+    ah?: string | null;
+    ph?: string | null;
+    we?: string | null;
+    ae?: string | null;
+    pe?: string | null;
   };
   k: SharedDeckCard[];
   ego?: number;
@@ -31,6 +44,31 @@ interface SharedDeckPayload {
 }
 
 const DEFAULT_VERSION = 1;
+
+const normalizePersonaEngravings = (value: unknown, characterJob?: Character["job"]): PersonaEngraving[] => {
+  if (!Array.isArray(value)) {
+    return [];
+  }
+
+  const normalized: PersonaEngraving[] = [];
+  for (const candidate of value) {
+    if (!candidate || typeof candidate !== "object") {
+      continue;
+    }
+
+    const { id, alignment } = candidate as Partial<PersonaEngraving>;
+    if (typeof id !== "string" || !id.trim()) {
+      continue;
+    }
+    if (!VALID_PERSONA_ENGRAVING_ALIGNMENTS.has(alignment as PersonaEngravingAlignment)) {
+      continue;
+    }
+
+    normalized.push({ id, alignment: alignment as PersonaEngravingAlignment });
+  }
+
+  return normalizePersonaCardEngravings(normalized, characterJob ?? undefined);
+};
 
 const encodeText = (value: string): string => {
   // Try Node.js Buffer first
@@ -96,6 +134,14 @@ const pickEquipment = (id: string | null | undefined, type: EquipmentType): Equi
 
 const pickCharacter = (id: string | null | undefined) => CHARACTERS.find((char) => char.id === id) ?? null;
 
+const normalizeSnapshotPersonaEngravings = <T extends { personaEngravings?: PersonaEngraving[] }>(
+  entry: T,
+  characterJob?: Character["job"]
+): T => ({
+  ...entry,
+  personaEngravings: normalizePersonaEngravings(entry.personaEngravings, characterJob),
+});
+
 export function encodeDeckShare(deck: Deck): string {
   const payload: SharedDeckPayload = {
     v: DEFAULT_VERSION,
@@ -106,6 +152,15 @@ export function encodeDeckShare(deck: Deck): string {
         ...(deck.equipment.weapon?.item && { w: deck.equipment.weapon.item.id }),
         ...(deck.equipment.armor?.item && { a: deck.equipment.armor.item.id }),
         ...(deck.equipment.pendant?.item && { p: deck.equipment.pendant.item.id }),
+        ...(deck.equipment.weapon?.refinement && { wr: deck.equipment.weapon.refinement }),
+        ...(deck.equipment.armor?.refinement && { ar: deck.equipment.armor.refinement }),
+        ...(deck.equipment.pendant?.refinement && { pr: deck.equipment.pendant.refinement }),
+        ...(deck.equipment.weapon?.godHammerEquipmentId && { wh: deck.equipment.weapon.godHammerEquipmentId }),
+        ...(deck.equipment.armor?.godHammerEquipmentId && { ah: deck.equipment.armor.godHammerEquipmentId }),
+        ...(deck.equipment.pendant?.godHammerEquipmentId && { ph: deck.equipment.pendant.godHammerEquipmentId }),
+        ...(deck.equipment.weapon?.engravingId && { we: deck.equipment.weapon.engravingId }),
+        ...(deck.equipment.armor?.engravingId && { ae: deck.equipment.armor.engravingId }),
+        ...(deck.equipment.pendant?.engravingId && { pe: deck.equipment.pendant.engravingId }),
       },
     }),
     k: deck.cards.map((card) => ({
@@ -113,6 +168,8 @@ export function encodeDeckShare(deck: Deck): string {
       ...(card.selectedHiramekiLevel !== undefined && { selectedHiramekiLevel: card.selectedHiramekiLevel }),
       ...(card.godHiramekiType && { godHiramekiType: card.godHiramekiType }),
       ...(card.godHiramekiEffectId && { godHiramekiEffectId: card.godHiramekiEffectId }),
+      ...(card.selectedHiddenHiramekiId && { selectedHiddenHiramekiId: card.selectedHiddenHiramekiId }),
+      ...(card.personaEngravings?.length && { personaEngravings: normalizePersonaEngravings(card.personaEngravings) }),
       ...(card.isCopied && { isCopied: card.isCopied }),
       ...(card.copiedFromCardId && { copiedFromCardId: card.copiedFromCardId }),
     })),
@@ -129,40 +186,16 @@ export function encodeDeckShare(deck: Deck): string {
       // フォールバック：現在時刻を使用
       return new Date().toISOString();
     })(),
-    ...(deck.removedCards.size && {
-      rm: Array.from(deck.removedCards.entries()).map(([id, entry]) => {
-        if (typeof entry === 'number') {
-          return [id, entry];
-        } else {
-          return [id, entry]; // entryはRemovedCardEntry型
-        }
-      })
-    }),
-    ...(deck.copiedCards.size && {
-      cp: Array.from(deck.copiedCards.entries()).map(([id, entry]) => {
-        if (typeof entry === 'number') {
-          return [id, entry];
-        } else {
-          return [id, entry]; // entryはCopiedCardEntry型
-        }
-      })
-    }),
-    ...(deck.convertedCards.size && {
-      cv: Array.from(deck.convertedCards.entries()).map(([id, entry]) => {
-        if (typeof entry === 'string') {
-          return [id, entry];
-        } else {
-          return [id, entry]; // entryはConvertedCardEntry型
-        }
-      })
-    }),
+    ...(deck.removedCards.size && { rm: Array.from(deck.removedCards.entries()) }),
+    ...(deck.copiedCards.size && { cp: Array.from(deck.copiedCards.entries()) }),
+    ...(deck.convertedCards.size && { cv: Array.from(deck.convertedCards.entries()) }),
   };
 
   const json = JSON.stringify(payload);
   return toBase64Url(json);
 }
 
-const toDeckCard = (card: CznCard, shared: SharedDeckCard): DeckCard => {
+const toDeckCard = (card: CznCard, shared: SharedDeckCard, characterJob?: Character["job"]): DeckCard => {
   const maxLevel = Math.max(0, card.hiramekiVariations.length - 1);
   const safeLevel = Math.min(Math.max(shared.selectedHiramekiLevel ?? 0, 0), maxLevel);
   return {
@@ -171,9 +204,11 @@ const toDeckCard = (card: CznCard, shared: SharedDeckCard): DeckCard => {
     selectedHiramekiLevel: safeLevel,
     godHiramekiType: shared.godHiramekiType ?? null,
     godHiramekiEffectId: shared.godHiramekiEffectId ?? null,
+    selectedHiddenHiramekiId:
+      typeof shared.selectedHiddenHiramekiId === "string" ? shared.selectedHiddenHiramekiId : null,
+    personaEngravings: normalizePersonaEngravings(shared.personaEngravings, characterJob),
     isCopied: shared.isCopied,
     copiedFromCardId: shared.copiedFromCardId,
-    selectedHiddenHiramekiId: null,
   };
 };
 
@@ -191,18 +226,21 @@ export function decodeDeckShare(value: string): Deck | null {
     const equipment = {
       weapon: {
         item: payload.e?.w ? pickEquipment(payload.e.w, EquipmentType.WEAPON) : null,
-        refinement: null,
-        godHammerEquipmentId: null,
+        refinement: payload.e?.wr ?? null,
+        godHammerEquipmentId: payload.e?.wh ?? null,
+        engravingId: normalizeEquipmentEngravingId(payload.e?.we),
       },
       armor: {
         item: payload.e?.a ? pickEquipment(payload.e.a, EquipmentType.ARMOR) : null,
-        refinement: null,
-        godHammerEquipmentId: null,
+        refinement: payload.e?.ar ?? null,
+        godHammerEquipmentId: payload.e?.ah ?? null,
+        engravingId: normalizeEquipmentEngravingId(payload.e?.ae),
       },
       pendant: {
         item: payload.e?.p ? pickEquipment(payload.e.p, EquipmentType.PENDANT) : null,
-        refinement: null,
-        godHammerEquipmentId: null,
+        refinement: payload.e?.pr ?? null,
+        godHammerEquipmentId: payload.e?.ph ?? null,
+        engravingId: normalizeEquipmentEngravingId(payload.e?.pe),
       },
     };
 
@@ -210,7 +248,7 @@ export function decodeDeckShare(value: string): Deck | null {
       .map((shared) => {
         const card = pickCard(shared.id);
         if (!card) return null;
-        return toDeckCard(card, shared);
+        return toDeckCard(card, shared, character?.job);
       })
       .filter((card): card is DeckCard => Boolean(card));
 
@@ -231,9 +269,18 @@ export function decodeDeckShare(value: string): Deck | null {
       egoLevel: payload.ego ?? 0,
       hasPotential: payload.pot ?? false,
       createdAt: validCreatedAt,
-      removedCards: new Map<string, number | RemovedCardEntry>((payload.rm ?? []).map(([id, entry]) => [id, entry])),
-      copiedCards: new Map<string, number | CopiedCardEntry>((payload.cp ?? []).map(([id, entry]) => [id, entry])),
-      convertedCards: new Map<string, string | ConvertedCardEntry>((payload.cv ?? []).map(([id, entry]) => [id, entry])),
+      removedCards: new Map<string, number | RemovedCardEntry>((payload.rm ?? []).map(([id, entry]) => [
+        id,
+        typeof entry === "number" ? entry : normalizeSnapshotPersonaEngravings(entry, character?.job),
+      ])),
+      copiedCards: new Map<string, number | CopiedCardEntry>((payload.cp ?? []).map(([id, entry]) => [
+        id,
+        typeof entry === "number" ? entry : normalizeSnapshotPersonaEngravings(entry, character?.job),
+      ])),
+      convertedCards: new Map<string, string | ConvertedCardEntry>((payload.cv ?? []).map(([id, entry]) => [
+        id,
+        typeof entry === "string" ? entry : normalizeSnapshotPersonaEngravings(entry, character?.job),
+      ])),
     };
   } catch (error) {
     console.error("Failed to decode deck share", error);

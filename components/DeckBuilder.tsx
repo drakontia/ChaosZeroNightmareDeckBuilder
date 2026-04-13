@@ -2,155 +2,97 @@
 
 import { useTranslations, useLocale } from 'next-intl';
 import { useRouter } from 'next/navigation';
-import Link from 'next/link';
+import { useShallow } from 'zustand/react/shallow';
 import { useDeckBuilderStore } from "@/hooks/useDeckBuilderStore";
-import { DeckCard, CznCard, Equipment, EquipmentType } from "@/types";
-import { CardType } from "@/types";
-import { CharacterSelector } from "./CharacterSelector";
-import { EquipmentSelector } from "./EquipmentSelector";
-import { CardSelector } from "./CardSelector";
-import { DeckDisplay } from "./DeckDisplay";
-import { LanguageSwitcher } from "./LanguageSwitcher";
 import { CHARACTERS, EQUIPMENT } from "@/lib/card";
 import { calculateFaintMemory } from "@/lib/calculateFaintMemory";
-import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
-import { Button } from "./ui/button";
-import { Field, FieldLabel, FieldGroup, FieldSet } from "./ui/field";
-import { Input } from './ui/input';
-import { Brain, Clock12, Share2, Save as SaveIcon, FolderOpen, Eraser, Book, BookCopy, BookX } from 'lucide-react';
-import { useCallback, useEffect, useRef, useState } from 'react';
-import { Camera } from 'lucide-react';
-import { decodeDeckShare } from "@/lib/deck-share";
-import { Deck } from "@/types";
-import { toast } from 'sonner';
+import { useCallback, useRef, useState } from 'react';
+import { CznCard, Deck } from "@/types";
 import { useShareDeck } from "@/hooks/useShareDeck";
 import { useExportDeckImage } from "@/hooks/useExportDeckImage";
 import { useDeckSaveLoad } from "@/hooks/useDeckSaveLoad";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "./ui/dialog";
 import { Footer } from './Footer';
+import { CardCatalogSection, DeckBuilderHeader, DeckWorkspace, LoadDeckDialog } from "./deck-builder";
+import { useDeckBuilderAlerts } from "@/hooks/useDeckBuilderAlerts";
+import { useDeckBuilderInitialization } from "@/hooks/useDeckBuilderInitialization";
+import { useDeckShareLoader } from "@/hooks/useDeckShareLoader";
+import { useEquipmentValidation } from "@/hooks/useEquipmentValidation";
+import { useLoadedDeckSync } from "@/hooks/useLoadedDeckSync";
 
 export type DeckBuilderProps = {
   shareId?: string;
 };
 
 export function DeckBuilder({ shareId }: DeckBuilderProps) {
-  // Zustandストアから状態と操作を取得（必ず最初に呼ぶ）
-  const deck = useDeckBuilderStore((s) => s.deck);
-  const setDeck = useDeckBuilderStore((s) => s.setDeck);
-  const setCharacter = useDeckBuilderStore((s) => s.setCharacter);
-  const setPotential = useDeckBuilderStore((s) => s.setPotential);
-  const addCard = useDeckBuilderStore((s) => s.addCard);
-  const removeCard = useDeckBuilderStore((s) => s.removeCard);
-  const restoreCard = useDeckBuilderStore((s) => s.restoreCard);
-  const selectEquipment = useDeckBuilderStore((s) => s.selectEquipment);
-  const setEquipmentRefinement = useDeckBuilderStore((s) => s.setEquipmentRefinement);
-  const setEquipmentGodHammer = useDeckBuilderStore((s) => s.setEquipmentGodHammer);
-  const updateCardHirameki = useDeckBuilderStore((s) => s.updateCardHirameki);
-  const setCardGodHirameki = useDeckBuilderStore((s) => s.setCardGodHirameki);
-  const setCardGodHiramekiEffect = useDeckBuilderStore((s) => s.setCardGodHiramekiEffect);
-  const setCardHiddenHirameki = useDeckBuilderStore((s) => s.setCardHiddenHirameki);
-  const reset = useDeckBuilderStore((s) => s.reset);
-  const undoCard = useDeckBuilderStore((s) => s.undoCard);
-  const copyCard = useDeckBuilderStore((s) => s.copyCard);
-  const convertCard = useDeckBuilderStore((s) => s.convertCard);
+  const store = useDeckBuilderStore(useShallow((state) => ({
+    deck: state.deck,
+    setDeck: state.setDeck,
+    setCharacter: state.setCharacter,
+    setEgoLevel: state.setEgoLevel,
+    setPotential: state.setPotential,
+    addCard: state.addCard,
+    removeCard: state.removeCard,
+    restoreCard: state.restoreCard,
+    selectEquipment: state.selectEquipment,
+    setEquipmentRefinement: state.setEquipmentRefinement,
+    setEquipmentGodHammer: state.setEquipmentGodHammer,
+    setEquipmentEngraving: state.setEquipmentEngraving,
+    updateCardHirameki: state.updateCardHirameki,
+    setCardGodHirameki: state.setCardGodHirameki,
+    setCardGodHiramekiEffect: state.setCardGodHiramekiEffect,
+    setCardHiddenHirameki: state.setCardHiddenHirameki,
+    setCardPersonaEngravings: state.setCardPersonaEngravings,
+    reset: state.reset,
+    undoCard: state.undoCard,
+    copyCard: state.copyCard,
+    convertCard: state.convertCard,
+    removeLimitReached: state.removeLimitReached,
+    copyLimitReached: state.copyLimitReached,
+    conversionLimitReached: state.conversionLimitReached,
+    clearRemoveLimitAlert: state.clearRemoveLimitAlert,
+    clearCopyLimitAlert: state.clearCopyLimitAlert,
+    clearConversionLimitAlert: state.clearConversionLimitAlert,
+  })));
 
   const t = useTranslations();
   const locale = useLocale();
   const router = useRouter();
   const [searchQuery, setSearchQuery] = useState("");
-  const [deckName, setName] = useState("");
+  const [, setName] = useState("");
   const [sharedDeck, setSharedDeck] = useState<Deck | null>(null);
   const [shareError, setShareError] = useState<string | null>(null);
-  const removeLimitReached = useDeckBuilderStore((s) => s.removeLimitReached);
-  const copyLimitReached = useDeckBuilderStore((s) => s.copyLimitReached);
-  const conversionLimitReached = useDeckBuilderStore((s) => s.conversionLimitReached);
-  const clearRemoveLimitAlert = useDeckBuilderStore((s) => s.clearRemoveLimitAlert);
-  const clearCopyLimitAlert = useDeckBuilderStore((s) => s.clearCopyLimitAlert);
-  const clearConversionLimitAlert = useDeckBuilderStore((s) => s.clearConversionLimitAlert);
-  const hasLoadedShare = useRef(false);
   const deckCaptureRef = useRef<HTMLDivElement | null>(null);
 
-  // デッキがnullなら初期化（初回表示時やリセット直後）
-  useEffect(() => {
-    if (!deck) {
-      setDeck({
-        name: '',
-        character: null,
-        equipment: {
-          weapon: { item: null, refinement: null, godHammerEquipmentId: null },
-          armor: { item: null, refinement: null, godHammerEquipmentId: null },
-          pendant: { item: null, refinement: null, godHammerEquipmentId: null },
-        },
-        cards: [],
-        egoLevel: 0,
-        hasPotential: false,
-        createdAt: new Date(),
-        removedCards: new Map(),
-        copiedCards: new Map(),
-        convertedCards: new Map(),
-      });
-    }
-  }, [deck, setDeck]);
-
-  // 読込ダイアログでsharedDeckがセットされたらZustandストアに反映
-  useEffect(() => {
-    if (sharedDeck) {
-      setDeck(sharedDeck);
-    }
-  }, [sharedDeck, setDeck]);
-
-  // 制限アラートをToastで表示
-  useEffect(() => {
-    if (removeLimitReached) {
-      toast.warning(t('deck.removeLimitTitle', { defaultValue: '排除上限に達しました' }), {
-        description: t('deck.removeLimitMessage', { defaultValue: '排除は5回までです。これ以上排除できません。' }),
-        duration: 4000,
-        position: "top-center"
-      });
-      clearRemoveLimitAlert();
-    }
-  }, [removeLimitReached, clearRemoveLimitAlert]);
-
-  useEffect(() => {
-    if (copyLimitReached) {
-      toast.warning(t('deck.copyLimitTitle', { defaultValue: 'コピー上限に達しました' }), {
-        description: t('deck.copyLimitMessage', { defaultValue: 'コピーは4回までです。これ以上コピーできません。' }),
-        duration: 4000,
-        position: "top-center"
-      });
-      clearCopyLimitAlert();
-    }
-  }, [copyLimitReached, clearCopyLimitAlert]);
-
-  useEffect(() => {
-    if (conversionLimitReached) {
-      toast.warning(t('deck.conversionLimitTitle', { defaultValue: '変換上限に達しました' }), {
-        description: t('deck.conversionLimitMessage', { defaultValue: '変換は5回までです。これ以上変換できません。' }),
-        duration: 4000,
-        position: "top-center"
-      });
-      clearConversionLimitAlert();
-    }
-  }, [conversionLimitReached, clearConversionLimitAlert]);
+  useDeckBuilderInitialization(store.deck, store.setDeck);
+  useLoadedDeckSync(sharedDeck, store.setDeck);
+  useDeckBuilderAlerts({
+    t,
+    removeLimitReached: store.removeLimitReached,
+    copyLimitReached: store.copyLimitReached,
+    conversionLimitReached: store.conversionLimitReached,
+    clearRemoveLimitAlert: store.clearRemoveLimitAlert,
+    clearCopyLimitAlert: store.clearCopyLimitAlert,
+    clearConversionLimitAlert: store.clearConversionLimitAlert,
+  });
+  useDeckShareLoader(shareId, store.setDeck, setShareError, t);
 
   // DeckDisplay用: (deckId: string, targetCard: CznCard) => void にラップ
   const handleConvertCard = useCallback((deckId: string, targetCard: CznCard, options?: { asExclusion?: boolean }) => {
-    convertCard(deckId, targetCard.id, options);
-  }, [convertCard]);
+    store.convertCard(deckId, targetCard.id, options);
+  }, [store]);
 
   const handleRemoveCard = useCallback((deckId: string) => {
-    if (!deck) return;
-    removeCard(deckId);
-  }, [deck, removeCard]);
+    if (!store.deck) return;
+    store.removeCard(deckId);
+  }, [store]);
 
   const handleCopyCard = useCallback((deckId: string) => {
-    if (!deck) return;
-    copyCard(deckId);
-  }, [copyCard, deck]);
+    if (!store.deck) return;
+    store.copyCard(deckId);
+  }, [store]);
 
   const { isSharing, handleShareDeck: shareHandler } = useShareDeck();
   const { isExporting, handleExportDeckImage: exportHandler } = useExportDeckImage();
-  // deckがnullのときはundefinedを渡す（useDeckSaveLoad側でnull/undefined対応必須）
   const {
     savedList,
     loadOpen,
@@ -159,379 +101,114 @@ export function DeckBuilder({ shareId }: DeckBuilderProps) {
     openLoadDialog,
     handleLoadDeck,
     handleDeleteSaved,
-  } = useDeckSaveLoad({ deck: deck ?? undefined, setName, setSharedDeck, setShareError, t });
+  } = useDeckSaveLoad({ deck: store.deck ?? undefined, setName, setSharedDeck, setShareError, t });
+  const validateEquipment = useEquipmentValidation(store.deck, t);
 
-  // 装備の検証（神のハンマーが有効で精錬がオフの場合に警告）
-  const validateEquipment = useCallback(() => {
-    if (!deck) return true;
-    const equipmentTypes: Array<'weapon' | 'armor' | 'pendant'> = ['weapon', 'armor', 'pendant'];
-    for (const type of equipmentTypes) {
-      const slot = deck.equipment[type];
-      if (slot?.item && slot.godHammerEquipmentId && !slot.refinement) {
-        toast.warning(t('equipment.godHammerWithoutRefinement.title', { defaultValue: '精錬が選択されていません' }), {
-          description: t('equipment.godHammerWithoutRefinement.message', { 
-            defaultValue: '神のハンマーが有効な装備に精錬が選択されていません。精錬を有効にすることを推奨します。'
-          }),
-          duration: 5000,
-          position: "top-center"
-        });
-        return false;
-      }
-    }
-    return true;
-  }, [deck, t]);
-
-  // 保存時の検証付きハンドラ
   const handleSaveDeck = useCallback(() => {
     if (!validateEquipment()) return;
     saveHandler();
   }, [validateEquipment, saveHandler]);
 
-  // 画像エクスポート時の検証付きハンドラ
   const handleExportImage = useCallback(() => {
     if (!validateEquipment()) return;
-    exportHandler(deckCaptureRef, deck?.name || 'deck');
-  }, [validateEquipment, exportHandler, deck?.name]);
-
-  // 共有デッキ読み込み（shareIdがある場合のみ1回だけ）
-  useEffect(() => {
-    if (!shareId || hasLoadedShare.current) return;
-    const decoded = decodeDeckShare(shareId);
-    console.log('[デバッグ] 共有デッキデコード結果:', decoded);
-    if (decoded) {
-      console.log('[デバッグ] character:', decoded.character);
-      console.log('[デバッグ] cards:', decoded.cards);
-      setDeck(decoded);
-    } else {
-      setShareError(t('deck.shareInvalid', { defaultValue: '共有リンクが無効です。' }));
-    }
-    hasLoadedShare.current = true;
-  }, [shareId, t, setDeck, setCharacter]);
-
+    exportHandler(deckCaptureRef, store.deck?.name || 'deck');
+  }, [validateEquipment, exportHandler, store.deck?.name, deckCaptureRef]);
 
   const handleShareDeck = useCallback(() => {
-    if (!deck) return;
-    // 神のハンマーが有効で精錬がオフの装備をチェック
-    const equipmentTypes: Array<'weapon' | 'armor' | 'pendant'> = ['weapon', 'armor', 'pendant'];
-    for (const type of equipmentTypes) {
-      const slot = deck.equipment[type];
-      if (slot?.item && slot.godHammerEquipmentId && !slot.refinement) {
-        toast.warning(t('equipment.godHammerWithoutRefinement.title', { defaultValue: '精錬が選択されていません' }), {
-          description: t('equipment.godHammerWithoutRefinement.message', { 
-            defaultValue: '神のハンマーが有効な装備に精錬が選択されていません。精錬を有効にすることを推奨します。',
-            type: t(`equipment.${type}.title`)
-          }),
-          duration: 5000,
-          position: "top-center"
-        });
-        return; // 共有を中断しない（警告のみ）
-      }
-    }
-    shareHandler(deck);
-  }, [deck, shareHandler, t]);
+    if (!store.deck || !validateEquipment()) return;
+    shareHandler(store.deck);
+  }, [store.deck, validateEquipment, shareHandler]);
 
   const handleClearDeck = useCallback(() => {
-    reset();
+    store.reset();
     router.push('/');
-  }, [reset, router]);
+  }, [store, router]);
 
-  const faintMemoryPoints = deck ? calculateFaintMemory(deck) : 0;
-
-  // 統一されたテキストスタイル定数
-  const statLabelClass = "text-sm sm:text-base md:text-lg lg:text-2xl text-gray-500";
-  const statValueClass = "text-sm sm:text-base md:text-lg lg:text-2xl font-bold text-gray-500";
-
-  // Hooks呼び出し後に初期化中判定（必ず1箇所のみ）
-  if (!deck) {
+  if (!store.deck) {
     return <div className="min-h-screen flex items-center justify-center text-lg">Loading...</div>;
   }
+
+  const currentDeck = store.deck;
+  const faintMemoryPoints = calculateFaintMemory(currentDeck);
+
   return (
     <div className="min-h-screen p-4 lg:p-8 bg-gray-50 dark:bg-gray-900">
       <div className="max-w-400 mx-auto">
-        <header className="mb-6">
-          <div className="flex flex-col sm:flex-row sm:justify-between items-end sm:items-start gap-2 mb-2">
-            <div className="flex items-center gap-3 w-full sm:w-auto justify-end order-1 sm:order-2">
-              <iframe src="https://github.com/sponsors/drakontia/button" title="Sponsor drakontia" height="32" width="114" style={{border: 0, borderRadius: '6px'}}></iframe>
-              <LanguageSwitcher currentLocale={locale} />
-            </div>
-            <div className="order-2 sm:order-1 w-full sm:w-auto">
-              <h1 className="text-xl sm:text-2xl lg:text-4xl font-bold mb-2">
-                <Link href="/" className="hover:underline">
-                  {t('app.title')}
-                </Link>
-              </h1>
-              <p className="text-gray-600 dark:text-gray-400">
-                {t('app.description')}
-              </p>
-            </div>
-          </div>
-        </header>
-
-      {shareError && (
-        <div className="mb-4 text-sm text-destructive">
-          {shareError}
-        </div>
-      )}
-
+        <DeckBuilderHeader locale={locale} title={t('app.title')} description={t('app.description')} />
+        {shareError ? <div className="mb-4 text-sm text-destructive">{shareError}</div> : null}
         <main ref={deckCaptureRef}>
-          <FieldSet className="grid grid-cols-1 sm:grid-cols-6 lg:grid-cols-12 gap-6 mb-6 p-3 lg:p-6 rounded-xl border bg-card">
-            {/* Top side - Deck name, Deck control */}
-            <FieldGroup className="sm:col-span-6 lg:col-span-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-12 gap-4">
-              <Field orientation={'horizontal'} className="col-span-1 md:col-span-4 lg:col-span-4">
-                <Input
-                  id="deck-name"
-                  type="text"
-                  value={deck.name ?? ""}
-                  onChange={(e) => {
-                    setDeck({ ...deck, name: e.target.value });
-                    setName(e.target.value);
-                  }}
-                  className="text-base sm:text-lg md:text-xl lg:text-2xl h-12 font-bold"
-                  placeholder={t('deck.namePlaceholder')}
-                />
-              </Field>
-              <div className="col-span-1 md:col-span-8 lg:col-span-8 flex justify-end gap-2">
-                <Button
-                  onClick={handleSaveDeck}
-                  variant="secondary"
-                  disabled={!deck.character}
-                  title={t('deck.save', { defaultValue: 'デッキを保存' })}
-                  aria-label={t('deck.save', { defaultValue: 'デッキを保存' })}
-                >
-                  <SaveIcon className="lg:mr-2 h-4 w-4" />
-                  <span className="hidden lg:inline">{t('deck.save', { defaultValue: 'デッキを保存' })}</span>
-                </Button>
-                <Button
-                  onClick={openLoadDialog}
-                  variant="secondary"
-                  title={t('deck.load', { defaultValue: 'デッキを読み込み' })}
-                  aria-label={t('deck.load', { defaultValue: 'デッキを読み込み' })}
-                >
-                  <FolderOpen className="lg:mr-2 h-4 w-4" />
-                  <span className="hidden lg:inline">{t('deck.load', { defaultValue: 'デッキを読み込み' })}</span>
-                </Button>
-                <Button
-                  onClick={handleShareDeck}
-                  variant="secondary"
-                  disabled={isSharing || !deck.character}
-                  title={t('deck.share')}
-                  aria-label={t('deck.share')}
-                >
-                  <Share2 className="lg:mr-2 h-4 w-4" />
-                  <span className="hidden lg:inline">{t('deck.share')}</span>
-                </Button>
-                <Button
-                  onClick={handleExportImage}
-                  variant="secondary"
-                  disabled={isExporting}
-                  title={t('deck.exportImage')}
-                  aria-label={t('deck.exportImage')}
-                >
-                  <Camera className="lg:mr-2 h-4 w-4" />
-                  <span className="hidden lg:inline">{t('deck.exportImage')}</span>
-                </Button>
-                <Button
-                  onClick={handleClearDeck}
-                  variant="destructive"
-                >
-                  <Eraser className="lg:mr-2 h-4 w-4" />
-                  <span className="hidden lg:inline">{t('deck.clear')}</span>
-                </Button>
-              </div>
-            </FieldGroup>
-
-            {/* Left side - Character, Points, Equipment */}
-            <div className="sm:col-span-6 lg:col-span-4 space-y-6">
-              {/* Character Selection */}
-              <Card>
-                <CardContent className="p-2 lg:p-4">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-4">
-                    {/* 左列: キャラクター画像 */}
-                    <div>
-                      <CharacterSelector
-                        characters={CHARACTERS}
-                        character={deck.character}
-                        onSelect={setCharacter}
-                        hasPotential={deck.hasPotential}
-                        onTogglePotential={() => setPotential(!deck.hasPotential)}
-                      />
-                    </div>
-
-                    {/* 右列: 情報と装備 */}
-                    <div className="space-y-4">
-                      {/* Points/Stats Section */}
-                      <FieldGroup className='gap-2'>
-                        <Field orientation={'horizontal'} className='border-b'>
-                          <FieldLabel className={`${statLabelClass} align-middle`}><Clock12 className='align-middle' />{t('deck.createdDate')}</FieldLabel>
-                          <div className="flex justify-between items-center p-1">
-                            <span className={statValueClass}>
-                              {(() => {
-                                const d = new Date(deck.createdAt);
-                                const yy = String(d.getFullYear()).slice(-2);
-                                const mm = String(d.getMonth() + 1).padStart(2, '0');
-                                const dd = String(d.getDate()).padStart(2, '0');
-                                return `${yy}.${mm}.${dd}`;
-                              })()}
-                            </span>
-                          </div>
-                        </Field>
-                        <Field orientation={'horizontal'} className='border-b' data-testid="total-cards">
-                          <FieldLabel className={statLabelClass}><Book />{t('deck.totalCards')}</FieldLabel>
-                          <div className="flex justify-between items-center p-1">
-                            <span className={statValueClass}>{deck.cards.length}</span>
-                          </div>
-                        </Field>
-                        <Field orientation={'horizontal'} className='border-b' data-testid="faint-memory">
-                          <FieldLabel className={statLabelClass}><Brain />{t('character.faintMemory')}</FieldLabel>
-                          <div className="flex justify-between items-center p-1">
-                            <span className={statValueClass} data-testid="faint-memory-points">{faintMemoryPoints} points</span>
-                          </div>
-                        </Field>
-                        <Field orientation={'horizontal'} className='border-b' data-testid="copied-cards">
-                          <FieldLabel className={statLabelClass}><BookCopy />{t('deck.copiedCards')}</FieldLabel>
-                          <div className="flex justify-between items-center p-1">
-                            <span className={statValueClass}>{deck.copiedCards.size}</span>
-                          </div>
-                        </Field>
-                        <Field orientation={'horizontal'} data-testid="removed-cards">
-                          <FieldLabel className={statLabelClass}><BookX />{t('deck.removedCards')}</FieldLabel>
-                          <div className="flex justify-between items-center p-1">
-                            <span className={statValueClass}>{deck.removedCards.size}</span>
-                          </div>
-                        </Field>
-                      </FieldGroup>
-                      {/* Equipment Section */}
-                      <EquipmentSelector
-                        equipment={EQUIPMENT}
-                        selectedEquipment={deck.equipment}
-                        onSelect={(equipment: Equipment | null, type?: EquipmentType) => {
-                          if (type) selectEquipment(type, equipment);
-                        }}
-                        onRefinementChange={(type: EquipmentType, refinementId: string | null) => {
-                          setEquipmentRefinement(type, refinementId);
-                        }}
-                        onGodHammerChange={(type: EquipmentType, equipmentId: string | null) => {
-                          setEquipmentGodHammer(type, equipmentId);
-                        }}
-                      />
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-
-            {/* Right side - Cards in 4-column grid */}
-            <div className="sm:col-span-6 lg:col-span-8 space-y-6">
-              <Card>
-                <CardContent className="p-2 lg:p-6">
-                  <DeckDisplay
-                    cards={deck.cards}
-                    egoLevel={deck.egoLevel}
-                    hasPotential={deck.hasPotential}
-                    allowedJob={deck.character?.job}
-                    onRemoveCard={handleRemoveCard}
-                    onUndoCard={undoCard}
-                    onCopyCard={handleCopyCard}
-                    onConvertCard={handleConvertCard}
-                    onUpdateHirameki={updateCardHirameki}
-                    onSetGodHirameki={setCardGodHirameki}
-                    onSetGodHiramekiEffect={setCardGodHiramekiEffect}
-                    onSetHiddenHirameki={setCardHiddenHirameki}
-                  />
-
-                </CardContent>
-              </Card>
-            </div>
-          </FieldSet>
+          <DeckWorkspace
+            deck={currentDeck}
+            equipment={EQUIPMENT}
+            characters={CHARACTERS}
+            deckNamePlaceholder={t('deck.namePlaceholder')}
+            saveLabel={t('deck.save', { defaultValue: 'デッキを保存' })}
+            loadLabel={t('deck.load', { defaultValue: 'デッキを読み込み' })}
+            shareLabel={t('deck.share')}
+            exportLabel={t('deck.exportImage')}
+            clearLabel={t('deck.clear')}
+            createdDateLabel={t('deck.createdDate')}
+            totalCardsLabel={t('deck.totalCards')}
+            faintMemoryLabel={t('character.faintMemory')}
+            copiedCardsLabel={t('deck.copiedCards')}
+            removedCardsLabel={t('deck.removedCards')}
+            faintMemoryPoints={faintMemoryPoints}
+            isSharing={isSharing}
+            isExporting={isExporting}
+            onDeckNameChange={(value) => {
+              store.setDeck({ ...currentDeck, name: value });
+              setName(value);
+            }}
+            onSave={handleSaveDeck}
+            onLoad={openLoadDialog}
+            onShare={handleShareDeck}
+            onExport={handleExportImage}
+            onClear={handleClearDeck}
+            onSelectCharacter={store.setCharacter}
+            onEgoLevelChange={(level) => {
+              if (!currentDeck.character) return;
+              store.setEgoLevel(currentDeck.character.id, level);
+            }}
+            onTogglePotential={() => store.setPotential(!currentDeck.hasPotential)}
+            onEquipmentSelect={(equipment, type) => type && store.selectEquipment(type, equipment)}
+            onEquipmentRefinementChange={store.setEquipmentRefinement}
+            onEquipmentGodHammerChange={store.setEquipmentGodHammer}
+            onEquipmentEngravingChange={store.setEquipmentEngraving}
+            onRemoveCard={handleRemoveCard}
+            onUndoCard={store.undoCard}
+            onCopyCard={handleCopyCard}
+            onConvertCard={handleConvertCard}
+            onUpdateHirameki={store.updateCardHirameki}
+            onSetGodHirameki={store.setCardGodHirameki}
+            onSetGodHiramekiEffect={store.setCardGodHiramekiEffect}
+            onSetHiddenHirameki={store.setCardHiddenHirameki}
+            onSetPersonaEngravings={store.setCardPersonaEngravings}
+          />
         </main>
-
-        {/* Load dialog */}
-        <Dialog open={loadOpen} onOpenChange={setLoadOpen}>
-          <DialogContent>
-            <DialogHeader>
-              <DialogTitle>{t('deck.loadTitle', { defaultValue: '保存されたデッキを読み込み' })}</DialogTitle>
-            </DialogHeader>
-            <div className="space-y-2 max-h-80 overflow-auto">
-              {savedList.length === 0 ? (
-                <div className="text-sm text-muted-foreground">
-                  {t('deck.noSavedDecks', { defaultValue: '保存されたデッキはありません' })}
-                </div>
-              ) : (
-                savedList.map(({ name, savedAt }) => (
-                  <div key={name} className="flex items-center justify-between rounded border p-2 gap-2">
-                    <div className="min-w-0">
-                      <div className="font-medium truncate">{name}</div>
-                      <div className="text-xs text-muted-foreground">{new Date(savedAt).toLocaleString()}</div>
-                    </div>
-                    <div className="flex gap-2">
-                      <Button variant="secondary" onClick={() => handleLoadDeck(name)}>
-                        {t('deck.load', { defaultValue: '呼び出し' })}
-                      </Button>
-                      <Button variant="destructive" onClick={() => handleDeleteSaved(name)}>
-                        {t('common.delete', { defaultValue: '削除' })}
-                      </Button>
-                    </div>
-                  </div>
-                ))
-              )}
-            </div>
-          </DialogContent>
-        </Dialog>
-
+        <LoadDeckDialog
+          open={loadOpen}
+          onOpenChange={setLoadOpen}
+          savedList={savedList}
+          title={t('deck.loadTitle', { defaultValue: '保存されたデッキを読み込み' })}
+          emptyLabel={t('deck.noSavedDecks', { defaultValue: '保存されたデッキはありません' })}
+          loadLabel={t('deck.load', { defaultValue: '呼び出し' })}
+          deleteLabel={t('common.delete', { defaultValue: '削除' })}
+          onLoad={handleLoadDeck}
+          onDelete={handleDeleteSaved}
+        />
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
           <div className="lg:col-span-12">
-            <Card>
-              <CardHeader className="flex flex-row items-center justify-between p-4">
-                <CardTitle>{t('card.add')}</CardTitle>
-                <Input
-                  type="text"
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-32 sm:w-64"
-                  placeholder={t('card.search')}
-                />
-              </CardHeader>
-              <CardContent className="p-4 lg:p-6 pt-2">
-                {/* Card Selection for adding cards */}
-                  <CardSelector
-                    character={deck.character}
-                    onAddCard={(card: CznCard) => {
-                      const deckCard: DeckCard = {
-                        ...card,
-                        deckId: `${card.id}_${Date.now()}_${Math.random()}`,
-                        selectedHiramekiLevel: 0,
-                        godHiramekiType: null,
-                        godHiramekiEffectId: null,
-                        selectedHiddenHiramekiId: null,
-                      };
-                      addCard(deckCard);
-                    }}
-                    onRestoreCard={(card: CznCard) => {
-                      const deckCard: DeckCard = {
-                        ...card,
-                        deckId: `${card.id}_${Date.now()}_${Math.random()}`,
-                        selectedHiramekiLevel: 0,
-                        godHiramekiType: null,
-                        godHiramekiEffectId: null,
-                        selectedHiddenHiramekiId: null,
-                      };
-                      restoreCard(deckCard);
-                    }}
-                    removedCards={deck.removedCards}
-                    convertedCards={deck.convertedCards}
-                    presentHiramekiIds={new Set(
-                      deck.cards
-                        .filter(c => c.type === CardType.CHARACTER)
-                        .map(c => c.id)
-                    )}
-                    searchQuery={searchQuery}
-                  />
-              </CardContent>
-            </Card>
+            <CardCatalogSection
+              deck={currentDeck}
+              searchQuery={searchQuery}
+              onSearchQueryChange={setSearchQuery}
+              searchLabel={t('card.search')}
+              title={t('card.add')}
+              onAddCard={store.addCard}
+              onRestoreCard={store.restoreCard}
+            />
           </div>
         </div>
-
-        {/* Footer */}
         <Footer />
       </div>
     </div>

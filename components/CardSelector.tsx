@@ -1,7 +1,7 @@
 "use client";
 import { useTranslations } from 'next-intl';
 
-import { CznCard, CardType, Character, RemovedCardEntry, ConvertedCardEntry } from "@/types";
+import { CznCard, CardType, Character, RemovedCardEntry, ConvertedCardEntry, DeckCard } from "@/types";
 import { getCharacterHiramekiCards, getAddableCards, getCardById } from "@/lib/card";
 import { Card, CardContent } from "./ui/card";
 import { CardFrame } from "./CardFrame";
@@ -12,7 +12,7 @@ const cardGridClass = "grid grid-cols-2 sm:grid-cols-4 xl:grid-cols-6 gap-4";
 interface CardSelectorProps {
   character: Character | null;
   onAddCard: (card: CznCard) => void;
-  onRestoreCard: (card: CznCard) => void;
+  onRestoreCard: (card: DeckCard) => void;
   removedCards?: Map<string, number | RemovedCardEntry>;
   convertedCards?: Map<string, string | ConvertedCardEntry>;
   presentHiramekiIds?: Set<string>;
@@ -105,21 +105,29 @@ export function CardSelector({ character, onAddCard, onRestoreCard, removedCards
     const description = t(`cards.${card.id}.descriptions.0`, { defaultValue: baseVariation.description })
 
     return (
-      <Card key={key} className={`cursor-pointer ${className}`} onClick={onClick} title={cardTitle}>
-        <CardFrame
-          imgUrl={card.imgUrl}
-          alt={translatedName}
-          cost={baseVariation.cost}
-          nameId={nameId}
-          nameFallback={nameFallback}
-          category={t(`category.${card.category}`)}
-          categoryId={card.category}
-          descriptionId={`cards.${card.id}.descriptions.0`}
-          descriptionFallback={baseVariation.description}
-          statuses={statuses}
-          grade={card.grade}
-        />
-      </Card>
+      <button
+        key={key}
+        type="button"
+        className={className}
+        onClick={onClick}
+        title={cardTitle}
+      >
+        <Card className="cursor-pointer">
+          <CardFrame
+            imgUrl={card.imgUrl}
+            alt={translatedName}
+            cost={baseVariation.cost}
+            nameId={nameId}
+            nameFallback={nameFallback}
+            category={t(`category.${card.category}`)}
+            categoryId={card.category}
+            descriptionId={`cards.${card.id}.descriptions.0`}
+            descriptionFallback={baseVariation.description}
+            statuses={statuses}
+            grade={card.grade}
+          />
+        </Card>
+      </button>
     );
   };
 
@@ -129,20 +137,32 @@ export function CardSelector({ character, onAddCard, onRestoreCard, removedCards
     });
   };
 
-  const renderRemovedTile = (card: CznCard) => {
+  const createRestoredCard = (card: CznCard, entry?: RemovedCardEntry | ConvertedCardEntry): DeckCard => ({
+    ...card,
+    deckId: `${card.id}_${Date.now()}_${Math.random()}`,
+    selectedHiramekiLevel: entry?.selectedHiramekiLevel ?? 0,
+    godHiramekiType: entry?.godHiramekiType ?? null,
+    godHiramekiEffectId: entry?.godHiramekiEffectId ?? null,
+    selectedHiddenHiramekiId: entry?.selectedHiddenHiramekiId ?? null,
+    personaEngravings: entry?.personaEngravings ?? [],
+    isCopied: entry?.isCopied,
+    copiedFromCardId: entry?.copiedFromCardId,
+  });
+
+  const renderRemovedTile = (card: CznCard, entry?: RemovedCardEntry) => {
     const translatedName = getCardNameInfo(card).name;
     return renderCardTile(card, {
       keyPrefix: 'removed',
-      onClick: () => onRestoreCard(card),
-      title: `${translatedName}をデッキに戻す`,
+      onClick: () => onRestoreCard(createRestoredCard(card, entry)),
+      title: `${translatedName}${t('card.restoreTooltipSuffix', { defaultValue: 'をデッキに戻す' })}`,
     });
   };
 
-  const renderConvertedTile = (card: CznCard) => {
+  const renderConvertedTile = (card: CznCard, entry?: ConvertedCardEntry) => {
     const translatedName = getCardNameInfo(card).name;
     return renderCardTile(card, {
       keyPrefix: 'converted',
-      onClick: () => onRestoreCard(card),
+      onClick: () => onRestoreCard(createRestoredCard(card, entry)),
       title: translatedName,
     });
   };
@@ -178,13 +198,13 @@ export function CardSelector({ character, onAddCard, onRestoreCard, removedCards
         {/* Removed Cards */}
         {removedCards && removedCards.size > 0 && (
           <div className="space-y-3">
-            <h3 className="text-lg font-semibold">削除したカード</h3>
+            <h3 className="text-lg font-semibold">{t('card.removedCardsSection', { defaultValue: '削除したカード' })}</h3>
             <div className={cardGridClass}>
               {Array.from(removedCards.entries()).map(([id, entry]) => {
                 const card = getCardById(id);
                 if (!card) return null;
                 if (!matchesQuery(card)) return null;
-                return renderRemovedTile(card);
+                return renderRemovedTile(card, typeof entry === "number" ? undefined : entry);
               })}
             </div>
           </div>
@@ -193,13 +213,13 @@ export function CardSelector({ character, onAddCard, onRestoreCard, removedCards
         {/* Converted Cards: show ORIGINAL card, click to restore */}
         {convertedCards && convertedCards.size > 0 && (
           <div className="space-y-3">
-            <h3 className="text-lg font-semibold">変換したカード</h3>
+            <h3 className="text-lg font-semibold">{t('card.convertedCardsSection', { defaultValue: '変換したカード' })}</h3>
             <div className={cardGridClass}>
               {Array.from(convertedCards.entries()).map(([originalId, entry]) => {
                 const originalCard = getCardById(originalId);
                 if (!originalCard) return null;
                 if (!matchesQuery(originalCard)) return null;
-                return renderConvertedTile(originalCard);
+                return renderConvertedTile(originalCard, typeof entry === "string" ? undefined : entry);
               })}
             </div>
           </div>
@@ -208,7 +228,7 @@ export function CardSelector({ character, onAddCard, onRestoreCard, removedCards
         {/* Character Hirameki Cards */}
         {visibleCharacterHiramekiCards.length > 0 && (
           <div className="space-y-3">
-            <h3 className="text-lg font-semibold">ヒラメキカード</h3>
+            <h3 className="text-lg font-semibold">{t('card.hiramekiCards', { defaultValue: 'ヒラメキカード' })}</h3>
             <div className={cardGridClass}>
               {visibleCharacterHiramekiCards.map(card => renderCardButton(card))}
             </div>

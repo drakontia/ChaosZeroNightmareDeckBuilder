@@ -76,6 +76,27 @@ describe('useDeckSaveLoad', () => {
     expect(result.current.loadOpen).toBe(true);
   });
 
+  it('openLoadDialogは構造が壊れた保存データも無視する', () => {
+    const { result } = renderHook(() => useDeckSaveLoad({ deck, setName, setSharedDeck, setShareError, t }));
+    window.localStorage.setItem('cznde:savedDecks', JSON.stringify({
+      broken: {},
+      alsoBroken: { id: 123, savedAt: null },
+      valid: { id: 'share', savedAt: '2024-01-01T00:00:00.000Z' }
+    }));
+
+    act(() => {
+      result.current.openLoadDialog();
+    });
+
+    expect(result.current.savedList).toEqual([
+      {
+        name: 'valid',
+        savedAt: '2024-01-01T00:00:00.000Z'
+      }
+    ]);
+    expect(result.current.loadOpen).toBe(true);
+  });
+
   it('保存済みがある場合に上書き確認でキャンセルすると保存されない', () => {
     const { result } = renderHook(() => useDeckSaveLoad({ deck, setName, setSharedDeck, setShareError, t }));
     const stored = JSON.stringify({
@@ -153,5 +174,59 @@ describe('useDeckSaveLoad', () => {
 
     const after = window.localStorage.getItem('cznde:savedDecks');
     expect(after).toBe(JSON.stringify({}));
+  });
+
+  it('openLoadDialogはnull値を含む保存データを無視する', () => {
+    const { result } = renderHook(() => useDeckSaveLoad({ deck, setName, setSharedDeck, setShareError, t }));
+    window.localStorage.setItem('cznde:savedDecks', JSON.stringify({
+      nullEntry: null,
+      valid: { id: 'share', savedAt: '2024-01-01T00:00:00.000Z' }
+    }));
+
+    act(() => {
+      result.current.openLoadDialog();
+    });
+
+    expect(result.current.savedList).toEqual([
+      { name: 'valid', savedAt: '2024-01-01T00:00:00.000Z' }
+    ]);
+  });
+
+  it('openLoadDialogはJSON文字列など非オブジェクト値の保存データを無視する', () => {
+    const { result } = renderHook(() => useDeckSaveLoad({ deck, setName, setSharedDeck, setShareError, t }));
+    window.localStorage.setItem('cznde:savedDecks', '"not-an-object"');
+
+    act(() => {
+      result.current.openLoadDialog();
+    });
+
+    expect(result.current.savedList).toHaveLength(0);
+  });
+
+  it('openLoadDialogは複数エントリをsavedAt降順に並べる', () => {
+    const { result } = renderHook(() => useDeckSaveLoad({ deck, setName, setSharedDeck, setShareError, t }));
+    window.localStorage.setItem('cznde:savedDecks', JSON.stringify({
+      'older': { id: 'share1', savedAt: '2024-01-01T00:00:00.000Z' },
+      'newer': { id: 'share2', savedAt: '2024-06-01T00:00:00.000Z' }
+    }));
+
+    act(() => {
+      result.current.openLoadDialog();
+    });
+
+    expect(result.current.savedList[0].name).toBe('newer');
+    expect(result.current.savedList[1].name).toBe('older');
+  });
+
+  it('handleSaveDeckでデッキ名と異なる名前を入力するとsetNameが呼ばれる', () => {
+    const { result } = renderHook(() => useDeckSaveLoad({ deck, setName, setSharedDeck, setShareError, t }));
+    window.prompt = vi.fn(() => 'newname') as any;
+
+    act(() => {
+      result.current.handleSaveDeck();
+    });
+
+    expect(name).toBe('newname');
+    expect(window.alert).toHaveBeenCalled();
   });
 });

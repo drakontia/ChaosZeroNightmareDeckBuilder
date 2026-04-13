@@ -28,7 +28,8 @@ describe('getCardInfo', () => {
       egoVariations: {
         3: {
           description: 'Ego level 3 variant',
-          cost: 7
+          cost: 7,
+          statuses: [CardStatus.RETAIN]
         }
       },
       potentialVariation: {
@@ -74,6 +75,12 @@ describe('getCardInfo', () => {
     const info = getCardInfo(baseCard, 3);
     expect(info.cost).toBe(7);
     expect(info.description).toBe('Ego level 3 variant');
+  });
+
+  it('should apply ego level statuses', () => {
+    baseCard.selectedHiramekiLevel = 1;
+    const info = getCardInfo(baseCard, 3);
+    expect(info.statuses).toEqual([CardStatus.RETAIN]);
   });
 
   it('should apply potential variation', () => {
@@ -171,6 +178,70 @@ describe('getCardInfo', () => {
 
     const info = getCardInfo(baseCard);
     expect(info.cost).toBe(4);
+  });
+
+  it('should derive persona presentation from persona engravings', () => {
+    const personaCard: DeckCard = {
+      ...baseCard,
+      id: 'persona_01',
+      name: 'ペルソナ',
+      imgUrl: '/images/cards/persona.png',
+      selectedHiramekiLevel: 0,
+      personaEngravings: [
+        { id: 'lux_haste_discount', alignment: 'light' },
+        { id: 'umbra_attack_boost', alignment: 'dark' },
+      ],
+      hiramekiVariations: [{ level: 0, cost: 1, description: 'ダメージ250%', statuses: [CardStatus.UNIQUE] }],
+    };
+
+    const info = getCardInfo(personaCard);
+    expect(info.name).toBe('境界のペルソナ');
+    expect(info.imgUrl).toBe('/images/cards/persona_of_border.png');
+    expect(info.cost).toBe(2);
+    expect(info.statuses).toContain(CardStatus.UNIQUE);
+    expect(info.statuses).toContain(CardStatus.HASTE);
+    expect(info.description).toContain('1ターンの間、自分の攻撃カードのダメージ量30％増加');
+  });
+
+  it('should preserve base persona presentation without persona engravings', () => {
+    const personaCard: DeckCard = {
+      ...baseCard,
+      id: 'persona_02',
+      name: 'ペルソナ',
+      imgUrl: '/images/cards/persona.png',
+      selectedHiramekiLevel: 0,
+      personaEngravings: [],
+      hiramekiVariations: [{ level: 0, cost: 1, description: '治癒250%', statuses: [CardStatus.UNIQUE] }],
+    };
+
+    const info = getCardInfo(personaCard);
+    expect(info.name).toBe('ペルソナ');
+    expect(info.imgUrl).toBe('/images/cards/persona.png');
+    expect(info.cost).toBe(1);
+    expect(info.statuses).toEqual([CardStatus.UNIQUE]);
+  });
+
+  it('should apply persona localization callbacks', () => {
+    const personaCard: DeckCard = {
+      ...baseCard,
+      id: 'persona_03',
+      name: 'Persona',
+      imgUrl: '/images/cards/persona.png',
+      selectedHiramekiLevel: 0,
+      personaEngravings: [{ id: 'lux_attunement_discount', alignment: 'light' }],
+      hiramekiVariations: [{ level: 0, cost: 1, description: 'Discard up to 2', statuses: [CardStatus.UNIQUE] }],
+    };
+
+    const info = getCardInfo(personaCard, 0, false, undefined, {
+      persona: {
+        getName: (variant) => (variant === 'light' ? 'Light Persona' : 'Persona'),
+        getEngravingDescription: () => 'Attunement: cost -1 until used',
+      },
+    });
+
+    expect(info.name).toBe('Light Persona');
+    expect(info.description).toContain('Discard up to 2');
+    expect(info.description).toContain('Attunement: cost -1 until used');
   });
 });
 

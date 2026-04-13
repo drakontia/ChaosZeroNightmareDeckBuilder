@@ -314,6 +314,126 @@
       },
       "name": "強制学習装置"
     },
+    "persona_01": {
+      "descriptions": {
+        "0": "데미지 250%\n충격파 3"
+      },
+      "name": "페르소나"
+    },
+    "persona_02": {
+      "descriptions": {
+        "0": "데미지 200%\n죽음의 낙인 1"
+      },
+      "name": "페르소나"
+    },
+    "persona_03": {
+      "descriptions": {
+        "0": "최대 2장 버림\n버린 수만큼 1턴 동안 자신의 공격 카드 데미지량 +60%"
+      },
+      "name": "페르소나"
+    },
+    "persona_04": {
+      "descriptions": {
+        "0": "드로우 1\n공격 카드 드로우 시 1턴 동안 사기 2"
+      },
+      "name": "페르소나"
+    },
+    "persona_05": {
+      "descriptions": {
+        "0": "데미지 250%\n이번 턴에 카드를 생성했다면 데미지량 +50%"
+      },
+      "name": "페르소나"
+    },
+    "persona_06": {
+      "descriptions": {
+        "0": "덱에서 무작위 안식 카드 1장 폐기"
+      },
+      "name": "페르소나"
+    },
+    "persona_07": {
+      "descriptions": {
+        "0": "드로우 2\n드로우한 공격 카드 수만큼 협공 100%"
+      },
+      "name": "페르소나"
+    },
+    "persona_08": {
+      "descriptions": {
+        "0": "방어력 비례 데미지 250%\n취약 1"
+      },
+      "name": "페르소나"
+    },
+    "persona_09": {
+      "descriptions": {
+        "0": "방어력 비례 데미지 250%\n행동 카운트가 1인 대상이 있으면 반격 2"
+      },
+      "name": "페르소나"
+    },
+    "persona_10": {
+      "descriptions": {
+        "0": "데미지 150%\n대상이 보유한 자신의 고통 수만큼 데미지량 +30%"
+      },
+      "name": "페르소나"
+    },
+    "persona_11": {
+      "descriptions": {
+        "0": "데미지 100%\n손패의 자신의 공격 카드 데미지량 +50%"
+      },
+      "name": "페르소나"
+    },
+    "persona_12": {
+      "descriptions": {
+        "0": "묘지의 카드 수에 따라 다음에 사용하는 공격 카드의 데미지량 +15%(최대 150%)"
+      },
+      "name": "페르소나"
+    },
+    "persona_13": {
+      "descriptions": {
+        "0": "방어력 비례 데미지 250%\n행동 카운트 2"
+      },
+      "name": "페르소나"
+    },
+    "persona_14": {
+      "descriptions": {
+        "0": "실드 250%\n반격 2"
+      },
+      "name": "페르소나"
+    },
+    "persona_15": {
+      "descriptions": {
+        "0": "데미지 250%\n손패의 모든 탄환 카드가 사용 시까지 데미지량 +30%"
+      },
+      "name": "페르소나"
+    },
+    "persona_16": {
+      "descriptions": {
+        "0": "데미지 250%\n표식 2"
+      },
+      "name": "페르소나"
+    },
+    "persona_17": {
+      "descriptions": {
+        "0": "탄환 카드 데미지량 +30%"
+      },
+      "name": "페르소나"
+    },
+    "persona_18": {
+      "descriptions": {
+        "0": "치유 250%\n1턴 동안 카드를 버릴 때마다 무작위 적에게 고통 1"
+      },
+      "name": "페르소나"
+    },
+    "persona_19": {
+      "descriptions": {
+        "0": "치유 250%\n행동 둔화 3"
+      },
+      "name": "페르소나"
+    },
+    "persona_20": {
+      "descriptions": {
+        "0": "실드 250%\n묘지에서 자신의 무작위 공격 카드 1장을 손으로 이동"
+      },
+      "name": "페르소나"
+    },
     "forbidden_card_2": {
       "descriptions": {
         "0": "手札のランダムなカード1枚のコスト1減少"
@@ -2587,6 +2707,34 @@
         "name": "解放された心",
         "descriptions": {
             "0": "消滅弾丸カードを2枚ドロー\nダメージ300%\n手札の異なる弾丸カード数に応じてダメージ量30%増加"
+        }
+    },
+    "personaMeta": {
+        "names": {
+            "base": "페르소나",
+            "light": "빛의 페르소나",
+            "dark": "어둠의 페르소나",
+            "radiant": "광휘의 페르소나",
+            "abyssal": "칠흑의 페르소나",
+            "boundary": "경계의 페르소나"
+        },
+        "engravings": {
+            "lux_haste_discount": "신속 부여, 비용 1 증가. 행동 카운트가 1인 대상이 있으면 이 카드의 비용 2 감소",
+            "lux_attunement_discount": "감응: 사용 시까지 비용 1 감소",
+            "lux_exhaust_draw": "소멸 부여, 비용 1 증가. 빛의 각인 5: 자신에게 취약 3, 드로우 3",
+            "lux_counter_by_count": "빛의 각인 수에 따라 반격 1 획득",
+            "lux_pain_by_count": "빛의 각인 수에 따라 적 전체에 고통 1",
+            "lux_exhaust2_blessing": "소멸 2 부여, 비용 1 증가. 빛의 가호 1",
+            "lux_retribution_wave": "반격의 파동 2, 빛의 각인 수에 따라 추가 획득",
+            "lux_shield_scale": "빛의 각인 수에 따라 실드 획득량 20% 추가",
+            "umbra_zero_cost_burst": "이 카드의 비용이 0이 되면 데미지량 200% 증가",
+            "umbra_attack_boost": "1턴 동안 자신의 공격 카드 데미지량 30% 증가",
+            "umbra_quietus_boost": "어둠의 각인 4: 1턴 동안 자신의 안식 카드 데미지량 +40%",
+            "umbra_exhaust2_recall_personas": "소멸 2 부여. 어둠의 각인 5: 모든 페르소나 카드를 손에 추가",
+            "umbra_discard_trigger": "비용 1 증가. 버려졌을 경우 이 카드 발동",
+            "umbra_retain_recover_attack": "보존 부여. 버린 카드 더미에서 자신의 공격 카드 1장을 선택해 손으로 이동",
+            "umbra_retain_cost2_hit2": "보존 부여, 비용 2 증가. 어둠의 각인 5: 모든 공격 카드 폐기, 히트 수 2회 추가",
+            "umbra_exhaust_choose_hand": "소멸 부여. 어둠의 각인 3: 손패의 카드 1장을 선택해 발동"
         }
     }
   }

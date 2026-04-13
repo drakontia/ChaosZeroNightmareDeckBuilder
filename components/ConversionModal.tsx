@@ -1,11 +1,11 @@
 "use client";
 import { useTranslations } from 'next-intl';
-import { Card } from "./ui/card";
 import { CardFrame } from "./CardFrame";
 import { CznCard, CardType, JobType, CardCategory } from "@/types";
 import { getAddableCards } from "@/lib/card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "./ui/accordion";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "./ui/dialog";
+import { cn } from "@/lib/utils";
 
 interface ConversionModalProps {
   isOpen: boolean;
@@ -65,9 +65,13 @@ export function ConversionModal({ isOpen, onClose, onSelectCard, allowedJob }: C
     const statuses = baseVariation.statuses?.map(s => t(`status.${s}`));
 
     return (
-      <Card
+      <button
+        type="button"
         key={card.id}
-        className="cursor-pointer hover:ring-2 hover:ring-primary"
+        className={cn(
+          "rounded-xl border bg-card text-card-foreground shadow-sm cursor-pointer hover:ring-2 hover:ring-primary",
+          "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+        )}
         onClick={() => {
           onSelectCard(card);
           onClose();
@@ -85,7 +89,7 @@ export function ConversionModal({ isOpen, onClose, onSelectCard, allowedJob }: C
           description={description}
           statuses={statuses}
         />
-      </Card>
+      </button>
     );
   };
 

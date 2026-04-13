@@ -4,8 +4,8 @@ const selectCharacterAndWeapon = async (page: Page) => {
   // Character selection
   await page.getByRole('button', { name: 'キャラクターを選択' }).click();
   // ダイアログが開いて「チズル」ボタンが表示されるまで待機
-  await page.getByRole('button', { name: 'チズル' }).waitFor({ state: 'visible' });
-  await page.getByRole('button', { name: 'チズル' }).click();
+  await page.getByRole('button', { name: 'チズル', exact: true }).waitFor({ state: 'visible' });
+  await page.getByRole('button', { name: 'チズル', exact: true }).click();
 
   // Weapon selection
   await page.getByRole('button', { name: '武器' }).click();
@@ -336,7 +336,7 @@ test.describe('Deck Builder', () => {
   test('should save and load deck via localStorage', async ({ page }) => {
     await page.goto('/');
 
-    const saveBtn = page.getByRole('button', { name: '保存' });
+    const saveBtn = page.getByRole('button', { name: '保存', exact: true });
     await expect(saveBtn).toBeDisabled();
 
     await selectCharacterAndWeapon(page);
@@ -807,7 +807,7 @@ test.describe('Deck Builder', () => {
     await selectCharacterAndWeapon(page);
 
     // 保存ボタンをクリック
-    await page.getByRole('button', { name: '保存' }).click();
+    await page.getByRole('button', { name: '保存', exact: true }).click();
     await page.waitForTimeout(500);
   });
 })

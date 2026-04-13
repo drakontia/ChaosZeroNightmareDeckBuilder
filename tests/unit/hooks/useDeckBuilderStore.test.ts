@@ -21,6 +21,15 @@ function getTestCard() {
   };
 }
 
+function getPersonaCard() {
+  return {
+    ...getTestCard(),
+    deckId: 'persona_card_1',
+    id: 'persona_01',
+    personaEngravings: [] as Array<{ id: string; alignment: 'light' | 'dark' }>,
+  };
+}
+
 describe('useDeckBuilderStore', () => {
   beforeEach(() => {
     // ストアを初期化
@@ -75,6 +84,34 @@ describe('useDeckBuilderStore', () => {
     expect(deck?.cards.length).toBeGreaterThan(0);
   });
 
+  it('setCharacterは既存デッキのremove/copy/convert状態をリセットする', () => {
+    act(() => {
+      useDeckBuilderStore.getState().setCharacter(CHARACTERS[0]);
+      useDeckBuilderStore.setState((state) => ({
+        deck: state.deck
+          ? {
+              ...state.deck,
+              removedCards: new Map([['shared_01', 1]]),
+              copiedCards: new Map([['shared_02', 2]]),
+              convertedCards: new Map([['shared_03', 'forbidden_card_1']]),
+            }
+          : null,
+        removeLimitReached: true,
+        copyLimitReached: true,
+        conversionLimitReached: true,
+      }));
+      useDeckBuilderStore.getState().setCharacter(CHARACTERS[1]);
+    });
+
+    const deck = useDeckBuilderStore.getState().deck!;
+    expect(deck.removedCards.size).toBe(0);
+    expect(deck.copiedCards.size).toBe(0);
+    expect(deck.convertedCards.size).toBe(0);
+    expect(useDeckBuilderStore.getState().removeLimitReached).toBe(false);
+    expect(useDeckBuilderStore.getState().copyLimitReached).toBe(false);
+    expect(useDeckBuilderStore.getState().conversionLimitReached).toBe(false);
+  });
+
   it('addCard/removeCardでcardsが変化する', () => {
     const card = getTestCard();
     act(() => {
@@ -117,12 +154,56 @@ describe('useDeckBuilderStore', () => {
     expect(normalized?.createdAt).toBeInstanceOf(Date);
   });
 
+  it('setDeckはdeck.egoLevelをcharacter.egoLevelへ同期する', () => {
+    const deck = {
+      name: 'ego-sync',
+      character: { ...CHARACTERS[0], egoLevel: 0 },
+      equipment: {
+        weapon: { item: null, refinement: null, godHammerEquipmentId: null },
+        armor: { item: null, refinement: null, godHammerEquipmentId: null },
+        pendant: { item: null, refinement: null, godHammerEquipmentId: null }
+      },
+      cards: [],
+      egoLevel: 5,
+      hasPotential: false,
+      createdAt: new Date(),
+      removedCards: new Map(),
+      copiedCards: new Map(),
+      convertedCards: new Map(),
+    };
+
+    act(() => {
+      useDeckBuilderStore.getState().setDeck(deck);
+    });
+
+    expect(useDeckBuilderStore.getState().deck?.character?.egoLevel).toBe(5);
+  });
+
   it('selectEquipmentで装備が更新される', () => {
     act(() => {
       useDeckBuilderStore.getState().setCharacter(CHARACTERS[0]);
       useDeckBuilderStore.getState().selectEquipment(EquipmentType.WEAPON, { id: 'weapon_1', name: '武器', type: EquipmentType.WEAPON, rarity: 'R' });
     });
     expect(useDeckBuilderStore.getState().deck?.equipment.weapon?.item?.id).toBe('weapon_1');
+  });
+
+  it('setEquipmentEngravingで装備刻印が更新される', () => {
+    act(() => {
+      useDeckBuilderStore.getState().setCharacter(CHARACTERS[0]);
+      useDeckBuilderStore.getState().selectEquipment(EquipmentType.WEAPON, { id: 'weapon_1', name: '武器', type: EquipmentType.WEAPON, rarity: 'R' });
+      useDeckBuilderStore.getState().setEquipmentEngraving(EquipmentType.WEAPON, 'equipment_engraving_lux_01');
+    });
+    expect(useDeckBuilderStore.getState().deck?.equipment.weapon?.engravingId).toBe('equipment_engraving_lux_01');
+  });
+
+  it('selectEquipmentで装備を入れ替えると装備刻印はリセットされる', () => {
+    act(() => {
+      useDeckBuilderStore.getState().setCharacter(CHARACTERS[0]);
+      useDeckBuilderStore.getState().selectEquipment(EquipmentType.WEAPON, { id: 'weapon_1', name: '武器', type: EquipmentType.WEAPON, rarity: 'R' });
+      useDeckBuilderStore.getState().setEquipmentEngraving(EquipmentType.WEAPON, 'equipment_engraving_lux_01');
+      useDeckBuilderStore.getState().selectEquipment(EquipmentType.WEAPON, { id: 'weapon_2', name: '武器2', type: EquipmentType.WEAPON, rarity: 'R' });
+    });
+    expect(useDeckBuilderStore.getState().deck?.equipment.weapon?.engravingId).toBeNull();
   });
 
   it('resetで初期状態に戻る', () => {
@@ -135,11 +216,22 @@ describe('useDeckBuilderStore', () => {
     expect(deck).toBeNull();
   });
 
-  it('setEgoLevelでegoLevelsが更新される', () => {
+  it('setEgoLevelでegoLevelsと現在デッキのegoLevelが更新される', () => {
     act(() => {
-      useDeckBuilderStore.getState().setEgoLevel('char-1', 3);
+      useDeckBuilderStore.getState().setCharacter(CHARACTERS[0]);
+      useDeckBuilderStore.getState().setEgoLevel(CHARACTERS[0].id, 3);
     });
-    expect(useDeckBuilderStore.getState().egoLevels['char-1']).toBe(3);
+    expect(useDeckBuilderStore.getState().egoLevels[CHARACTERS[0].id]).toBe(3);
+    expect(useDeckBuilderStore.getState().deck?.egoLevel).toBe(3);
+    expect(useDeckBuilderStore.getState().deck?.character?.egoLevel).toBe(3);
+  });
+
+  it('setCharacterは選択したキャラクターのegoLevelをデッキへ反映する', () => {
+    act(() => {
+      useDeckBuilderStore.getState().setCharacter({ ...CHARACTERS[0], egoLevel: 4 });
+    });
+
+    expect(useDeckBuilderStore.getState().deck?.egoLevel).toBe(4);
   });
 
   it('setPotentialでhasPotentialが切り替わる', () => {
@@ -192,6 +284,63 @@ describe('useDeckBuilderStore', () => {
     });
     const updated = useDeckBuilderStore.getState().deck?.cards.find(c => c.deckId === card.deckId);
     expect(updated?.selectedHiddenHiramekiId).toBe('hiddenhirameki_01');
+  });
+
+  it('setCardPersonaEngravingsでペルソナカードの刻印が更新される', () => {
+    const card = getPersonaCard();
+    act(() => {
+      useDeckBuilderStore.getState().setCharacter(CHARACTERS[0]);
+      useDeckBuilderStore.getState().addCard(card);
+      useDeckBuilderStore.getState().setCardPersonaEngravings(card.deckId, [{ id: 'lux_attunement_discount', alignment: 'light' }]);
+    });
+    const updated = useDeckBuilderStore.getState().deck?.cards.find(c => c.deckId === card.deckId);
+    expect(updated?.personaEngravings).toEqual([{ id: 'lux_attunement_discount', alignment: 'light' }]);
+  });
+
+  it('setCardPersonaEngravingsで空配列を渡すと刻印が解除される', () => {
+    const card = {
+      ...getPersonaCard(),
+      personaEngravings: [
+        { id: 'lux_attunement_discount', alignment: 'light' },
+        { id: 'umbra_attack_boost', alignment: 'dark' },
+      ],
+    };
+    act(() => {
+      useDeckBuilderStore.getState().setCharacter(CHARACTERS[0]);
+      useDeckBuilderStore.getState().addCard(card);
+      useDeckBuilderStore.getState().setCardPersonaEngravings(card.deckId, []);
+    });
+    const updated = useDeckBuilderStore.getState().deck?.cards.find(c => c.deckId === card.deckId);
+    expect(updated?.personaEngravings).toEqual([]);
+  });
+
+  it('setCardPersonaEngravingsは最大2つまでに制限される', () => {
+    const card = getPersonaCard();
+    act(() => {
+      useDeckBuilderStore.getState().setCharacter(CHARACTERS[0]);
+      useDeckBuilderStore.getState().addCard(card);
+      useDeckBuilderStore.getState().setCardPersonaEngravings(card.deckId, [
+        { id: 'lux_attunement_discount', alignment: 'light' },
+        { id: 'umbra_attack_boost', alignment: 'dark' },
+        { id: 'lux_counter_by_count', alignment: 'light' },
+      ]);
+    });
+    const updated = useDeckBuilderStore.getState().deck?.cards.find(c => c.deckId === card.deckId);
+    expect(updated?.personaEngravings).toEqual([
+      { id: 'lux_attunement_discount', alignment: 'light' },
+      { id: 'umbra_attack_boost', alignment: 'dark' },
+    ]);
+  });
+
+  it('setCardPersonaEngravingsは非ペルソナカードには適用されない', () => {
+    const card = getTestCard();
+    act(() => {
+      useDeckBuilderStore.getState().setCharacter(CHARACTERS[0]);
+      useDeckBuilderStore.getState().addCard(card);
+      useDeckBuilderStore.getState().setCardPersonaEngravings(card.deckId, [{ id: 'lux_attunement_discount', alignment: 'light' }]);
+    });
+    const updated = useDeckBuilderStore.getState().deck?.cards.find(c => c.deckId === card.deckId);
+    expect(updated?.personaEngravings ?? []).toEqual([]);
   });
 
   it('undoCardでカードが削除される', () => {
@@ -278,6 +427,54 @@ describe('useDeckBuilderStore', () => {
     }
   });
 
+  it('copyCardで隠しヒラメキを持つカードをコピーするとスナップショットに記録される', () => {
+    const card = {
+      ...getTestCard(),
+      selectedHiddenHiramekiId: 'hiddenhirameki_01',
+    };
+
+    act(() => {
+      useDeckBuilderStore.getState().setCharacter(CHARACTERS[0]);
+      useDeckBuilderStore.getState().addCard(card);
+      useDeckBuilderStore.getState().copyCard(card.deckId);
+    });
+
+    const entry = useDeckBuilderStore.getState().deck!.copiedCards.get(card.id);
+    if (typeof entry === 'object') {
+      expect(entry.selectedHiddenHiramekiId).toBe('hiddenhirameki_01');
+    }
+  });
+
+  it('copyCardでペルソナ刻印を持つカードをコピーするとコピー先とスナップショットに保持される', () => {
+    const card = {
+      ...getPersonaCard(),
+      personaEngravings: [
+        { id: 'lux_attunement_discount', alignment: 'light' },
+        { id: 'umbra_attack_boost', alignment: 'dark' },
+      ],
+    };
+    act(() => {
+      useDeckBuilderStore.getState().setCharacter(CHARACTERS[0]);
+      useDeckBuilderStore.getState().addCard(card);
+      useDeckBuilderStore.getState().copyCard(card.deckId);
+    });
+
+    const deck = useDeckBuilderStore.getState().deck!;
+    const copied = deck.cards.find(c => c.isCopied && c.copiedFromCardId === card.id);
+    expect(copied?.personaEngravings).toEqual([
+      { id: 'lux_attunement_discount', alignment: 'light' },
+      { id: 'umbra_attack_boost', alignment: 'dark' },
+    ]);
+
+    const entry = deck.copiedCards.get(card.id);
+    if (typeof entry === 'object') {
+      expect(entry.personaEngravings).toEqual([
+        { id: 'lux_attunement_discount', alignment: 'light' },
+        { id: 'umbra_attack_boost', alignment: 'dark' },
+      ]);
+    }
+  });
+
   it('convertCardでカードが変換されconvertedCardsに記録される', () => {
     const card = getTestCard();
     // 変換先カードをCHARACTERS[0]のstartingCards[0]で仮定
@@ -311,6 +508,25 @@ describe('useDeckBuilderStore', () => {
     expect(entry).toBeDefined();
     if (typeof entry === 'object') {
       expect((entry as any).excluded).toBe(true);
+    }
+  });
+
+  it('convertCardでペルソナ刻印を持つカードを変換するとスナップショットに保持される', () => {
+    const card = {
+      ...getPersonaCard(),
+      personaEngravings: [{ id: 'umbra_attack_boost', alignment: 'dark' }],
+    };
+    const targetId = CHARACTERS[0].startingCards[0];
+
+    act(() => {
+      useDeckBuilderStore.getState().setCharacter(CHARACTERS[0]);
+      useDeckBuilderStore.getState().addCard(card);
+      useDeckBuilderStore.getState().convertCard(card.deckId, targetId);
+    });
+
+    const entry = useDeckBuilderStore.getState().deck!.convertedCards.get(card.id);
+    if (typeof entry === 'object') {
+      expect(entry.personaEngravings).toEqual([{ id: 'umbra_attack_boost', alignment: 'dark' }]);
     }
   });
 
@@ -398,6 +614,35 @@ describe('useDeckBuilderStore', () => {
     if (typeof entry === 'object') {
       expect(entry.count).toBe(2);
     }
+  });
+
+  it('restoreCardで同じカードの削除カウントは1つずつ減る', () => {
+    const card = {
+      ...getPersonaCard(),
+      selectedHiddenHiramekiId: 'hiddenhirameki_01',
+      personaEngravings: [{ id: 'umbra_attack_boost', alignment: 'dark' }] as Array<{ id: string; alignment: 'light' | 'dark' }>,
+    };
+    act(() => {
+      useDeckBuilderStore.getState().setCharacter(CHARACTERS[0]);
+      useDeckBuilderStore.getState().addCard(card);
+      useDeckBuilderStore.getState().addCard({
+        ...card,
+        deckId: 'persona_card_2',
+      });
+      useDeckBuilderStore.getState().removeCard(card.deckId);
+      useDeckBuilderStore.getState().removeCard('persona_card_2');
+      useDeckBuilderStore.getState().restoreCard({
+        ...card,
+        deckId: 'persona_restore_1',
+      });
+    });
+
+    const entry = useDeckBuilderStore.getState().deck?.removedCards.get(card.id);
+    expect(entry).toMatchObject({
+      count: 1,
+      selectedHiddenHiramekiId: 'hiddenhirameki_01',
+      personaEngravings: [{ id: 'umbra_attack_boost', alignment: 'dark' }],
+    });
   });
 
   it('undoCardで追加されたカードがデッキから削除される', () => {
@@ -536,6 +781,52 @@ describe('useDeckBuilderStore', () => {
     const entry = deck.copiedCards.get(card.id);
     if (typeof entry === 'object') {
       expect(entry.count).toBe(2);
+    }
+  });
+
+  it('undoCardでコピーカードを変換した後に元のコピー状態を復元する', () => {
+    const card = getTestCard();
+
+    act(() => {
+      useDeckBuilderStore.getState().setCharacter(CHARACTERS[0]);
+      useDeckBuilderStore.getState().addCard(card);
+      useDeckBuilderStore.getState().copyCard(card.deckId);
+
+      const copiedCard = useDeckBuilderStore.getState().deck?.cards.find((candidate) => candidate.isCopied);
+      expect(copiedCard).toBeDefined();
+
+      useDeckBuilderStore.getState().convertCard(copiedCard!.deckId, 'forbidden_card_1');
+
+      const convertedCard = useDeckBuilderStore.getState().deck?.cards.find((candidate) => candidate.id === 'forbidden_card_1');
+      expect(convertedCard).toBeDefined();
+
+      useDeckBuilderStore.getState().undoCard(convertedCard!.deckId);
+    });
+
+    const restoredCopiedCard = useDeckBuilderStore.getState().deck?.cards.find((candidate) => candidate.isCopied);
+    expect(restoredCopiedCard?.copiedFromCardId).toBe(card.id);
+  });
+
+  it('undoCardで複数回コピーしたカードの隠しヒラメキスナップショットを保持する', () => {
+    const card = {
+      ...getTestCard(),
+      selectedHiddenHiramekiId: 'hiddenhirameki_01',
+    };
+
+    act(() => {
+      useDeckBuilderStore.getState().setCharacter(CHARACTERS[0]);
+      useDeckBuilderStore.getState().addCard(card);
+      useDeckBuilderStore.getState().copyCard(card.deckId);
+      useDeckBuilderStore.getState().copyCard(card.deckId);
+
+      const copiedCard = useDeckBuilderStore.getState().deck?.cards.find((candidate) => candidate.isCopied);
+      useDeckBuilderStore.getState().undoCard(copiedCard!.deckId);
+    });
+
+    const entry = useDeckBuilderStore.getState().deck!.copiedCards.get(card.id);
+    if (typeof entry === 'object') {
+      expect(entry.count).toBe(1);
+      expect(entry.selectedHiddenHiramekiId).toBe('hiddenhirameki_01');
     }
   });
 
@@ -722,5 +1013,186 @@ describe('useDeckBuilderStore', () => {
       expect(useDeckBuilderStore.getState().removeLimitReached).toBe(true);
       expect(deck.removedCards.size).toBe(3); // Still 3
     });
+  });
+
+  describe('normalizePersonaEngravings edge cases', () => {
+    it('setDeckでpersonaEngravingsがundefinedのカードを正規化して空配列になる', () => {
+      const personaCard = {
+        ...getPersonaCard(),
+        personaEngravings: undefined as any,
+      };
+      const deck = {
+        name: 'test',
+        character: CHARACTERS[0],
+        equipment: {
+          weapon: null,
+          armor: null,
+          pendant: null,
+        },
+        cards: [personaCard],
+        egoLevel: 0,
+        hasPotential: false,
+        createdAt: new Date(),
+        removedCards: new Map(),
+        copiedCards: new Map(),
+        convertedCards: new Map(),
+      };
+      act(() => {
+        useDeckBuilderStore.getState().setDeck(deck as any);
+      });
+      const card = useDeckBuilderStore.getState().deck?.cards.find(c => c.id === personaCard.id);
+      expect(card?.personaEngravings ?? []).toEqual([]);
+    });
+
+    it('setCardPersonaEngravingsで無効なアライメントは除外される', () => {
+      const card = getPersonaCard();
+      act(() => {
+        useDeckBuilderStore.getState().setCharacter(CHARACTERS[0]);
+        useDeckBuilderStore.getState().addCard(card);
+        useDeckBuilderStore.getState().setCardPersonaEngravings(card.deckId, [
+          { id: 'lux_attunement_discount', alignment: 'invalid_alignment' as any },
+        ]);
+      });
+      const updated = useDeckBuilderStore.getState().deck?.cards.find(c => c.deckId === card.deckId);
+      expect(updated?.personaEngravings).toEqual([]);
+    });
+
+    it('setDeckでremoveCarsにpersonaEngravingsを持つスナップショットが正規化される', () => {
+      const personaCard = getPersonaCard();
+      const removedEntry = {
+        count: 1,
+        type: personaCard.type,
+        grade: personaCard.grade,
+        selectedHiramekiLevel: 0,
+        selectedHiddenHiramekiId: null,
+        personaEngravings: [{ id: 'lux_attunement_discount', alignment: 'light' as const }],
+        godHiramekiType: null,
+        godHiramekiEffectId: null,
+        isBasicCard: false,
+        isCopied: false,
+        copiedFromCardId: undefined,
+      };
+      const deck = {
+        name: 'test',
+        character: CHARACTERS[0],
+        equipment: { weapon: null, armor: null, pendant: null },
+        cards: [],
+        egoLevel: 0,
+        hasPotential: false,
+        createdAt: new Date(),
+        removedCards: new Map([[personaCard.id, removedEntry]]),
+        copiedCards: new Map(),
+        convertedCards: new Map(),
+      };
+      act(() => {
+        useDeckBuilderStore.getState().setDeck(deck as any);
+      });
+      const entry = useDeckBuilderStore.getState().deck?.removedCards.get(personaCard.id);
+      expect(entry).toBeDefined();
+      if (typeof entry === 'object') {
+        expect(entry.personaEngravings).toEqual([{ id: 'lux_attunement_discount', alignment: 'light' }]);
+      }
+    });
+  });
+
+  describe('setEquipmentRefinement/GodHammer with empty slot', () => {
+    it('setEquipmentRefinementはスロットが空の場合何も変化しない', () => {
+      act(() => {
+        useDeckBuilderStore.getState().setCharacter(CHARACTERS[0]);
+        // weaponスロットは空のまま
+        useDeckBuilderStore.getState().setEquipmentRefinement(EquipmentType.WEAPON, 'refinement_1');
+      });
+      expect(useDeckBuilderStore.getState().deck?.equipment.weapon).toBeNull();
+    });
+
+    it('setEquipmentGodHammerはスロットが空の場合何も変化しない', () => {
+      act(() => {
+        useDeckBuilderStore.getState().setCharacter(CHARACTERS[0]);
+        useDeckBuilderStore.getState().setEquipmentGodHammer(EquipmentType.WEAPON, 'hammer_1');
+      });
+      expect(useDeckBuilderStore.getState().deck?.equipment.weapon).toBeNull();
+    });
+
+    it('setEquipmentRefinementはスロットがある場合に精錬値が設定される', () => {
+      act(() => {
+        useDeckBuilderStore.getState().setCharacter(CHARACTERS[0]);
+        useDeckBuilderStore.getState().selectEquipment(EquipmentType.WEAPON, { id: 'weapon_1', name: '武器', type: EquipmentType.WEAPON, rarity: 'R' });
+        useDeckBuilderStore.getState().setEquipmentRefinement(EquipmentType.WEAPON, 'refinement_1');
+      });
+      expect(useDeckBuilderStore.getState().deck?.equipment.weapon?.refinement).toBe('refinement_1');
+    });
+
+    it('setEquipmentGodHammerはスロットがある場合に神ハンマー装備IDが設定される', () => {
+      act(() => {
+        useDeckBuilderStore.getState().setCharacter(CHARACTERS[0]);
+        useDeckBuilderStore.getState().selectEquipment(EquipmentType.WEAPON, { id: 'weapon_1', name: '武器', type: EquipmentType.WEAPON, rarity: 'R' });
+        useDeckBuilderStore.getState().setEquipmentGodHammer(EquipmentType.WEAPON, 'god_weapon_1');
+      });
+      expect(useDeckBuilderStore.getState().deck?.equipment.weapon?.godHammerEquipmentId).toBe('god_weapon_1');
+    });
+  });
+
+  it('restoreCardで1回だけ削除されたカードを復元するとremovedCardsから削除される', () => {
+    const card = getPersonaCard();
+    act(() => {
+      useDeckBuilderStore.getState().setCharacter(CHARACTERS[0]);
+      useDeckBuilderStore.getState().addCard(card);
+      useDeckBuilderStore.getState().removeCard(card.deckId);
+    });
+
+    const beforeEntry = useDeckBuilderStore.getState().deck?.removedCards.get(card.id);
+    expect(beforeEntry).toBeDefined();
+    if (typeof beforeEntry === 'object') {
+      expect(beforeEntry.count).toBe(1);
+    }
+
+    act(() => {
+      useDeckBuilderStore.getState().restoreCard({ ...card, deckId: 'persona_restore_new' });
+    });
+
+    expect(useDeckBuilderStore.getState().deck?.removedCards.has(card.id)).toBe(false);
+  });
+
+  it('restoreCardでnumber型のremovedEntryが2以上の場合デクリメントされる', () => {
+    const card = getPersonaCard();
+    act(() => {
+      useDeckBuilderStore.getState().setCharacter(CHARACTERS[0]);
+      useDeckBuilderStore.getState().addCard(card);
+    });
+    // 旧形式(number)で直接stateを設定
+    act(() => {
+      useDeckBuilderStore.setState((state) => ({
+        deck: {
+          ...state.deck!,
+          removedCards: new Map([[card.id, 2]]),
+        },
+      }));
+    });
+    act(() => {
+      useDeckBuilderStore.getState().restoreCard({ ...card, deckId: 'persona_restore_new2' });
+    });
+    const entry = useDeckBuilderStore.getState().deck?.removedCards.get(card.id);
+    expect(entry).toBe(1);
+  });
+
+  it('restoreCardでnumber型のremovedEntryが1の場合removedCardsから削除される', () => {
+    const card = getPersonaCard();
+    act(() => {
+      useDeckBuilderStore.getState().setCharacter(CHARACTERS[0]);
+      useDeckBuilderStore.getState().addCard(card);
+    });
+    // 旧形式(number)で直接stateを設定
+    act(() => {
+      useDeckBuilderStore.setState((state) => ({
+        deck: {
+          ...state.deck!,
+          removedCards: new Map([[card.id, 1]]),
+        },
+      }));
+    });
+    act(() => {
+      useDeckBuilderStore.getState().restoreCard({ ...card, deckId: 'persona_restore_new3' });
+    });
+    expect(useDeckBuilderStore.getState().deck?.removedCards.has(card.id)).toBe(false);
   });
 });

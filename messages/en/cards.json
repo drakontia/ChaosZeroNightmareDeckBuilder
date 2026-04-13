@@ -2663,6 +2663,126 @@
         "0": "Upon using 4 cards, Draw 1 (1 time for each turn)"
       }
     },
+    "persona_01": {
+        "name": "Persona",
+        "descriptions": {
+            "0": "Damage 250%\nShockwave 3"
+        }
+    },
+    "persona_02": {
+        "name": "Persona",
+        "descriptions": {
+            "0": "Damage 200%\nDeath Mark 1"
+        }
+    },
+    "persona_03": {
+        "name": "Persona",
+        "descriptions": {
+            "0": "Discard up to 2\nFor 1 turn, your Attack cards deal +60% damage based on the number discarded"
+        }
+    },
+    "persona_04": {
+        "name": "Persona",
+        "descriptions": {
+            "0": "Draw 1\nWhen you draw an Attack card, gain Morale 2 for 1 turn"
+        }
+    },
+    "persona_05": {
+        "name": "Persona",
+        "descriptions": {
+            "0": "Damage 250%\nIf you generated a card this turn, increase damage by 50%"
+        }
+    },
+    "persona_06": {
+        "name": "Persona",
+        "descriptions": {
+            "0": "Discard 1 random Quietus card from your draw pile"
+        }
+    },
+    "persona_07": {
+        "name": "Persona",
+        "descriptions": {
+            "0": "Draw 2\nFlanking 100% based on the number of Attack cards drawn"
+        }
+    },
+    "persona_08": {
+        "name": "Persona",
+        "descriptions": {
+            "0": "Defense-based Damage 250%\nWeakness 1"
+        }
+    },
+    "persona_09": {
+        "name": "Persona",
+        "descriptions": {
+            "0": "Defense-based Damage 250%\nIf there is a target with Action Count 1, gain Counterattack 2"
+        }
+    },
+    "persona_10": {
+        "name": "Persona",
+        "descriptions": {
+            "0": "Damage 150%\nIncrease damage by 30% based on the number of your Pain stacks on the target"
+        }
+    },
+    "persona_11": {
+        "name": "Persona",
+        "descriptions": {
+            "0": "Damage 100%\nYour Attack cards in hand deal +50% damage"
+        }
+    },
+    "persona_12": {
+        "name": "Persona",
+        "descriptions": {
+            "0": "Increase the damage of the next Attack card you use by 15% per card in the graveyard (max 150%)"
+        }
+    },
+    "persona_13": {
+        "name": "Persona",
+        "descriptions": {
+            "0": "Defense-based Damage 250%\nAction Count 2"
+        }
+    },
+    "persona_14": {
+        "name": "Persona",
+        "descriptions": {
+            "0": "Shield 250%\nCounterattack 2"
+        }
+    },
+    "persona_15": {
+        "name": "Persona",
+        "descriptions": {
+            "0": "Damage 250%\nAll Bullet cards in hand deal +30% damage until used"
+        }
+    },
+    "persona_16": {
+        "name": "Persona",
+        "descriptions": {
+            "0": "Damage 250%\nMarked 2"
+        }
+    },
+    "persona_17": {
+        "name": "Persona",
+        "descriptions": {
+            "0": "Bullet card damage +30%"
+        }
+    },
+    "persona_18": {
+        "name": "Persona",
+        "descriptions": {
+            "0": "Heal 250%\nFor 1 turn, whenever a card is discarded, inflict Pain 1 on a random enemy"
+        }
+    },
+    "persona_19": {
+        "name": "Persona",
+        "descriptions": {
+            "0": "Heal 250%\nSluggish 3"
+        }
+    },
+    "persona_20": {
+        "name": "Persona",
+        "descriptions": {
+            "0": "Shield 250%\nMove 1 random own Attack card from the graveyard to your hand"
+        }
+    },
     "spore_harvester": {
         "name": "Spore Harvester",
         "descriptions": {
@@ -2772,7 +2892,7 @@
             "1": "Damage 150%\nGenerate 3 Heart Breakers",
             "2": "Damage 150%\nGenerate 1 Heart Breaker\nDraw 2 Vanishing Bullet cards",
             "3": "Damage 150%\nChange all Vanishing cards in hand with Cost 1 or less to Heart Breakers",
-            "4": "Generate 2 Heart Breakers\nGrant Serenity to all Vanishing Bullet cards in hand",
+            "4": "Generate 2 Heart Breakers\nGrant Quietus to all Vanishing Bullet cards in hand",
             "5": "At the start of each turn, generate 2 Heart Breakers\nIf you hold 5 or fewer Heart Bullets, generate 1 more"
         }
     },
@@ -2801,18 +2921,46 @@
     "diana_hirameki_3": {
         "name": "Budding Love",
         "descriptions": {
-            "0": "Draw 1 Serenity card\nDestroy 2",
-            "1": "Draw 1 Serenity card\nDestroy 1\nIf the destroyed card belongs to another combatant, generate 2 Heart Bullets",
-            "2": "Draw 1 Serenity card\nDestroy 2\nResonate all enemies 1 time based on total cost of destroyed cards (max 6)",
-            "3": "Destroy up to 3 Bullet cards in hand\nDraw Serenity cards equal to the number destroyed +1",
+            "0": "Draw 1 Quietus card\nDestroy 2",
+            "1": "Draw 1 Quietus card\nDestroy 1\nIf the destroyed card belongs to another combatant, generate 2 Heart Bullets",
+            "2": "Draw 1 Quietus card\nDestroy 2\nResonate all enemies 1 time based on total cost of destroyed cards (max 6)",
+            "3": "Destroy up to 3 Bullet cards in hand\nDraw Quietus cards equal to the number destroyed +1",
             "4": "Destroy all Bullet cards in hand\nAdditional attack on a random enemy for 80% based on the number destroyed",
-            "5": "If you have no Serenity cards in hand, draw 1 of your Serenity cards (once per turn)"
+            "5": "If you have no Quietus cards in hand, draw 1 of your Quietus cards (once per turn)"
         }
     },
     "diana_hirameki_4": {
         "name": "Liberated Heart",
         "descriptions": {
             "0": "Draw 2 Vanishing Bullet cards\nDamage 300%\nIncrease Damage by 30% for each different Bullet card type in hand"
+        }
+    },
+    "personaMeta": {
+        "names": {
+            "base": "Persona",
+            "light": "Lux Persona",
+            "dark": "Umbra Persona",
+            "radiant": "Radiant Persona",
+            "abyssal": "Abyssal Persona",
+            "boundary": "Boundary Persona"
+        },
+        "engravings": {
+            "lux_haste_discount": "Gain Haste, cost +1. If there is a target with Action Count 1, this card's cost is reduced by 2",
+            "lux_attunement_discount": "Attunement: reduce cost by 1 until used",
+            "lux_exhaust_draw": "Gain Exhaust, cost +1. Lux Engraving 5: inflict Weakened 3 on yourself and Draw 3",
+            "lux_counter_by_count": "Gain Counterattack 1 based on the number of Lux Engravings",
+            "lux_pain_by_count": "Inflict Pain 1 on all enemies based on the number of Lux Engravings",
+            "lux_exhaust2_blessing": "Gain Exhaust 2, cost +1. Gain Lux Blessing 1",
+            "lux_retribution_wave": "Counterattack Wave 2, gain more based on the number of Lux Engravings",
+            "lux_shield_scale": "Gain an additional 20% Shield based on the number of Lux Engravings",
+            "umbra_zero_cost_burst": "If this card's cost becomes 0, increase its damage by 200%",
+            "umbra_attack_boost": "For 1 turn, your Attack cards deal 30% more damage",
+            "umbra_quietus_boost": "Umbra Engraving 4: for 1 turn, your Quietus cards deal +40% damage",
+            "umbra_exhaust2_recall_personas": "Gain Exhaust 2. Umbra Engraving 5: add all Persona cards to your hand",
+            "umbra_discard_trigger": "Cost +1. If discarded, activate this card",
+            "umbra_retain_recover_attack": "Gain Retain. Choose 1 of your Attack cards from the discard pile and move it to your hand",
+            "umbra_retain_cost2_hit2": "Gain Retain, cost +2. Umbra Engraving 5: discard all Attack cards and add 2 hits",
+            "umbra_exhaust_choose_hand": "Gain Exhaust. Umbra Engraving 3: choose 1 card in hand and activate it"
         }
     }
   }
