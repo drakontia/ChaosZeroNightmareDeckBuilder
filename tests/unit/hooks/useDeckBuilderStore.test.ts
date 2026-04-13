@@ -1112,6 +1112,24 @@ describe('useDeckBuilderStore', () => {
       });
       expect(useDeckBuilderStore.getState().deck?.equipment.weapon).toBeNull();
     });
+
+    it('setEquipmentRefinementはスロットがある場合に精錬値が設定される', () => {
+      act(() => {
+        useDeckBuilderStore.getState().setCharacter(CHARACTERS[0]);
+        useDeckBuilderStore.getState().selectEquipment(EquipmentType.WEAPON, { id: 'weapon_1', name: '武器', type: EquipmentType.WEAPON, rarity: 'R' });
+        useDeckBuilderStore.getState().setEquipmentRefinement(EquipmentType.WEAPON, 'refinement_1');
+      });
+      expect(useDeckBuilderStore.getState().deck?.equipment.weapon?.refinement).toBe('refinement_1');
+    });
+
+    it('setEquipmentGodHammerはスロットがある場合に神ハンマー装備IDが設定される', () => {
+      act(() => {
+        useDeckBuilderStore.getState().setCharacter(CHARACTERS[0]);
+        useDeckBuilderStore.getState().selectEquipment(EquipmentType.WEAPON, { id: 'weapon_1', name: '武器', type: EquipmentType.WEAPON, rarity: 'R' });
+        useDeckBuilderStore.getState().setEquipmentGodHammer(EquipmentType.WEAPON, 'god_weapon_1');
+      });
+      expect(useDeckBuilderStore.getState().deck?.equipment.weapon?.godHammerEquipmentId).toBe('god_weapon_1');
+    });
   });
 
   it('restoreCardで1回だけ削除されたカードを復元するとremovedCardsから削除される', () => {
@@ -1132,6 +1150,49 @@ describe('useDeckBuilderStore', () => {
       useDeckBuilderStore.getState().restoreCard({ ...card, deckId: 'persona_restore_new' });
     });
 
+    expect(useDeckBuilderStore.getState().deck?.removedCards.has(card.id)).toBe(false);
+  });
+
+  it('restoreCardでnumber型のremovedEntryが2以上の場合デクリメントされる', () => {
+    const card = getPersonaCard();
+    act(() => {
+      useDeckBuilderStore.getState().setCharacter(CHARACTERS[0]);
+      useDeckBuilderStore.getState().addCard(card);
+    });
+    // 旧形式(number)で直接stateを設定
+    act(() => {
+      useDeckBuilderStore.setState((state) => ({
+        deck: {
+          ...state.deck!,
+          removedCards: new Map([[card.id, 2]]),
+        },
+      }));
+    });
+    act(() => {
+      useDeckBuilderStore.getState().restoreCard({ ...card, deckId: 'persona_restore_new2' });
+    });
+    const entry = useDeckBuilderStore.getState().deck?.removedCards.get(card.id);
+    expect(entry).toBe(1);
+  });
+
+  it('restoreCardでnumber型のremovedEntryが1の場合removedCardsから削除される', () => {
+    const card = getPersonaCard();
+    act(() => {
+      useDeckBuilderStore.getState().setCharacter(CHARACTERS[0]);
+      useDeckBuilderStore.getState().addCard(card);
+    });
+    // 旧形式(number)で直接stateを設定
+    act(() => {
+      useDeckBuilderStore.setState((state) => ({
+        deck: {
+          ...state.deck!,
+          removedCards: new Map([[card.id, 1]]),
+        },
+      }));
+    });
+    act(() => {
+      useDeckBuilderStore.getState().restoreCard({ ...card, deckId: 'persona_restore_new3' });
+    });
     expect(useDeckBuilderStore.getState().deck?.removedCards.has(card.id)).toBe(false);
   });
 });
