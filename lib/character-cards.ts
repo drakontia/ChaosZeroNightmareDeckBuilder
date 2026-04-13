@@ -56,9 +56,7 @@ export const CHARACTER_CARDS: CznCard[] = [
     name: "心を込めて！", // Fallback
     type: CardType.CHARACTER,
     category: CardCategory.ATTACK,
-    statuses: [CardStatus.SERENITY],
-    isBasicCard: false,
-    isStartingCard: true,
+    statuses: [CardStatus.QUIETUS],
     imgUrl: "/images/cards/diana_starting_4.png",
     hiramekiVariations: [ // Fallback descriptions
       { level: 0, cost: 1, description: "ダメージ100%\nハートブレイカーを2枚生成" },
@@ -91,13 +89,13 @@ export const CHARACTER_CARDS: CznCard[] = [
     name: "浄化のピストル", // Fallback
     type: CardType.CHARACTER,
     category: CardCategory.ATTACK,
-    statuses: [CardStatus.BULLET, CardStatus.SERENITY],
+    statuses: [CardStatus.BULLET, CardStatus.QUIETUS],
     imgUrl: "/images/cards/diana_hirameki_2.png",
     hiramekiVariations: [ // Fallback descriptions
       { level: 0, cost: 1, description: "ダメージ120%\n共鳴2\n破棄された場合、対象に自分の共鳴3回さらに発動" },
       { level: 1, cost: 1, description: "ダメージ180%\n共鳴3\n破棄された場合、対象に自分の共鳴5回さらに発動" },
       { level: 2, cost: 1, description: "ダメージ180%\n次の5回、迅速攻撃カードを使用時、対象に共鳴1" },
-      { level: 3, cost: 1, statuses: [CardStatus.SERENITY], description: "ダメージ180%\n対象が所持中の自分の共鳴10回発動" },
+      { level: 3, cost: 1, statuses: [CardStatus.QUIETUS], description: "ダメージ180%\n対象が所持中の自分の共鳴10回発動" },
       { level: 4, cost: 1, description: "ダメージ180%\n今回のターンで破棄した弾丸数に応じてダメージ量+100%" },
       { level: 5, cost: 1, description: "敵全体にダメージ180%\n破棄された場合、敵全体が所持中の共鳴2回発動" }
     ]
@@ -115,7 +113,7 @@ export const CHARACTER_CARDS: CznCard[] = [
       { level: 2, cost: 1, description: "安息カードドロー1\n破棄2\n破棄したカードの合計コストに応じて敵全体に共鳴1\n（最大6）" },
       { level: 3, cost: 1, description: "手札の弾丸カードを3枚まで破棄\n破棄数-1分安息カードをドロー" },
       { level: 4, cost: 1, description: "手札の弾丸カードをすべて破棄\nその数に応じてランダムな敵に追加攻撃80%" },
-      { level: 5, cost: 3, category: CardCategory.UPGRADE, statuses: [CardStatus.SERENITY, CardStatus.UNIQUE], description: "手札に自分の安息カードがない場合、自分の安息カードドロー1（各ターン1回）" }
+      { level: 5, cost: 3, category: CardCategory.UPGRADE, statuses: [CardStatus.QUIETUS, CardStatus.UNIQUE], description: "手札に自分の安息カードがない場合、自分の安息カードドロー1（各ターン1回）" }
     ]
   },
   {

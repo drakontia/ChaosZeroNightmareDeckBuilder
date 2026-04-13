@@ -93,7 +93,7 @@ export enum CardStatus {
   RETRIEVE3 = "retrieve3",    // 回収3
   EPHEMERAL = "ephemeral",   // 蒸発
   BULLET = "bullet",        // 弾丸
-  SERENITY = "serenity",    // 安息
+  QUIETUS = "quietus",      // 安息
   WEAKNESS_ATTACK = "weakness_attack", // 弱点攻撃
   PULVERIZE = "pulverize",     // 粉砕
   BIND = "bind",               // 結束

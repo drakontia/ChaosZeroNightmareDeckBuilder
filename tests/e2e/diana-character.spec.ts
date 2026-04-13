@@ -76,11 +76,11 @@ test.describe('Diana Character', () => {
     await expect(deckCard.getByRole('button', { name: '神ヒラメキ選択', exact: true })).toBeVisible();
   });
 
-  test('Diana card shows SERENITY status badge', async ({ page }) => {
+  test('Diana card shows QUIETUS status badge', async ({ page }) => {
     await selectDiana(page);
     await selectWeapon(page);
 
-    // 「心を込めて！」は SERENITY ステータスを持つ → CardFrame が [安息] と表示する
+    // 「心を込めて！」は QUIETUS ステータスを持つ → CardFrame が [安息] と表示する
     const deckCard = getDeckCardContainerByName(page, '心を込めて！');
     await expect(deckCard).toBeVisible();
     await expect(deckCard).toContainText('安息');

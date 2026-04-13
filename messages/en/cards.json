@@ -2696,7 +2696,7 @@
     "persona_06": {
         "name": "Persona",
         "descriptions": {
-            "0": "Discard 1 random Serenity card from your draw pile"
+            "0": "Discard 1 random Quietus card from your draw pile"
         }
     },
     "persona_07": {
@@ -2892,7 +2892,7 @@
             "1": "Damage 150%\nGenerate 3 Heart Breakers",
             "2": "Damage 150%\nGenerate 1 Heart Breaker\nDraw 2 Vanishing Bullet cards",
             "3": "Damage 150%\nChange all Vanishing cards in hand with Cost 1 or less to Heart Breakers",
-            "4": "Generate 2 Heart Breakers\nGrant Serenity to all Vanishing Bullet cards in hand",
+            "4": "Generate 2 Heart Breakers\nGrant Quietus to all Vanishing Bullet cards in hand",
             "5": "At the start of each turn, generate 2 Heart Breakers\nIf you hold 5 or fewer Heart Bullets, generate 1 more"
         }
     },
@@ -2921,12 +2921,12 @@
     "diana_hirameki_3": {
         "name": "Budding Love",
         "descriptions": {
-            "0": "Draw 1 Serenity card\nDestroy 2",
-            "1": "Draw 1 Serenity card\nDestroy 1\nIf the destroyed card belongs to another combatant, generate 2 Heart Bullets",
-            "2": "Draw 1 Serenity card\nDestroy 2\nResonate all enemies 1 time based on total cost of destroyed cards (max 6)",
-            "3": "Destroy up to 3 Bullet cards in hand\nDraw Serenity cards equal to the number destroyed +1",
+            "0": "Draw 1 Quietus card\nDestroy 2",
+            "1": "Draw 1 Quietus card\nDestroy 1\nIf the destroyed card belongs to another combatant, generate 2 Heart Bullets",
+            "2": "Draw 1 Quietus card\nDestroy 2\nResonate all enemies 1 time based on total cost of destroyed cards (max 6)",
+            "3": "Destroy up to 3 Bullet cards in hand\nDraw Quietus cards equal to the number destroyed +1",
             "4": "Destroy all Bullet cards in hand\nAdditional attack on a random enemy for 80% based on the number destroyed",
-            "5": "If you have no Serenity cards in hand, draw 1 of your Serenity cards (once per turn)"
+            "5": "If you have no Quietus cards in hand, draw 1 of your Quietus cards (once per turn)"
         }
     },
     "diana_hirameki_4": {
@@ -2955,7 +2955,7 @@
             "lux_shield_scale": "Gain an additional 20% Shield based on the number of Lux Engravings",
             "umbra_zero_cost_burst": "If this card's cost becomes 0, increase its damage by 200%",
             "umbra_attack_boost": "For 1 turn, your Attack cards deal 30% more damage",
-            "umbra_quietus_boost": "Umbra Engraving 4: for 1 turn, your Serenity cards deal +40% damage",
+            "umbra_quietus_boost": "Umbra Engraving 4: for 1 turn, your Quietus cards deal +40% damage",
             "umbra_exhaust2_recall_personas": "Gain Exhaust 2. Umbra Engraving 5: add all Persona cards to your hand",
             "umbra_discard_trigger": "Cost +1. If discarded, activate this card",
             "umbra_retain_recover_attack": "Gain Retain. Choose 1 of your Attack cards from the discard pile and move it to your hand",

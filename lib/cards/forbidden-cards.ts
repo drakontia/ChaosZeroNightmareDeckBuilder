@@ -412,7 +412,7 @@ export const FORBIDDEN_CARDS: CznCard[] = [
     name: "ペルソナ",
     type: CardType.FORBIDDEN,
     category: CardCategory.SKILL,
-    statuses: [CardStatus.UNIQUE, CardStatus.SERENITY],
+    statuses: [CardStatus.UNIQUE, CardStatus.QUIETUS],
     allowedJobs: ALL_PERSONA_JOBS,
     imgUrl: PERSONA_CARD_IMAGE,
     hiramekiVariations: [{ level: 0, cost: 1, description: "山札からランダムな安息カードを1枚破棄" }],
