@@ -1014,4 +1014,124 @@ describe('useDeckBuilderStore', () => {
       expect(deck.removedCards.size).toBe(3); // Still 3
     });
   });
+
+  describe('normalizePersonaEngravings edge cases', () => {
+    it('setDeckでpersonaEngravingsがundefinedのカードを正規化して空配列になる', () => {
+      const personaCard = {
+        ...getPersonaCard(),
+        personaEngravings: undefined as any,
+      };
+      const deck = {
+        name: 'test',
+        character: CHARACTERS[0],
+        equipment: {
+          weapon: null,
+          armor: null,
+          pendant: null,
+        },
+        cards: [personaCard],
+        egoLevel: 0,
+        hasPotential: false,
+        createdAt: new Date(),
+        removedCards: new Map(),
+        copiedCards: new Map(),
+        convertedCards: new Map(),
+      };
+      act(() => {
+        useDeckBuilderStore.getState().setDeck(deck as any);
+      });
+      const card = useDeckBuilderStore.getState().deck?.cards.find(c => c.id === personaCard.id);
+      expect(card?.personaEngravings ?? []).toEqual([]);
+    });
+
+    it('setCardPersonaEngravingsで無効なアライメントは除外される', () => {
+      const card = getPersonaCard();
+      act(() => {
+        useDeckBuilderStore.getState().setCharacter(CHARACTERS[0]);
+        useDeckBuilderStore.getState().addCard(card);
+        useDeckBuilderStore.getState().setCardPersonaEngravings(card.deckId, [
+          { id: 'lux_attunement_discount', alignment: 'invalid_alignment' as any },
+        ]);
+      });
+      const updated = useDeckBuilderStore.getState().deck?.cards.find(c => c.deckId === card.deckId);
+      expect(updated?.personaEngravings).toEqual([]);
+    });
+
+    it('setDeckでremoveCarsにpersonaEngravingsを持つスナップショットが正規化される', () => {
+      const personaCard = getPersonaCard();
+      const removedEntry = {
+        count: 1,
+        type: personaCard.type,
+        grade: personaCard.grade,
+        selectedHiramekiLevel: 0,
+        selectedHiddenHiramekiId: null,
+        personaEngravings: [{ id: 'lux_attunement_discount', alignment: 'light' as const }],
+        godHiramekiType: null,
+        godHiramekiEffectId: null,
+        isBasicCard: false,
+        isCopied: false,
+        copiedFromCardId: undefined,
+      };
+      const deck = {
+        name: 'test',
+        character: CHARACTERS[0],
+        equipment: { weapon: null, armor: null, pendant: null },
+        cards: [],
+        egoLevel: 0,
+        hasPotential: false,
+        createdAt: new Date(),
+        removedCards: new Map([[personaCard.id, removedEntry]]),
+        copiedCards: new Map(),
+        convertedCards: new Map(),
+      };
+      act(() => {
+        useDeckBuilderStore.getState().setDeck(deck as any);
+      });
+      const entry = useDeckBuilderStore.getState().deck?.removedCards.get(personaCard.id);
+      expect(entry).toBeDefined();
+      if (typeof entry === 'object') {
+        expect(entry.personaEngravings).toEqual([{ id: 'lux_attunement_discount', alignment: 'light' }]);
+      }
+    });
+  });
+
+  describe('setEquipmentRefinement/GodHammer with empty slot', () => {
+    it('setEquipmentRefinementはスロットが空の場合何も変化しない', () => {
+      act(() => {
+        useDeckBuilderStore.getState().setCharacter(CHARACTERS[0]);
+        // weaponスロットは空のまま
+        useDeckBuilderStore.getState().setEquipmentRefinement(EquipmentType.WEAPON, 'refinement_1');
+      });
+      expect(useDeckBuilderStore.getState().deck?.equipment.weapon).toBeNull();
+    });
+
+    it('setEquipmentGodHammerはスロットが空の場合何も変化しない', () => {
+      act(() => {
+        useDeckBuilderStore.getState().setCharacter(CHARACTERS[0]);
+        useDeckBuilderStore.getState().setEquipmentGodHammer(EquipmentType.WEAPON, 'hammer_1');
+      });
+      expect(useDeckBuilderStore.getState().deck?.equipment.weapon).toBeNull();
+    });
+  });
+
+  it('restoreCardで1回だけ削除されたカードを復元するとremovedCardsから削除される', () => {
+    const card = getPersonaCard();
+    act(() => {
+      useDeckBuilderStore.getState().setCharacter(CHARACTERS[0]);
+      useDeckBuilderStore.getState().addCard(card);
+      useDeckBuilderStore.getState().removeCard(card.deckId);
+    });
+
+    const beforeEntry = useDeckBuilderStore.getState().deck?.removedCards.get(card.id);
+    expect(beforeEntry).toBeDefined();
+    if (typeof beforeEntry === 'object') {
+      expect(beforeEntry.count).toBe(1);
+    }
+
+    act(() => {
+      useDeckBuilderStore.getState().restoreCard({ ...card, deckId: 'persona_restore_new' });
+    });
+
+    expect(useDeckBuilderStore.getState().deck?.removedCards.has(card.id)).toBe(false);
+  });
 });

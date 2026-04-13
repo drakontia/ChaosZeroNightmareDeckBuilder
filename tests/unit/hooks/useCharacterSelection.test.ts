@@ -104,4 +104,15 @@ describe('useCharacterSelection', () => {
       egoLevel: 4,
     })).toBe(4);
   });
+
+  it('character が null の場合は egoLevels を更新しない', () => {
+    const onSelect = vi.fn();
+    const { result } = renderHook(() =>
+      useCharacterSelection({
+        character: null,
+        onSelect,
+      })
+    );
+    expect(result.current.egoLevels).toEqual({});
+  });
 });

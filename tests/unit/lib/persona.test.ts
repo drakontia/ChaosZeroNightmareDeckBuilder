@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
-import { getPersonaCardPresentation } from '@/lib/persona';
+import { getPersonaCardPresentation, getPersonaNameVariant, normalizePersonaCardEngravings } from '@/lib/persona';
 import { CardStatus } from '@/types';
 
 describe('getPersonaCardPresentation', () => {
@@ -62,6 +62,21 @@ describe('getPersonaCardPresentation', () => {
     });
   });
 
+  it('unknown engraving ID を持つ刻印はスキップされる', () => {
+    const result = getPersonaCardPresentation({
+      baseName: 'ペルソナ',
+      baseImageUrl: '/images/cards/persona.png',
+      baseCost: 1,
+      baseDescription: 'ダメージ250%',
+      baseStatuses: [CardStatus.UNIQUE],
+      engravings: [{ id: 'unknown_engraving_id', alignment: 'light' }],
+    });
+
+    expect(result.name).toBe('光のペルソナ');
+    expect(result.cost).toBe(1);
+    expect(result.description).toBe('ダメージ250%');
+  });
+
   it('uses localized persona names and engraving descriptions when provided', () => {
     const result = getPersonaCardPresentation({
       baseName: 'Persona',
@@ -79,5 +94,36 @@ describe('getPersonaCardPresentation', () => {
     expect(result.name).toBe('Light Persona');
     expect(result.description).toContain('Damage 250%');
     expect(result.description).toContain('Grant Haste');
+  });
+});
+
+describe('getPersonaNameVariant', () => {
+  it('2つのlight刻印でradiantを返す', () => {
+    const variant = getPersonaNameVariant([
+      { id: 'lux_haste_discount', alignment: 'light' },
+      { id: 'lux_attunement_discount', alignment: 'light' },
+    ]);
+    expect(variant).toBe('radiant');
+  });
+
+  it('2つのdark刻印でabyssalを返す', () => {
+    const variant = getPersonaNameVariant([
+      { id: 'umbra_attack_boost', alignment: 'dark' },
+      { id: 'umbra_attack_boost', alignment: 'dark' },
+    ]);
+    expect(variant).toBe('abyssal');
+  });
+});
+
+describe('normalizePersonaCardEngravings', () => {
+  it('undefinedを渡すと空配列を返す', () => {
+    expect(normalizePersonaCardEngravings(undefined)).toEqual([]);
+  });
+
+  it('不明なengraving IDは除外される', () => {
+    const result = normalizePersonaCardEngravings([
+      { id: 'unknown_id_xyz', alignment: 'light' },
+    ]);
+    expect(result).toEqual([]);
   });
 });
