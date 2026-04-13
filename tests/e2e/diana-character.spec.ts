@@ -4,8 +4,8 @@ import { test, expect, Page } from '@playwright/test';
 
 const selectDiana = async (page: Page) => {
   await page.getByRole('button', { name: 'キャラクターを選択' }).click();
-  await page.getByRole('button', { name: 'ディアナ' }).waitFor({ state: 'visible' });
-  await page.getByRole('button', { name: 'ディアナ' }).click();
+  await page.getByRole('button', { name: 'ディアナ', exact: true }).waitFor({ state: 'visible' });
+  await page.getByRole('button', { name: 'ディアナ', exact: true }).click();
 };
 
 const selectWeapon = async (page: Page) => {
@@ -29,7 +29,7 @@ test.describe('Diana Character', () => {
 
   test('Diana appears in the character selection list', async ({ page }) => {
     await page.getByRole('button', { name: 'キャラクターを選択' }).click();
-    await expect(page.getByRole('button', { name: 'ディアナ' })).toBeVisible();
+    await expect(page.getByRole('button', { name: 'ディアナ', exact: true })).toBeVisible();
   });
 
   test('selecting Diana shows her starting cards in the deck', async ({ page }) => {
@@ -47,7 +47,7 @@ test.describe('Diana Character', () => {
     await selectWeapon(page);
 
     const hiramekiSection = page.getByRole('heading', { name: 'ヒラメキカード' }).locator('..');
-    await expect(hiramekiSection.getByText('おいでミルクボン', { exact: true }).first()).toBeVisible();
+    await expect(hiramekiSection.getByText('おいでミルクポン', { exact: true }).first()).toBeVisible();
     await expect(hiramekiSection.getByText('浄化のピストル', { exact: true }).first()).toBeVisible();
     await expect(hiramekiSection.getByText('芽生える愛', { exact: true }).first()).toBeVisible();
     await expect(hiramekiSection.getByText('解放された心', { exact: true }).first()).toBeVisible();

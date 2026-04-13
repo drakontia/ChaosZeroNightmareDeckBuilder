@@ -23,13 +23,30 @@ export function useDeckSaveLoad({ deck, setName, setSharedDeck, setShareError, t
   const [loadOpen, setLoadOpen] = useState(false);
   const [savedList, setSavedList] = useState<Array<{ name: string; savedAt: string }>>([]);
 
+  const isSavedDeckEntry = (value: unknown): value is { id: string; savedAt: string } => {
+    if (!value || typeof value !== "object") {
+      return false;
+    }
+
+    const entry = value as Record<string, unknown>;
+    return typeof entry.id === "string" && typeof entry.savedAt === "string";
+  };
+
   const readStorage = useCallback((): Record<string, { id: string; savedAt: string }> => {
     if (typeof window === "undefined") return {};
     try {
       const raw = window.localStorage.getItem("cznde:savedDecks");
       if (!raw) return {};
-      const parsed = JSON.parse(raw) as Record<string, { id: string; savedAt: string }>;
-      return parsed || {};
+      const parsed = JSON.parse(raw) as unknown;
+      if (!parsed || typeof parsed !== "object") {
+        return {};
+      }
+
+      return Object.fromEntries(
+        Object.entries(parsed).filter((entry): entry is [string, { id: string; savedAt: string }] =>
+          isSavedDeckEntry(entry[1])
+        )
+      );
     } catch {
       return {};
     }

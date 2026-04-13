@@ -47,4 +47,19 @@ describe('card helpers', () => {
       expect(result.some(card => card.id === restricted.id)).toBe(false);
     }
   });
+
+  it('includes persona season cards in the global card registry', () => {
+    const personaCard = getCardById('persona_01');
+    expect(personaCard).toBeDefined();
+    expect(personaCard?.type).toBe(CardType.FORBIDDEN);
+  });
+
+  it('filters persona cards by allowed jobs', () => {
+    const rangerCards = getAddableCards(JobType.RANGER);
+    const vanguardCards = getAddableCards(JobType.VANGUARD);
+
+    expect(rangerCards.some(card => card.id === 'persona_07')).toBe(true);
+    expect(rangerCards.some(card => card.id === 'persona_08')).toBe(false);
+    expect(vanguardCards.some(card => card.id === 'persona_08')).toBe(true);
+  });
 });

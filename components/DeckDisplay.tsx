@@ -1,10 +1,11 @@
 "use client";
 import { useTranslations } from 'next-intl';
+
 import { CardFrame } from './CardFrame';
 import { HiramekiControls } from './HiramekiControls';
 import { CardActionsMenu } from './CardActionsMenu';
 
-import { DeckCard, GodType, CznCard, JobType, CardStatus, CardType } from "@/types";
+import { DeckCard, GodType, CznCard, JobType, CardStatus, CardType, PersonaEngraving } from "@/types";
 import { Card } from "./ui/card";
 import { getCardInfo, sortDeckCards } from "@/lib/deck-utils";
 import { GOD_HIRAMEKI_EFFECTS } from "@/lib/god-hirameki";
@@ -23,9 +24,10 @@ interface DeckDisplayProps {
   onSetGodHirameki: (deckId: string, godType: GodType | null) => void;
   onSetGodHiramekiEffect: (deckId: string, effectId: string | null) => void;
   onSetHiddenHirameki: (deckId: string, hiddenHiramekiId: string | null) => void;
+  onSetPersonaEngravings: (deckId: string, engravings: PersonaEngraving[]) => void;
 }
 
-export function DeckDisplay({ cards, egoLevel, hasPotential, allowedJob, onRemoveCard, onUndoCard, onCopyCard, onConvertCard, onUpdateHirameki, onSetGodHirameki, onSetGodHiramekiEffect, onSetHiddenHirameki }: DeckDisplayProps) {
+export function DeckDisplay({ cards, egoLevel, hasPotential, allowedJob, onRemoveCard, onUndoCard, onCopyCard, onConvertCard, onUpdateHirameki, onSetGodHirameki, onSetGodHiramekiEffect, onSetHiddenHirameki, onSetPersonaEngravings }: DeckDisplayProps) {
   const t = useTranslations();
 
   // Sort cards to maintain consistent order: Character (Starting -> Hirameki) -> Shared -> Monster -> Forbidden
@@ -44,12 +46,35 @@ export function DeckDisplay({ cards, egoLevel, hasPotential, allowedJob, onRemov
   return (
     <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-3 xl:grid-cols-4 gap-4">
       {sortedCards.map((card) => {
-        const cardInfo = getCardInfo(card, egoLevel, hasPotential);
+        const localizedCard = card.id.startsWith("persona_")
+          ? {
+              ...card,
+              name: t(`cards.${card.id}.name`, { defaultValue: card.name }),
+              hiramekiVariations: card.hiramekiVariations.map((variation) => ({
+                ...variation,
+                name: variation.name
+                  ? t(`cards.${card.id}.name.${variation.level}`, { defaultValue: variation.name })
+                  : variation.name,
+                description: t(`cards.${card.id}.descriptions.${variation.level}`, { defaultValue: variation.description }),
+              })),
+            }
+          : card;
+        const cardInfo = getCardInfo(localizedCard, egoLevel, hasPotential, undefined, {
+          persona: {
+            getName: (variant) => t(`cards.personaMeta.names.${variant}`),
+            getEngravingDescription: (definition) => t(`cards.personaMeta.engravings.${definition.descriptionKey}`),
+          },
+          translateGodEffect: (effectId, fallback) => t(`godEffects.${effectId}`, { defaultValue: fallback }),
+          translateHiddenEffect: (effectId, fallback) => t(`hiddenEffects.${effectId}`, { defaultValue: fallback }),
+        });
         const supportsHiramekiControls =
           card.hiramekiVariations.length > 0 &&
           (card.type !== CardType.CHARACTER || card.hiramekiVariations.length > 1);
+        const hasPersonaEngravings = card.id.startsWith('persona_') && (card.personaEngravings?.length ?? 0) > 0;
         const variationName = card.hiramekiVariations[card.selectedHiramekiLevel]?.name;
-        const nameId = variationName
+        const nameId = hasPersonaEngravings
+          ? undefined
+          : variationName
           ? `cards.${card.id}.name.${card.selectedHiramekiLevel}`
           : `cards.${card.id}.name`;
         const nameFallback = variationName ?? cardInfo.name;
@@ -76,35 +101,39 @@ export function DeckDisplay({ cards, egoLevel, hasPotential, allowedJob, onRemov
           displayStatuses.push(CardStatus.COPIED);
         }
         const leftControls = supportsHiramekiControls ? (
-          <HiramekiControls
-            card={card}
-            egoLevel={egoLevel}
-            hasPotential={hasPotential}
-            onUpdateHirameki={onUpdateHirameki}
-            onSetGodHirameki={onSetGodHirameki}
-            onSetGodHiramekiEffect={onSetGodHiramekiEffect}
-            onSetHiddenHirameki={onSetHiddenHirameki}
-          />
-        ) : undefined;
+            <HiramekiControls
+              card={card}
+              egoLevel={egoLevel}
+              hasPotential={hasPotential}
+              allowedJob={allowedJob}
+              onUpdateHirameki={onUpdateHirameki}
+              onSetGodHirameki={onSetGodHirameki}
+              onSetGodHiramekiEffect={onSetGodHiramekiEffect}
+              onSetHiddenHirameki={onSetHiddenHirameki}
+              onSetPersonaEngravings={onSetPersonaEngravings}
+            />
+          ) : undefined;
         return (
           <Card key={card.deckId}>
             <CardFrame
-              imgUrl={card.imgUrl}
+              imgUrl={cardInfo.imgUrl ?? card.imgUrl}
               alt={nameFallback}
               cost={cardInfo.cost}
+              name={hasPersonaEngravings ? nameFallback : undefined}
               nameId={nameId}
               nameFallback={nameFallback}
               category={t(`category.${cardInfo.category ?? card.category}`)}
               categoryId={cardInfo.category ?? card.category}
-              descriptionId={`cards.${card.id}.descriptions.${card.selectedHiramekiLevel}`}
+              description={hasPersonaEngravings ? cardInfo.description : undefined}
+              descriptionId={hasPersonaEngravings ? undefined : `cards.${card.id}.descriptions.${card.selectedHiramekiLevel}`}
               descriptionFallback={cardInfo.description}
-              godEffectId={godEffectId}
-              godEffectFallback={godEffectFallback}
-              hiddenEffectId={hiddenEffectId}
-              hiddenEffectFallback={hiddenEffectFallback}
-              statuses={displayStatuses.map(s => t(`status.${s}`))}
-              isCopied={card.isCopied}
-              grade={card.grade}
+               godEffectId={hasPersonaEngravings ? undefined : godEffectId}
+               godEffectFallback={hasPersonaEngravings ? undefined : godEffectFallback}
+               hiddenEffectId={hasPersonaEngravings ? undefined : hiddenEffectId}
+               hiddenEffectFallback={hasPersonaEngravings ? undefined : hiddenEffectFallback}
+               statuses={displayStatuses.map(s => t(`status.${s}`))}
+               isCopied={card.isCopied}
+               grade={card.grade}
               leftControls={leftControls}
               rightControls={
                 <CardActionsMenu

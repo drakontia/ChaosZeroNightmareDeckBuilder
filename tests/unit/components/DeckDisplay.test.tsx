@@ -108,7 +108,8 @@ describe('DeckDisplay - Copied Card Feature', () => {
     onUpdateHirameki: vi.fn(),
     onSetGodHirameki: vi.fn(),
     onSetGodHiramekiEffect: vi.fn(),
-    onSetHiddenHirameki: vi.fn()
+    onSetHiddenHirameki: vi.fn(),
+    onSetPersonaEngravings: vi.fn()
   };
 
   beforeEach(() => {
@@ -338,6 +339,34 @@ describe('DeckDisplay - Copied Card Feature', () => {
     expect(lastProps.godEffectFallback).toBe(godEffect.additionalEffect);
     expect(lastProps.hiddenEffectId).toBe(hiddenEffect.id);
     expect(lastProps.hiddenEffectFallback).toBe(hiddenEffect.additionalEffect);
+  });
+
+  it('should avoid passing hidden/god effect ids twice for engraved persona cards', () => {
+    const godEffect = GOD_HIRAMEKI_EFFECTS[0];
+    const hiddenEffect = HIDDEN_HIRAMEKI_EFFECTS[0];
+    const personaCard = createMockCard({
+      id: 'persona_01',
+      deckId: 'deck-persona-effects',
+      type: CardType.FORBIDDEN,
+      personaEngravings: [{ id: 'lux_attunement_discount', alignment: 'light' }],
+      godHiramekiType: GodType.KILKEN,
+      godHiramekiEffectId: godEffect.id,
+      selectedHiddenHiramekiId: hiddenEffect.id,
+    });
+
+    renderWithIntl(
+      <DeckDisplay
+        cards={[personaCard]}
+        egoLevel={0}
+        hasPotential={false}
+        {...mockHandlers}
+      />
+    );
+
+    const lastProps = cardFrameProps[cardFrameProps.length - 1];
+    expect(lastProps.description).toBeDefined();
+    expect(lastProps.godEffectId).toBeUndefined();
+    expect(lastProps.hiddenEffectId).toBeUndefined();
   });
 
   it('should use name.<level> key when hirameki variation name is present', () => {

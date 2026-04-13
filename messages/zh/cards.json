@@ -314,6 +314,126 @@
       },
       "name": "強制学習装置"
     },
+    "persona_01": {
+      "descriptions": {
+        "0": "造成250%伤害\n冲击波3"
+      },
+      "name": "人格"
+    },
+    "persona_02": {
+      "descriptions": {
+        "0": "造成200%伤害\n死亡烙印1"
+      },
+      "name": "人格"
+    },
+    "persona_03": {
+      "descriptions": {
+        "0": "最多弃置2张牌\n根据弃置数量，使自己的攻击牌伤害量在1回合内+60%"
+      },
+      "name": "人格"
+    },
+    "persona_04": {
+      "descriptions": {
+        "0": "抽1张牌\n抽到攻击牌时，1回合内士气2"
+      },
+      "name": "人格"
+    },
+    "persona_05": {
+      "descriptions": {
+        "0": "造成250%伤害\n若本回合生成过卡牌，伤害量+50%"
+      },
+      "name": "人格"
+    },
+    "persona_06": {
+      "descriptions": {
+        "0": "从牌库随机弃置1张安息牌"
+      },
+      "name": "人格"
+    },
+    "persona_07": {
+      "descriptions": {
+        "0": "抽2张牌\n根据抽到的攻击牌数量，夹击100%"
+      },
+      "name": "人格"
+    },
+    "persona_08": {
+      "descriptions": {
+        "0": "基于防御造成250%伤害\n脆弱1"
+      },
+      "name": "人格"
+    },
+    "persona_09": {
+      "descriptions": {
+        "0": "基于防御造成250%伤害\n若存在行动计数为1的目标，获得反击2"
+      },
+      "name": "人格"
+    },
+    "persona_10": {
+      "descriptions": {
+        "0": "造成150%伤害\n根据目标持有的自己的苦痛层数，伤害量+30%"
+      },
+      "name": "人格"
+    },
+    "persona_11": {
+      "descriptions": {
+        "0": "造成100%伤害\n手中自己的攻击牌伤害量+50%"
+      },
+      "name": "人格"
+    },
+    "persona_12": {
+      "descriptions": {
+        "0": "根据墓地中的卡牌数量，使下一张使用的攻击牌伤害量+15%（最大150%）"
+      },
+      "name": "人格"
+    },
+    "persona_13": {
+      "descriptions": {
+        "0": "基于防御造成250%伤害\n行动计数2"
+      },
+      "name": "人格"
+    },
+    "persona_14": {
+      "descriptions": {
+        "0": "获得250%护盾\n反击2"
+      },
+      "name": "人格"
+    },
+    "persona_15": {
+      "descriptions": {
+        "0": "造成250%伤害\n手中所有子弹牌直到使用前伤害量+30%"
+      },
+      "name": "人格"
+    },
+    "persona_16": {
+      "descriptions": {
+        "0": "造成250%伤害\n标识2"
+      },
+      "name": "人格"
+    },
+    "persona_17": {
+      "descriptions": {
+        "0": "子弹牌伤害量+30%"
+      },
+      "name": "人格"
+    },
+    "persona_18": {
+      "descriptions": {
+        "0": "治疗250%\n1回合内，每当弃置卡牌时，对随机敌人施加苦痛1"
+      },
+      "name": "人格"
+    },
+    "persona_19": {
+      "descriptions": {
+        "0": "治疗250%\n行动迟缓3"
+      },
+      "name": "人格"
+    },
+    "persona_20": {
+      "descriptions": {
+        "0": "获得250%护盾\n将墓地中自己随机1张攻击牌移到手中"
+      },
+      "name": "人格"
+    },
     "forbidden_card_2": {
       "descriptions": {
         "0": "手札のランダムなカード1枚のコスト1減少"
@@ -2587,6 +2707,34 @@
         "name": "解放された心",
         "descriptions": {
             "0": "消滅弾丸カードを2枚ドロー\nダメージ300%\n手札の異なる弾丸カード数に応じてダメージ量30%増加"
+        }
+    },
+    "personaMeta": {
+        "names": {
+            "base": "人格",
+            "light": "光之人格",
+            "dark": "暗之人格",
+            "radiant": "辉耀人格",
+            "abyssal": "漆黑人格",
+            "boundary": "境界人格"
+        },
+        "engravings": {
+            "lux_haste_discount": "赋予迅速，费用+1。若存在行动计数为1的目标，此牌费用-2",
+            "lux_attunement_discount": "感应：直到使用时费用-1",
+            "lux_exhaust_draw": "赋予消灭，费用+1。光之刻印5：自身脆弱3，抽3",
+            "lux_counter_by_count": "根据光之刻印数量获得反击1",
+            "lux_pain_by_count": "根据光之刻印数量，对全体敌人施加苦痛1",
+            "lux_exhaust2_blessing": "赋予消灭2，费用+1。光之加护1",
+            "lux_retribution_wave": "反击波动2，并根据光之刻印数量额外获得",
+            "lux_shield_scale": "根据光之刻印数量，护盾获得量额外+20%",
+            "umbra_zero_cost_burst": "当此牌费用变为0时，伤害量+200%",
+            "umbra_attack_boost": "1回合内，自己的攻击牌伤害量+30%",
+            "umbra_quietus_boost": "暗之刻印4：1回合内，自己的安息牌伤害量+40%",
+            "umbra_exhaust2_recall_personas": "赋予消灭2。暗之刻印5：将所有人格牌加入手牌",
+            "umbra_discard_trigger": "费用+1。若被弃置，发动此牌",
+            "umbra_retain_recover_attack": "赋予保留。从弃牌堆选择1张自己的攻击牌移到手牌",
+            "umbra_retain_cost2_hit2": "赋予保留，费用+2。暗之刻印5：弃置所有攻击牌，额外增加2次命中",
+            "umbra_exhaust_choose_hand": "赋予消灭。暗之刻印3：选择手牌中的1张牌并发动"
         }
     }
   }

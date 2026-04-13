@@ -13,6 +13,7 @@
     "info": "Details",
     "none": "None",
     "refinement": "Refinement",
+    "engraving": "Engraving",
     "godHammer": "God's Hammer",
     "godHammerWithoutRefinement": {
       "title": "Refinement Not Selected",
@@ -43,6 +44,21 @@
       "refinement_22": "Additional attack damage +25%",
       "refinement_23": "When drawing your own attack card with an ability, that card's damage +50% for 1 turn",
       "refinement_24": "Defense-dependent damage +30%"
+    },
+    "engravingEffects": {
+      "equipment_engraving_lux_01": "If allies generate 5 or more cards by ability, your additional attack damage +30% (once per turn)",
+      "equipment_engraving_lux_02": "When an ally is incapacitated, the target's action count +2 (once per turn)",
+      "equipment_engraving_lux_03": "At the start of turn, inflict Weaken 2 on the target with the lowest action count",
+      "equipment_engraving_lux_04": "If action count decreased by 3 or more this turn, inflict Weaken 1 on the target with the lowest action count",
+      "equipment_engraving_lux_05": "At end of turn, if you retained a card, gain fixed shield 50%",
+      "equipment_engraving_umbra_01": "Umbra Engraving +1",
+      "equipment_engraving_umbra_02": "Your exhaust card damage +25%",
+      "equipment_engraving_umbra_03": "Your Quietus card damage +25%",
+      "equipment_engraving_umbra_04": "At the start of turn, if there is a Quietus card in hand, deal 60% fixed damage to a random enemy",
+      "equipment_engraving_umbra_05": "When attacked, discard 1 random Quietus card from hand (once per turn)",
+      "equipment_engraving_umbra_06": "On additional attack, gain Morale 1 for 1 turn (once per turn)",
+      "equipment_engraving_umbra_07": "If an ally discards a Quietus card by ability, draw 1 (once per turn)",
+      "equipment_engraving_umbra_08": "When your card is discarded, the next attack card you use deals +100% damage (once per turn)"
     },
     "armor": {
       "title": "Armor",

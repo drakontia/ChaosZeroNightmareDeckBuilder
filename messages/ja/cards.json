@@ -2731,6 +2731,126 @@
                 "0": "カード4枚使用時、ドロー1（ターンごとに1回）"
             }
         },
+        "persona_01": {
+            "name": "ペルソナ",
+            "descriptions": {
+                "0": "ダメージ250%\n衝撃波3"
+            }
+        },
+        "persona_02": {
+            "name": "ペルソナ",
+            "descriptions": {
+                "0": "ダメージ200%\n死の烙印1"
+            }
+        },
+        "persona_03": {
+            "name": "ペルソナ",
+            "descriptions": {
+                "0": "2枚まで破棄\n破棄した数に応じて1ターンの間、自分の攻撃カードのダメージ量+60%"
+            }
+        },
+        "persona_04": {
+            "name": "ペルソナ",
+            "descriptions": {
+                "0": "ドロー1\n攻撃カードドロー時、1ターンの間、士気2"
+            }
+        },
+        "persona_05": {
+            "name": "ペルソナ",
+            "descriptions": {
+                "0": "ダメージ250%\n今回のターンでカードを生成した場合、ダメージ50％増加"
+            }
+        },
+        "persona_06": {
+            "name": "ペルソナ",
+            "descriptions": {
+                "0": "山札からランダムな安息カードを1枚破棄"
+            }
+        },
+        "persona_07": {
+            "name": "ペルソナ",
+            "descriptions": {
+                "0": "ドロー2\n攻撃カードをドローした数に応じて挟み撃ち100%"
+            }
+        },
+        "persona_08": {
+            "name": "ペルソナ",
+            "descriptions": {
+                "0": "防御依存ダメージ250%\n脆弱1"
+            }
+        },
+        "persona_09": {
+            "name": "ペルソナ",
+            "descriptions": {
+                "0": "防御依存ダメージ250%\n行動カウントが1の対象がいる場合、反撃2"
+            }
+        },
+        "persona_10": {
+            "name": "ペルソナ",
+            "descriptions": {
+                "0": "ダメージ150%\n対象が所持中の自分の苦痛数に応じてダメージ量+30％"
+            }
+        },
+        "persona_11": {
+            "name": "ペルソナ",
+            "descriptions": {
+                "0": "ダメージ100%\n手札の自分の攻撃カードのダメージ量+50％"
+            }
+        },
+        "persona_12": {
+            "name": "ペルソナ",
+            "descriptions": {
+                "0": "墓地のカード数に応じて次に使用する攻撃カードのダメージ量+15％（最大150％）"
+            }
+        },
+        "persona_13": {
+            "name": "ペルソナ",
+            "descriptions": {
+                "0": "防御依存ダメージ250%\n行動カウント2"
+            }
+        },
+        "persona_14": {
+            "name": "ペルソナ",
+            "descriptions": {
+                "0": "シールド250%\n反撃2"
+            }
+        },
+        "persona_15": {
+            "name": "ペルソナ",
+            "descriptions": {
+                "0": "ダメージ250%\n手札の全ての弾丸カードが使用時までダメージ量+30％"
+            }
+        },
+        "persona_16": {
+            "name": "ペルソナ",
+            "descriptions": {
+                "0": "ダメージ250%\n標識2"
+            }
+        },
+        "persona_17": {
+            "name": "ペルソナ",
+            "descriptions": {
+                "0": "弾丸カードのダメージ量+30％"
+            }
+        },
+        "persona_18": {
+            "name": "ペルソナ",
+            "descriptions": {
+                "0": "治癒250%\n1ターンの間、カード破棄時、ランダムな敵に苦痛1"
+            }
+        },
+        "persona_19": {
+            "name": "ペルソナ",
+            "descriptions": {
+                "0": "治癒250%\n行動鈍化3"
+            }
+        },
+        "persona_20": {
+            "name": "ペルソナ",
+            "descriptions": {
+                "0": "シールド250%\n墓地から自分のランダムな攻撃カード1枚を手札に移動"
+            }
+        },
         "spore_harvester": {
             "name": "胞子採集器",
             "descriptions": {
@@ -2807,6 +2927,34 @@
             "name": "永劫の火種",
             "descriptions": {
                 "0": "コストが1以上のカード\nダメージ量40%増加\n攻撃カードコスト1増加"
+            }
+        },
+        "personaMeta": {
+            "names": {
+                "base": "ペルソナ",
+                "light": "光のペルソナ",
+                "dark": "闇のペルソナ",
+                "radiant": "光輝のペルソナ",
+                "abyssal": "漆黒のペルソナ",
+                "boundary": "境界のペルソナ"
+            },
+            "engravings": {
+                "lux_haste_discount": "迅速付与、コスト1増加。行動カウントが1の対象がいる場合、このカードのコスト2減少",
+                "lux_attunement_discount": "感応：使用時までコスト1減少",
+                "lux_exhaust_draw": "消滅付与、コスト1増加。光の刻印5：自分に脆弱3、ドロー3",
+                "lux_counter_by_count": "光の刻印数に応じて反撃1",
+                "lux_pain_by_count": "光の刻印数に応じて敵全体に苦痛1",
+                "lux_exhaust2_blessing": "消滅2付与、コスト1増加。光の加護1",
+                "lux_retribution_wave": "反撃の波動2、光の刻印数に応じて追加獲得",
+                "lux_shield_scale": "光の刻印数に応じてシールド獲得量20%追加",
+                "umbra_zero_cost_burst": "このカードのコストが0になると、ダメージ量200%増加",
+                "umbra_attack_boost": "1ターンの間、自分の攻撃カードのダメージ量30%増加",
+                "umbra_quietus_boost": "闇の刻印4：1ターンの間、自分の安息カードのダメージ量+40%",
+                "umbra_exhaust2_recall_personas": "消滅2付与。闇の刻印5：全てのペルソナカードを手札に加える",
+                "umbra_discard_trigger": "コスト1増加。破棄された場合、このカード発動",
+                "umbra_retain_recover_attack": "保存付与。捨て札から自分の攻撃カードを1枚選択、そのカードを手札に移動",
+                "umbra_retain_cost2_hit2": "保存付与、コスト2増加。闇の刻印5：全ての攻撃カード破棄、ヒット数2回追加",
+                "umbra_exhaust_choose_hand": "消滅付与。闇の刻印3：手札のカードを1枚選択して発動"
             }
         },
         "__exclusion__": {

@@ -76,6 +76,27 @@ describe('useDeckSaveLoad', () => {
     expect(result.current.loadOpen).toBe(true);
   });
 
+  it('openLoadDialogは構造が壊れた保存データも無視する', () => {
+    const { result } = renderHook(() => useDeckSaveLoad({ deck, setName, setSharedDeck, setShareError, t }));
+    window.localStorage.setItem('cznde:savedDecks', JSON.stringify({
+      broken: {},
+      alsoBroken: { id: 123, savedAt: null },
+      valid: { id: 'share', savedAt: '2024-01-01T00:00:00.000Z' }
+    }));
+
+    act(() => {
+      result.current.openLoadDialog();
+    });
+
+    expect(result.current.savedList).toEqual([
+      {
+        name: 'valid',
+        savedAt: '2024-01-01T00:00:00.000Z'
+      }
+    ]);
+    expect(result.current.loadOpen).toBe(true);
+  });
+
   it('保存済みがある場合に上書き確認でキャンセルすると保存されない', () => {
     const { result } = renderHook(() => useDeckSaveLoad({ deck, setName, setSharedDeck, setShareError, t }));
     const stored = JSON.stringify({

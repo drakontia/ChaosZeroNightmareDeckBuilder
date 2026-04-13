@@ -18,9 +18,14 @@ describe('deck-share', () => {
         imgUrl: ''
       } as any,
       equipment: {
-        weapon: { item: { id: 'obsidian_sword', name: 'equipment.weapon.obsidian_sword.name', type: EquipmentType.WEAPON, rarity: 'equipment.rarity.rare' }, refinement: null, godHammerEquipmentId: null },
-        armor: { item: null, refinement: null, godHammerEquipmentId: null },
-        pendant: { item: null, refinement: null, godHammerEquipmentId: null }
+        weapon: {
+          item: { id: 'obsidian_sword', name: 'equipment.weapon.obsidian_sword.name', type: EquipmentType.WEAPON, rarity: 'equipment.rarity.rare' },
+          refinement: 'refinement_01',
+          godHammerEquipmentId: 'assault_gauntlets',
+          engravingId: 'equipment_engraving_lux_01',
+        },
+        armor: { item: null, refinement: null, godHammerEquipmentId: null, engravingId: null },
+        pendant: { item: null, refinement: null, godHammerEquipmentId: null, engravingId: null }
       },
       cards: [
         {
@@ -34,6 +39,7 @@ describe('deck-share', () => {
           godHiramekiType: null,
           godHiramekiEffectId: null,
           selectedHiddenHiramekiId: null,
+          personaEngravings: [{ id: 'lux_attunement_discount', alignment: 'light' }],
           isBasicCard: false,
           isCopied: true,
           copiedFromCardId: 'shared_01',
@@ -117,8 +123,10 @@ describe('deck-share', () => {
       const decoded = decodeDeckShare(encoded);
 
       expect(decoded!.cards).toHaveLength(1);
-      expect(decoded!.cards[0].id).toBe('shared_01');
-      expect(decoded!.cards[0].copiedFromCardId).toBe('shared_01');
+        expect(decoded!.cards[0].id).toBe('shared_01');
+        expect(decoded!.cards[0].copiedFromCardId).toBe('shared_01');
+        expect(decoded!.cards[0].personaEngravings).toEqual([{ id: 'lux_attunement_discount', alignment: 'light' }]);
+        expect(decoded!.cards[0].selectedHiddenHiramekiId).toBeNull();
     });
 
     it('should preserve equipment data', () => {
@@ -126,6 +134,9 @@ describe('deck-share', () => {
       const decoded = decodeDeckShare(encoded);
 
       expect(decoded!.equipment.weapon?.item?.id).toBe('obsidian_sword');
+      expect(decoded!.equipment.weapon?.refinement).toBe('refinement_01');
+      expect(decoded!.equipment.weapon?.godHammerEquipmentId).toBe('assault_gauntlets');
+      expect(decoded!.equipment.weapon?.engravingId).toBe('equipment_engraving_lux_01');
       expect(decoded!.equipment.armor?.item).toBeNull();
     });
 
@@ -217,6 +228,165 @@ describe('deck-share', () => {
       const decoded = decodeDeckShare(encoded);
 
       expect(decoded!.egoLevel).toBe(6);
+    });
+
+    it('should preserve persona engraving order and two slots through round trip', () => {
+      mockDeck.cards[0] = {
+        ...mockDeck.cards[0],
+        personaEngravings: [
+          { id: 'lux_attunement_discount', alignment: 'light' },
+          { id: 'umbra_attack_boost', alignment: 'dark' },
+        ],
+      };
+
+      const encoded = encodeDeckShare(mockDeck);
+      const decoded = decodeDeckShare(encoded);
+
+      expect(decoded!.cards[0].personaEngravings).toEqual([
+        { id: 'lux_attunement_discount', alignment: 'light' },
+        { id: 'umbra_attack_boost', alignment: 'dark' },
+      ]);
+    });
+
+    it('should preserve hidden hirameki selection through round trip', () => {
+      mockDeck.cards[0] = {
+        ...mockDeck.cards[0],
+        selectedHiddenHiramekiId: 'hidden_hirameki_cost_minus_1',
+      };
+
+      const encoded = encodeDeckShare(mockDeck);
+      const decoded = decodeDeckShare(encoded);
+
+      expect(decoded!.cards[0].selectedHiddenHiramekiId).toBe('hidden_hirameki_cost_minus_1');
+    });
+
+    it('should default missing persona engraving fields from legacy payloads', () => {
+      const payload = {
+        v: 1,
+        k: [
+          {
+            id: 'shared_01',
+            selectedHiramekiLevel: 0,
+          },
+        ],
+        ct: '2024-01-01T12:00:00.000Z',
+      };
+      const encoded = Buffer.from(JSON.stringify(payload), 'utf-8')
+        .toString('base64')
+        .replace(/\+/g, '-')
+        .replace(/\//g, '_')
+        .replace(/=+$/, '');
+
+      const decoded = decodeDeckShare(encoded);
+
+      expect(decoded).not.toBeNull();
+      expect(decoded!.cards[0].personaEngravings).toEqual([]);
+    });
+
+    it('should default missing equipment enhancement fields from legacy payloads', () => {
+      const payload = {
+        v: 1,
+        e: {
+          w: 'obsidian_sword',
+        },
+        k: [],
+        ct: '2024-01-01T12:00:00.000Z',
+      };
+      const encoded = Buffer.from(JSON.stringify(payload), 'utf-8')
+        .toString('base64')
+        .replace(/\+/g, '-')
+        .replace(/\//g, '_')
+        .replace(/=+$/, '');
+
+      const decoded = decodeDeckShare(encoded);
+
+      expect(decoded).not.toBeNull();
+      expect(decoded!.equipment.weapon?.item?.id).toBe('obsidian_sword');
+      expect(decoded!.equipment.weapon?.refinement).toBeNull();
+      expect(decoded!.equipment.weapon?.godHammerEquipmentId).toBeNull();
+      expect(decoded!.equipment.weapon?.engravingId).toBeNull();
+    });
+
+    it('should ignore unknown equipment engraving ids from payloads', () => {
+      const payload = {
+        v: 1,
+        e: {
+          w: 'obsidian_sword',
+          we: 'invalid_engraving',
+        },
+        k: [],
+        ct: '2024-01-01T12:00:00.000Z',
+      };
+      const encoded = Buffer.from(JSON.stringify(payload), 'utf-8')
+        .toString('base64')
+        .replace(/\+/g, '-')
+        .replace(/\//g, '_')
+        .replace(/=+$/, '');
+
+      const decoded = decodeDeckShare(encoded);
+
+      expect(decoded).not.toBeNull();
+      expect(decoded!.equipment.weapon?.engravingId).toBeNull();
+    });
+
+    it('should ignore invalid persona engraving payload values', () => {
+      const payload = {
+        v: 1,
+        k: [
+          {
+            id: 'shared_01',
+            selectedHiramekiLevel: 0,
+            personaEngravings: [
+              { id: 'lux_attunement_discount', alignment: 'light' },
+              { id: 'broken', alignment: 'invalid' },
+              { id: 'umbra_attack_boost', alignment: 'dark' },
+              { id: 10, alignment: 'light' },
+            ],
+          },
+        ],
+        ct: '2024-01-01T12:00:00.000Z',
+      };
+      const encoded = Buffer.from(JSON.stringify(payload), 'utf-8')
+        .toString('base64')
+        .replace(/\+/g, '-')
+        .replace(/\//g, '_')
+        .replace(/=+$/, '');
+
+      const decoded = decodeDeckShare(encoded);
+
+      expect(decoded).not.toBeNull();
+      expect(decoded!.cards[0].personaEngravings).toEqual([
+        { id: 'lux_attunement_discount', alignment: 'light' },
+        { id: 'umbra_attack_boost', alignment: 'dark' },
+      ]);
+    });
+
+    it('should drop persona engravings that are not allowed for the shared character job', () => {
+      const payload = {
+        v: 1,
+        c: 'chizuru',
+        k: [
+          {
+            id: 'persona_01',
+            selectedHiramekiLevel: 0,
+            personaEngravings: [
+              { id: 'lux_haste_discount', alignment: 'light' },
+            ],
+          },
+        ],
+        ct: '2024-01-01T12:00:00.000Z',
+      };
+      const encoded = Buffer.from(JSON.stringify(payload), 'utf-8')
+        .toString('base64')
+        .replace(/\+/g, '-')
+        .replace(/\//g, '_')
+        .replace(/=+$/, '');
+
+      const decoded = decodeDeckShare(encoded);
+
+      expect(decoded).not.toBeNull();
+      expect(decoded!.character?.id).toBe('chizuru');
+      expect(decoded!.cards[0].personaEngravings).toEqual([]);
     });
   });
 

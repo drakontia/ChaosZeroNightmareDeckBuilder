@@ -1,6 +1,7 @@
 {
   "equipment": {
     "refinement": "精錬",
+    "engraving": "刻印",
     "godHammer": "神のハンマー",
     "godHammerWithoutRefinement": {
       "title": "未选择精炼",
@@ -27,6 +28,21 @@
       "refinement_18": "シールド獲得時、固定シールド100%(各ターン1回)",
       "refinement_19": "コスト3以上のカード発動時、アクションポイント1(各ターン1回)",
       "refinement_20": "アクションポイント1以上を所持した状態でターン終了時、敵全体に脆弱1"
+    },
+    "engravingEffects": {
+      "equipment_engraving_lux_01": "味方が能力でカードを5枚以上生成した場合、自分の追加攻撃ダメージ量+30％（各ターン1回）",
+      "equipment_engraving_lux_02": "味方が大破時、対象の行動カウント2増加（各ターン1回）",
+      "equipment_engraving_lux_03": "ターン開始時、行動カウントが最も低い対象に弱体化２",
+      "equipment_engraving_lux_04": "今回のターンで行動カウントが３以上減少した場合、行動カウントが最も低い対象に弱体化１",
+      "equipment_engraving_lux_05": "ターン終了時、保存したカードがある場合、固定シールド50％",
+      "equipment_engraving_umbra_01": "闇の刻印+1",
+      "equipment_engraving_umbra_02": "自身の消滅カードのダメージ量25％増加",
+      "equipment_engraving_umbra_03": "自身の安息カードのダメージ量25％増加",
+      "equipment_engraving_umbra_04": "ターン開始時、手札に安息カードがある場合、ランダムの敵に固定ダメージ60％",
+      "equipment_engraving_umbra_05": "攻撃を受けると、手札のランダムな安息カードを1枚破棄（各ターン1回）",
+      "equipment_engraving_umbra_06": "追加攻撃時、１ターンの間、士気１（各ターン1回）",
+      "equipment_engraving_umbra_07": "味方が能力で安息カードを破棄した場合、ドロー1（各ターン1回）",
+      "equipment_engraving_umbra_08": "自分のカードが破棄された場合、次に使用する攻撃カードのダメージ量+100％（各ターン1回）"
     },
     "armor": {
       "title": "防具",

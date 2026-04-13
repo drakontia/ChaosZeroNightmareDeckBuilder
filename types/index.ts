@@ -83,6 +83,7 @@ export enum CardStatus {
   EXHAUST = "exhaust",       // 消滅
   EXHAUST2 = "exhaust2",       // 消滅2
   EXHAUST3 = "exhaust3",       // 消滅3
+  EXHAUST5 = "exhaust5",       // 消滅5
   LEAD = "lead",             // 主導
   UNIQUE = "unique",          // 唯一
   HASTE = "haste",         // 迅速
@@ -156,6 +157,13 @@ export interface HiddenHiramekiDefinition {
   costModifier?: number;   // Optional cost change
 }
 
+export type PersonaEngravingAlignment = "light" | "dark";
+
+export interface PersonaEngraving {
+  id: string;
+  alignment: PersonaEngravingAlignment;
+}
+
 export interface CznCard {
   id: string;
   name: string;
@@ -178,6 +186,7 @@ export interface DeckCard extends CznCard {
   godHiramekiType: GodType | null; // Which god's hirameki is applied (null = none)
   godHiramekiEffectId: string | null; // Which specific effect of that god is applied
   selectedHiddenHiramekiId: string | null; // Hidden hirameki effect ID (null = none)
+  personaEngravings?: PersonaEngraving[]; // Persona-only engraving slots
   isCopied?: boolean; // True if this is a copied card
   copiedFromCardId?: string; // Original card id this copy was created from
 }
@@ -189,9 +198,12 @@ export interface RemovedCardEntry {
   grade?: CardGrade; // Grade at removal time (for monster cards)
   selectedHiramekiLevel?: number;
   selectedHiddenHiramekiId?: string | null; // Hidden hirameki at removal time
+  personaEngravings?: PersonaEngraving[];
   godHiramekiType?: GodType | null;
   godHiramekiEffectId?: string | null;
   isBasicCard?: boolean;
+  isCopied?: boolean;
+  copiedFromCardId?: string;
 }
 
 export interface CopiedCardEntry {
@@ -200,6 +212,7 @@ export interface CopiedCardEntry {
   grade?: CardGrade; // Grade at copy time (for monster cards)
   selectedHiramekiLevel?: number;
   selectedHiddenHiramekiId?: string | null; // Hidden hirameki at copy time
+  personaEngravings?: PersonaEngraving[];
   godHiramekiType?: GodType | null;
   godHiramekiEffectId?: string | null;
   isBasicCard?: boolean;
@@ -211,9 +224,12 @@ export interface ConvertedCardEntry {
   originalGrade?: CardGrade; // Original grade before conversion (for monster cards)
   selectedHiramekiLevel?: number; // Hirameki level at conversion time
   selectedHiddenHiramekiId?: string | null; // Hidden hirameki at conversion time
+  personaEngravings?: PersonaEngraving[];
   godHiramekiType?: GodType | null; // God hirameki at conversion time
   godHiramekiEffectId?: string | null; // God effect at conversion time
   isBasicCard?: boolean;
+  isCopied?: boolean;
+  copiedFromCardId?: string;
   excluded?: boolean; // Converted as temporary exclusion card (not added to deck)
 }
 
@@ -221,6 +237,7 @@ export interface EquipmentSlot {
   item: Equipment | null;
   refinement: string | null; // 精錬IDまたは null (null = 未選択)
   godHammerEquipmentId: string | null; // 選択した神のハンマー効果の装備ID (null = 未選択)
+  engravingId?: string | null; // 選択した装備刻印ID (null = 未選択)
 }
 
 export interface Deck {
