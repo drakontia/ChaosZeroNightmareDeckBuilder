@@ -8,13 +8,29 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
-    - uses: actions/setup-node@v4
+    - name: Setup pnpm
+      uses: pnpm/action-setup@v2
       with:
-        node-version: lts/*
+        version: latest
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: 24.x
+        cache: pnpm
     - name: Install dependencies
-      run: npm install -g pnpm && pnpm install
+      run: pnpm install --frozen-lockfile
+    - name: Cache Playwright browsers
+      id: playwright-cache
+      uses: actions/cache@v4
+      with:
+        path: ~/.cache/ms-playwright
+        key: playwright-${{ runner.os }}-${{ hashFiles('**/package.json') }}
     - name: Install Playwright Browsers
+      if: steps.playwright-cache.outputs.cache-hit != 'true'
       run: pnpm exec playwright install --with-deps
+    - name: Install Playwright OS dependencies only
+      if: steps.playwright-cache.outputs.cache-hit == 'true'
+      run: pnpm exec playwright install-deps
     - name: Run Playwright tests
       run: pnpm exec playwright test
     - uses: actions/upload-artifact@v4
