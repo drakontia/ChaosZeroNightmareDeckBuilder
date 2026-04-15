@@ -65,8 +65,8 @@ test.describe('Persona Card Engraving', () => {
 
     // Click the first visible engraving button (チズル=PSIONIC なので感応を使用)
     const firstEngraving = dialog.getByRole('button').filter({ hasText: '感応' });
-    await expect(firstEngraving).toBeVisible({ timeout: 3000 });
-    await firstEngraving.click();
+    await expect(firstEngraving.first()).toBeVisible({ timeout: 3000 });
+    await firstEngraving.first().click();
 
     // Confirm the selection
     await dialog.getByRole('button', { name: '選択' }).click();
