@@ -2734,7 +2734,23 @@
             "umbra_discard_trigger": "비용 1 증가. 버려졌을 경우 이 카드 발동",
             "umbra_retain_recover_attack": "보존 부여. 버린 카드 더미에서 자신의 공격 카드 1장을 선택해 손으로 이동",
             "umbra_retain_cost2_hit2": "보존 부여, 비용 2 증가. 어둠의 각인 5: 모든 공격 카드 폐기, 히트 수 2회 추가",
-            "umbra_exhaust_choose_hand": "소멸 부여. 어둠의 각인 3: 손패의 카드 1장을 선택해 발동"
+            "umbra_exhaust_choose_hand": "소멸 부여. 어둠의 각인 3: 손패의 카드 1장을 선택해 발동",
+            "lux_damage_by_count": "빛의 각인 수에 따라 데미지량 +30%",
+            "lux_break_cost_down": "이 카드로 대파 시, 비용 1 감소",
+            "lux_haste_attunement_cost_vary": "신속 부여. 감응: 비용이 0～2로 변경",
+            "lux_exhaust_morale_down": "소멸 부여. 행동 카운트 수에 따라 1턴 동안 사기 1 감소 (최대 5)",
+            "lux_retain_blessing_by_count": "보존 부여. 빛의 각인 수에 따라 빛의 축복 1 획득",
+            "lux_3_action_count_up": "빛의 각인 3: 적 전체의 행동 카운트 3 증가",
+            "lux_cost1_haste_draw2": "비용 1 증가. 신속 카드 2장 드로우",
+            "lux_mark_by_count": "빛의 각인 수에 따라 랜덤 적에게 표식 1",
+            "umbra_damage_by_count": "어둠의 각인 수에 따라 데미지량 +30%",
+            "umbra_resonance_hit2": "대상이 공명 상태인 경우, 히트 수 2회 추가",
+            "umbra_haste_discard_cost_down": "신속 부여. 버려졌을 경우, 이 카드 사용 시까지 비용 1 감소",
+            "umbra_discard_boost_by_count": "이번 턴에 카드가 버려진 경우, 어둠의 각인 수에 따라 데미지량 +50%",
+            "umbra_quietus_discard_by_count": "어둠의 각인 수에 따라 랜덤 안식 카드 버리기",
+            "umbra_attack_draw_resonance": "공격 카드 드로우 시, 어둠의 각인 수에 따라 적 전체에 공명 1",
+            "umbra_pain_by_count": "어둠의 각인 수에 따라 적 전체에 고통 1"
+            }
         }
     }
   }

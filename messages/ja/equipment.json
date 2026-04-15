@@ -49,7 +49,15 @@
             "equipment_engraving_umbra_05": "攻撃を受けると、手札のランダムな安息カードを1枚破棄（各ターン1回）",
             "equipment_engraving_umbra_06": "追加攻撃時、１ターンの間、士気１（各ターン1回）",
             "equipment_engraving_umbra_07": "味方が能力で安息カードを破棄した場合、ドロー1（各ターン1回）",
-            "equipment_engraving_umbra_08": "自分のカードが破棄された場合、次に使用する攻撃カードのダメージ量+100％（各ターン1回）"
+            "equipment_engraving_umbra_08": "自分のカードが破棄された場合、次に使用する攻撃カードのダメージ量+100％（各ターン1回）",
+            "equipment_engraving_lux_06": "ターン開始時、行動カウントが最も低い対象に固定ダメージ100%",
+            "equipment_engraving_lux_07": "攻撃を受けると、攻撃者に脆弱、弱体化のうち、ランダムで1個付与(各ターン1回)",
+            "equipment_engraving_umbra_09": "光の刻印+1",
+            "equipment_engraving_umbra_10": "自分の主導カードが破棄された場合、発動（各ターン1回）",
+            "equipment_engraving_umbra_11": "味方が能力でカードを2枚破棄時、安息カードを1枚ドロー（各戦闘1回）",
+            "equipment_engraving_umbra_12": "墓地のカード数が7枚以上の場合、自分の攻撃カードのダメージ量30%増加",
+            "equipment_engraving_umbra_13": "墓地のカードが15枚以上の場合、自身の攻撃カードの会心ダメージ+15%",
+            "equipment_engraving_umbra_14": "墓地のカードが40枚以上の場合、士気2（各戦闘1回）"
         },
         "duplicate": {
             "warning": "{type}で神話級装備が選択されているため、別の神話級装備は選択できません"

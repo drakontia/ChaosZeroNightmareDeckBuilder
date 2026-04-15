@@ -2734,7 +2734,23 @@
             "umbra_discard_trigger": "费用+1。若被弃置，发动此牌",
             "umbra_retain_recover_attack": "赋予保留。从弃牌堆选择1张自己的攻击牌移到手牌",
             "umbra_retain_cost2_hit2": "赋予保留，费用+2。暗之刻印5：弃置所有攻击牌，额外增加2次命中",
-            "umbra_exhaust_choose_hand": "赋予消灭。暗之刻印3：选择手牌中的1张牌并发动"
+            "umbra_exhaust_choose_hand": "赋予消灭。暗之刻印3：选择手牌中的1张牌并发动",
+            "lux_damage_by_count": "根据光之刻印数量，伤害量+30%",
+            "lux_break_cost_down": "此牌造成大破时，费用-1",
+            "lux_haste_attunement_cost_vary": "赋予迅速。感应：费用变为0～2",
+            "lux_exhaust_morale_down": "赋予消灭。根据行动计数，1回合内士气-1（最多5）",
+            "lux_retain_blessing_by_count": "赋予保留。根据光之刻印数量，获得光之祝福1",
+            "lux_3_action_count_up": "光之刻印3：全体敌人行动计数+3",
+            "lux_cost1_haste_draw2": "费用+1。抽取2张迅速牌",
+            "lux_mark_by_count": "根据光之刻印数量，对随机敌人施加标记1",
+            "umbra_damage_by_count": "根据暗之刻印数量，伤害量+30%",
+            "umbra_resonance_hit2": "目标处于共鸣状态时，追加2次命中",
+            "umbra_haste_discard_cost_down": "赋予迅速。被弃置时，此牌使用前费用-1",
+            "umbra_discard_boost_by_count": "本回合有牌被弃置时，根据暗之刻印数量伤害量+50%",
+            "umbra_quietus_discard_by_count": "根据暗之刻印数量，弃置随机安息牌",
+            "umbra_attack_draw_resonance": "抽取攻击牌时，根据暗之刻印数量对全体敌人施加共鸣1",
+            "umbra_pain_by_count": "根据暗之刻印数量，对全体敌人施加苦痛1"
+            }
         }
     }
   }

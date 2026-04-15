@@ -2954,7 +2954,22 @@
                 "umbra_discard_trigger": "コスト1増加。破棄された場合、このカード発動",
                 "umbra_retain_recover_attack": "保存付与。捨て札から自分の攻撃カードを1枚選択、そのカードを手札に移動",
                 "umbra_retain_cost2_hit2": "保存付与、コスト2増加。闇の刻印5：全ての攻撃カード破棄、ヒット数2回追加",
-                "umbra_exhaust_choose_hand": "消滅付与。闇の刻印3：手札のカードを1枚選択して発動"
+                "umbra_exhaust_choose_hand": "消滅付与。闇の刻印3：手札のカードを1枚選択して発動",
+                "lux_damage_by_count": "光の刻印数に応じてダメージ量+30%",
+                "lux_break_cost_down": "このカードで大破時、コスト1減少",
+                "lux_haste_attunement_cost_vary": "迅速付与。感応：コストが0～2に変更される",
+                "lux_exhaust_morale_down": "消滅付与、行動カウント数に応じて1ターンの間、士気1減少(最大5)",
+                "lux_retain_blessing_by_count": "保存付与。光の刻印数に応じて光の祝福1",
+                "lux_3_action_count_up": "光の刻印3：敵全体の行動カウント3増加",
+                "lux_cost1_haste_draw2": "コスト1増加。迅速カードを2枚ドロー",
+                "lux_mark_by_count": "光の刻印数に応じてランダムな敵に標識1",
+                "umbra_damage_by_count": "闇の刻印に応じてダメージ量+30%",
+                "umbra_resonance_hit2": "対象が共鳴状態の場合、ヒット数2回追加",
+                "umbra_haste_discard_cost_down": "迅速付与。破棄された場合、このカード使用時までコスト1減少",
+                "umbra_discard_boost_by_count": "今回のターンでカードが破棄された場合、闇の刻印数に応じてダメージ量+50%",
+                "umbra_quietus_discard_by_count": "闇の刻印数に応じてランダムな安息カード破棄",
+                "umbra_attack_draw_resonance": "攻撃カードドロー時、闇の刻印数に応じて敵全体に共鳴1",
+                "umbra_pain_by_count": "闇の刻印に応じて敵全体に苦痛1"
             }
         },
         "__exclusion__": {
