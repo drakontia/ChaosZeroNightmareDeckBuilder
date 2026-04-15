@@ -370,7 +370,7 @@ describe('deck-share', () => {
             id: 'persona_01',
             selectedHiramekiLevel: 0,
             personaEngravings: [
-              { id: 'lux_haste_discount', alignment: 'light' },
+              { id: 'lux_exhaust_draw', alignment: 'light' },
             ],
           },
         ],

@@ -72,6 +72,48 @@ export const EQUIPMENT_ENGRAVING_EFFECTS: EquipmentEngravingEffect[] = [
     alignment: "dark",
     description: "自分のカードが破棄された場合、次に使用する攻撃カードのダメージ量+100％（各ターン1回）",
   },
+  // 追加：光装備刻印
+  {
+    id: "equipment_engraving_lux_06",
+    alignment: "light",
+    description: "ターン開始時、行動カウントが最も低い対象に固定ダメージ100%",
+  },
+  {
+    id: "equipment_engraving_lux_07",
+    alignment: "light",
+    description: "攻撃を受けると、攻撃者に脆弱、弱体化のうち、ランダムで1個付与(各ターン1回)",
+  },
+  // 追加：闇装備刻印
+  {
+    id: "equipment_engraving_umbra_09",
+    alignment: "dark",
+    description: "光の刻印+1",
+  },
+  {
+    id: "equipment_engraving_umbra_10",
+    alignment: "dark",
+    description: "自分の主導カードが破棄された場合、発動（各ターン1回）",
+  },
+  {
+    id: "equipment_engraving_umbra_11",
+    alignment: "dark",
+    description: "味方が能力でカードを2枚破棄時、安息カードを1枚ドロー（各戦闘1回）",
+  },
+  {
+    id: "equipment_engraving_umbra_12",
+    alignment: "dark",
+    description: "墓地のカード数が7枚以上の場合、自分の攻撃カードのダメージ量30%増加",
+  },
+  {
+    id: "equipment_engraving_umbra_13",
+    alignment: "dark",
+    description: "墓地のカードが15枚以上の場合、自身の攻撃カードの会心ダメージ+15%",
+  },
+  {
+    id: "equipment_engraving_umbra_14",
+    alignment: "dark",
+    description: "墓地のカードが40枚以上の場合、士気2（各戦闘1回）",
+  },
 ];
 
 export function normalizeEquipmentEngravingId(engravingId: string | null | undefined): string | null {

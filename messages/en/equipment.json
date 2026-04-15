@@ -58,7 +58,15 @@
       "equipment_engraving_umbra_05": "When attacked, discard 1 random Quietus card from hand (once per turn)",
       "equipment_engraving_umbra_06": "On additional attack, gain Morale 1 for 1 turn (once per turn)",
       "equipment_engraving_umbra_07": "If an ally discards a Quietus card by ability, draw 1 (once per turn)",
-      "equipment_engraving_umbra_08": "When your card is discarded, the next attack card you use deals +100% damage (once per turn)"
+      "equipment_engraving_umbra_08": "When your card is discarded, the next attack card you use deals +100% damage (once per turn)",
+      "equipment_engraving_lux_06": "At the start of turn, deal fixed damage 100% to the target with the lowest action count",
+      "equipment_engraving_lux_07": "When attacked, randomly apply 1 of Weakened or Vulnerable to the attacker (once per turn)",
+      "equipment_engraving_umbra_09": "Lux Engraving +1",
+      "equipment_engraving_umbra_10": "When your initiative card is discarded, activate (once per turn)",
+      "equipment_engraving_umbra_11": "When allies discard 2 cards by ability, draw 1 Quietus card (once per combat)",
+      "equipment_engraving_umbra_12": "If there are 7 or more cards in the graveyard, your attack cards deal +30% damage",
+      "equipment_engraving_umbra_13": "If there are 15 or more cards in the graveyard, your attack cards' critical damage +15%",
+      "equipment_engraving_umbra_14": "If there are 40 or more cards in the graveyard, gain Morale 2 (once per combat)"
     },
     "armor": {
       "title": "Armor",

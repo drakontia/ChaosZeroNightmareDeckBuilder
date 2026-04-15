@@ -36,7 +36,7 @@ describe('getPersonaCardPresentation', () => {
     });
 
     expect(result.name).toBe('境界のペルソナ');
-    expect(result.imgUrl).toBe('/images/cards/persona_of_border.png');
+    expect(result.imgUrl).toBe('/images/cards/persona_of_boundary.png');
     expect(result.cost).toBe(1);
     expect(result.statuses).toEqual([CardStatus.UNIQUE]);
     expect(result.description).toContain('感応：使用時までコスト1減少');

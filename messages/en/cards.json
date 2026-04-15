@@ -2942,7 +2942,7 @@
             "dark": "Umbra Persona",
             "radiant": "Radiant Persona",
             "abyssal": "Abyssal Persona",
-            "boundary": "Boundary Persona"
+            "boundary": "Persona of Boundary"
         },
         "engravings": {
             "lux_haste_discount": "Gain Haste, cost +1. If there is a target with Action Count 1, this card's cost is reduced by 2",
@@ -2960,7 +2960,22 @@
             "umbra_discard_trigger": "Cost +1. If discarded, activate this card",
             "umbra_retain_recover_attack": "Gain Retain. Choose 1 of your Attack cards from the discard pile and move it to your hand",
             "umbra_retain_cost2_hit2": "Gain Retain, cost +2. Umbra Engraving 5: discard all Attack cards and add 2 hits",
-            "umbra_exhaust_choose_hand": "Gain Exhaust. Umbra Engraving 3: choose 1 card in hand and activate it"
+            "umbra_exhaust_choose_hand": "Gain Exhaust. Umbra Engraving 3: choose 1 card in hand and activate it",
+            "lux_damage_by_count": "Deal +30% damage based on the number of Lux Engravings",
+            "lux_break_cost_down": "When this card incapacitates a target, reduce this card's cost by 1",
+            "lux_haste_attunement_cost_vary": "Gain Haste. Attunement: change cost to 0–2",
+            "lux_exhaust_morale_down": "Gain Exhaust. Reduce Morale by 1 for 1 turn based on action count (max 5)",
+            "lux_retain_blessing_by_count": "Gain Retain. Gain Lux Blessing 1 based on the number of Lux Engravings",
+            "lux_3_action_count_up": "Lux Engraving 3: increase all enemies' action count by 3",
+            "lux_cost1_haste_draw2": "Cost +1. Draw 2 Haste cards",
+            "lux_mark_by_count": "Inflict Mark 1 on a random enemy based on the number of Lux Engravings",
+            "umbra_damage_by_count": "Deal +30% damage based on the number of Umbra Engravings",
+            "umbra_resonance_hit2": "If the target is in Resonance, add 2 hits",
+            "umbra_haste_discard_cost_down": "Gain Haste. If discarded, reduce this card's cost by 1 until used",
+            "umbra_discard_boost_by_count": "If a card was discarded this turn, deal +50% damage based on the number of Umbra Engravings",
+            "umbra_quietus_discard_by_count": "Discard a random Quietus card based on the number of Umbra Engravings",
+            "umbra_attack_draw_resonance": "When you draw an Attack card, inflict Resonance 1 on all enemies based on the number of Umbra Engravings",
+            "umbra_pain_by_count": "Inflict Pain 1 on all enemies based on the number of Umbra Engravings"
         }
     }
   }
