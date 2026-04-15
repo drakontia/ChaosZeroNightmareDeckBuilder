@@ -282,8 +282,8 @@ const PERSONA_IMAGE_BY_SIGNATURE: Record<string, string> = {
   dark: "/images/cards/umbra_persona.png",
   "light-light": "/images/cards/persona_of_luster.png",
   "dark-dark": "/images/cards/persona_of_obsidian.png",
-  "dark-light": "/images/cards/persona_of_border.png",
-  "light-dark": "/images/cards/persona_of_border.png",
+  "dark-light": "/images/cards/persona_of_boundary.png",
+  "light-dark": "/images/cards/persona_of_boundary.png",
 };
 
 const PERSONA_NAME_BY_VARIANT: Record<PersonaNameVariant, string> = {
