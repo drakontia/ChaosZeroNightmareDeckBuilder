@@ -79,7 +79,8 @@
     "title": "Character",
     "tressa": "Tressa",
     "velonica": "Velonica",
-    "yuki": "Yuki"
+    "yuki": "Yuki",
+    "heidemarie": "Heidemarie"
   },
   "common": {
     "convert": "Convert",
@@ -216,6 +217,7 @@
     "unique": "Unique",
     "weakness_attack": "Weakness Attack",
     "ignition": "Ignition",
-    "form_upgrade": "Form Upgrade"
+    "form_upgrade": "Form Upgrade",
+    "linked": "Linked"
   }
 }

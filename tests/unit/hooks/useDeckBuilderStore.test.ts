@@ -301,8 +301,8 @@ describe('useDeckBuilderStore', () => {
     const card = {
       ...getPersonaCard(),
       personaEngravings: [
-        { id: 'lux_attunement_discount', alignment: 'light' },
-        { id: 'umbra_attack_boost', alignment: 'dark' },
+        { id: 'lux_attunement_discount', alignment: 'light' as const },
+        { id: 'umbra_attack_boost', alignment: 'dark' as const },
       ],
     };
     act(() => {
@@ -449,8 +449,8 @@ describe('useDeckBuilderStore', () => {
     const card = {
       ...getPersonaCard(),
       personaEngravings: [
-        { id: 'lux_attunement_discount', alignment: 'light' },
-        { id: 'umbra_attack_boost', alignment: 'dark' },
+        { id: 'lux_attunement_discount', alignment: 'light' as const },
+        { id: 'umbra_attack_boost', alignment: 'dark' as const },
       ],
     };
     act(() => {
@@ -514,7 +514,7 @@ describe('useDeckBuilderStore', () => {
   it('convertCardでペルソナ刻印を持つカードを変換するとスナップショットに保持される', () => {
     const card = {
       ...getPersonaCard(),
-      personaEngravings: [{ id: 'umbra_attack_boost', alignment: 'dark' }],
+      personaEngravings: [{ id: 'umbra_attack_boost', alignment: 'dark' as const }],
     };
     const targetId = CHARACTERS[0].startingCards[0];
 
@@ -1062,7 +1062,7 @@ describe('useDeckBuilderStore', () => {
       const removedEntry = {
         count: 1,
         type: personaCard.type,
-        grade: personaCard.grade,
+        grade: undefined,
         selectedHiramekiLevel: 0,
         selectedHiddenHiramekiId: null,
         personaEngravings: [{ id: 'lux_attunement_discount', alignment: 'light' as const }],

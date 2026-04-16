@@ -100,6 +100,7 @@ export enum CardStatus {
   IGNITION = "ignition",         // 点火
   COPIED = "copied",            // コピー済み
   FORM_UPGRADE = "form_upgrade",    // 形状強化
+  LINKED = "linked",             // 連結
 }
 
 // Hirameki variation for a card

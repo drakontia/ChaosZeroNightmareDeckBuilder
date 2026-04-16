@@ -2,6 +2,16 @@ import { Character, ElementType, JobType } from "@/types";
 
 export const CHARACTERS: Character[] = [
   {
+    id: "heidemarie",
+    name: "character.heidemarie",
+    rarity: "★5",
+    job: JobType.RANGER,
+    element: ElementType.PASSION,
+    imgUrl: "/images/characters/character_heidemarie.png",
+    startingCards: ["heidemarie_starting_1", "heidemarie_starting_2", "heidemarie_starting_3", "heidemarie_starting_4"],
+    hiramekiCards: ["heidemarie_hirameki_1", "heidemarie_hirameki_2", "heidemarie_hirameki_3", "heidemarie_hirameki_4"]
+  },
+  {
     id: "diana",
     name: "character.diana",
     rarity: "★5",
@@ -302,3 +312,4 @@ export const CHARACTERS: Character[] = [
     hiramekiCards: ["rei_hirameki_1", "rei_hirameki_2", "rei_hirameki_3", "rei_hirameki_4"]
   }
 ];
+

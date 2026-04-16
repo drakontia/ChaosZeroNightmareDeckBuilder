@@ -1,140 +1,140 @@
 {
   "cards": {
     "rita_starting_1": {
-        "name": "時間加速",
-        "descriptions": {
-            "0": "ダメージ350%"
-        }
+      "name": "時間加速",
+      "descriptions": {
+        "0": "ダメージ350%"
+      }
     },
     "rita_starting_2": {
-        "name": "時間加速",
-        "descriptions": {
-            "0": "ダメージ350%"
-        }
+      "name": "時間加速",
+      "descriptions": {
+        "0": "ダメージ350%"
+      }
     },
     "rita_starting_3": {
-        "name": "巻き戻し",
-        "descriptions": {
-            "0": "治癒100%"
-        }
+      "name": "巻き戻し",
+      "descriptions": {
+        "0": "治癒100%"
+      }
     },
     "rita_starting_4": {
-        "name": "記録者",
-        "descriptions": {
-            "0": "カード発動時、そのカードのコストに応じて\n時間記録1",
-            "1": "カード発動時、そのカードのコストに応じて\n時間記録1\n時間超越排除時、時間記録3",
-            "2": "カード発動時、そのカードのコストに応じて\n時間記録1\nターン終了時、時間超越の数に応じてランダムな敵にダメージ100%",
-            "3": "カード消滅時、\n時間記録1",
-            "4": "カード発動時、そのカードのコストに応じて\n時間記録1\nカード破棄時、\n時間記録1",
-            "5": "カード発動時、そのカードのコストに応じて\n時間記録1\n保存効果発動時、\n時間記録1"
-        }
+      "name": "記録者",
+      "descriptions": {
+        "0": "カード発動時、そのカードのコストに応じて\n時間記録1",
+        "1": "カード発動時、そのカードのコストに応じて\n時間記録1\n時間超越排除時、時間記録3",
+        "2": "カード発動時、そのカードのコストに応じて\n時間記録1\nターン終了時、時間超越の数に応じてランダムな敵にダメージ100%",
+        "3": "カード消滅時、\n時間記録1",
+        "4": "カード発動時、そのカードのコストに応じて\n時間記録1\nカード破棄時、\n時間記録1",
+        "5": "カード発動時、そのカードのコストに応じて\n時間記録1\n保存効果発動時、\n時間記録1"
+      }
     },
     "rita_hirameki_1": {
-        "name": "時間軸破壊",
-        "descriptions": {
-            "0": "ダメージ300%\n手札のカードの合計コストに応じて\nダメージ量20%増加\n(最大200%)",
-            "1": "ダメージ450%\n手札のカードの合計コストに応じて\nダメージ量20%増加\n(最大200%)",
-            "2": "ダメージ300%\n手札のコスト1以下のカード数に応じて\nダメージ量30%増加",
-            "3": "次に使用する\n自分の攻撃カード3枚の\nダメージ量100%増加",
-            "4": "ダメージ400%\n脆弱2\n時間超越獲得時、\nこのカードが手札にある場合、発動",
-            "5": "ダメージ250%\n手札のすべての運命の刻印\nコスト4に変更"
-        }
+      "name": "時間軸破壊",
+      "descriptions": {
+        "0": "ダメージ300%\n手札のカードの合計コストに応じて\nダメージ量20%増加\n(最大200%)",
+        "1": "ダメージ450%\n手札のカードの合計コストに応じて\nダメージ量20%増加\n(最大200%)",
+        "2": "ダメージ300%\n手札のコスト1以下のカード数に応じて\nダメージ量30%増加",
+        "3": "次に使用する\n自分の攻撃カード3枚の\nダメージ量100%増加",
+        "4": "ダメージ400%\n脆弱2\n時間超越獲得時、\nこのカードが手札にある場合、発動",
+        "5": "ダメージ250%\n手札のすべての運命の刻印\nコスト4に変更"
+      }
     },
     "rita_hirameki_2": {
-        "name": "収束する未来",
-        "descriptions": {
-            "0": "手札のコスト2以下のカード1枚が使用時までコスト1増加、\nコスト3のランダムなカード\n1枚発動",
-            "1": "手札のコスト2以下のカード1枚が使用時までコスト1増加、\nコスト3のランダムなカード\n1枚発動",
-            "2": "手札のコスト3のランダムな攻撃カード\n1枚発動",
-            "3": "山札のコスト3のランダムなカード\n1枚発動",
-            "4": "手札のコスト2のランダムなカード\n2枚発動",
-            "5": "コストが増加したカードを直接使用時、\nランダムな敵に\nダメージ300%"
-        }
+      "name": "収束する未来",
+      "descriptions": {
+        "0": "手札のコスト2以下のカード1枚が使用時までコスト1増加、\nコスト3のランダムなカード\n1枚発動",
+        "1": "手札のコスト2以下のカード1枚が使用時までコスト1増加、\nコスト3のランダムなカード\n1枚発動",
+        "2": "手札のコスト3のランダムな攻撃カード\n1枚発動",
+        "3": "山札のコスト3のランダムなカード\n1枚発動",
+        "4": "手札のコスト2のランダムなカード\n2枚発動",
+        "5": "コストが増加したカードを直接使用時、\nランダムな敵に\nダメージ300%"
+      }
     },
     "rita_hirameki_3": {
-        "name": "クロノサークル",
-        "descriptions": {
-            "0": "運命の刻印を2枚生成",
-            "1": "運命の刻印を3枚生成",
-            "2": "運命の刻印を2枚生成\n保存：運命の刻印を1枚生成",
-            "3": "時間超越獲得時、自分の基本カードをすべて手札に移動",
-            "4": "すべてのカードの消滅カード1枚選択して消滅、そのカードのコストに応じて\n運命の刻印を生成",
-            "5": "時間超越獲得時、コスト2の攻撃カード\nドロー3"
-        }
+      "name": "クロノサークル",
+      "descriptions": {
+        "0": "運命の刻印を2枚生成",
+        "1": "運命の刻印を3枚生成",
+        "2": "運命の刻印を2枚生成\n保存：運命の刻印を1枚生成",
+        "3": "時間超越獲得時、自分の基本カードをすべて手札に移動",
+        "4": "すべてのカードの消滅カード1枚選択して消滅、そのカードのコストに応じて\n運命の刻印を生成",
+        "5": "時間超越獲得時、コスト2の攻撃カード\nドロー3"
+      }
     },
     "rita_hirameki_4": {
-        "name": "タイムパラドックス",
-        "descriptions": {
-            "0": "時間記録すべて減少\nその数に応じて時間超越"
-        }
+      "name": "タイムパラドックス",
+      "descriptions": {
+        "0": "時間記録すべて減少\nその数に応じて時間超越"
+      }
     },
     "tiphera_starting_1": {
-        "name": "物質分解",
-        "descriptions": {
-            "0": "防御依存ダメージ100%"
-        }
+      "name": "物質分解",
+      "descriptions": {
+        "0": "防御依存ダメージ100%"
+      }
     },
     "tiphera_starting_2": {
-        "name": "障壁展開",
-        "descriptions": {
-            "0": "治癒100%"
-        }
+      "name": "障壁展開",
+      "descriptions": {
+        "0": "治癒100%"
+      }
     },
     "tiphera_starting_3": {
-        "name": "障壁展開",
-        "descriptions": {
-            "0": "治癒100%"
-        }
+      "name": "障壁展開",
+      "descriptions": {
+        "0": "治癒100%"
+      }
     },
     "tiphera_starting_4": {
-        "name": "クアンタムシード",
-        "descriptions": {
-            "0": "治癒100%\n山札に創造カードを2枚生成\nその中から1枚ドロー",
-            "1": "治癒150%\n山札に創造カードを3枚生成\nその中から1枚ドロー",
-            "2": "治癒100%\n創造カードを1枚選択\n手札と山札に1枚ずつ生成",
-            "3": "ドロー1\n生成される創造カード予測\n創造カード1枚生成\n予測が当たった場合、山札に残り生成",
-            "4": "山札に創造カードを3枚生成\nその中から1枚ドロー\nランダムな自分のカード1枚\n保存効果2回発動",
-            "5": "創造カード1枚生成\nアクションポイントが0の場合、\n手札と山札に想像カード1枚ずつ生成\n(各ターン1回)"
-        }
+      "name": "クアンタムシード",
+      "descriptions": {
+        "0": "治癒100%\n山札に創造カードを2枚生成\nその中から1枚ドロー",
+        "1": "治癒150%\n山札に創造カードを3枚生成\nその中から1枚ドロー",
+        "2": "治癒100%\n創造カードを1枚選択\n手札と山札に1枚ずつ生成",
+        "3": "ドロー1\n生成される創造カード予測\n創造カード1枚生成\n予測が当たった場合、山札に残り生成",
+        "4": "山札に創造カードを3枚生成\nその中から1枚ドロー\nランダムな自分のカード1枚\n保存効果2回発動",
+        "5": "創造カード1枚生成\nアクションポイントが0の場合、\n手札と山札に想像カード1枚ずつ生成\n(各ターン1回)"
+      }
     },
     "tiphera_hirameki_1": {
-        "name": "形状結集",
-        "descriptions": {
-            "0": "創造カード2枚ドロー\nそのカードの効果のうち\n1つがランダムで\n1ターンの間2倍",
-            "1": "創造カード3枚ドロー\nそのカードの効果のうち\n1つがランダムで\n1ターンの間2倍",
-            "2": "創造カード4枚ドロー\n手札の消滅カード1枚選択し、消滅",
-            "3": "手札のすべての創造カードを\n他の創造カードに変更\n保存：創造カード1枚ドロー",
-            "4": "すべてのカードの消滅カード\n3枚まで選択し、消滅\nその数に応じて、消滅カードドロー",
-            "5": "創造カード1枚ドロー\n同じカードを連続で\n引くまで繰り返す\n(最大6回)"
-        }
+      "name": "形状結集",
+      "descriptions": {
+        "0": "創造カード2枚ドロー\nそのカードの効果のうち\n1つがランダムで\n1ターンの間2倍",
+        "1": "創造カード3枚ドロー\nそのカードの効果のうち\n1つがランダムで\n1ターンの間2倍",
+        "2": "創造カード4枚ドロー\n手札の消滅カード1枚選択し、消滅",
+        "3": "手札のすべての創造カードを\n他の創造カードに変更\n保存：創造カード1枚ドロー",
+        "4": "すべてのカードの消滅カード\n3枚まで選択し、消滅\nその数に応じて、消滅カードドロー",
+        "5": "創造カード1枚ドロー\n同じカードを連続で\n引くまで繰り返す\n(最大6回)"
+      }
     },
     "tiphera_hirameki_2": {
-        "name": "創造と破壊",
-        "descriptions": {
-            "0": "防御依存ダメージ120%\nシールド80%\n治癒80%\n調律：すべての効果2倍",
-            "1": "防御依存ダメージ180%\nシールド100%\n治癒100%\n調律：すべての効果2倍",
-            "2": "防御依存ダメージ550%\nカード消滅時、\nこのカードは1ターンの間、使用時までコスト1減少",
-            "3": "防御依存ダメージ160%\nシールド40%\n治癒40%\n保存：発動時まですべての効果\n100%増加(最大4回)",
-            "4": "アクションポイントが0の場合、\n創造と破壊1枚生成\nそのカードのコスト1減少、消滅付与(各ターン1回)",
-            "5": "このカードのコストに応じて防御依存ダメージ150%\nカード消滅時、このカードのコスト\n1～9ランダムに変更"
-        }
+      "name": "創造と破壊",
+      "descriptions": {
+        "0": "防御依存ダメージ120%\nシールド80%\n治癒80%\n調律：すべての効果2倍",
+        "1": "防御依存ダメージ180%\nシールド100%\n治癒100%\n調律：すべての効果2倍",
+        "2": "防御依存ダメージ550%\nカード消滅時、\nこのカードは1ターンの間、使用時までコスト1減少",
+        "3": "防御依存ダメージ160%\nシールド40%\n治癒40%\n保存：発動時まですべての効果\n100%増加(最大4回)",
+        "4": "アクションポイントが0の場合、\n創造と破壊1枚生成\nそのカードのコスト1減少、消滅付与(各ターン1回)",
+        "5": "このカードのコストに応じて防御依存ダメージ150%\nカード消滅時、このカードのコスト\n1～9ランダムに変更"
+      }
     },
     "tiphera_hirameki_3": {
-        "name": "対生成",
-        "descriptions": {
-            "0": "創造カードを2枚生成時\n捨て札に同じカードを\n1枚生成",
-            "1": "創造カードを2枚生成時\n捨て札に同じカードを\n1枚生成",
-            "2": "創造カードを3枚生成時\n手札に同じカードを\n1枚生成\nそのカードに保存付与",
-            "3": "創造：□発動時、\n捨て札に他の創造カード\n1枚生成",
-            "4": "すべての創造カード1枚ずつ生成\n次に消滅する創造カード\n1枚生成",
-            "5": "創造カードが手札に移動時、\nそのカードをコピーし、ランダムな効果を排除(各ターン5回)"
-        }
+      "name": "対生成",
+      "descriptions": {
+        "0": "創造カードを2枚生成時\n捨て札に同じカードを\n1枚生成",
+        "1": "創造カードを2枚生成時\n捨て札に同じカードを\n1枚生成",
+        "2": "創造カードを3枚生成時\n手札に同じカードを\n1枚生成\nそのカードに保存付与",
+        "3": "創造：□発動時、\n捨て札に他の創造カード\n1枚生成",
+        "4": "すべての創造カード1枚ずつ生成\n次に消滅する創造カード\n1枚生成",
+        "5": "創造カードが手札に移動時、\nそのカードをコピーし、ランダムな効果を排除(各ターン5回)"
+      }
     },
     "tiphera_hirameki_4": {
-        "name": "事象の地平線",
-        "descriptions": {
-            "0": "アクションポイント1\nドロー1\n次に使用する攻撃カードの最初のヒット\nダメージ量40%増加"
-        }
+      "name": "事象の地平線",
+      "descriptions": {
+        "0": "アクションポイント1\nドロー1\n次に使用する攻撃カードの最初のヒット\nダメージ量40%増加"
+      }
     },
     "narja_starting_1": {
       "name": "NA: Attack Response",
@@ -2562,16 +2562,16 @@
       }
     },
     "vine_lord": {
-        "name": "Vine Lord",
-        "descriptions": {
-            "0": "Draw 2 for each of your vanishing cards"
-        }
+      "name": "Vine Lord",
+      "descriptions": {
+        "0": "Draw 2 for each of your vanishing cards"
+      }
     },
     "cyborg_automaton": {
-        "name": "Cyborg Automaton",
-        "descriptions": {
-            "0": "Defense-dependent damage 600%\nIncinerate: Activate this card"
-        }
+      "name": "Cyborg Automaton",
+      "descriptions": {
+        "0": "Defense-dependent damage 600%\nIncinerate: Activate this card"
+      }
     },
     "forbidden_card_1": {
       "name": "Forbidden: Eternal Hunger",
@@ -2664,202 +2664,202 @@
       }
     },
     "persona_01": {
-        "name": "Persona",
-        "descriptions": {
-            "0": "Damage 250%\nShockwave 3"
-        }
+      "name": "Persona",
+      "descriptions": {
+        "0": "Damage 250%\nShockwave 3"
+      }
     },
     "persona_02": {
-        "name": "Persona",
-        "descriptions": {
-            "0": "Damage 200%\nDeath Mark 1"
-        }
+      "name": "Persona",
+      "descriptions": {
+        "0": "Damage 200%\nDeath Mark 1"
+      }
     },
     "persona_03": {
-        "name": "Persona",
-        "descriptions": {
-            "0": "Discard up to 2\nFor 1 turn, your Attack cards deal +60% damage based on the number discarded"
-        }
+      "name": "Persona",
+      "descriptions": {
+        "0": "Discard up to 2\nFor 1 turn, your Attack cards deal +60% damage based on the number discarded"
+      }
     },
     "persona_04": {
-        "name": "Persona",
-        "descriptions": {
-            "0": "Draw 1\nWhen you draw an Attack card, gain Morale 2 for 1 turn"
-        }
+      "name": "Persona",
+      "descriptions": {
+        "0": "Draw 1\nWhen you draw an Attack card, gain Morale 2 for 1 turn"
+      }
     },
     "persona_05": {
-        "name": "Persona",
-        "descriptions": {
-            "0": "Damage 250%\nIf you generated a card this turn, increase damage by 50%"
-        }
+      "name": "Persona",
+      "descriptions": {
+        "0": "Damage 250%\nIf you generated a card this turn, increase damage by 50%"
+      }
     },
     "persona_06": {
-        "name": "Persona",
-        "descriptions": {
-            "0": "Discard 1 random Quietus card from your draw pile"
-        }
+      "name": "Persona",
+      "descriptions": {
+        "0": "Discard 1 random Quietus card from your draw pile"
+      }
     },
     "persona_07": {
-        "name": "Persona",
-        "descriptions": {
-            "0": "Draw 2\nFlanking 100% based on the number of Attack cards drawn"
-        }
+      "name": "Persona",
+      "descriptions": {
+        "0": "Draw 2\nFlanking 100% based on the number of Attack cards drawn"
+      }
     },
     "persona_08": {
-        "name": "Persona",
-        "descriptions": {
-            "0": "Defense-based Damage 250%\nWeakness 1"
-        }
+      "name": "Persona",
+      "descriptions": {
+        "0": "Defense-based Damage 250%\nWeakness 1"
+      }
     },
     "persona_09": {
-        "name": "Persona",
-        "descriptions": {
-            "0": "Defense-based Damage 250%\nIf there is a target with Action Count 1, gain Counterattack 2"
-        }
+      "name": "Persona",
+      "descriptions": {
+        "0": "Defense-based Damage 250%\nIf there is a target with Action Count 1, gain Counterattack 2"
+      }
     },
     "persona_10": {
-        "name": "Persona",
-        "descriptions": {
-            "0": "Damage 150%\nIncrease damage by 30% based on the number of your Pain stacks on the target"
-        }
+      "name": "Persona",
+      "descriptions": {
+        "0": "Damage 150%\nIncrease damage by 30% based on the number of your Pain stacks on the target"
+      }
     },
     "persona_11": {
-        "name": "Persona",
-        "descriptions": {
-            "0": "Damage 100%\nYour Attack cards in hand deal +50% damage"
-        }
+      "name": "Persona",
+      "descriptions": {
+        "0": "Damage 100%\nYour Attack cards in hand deal +50% damage"
+      }
     },
     "persona_12": {
-        "name": "Persona",
-        "descriptions": {
-            "0": "Increase the damage of the next Attack card you use by 15% per card in the graveyard (max 150%)"
-        }
+      "name": "Persona",
+      "descriptions": {
+        "0": "Increase the damage of the next Attack card you use by 15% per card in the graveyard (max 150%)"
+      }
     },
     "persona_13": {
-        "name": "Persona",
-        "descriptions": {
-            "0": "Defense-based Damage 250%\nAction Count 2"
-        }
+      "name": "Persona",
+      "descriptions": {
+        "0": "Defense-based Damage 250%\nAction Count 2"
+      }
     },
     "persona_14": {
-        "name": "Persona",
-        "descriptions": {
-            "0": "Shield 250%\nCounterattack 2"
-        }
+      "name": "Persona",
+      "descriptions": {
+        "0": "Shield 250%\nCounterattack 2"
+      }
     },
     "persona_15": {
-        "name": "Persona",
-        "descriptions": {
-            "0": "Damage 250%\nAll Bullet cards in hand deal +30% damage until used"
-        }
+      "name": "Persona",
+      "descriptions": {
+        "0": "Damage 250%\nAll Bullet cards in hand deal +30% damage until used"
+      }
     },
     "persona_16": {
-        "name": "Persona",
-        "descriptions": {
-            "0": "Damage 250%\nMarked 2"
-        }
+      "name": "Persona",
+      "descriptions": {
+        "0": "Damage 250%\nMarked 2"
+      }
     },
     "persona_17": {
-        "name": "Persona",
-        "descriptions": {
-            "0": "Bullet card damage +30%"
-        }
+      "name": "Persona",
+      "descriptions": {
+        "0": "Bullet card damage +30%"
+      }
     },
     "persona_18": {
-        "name": "Persona",
-        "descriptions": {
-            "0": "Heal 250%\nFor 1 turn, whenever a card is discarded, inflict Pain 1 on a random enemy"
-        }
+      "name": "Persona",
+      "descriptions": {
+        "0": "Heal 250%\nFor 1 turn, whenever a card is discarded, inflict Pain 1 on a random enemy"
+      }
     },
     "persona_19": {
-        "name": "Persona",
-        "descriptions": {
-            "0": "Heal 250%\nSluggish 3"
-        }
+      "name": "Persona",
+      "descriptions": {
+        "0": "Heal 250%\nSluggish 3"
+      }
     },
     "persona_20": {
-        "name": "Persona",
-        "descriptions": {
-            "0": "Shield 250%\nMove 1 random own Attack card from the graveyard to your hand"
-        }
+      "name": "Persona",
+      "descriptions": {
+        "0": "Shield 250%\nMove 1 random own Attack card from the graveyard to your hand"
+      }
     },
     "spore_harvester": {
-        "name": "Spore Harvester",
-        "descriptions": {
-            "0": "Incinerate: Generate 2 Contaminated Spores\nPreserve: Generate 1 Contaminated Spore"
-        }
+      "name": "Spore Harvester",
+      "descriptions": {
+        "0": "Incinerate: Generate 2 Contaminated Spores\nPreserve: Generate 1 Contaminated Spore"
+      }
     },
     "nutrient_absorption": {
-        "name": "Nutrient Absorption",
-        "descriptions": {
-            "0": "Select 1 card in hand to vanish\nReduce the cost of 1 random card in hand by 1 for 1 turn based on the cost of that card"
-        }
+      "name": "Nutrient Absorption",
+      "descriptions": {
+        "0": "Select 1 card in hand to vanish\nReduce the cost of 1 random card in hand by 1 for 1 turn based on the cost of that card"
+      }
     },
     "residual_herb": {
-        "name": "Residual Herb",
-        "descriptions": {
-            "0": "Shield 60%\nIncinerate: Generate 1 Contaminated Spore"
-        }
+      "name": "Residual Herb",
+      "descriptions": {
+        "0": "Shield 60%\nIncinerate: Generate 1 Contaminated Spore"
+      }
     },
     "forests_hunger": {
-        "name": "Forest's Hunger",
-        "descriptions": {
-            "0": "Defense-dependent damage 300%\nVanish all vanishing cards in hand, increase damage amount by 25% based on the number"
-        }
+      "name": "Forest's Hunger",
+      "descriptions": {
+        "0": "Defense-dependent damage 300%\nVanish all vanishing cards in hand, increase damage amount by 25% based on the number"
+      }
     },
     "forgotten_grave": {
-        "name": "Forgotten Grave",
-        "descriptions": {
-            "0": "When the cost of this card is reduced, increase own Critical Rate by 10% for 1 turn\nIncinerate: Generate 1 Contaminated Spore"
-        }
+      "name": "Forgotten Grave",
+      "descriptions": {
+        "0": "When the cost of this card is reduced, increase own Critical Rate by 10% for 1 turn\nIncinerate: Generate 1 Contaminated Spore"
+      }
     },
     "mushroom_ammo": {
-        "name": "Mushroom Ammo",
-        "descriptions": {
-            "0": "Damage 450%\nSpore propagation effect doubled"
-        }
+      "name": "Mushroom Ammo",
+      "descriptions": {
+        "0": "Damage 450%\nSpore propagation effect doubled"
+      }
     },
     "one_with_all": {
-        "name": "One with All",
-        "descriptions": {
-            "0": "Select and activate 1 card from hand, deck, or discard pile\nFor 1 turn, when damage, shield, or healing is activated by a card, remove unusable status"
-        }
+      "name": "One with All",
+      "descriptions": {
+        "0": "Select and activate 1 card from hand, deck, or discard pile\nFor 1 turn, when damage, shield, or healing is activated by a card, remove unusable status"
+      }
     },
     "natures_gift": {
-        "name": "Nature's Gift",
-        "descriptions": {
-            "0": "Heal 20% based on the number of cards in hand\nTuning: Generate 1 Contaminated Spore based on the number of cards in hand"
-        }
+      "name": "Nature's Gift",
+      "descriptions": {
+        "0": "Heal 20% based on the number of cards in hand\nTuning: Generate 1 Contaminated Spore based on the number of cards in hand"
+      }
     },
     "azure_lumen": {
-        "name": "Azure Lumen",
-        "descriptions": {
-            "0": "Vanish 1 vanishing card in hand"
-        }
+      "name": "Azure Lumen",
+      "descriptions": {
+        "0": "Vanish 1 vanishing card in hand"
+      }
     },
     "crimson_lumen": {
-        "name": "Crimson Lumen",
-        "descriptions": {
-            "0": "Damage 300% to all enemies"
-        }
+      "name": "Crimson Lumen",
+      "descriptions": {
+        "0": "Damage 300% to all enemies"
+      }
     },
     "amber_lumen": {
-        "name": "Amber Lumen",
-        "descriptions": {
-            "0": "Heal 150%\nTuning: Shield 150%"
-        }
+      "name": "Amber Lumen",
+      "descriptions": {
+        "0": "Heal 150%\nTuning: Shield 150%"
+      }
     },
     "ebony_lumen": {
-        "name": "Ebony Lumen",
-        "descriptions": {
-            "0": "Incinerate: Draw 3\nGenerate 1 Broken Ebony Lumen"
-        }
+      "name": "Ebony Lumen",
+      "descriptions": {
+        "0": "Incinerate: Draw 3\nGenerate 1 Broken Ebony Lumen"
+      }
     },
     "flame_of_eternity": {
-        "name": "Flame of Eternity",
-        "descriptions": {
-            "0": "Increase Damage Amount of cards with Cost 1 or above by 40%.\nIncrease Cost of Attack Cards by 1."
-        }
+      "name": "Flame of Eternity",
+      "descriptions": {
+        "0": "Increase Damage Amount of cards with Cost 1 or above by 40%.\nIncrease Cost of Attack Cards by 1."
+      }
     },
     "__exclusion__": {
       "name": "Exclusion Card",
@@ -2868,115 +2868,182 @@
       }
     },
     "diana_starting_1": {
-        "name": "Disruption Shot",
-        "descriptions": {
-            "0": "Damage 100%"
-        }
+      "name": "Disruption Shot",
+      "descriptions": {
+        "0": "Damage 100%"
+      }
     },
     "diana_starting_2": {
-        "name": "Disruption Shot",
-        "descriptions": {
-            "0": "Damage 100%"
-        }
+      "name": "Disruption Shot",
+      "descriptions": {
+        "0": "Damage 100%"
+      }
     },
     "diana_starting_3": {
-        "name": "Protect Me",
-        "descriptions": {
-            "0": "Heal 100%"
-        }
+      "name": "Protect Me",
+      "descriptions": {
+        "0": "Heal 100%"
+      }
     },
     "diana_starting_4": {
-        "name": "With All My Heart!",
-        "descriptions": {
-            "0": "Damage 100%\nGenerate 2 Heart Breakers",
-            "1": "Damage 150%\nGenerate 3 Heart Breakers",
-            "2": "Damage 150%\nGenerate 1 Heart Breaker\nDraw 2 Vanishing Bullet cards",
-            "3": "Damage 150%\nChange all Vanishing cards in hand with Cost 1 or less to Heart Breakers",
-            "4": "Generate 2 Heart Breakers\nGrant Quietus to all Vanishing Bullet cards in hand",
-            "5": "At the start of each turn, generate 2 Heart Breakers\nIf you hold 5 or fewer Heart Bullets, generate 1 more"
-        }
+      "name": "With All My Heart!",
+      "descriptions": {
+        "0": "Damage 100%\nGenerate 2 Heart Breakers",
+        "1": "Damage 150%\nGenerate 3 Heart Breakers",
+        "2": "Damage 150%\nGenerate 1 Heart Breaker\nDraw 2 Vanishing Bullet cards",
+        "3": "Damage 150%\nChange all Vanishing cards in hand with Cost 1 or less to Heart Breakers",
+        "4": "Generate 2 Heart Breakers\nGrant Quietus to all Vanishing Bullet cards in hand",
+        "5": "At the start of each turn, generate 2 Heart Breakers\nIf you hold 5 or fewer Heart Bullets, generate 1 more"
+      }
     },
     "diana_hirameki_1": {
-        "name": "Come, Milkpom",
-        "descriptions": {
-            "0": "Generate 2 Heart Shakers",
-            "1": "Generate 2 Heart Shakers\nOther combatants' next 3 additional attacks resonate with the target 1 time",
-            "2": "Destroy up to 2 cards in hand\nGenerate Heart Shakers equal to the number destroyed +1",
-            "3": "Change all Cost 0 Vanishing cards in hand to random Heart Bullets",
-            "4": "Generate 1 Heart Bullet of each type\nResonate a random enemy 1 time based on the number of different Bullet cards in hand",
-            "5": "Change Heart Shakers in hand to Heart Breakers\nRetain: Generate 1 Heart Shaker"
-        }
+      "name": "Come, Milkpom",
+      "descriptions": {
+        "0": "Generate 2 Heart Shakers",
+        "1": "Generate 2 Heart Shakers\nOther combatants' next 3 additional attacks resonate with the target 1 time",
+        "2": "Destroy up to 2 cards in hand\nGenerate Heart Shakers equal to the number destroyed +1",
+        "3": "Change all Cost 0 Vanishing cards in hand to random Heart Bullets",
+        "4": "Generate 1 Heart Bullet of each type\nResonate a random enemy 1 time based on the number of different Bullet cards in hand",
+        "5": "Change Heart Shakers in hand to Heart Breakers\nRetain: Generate 1 Heart Shaker"
+      }
     },
     "diana_hirameki_2": {
-        "name": "Purifying Pistol",
-        "descriptions": {
-            "0": "Damage 120%\nIf destroyed, activate this card's Resonance on the target 1 more time",
-            "1": "Damage 180%\nResonate 3\nIf destroyed, activate your Resonance on the target 5 more times",
-            "2": "Damage 180%\nFor the next 5 times a Swift Attack card is used, resonate the target 1 time",
-            "3": "Damage 180%\nActivate your Resonance on the target 10 times",
-            "4": "Damage 180%\nIncrease Damage by +100% based on the number of Bullet cards discarded this turn",
-            "5": "Damage 180% to all enemies\nIf destroyed, activate Resonance on all enemies 2 times"
-        }
+      "name": "Purifying Pistol",
+      "descriptions": {
+        "0": "Damage 120%\nIf destroyed, activate this card's Resonance on the target 1 more time",
+        "1": "Damage 180%\nResonate 3\nIf destroyed, activate your Resonance on the target 5 more times",
+        "2": "Damage 180%\nFor the next 5 times a Swift Attack card is used, resonate the target 1 time",
+        "3": "Damage 180%\nActivate your Resonance on the target 10 times",
+        "4": "Damage 180%\nIncrease Damage by +100% based on the number of Bullet cards discarded this turn",
+        "5": "Damage 180% to all enemies\nIf destroyed, activate Resonance on all enemies 2 times"
+      }
     },
     "diana_hirameki_3": {
-        "name": "Budding Love",
-        "descriptions": {
-            "0": "Draw 1 Quietus card\nDestroy 2",
-            "1": "Draw 1 Quietus card\nDestroy 1\nIf the destroyed card belongs to another combatant, generate 2 Heart Bullets",
-            "2": "Draw 1 Quietus card\nDestroy 2\nResonate all enemies 1 time based on total cost of destroyed cards (max 6)",
-            "3": "Destroy up to 3 Bullet cards in hand\nDraw Quietus cards equal to the number destroyed +1",
-            "4": "Destroy all Bullet cards in hand\nAdditional attack on a random enemy for 80% based on the number destroyed",
-            "5": "If you have no Quietus cards in hand, draw 1 of your Quietus cards (once per turn)"
-        }
+      "name": "Budding Love",
+      "descriptions": {
+        "0": "Draw 1 Quietus card\nDestroy 2",
+        "1": "Draw 1 Quietus card\nDestroy 1\nIf the destroyed card belongs to another combatant, generate 2 Heart Bullets",
+        "2": "Draw 1 Quietus card\nDestroy 2\nResonate all enemies 1 time based on total cost of destroyed cards (max 6)",
+        "3": "Destroy up to 3 Bullet cards in hand\nDraw Quietus cards equal to the number destroyed +1",
+        "4": "Destroy all Bullet cards in hand\nAdditional attack on a random enemy for 80% based on the number destroyed",
+        "5": "If you have no Quietus cards in hand, draw 1 of your Quietus cards (once per turn)"
+      }
     },
     "diana_hirameki_4": {
-        "name": "Liberated Heart",
-        "descriptions": {
-            "0": "Draw 2 Vanishing Bullet cards\nDamage 300%\nIncrease Damage by 30% for each different Bullet card type in hand"
-        }
+      "name": "Liberated Heart",
+      "descriptions": {
+        "0": "Draw 2 Vanishing Bullet cards\nDamage 300%\nIncrease Damage by 30% for each different Bullet card type in hand"
+      }
     },
     "personaMeta": {
-        "names": {
-            "base": "Persona",
-            "light": "Lux Persona",
-            "dark": "Umbra Persona",
-            "radiant": "Radiant Persona",
-            "abyssal": "Abyssal Persona",
-            "boundary": "Persona of Boundary"
-        },
-        "engravings": {
-            "lux_haste_discount": "Gain Haste, cost +1. If there is a target with Action Count 1, this card's cost is reduced by 2",
-            "lux_attunement_discount": "Attunement: reduce cost by 1 until used",
-            "lux_exhaust_draw": "Gain Exhaust, cost +1. Lux Engraving 5: inflict Weakened 3 on yourself and Draw 3",
-            "lux_counter_by_count": "Gain Counterattack 1 based on the number of Lux Engravings",
-            "lux_pain_by_count": "Inflict Pain 1 on all enemies based on the number of Lux Engravings",
-            "lux_exhaust2_blessing": "Gain Exhaust 2, cost +1. Gain Lux Blessing 1",
-            "lux_retribution_wave": "Counterattack Wave 2, gain more based on the number of Lux Engravings",
-            "lux_shield_scale": "Gain an additional 20% Shield based on the number of Lux Engravings",
-            "umbra_zero_cost_burst": "If this card's cost becomes 0, increase its damage by 200%",
-            "umbra_attack_boost": "For 1 turn, your Attack cards deal 30% more damage",
-            "umbra_quietus_boost": "Umbra Engraving 4: for 1 turn, your Quietus cards deal +40% damage",
-            "umbra_exhaust2_recall_personas": "Gain Exhaust 2. Umbra Engraving 5: add all Persona cards to your hand",
-            "umbra_discard_trigger": "Cost +1. If discarded, activate this card",
-            "umbra_retain_recover_attack": "Gain Retain. Choose 1 of your Attack cards from the discard pile and move it to your hand",
-            "umbra_retain_cost2_hit2": "Gain Retain, cost +2. Umbra Engraving 5: discard all Attack cards and add 2 hits",
-            "umbra_exhaust_choose_hand": "Gain Exhaust. Umbra Engraving 3: choose 1 card in hand and activate it",
-            "lux_damage_by_count": "Deal +30% damage based on the number of Lux Engravings",
-            "lux_break_cost_down": "When this card incapacitates a target, reduce this card's cost by 1",
-            "lux_haste_attunement_cost_vary": "Gain Haste. Attunement: change cost to 0–2",
-            "lux_exhaust_morale_down": "Gain Exhaust. Reduce Morale by 1 for 1 turn based on action count (max 5)",
-            "lux_retain_blessing_by_count": "Gain Retain. Gain Lux Blessing 1 based on the number of Lux Engravings",
-            "lux_3_action_count_up": "Lux Engraving 3: increase all enemies' action count by 3",
-            "lux_cost1_haste_draw2": "Cost +1. Draw 2 Haste cards",
-            "lux_mark_by_count": "Inflict Mark 1 on a random enemy based on the number of Lux Engravings",
-            "umbra_damage_by_count": "Deal +30% damage based on the number of Umbra Engravings",
-            "umbra_resonance_hit2": "If the target is in Resonance, add 2 hits",
-            "umbra_haste_discard_cost_down": "Gain Haste. If discarded, reduce this card's cost by 1 until used",
-            "umbra_discard_boost_by_count": "If a card was discarded this turn, deal +50% damage based on the number of Umbra Engravings",
-            "umbra_quietus_discard_by_count": "Discard a random Quietus card based on the number of Umbra Engravings",
-            "umbra_attack_draw_resonance": "When you draw an Attack card, inflict Resonance 1 on all enemies based on the number of Umbra Engravings",
-            "umbra_pain_by_count": "Inflict Pain 1 on all enemies based on the number of Umbra Engravings"
-        }
+      "names": {
+        "base": "Persona",
+        "light": "Lux Persona",
+        "dark": "Umbra Persona",
+        "radiant": "Radiant Persona",
+        "abyssal": "Abyssal Persona",
+        "boundary": "Persona of Boundary"
+      },
+      "engravings": {
+        "lux_haste_discount": "Gain Haste, cost +1. If there is a target with Action Count 1, this card's cost is reduced by 2",
+        "lux_attunement_discount": "Attunement: reduce cost by 1 until used",
+        "lux_exhaust_draw": "Gain Exhaust, cost +1. Lux Engraving 5: inflict Weakened 3 on yourself and Draw 3",
+        "lux_counter_by_count": "Gain Counterattack 1 based on the number of Lux Engravings",
+        "lux_pain_by_count": "Inflict Pain 1 on all enemies based on the number of Lux Engravings",
+        "lux_exhaust2_blessing": "Gain Exhaust 2, cost +1. Gain Lux Blessing 1",
+        "lux_retribution_wave": "Counterattack Wave 2, gain more based on the number of Lux Engravings",
+        "lux_shield_scale": "Gain an additional 20% Shield based on the number of Lux Engravings",
+        "umbra_zero_cost_burst": "If this card's cost becomes 0, increase its damage by 200%",
+        "umbra_attack_boost": "For 1 turn, your Attack cards deal 30% more damage",
+        "umbra_quietus_boost": "Umbra Engraving 4: for 1 turn, your Quietus cards deal +40% damage",
+        "umbra_exhaust2_recall_personas": "Gain Exhaust 2. Umbra Engraving 5: add all Persona cards to your hand",
+        "umbra_discard_trigger": "Cost +1. If discarded, activate this card",
+        "umbra_retain_recover_attack": "Gain Retain. Choose 1 of your Attack cards from the discard pile and move it to your hand",
+        "umbra_retain_cost2_hit2": "Gain Retain, cost +2. Umbra Engraving 5: discard all Attack cards and add 2 hits",
+        "umbra_exhaust_choose_hand": "Gain Exhaust. Umbra Engraving 3: choose 1 card in hand and activate it",
+        "lux_damage_by_count": "Deal +30% damage based on the number of Lux Engravings",
+        "lux_break_cost_down": "When this card incapacitates a target, reduce this card's cost by 1",
+        "lux_haste_attunement_cost_vary": "Gain Haste. Attunement: change cost to 0–2",
+        "lux_exhaust_morale_down": "Gain Exhaust. Reduce Morale by 1 for 1 turn based on action count (max 5)",
+        "lux_retain_blessing_by_count": "Gain Retain. Gain Lux Blessing 1 based on the number of Lux Engravings",
+        "lux_3_action_count_up": "Lux Engraving 3: increase all enemies' action count by 3",
+        "lux_cost1_haste_draw2": "Cost +1. Draw 2 Haste cards",
+        "lux_mark_by_count": "Inflict Mark 1 on a random enemy based on the number of Lux Engravings",
+        "umbra_damage_by_count": "Deal +30% damage based on the number of Umbra Engravings",
+        "umbra_resonance_hit2": "If the target is in Resonance, add 2 hits",
+        "umbra_haste_discard_cost_down": "Gain Haste. If discarded, reduce this card's cost by 1 until used",
+        "umbra_discard_boost_by_count": "If a card was discarded this turn, deal +50% damage based on the number of Umbra Engravings",
+        "umbra_quietus_discard_by_count": "Discard a random Quietus card based on the number of Umbra Engravings",
+        "umbra_attack_draw_resonance": "When you draw an Attack card, inflict Resonance 1 on all enemies based on the number of Umbra Engravings",
+        "umbra_pain_by_count": "Inflict Pain 1 on all enemies based on the number of Umbra Engravings"
+      }
+    },
+    "heidemarie_starting_1": {
+      "name": "剣光",
+      "descriptions": {
+        "0": "ダメージ132%"
+      }
+    },
+    "heidemarie_starting_2": {
+      "name": "剣光",
+      "descriptions": {
+        "0": "ダメージ132%"
+      }
+    },
+    "heidemarie_starting_3": {
+      "name": "剣壁",
+      "descriptions": {
+        "0": "シールド120%"
+      }
+    },
+    "heidemarie_starting_4": {
+      "name": "剣の雨",
+      "descriptions": {
+        "2": "ダメージ×2\nダメージ量を与える時に極光剣を3枚生成",
+        "5": "ダメージ×3\nダメージ量を与える時に極光剣を4枚生成",
+        "4": "ダメージ×3\nダメージ量を与える時に極光剣を3枚生成",
+        "1": "ダメージ×2\nダメージ量を与える時に極光剣を2枚生成",
+        "3": "ダメージ×2\nダメージ量を与える時に極光剣を2枚生成\n連続：ダメージ×1追加",
+        "0": "ダメージ×2\nダメージ量を与える時に極光剣を1枚生成"
+      }
+    },
+    "heidemarie_hirameki_1": {
+      "name": "万人の英雄",
+      "descriptions": {
+        "2": "ドロー3\nカードドロー後、このカードコスト3から2へ変更",
+        "5": "ドロー3\n次に使用する自分のカードコスト1減少\n敵全体にダメージ100%",
+        "4": "ドロー5\n強靭度ダメージ1",
+        "1": "ドロー4",
+        "3": "ドロー3\nキャラクター全員のドロー+1",
+        "0": "ドロー3"
+      }
+    },
+    "heidemarie_hirameki_2": {
+      "name": "一筋の光",
+      "descriptions": {
+        "2": "ダメージ144%\n連続：ダメージ50%",
+        "5": "ダメージ250%",
+        "4": "ダメージ200%",
+        "1": "ダメージ180%",
+        "3": "ダメージ180%\n敵のシールドが一定以上の場合、ダメージ量+50%",
+        "0": "ダメージ144%"
+      }
+    },
+    "heidemarie_hirameki_3": {
+      "name": "極光展開",
+      "descriptions": {
+        "2": "極光剣を3枚生成\nキャラクター全員のドロー+1",
+        "4": "極光剣を4枚生成\nコスト1減少した極光剣1枚追加生成",
+        "1": "極光剣を3枚生成",
+        "3": "極光剣を4枚生成",
+        "0": "極光剣を2枚生成"
+      }
+    },
+    "heidemarie_hirameki_4": {
+      "name": "極光圧縮",
+      "descriptions": {
+        "0": "手札の極光剣をすべて破棄\nその数に応じてダメージ量+100%\n敵全体にダメージを与える"
+      }
     }
   }
 }

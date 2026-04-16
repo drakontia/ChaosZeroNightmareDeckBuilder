@@ -10,6 +10,123 @@ import { CznCard, CardType, CardCategory, CardStatus } from "@/types";
  * The name and description fields below serve as fallback values when translations are not available.
  */
 export const CHARACTER_CARDS: CznCard[] = [
+  // Heidemarie's starting cards
+  {
+    id: "heidemarie_starting_1",
+    name: "剣光", // Fallback: Sword Flash
+    type: CardType.CHARACTER,
+    category: CardCategory.ATTACK,
+    statuses: [],
+    isBasicCard: true,
+    isStartingCard: true,
+    imgUrl: "/images/cards/heidemarie_starting_1.png",
+    hiramekiVariations: [
+      { level: 0, cost: 1, description: "ダメージ132%" } // Fallback
+    ]
+  },
+  {
+    id: "heidemarie_starting_2",
+    name: "剣光", // Fallback: Sword Flash
+    type: CardType.CHARACTER,
+    category: CardCategory.ATTACK,
+    statuses: [],
+    isBasicCard: true,
+    isStartingCard: true,
+    imgUrl: "/images/cards/heidemarie_starting_1.png",
+    hiramekiVariations: [
+      { level: 0, cost: 1, description: "ダメージ132%" } // Fallback
+    ]
+  },
+  {
+    id: "heidemarie_starting_3",
+    name: "剣壁", // Fallback: Sword Barrier
+    type: CardType.CHARACTER,
+    category: CardCategory.SKILL,
+    statuses: [],
+    isBasicCard: true,
+    isStartingCard: true,
+    imgUrl: "/images/cards/heidemarie_starting_3.png",
+    hiramekiVariations: [
+      { level: 0, cost: 1, description: "シールド120%" } // Fallback
+    ]
+  },
+  {
+    id: "heidemarie_starting_4",
+    name: "剣の雨", // Fallback: Sword Rain
+    type: CardType.CHARACTER,
+    category: CardCategory.ATTACK,
+    statuses: [CardStatus.LINKED],
+    isBasicCard: false,
+    isStartingCard: true,
+    imgUrl: "/images/cards/heidemarie_starting_4.png",
+    hiramekiVariations: [ // Fallback descriptions
+      { level: 0, cost: 1, description: "ダメージ×2<wbr/>素養: 極光剣を1枚生成" },
+      { level: 1, cost: 1, description: "ダメージ×2<wbr/>素養: 極光剣を2枚生成" },
+      { level: 2, cost: 1, description: "ダメージ×2<wbr/>素養: 極光剣を3枚生成" },
+      { level: 3, cost: 1, description: "ダメージ×2<wbr/>素養: 極光剣を2枚生成<wbr/>連続：ダメージ×1追加" },
+      { level: 4, cost: 1, description: "ダメージ×3<wbr/>素養: 極光剣を3枚生成" },
+      { level: 5, cost: 1, description: "ダメージ×3<wbr/>素養: 極光剣を4枚生成" }
+    ]
+  },
+  // Heidemarie's hirameki cards
+  {
+    id: "heidemarie_hirameki_1",
+    name: "万人の英雄", // Fallback: Hero to All
+    type: CardType.CHARACTER,
+    category: CardCategory.SKILL,
+    statuses: [CardStatus.QUIETUS],
+    imgUrl: "/images/cards/heidemarie_hirameki_1.png",
+    hiramekiVariations: [ // Fallback descriptions
+      { level: 0, cost: 3, description: "ドロー3" },
+      { level: 1, cost: 3, description: "ドロー4" },
+      { level: 2, cost: 2, description: "ドロー3<wbr/>3ドロー後、このカードコスト3から2へ変更" },
+      { level: 3, cost: 2, description: "ドロー3<wbr/>キャラクター全員のドロー+1" },
+      { level: 4, cost: 3, description: "ドロー5<wbr/>強靭度ダメージ1" },
+      { level: 5, cost: 3, category: CardCategory.ATTACK, description: "ドロー3<wbr/>次に使用する自分のカードコスト1減少<wbr/>敵全体にダメージ100%" }
+    ]
+  },
+  {
+    id: "heidemarie_hirameki_2",
+    name: "一筋の光", // Fallback: Thread of Light
+    type: CardType.CHARACTER,
+    category: CardCategory.ATTACK,
+    statuses: [CardStatus.LINKED],
+    imgUrl: "/images/cards/heidemarie_hirameki_2.png",
+    hiramekiVariations: [ // Fallback descriptions
+      { level: 0, cost: 1, description: "ダメージ144%" },
+      { level: 1, cost: 1, description: "ダメージ180%" },
+      { level: 2, cost: 1, description: "ダメージ144%<wbr/>連続：ダメージ50%" },
+      { level: 3, cost: 1, description: "ダメージ180%<wbr/>敵のシールドが一定以上の場合、ダメージ量+50%" },
+      { level: 4, cost: 1, description: "ダメージ200%" },
+      { level: 5, cost: 2, description: "ダメージ250%" }
+    ]
+  },
+  {
+    id: "heidemarie_hirameki_3",
+    name: "極光展開", // Fallback: Effulgent Expansion
+    type: CardType.CHARACTER,
+    category: CardCategory.SKILL,
+    statuses: [CardStatus.QUIETUS],
+    imgUrl: "/images/cards/heidemarie_hirameki_3.png",
+    hiramekiVariations: [ // Fallback descriptions
+      { level: 0, cost: 2, description: "極光剣を2枚生成" },
+      { level: 1, cost: 1, description: "極光剣を3枚生成" },
+      { level: 2, cost: 2, description: "極光剣を3枚生成<wbr/>キャラクター全員のドロー+1" },
+      { level: 3, cost: 2, description: "極光剣を4枚生成" },
+      { level: 4, cost: 1, description: "極光剣を4枚生成<wbr/>コスト1減少した極光剣1枚追加生成" }
+    ]
+  },
+  {
+    id: "heidemarie_hirameki_4",
+    name: "極光圧縮", // Fallback: Effulgent Compression
+    type: CardType.CHARACTER,
+    category: CardCategory.SKILL,
+    statuses: [CardStatus.UNIQUE, CardStatus.LINKED, CardStatus.RETRIEVE3],
+    imgUrl: "/images/cards/heidemarie_hirameki_4.png",
+    hiramekiVariations: [ // Fallback descriptions
+      { level: 0, cost: 0, description: "手札の極光剣をすべて破棄<wbr/>その数に応じてダメージ量+100%<wbr/>敵全体にダメージを与える" }
+    ]
+  },
   // Rita's starting cards
   // Diana's starting cards
   {
@@ -3551,5 +3668,7 @@ export const CHARACTER_CARDS: CznCard[] = [
     hiramekiVariations: [ // Fallback descriptions
       { level: 0, cost: 1, description: "手札のコストが最も高い自分の攻撃カード1枚発動、そのカード消滅" }
     ]
-  }
+  },
 ];
+
+
