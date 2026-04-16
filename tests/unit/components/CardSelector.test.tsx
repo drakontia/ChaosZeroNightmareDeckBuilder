@@ -4,6 +4,7 @@ import { NextIntlClientProvider } from 'next-intl';
 
 import { CardSelector } from '@/components/CardSelector';
 import { getAddableCards, getCharacterHiramekiCards, getCardById } from '@/lib/card';
+import { GodType } from '@/types';
 
 vi.mock('@/lib/card', () => ({
   getCharacterHiramekiCards: vi.fn(() => []),
@@ -114,7 +115,7 @@ describe('CardSelector', () => {
   beforeEach(() => {
     vi.mocked(getAddableCards).mockReturnValue([]);
     vi.mocked(getCharacterHiramekiCards).mockReturnValue([]);
-    vi.mocked(getCardById).mockReturnValue(null);
+    vi.mocked(getCardById).mockReturnValue(undefined);
   });
 
   it('restores removed cards with snapshot state intact', () => {
@@ -136,8 +137,8 @@ describe('CardSelector', () => {
               count: 1,
               selectedHiramekiLevel: 2,
               selectedHiddenHiramekiId: 'hidden_01',
-              personaEngravings: [{ id: 'umbra_attack_boost', alignment: 'dark' }],
-              godHiramekiType: 'kilken',
+      personaEngravings: [{ id: 'umbra_attack_boost', alignment: 'dark' as const }],
+              godHiramekiType: GodType.KILKEN,
               godHiramekiEffectId: 'kilken_01',
               isCopied: true,
               copiedFromCardId: 'persona_00',
