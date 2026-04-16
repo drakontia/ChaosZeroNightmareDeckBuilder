@@ -1542,7 +1542,7 @@ describe('calculateFaintMemory (追加カバレッジ)', () => {
 
     it('should add 10pt for equipment refinement', () => {
       const mockEquipment: Equipment = { id: 'weapon-1', name: 'Test Weapon', type: EquipmentType.WEAPON, rarity: 'common' };
-      baseDeck.equipment.weapon = { item: mockEquipment, refinement: true, godHammerEquipmentId: null };
+      baseDeck.equipment.weapon = { item: mockEquipment, refinement: 'refinement-1', godHammerEquipmentId: null };
 
       expect(calculateFaintMemory(baseDeck)).toBe(10);
     });
@@ -1556,7 +1556,7 @@ describe('calculateFaintMemory (追加カバレッジ)', () => {
 
     it('should add 20pt for both refinement and god hammer on same equipment', () => {
       const mockEquipment: Equipment = { id: 'weapon-1', name: 'Test Weapon', type: EquipmentType.WEAPON, rarity: 'common' };
-      baseDeck.equipment.weapon = { item: mockEquipment, refinement: true, godHammerEquipmentId: 'hammer-effect-1' };
+      baseDeck.equipment.weapon = { item: mockEquipment, refinement: 'refinement-1', godHammerEquipmentId: 'hammer-effect-1' };
 
       expect(calculateFaintMemory(baseDeck)).toBe(20);
     });
@@ -1566,24 +1566,24 @@ describe('calculateFaintMemory (追加カバレッジ)', () => {
       const mockArmor: Equipment = { id: 'armor-1', name: 'Test Armor', type: EquipmentType.ARMOR, rarity: 'common' };
       const mockPendant: Equipment = { id: 'pendant-1', name: 'Test Pendant', type: EquipmentType.PENDANT, rarity: 'common' };
 
-      baseDeck.equipment.weapon = { item: mockWeapon, refinement: true, godHammerEquipmentId: 'hammer-effect-1' };
-      baseDeck.equipment.armor = { item: mockArmor, refinement: true, godHammerEquipmentId: 'hammer-effect-2' };
-      baseDeck.equipment.pendant = { item: mockPendant, refinement: true, godHammerEquipmentId: 'hammer-effect-3' };
+      baseDeck.equipment.weapon = { item: mockWeapon, refinement: 'refinement-1', godHammerEquipmentId: 'hammer-effect-1' };
+      baseDeck.equipment.armor = { item: mockArmor, refinement: 'refinement-1', godHammerEquipmentId: 'hammer-effect-2' };
+      baseDeck.equipment.pendant = { item: mockPendant, refinement: 'refinement-1', godHammerEquipmentId: 'hammer-effect-3' };
 
       expect(calculateFaintMemory(baseDeck)).toBe(60); // 20 each * 3
     });
 
     it('should not add points if equipment is not selected', () => {
-      baseDeck.equipment.weapon = { item: null, refinement: true, godHammerEquipmentId: 'hammer-effect-1' };
-      baseDeck.equipment.armor = { item: null, refinement: true, godHammerEquipmentId: 'hammer-effect-2' };
-      baseDeck.equipment.pendant = { item: null, refinement: true, godHammerEquipmentId: 'hammer-effect-3' };
+      baseDeck.equipment.weapon = { item: null, refinement: 'refinement-1', godHammerEquipmentId: 'hammer-effect-1' };
+      baseDeck.equipment.armor = { item: null, refinement: 'refinement-1', godHammerEquipmentId: 'hammer-effect-2' };
+      baseDeck.equipment.pendant = { item: null, refinement: 'refinement-1', godHammerEquipmentId: 'hammer-effect-3' };
 
       expect(calculateFaintMemory(baseDeck)).toBe(0);
     });
 
     it('should combine equipment and card points', () => {
       const mockEquipment: Equipment = { id: 'weapon-1', name: 'Test Weapon', type: EquipmentType.WEAPON, rarity: 'common' };
-      baseDeck.equipment.weapon = { item: mockEquipment, refinement: true, godHammerEquipmentId: null };
+      baseDeck.equipment.weapon = { item: mockEquipment, refinement: 'refinement-1', godHammerEquipmentId: null };
 
       const variation: HiramekiVariation = {
         level: 0,
