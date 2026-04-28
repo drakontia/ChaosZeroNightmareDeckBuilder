@@ -21,7 +21,7 @@ export const CHARACTER_CARDS: CznCard[] = [
     isStartingCard: true,
     imgUrl: "/images/cards/heidemarie_starting_1.png",
     hiramekiVariations: [
-      { level: 0, cost: 1, description: "ダメージ132%" } // Fallback
+      { level: 0, cost: 1, description: "ダメージ100%" } // Fallback
     ]
   },
   {
@@ -34,12 +34,12 @@ export const CHARACTER_CARDS: CznCard[] = [
     isStartingCard: true,
     imgUrl: "/images/cards/heidemarie_starting_1.png",
     hiramekiVariations: [
-      { level: 0, cost: 1, description: "ダメージ132%" } // Fallback
+      { level: 0, cost: 1, description: "ダメージ100%" } // Fallback
     ]
   },
   {
     id: "heidemarie_starting_3",
-    name: "剣壁", // Fallback: Sword Barrier
+    name: "剣の障壁", // Fallback: Sword Barrier
     type: CardType.CHARACTER,
     category: CardCategory.SKILL,
     statuses: [],
@@ -47,7 +47,7 @@ export const CHARACTER_CARDS: CznCard[] = [
     isStartingCard: true,
     imgUrl: "/images/cards/heidemarie_starting_3.png",
     hiramekiVariations: [
-      { level: 0, cost: 1, description: "シールド120%" } // Fallback
+      { level: 0, cost: 1, description: "シールド100%" } // Fallback
     ]
   },
   {
@@ -60,12 +60,12 @@ export const CHARACTER_CARDS: CznCard[] = [
     isStartingCard: true,
     imgUrl: "/images/cards/heidemarie_starting_4.png",
     hiramekiVariations: [ // Fallback descriptions
-      { level: 0, cost: 1, description: "ダメージ×2<wbr/>素養: 極光剣を1枚生成" },
-      { level: 1, cost: 1, description: "ダメージ×2<wbr/>素養: 極光剣を2枚生成" },
-      { level: 2, cost: 1, description: "ダメージ×2<wbr/>素養: 極光剣を3枚生成" },
-      { level: 3, cost: 1, description: "ダメージ×2<wbr/>素養: 極光剣を2枚生成<wbr/>連続：ダメージ×1追加" },
-      { level: 4, cost: 1, description: "ダメージ×3<wbr/>素養: 極光剣を3枚生成" },
-      { level: 5, cost: 1, description: "ダメージ×3<wbr/>素養: 極光剣を4枚生成" }
+      { level: 0, cost: 1, description: "ダメージ80%×2<wbr/>感応：極光剣を1枚生成" },
+      { level: 1, cost: 1, description: "ダメージ120%×2<wbr/>感応：極光剣を2枚生成", statuses: [CardStatus.LINKED, CardStatus.QUIETUS] },
+      { level: 2, cost: 2, description: "ダメージ180%<wbr/>手札の極光剣の数に応じて、<wbr/>ヒット数1回追加<wbr/>感応：極光剣を1枚生成", statuses: [CardStatus.HASTE] },
+      { level: 3, cost: 1, category: CardCategory.SKILL, description: "墓地の極光剣を5枚<wbr/>対象に追加攻撃で発動", statuses: [] },
+      { level: 4, cost: 1, category: CardCategory.SKILL, description: "極光剣を2枚生成、<wbr/>そのカードに回収付与", statuses: [] },
+      { level: 5, cost: 3, description: "敵全体にダメージ500%<wbr/>手札に極光解放があるなら、消滅し、墓地の極光剣の数に応じて、ダメージ量+80%", statuses: [CardStatus.EXHAUST, CardStatus.FINALE, CardStatus.RETAIN, CardStatus.UNIQUE] }
     ]
   },
   // Heidemarie's hirameki cards
@@ -77,12 +77,12 @@ export const CHARACTER_CARDS: CznCard[] = [
     statuses: [CardStatus.QUIETUS],
     imgUrl: "/images/cards/heidemarie_hirameki_1.png",
     hiramekiVariations: [ // Fallback descriptions
-      { level: 0, cost: 3, description: "ドロー3" },
-      { level: 1, cost: 3, description: "ドロー4" },
-      { level: 2, cost: 2, description: "ドロー3<wbr/>3ドロー後、このカードコスト3から2へ変更" },
-      { level: 3, cost: 2, description: "ドロー3<wbr/>キャラクター全員のドロー+1" },
-      { level: 4, cost: 3, description: "ドロー5<wbr/>強靭度ダメージ1" },
-      { level: 5, cost: 3, category: CardCategory.ATTACK, description: "ドロー3<wbr/>次に使用する自分のカードコスト1減少<wbr/>敵全体にダメージ100%" }
+      { level: 0, cost: 1, description: "ドロー3<wbr/>そのカードをこのターン連結" },
+      { level: 1, cost: 1, description: "ドロー3<wbr/>そのカードをこのターン連結", statuses: [CardStatus.LINKED, CardStatus.QUIETUS] },
+      { level: 2, cost: 1, description: "ドロー3<wbr/>手札のコストが1以下のカードをこのターン連結" },
+      { level: 3, cost: 0, description: "ドロー1<wbr/>手札の安息カードをこのターン連結", statuses: [CardStatus.HASTE] },
+      { level: 4, cost: 0, description: "山札または捨て札からカードを1枚選択、そのカードに連結を付与して手札に移動", statuses: [CardStatus.EXHAUST2] },
+      { level: 5, cost: 1, description: "自分の攻撃カードドロー2<wbr/>手札の全ての攻撃カードをこのターン連結", statuses: [CardStatus.HASTE] }
     ]
   },
   {
@@ -93,12 +93,12 @@ export const CHARACTER_CARDS: CznCard[] = [
     statuses: [CardStatus.LINKED],
     imgUrl: "/images/cards/heidemarie_hirameki_2.png",
     hiramekiVariations: [ // Fallback descriptions
-      { level: 0, cost: 1, description: "ダメージ144%" },
-      { level: 1, cost: 1, description: "ダメージ180%" },
-      { level: 2, cost: 1, description: "ダメージ144%<wbr/>連続：ダメージ50%" },
-      { level: 3, cost: 1, description: "ダメージ180%<wbr/>敵のシールドが一定以上の場合、ダメージ量+50%" },
-      { level: 4, cost: 1, description: "ダメージ200%" },
-      { level: 5, cost: 2, description: "ダメージ250%" }
+      { level: 0, cost: 1, description: "ダメージ120%<wbr/>手札の連結カード数に応じてダメージ量+120%" },
+      { level: 1, cost: 1, description: "ダメージ180%<wbr/>手札の連結カード数に応じてダメージ量+180%" },
+      { level: 2, cost: 2, description: "ダメージ300%<wbr/>手札の連結カードが3枚以上なら、ダメージ3倍", statuses: [CardStatus.LINKED, CardStatus.HASTE] },
+      { level: 3, cost: 1, description: "ダメージ100%<wbr/>このカードが手札または墓地にあるなら、連結カードのダメージ量+80%", statuses: [CardStatus.LINKED, CardStatus.QUIETUS] },
+      { level: 4, cost: 3, description: "手札の連結カードを破棄せずにすべて発動", statuses: [CardStatus.LINKED, CardStatus.EXHAUST] },
+      { level: 5, cost: 2, description: "直接使用時、ダメージ350% × 2<wbr/>破棄された場合、敵全体にダメージ300%", statuses: [CardStatus.LINKED, CardStatus.UNIQUE] }
     ]
   },
   {
@@ -109,11 +109,12 @@ export const CHARACTER_CARDS: CznCard[] = [
     statuses: [CardStatus.QUIETUS],
     imgUrl: "/images/cards/heidemarie_hirameki_3.png",
     hiramekiVariations: [ // Fallback descriptions
-      { level: 0, cost: 2, description: "極光剣を2枚生成" },
-      { level: 1, cost: 1, description: "極光剣を3枚生成" },
-      { level: 2, cost: 2, description: "極光剣を3枚生成<wbr/>キャラクター全員のドロー+1" },
-      { level: 3, cost: 2, description: "極光剣を4枚生成" },
-      { level: 4, cost: 1, description: "極光剣を4枚生成<wbr/>コスト1減少した極光剣1枚追加生成" }
+      { level: 0, cost: 2, description: "極光剣を2枚生成<wbr/>1ターンの間、極光剣のダメージ量+50%" },
+      { level: 1, cost: 2, description: "極光剣を2枚生成<wbr/>1ターンの間、極光剣のダメージ量+70%", statuses: [CardStatus.LINKED, CardStatus.QUIETUS] },
+      { level: 2, cost: 2, description: "極光剣を2枚生成<wbr/>次の2回、極光剣のダメージ量+200%" },
+      { level: 3, cost: 2, description: "手札の連結カード数に応じて極光剣を生成", statuses: [CardStatus.LINKED] },
+      { level: 4, cost: 2, description: "捨て札に極光剣を10枚生成", statuses: [CardStatus.LINKED, CardStatus.QUIETUS] },
+      { level: 5, cost: 2, description: "ターン開始時、極光剣を2枚生成<wbr/>極光剣のダメージ量+50%", statuses: [CardStatus.QUIETUS, CardStatus.UNIQUE] }
     ]
   },
   {
@@ -124,7 +125,7 @@ export const CHARACTER_CARDS: CznCard[] = [
     statuses: [CardStatus.UNIQUE, CardStatus.LINKED, CardStatus.RETRIEVE3],
     imgUrl: "/images/cards/heidemarie_hirameki_4.png",
     hiramekiVariations: [ // Fallback descriptions
-      { level: 0, cost: 0, description: "手札の極光剣をすべて破棄<wbr/>その数に応じてダメージ量+100%<wbr/>敵全体にダメージを与える" }
+      { level: 0, cost: 0, description: "墓地へ移動時、極光の光1" }
     ]
   },
   // Rita's starting cards
