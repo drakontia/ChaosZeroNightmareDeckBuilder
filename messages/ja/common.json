@@ -162,7 +162,8 @@
     "pulverize": "粉砕",
     "bind": "結束",
     "ignition": "点火",
-    "form_upgrade": "形状強化"
+    "form_upgrade": "形状強化",
+    "linked": "連結"
   },
   "actions": {
     "add": "追加",
@@ -180,8 +181,7 @@
     "remove": "除去",
     "copy": "コピー"
   },
-  "conversion": {
-  },
+  "conversion": {},
   "character": {
     "title": "キャラクター",
     "select": "キャラクターを選択",
@@ -218,6 +218,7 @@
     "beryl": "ベリル",
     "cassius": "カシウス",
     "owen": "オーウェン",
-    "rei": "レイ"
+    "rei": "レイ",
+    "heidemarie": "ハイデマリ"
   }
 }
