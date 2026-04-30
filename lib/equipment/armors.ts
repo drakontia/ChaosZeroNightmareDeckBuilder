@@ -481,6 +481,6 @@ export const ARMORS: Equipment[] = [
     type: EquipmentType.ARMOR,
     rarity: "equipment.rarity.rare",
     description: "equipment.armor.delicate_collarbone.description",
-    imgUrl: "/images/equipment/armors/delicate_collarbone_new.png"
+    imgUrl: "/images/equipment/armors/delicate_collarbone.png"
   },
 ];
