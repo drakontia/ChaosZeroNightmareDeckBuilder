@@ -20,7 +20,7 @@ export function getCardInfo(
 ): {
   name: string;
   imgUrl?: string;
-  cost: number | "X";
+  cost: number | "X" | "unusable";
   description: string;
   category: CardCategory;
   statuses?: CardStatus[]; // Return raw status array for translation

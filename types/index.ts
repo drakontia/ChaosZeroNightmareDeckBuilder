@@ -106,7 +106,7 @@ export enum CardStatus {
 // Hirameki variation for a card
 export interface HiramekiVariation {
   level: number; // 0 = base, 1-5 for character cards, 1-3 for other cards
-  cost: number | "X"; // "X" allows variable-cost cards defined by effect text
+  cost: number | "X" | "unusable"; // "X" allows variable-cost cards; "unusable" means cost is forbidden
   name?: string; // Optional name override for this Hirameki level
   description: string;
   // Hiramekiでカテゴリが変化する場合の上書き
@@ -117,13 +117,13 @@ export interface HiramekiVariation {
     [egoLevel: number]: {
       statuses?: CardStatus[]; // Optional status override for this Ego level
       description: string;
-      cost?: number;
+      cost?: number | "X" | "unusable";
     };
   };
   // Variation when potential is active
   potentialVariation?: {
     description: string;
-    cost?: number;
+    cost?: number | "X" | "unusable";
   };
 }
 
