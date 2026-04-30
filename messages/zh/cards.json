@@ -2750,8 +2750,79 @@
             "umbra_quietus_discard_by_count": "根据暗之刻印数量，弃置随机安息牌",
             "umbra_attack_draw_resonance": "抽取攻击牌时，根据暗之刻印数量对全体敌人施加共鸣1",
             "umbra_pain_by_count": "根据暗之刻印数量，对全体敌人施加苦痛1"
+            },
+            "binding_doctrine": {
+                "name": "束缚的教义",
+                "descriptions": {
+                    "0": "伤害200%\n若目标处于共鸣状态，伤害量+100%"
+                }
+            },
+            "overflowing_resonance": {
+                "name": "溢出的共鸣",
+                "descriptions": {
+                    "0": "[安息]伤害200%\n若被弃置，目标获得共鸣2"
+                }
+            },
+            "lost_persona": {
+                "name": "遗失的人格",
+                "descriptions": {
+                    "0": "抽取1张自己的攻击牌\n若为安息牌，赋予连结"
+                }
+            },
+            "whispers_of_madness": {
+                "name": "疯狂的低语",
+                "descriptions": {
+                    "0": "弃置1\n下张使用的攻击牌伤害量+100%"
+                }
+            },
+            "emotional_explosion": {
+                "name": "感情的爆发",
+                "descriptions": {
+                    "0": "[主导]牌被弃置4张时，获得行动点1(各回合1次)"
+                }
+            },
+            "true_resonance": {
+                "name": "真实的共鸣",
+                "descriptions": {
+                    "0": "[感应]通过能力抽取时，全体敌人获得共鸣1(各回合1次)"
+                }
+            },
+            "inner_awakening": {
+                "name": "内在的觉醒",
+                "descriptions": {
+                    "0": "[安息]弃置1\n随机抽取1张攻击牌，赋予连结"
+                }
+            },
+            "dream_world": {
+                "name": "梦的世界",
+                "descriptions": {
+                    "0": "[安息]伤害300%\n若被弃置，从牌库弃置2张随机牌"
+                }
+            },
+            "inverted_messiah": {
+                "name": "倒吊的救世主",
+                "descriptions": {
+                    "0": "伤害250%\n手牌中有连结牌时，弃置，增加1次命中"
+                }
+            },
+            "nightmare_reverse": {
+                "name": "噩梦的背面",
+                "descriptions": {
+                    "0": "[连结/安息]抽取2\n在牌库生成1张悲惨记忆"
+                }
+            },
+            "rotting_apple_and_girl": {
+                "name": "腐烂的苹果与少女",
+                "descriptions": {
+                    "0": "护盾180%\n光之庇护1"
+                }
+            },
+            "faceless_woman": {
+                "name": "无脸的女人",
+                "descriptions": {
+                    "0": "使用连结牌时，抽取1(各回合1次)"
+                }
             }
         }
     }
-  }
 }

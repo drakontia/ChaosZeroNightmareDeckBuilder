@@ -2750,8 +2750,79 @@
             "umbra_quietus_discard_by_count": "어둠의 각인 수에 따라 랜덤 안식 카드 버리기",
             "umbra_attack_draw_resonance": "공격 카드 드로우 시, 어둠의 각인 수에 따라 적 전체에 공명 1",
             "umbra_pain_by_count": "어둠의 각인 수에 따라 적 전체에 고통 1"
+            },
+            "binding_doctrine": {
+                "name": "속박의 교의",
+                "descriptions": {
+                    "0": "데미지 200%\n대상이 공명 상태인 경우, 데미지량 +100%"
+                }
+            },
+            "overflowing_resonance": {
+                "name": "넘쳐흐르는 공명",
+                "descriptions": {
+                    "0": "[안식]데미지 200%\n버려진 경우, 대상이 공명 2 획득"
+                }
+            },
+            "lost_persona": {
+                "name": "잃어버린 페르소나",
+                "descriptions": {
+                    "0": "자신의 공격 카드 1장 드로우\n안식 카드인 경우, 연결 부여"
+                }
+            },
+            "whispers_of_madness": {
+                "name": "광기의 속삭임",
+                "descriptions": {
+                    "0": "1장 버리기\n다음에 사용할 공격 카드의 데미지량 +100%"
+                }
+            },
+            "emotional_explosion": {
+                "name": "감정의 폭발",
+                "descriptions": {
+                    "0": "[주도]카드가 4장 버려지면, 행동 포인트 1 획득 (각 턴 1회)"
+                }
+            },
+            "true_resonance": {
+                "name": "진정한 공명",
+                "descriptions": {
+                    "0": "[감응]능력으로 드로우할 때, 적 전체가 공명 1 획득 (각 턴 1회)"
+                }
+            },
+            "inner_awakening": {
+                "name": "내면의 각성",
+                "descriptions": {
+                    "0": "[안식]1장 버리기\n랜덤 공격 카드 1장 드로우, 연결 부여"
+                }
+            },
+            "dream_world": {
+                "name": "꿈의 세계",
+                "descriptions": {
+                    "0": "[안식]데미지 300%\n버려진 경우, 카드 더미에서 랜덤 카드 2장 버리기"
+                }
+            },
+            "inverted_messiah": {
+                "name": "거꾸로 매달린 메시아",
+                "descriptions": {
+                    "0": "데미지 250%\n손패에 연결 카드가 있으면, 버리고, 히트 수 1 증가"
+                }
+            },
+            "nightmare_reverse": {
+                "name": "악몽의 배면",
+                "descriptions": {
+                    "0": "[연결/안식]드로우 2\n카드 더미에 비극적 기억 1 생성"
+                }
+            },
+            "rotting_apple_and_girl": {
+                "name": "썩어가는 사과와 소녀",
+                "descriptions": {
+                    "0": "실드 180%\n빛의 보호 1"
+                }
+            },
+            "faceless_woman": {
+                "name": "얼굴 없는 여인",
+                "descriptions": {
+                    "0": "연결 카드 사용 시, 드로우 1 (각 턴 1회)"
+                }
             }
         }
     }
-  }
 }

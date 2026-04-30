@@ -626,4 +626,53 @@ export const PENDANTS: Equipment[] = [
     description: "equipment.pendant.charger_of_weathered_glory.description",
     imgUrl: "/images/equipment/pendants/charger_of_weathered_glory.png"
   },
+  // Season 3
+  {
+    id: "gospel_of_lament",
+    name: "equipment.pendant.gospel_of_lament.name",
+    type: EquipmentType.PENDANT,
+    rarity: "equipment.rarity.rare",
+    description: "equipment.pendant.gospel_of_lament.description",
+    imgUrl: "/images/equipment/pendants/gospel_of_lament.png"
+  },
+  {
+    id: "hymn_singing_lips",
+    name: "equipment.pendant.hymn_singing_lips.name",
+    type: EquipmentType.PENDANT,
+    rarity: "equipment.rarity.rare",
+    description: "equipment.pendant.hymn_singing_lips.description",
+    imgUrl: "/images/equipment/pendants/hymn_singing_lips.png"
+  },
+  {
+    id: "a_lonesome_wedding_ring",
+    name: "equipment.pendant.a_lonesome_wedding_ring.name",
+    type: EquipmentType.PENDANT,
+    rarity: "equipment.rarity.rare",
+    description: "equipment.pendant.a_lonesome_wedding_ring.description",
+    imgUrl: "/images/equipment/pendants/a_lonesome_wedding_ring.png"
+  },
+  {
+    id: "someones_letter",
+    name: "equipment.pendant.someones_letter.name",
+    type: EquipmentType.PENDANT,
+    rarity: "equipment.rarity.rare",
+    description: "equipment.pendant.someones_letter.description",
+    imgUrl: "/images/equipment/pendants/someones_letter.png"
+  },
+  {
+    id: "stele_of_heresy",
+    name: "equipment.pendant.stele_of_heresy.name",
+    type: EquipmentType.PENDANT,
+    rarity: "equipment.rarity.rare",
+    description: "equipment.pendant.stele_of_heresy.description",
+    imgUrl: "/images/equipment/pendants/stele_of_heresy.png"
+  },
+  {
+    id: "an_eye_plucked_from_a_mural",
+    name: "equipment.pendant.an_eye_plucked_from_a_mural.name",
+    type: EquipmentType.PENDANT,
+    rarity: "equipment.rarity.rare",
+    description: "equipment.pendant.an_eye_plucked_from_a_mural.description",
+    imgUrl: "/images/equipment/pendants/an_eye_plucked_from_a_mural.png"
+  },
 ];

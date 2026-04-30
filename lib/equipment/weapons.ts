@@ -530,4 +530,45 @@ export const WEAPONS: Equipment[] = [
     description: "equipment.weapon.harpoon_case_of_broken_resolve.description",
     imgUrl: "/images/equipment/weapons/harpoon_case_of_broken_resolve.png"
   },
+  // Season 3
+  {
+    id: "corrupted_gauntlet",
+    name: "equipment.weapon.corrupted_gauntlet.name",
+    type: EquipmentType.WEAPON,
+    rarity: "equipment.rarity.rare",
+    description: "equipment.weapon.corrupted_gauntlet.description",
+    imgUrl: "/images/equipment/weapons/corrupted_gauntlet.png"
+  },
+  {
+    id: "broken_golden_quill_pen",
+    name: "equipment.weapon.broken_golden_quill_pen.name",
+    type: EquipmentType.WEAPON,
+    rarity: "equipment.rarity.rare",
+    description: "equipment.weapon.broken_golden_quill_pen.description",
+    imgUrl: "/images/equipment/weapons/broken_golden_quill_pen.png"
+  },
+  {
+    id: "orders_baton",
+    name: "equipment.weapon.orders_baton.name",
+    type: EquipmentType.WEAPON,
+    rarity: "equipment.rarity.legendary",
+    description: "equipment.weapon.orders_baton.description",
+    imgUrl: "/images/equipment/weapons/orders_baton.png"
+  },
+  {
+    id: "key_of_sleep",
+    name: "equipment.weapon.key_of_sleep.name",
+    type: EquipmentType.WEAPON,
+    rarity: "equipment.rarity.legendary",
+    description: "equipment.weapon.key_of_sleep.description",
+    imgUrl: "/images/equipment/weapons/key_of_sleep.png"
+  },
+  {
+    id: "yearning_left_hand",
+    name: "equipment.weapon.yearning_left_hand.name",
+    type: EquipmentType.WEAPON,
+    rarity: "equipment.rarity.legendary",
+    description: "equipment.weapon.yearning_left_hand.description",
+    imgUrl: "/images/equipment/weapons/yearning_left_hand.png"
+  },
 ];
