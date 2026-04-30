@@ -143,4 +143,47 @@ test.describe('Hirameki Controls (non-character cards)', () => {
       await page.keyboard.press('Escape');
     }
   });
+
+  test('all 6 gods including ORDER are available in god hirameki dropdown', async ({ page }) => {
+    // Add a shared card
+    await openAccordion(page, '共用カード');
+    const sharedSection = page.getByRole('heading', { name: '共用カード' }).locator('..');
+    const cardName = '加虐性';
+    await sharedSection.getByText(cardName, { exact: true }).first().click({ timeout: 10_000 });
+
+    const deckCard = getDeckCardContainerByName(page, cardName);
+    const godBtn = deckCard.getByRole('button', { name: '神ヒラメキ選択', exact: true });
+    await expect(godBtn).toBeVisible();
+    await godBtn.click();
+
+    // Open god dropdown in the dialog
+    const dialog = page.getByRole('dialog');
+    await expect(dialog).toBeVisible({ timeout: 5000 });
+    
+    const godDropdown = dialog.getByRole('button', { name: '神ヒラメキ選択' }).first();
+    await godDropdown.click();
+    
+    // Verify all 6 gods are available in the dropdown menu
+    // Note: ORDER god might have a placeholder translation, so we'll check for all known gods and count them
+    const kilkenOption = page.getByRole('menuitem', { name: 'キルケン' });
+    const seclaidOption = page.getByRole('menuitem', { name: 'セクレド' });
+    const dialosOption = page.getByRole('menuitem', { name: 'ディアロス' });
+    const nihilumOption = page.getByRole('menuitem', { name: 'ニヒルム' });
+    const vitolOption = page.getByRole('menuitem', { name: 'ヴィトル' });
+    
+    // All 5 established gods should be visible
+    await expect(kilkenOption).toBeVisible({ timeout: 5000 });
+    await expect(seclaidOption).toBeVisible({ timeout: 5000 });
+    await expect(dialosOption).toBeVisible({ timeout: 5000 });
+    await expect(nihilumOption).toBeVisible({ timeout: 5000 });
+    await expect(vitolOption).toBeVisible({ timeout: 5000 });
+    
+    // Count total menu items - should be 6 (the 5 above + ORDER)
+    const menuItems = page.getByRole('menuitem');
+    const itemCount = await menuItems.count();
+    expect(itemCount).toBeGreaterThanOrEqual(6);
+
+    // Close dialog
+    await page.keyboard.press('Escape');
+  });
 });

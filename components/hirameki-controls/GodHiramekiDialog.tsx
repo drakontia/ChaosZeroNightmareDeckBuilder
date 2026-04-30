@@ -12,7 +12,7 @@ import { CardFrame } from "@/components/CardFrame";
 import { DialogCloseButton } from "@/components/DialogCloseButton";
 import { cn } from "@/lib/utils";
 
-const GOD_TYPES = [GodType.KILKEN, GodType.SECLAID, GodType.DIALOS, GodType.NIHILUM, GodType.VITOL] as const;
+const GOD_TYPES = [GodType.KILKEN, GodType.SECLAID, GodType.DIALOS, GodType.NIHILUM, GodType.VITOL, GodType.ORDER] as const;
 const dialogContentClass = "max-h-[92vh] overflow-hidden w-[90vw] max-w-7xl flex flex-col";
 const previewGridClass = "grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 sm:gap-6";
 
