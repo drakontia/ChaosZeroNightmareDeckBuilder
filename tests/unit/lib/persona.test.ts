@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 
 import { getPersonaCardPresentation, getPersonaNameVariant, normalizePersonaCardEngravings } from '@/lib/persona';
-import { CardStatus } from '@/types';
+import { CardStatus, CardCategory } from '@/types';
 
 describe('getPersonaCardPresentation', () => {
   it('applies a single light engraving to persona cards', () => {
@@ -125,5 +125,126 @@ describe('normalizePersonaCardEngravings', () => {
       { id: 'unknown_id_xyz', alignment: 'light' },
     ]);
     expect(result).toEqual([]);
+  });
+});
+
+describe('getPersonaCardPresentation - image selection by category', () => {
+  it('uses ATTACK image for ATTACK category persona card', () => {
+    const result = getPersonaCardPresentation({
+      baseName: 'ペルソナ',
+      baseImageUrl: '/images/cards/persona.png',
+      baseCost: 1,
+      baseDescription: 'ダメージ250%',
+      baseStatuses: [],
+      category: CardCategory.ATTACK,
+    });
+
+    expect(result.imgUrl).toBe('/images/cards/persona.png');
+  });
+
+  it('uses SKILL image for SKILL category persona card', () => {
+    const result = getPersonaCardPresentation({
+      baseName: 'ペルソナ',
+      baseImageUrl: '/images/cards/persona.png',
+      baseCost: 1,
+      baseDescription: 'ダメージ250%',
+      baseStatuses: [],
+      category: CardCategory.SKILL,
+    });
+
+    expect(result.imgUrl).toBe('/images/cards/persona_skill.png');
+  });
+
+  it('uses light ATTACK image for ATTACK with light engraving', () => {
+    const result = getPersonaCardPresentation({
+      baseName: 'ペルソナ',
+      baseImageUrl: '/images/cards/persona.png',
+      baseCost: 1,
+      baseDescription: 'ダメージ250%',
+      baseStatuses: [],
+      engravings: [{ id: 'lux_haste_discount', alignment: 'light' }],
+      category: CardCategory.ATTACK,
+    });
+
+    expect(result.imgUrl).toBe('/images/cards/lux_persona.png');
+  });
+
+  it('uses light SKILL image for SKILL with light engraving', () => {
+    const result = getPersonaCardPresentation({
+      baseName: 'ペルソナ',
+      baseImageUrl: '/images/cards/persona.png',
+      baseCost: 1,
+      baseDescription: 'ダメージ250%',
+      baseStatuses: [],
+      engravings: [{ id: 'lux_haste_discount', alignment: 'light' }],
+      category: CardCategory.SKILL,
+    });
+
+    expect(result.imgUrl).toBe('/images/cards/lux_persona_skill.png');
+  });
+
+  it('uses dark SKILL image for SKILL with dark engraving', () => {
+    const result = getPersonaCardPresentation({
+      baseName: 'ペルソナ',
+      baseImageUrl: '/images/cards/persona.png',
+      baseCost: 1,
+      baseDescription: 'ダメージ250%',
+      baseStatuses: [],
+      engravings: [{ id: 'umbra_attack_boost', alignment: 'dark' }],
+      category: CardCategory.SKILL,
+    });
+
+    expect(result.imgUrl).toBe('/images/cards/umbra_persona_skill.png');
+  });
+
+  it('uses luster ATTACK image for ATTACK with double light engraving', () => {
+    const result = getPersonaCardPresentation({
+      baseName: 'ペルソナ',
+      baseImageUrl: '/images/cards/persona.png',
+      baseCost: 1,
+      baseDescription: 'ダメージ250%',
+      baseStatuses: [],
+      engravings: [
+        { id: 'lux_haste_discount', alignment: 'light' },
+        { id: 'lux_attunement_discount', alignment: 'light' },
+      ],
+      category: CardCategory.ATTACK,
+    });
+
+    expect(result.imgUrl).toBe('/images/cards/persona_of_luster.png');
+  });
+
+  it('uses luster SKILL image for SKILL with double light engraving', () => {
+    const result = getPersonaCardPresentation({
+      baseName: 'ペルソナ',
+      baseImageUrl: '/images/cards/persona.png',
+      baseCost: 1,
+      baseDescription: 'ダメージ250%',
+      baseStatuses: [],
+      engravings: [
+        { id: 'lux_haste_discount', alignment: 'light' },
+        { id: 'lux_attunement_discount', alignment: 'light' },
+      ],
+      category: CardCategory.SKILL,
+    });
+
+    expect(result.imgUrl).toBe('/images/cards/persona_of_luster_skill.png');
+  });
+
+  it('uses boundary SKILL image for SKILL with mixed light/dark engravings', () => {
+    const result = getPersonaCardPresentation({
+      baseName: 'ペルソナ',
+      baseImageUrl: '/images/cards/persona.png',
+      baseCost: 1,
+      baseDescription: 'ダメージ250%',
+      baseStatuses: [],
+      engravings: [
+        { id: 'lux_haste_discount', alignment: 'light' },
+        { id: 'umbra_attack_boost', alignment: 'dark' },
+      ],
+      category: CardCategory.SKILL,
+    });
+
+    expect(result.imgUrl).toBe('/images/cards/persona_of_boundary_skill.png');
   });
 });
