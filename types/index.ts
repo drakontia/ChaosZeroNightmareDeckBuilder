@@ -133,7 +133,8 @@ export enum GodType {
   SECLAID = "seclaid",     // セクレド
   DIALOS = "dialos",       // ディアロス
   NIHILUM = "nihilum",     // ニヒルム
-  VITOL = "vitol"          // ヴィトル
+  VITOL = "vitol",         // ヴィトル
+  ORDER = "order"          // @?#$
 }
 
 // Single God Hirameki effect option

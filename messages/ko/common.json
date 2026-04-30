@@ -80,14 +80,35 @@
     "psionic": "사이오닉"
   },
   "god": {
-    "kilken": "킬켄",
-    "seclaid": "세클레이드",
     "dialos": "디아로스",
+    "kilken": "킬켄",
     "nihilum": "니힐름",
+    "order": "@?#$",
+    "seclaid": "세클레이드",
     "vitol": "비톨"
   },
   "godEffects": {
     "godhirameki_1": "카드 1장 미기",
+    "godhirameki_10": "항상 약점 공격",
+    "godhirameki_11": "무작위 아군이 대상에 끼워 쏘다.",
+    "godhirameki_12": "자기 카드 1장 뽑기",
+    "godhirameki_13": "이 카드에 개전 부여",
+    "godhirameki_14": "약점 공격: 이 턴, 불굴 2 감소",
+    "godhirameki_15": "이 카드에 분쇄 부여, 적 전체에 손상 3",
+    "godhirameki_16": "이 카드에 보존 부여",
+    "godhirameki_17": "보호막이 없으면 보호막 100% 증가",
+    "godhirameki_18": "이 턴, 첫 번째 카드 사용 시, 2장 뽑기",
+    "godhirameki_19": "HP 50% 미만이면 회복량 100% 증가",
+    "godhirameki_20": "턴 시작 시, 무작위 적에게 표식 2",
+    "godhirameki_21": "스트레스 3 감소",
+    "godhirameki_22": "조율: 다음 턴, 행동력 2 획득",
+    "godhirameki_23": "이 턴, 자아 스킬 비용 1 감소",
+    "godhirameki_24": "턴 시작 시, 비용 0~3 변경",
+    "godhirameki_25": "버린 카드 소멸 카드 2장을 손으로 이동",
+    "godhirameki_26": "회복량 100% 증가, 이 카드에 종극 부여",
+    "godhirameki_27": "격파: 3장 뽑기",
+    "godhirameki_28": "이 카드에 연계 부여",
+    "godhirameki_29": "공용 카드로 취급, 공용 카드 1장 뽑기",
     "godhirameki_2": "행동력 1 획득",
     "godhirameki_3": "이 카드의 비용 1 감소",
     "godhirameki_4": "이 카드의 보호막 30% 증가",
@@ -95,9 +116,7 @@
     "godhirameki_6": "이 카드의 강인도 피해 100% 증가",
     "godhirameki_7": "대상에게 취약 2",
     "godhirameki_8": "대상에게 고통 4",
-    "godhirameki_9": "사기 1, 결의 1",
-    "godhirameki_10": "항상 약점 공격",
-    "godhirameki_11": "무작위 아군이 대상에 끼워 쏘다."
+    "godhirameki_9": "사기 1, 결의 1"
   },
   "category": {
     "attack": "공격",

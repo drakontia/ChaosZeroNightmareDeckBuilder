@@ -80,14 +80,35 @@
     "psionic": "灵能者"
   },
   "god": {
-    "kilken": "基尔肯",
-    "seclaid": "塞克雷德",
     "dialos": "迪阿洛斯",
+    "kilken": "基尔肯",
     "nihilum": "尼希鲁姆",
+    "order": "@?#$",
+    "seclaid": "塞克雷德",
     "vitol": "维托尔"
   },
   "godEffects": {
     "godhirameki_1": "抽1张牌",
+    "godhirameki_10": "总是弱点攻击",
+    "godhirameki_11": "随机一名盟友会夹在目标中间",
+    "godhirameki_12": "抽自己的1张牌",
+    "godhirameki_13": "此牌施加开战",
+    "godhirameki_14": "弱点攻击：本回合，不屈减少2",
+    "godhirameki_15": "此牌施加粉碎，敌方全体施加创伤3",
+    "godhirameki_16": "此牌施加保留",
+    "godhirameki_17": "如果没有护盾，护盾增加100%",
+    "godhirameki_18": "本回合，使用第一张牌时，抽2张牌",
+    "godhirameki_19": "如果生命值低于50%，治疗量增加100%",
+    "godhirameki_20": "回合开始时，向随机敌人施加标记2",
+    "godhirameki_21": "压力减少3",
+    "godhirameki_22": "调律：下一回合，获得2行动点",
+    "godhirameki_23": "本回合，自我技能费用减少1",
+    "godhirameki_24": "回合开始时，费用改为0-3",
+    "godhirameki_25": "将弃牌堆中的消灭牌2张移到手牌",
+    "godhirameki_26": "治疗量增加100%，此牌施加终极",
+    "godhirameki_27": "击破：抽3张牌",
+    "godhirameki_28": "此牌施加连携",
+    "godhirameki_29": "作为共用牌对待，抽1张共用牌",
     "godhirameki_2": "获得1行动点",
     "godhirameki_3": "此牌费用减少1",
     "godhirameki_4": "此牌护盾增加30%",
@@ -95,9 +116,7 @@
     "godhirameki_6": "此牌韧性伤害增加100%",
     "godhirameki_7": "目标施加脆弱2",
     "godhirameki_8": "目标施加痛苦4",
-    "godhirameki_9": "士气1，决心1",
-    "godhirameki_10": "总是弱点攻击",
-    "godhirameki_11": "随机一名盟友会夹在目标中间"
+    "godhirameki_9": "士气1，决心1"
   },
   "category": {
     "attack": "攻击",
