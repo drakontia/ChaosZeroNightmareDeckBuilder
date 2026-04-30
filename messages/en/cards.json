@@ -3047,19 +3047,19 @@
       }
     },
     "binding_doctrine": {
-      "name": "Binding Doctrine",
+      "name": "Doctrine of Binding",
       "descriptions": {
         "0": "Damage 200%; If target is in Resonance state, increase damage by 100%"
       }
     },
     "overflowing_resonance": {
-      "name": "Overflowing Resonance",
+      "name": "Echoes of Abundance",
       "descriptions": {
         "0": "[Quietus] Damage 200%; If discarded, target gains Resonance 2"
       }
     },
     "lost_persona": {
-      "name": "Lost Persona",
+      "name": "Persona of Loss",
       "descriptions": {
         "0": "Draw 1 Attack card; If it is a Quietus card, grant Link"
       }
@@ -3071,13 +3071,13 @@
       }
     },
     "emotional_explosion": {
-      "name": "Emotional Explosion",
+      "name": "Explosion of Emotions",
       "descriptions": {
         "0": "[Lead] If 4 cards are discarded, gain 1 Action Point (once per turn)"
       }
     },
     "true_resonance": {
-      "name": "True Resonance",
+      "name": "Resonance of Truth",
       "descriptions": {
         "0": "[Initiation] When drawing via ability, all enemies gain Resonance 1 (once per turn)"
       }
@@ -3095,19 +3095,19 @@
       }
     },
     "inverted_messiah": {
-      "name": "Inverted Messiah",
+      "name": "The Inverted Messiah",
       "descriptions": {
         "0": "Damage 250%; If Link card is in hand, discard and gain 1 additional hit"
       }
     },
     "nightmare_reverse": {
-      "name": "Nightmare's Reverse",
+      "name": "The Other Side of Nightmares",
       "descriptions": {
         "0": "[Link/Quietus] Draw 2, generate 1 Tragic Memory in deck"
       }
     },
     "rotting_apple_and_girl": {
-      "name": "Rotting Apple and Girl",
+      "name": "A Girl and Her Rotted Apple",
       "descriptions": {
         "0": "Shield 180%; Light Protection 1"
       }
