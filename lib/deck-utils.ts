@@ -100,6 +100,7 @@ export function getCardInfo(
       baseDescription: description,
       baseStatuses: statuses ?? [],
       engravings: card.personaEngravings ?? [],
+      category,
       localization: localization?.persona,
     });
 

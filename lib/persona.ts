@@ -1,4 +1,4 @@
-import { CardStatus, JobType, PersonaEngraving, PersonaEngravingAlignment } from "@/types";
+import { CardStatus, JobType, PersonaEngraving, PersonaEngravingAlignment, CardCategory } from "@/types";
 
 export const VALID_PERSONA_ENGRAVING_ALIGNMENTS: ReadonlySet<PersonaEngravingAlignment> = new Set(["light", "dark"]);
 
@@ -19,6 +19,7 @@ export interface PersonaCardPresentationInput {
   baseDescription: string;
   baseStatuses: CardStatus[];
   engravings?: PersonaEngraving[];
+  category?: CardCategory;
   localization?: PersonaPresentationLocalization;
 }
 
@@ -286,6 +287,16 @@ const PERSONA_IMAGE_BY_SIGNATURE: Record<string, string> = {
   "light-dark": "/images/cards/persona_of_boundary.png",
 };
 
+const PERSONA_SKILL_IMAGE_BY_SIGNATURE: Record<string, string> = {
+  none: "/images/cards/persona_skill.png",
+  light: "/images/cards/lux_persona_skill.png",
+  dark: "/images/cards/umbra_persona_skill.png",
+  "light-light": "/images/cards/persona_of_luster_skill.png",
+  "dark-dark": "/images/cards/persona_of_obsidian_skill.png",
+  "dark-light": "/images/cards/persona_of_boundary_skill.png",
+  "light-dark": "/images/cards/persona_of_boundary_skill.png",
+};
+
 const PERSONA_NAME_BY_VARIANT: Record<PersonaNameVariant, string> = {
   base: "ペルソナ",
   light: "光のペルソナ",
@@ -311,9 +322,10 @@ const getPersonaName = (engravings: PersonaEngraving[], localization?: PersonaPr
   return localization?.getName?.(variant) ?? PERSONA_NAME_BY_VARIANT[variant];
 };
 
-const getPersonaImageUrl = (engravings: PersonaEngraving[], fallback: string): string => {
+const getPersonaImageUrl = (engravings: PersonaEngraving[], fallback: string, category?: CardCategory): string => {
   const signature = engravings.length === 0 ? "none" : engravings.map((engraving) => engraving.alignment).join("-");
-  return PERSONA_IMAGE_BY_SIGNATURE[signature] ?? fallback;
+  const imageMap = category === CardCategory.SKILL ? PERSONA_SKILL_IMAGE_BY_SIGNATURE : PERSONA_IMAGE_BY_SIGNATURE;
+  return imageMap[signature] ?? fallback;
 };
 
 const getPersonaEngravingDefinition = (engraving: PersonaEngraving): PersonaEngravingDefinition | undefined =>
@@ -357,12 +369,13 @@ export function getPersonaCardPresentation({
   baseDescription,
   baseStatuses,
   engravings = [],
+  category,
   localization,
 }: PersonaCardPresentationInput): PersonaCardPresentation {
   if (engravings.length === 0) {
     return {
       name: baseName,
-      imgUrl: baseImageUrl,
+      imgUrl: getPersonaImageUrl([], baseImageUrl, category),
       cost: baseCost,
       description: baseDescription,
       statuses: baseStatuses,
@@ -392,7 +405,7 @@ export function getPersonaCardPresentation({
 
   return {
     name: getPersonaName(engravings, localization),
-    imgUrl: getPersonaImageUrl(engravings, baseImageUrl),
+    imgUrl: getPersonaImageUrl(engravings, baseImageUrl, category),
     cost,
     description: descriptions.join("\n"),
     statuses,
