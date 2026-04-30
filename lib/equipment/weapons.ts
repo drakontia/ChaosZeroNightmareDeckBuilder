@@ -465,46 +465,6 @@ export const WEAPONS: Equipment[] = [
     description: "equipment.weapon.chimeranite.description",
     imgUrl: "/images/equipment/weapons/chimeranite.png"
   },
-  {
-    id: "corrupted_gauntlet",
-    name: "equipment.weapon.corrupted_gauntlet.name",
-    type: EquipmentType.WEAPON,
-    rarity: "equipment.rarity.rare",
-    description: "equipment.weapon.corrupted_gauntlet.description",
-    imgUrl: "/images/equipment/weapons/corrupted_gauntlet.png"
-  },
-  {
-    id: "broken_golden_quill",
-    name: "equipment.weapon.broken_golden_quill.name",
-    type: EquipmentType.WEAPON,
-    rarity: "equipment.rarity.rare",
-    description: "equipment.weapon.broken_golden_quill.description",
-    imgUrl: "/images/equipment/weapons/broken_golden_quill.png"
-  },
-  {
-    id: "cult_conductor_baton",
-    name: "equipment.weapon.cult_conductor_baton.name",
-    type: EquipmentType.WEAPON,
-    rarity: "equipment.rarity.legendary",
-    description: "equipment.weapon.cult_conductor_baton.description",
-    imgUrl: "/images/equipment/weapons/cult_conductor_baton.png"
-  },
-  {
-    id: "key_to_sleep",
-    name: "equipment.weapon.key_to_sleep.name",
-    type: EquipmentType.WEAPON,
-    rarity: "equipment.rarity.legendary",
-    description: "equipment.weapon.key_to_sleep.description",
-    imgUrl: "/images/equipment/weapons/key_to_sleep.png"
-  },
-  {
-    id: "thirsting_left_hand",
-    name: "equipment.weapon.thirsting_left_hand.name",
-    type: EquipmentType.WEAPON,
-    rarity: "equipment.rarity.legendary",
-    description: "equipment.weapon.thirsting_left_hand.description",
-    imgUrl: "/images/equipment/weapons/thirsting_left_hand.png"
-  },
   // Season 2
   {
     id: "millennium_arbor",
@@ -572,11 +532,43 @@ export const WEAPONS: Equipment[] = [
   },
   // Season 3
   {
-    id: "order_baton",
-    name: "equipment.weapon.order_baton.name",
+    id: "corrupted_gauntlet",
+    name: "equipment.weapon.corrupted_gauntlet.name",
     type: EquipmentType.WEAPON,
     rarity: "equipment.rarity.rare",
-    description: "equipment.weapon.order_baton.description",
-    imgUrl: "/images/equipment/weapons/order_baton.png"
+    description: "equipment.weapon.corrupted_gauntlet.description",
+    imgUrl: "/images/equipment/weapons/corrupted_gauntlet.png"
+  },
+  {
+    id: "broken_golden_quill_pen",
+    name: "equipment.weapon.broken_golden_quill_pen.name",
+    type: EquipmentType.WEAPON,
+    rarity: "equipment.rarity.rare",
+    description: "equipment.weapon.broken_golden_quill_pen.description",
+    imgUrl: "/images/equipment/weapons/broken_golden_quill_pen.png"
+  },
+  {
+    id: "orders_baton",
+    name: "equipment.weapon.orders_baton.name",
+    type: EquipmentType.WEAPON,
+    rarity: "equipment.rarity.legendary",
+    description: "equipment.weapon.orders_baton.description",
+    imgUrl: "/images/equipment/weapons/orders_baton.png"
+  },
+  {
+    id: "key_of_sleep",
+    name: "equipment.weapon.key_of_sleep.name",
+    type: EquipmentType.WEAPON,
+    rarity: "equipment.rarity.legendary",
+    description: "equipment.weapon.key_of_sleep.description",
+    imgUrl: "/images/equipment/weapons/key_of_sleep.png"
+  },
+  {
+    id: "yearning_left_hand",
+    name: "equipment.weapon.yearning_left_hand.name",
+    type: EquipmentType.WEAPON,
+    rarity: "equipment.rarity.legendary",
+    description: "equipment.weapon.yearning_left_hand.description",
+    imgUrl: "/images/equipment/weapons/yearning_left_hand.png"
   },
 ];

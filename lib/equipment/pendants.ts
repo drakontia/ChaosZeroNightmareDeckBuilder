@@ -521,54 +521,6 @@ export const PENDANTS: Equipment[] = [
     description: "equipment.pendant.source_of_the_forbidden.description",
     imgUrl: "/images/equipment/pendants/source_of_the_forbidden.png"
   },
-  {
-    id: "scream_gospel",
-    name: "equipment.pendant.scream_gospel.name",
-    type: EquipmentType.PENDANT,
-    rarity: "equipment.rarity.rare",
-    description: "equipment.pendant.scream_gospel.description",
-    imgUrl: "/images/equipment/pendants/scream_gospel.png"
-  },
-  {
-    id: "one_half_wedding_ring",
-    name: "equipment.pendant.one_half_wedding_ring.name",
-    type: EquipmentType.PENDANT,
-    rarity: "equipment.rarity.rare",
-    description: "equipment.pendant.one_half_wedding_ring.description",
-    imgUrl: "/images/equipment/pendants/one_half_wedding_ring.png"
-  },
-  {
-    id: "someones_letter",
-    name: "equipment.pendant.someones_letter.name",
-    type: EquipmentType.PENDANT,
-    rarity: "equipment.rarity.rare",
-    description: "equipment.pendant.someones_letter.description",
-    imgUrl: "/images/equipment/pendants/someones_letter.png"
-  },
-  {
-    id: "heretical_stele",
-    name: "equipment.pendant.heretical_stele.name",
-    type: EquipmentType.PENDANT,
-    rarity: "equipment.rarity.legendary",
-    description: "equipment.pendant.heretical_stele.description",
-    imgUrl: "/images/equipment/pendants/heretical_stele.png"
-  },
-  {
-    id: "singing_lips",
-    name: "equipment.pendant.singing_lips.name",
-    type: EquipmentType.PENDANT,
-    rarity: "equipment.rarity.legendary",
-    description: "equipment.pendant.singing_lips.description",
-    imgUrl: "/images/equipment/pendants/singing_lips.png"
-  },
-  {
-    id: "mural_stripped_eye",
-    name: "equipment.pendant.mural_stripped_eye.name",
-    type: EquipmentType.PENDANT,
-    rarity: "equipment.rarity.mythical",
-    description: "equipment.pendant.mural_stripped_eye.description",
-    imgUrl: "/images/equipment/pendants/mural_stripped_eye.png"
-  },
   // Season 2 Pendants
   {
     id: "plant_doll",
@@ -700,35 +652,27 @@ export const PENDANTS: Equipment[] = [
     imgUrl: "/images/equipment/pendants/a_lonesome_wedding_ring.png"
   },
   {
-    id: "someone_letter",
-    name: "equipment.pendant.someone_letter.name",
+    id: "someones_letter",
+    name: "equipment.pendant.someones_letter.name",
     type: EquipmentType.PENDANT,
     rarity: "equipment.rarity.rare",
-    description: "equipment.pendant.someone_letter.description",
-    imgUrl: "/images/equipment/pendants/someone_letter.png"
+    description: "equipment.pendant.someones_letter.description",
+    imgUrl: "/images/equipment/pendants/someones_letter.png"
   },
   {
-    id: "stele_heresy",
-    name: "equipment.pendant.stele_heresy.name",
+    id: "stele_of_heresy",
+    name: "equipment.pendant.stele_of_heresy.name",
     type: EquipmentType.PENDANT,
     rarity: "equipment.rarity.rare",
-    description: "equipment.pendant.stele_heresy.description",
-    imgUrl: "/images/equipment/pendants/stele_heresy.png"
+    description: "equipment.pendant.stele_of_heresy.description",
+    imgUrl: "/images/equipment/pendants/stele_of_heresy.png"
   },
   {
-    id: "corrupted_gauntlet_pendant",
-    name: "equipment.pendant.corrupted_gauntlet_pendant.name",
+    id: "an_eye_plucked_from_a_mural",
+    name: "equipment.pendant.an_eye_plucked_from_a_mural.name",
     type: EquipmentType.PENDANT,
     rarity: "equipment.rarity.rare",
-    description: "equipment.pendant.corrupted_gauntlet_pendant.description",
-    imgUrl: "/images/equipment/pendants/corrupted_gauntlet_pendant.png"
-  },
-  {
-    id: "yearning_left_hand",
-    name: "equipment.pendant.yearning_left_hand.name",
-    type: EquipmentType.PENDANT,
-    rarity: "equipment.rarity.rare",
-    description: "equipment.pendant.yearning_left_hand.description",
-    imgUrl: "/images/equipment/pendants/yearning_left_hand.png"
+    description: "equipment.pendant.an_eye_plucked_from_a_mural.description",
+    imgUrl: "/images/equipment/pendants/an_eye_plucked_from_a_mural.png"
   },
 ];

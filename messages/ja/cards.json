@@ -3046,19 +3046,19 @@
         "0": "墓地へ移動時、極光の光1"
       }
     },
-    "binding_doctrine": {
+    "doctrine_of_binding": {
       "name": "束縛の教理",
       "descriptions": {
         "0": "ダメージ200%\n対象が共鳴状態なら、ダメージ量100%増加"
       }
     },
-    "overflowing_resonance": {
+    "echoes_of_abundance": {
       "name": "溢れる響き",
       "descriptions": {
         "0": "[安息]ダメージ200%\n破棄された場合、対象に共鳴2"
       }
     },
-    "lost_persona": {
+    "persona_of_loss": {
       "name": "喪失のペルソナ",
       "descriptions": {
         "0": "自分の攻撃カードドロー1\nそのカードが安息カードの場合、連結付与"
@@ -3070,43 +3070,43 @@
         "0": "破棄1\n次に使用する攻撃カードのダメージ量+100%"
       }
     },
-    "emotional_explosion": {
+    "explosion_of_emotions": {
       "name": "感情の爆発",
       "descriptions": {
         "0": "[主導]カードが4枚破棄された場合、アクションポイント1（各ターン1回）"
       }
     },
-    "true_resonance": {
+    "resonance_of_truth": {
       "name": "真実の共鳴",
       "descriptions": {
-        "0": "[開戦]能力でドロー時、敵全体に共鳴1（各ターン1回）"
+        "0": "能力でドロー時、敵全体に共鳴1（各ターン1回）"
       }
     },
     "inner_awakening": {
       "name": "内面の覚醒",
       "descriptions": {
-        "0": "[安息]破棄1\nランダムな攻撃カードを1枚ドロー、そのカードに連結付与"
+        "0": "破棄1\nランダムな攻撃カードを1枚ドロー、そのカードに連結付与"
       }
     },
     "dream_world": {
       "name": "夢の世界",
       "descriptions": {
-        "0": "[安息]ダメージ300%\n破棄された場合、山札からランダムなカードを2枚破棄"
+        "0": "ダメージ300%\n破棄された場合、山札からランダムなカードを2枚破棄"
       }
     },
-    "inverted_messiah": {
+    "the_inverted_messiah": {
       "name": "逆さ吊りのメシア",
       "descriptions": {
         "0": "ダメージ250%\n手札に連結カードがある場合、破棄、ヒット数1回追加"
       }
     },
-    "nightmare_reverse": {
+    "the_other_side_of_nightmares": {
       "name": "悪夢の裏面",
       "descriptions": {
-        "0": "[連結/安息]ドロー2\n山札に悲惨な記憶を1枚生成"
+        "0": "ドロー2\n山札に悲惨な記憶を1枚生成"
       }
     },
-    "rotting_apple_and_girl": {
+    "a_girl_and_her_rotterd_apple": {
       "name": "腐りゆく林檎と少女",
       "descriptions": {
         "0": "シールド180%\n光の加護1"

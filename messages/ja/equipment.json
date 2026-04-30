@@ -338,19 +338,19 @@
                 "name": "浸食されたガントレット",
                 "description": "シールド獲得時、シールド量+15%"
             },
-            "broken_golden_quill": {
+            "broken_golden_quill_pen": {
                 "name": "折れた黄金の羽ペン",
                 "description": "コスト1以下の攻撃カード発動時、敵全体に固定ダメージ80%"
             },
-            "cult_conductor_baton": {
+            "orders_baton": {
                 "name": "教団の指揮棒",
                 "description": "味方が禁忌カード使用時、敵全体に固定ダメージ60%（各ターン2回）"
             },
-            "key_to_sleep": {
+            "key_of_sleep": {
                 "name": "眠りの鍵",
                 "description": "敵が行動不能状態時、攻撃カードのダメージ量30%増加"
             },
-            "thirsting_left_hand": {
+            "yearning_left_hand": {
                 "name": "渇望する左手",
                 "description": "HP回復時、シールド量30%として追加獲得"
             }
@@ -573,11 +573,11 @@
                 "name": "勇猛のブレスレット",
                 "description": "味方の闘技場カードダメージ量20%増加\n戦闘開始時、忘れ去られた剣1枚生成"
             },
-            "mind_cloak": {
+            "cloak_of_the_heart": {
                 "name": "心の外套",
                 "description": "防御力+20%。ターン開始時、精神ダメージ1減少"
             },
-            "emotion_mask": {
+            "mask_of_emotions": {
                 "name": "感情の仮面",
                 "description": "状態異常、呪いの効果1つが無効化される（各ターン1回）"
             },
@@ -585,7 +585,7 @@
                 "name": "悪夢のヘアピン",
                 "description": "敵全体に夢見状態が付与されている時、防御力+15%"
             },
-            "incomprehensible_stele": {
+            "incomprehensible_holy_object": {
                 "name": "理解できない神物",
                 "description": "能力でカードドロー時、そのカードコスト1減少（各ターン2回）"
             },
@@ -593,7 +593,7 @@
                 "name": "華奢な鎖骨",
                 "description": "シールド獲得時、最大HP+5%（最大3回）"
             },
-            "shattered_angels_wing": {
+            "crushed_angel_feather": {
                 "name": "砕かれた天使の羽",
                 "description": "被ダメージ時、1ターンの間、次のターン開始時に固定シールド120%"
             }
@@ -912,11 +912,11 @@
                 "name": "古びた栄光の充電器",
                 "description": "アクションポイント1以上のままターンを終了すると、次のターン開始時にチャージ一撃1枚生成"
             },
-            "scream_gospel": {
+            "gospel_of_lament": {
                 "name": "悲鳴の福音書",
                 "description": "敵全体が弱体化、脆弱状態時、ダメージ量+35%"
             },
-            "one_half_wedding_ring": {
+            "a_lonesome_wedding_ring": {
                 "name": "片方だけの結婚指輪",
                 "description": "味方が2人以上戦闘中時、ダメージ量+20%"
             },
@@ -924,15 +924,15 @@
                 "name": "誰かの手紙",
                 "description": "カード発動時、回避の確率+10%"
             },
-            "heretical_stele": {
+            "stele_of_heresy": {
                 "name": "異端の石碑",
                 "description": "敵が異常状態の場合、シールド獲得量+25%"
             },
-            "singing_lips": {
+            "hymn_singing_lips": {
                 "name": "聖歌を歌う唇",
                 "description": "治癒カード発動時、敵全体に固定ダメージ100%（各ターン1回）"
             },
-            "mural_stripped_eye": {
+            "an_eye_plucked_from_a_mural": {
                 "name": "壁画から剥ぎ取られた瞳",
                 "description": "ターン開始時、敵全体に狂気1。敵全体が狂気状態時、ダメージ量+50%"
             }

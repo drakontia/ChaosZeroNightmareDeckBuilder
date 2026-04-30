@@ -361,54 +361,6 @@ export const ARMORS: Equipment[] = [
     description: "equipment.armor.rocket_adorned_cape.description",
     imgUrl: "/images/equipment/armors/rocket_adorned_cape.png"
   },
-  {
-    id: "mind_cloak",
-    name: "equipment.armor.mind_cloak.name",
-    type: EquipmentType.ARMOR,
-    rarity: "equipment.rarity.rare",
-    description: "equipment.armor.mind_cloak.description",
-    imgUrl: "/images/equipment/armors/mind_cloak.png"
-  },
-  {
-    id: "emotion_mask",
-    name: "equipment.armor.emotion_mask.name",
-    type: EquipmentType.ARMOR,
-    rarity: "equipment.rarity.legendary",
-    description: "equipment.armor.emotion_mask.description",
-    imgUrl: "/images/equipment/armors/emotion_mask.png"
-  },
-  {
-    id: "nightmare_hairpin",
-    name: "equipment.armor.nightmare_hairpin.name",
-    type: EquipmentType.ARMOR,
-    rarity: "equipment.rarity.legendary",
-    description: "equipment.armor.nightmare_hairpin.description",
-    imgUrl: "/images/equipment/armors/nightmare_hairpin.png"
-  },
-  {
-    id: "incomprehensible_stele",
-    name: "equipment.armor.incomprehensible_stele.name",
-    type: EquipmentType.ARMOR,
-    rarity: "equipment.rarity.legendary",
-    description: "equipment.armor.incomprehensible_stele.description",
-    imgUrl: "/images/equipment/armors/incomprehensible_stele.png"
-  },
-  {
-    id: "delicate_collarbone",
-    name: "equipment.armor.delicate_collarbone.name",
-    type: EquipmentType.ARMOR,
-    rarity: "equipment.rarity.legendary",
-    description: "equipment.armor.delicate_collarbone.description",
-    imgUrl: "/images/equipment/armors/delicate_collarbone.png"
-  },
-  {
-    id: "shattered_angels_wing",
-    name: "equipment.armor.shattered_angels_wing.name",
-    type: EquipmentType.ARMOR,
-    rarity: "equipment.rarity.legendary",
-    description: "equipment.armor.shattered_angels_wing.description",
-    imgUrl: "/images/equipment/armors/shattered_angels_wing.png"
-  },
   // Season 2 Armors
   {
     id: "vine_camouflage",
@@ -508,6 +460,14 @@ export const ARMORS: Equipment[] = [
     imgUrl: "/images/equipment/armors/crushed_angel_feather.png"
   },
   {
+    id: "nightmare_hairpin",
+    name: "equipment.armor.nightmare_hairpin.name",
+    type: EquipmentType.ARMOR,
+    rarity: "equipment.rarity.rare",
+    description: "equipment.armor.nightmare_hairpin.description",
+    imgUrl: "/images/equipment/armors/nightmare_hairpin.png"
+  },
+  {
     id: "incomprehensible_holy_object",
     name: "equipment.armor.incomprehensible_holy_object.name",
     type: EquipmentType.ARMOR,
@@ -516,19 +476,11 @@ export const ARMORS: Equipment[] = [
     imgUrl: "/images/equipment/armors/incomprehensible_holy_object.png"
   },
   {
-    id: "delicate_collarbone_new",
-    name: "equipment.armor.delicate_collarbone_new.name",
+    id: "delicate_collarbone",
+    name: "equipment.armor.delicate_collarbone.name",
     type: EquipmentType.ARMOR,
     rarity: "equipment.rarity.rare",
-    description: "equipment.armor.delicate_collarbone_new.description",
+    description: "equipment.armor.delicate_collarbone.description",
     imgUrl: "/images/equipment/armors/delicate_collarbone_new.png"
-  },
-  {
-    id: "stele_of_heresy",
-    name: "equipment.armor.stele_of_heresy.name",
-    type: EquipmentType.ARMOR,
-    rarity: "equipment.rarity.rare",
-    description: "equipment.armor.stele_of_heresy.description",
-    imgUrl: "/images/equipment/armors/stele_of_heresy.png"
   },
 ];
