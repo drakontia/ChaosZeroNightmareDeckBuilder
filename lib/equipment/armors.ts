@@ -482,4 +482,53 @@ export const ARMORS: Equipment[] = [
     description: "equipment.armor.bangle_of_valor.description",
     imgUrl: "/images/equipment/armors/bangle_of_valor.png"
   },
+  // Season 3
+  {
+    id: "cloak_of_the_heart",
+    name: "equipment.armor.cloak_of_the_heart.name",
+    type: EquipmentType.ARMOR,
+    rarity: "equipment.rarity.rare",
+    description: "equipment.armor.cloak_of_the_heart.description",
+    imgUrl: "/images/equipment/armors/cloak_of_the_heart.png"
+  },
+  {
+    id: "mask_of_emotions",
+    name: "equipment.armor.mask_of_emotions.name",
+    type: EquipmentType.ARMOR,
+    rarity: "equipment.rarity.rare",
+    description: "equipment.armor.mask_of_emotions.description",
+    imgUrl: "/images/equipment/armors/mask_of_emotions.png"
+  },
+  {
+    id: "crushed_angel_feather",
+    name: "equipment.armor.crushed_angel_feather.name",
+    type: EquipmentType.ARMOR,
+    rarity: "equipment.rarity.rare",
+    description: "equipment.armor.crushed_angel_feather.description",
+    imgUrl: "/images/equipment/armors/crushed_angel_feather.png"
+  },
+  {
+    id: "incomprehensible_holy_object",
+    name: "equipment.armor.incomprehensible_holy_object.name",
+    type: EquipmentType.ARMOR,
+    rarity: "equipment.rarity.rare",
+    description: "equipment.armor.incomprehensible_holy_object.description",
+    imgUrl: "/images/equipment/armors/incomprehensible_holy_object.png"
+  },
+  {
+    id: "delicate_collarbone_new",
+    name: "equipment.armor.delicate_collarbone_new.name",
+    type: EquipmentType.ARMOR,
+    rarity: "equipment.rarity.rare",
+    description: "equipment.armor.delicate_collarbone_new.description",
+    imgUrl: "/images/equipment/armors/delicate_collarbone_new.png"
+  },
+  {
+    id: "stele_of_heresy",
+    name: "equipment.armor.stele_of_heresy.name",
+    type: EquipmentType.ARMOR,
+    rarity: "equipment.rarity.rare",
+    description: "equipment.armor.stele_of_heresy.description",
+    imgUrl: "/images/equipment/armors/stele_of_heresy.png"
+  },
 ];

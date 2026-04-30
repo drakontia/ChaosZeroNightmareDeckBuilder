@@ -570,4 +570,13 @@ export const WEAPONS: Equipment[] = [
     description: "equipment.weapon.harpoon_case_of_broken_resolve.description",
     imgUrl: "/images/equipment/weapons/harpoon_case_of_broken_resolve.png"
   },
+  // Season 3
+  {
+    id: "order_baton",
+    name: "equipment.weapon.order_baton.name",
+    type: EquipmentType.WEAPON,
+    rarity: "equipment.rarity.rare",
+    description: "equipment.weapon.order_baton.description",
+    imgUrl: "/images/equipment/weapons/order_baton.png"
+  },
 ];
