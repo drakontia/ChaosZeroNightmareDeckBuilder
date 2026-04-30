@@ -125,7 +125,7 @@ export const CHARACTER_CARDS: CznCard[] = [
     statuses: [CardStatus.UNIQUE, CardStatus.LINKED, CardStatus.RETRIEVE3],
     imgUrl: "/images/cards/heidemarie_hirameki_4.png",
     hiramekiVariations: [ // Fallback descriptions
-      { level: 0, cost: 0, description: "墓地へ移動時、極光の光1" }
+      { level: 0, cost: "unusable", description: "墓地へ移動時、極光の光1" }
     ]
   },
   // Rita's starting cards

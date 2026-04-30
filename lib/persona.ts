@@ -15,7 +15,7 @@ export interface PersonaEngravingDefinition {
 export interface PersonaCardPresentationInput {
   baseName: string;
   baseImageUrl: string;
-  baseCost: number | "X";
+  baseCost: number | "X" | "unusable";
   baseDescription: string;
   baseStatuses: CardStatus[];
   engravings?: PersonaEngraving[];
@@ -25,7 +25,7 @@ export interface PersonaCardPresentationInput {
 export interface PersonaCardPresentation {
   name: string;
   imgUrl: string;
-  cost: number | "X";
+  cost: number | "X" | "unusable";
   description: string;
   statuses: CardStatus[];
 }
