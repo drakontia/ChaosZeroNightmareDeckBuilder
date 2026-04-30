@@ -743,6 +743,78 @@
       "chimeranite": {
         "description": "治癒または回復時、回復量の50％分、敵全体に固定ダメージ",
         "name": "永劫の枝"
+      },
+      "corrupted_gauntlet": {
+        "description": "护盾获得时，护盾量+15%",
+        "name": "侵蚀的拳套"
+      },
+      "broken_golden_quill": {
+        "description": "费用1以下的攻击牌使用时，敌全体固定伤害80%",
+        "name": "折断的黄金羽笔"
+      },
+      "cult_conductor_baton": {
+        "description": "味方が禁忌カード使用時、敵全体に固定ダメージ60%（各ターン2回）",
+        "name": "教团的指挥棒"
+      },
+      "key_to_sleep": {
+        "description": "敌处于行动不能状态时，攻击牌伤害量30%增加",
+        "name": "睡眠的钥匙"
+      },
+      "thirsting_left_hand": {
+        "description": "HP回复时，护盾量30%作为追加获得",
+        "name": "渴望的左手"
+      }
+    },
+    "armor": {
+      "mind_cloak": {
+        "description": "防御力+20%。回合开始时，精神伤害1减少",
+        "name": "心的外套"
+      },
+      "emotion_mask": {
+        "description": "状态异常、诅咒的效果1个无效化（各回合1次）",
+        "name": "感情的假面"
+      },
+      "nightmare_hairpin": {
+        "description": "敌全体处于梦见状态时，防御力+15%",
+        "name": "噩梦的发簪"
+      },
+      "incomprehensible_stele": {
+        "description": "能力抽取牌时，该牌费用1减少（各回合2次）",
+        "name": "理解不了的神物"
+      },
+      "delicate_collarbone": {
+        "description": "护盾获得时，最大HP+5%（最多3次）",
+        "name": "纤细的锁骨"
+      },
+      "shattered_angels_wing": {
+        "description": "受伤害时，1回合间，下个回合开始时固定护盾120%",
+        "name": "碎裂的天使之翼"
+      }
+    },
+    "pendant": {
+      "scream_gospel": {
+        "description": "敌全体处于弱体化、脆弱状态时，伤害量+35%",
+        "name": "尖叫的福音书"
+      },
+      "one_half_wedding_ring": {
+        "description": "味方が2人以上戦闘中時、ダメージ量+20%",
+        "name": "片方的结婚戒指"
+      },
+      "someones_letter": {
+        "description": "牌发动时，回避的概率+10%",
+        "name": "某人的信"
+      },
+      "heretical_stele": {
+        "description": "敌处于异常状态的场合，护盾获得量+25%",
+        "name": "异端的石碑"
+      },
+      "singing_lips": {
+        "description": "治癒牌发动时，敌全体固定伤害100%（各回合1次）",
+        "name": "圣歌唱着的嘴唇"
+      },
+      "mural_stripped_eye": {
+        "description": "回合开始时，敌全体获得疯狂1。敌全体处于疯狂状态时，伤害量+50%",
+        "name": "壁画剥夺的眼睛"
       }
     }
   }
