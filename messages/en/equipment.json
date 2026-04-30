@@ -664,6 +664,14 @@
       "yearning_left_hand": {
         "description": "When healing, gain 30% of healing amount as shield",
         "name": "Yearning Left Hand"
+      },
+      "gospel_of_lament": {
+        "description": "When destroying cards, deal 100% fixed damage to a random enemy",
+        "name": "Gospel of Lament"
+      },
+      "hymn_singing_lips": {
+        "description": "+20% Damage to Vulnerable enemies",
+        "name": "Hymn-Singing Lips"
       }
     },
     "weapon": {
@@ -955,14 +963,6 @@
       "order_baton": {
         "description": "Deal 60% fixed damage to all enemies when allies use forbidden cards (once per turn x2)",
         "name": "Order's Baton"
-      },
-      "gospel_of_lament": {
-        "description": "When destroying cards, deal 100% fixed damage to a random enemy",
-        "name": "Gospel of Lament"
-      },
-      "hymn_singing_lips": {
-        "description": "+20% Damage to Vulnerable enemies",
-        "name": "Hymn-Singing Lips"
       }
     }
   }
