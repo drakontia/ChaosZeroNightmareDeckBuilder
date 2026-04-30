@@ -281,6 +281,30 @@
       "shield_of_ashen_sacrifice": {
           "name": "色あせた犠牲の盾",
           "description": "ダメージを完全に防ぐと、次のターン開始時、盾爆発1枚生成"
+      },
+      "mind_cloak": {
+        "description": "+20% Defense. Reduce Mental Damage by 1 at the start of the turn",
+        "name": "Mind Cloak"
+      },
+      "emotion_mask": {
+        "description": "1 status ailment or curse effect is negated (once per turn)",
+        "name": "Emotion Mask"
+      },
+      "nightmare_hairpin": {
+        "description": "+15% Defense when all enemies have the dream status",
+        "name": "Nightmare Hairpin"
+      },
+      "incomprehensible_stele": {
+        "description": "Card cost -1 when drawing with ability (once per turn x2)",
+        "name": "Incomprehensible Stele"
+      },
+      "delicate_collarbone": {
+        "description": "Max HP +5% when gaining shield (max 3 times)",
+        "name": "Delicate Collarbone"
+      },
+      "shattered_angels_wing": {
+        "description": "When taking damage, fixed shield 120% at the start of the next turn",
+        "name": "Shattered Angel's Wing"
       }
     },
     "pendant": {
@@ -831,6 +855,26 @@
       "chimeranite": {
         "description": "When drawing with abilities, increase the damage of your attack cards by 35% for 1 turn (once per turn)",
         "name": "Chimeranite"
+      },
+      "corrupted_gauntlet": {
+        "description": "+15% Shield Acquisition when gaining shield",
+        "name": "Corrupted Gauntlet"
+      },
+      "broken_golden_quill": {
+        "description": "Deal 80% fixed damage to all enemies when using Attack Cards with cost 1 or less",
+        "name": "Broken Golden Quill"
+      },
+      "cult_conductor_baton": {
+        "description": "Deal 60% fixed damage to all enemies when allies use forbidden cards (once per turn x2)",
+        "name": "Cult Conductor's Baton"
+      },
+      "key_to_sleep": {
+        "description": "+30% Attack card damage when enemies are incapacitated",
+        "name": "Key to Sleep"
+      },
+      "thirsting_left_hand": {
+        "description": "When healing, gain 30% of healing amount as shield",
+        "name": "Thirsting Left Hand"
       },
       "millennium_arbor": {
           "name": "千年木",

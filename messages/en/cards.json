@@ -3045,6 +3045,78 @@
       "descriptions": {
         "0": "When moved to Graveyard: Radiant Light 1"
       }
+    },
+    "binding_doctrine": {
+      "name": "Binding Doctrine",
+      "descriptions": {
+        "0": "Damage 200%; If target is in Resonance state, increase damage by 100%"
+      }
+    },
+    "overflowing_resonance": {
+      "name": "Overflowing Resonance",
+      "descriptions": {
+        "0": "[Quietus] Damage 200%; If discarded, target gains Resonance 2"
+      }
+    },
+    "lost_persona": {
+      "name": "Lost Persona",
+      "descriptions": {
+        "0": "Draw 1 Attack card; If it is a Quietus card, grant Link"
+      }
+    },
+    "whispers_of_madness": {
+      "name": "Whispers of Madness",
+      "descriptions": {
+        "0": "Discard 1; Next Attack card deals +100% damage"
+      }
+    },
+    "emotional_explosion": {
+      "name": "Emotional Explosion",
+      "descriptions": {
+        "0": "[Lead] If 4 cards are discarded, gain 1 Action Point (once per turn)"
+      }
+    },
+    "true_resonance": {
+      "name": "True Resonance",
+      "descriptions": {
+        "0": "[Initiation] When drawing via ability, all enemies gain Resonance 1 (once per turn)"
+      }
+    },
+    "inner_awakening": {
+      "name": "Inner Awakening",
+      "descriptions": {
+        "0": "[Quietus] Discard 1, draw 1 random Attack card with Link"
+      }
+    },
+    "dream_world": {
+      "name": "Dream World",
+      "descriptions": {
+        "0": "[Quietus] Damage 300%; If discarded, discard 2 random cards from deck"
+      }
+    },
+    "inverted_messiah": {
+      "name": "Inverted Messiah",
+      "descriptions": {
+        "0": "Damage 250%; If Link card is in hand, discard and gain 1 additional hit"
+      }
+    },
+    "nightmare_reverse": {
+      "name": "Nightmare's Reverse",
+      "descriptions": {
+        "0": "[Link/Quietus] Draw 2, generate 1 Tragic Memory in deck"
+      }
+    },
+    "rotting_apple_and_girl": {
+      "name": "Rotting Apple and Girl",
+      "descriptions": {
+        "0": "Shield 180%; Light Protection 1"
+      }
+    },
+    "faceless_woman": {
+      "name": "Faceless Woman",
+      "descriptions": {
+        "0": "When using Link card, draw 1 (once per turn)"
+      }
     }
   }
 }

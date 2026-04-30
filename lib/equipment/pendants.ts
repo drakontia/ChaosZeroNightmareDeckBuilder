@@ -521,6 +521,54 @@ export const PENDANTS: Equipment[] = [
     description: "equipment.pendant.source_of_the_forbidden.description",
     imgUrl: "/images/equipment/pendants/source_of_the_forbidden.png"
   },
+  {
+    id: "scream_gospel",
+    name: "equipment.pendant.scream_gospel.name",
+    type: EquipmentType.PENDANT,
+    rarity: "equipment.rarity.rare",
+    description: "equipment.pendant.scream_gospel.description",
+    imgUrl: "/images/equipment/pendants/scream_gospel.png"
+  },
+  {
+    id: "one_half_wedding_ring",
+    name: "equipment.pendant.one_half_wedding_ring.name",
+    type: EquipmentType.PENDANT,
+    rarity: "equipment.rarity.rare",
+    description: "equipment.pendant.one_half_wedding_ring.description",
+    imgUrl: "/images/equipment/pendants/one_half_wedding_ring.png"
+  },
+  {
+    id: "someones_letter",
+    name: "equipment.pendant.someones_letter.name",
+    type: EquipmentType.PENDANT,
+    rarity: "equipment.rarity.rare",
+    description: "equipment.pendant.someones_letter.description",
+    imgUrl: "/images/equipment/pendants/someones_letter.png"
+  },
+  {
+    id: "heretical_stele",
+    name: "equipment.pendant.heretical_stele.name",
+    type: EquipmentType.PENDANT,
+    rarity: "equipment.rarity.legendary",
+    description: "equipment.pendant.heretical_stele.description",
+    imgUrl: "/images/equipment/pendants/heretical_stele.png"
+  },
+  {
+    id: "singing_lips",
+    name: "equipment.pendant.singing_lips.name",
+    type: EquipmentType.PENDANT,
+    rarity: "equipment.rarity.legendary",
+    description: "equipment.pendant.singing_lips.description",
+    imgUrl: "/images/equipment/pendants/singing_lips.png"
+  },
+  {
+    id: "mural_stripped_eye",
+    name: "equipment.pendant.mural_stripped_eye.name",
+    type: EquipmentType.PENDANT,
+    rarity: "equipment.rarity.mythical",
+    description: "equipment.pendant.mural_stripped_eye.description",
+    imgUrl: "/images/equipment/pendants/mural_stripped_eye.png"
+  },
   // Season 2 Pendants
   {
     id: "plant_doll",

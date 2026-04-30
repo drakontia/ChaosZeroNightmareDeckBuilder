@@ -357,6 +357,152 @@ export const FORBIDDEN_CARDS: CznCard[] = [
       { level: 0, cost: 2, description: "コストが1以上のカード\nダメージ量40%増加\n攻撃カードコスト1増加" }
     ]
   },
+  // Season 3
+  {
+    id: "binding_doctrine",
+    name: "束縛の教理",
+    type: CardType.FORBIDDEN,
+    category: CardCategory.ATTACK,
+    statuses: [],
+    allowedJobs: [JobType.STRIKER, JobType.VANGUARD],
+    imgUrl: "/images/cards/binding_doctrine.png",
+    hiramekiVariations: [
+      { level: 0, cost: 2, description: "ダメージ200%\n対象が共鳴状態なら、ダメージ量100%増加" }
+    ]
+  },
+  {
+    id: "overflowing_resonance",
+    name: "溢れる響き",
+    type: CardType.FORBIDDEN,
+    category: CardCategory.ATTACK,
+    statuses: [CardStatus.QUIETUS],
+    allowedJobs: [JobType.RANGER, JobType.HUNTER],
+    imgUrl: "/images/cards/overflowing_resonance.png",
+    hiramekiVariations: [
+      { level: 0, cost: 2, description: "[安息]ダメージ200%\n破棄された場合、対象に共鳴2" }
+    ]
+  },
+  {
+    id: "lost_persona",
+    name: "喪失のペルソナ",
+    type: CardType.FORBIDDEN,
+    category: CardCategory.SKILL,
+    statuses: [],
+    allowedJobs: [JobType.STRIKER, JobType.VANGUARD],
+    imgUrl: "/images/cards/lost_persona.png",
+    hiramekiVariations: [
+      { level: 0, cost: 1, description: "自分の攻撃カードドロー1\nそのカードが安息カードの場合、連結付与" }
+    ]
+  },
+  {
+    id: "whispers_of_madness",
+    name: "狂気のささやき",
+    type: CardType.FORBIDDEN,
+    category: CardCategory.SKILL,
+    statuses: [],
+    allowedJobs: [JobType.RANGER, JobType.HUNTER],
+    imgUrl: "/images/cards/whispers_of_madness.png",
+    hiramekiVariations: [
+      { level: 0, cost: 1, description: "破棄1\n次に使用する攻撃カードのダメージ量+100%" }
+    ]
+  },
+  {
+    id: "emotional_explosion",
+    name: "感情の爆発",
+    type: CardType.FORBIDDEN,
+    category: CardCategory.UPGRADE,
+    statuses: [CardStatus.LEAD],
+    allowedJobs: [JobType.PSIONIC, JobType.CONTROLLER],
+    imgUrl: "/images/cards/emotional_explosion.png",
+    hiramekiVariations: [
+      { level: 0, cost: 2, description: "[主導]カードが4枚破棄された場合、アクションポイント1（各ターン1回）" }
+    ]
+  },
+  {
+    id: "true_resonance",
+    name: "真実の共鳴",
+    type: CardType.FORBIDDEN,
+    category: CardCategory.UPGRADE,
+    statuses: [CardStatus.INITIATION],
+    allowedJobs: "all",
+    imgUrl: "/images/cards/true_resonance.png",
+    hiramekiVariations: [
+      { level: 0, cost: 1, description: "[開戦]能力でドロー時、敵全体に共鳴1（各ターン1回）" }
+    ]
+  },
+  {
+    id: "inner_awakening",
+    name: "内面の覚醒",
+    type: CardType.FORBIDDEN,
+    category: CardCategory.SKILL,
+    statuses: [CardStatus.QUIETUS],
+    allowedJobs: [JobType.PSIONIC, JobType.CONTROLLER],
+    imgUrl: "/images/cards/inner_awakening.png",
+    hiramekiVariations: [
+      { level: 0, cost: 1, description: "[安息]破棄1\nランダムな攻撃カードを1枚ドロー、そのカードに連結付与" }
+    ]
+  },
+  {
+    id: "dream_world",
+    name: "夢の世界",
+    type: CardType.FORBIDDEN,
+    category: CardCategory.ATTACK,
+    statuses: [CardStatus.QUIETUS],
+    allowedJobs: "all",
+    imgUrl: "/images/cards/dream_world.png",
+    hiramekiVariations: [
+      { level: 0, cost: 3, description: "[安息]ダメージ300%\n破棄された場合、山札からランダムなカードを2枚破棄" }
+    ]
+  },
+  {
+    id: "inverted_messiah",
+    name: "逆さ吊りのメシア",
+    type: CardType.FORBIDDEN,
+    category: CardCategory.ATTACK,
+    statuses: [],
+    allowedJobs: "all",
+    imgUrl: "/images/cards/inverted_messiah.png",
+    hiramekiVariations: [
+      { level: 0, cost: 2, description: "ダメージ250%\n手札に連結カードがある場合、破棄、ヒット数1回追加" }
+    ]
+  },
+  {
+    id: "nightmare_reverse",
+    name: "悪夢の裏面",
+    type: CardType.FORBIDDEN,
+    category: CardCategory.SKILL,
+    statuses: [CardStatus.LINKED, CardStatus.QUIETUS],
+    allowedJobs: "all",
+    imgUrl: "/images/cards/nightmare_reverse.png",
+    hiramekiVariations: [
+      { level: 0, cost: 1, description: "[連結/安息]ドロー2\n山札に悲惨な記憶を1枚生成" }
+    ]
+  },
+  {
+    id: "rotting_apple_and_girl",
+    name: "腐りゆく林檎と少女",
+    type: CardType.FORBIDDEN,
+    category: CardCategory.SKILL,
+    statuses: [],
+    allowedJobs: "all",
+    imgUrl: "/images/cards/rotting_apple_and_girl.png",
+    hiramekiVariations: [
+      { level: 0, cost: 1, description: "シールド180%\n光の加護1" }
+    ]
+  },
+  {
+    id: "faceless_woman",
+    name: "顔のない女性",
+    type: CardType.FORBIDDEN,
+    category: CardCategory.UPGRADE,
+    statuses: [],
+    allowedJobs: "all",
+    imgUrl: "/images/cards/faceless_woman.png",
+    hiramekiVariations: [
+      { level: 0, cost: 1, description: "連結カード使用時、ドロー1（各ターン1回）" }
+    ]
+  },
+  // Personas
   {
     id: "persona_01",
     name: "ペルソナ",
