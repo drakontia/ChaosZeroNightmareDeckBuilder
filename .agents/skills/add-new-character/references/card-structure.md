@@ -30,24 +30,33 @@ interface HiramekiVariation {
 }
 ```
 
-## CardStatus 一覧（主要なもの）
+## CardStatus 一覧
 
-> 最新の全一覧は `types/index.ts` の `CardStatus` enum を参照。
+> **必ず `types/index.ts` の `CardStatus` enum を正とし、ここは参照のみに使用してください。**
 
 | 値 | 意味 |
 |----|------|
-| `BRAVE` | 勇気 |
-| `AURA` | オーラ |
-| `REGEN` | 再生 |
-| `BARRIER` | バリア |
-| `QUICK` | 速攻 |
-| `IMMUNE` | 耐性 |
-| `BURN` | 炎上 |
-| `FREEZE` | 凍結 |
-| `STUN` | 気絶 |
-| `SEAL` | 封印 |
-| `WEAK` | 弱体 |
-| `COUNTER` | カウンター |
+| `INITIATION` | 開戦 |
+| `RETAIN` | 保存 |
+| `CELESTIAL` | 天上 |
+| `COMBO` | 連携 |
+| `EXHAUST` | 消滅 |
+| `LEAD` | 主導 |
+| `UNIQUE` | 唯一 |
+| `HASTE` | 迅速 |
+| `FINALE` | 終極 |
+| `RETRIEVE` | 回収 |
+| `EPHEMERAL` | 蒸発 |
+| `BULLET` | 弾丸 |
+| `QUIETUS` | 安息 |
+| `WEAKNESS_ATTACK` | 弱点攻撃 |
+| `PULVERIZE` | 粉砕 |
+| `BIND` | 結束 |
+| `IGNITION` | 点火 |
+| `COPIED` | コピー済み |
+| `FORM_UPGRADE` | 形状強化 |
+| `LINKED` | 連結 |
+| `BLESSING` | 祝福 |
 
 ## カード ID 命名規則
 
