@@ -1,5 +1,73 @@
 {
   "cards": {
+    "adelheit_starting_1": {
+      "name": "Everyone Gather!",
+      "descriptions": {
+        "0": "Defense-based Damage 100%"
+      }
+    },
+    "adelheit_starting_2": {
+      "name": "Fairy's Blessing",
+      "descriptions": {
+        "0": "Shield 100%"
+      }
+    },
+    "adelheit_starting_3": {
+      "name": "Fairy's Blessing",
+      "descriptions": {
+        "0": "Shield 100%"
+      }
+    },
+    "adelheit_starting_4": {
+      "name": "Once Upon a Time",
+      "descriptions": {
+        "0": "Grant Blessing to 2 random cards in the deck\nDraw 1 of those cards",
+        "1": "Grant Blessing to 3 random cards in the deck\nDraw 1 of those cards",
+        "2": "Select and draw 1 card from the deck\nGrant Blessing to that card",
+        "3": "Discard 1\nGrant Blessing to 3 random cards of the fighter holding it",
+        "4": "Draw X cards\nGrant Blessing to those cards",
+        "5": "When a card is created, grant Blessing (up to 5 times per turn)"
+      }
+    },
+    "adelheit_hirameki_1": {
+      "name": "Protect Us",
+      "descriptions": {
+        "0": "When the next 2 Blessed cards are activated\nDraw 1 Blessed card",
+        "1": "When the next 3 Blessed cards are activated\nDraw 1 Blessed card",
+        "2": "For the next 2 times\nIf hand has 0 cards, draw 1 Blessed card",
+        "3": "Draw 3\nChange that card's cost to 0~2",
+        "4": "Draw 1\nIf that card is a Blessed card, draw 1 more",
+        "5": "Draw 2 of your Blessed cards\nFor 1 turn, increase damage and shield gain of those cards by 60%"
+      }
+    },
+    "adelheit_hirameki_2": {
+      "name": "Friends in the Fairy Tale",
+      "descriptions": {
+        "0": "Choose 1 card: Doggy or Teddy Bear\nCreate and add it",
+        "1": "Create 1 Doggy\nFor each Blessed card you hold, Doggy's damage +20% (max 15 cards)",
+        "2": "Create 1 Teddy Bear\nWhen you take damage, move Teddy Bear to your hand (once per turn)",
+        "3": "Create 4 Doggy (Pack) in the deck",
+        "4": "Create 1 Teddy Bear\nWhen Teddy Bear is used, Retaliation 1\nFor 1 turn, save Retaliation",
+        "5": "Create 1 Doggy (Transformed)"
+      }
+    },
+    "adelheit_hirameki_3": {
+      "name": "Truth of the Story",
+      "descriptions": {
+        "0": "Defense-based Damage 200%\nFor 1 turn, target takes +100% more damage",
+        "1": "Defense-based Damage 300%\nWeaken 2\nFor 1 turn, target takes +100% more damage",
+        "2": "Defense-based Damage 200%\nMove 2 Blessed cards from discard pile to hand",
+        "3": "Defense-based Damage 200%\nFor 1 turn, Doggy and Teddy Bear deal +100% more damage and gain +100% more shield",
+        "4": "Defense-based Damage 400%\nDamage increases by 30% for each Blessed card in hand",
+        "5": "Defense-based Damage 300%\nAction Count +4"
+      }
+    },
+    "adelheit_hirameki_4": {
+      "name": "Secret Garden",
+      "descriptions": {
+        "0": "Shield 200%\nShield Retention 25%"
+      }
+    },
     "rita_starting_1": {
       "name": "時間加速",
       "descriptions": {

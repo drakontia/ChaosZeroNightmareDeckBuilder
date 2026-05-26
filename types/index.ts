@@ -101,6 +101,7 @@ export enum CardStatus {
   COPIED = "copied",            // コピー済み
   FORM_UPGRADE = "form_upgrade",    // 形状強化
   LINKED = "linked",             // 連結
+  BLESSING = "blessing",         // 祝福
 }
 
 // Hirameki variation for a card
