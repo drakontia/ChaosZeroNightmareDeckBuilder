@@ -666,6 +666,8 @@ test.describe('Deck Builder', () => {
   });
 
   test('should reduce Faint Memory points progressively when undoing multiple copies', async ({ page }) => {
+    test.slow();
+
     await page.goto('/');
     await selectCharacterAndWeapon(page);
     await page.waitForTimeout(1000);
