@@ -3,6 +3,12 @@ lockfileVersion: '9.0'
 settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
+  onlyBuiltDependencies:
+    - '@parcel/watcher'
+    - '@swc/core'
+    - esbuild
+    - lefthook
+    - sharp
 
 importers:
 

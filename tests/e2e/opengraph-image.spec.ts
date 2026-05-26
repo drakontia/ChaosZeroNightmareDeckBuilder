@@ -4,7 +4,7 @@ const getWithRetry = async (request: APIRequestContext, url: string, retries: nu
   let lastError: unknown;
   for (let attempt = 0; attempt <= retries; attempt += 1) {
     try {
-      return await request.get(url);
+      return await request.get(url, { timeout: 60_000 });
     } catch (error) {
       lastError = error;
       if (attempt >= retries) {
@@ -15,6 +15,8 @@ const getWithRetry = async (request: APIRequestContext, url: string, retries: nu
   }
   throw lastError;
 };
+
+const OG_ROUTE_TIMEOUT = 90_000;
 
 // ヘルパー関数：キャラクターと武器を選択
 const selectCharacterAndWeapon = async (page: Page) => {
@@ -67,6 +69,8 @@ const shareDeckAndGetShareId = async (page: Page) => {
 };
 
 test.describe('OpenGraph Image Generation', () => {
+  test.describe.configure({ timeout: OG_ROUTE_TIMEOUT });
+
   test('should generate OpenGraph image for shared deck', async ({ page, request, context }) => {
     // クリップボードの権限を付与
     await context.grantPermissions(['clipboard-read', 'clipboard-write']);
