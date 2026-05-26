@@ -146,7 +146,8 @@
     "weakness_attack": "약점 공격",
     "pulverize": "분쇄",
     "bind": "결속",
-    "ignition": "점화"
+    "ignition": "점화",
+    "blessing": "축복"
   },
   "actions": {
     "add": "추가",

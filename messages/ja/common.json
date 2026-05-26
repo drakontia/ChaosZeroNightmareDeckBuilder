@@ -182,7 +182,8 @@
     "bind": "結束",
     "ignition": "点火",
     "form_upgrade": "形状強化",
-    "linked": "連結"
+    "linked": "連結",
+    "blessing": "祝福"
   },
   "actions": {
     "add": "追加",

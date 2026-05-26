@@ -146,7 +146,8 @@
     "weakness_attack": "弱点攻击",
     "pulverize": "粉碎",
     "bind": "结束",
-    "ignition": "点火"
+    "ignition": "点火",
+    "blessing": "祝福"
   },
   "actions": {
     "add": "添加",
