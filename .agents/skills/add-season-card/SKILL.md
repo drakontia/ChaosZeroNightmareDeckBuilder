@@ -171,66 +171,16 @@ export enum CardStatus {
 
 ## STEP 4: `lib/character-cards.ts` にカード定義を追加する
 
-詳細パターンは [`references/card-data-structure.md`](./references/card-data-structure.md) を参照してください。
+コードパターンは [`references/card-data-structure.md`](./references/card-data-structure.md) を参照してください。
 
-**基本カード（3枚）**:
-```typescript
-{
-  id: "{character_id}_starting_1",
-  name: "カード日本語名", // フォールバック値
-  type: CardType.CHARACTER,
-  category: CardCategory.ATTACK,
-  statuses: [],
-  isBasicCard: true,
-  isStartingCard: true,
-  imgUrl: "/images/cards/{character_id}_starting_1.png",
-  hiramekiVariations: [
-    { level: 0, cost: 1, description: "フォールバック説明" }
-  ]
-},
-```
+追加するカードの種別:
 
-**非基本カード（開始カード4枚目）**:
-```typescript
-{
-  id: "{character_id}_starting_4",
-  name: "カード日本語名",
-  type: CardType.CHARACTER,
-  category: CardCategory.SKILL,
-  statuses: [CardStatus.EXHAUST],
-  isBasicCard: false,
-  isStartingCard: true,
-  imgUrl: "/images/cards/{character_id}_starting_4.png",
-  hiramekiVariations: [
-    { level: 0, cost: 1, description: "説明", statuses: [CardStatus.EXHAUST] },
-    { level: 1, cost: 1, description: "Lv1説明", statuses: [CardStatus.EXHAUST] },
-    { level: 2, cost: 0, description: "Lv2説明", statuses: [CardStatus.EXHAUST] },
-    { level: 3, cost: 1, description: "Lv3説明", statuses: [CardStatus.EXHAUST] },
-    { level: 4, cost: 2, description: "Lv4説明", statuses: [CardStatus.EXHAUST] },
-    { level: 5, cost: 1, category: CardCategory.UPGRADE, description: "Lv5説明", statuses: [CardStatus.UNIQUE] },
-  ]
-},
-```
-
-**ヒラメキカード（4枚）**:
-```typescript
-{
-  id: "{character_id}_hirameki_1",
-  name: "カード日本語名",
-  type: CardType.CHARACTER,
-  category: CardCategory.SKILL,
-  statuses: [CardStatus.UNIQUE],
-  imgUrl: "/images/cards/{character_id}_hirameki_1.png",
-  hiramekiVariations: [
-    { level: 0, cost: 2, description: "説明", statuses: [CardStatus.UNIQUE] },
-    { level: 1, cost: 2, description: "Lv1説明", statuses: [CardStatus.UNIQUE] },
-    { level: 2, cost: 2, description: "Lv2説明", statuses: [CardStatus.UNIQUE] },
-    { level: 3, cost: 2, description: "Lv3説明", statuses: [CardStatus.UNIQUE] },
-    { level: 4, cost: 2, description: "Lv4説明", statuses: [CardStatus.UNIQUE] },
-    { level: 5, cost: 2, description: "Lv5説明", statuses: [CardStatus.UNIQUE] },
-  ]
-},
-```
+| 種別 | 枚数 | `isBasicCard` | `isStartingCard` | ヒラメキ段階 |
+|------|-----|--------------|----------------|------------|
+| 開始カード 1〜3 | 3枚 | `true` | `true` | Lv0 のみ |
+| 開始カード 4 | 1枚 | `false` | `true` | Lv0〜5 |
+| ヒラメキカード 1〜3 | 3枚 | — | — | Lv0〜5 |
+| ヒラメキカード 4 | 1枚 | — | — | Lv0 のみ（ヒラメキなしの場合） |
 
 ---
 
