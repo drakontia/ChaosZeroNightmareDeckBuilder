@@ -10,6 +10,124 @@ import { CznCard, CardType, CardCategory, CardStatus } from "@/types";
  * The name and description fields below serve as fallback values when translations are not available.
  */
 export const CHARACTER_CARDS: CznCard[] = [
+  // Adelheit's starting cards
+  {
+    id: "adelheit_starting_1",
+    name: "みんな集まれ", // Fallback
+    type: CardType.CHARACTER,
+    category: CardCategory.ATTACK,
+    statuses: [],
+    isBasicCard: true,
+    isStartingCard: true,
+    imgUrl: "/images/cards/adelheit_starting_1.png",
+    hiramekiVariations: [
+      { level: 0, cost: 1, description: "防御依存ダメージ100%" }
+    ]
+  },
+  {
+    id: "adelheit_starting_2",
+    name: "妖精の加護", // Fallback
+    type: CardType.CHARACTER,
+    category: CardCategory.SKILL,
+    statuses: [],
+    isBasicCard: true,
+    isStartingCard: true,
+    imgUrl: "/images/cards/adelheit_starting_2.png",
+    hiramekiVariations: [
+      { level: 0, cost: 1, description: "シールド100%" }
+    ]
+  },
+  {
+    id: "adelheit_starting_3",
+    name: "妖精の加護", // Fallback
+    type: CardType.CHARACTER,
+    category: CardCategory.SKILL,
+    statuses: [],
+    isBasicCard: true,
+    isStartingCard: true,
+    imgUrl: "/images/cards/adelheit_starting_2.png",
+    hiramekiVariations: [
+      { level: 0, cost: 1, description: "シールド100%" }
+    ]
+  },
+  {
+    id: "adelheit_starting_4",
+    name: "むかしむかし", // Fallback
+    type: CardType.CHARACTER,
+    category: CardCategory.SKILL,
+    statuses: [CardStatus.EXHAUST2],
+    isBasicCard: false,
+    isStartingCard: true,
+    imgUrl: "/images/cards/adelheit_starting_4.png",
+    hiramekiVariations: [
+      { level: 0, cost: 1, description: "山札のランダムなカード2枚に祝福付与\nそのカードのうち、1枚ドロー", statuses: [CardStatus.EXHAUST2] },
+      { level: 1, cost: 1, description: "山札のランダムなカード3枚に祝福付与\nそのカードのうち、1枚ドロー", statuses: [CardStatus.EXHAUST2] },
+      { level: 2, cost: 0, description: "山札から1枚選択ドロー\nそのカードに祝福付与", statuses: [CardStatus.INITIATION, CardStatus.EXHAUST2] },
+      { level: 3, cost: 0, description: "破棄1\nそのカードを所持中の戦闘員のランダムなカード3枚に祝福付与", statuses: [CardStatus.EXHAUST2] },
+      { level: 4, cost: "X", description: "Xの分ドロー\nそのカードに祝福付与", statuses: [CardStatus.RETAIN, CardStatus.EXHAUST2] },
+      { level: 5, cost: 1, category: CardCategory.UPGRADE, description: "カード生成時、祝福付与（各ターン5回）", statuses: [CardStatus.UNIQUE] }
+    ]
+  },
+  // Adelheit's hirameki cards
+  {
+    id: "adelheit_hirameki_1",
+    name: "私たちを守って", // Fallback
+    type: CardType.CHARACTER,
+    category: CardCategory.SKILL,
+    statuses: [CardStatus.BLESSING],
+    imgUrl: "/images/cards/adelheit_hirameki_1.png",
+    hiramekiVariations: [
+      { level: 0, cost: 1, description: "次の祝福カード2枚発動時\n祝福カードドロー1", statuses: [CardStatus.BLESSING] },
+      { level: 1, cost: 1, description: "次の祝福カード3枚発動時\n祝福カードドロー1", statuses: [CardStatus.BLESSING] },
+      { level: 2, cost: 1, description: "次の2回\n手札のカードが0枚の場合、祝福カードドロー1", statuses: [CardStatus.BLESSING] },
+      { level: 3, cost: 1, description: "ドロー3\nそのカードをコスト0〜2に変更", statuses: [CardStatus.BLESSING] },
+      { level: 4, cost: 0, description: "ドロー1\nそのカードが祝福カードなら、ドロー1追加", statuses: [CardStatus.BLESSING] },
+      { level: 5, cost: 1, description: "自分の祝福カードドロー2\n1ターンの間、そのカードのダメージ量\nシールド獲得量60%増加", statuses: [] }
+    ]
+  },
+  {
+    id: "adelheit_hirameki_2",
+    name: "童話の中のお友だち", // Fallback
+    type: CardType.CHARACTER,
+    category: CardCategory.UPGRADE,
+    statuses: [CardStatus.UNIQUE],
+    imgUrl: "/images/cards/adelheit_hirameki_2.png",
+    hiramekiVariations: [
+      { level: 0, cost: 1, description: "ワンちゃんまたはクマさんを\n1枚選択し、生成", statuses: [CardStatus.UNIQUE] },
+      { level: 1, cost: 1, description: "ワンちゃんを1枚生成\n所持中の祝福カード1枚ごとに\nワンちゃんのダメージ量+20%（最大15枚）", statuses: [CardStatus.UNIQUE] },
+      { level: 2, cost: 1, description: "クマさんを1枚生成\nダメージを受けると、クマさんを手札に移動（各ターン1回）", statuses: [CardStatus.UNIQUE] },
+      { level: 3, cost: 1, description: "山札に、ワンちゃん（群れ）を4枚生成", statuses: [CardStatus.UNIQUE] },
+      { level: 4, cost: 1, description: "クマさんを1枚生成\nクマさん使用時、反撃1\n1ターンの間、反撃保存", statuses: [CardStatus.UNIQUE] },
+      { level: 5, cost: 1, description: "ワンちゃん（変化）を1枚生成", statuses: [CardStatus.UNIQUE] }
+    ]
+  },
+  {
+    id: "adelheit_hirameki_3",
+    name: "物語の真実", // Fallback
+    type: CardType.CHARACTER,
+    category: CardCategory.ATTACK,
+    statuses: [CardStatus.HASTE],
+    imgUrl: "/images/cards/adelheit_hirameki_3.png",
+    hiramekiVariations: [
+      { level: 0, cost: 1, description: "防御依存ダメージ200%\n1ターンの間、対象が受けるダメージ量+100%", statuses: [CardStatus.HASTE] },
+      { level: 1, cost: 1, description: "防御依存ダメージ300%\n弱体化2\n1ターンの間、対象が受けるダメージ量+100%", statuses: [CardStatus.HASTE] },
+      { level: 2, cost: 1, description: "防御依存ダメージ200%\n捨て札から祝福カードを2枚手札に移動", statuses: [CardStatus.HASTE] },
+      { level: 3, cost: 1, description: "防御依存ダメージ200%\n1ターンの間、ワンちゃん、クマさんの\nダメージ量、シールド獲得量100%増加", statuses: [CardStatus.HASTE] },
+      { level: 4, cost: 2, description: "防御依存ダメージ400%\n手札の祝福カード数に応じてダメージ量30%増加", statuses: [CardStatus.QUIETUS] },
+      { level: 5, cost: 1, description: "防御依存ダメージ300%\n行動カウント4増加", statuses: [CardStatus.HASTE] }
+    ]
+  },
+  {
+    id: "adelheit_hirameki_4",
+    name: "秘密の庭園", // Fallback
+    type: CardType.CHARACTER,
+    category: CardCategory.UPGRADE,
+    statuses: [CardStatus.UNIQUE],
+    imgUrl: "/images/cards/adelheit_hirameki_4.png",
+    hiramekiVariations: [
+      { level: 0, cost: 1, description: "シールド200%\nシールド保存25%", statuses: [CardStatus.UNIQUE] }
+    ]
+  },
   // Heidemarie's starting cards
   {
     id: "heidemarie_starting_1",
