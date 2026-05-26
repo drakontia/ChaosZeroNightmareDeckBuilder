@@ -74,81 +74,13 @@ pnpm exec vitest run
 
 対応するファイルの配列末尾（または適切な位置）にエントリを追記する。
 
-**WEAPON の場合: `lib/equipment/weapons.ts`**
-```typescript
-{
-  id: "new_weapon_id",
-  name: "equipment.weapon.new_weapon_id.name",
-  type: EquipmentType.WEAPON,
-  rarity: "equipment.rarity.rare",           // rare / legendary / mythical
-  description: "equipment.weapon.new_weapon_id.description",
-  imgUrl: "/images/equipment/weapons/new_weapon_id.png"
-},
-```
-
-**ARMOR の場合: `lib/equipment/armors.ts`**
-```typescript
-{
-  id: "new_armor_id",
-  name: "equipment.armor.new_armor_id.name",
-  type: EquipmentType.ARMOR,
-  rarity: "equipment.rarity.legendary",
-  description: "equipment.armor.new_armor_id.description",
-  imgUrl: "/images/equipment/armors/new_armor_id.png"
-},
-```
-
-**PENDANT の場合: `lib/equipment/pendants.ts`**
-```typescript
-{
-  id: "new_pendant_id",
-  name: "equipment.pendant.new_pendant_id.name",
-  type: EquipmentType.PENDANT,
-  rarity: "equipment.rarity.mythical",
-  description: "equipment.pendant.new_pendant_id.description",
-  imgUrl: "/images/equipment/pendants/new_pendant_id.png"
-},
-```
-
-型定義の詳細: → [`references/data-schema.md`](./references/data-schema.md)
+→ フィールド定義・実装例: [`references/data-schema.md`](./references/data-schema.md)
 
 ### Step 3: i18n を4言語すべてに追加
 
 各言語ファイルの対応するセクション（`weapon` / `armor` / `pendant`）にキーを追加する。
 
-**`messages/ja/equipment.json`**
-```json
-"new_weapon_id": {
-  "name": "日本語名",
-  "description": "日本語説明文"
-}
-```
-
-**`messages/en/equipment.json`**
-```json
-"new_weapon_id": {
-  "name": "English Name",
-  "description": "English description text"
-}
-```
-
-**`messages/zh/equipment.json`**
-```json
-"new_weapon_id": {
-  "name": "中文名称",
-  "description": "中文描述"
-}
-```
-
-**`messages/ko/equipment.json`**
-```json
-"new_weapon_id": {
-  "name": "한국어 이름",
-  "description": "한국어 설명"
-}
-```
-
-i18n キー構造の詳細: → [`references/i18n-structure.md`](./references/i18n-structure.md)
+→ キー構造・記述例: [`references/i18n-structure.md`](./references/i18n-structure.md)
 
 ### Step 4: 画像ファイルを配置
 
