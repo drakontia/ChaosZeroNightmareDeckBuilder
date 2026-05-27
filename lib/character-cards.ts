@@ -231,7 +231,7 @@ export const CHARACTER_CARDS: CznCard[] = [
       { level: 1, cost: 2, description: "極光剣を2枚生成<wbr/>1ターンの間、極光剣のダメージ量+70%", statuses: [CardStatus.LINKED, CardStatus.QUIETUS] },
       { level: 2, cost: 2, description: "極光剣を2枚生成<wbr/>次の2回、極光剣のダメージ量+200%" },
       { level: 3, cost: 2, description: "手札の連結カード数に応じて極光剣を生成", statuses: [CardStatus.LINKED] },
-      { level: 4, cost: 2, description: "捨て札に極光剣を10枚生成", statuses: [CardStatus.LINKED, CardStatus.QUIETUS] },
+      { level: 4, cost: 2, description: "捨て札に極光剣を6枚生成", statuses: [CardStatus.LINKED, CardStatus.QUIETUS] },
       { level: 5, cost: 2, description: "ターン開始時、極光剣を2枚生成<wbr/>極光剣のダメージ量+50%", statuses: [CardStatus.QUIETUS, CardStatus.UNIQUE] }
     ]
   },
