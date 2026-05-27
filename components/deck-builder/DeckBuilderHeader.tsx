@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
@@ -14,6 +15,21 @@ export function DeckBuilderHeader({ locale, title, description }: DeckBuilderHea
       <div className="flex flex-col sm:flex-row sm:justify-between items-end sm:items-start gap-2 mb-2">
         <div className="flex items-center gap-3 w-full sm:w-auto justify-end order-1 sm:order-2">
           <iframe src="https://github.com/sponsors/drakontia/button" title="Sponsor drakontia" height="32" width="114" style={{ border: 0, borderRadius: "6px" }} />
+          <Link
+            href="https://x.com/MhdenOfRamuh"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-testid="x-icon-link"
+            aria-label="X (Twitter)"
+          >
+            <Image
+              src="/images/x-logo.svg"
+              alt="X (Twitter)"
+              width={24}
+              height={24}
+              className="w-6 h-6 dark:invert"
+            />
+          </Link>
           <LanguageSwitcher currentLocale={locale} />
         </div>
         <div className="order-2 sm:order-1 w-full sm:w-auto">
