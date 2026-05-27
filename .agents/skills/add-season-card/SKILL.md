@@ -137,7 +137,7 @@ export enum CardStatus {
 }
 ```
 
-**注意**: 追加後は既存テスト（`adelheit.test.ts` 等）が壊れないことを確認してください。
+**注意**: 追加後は既存テスト（`adelheid.test.ts` 等）が壊れないことを確認してください。
 
 ---
 
@@ -246,5 +246,5 @@ pnpm build
 - 型定義: `types/index.ts`
 - キャラクター一覧: `lib/characters.ts`
 - キャラクターカード定義: `lib/character-cards.ts`
-- テスト例: `tests/unit/lib/adelheit.test.ts`
+- テスト例: `tests/unit/lib/adelheid.test.ts`
 - 過去の落とし穴: [`references/common-pitfalls.md`](./references/common-pitfalls.md)

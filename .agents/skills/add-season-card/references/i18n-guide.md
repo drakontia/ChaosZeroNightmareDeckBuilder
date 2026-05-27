@@ -80,7 +80,7 @@ messages/
 {
   // 既存キーの後に追加...
   "character": {
-    "adelheit": "アーデルハイト",
+    "adelheid": "アーデルハイト",
     "heidemarie": "ハイデマリー",
     "{character_id}": "キャラクター名（日本語）"
   }

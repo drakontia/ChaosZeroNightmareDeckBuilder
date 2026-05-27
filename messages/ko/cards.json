@@ -1,24 +1,24 @@
 {
   "cards": {
-    "adelheit_starting_1": {
+    "adelheid_starting_1": {
       "name": "모두 모여라",
       "descriptions": {
         "0": "방어 의존 데미지 100%"
       }
     },
-    "adelheit_starting_2": {
+    "adelheid_starting_2": {
       "name": "요정의 가호",
       "descriptions": {
         "0": "실드 100%"
       }
     },
-    "adelheit_starting_3": {
+    "adelheid_starting_3": {
       "name": "요정의 가호",
       "descriptions": {
         "0": "실드 100%"
       }
     },
-    "adelheit_starting_4": {
+    "adelheid_starting_4": {
       "name": "옛날 옛적에",
       "descriptions": {
         "0": "덱의 무작위 카드 2장에 축복 부여\n그 카드 중 1장 드로우",
@@ -29,7 +29,7 @@
         "5": "카드 생성 시, 축복 부여（각 턴 5회）"
       }
     },
-    "adelheit_hirameki_1": {
+    "adelheid_hirameki_1": {
       "name": "우리를 지켜줘",
       "descriptions": {
         "0": "다음 축복 카드 2장 발동 시\n축복 카드 드로우 1",
@@ -40,7 +40,7 @@
         "5": "자신의 축복 카드 드로우 2\n1턴 동안, 그 카드의 데미지량\n실드 획득량 60% 증가"
       }
     },
-    "adelheit_hirameki_2": {
+    "adelheid_hirameki_2": {
       "name": "동화 속의 친구",
       "descriptions": {
         "0": "강아지 또는 곰돌이 중\n1장 선택하여 생성",
@@ -51,7 +51,7 @@
         "5": "강아지（변화） 1장 생성"
       }
     },
-    "adelheit_hirameki_3": {
+    "adelheid_hirameki_3": {
       "name": "이야기의 진실",
       "descriptions": {
         "0": "방어 의존 데미지 200%\n1턴 동안, 대상이 받는 데미지량 +100%",
@@ -62,7 +62,7 @@
         "5": "방어 의존 데미지 300%\n행동 카운트 4 증가"
       }
     },
-    "adelheit_hirameki_4": {
+    "adelheid_hirameki_4": {
       "name": "비밀의 정원",
       "descriptions": {
         "0": "실드 200%\n실드 보존 25%"

@@ -20,7 +20,7 @@ description: >
 **キャラクター情報**
 | 項目 | 説明 |
 |------|------|
-| `id` | 英小文字の識別子（例: `adelheit`） |
+| `id` | 英小文字の識別子（例: `adelheid`） |
 | `name (ja)` | 日本語名 |
 | `name (en)` | 英語名 |
 | `rarity` | ★4 または ★5 |
@@ -87,7 +87,7 @@ export enum CardStatus {
 ## Step 3: テストファイルの作成（Red フェーズ）
 
 `tests/unit/lib/{character_id}.test.ts` を作成する。
-adelheit のテストファイル（`tests/unit/lib/adelheit.test.ts`）をテンプレートとして使う。
+adelheid のテストファイル（`tests/unit/lib/adelheid.test.ts`）をテンプレートとして使う。
 
 ```typescript
 // tests/unit/lib/{character_id}.test.ts
@@ -269,6 +269,6 @@ pnpm test
 
 ## 参考ファイル
 
-- テンプレートテスト: `tests/unit/lib/adelheit.test.ts`
+- テンプレートテスト: `tests/unit/lib/adelheid.test.ts`
 - キャラクターデータ: `lib/characters.ts`
 - カードデータ: `lib/character-cards.ts`

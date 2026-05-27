@@ -37,12 +37,12 @@ messages/
 
 ### 言語別サンプル
 
-| 言語 | 例（adelheit） |
+| 言語 | 例（adelheid） |
 |------|--------------|
-| ja | `"Adelheit"` |
-| en | `"Adelheit"` |
-| zh | `"Adelheit"` |
-| ko | `"Adelheit"` |
+| ja | `"Adelheid"` |
+| en | `"Adelheid"` |
+| zh | `"Adelheid"` |
+| ko | `"Adelheid"` |
 
 ---
 
@@ -78,10 +78,10 @@ messages/
   実装ファイルの description キーに `// TODO: 要確認` をコメントとして添付する
 - 日本語以外の言語が未翻訳の場合は、英語フォールバックを使用し `// TODO: 翻訳確認` をコメントで残す
 
-### 説明文のサンプル（adelheit の starting_3）
+### 説明文のサンプル（adelheid の starting_3）
 
 ```json
-"adelheit_starting_3": {
+"adelheid_starting_3": {
   "name": "ガーデンオブエデン",
   "descriptions": {
     "0": "味方全体にバリアを付与する。",
