@@ -65,14 +65,14 @@ interface HiramekiVariation {
 {character_id}_hirameki_1  〜  {character_id}_hirameki_4
 ```
 
-## 実装例（adelheit のカード）
+## 実装例（adelheid のカード）
 
 ```typescript
 // lib/character-cards.ts
 {
-  id: "adelheit_starting_1",
+  id: "adelheid_starting_1",
   type: CardType.CHARACTER,
-  name: "cards.adelheit_starting_1.name",
+  name: "cards.adelheid_starting_1.name",
   category: CardCategory.ATTACK,
   statuses: [],
   cost: 1,
@@ -82,7 +82,7 @@ interface HiramekiVariation {
     {
       level: 0,
       cost: 1,
-      description: "cards.adelheit_starting_1.descriptions.0",
+      description: "cards.adelheid_starting_1.descriptions.0",
       category: CardCategory.ATTACK,
       statuses: [],
     },

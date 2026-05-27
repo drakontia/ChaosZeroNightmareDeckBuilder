@@ -53,7 +53,7 @@ export interface HiramekiVariation {
 {character_id}_hirameki_{1-4}    // キャラのヒラメキカード
 ```
 
-**重要**: `{character_id}` はケバブケース（例: `adelheit`, `heidemarie`）。
+**重要**: `{character_id}` はケバブケース（例: `adelheid`, `heidemarie`）。
 英語キャラクター名からの変換ではなく、意図したIDを使用してください（→ [common-pitfalls.md](./common-pitfalls.md) の落とし穴#1参照）。
 
 ---
@@ -218,7 +218,7 @@ statuses: [CardStatus.EXHAUST2],
 // types/index.ts
 export interface Character {
   id: string;             // ケバブケース
-  name: string;           // i18n キー（例: "character.adelheit"）
+  name: string;           // i18n キー（例: "character.adelheid"）
   rarity: string;         // "★4" または "★5"
   job: JobType;           // 必須
   element?: ElementType;  // 任意

@@ -2,14 +2,14 @@ import { Character, ElementType, JobType } from "@/types";
 
 export const CHARACTERS: Character[] = [
   {
-    id: "adelheit",
-    name: "character.adelheit",
+    id: "adelheid",
+    name: "character.adelheid",
     rarity: "★5",
     job: JobType.VANGUARD,
     element: ElementType.VOID,
-    imgUrl: "/images/characters/character_adelheit.png",
-    startingCards: ["adelheit_starting_1", "adelheit_starting_2", "adelheit_starting_3", "adelheit_starting_4"],
-    hiramekiCards: ["adelheit_hirameki_1", "adelheit_hirameki_2", "adelheit_hirameki_3", "adelheit_hirameki_4"]
+    imgUrl: "/images/characters/character_adelheid.png",
+    startingCards: ["adelheid_starting_1", "adelheid_starting_2", "adelheid_starting_3", "adelheid_starting_4"],
+    hiramekiCards: ["adelheid_hirameki_1", "adelheid_hirameki_2", "adelheid_hirameki_3", "adelheid_hirameki_4"]
   },
   {
     id: "heidemarie",

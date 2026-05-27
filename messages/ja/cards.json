@@ -1,24 +1,24 @@
 {
   "cards": {
-    "adelheit_starting_1": {
+    "adelheid_starting_1": {
       "name": "みんな集まれ",
       "descriptions": {
         "0": "防御依存ダメージ100%"
       }
     },
-    "adelheit_starting_2": {
+    "adelheid_starting_2": {
       "name": "妖精の加護",
       "descriptions": {
         "0": "シールド100%"
       }
     },
-    "adelheit_starting_3": {
+    "adelheid_starting_3": {
       "name": "妖精の加護",
       "descriptions": {
         "0": "シールド100%"
       }
     },
-    "adelheit_starting_4": {
+    "adelheid_starting_4": {
       "name": "むかしむかし",
       "descriptions": {
         "0": "山札のランダムなカード2枚に祝福付与\nそのカードのうち、1枚ドロー",
@@ -29,7 +29,7 @@
         "5": "カード生成時、祝福付与（各ターン5回）"
       }
     },
-    "adelheit_hirameki_1": {
+    "adelheid_hirameki_1": {
       "name": "私たちを守って",
       "descriptions": {
         "0": "次の祝福カード2枚発動時\n祝福カードドロー1",
@@ -40,7 +40,7 @@
         "5": "自分の祝福カードドロー2\n1ターンの間、そのカードのダメージ量\nシールド獲得量60%増加"
       }
     },
-    "adelheit_hirameki_2": {
+    "adelheid_hirameki_2": {
       "name": "童話の中のお友だち",
       "descriptions": {
         "0": "ワンちゃんまたはクマさんを\n1枚選択し、生成",
@@ -51,7 +51,7 @@
         "5": "ワンちゃん（変化）を1枚生成"
       }
     },
-    "adelheit_hirameki_3": {
+    "adelheid_hirameki_3": {
       "name": "物語の真実",
       "descriptions": {
         "0": "防御依存ダメージ200%\n1ターンの間、対象が受けるダメージ量+100%",
@@ -62,7 +62,7 @@
         "5": "防御依存ダメージ300%\n行動カウント4増加"
       }
     },
-    "adelheit_hirameki_4": {
+    "adelheid_hirameki_4": {
       "name": "秘密の庭園",
       "descriptions": {
         "0": "シールド200%\nシールド保存25%"

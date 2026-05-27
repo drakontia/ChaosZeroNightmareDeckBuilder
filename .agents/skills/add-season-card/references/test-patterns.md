@@ -1,6 +1,6 @@
 # リファレンス: テストパターン
 
-`tests/unit/lib/adelheit.test.ts` をベースにした Vitest テストの記述パターンです。
+`tests/unit/lib/adelheid.test.ts` をベースにした Vitest テストの記述パターンです。
 
 ## インポート構成
 
