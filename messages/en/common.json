@@ -9,7 +9,8 @@
   },
   "app": {
     "description": "A tool to freely build Chaos Zero Nightmare decks\nThis is a machine translation and may contain inaccuracies.",
-    "title": "Chaos Zero Nightmare Deck Builder"
+    "title": "Chaos Zero Nightmare Deck Builder",
+    "challengeChecker": "Challenge Checker"
   },
   "card": {
     "add": "Add Card",

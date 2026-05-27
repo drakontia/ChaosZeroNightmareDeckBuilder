@@ -7,13 +7,22 @@ interface DeckBuilderHeaderProps {
   locale: string;
   title: string;
   description: string;
+  challengeCheckerLabel: string;
 }
 
-export function DeckBuilderHeader({ locale, title, description }: DeckBuilderHeaderProps) {
+export function DeckBuilderHeader({ locale, title, description, challengeCheckerLabel }: DeckBuilderHeaderProps) {
   return (
     <header className="mb-6">
       <div className="flex flex-col sm:flex-row sm:justify-between items-end sm:items-start gap-2 mb-2">
         <div className="flex items-center gap-3 w-full sm:w-auto justify-end order-1 sm:order-2">
+          <Link
+            href="https://czn-challenge-checker.drakontia.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-xs border border-current rounded px-2 py-1 whitespace-nowrap hover:opacity-80 transition-opacity"
+          >
+            {challengeCheckerLabel}
+          </Link>
           <iframe src="https://github.com/sponsors/drakontia/button" title="Sponsor drakontia" height="32" width="114" style={{ border: 0, borderRadius: "6px" }} />
           <Link
             href="https://x.com/MhdenOfRamuh"
