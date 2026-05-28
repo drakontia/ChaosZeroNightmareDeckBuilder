@@ -6,7 +6,7 @@ import { useShallow } from 'zustand/react/shallow';
 import { useDeckBuilderStore } from "@/hooks/useDeckBuilderStore";
 import { CHARACTERS, EQUIPMENT } from "@/lib/card";
 import { calculateFaintMemory } from "@/lib/calculateFaintMemory";
-import { useCallback, useRef, useState } from 'react';
+import { useCallback, useMemo, useRef, useState } from 'react';
 import { CznCard, Deck } from "@/types";
 import { useShareDeck } from "@/hooks/useShareDeck";
 import { useExportDeckImage } from "@/hooks/useExportDeckImage";
@@ -129,7 +129,7 @@ export function DeckBuilder({ shareId }: DeckBuilderProps) {
   }
 
   const currentDeck = store.deck;
-  const faintMemoryPoints = calculateFaintMemory(currentDeck);
+  const faintMemoryPoints = useMemo(() => calculateFaintMemory(currentDeck), [currentDeck]);
 
   return (
     <div className="min-h-screen p-4 lg:p-8 bg-gray-50 dark:bg-gray-900">
