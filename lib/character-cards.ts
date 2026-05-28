@@ -1124,12 +1124,12 @@ export const CHARACTER_CARDS: CznCard[] = [
     isBasicCard: false,
     isStartingCard: true,
     hiramekiVariations: [ // Fallback descriptions
-      { level: 0, cost: 0, description: "ダメージ120%<wbr/>黒雲態勢獲得<wbr/>黒雲態勢：ダメージ量50%増加" },
-      { level: 1, cost: 0, description: "ダメージ180%<wbr/>黒雲態勢獲得<wbr/>黒雲態勢：ダメージ量50%増加" },
-      { level: 2, cost: 0, description: "ダメージ150%<wbr/>黒雲態勢獲得<wbr/>黒雲態勢：ヒット数1回追加"},
-      { level: 3, cost: 0, description: "ダメージ350%<wbr/>黒雲態勢：このカード使用可能"},
-      { level: 4, cost: 0, description: "ダメージ120%<wbr/>黒雲態勢獲得<wbr/>黒雲態勢：手札のカード数(0)に応じて、ダメージ量30%増加" },
-      { level: 5, cost: 2, description: "ダメージ360%<wbr/>黒雲態勢獲得<wbr/>黒雲態勢：ダメージ量50%増加"}
+      { level: 0, cost: 0, description: "ダメージ120%<wbr/>黒雲態勢獲得<wbr/>黒雲態勢：ダメージ量100%増加" },
+      { level: 1, cost: 0, description: "ダメージ180%<wbr/>黒雲態勢獲得<wbr/>黒雲態勢：ダメージ量100%増加" },
+      { level: 2, cost: 0, description: "ダメージ180%<wbr/>黒雲態勢獲得<wbr/>黒雲態勢：ヒット数2回追加"},
+      { level: 3, cost: 0, description: "ダメージ450%<wbr/>黒雲態勢：このカード使用可能"},
+      { level: 4, cost: 0, description: "ダメージ150%<wbr/>黒雲態勢獲得<wbr/>黒雲態勢：手札のカード数(0)に応じて、ダメージ量30%増加" },
+      { level: 5, cost: 2, description: "ダメージ360%<wbr/>黒雲態勢獲得<wbr/>黒雲態勢：ダメージ量100%増加"}
     ]
   },
   // rin's hirameki cards
@@ -1146,7 +1146,7 @@ export const CHARACTER_CARDS: CznCard[] = [
       { level: 2, cost: 0, description: "自分のカードドロー1、1ターンの間、そのカードのコスト1減少<wbr/>黒雲態勢獲得"},
       { level: 3, cost: 0, description: "自分の攻撃カードドロー1、1ターンの間、そのカードのダメージ量50%増加<wbr/>黒雲態勢獲得"},
       { level: 4, cost: 0, description: "山札または墓地から黒雲奥義：滅、黒雲奥義：黒舞を手札に移動"},
-      { level: 5, cost: 2, category: CardCategory.UPGRADE, description: "ターン開始時、黒雲態勢状態の場合、自分のカード1枚をドロー" }
+      { level: 5, cost: 2, category: CardCategory.UPGRADE, description: "ターン開始時、黒雲態勢状態の場合、自分のカードドロー1" }
     ]
   },
   {
@@ -1157,12 +1157,12 @@ export const CHARACTER_CARDS: CznCard[] = [
     statuses: [CardStatus.HASTE],
     imgUrl: "/images/cards/rin_hirameki_2.png",
     hiramekiVariations: [ // Fallback descriptions
-      { level: 0, cost: 1, description: "ダメージ150%<wbr/>黒雲態勢：ヒット数1回追加" },
-      { level: 1, cost: 1, description: "ダメージ225%<wbr/>黒雲態勢：ヒット数1回追加"  },
-      { level: 2, cost: 1, description: "ダメージ50%×2<wbr/>黒雲態勢：ヒット数2回追加" },
-      { level: 3, cost: 1, description: "ダメージ100%×2<wbr/>黒雲態勢：会心ダメージ+100%" },
-      { level: 4, cost: 1, description: "ダメージ250%<wbr/>黒雲態勢：ダメージ量100%増加" },
-      { level: 5, cost: 1, category: CardCategory.UPGRADE, description: "ダメージ180%<wbr/>黒雲態勢：手札にあるすべての自分のカードが1ターンの間、コスト1減少" }
+      { level: 0, cost: 1, description: "ダメージ200%<wbr/>黒雲態勢：ヒット数1回追加" },
+      { level: 1, cost: 1, description: "ダメージ300%<wbr/>黒雲態勢：ヒット数1回追加"  },
+      { level: 2, cost: 1, description: "ダメージ100%×2<wbr/>黒雲態勢：ヒット数2回追加" },
+      { level: 3, cost: 1, description: "ダメージ150%×2<wbr/>黒雲態勢：会心ダメージ+100%" },
+      { level: 4, cost: 1, description: "ダメージ300%<wbr/>黒雲態勢：ダメージ量100%増加" },
+      { level: 5, cost: 1, description: "ダメージ200%<wbr/>黒雲態勢：手札にあるすべての自分のカードが1ターンの間、コスト1減少" }
     ]
   },
   {
@@ -1170,14 +1170,14 @@ export const CHARACTER_CARDS: CznCard[] = [
     name: "黒雲の心法", // Fallback
     type: CardType.CHARACTER,
     category: CardCategory.SKILL,
-    statuses: [],
+    statuses: [CardStatus.LEAD],
     imgUrl: "/images/cards/rin_hirameki_3.png",
     hiramekiVariations: [ // Fallback descriptions
       { level: 0, cost: 1, description: "1ターンの間、黒雲態勢保存<wbr/>黒雲態勢：1ターンの間、自分の攻撃カードのダメージ量+40%" },
-      { level: 1, cost: 1, description: "1ターンの間、黒雲態勢保存<wbr/>黒雲態勢：1ターンの間、自分の攻撃カードのダメージ量+80%" },
-      { level: 2, cost: 0, description: "1ターンの間、黒雲態勢保存<wbr/>黒雲態勢：1ターンの間、自分の攻撃カードのダメージ量+40%" },
+      { level: 1, cost: 1, description: "1ターンの間、黒雲態勢保存<wbr/>黒雲態勢：1ターンの間、自分の攻撃カードのダメージ量+80%", statuses: [] },
+      { level: 2, cost: 0, description: "1ターンの間、黒雲態勢保存<wbr/>黒雲態勢：1ターンの間、自分のカードドロー2" },
       { level: 3, cost: 1, description: "1ターンの間、黒雲態勢保存<wbr/>黒雲奥義：滅1枚を生成、そのカードに蒸発付与" },
-      { level: 4, cost: 1, description: "ターン開始時、黒雲態勢を獲得" },
+      { level: 4, cost: 1, category: CardCategory.UPGRADE, description: "ターン開始時、黒雲態勢を獲得" },
       { level: 5, cost: 1, category: CardCategory.UPGRADE, description: "黒雲態勢状態の場合、リンの攻撃カードダメージ50%増加" }
     ]
   },
@@ -1189,7 +1189,7 @@ export const CHARACTER_CARDS: CznCard[] = [
     statuses: [],
     imgUrl: "/images/cards/rin_hirameki_4.png",
     hiramekiVariations: [ // Fallback descriptions
-      { level: 0, cost: 1, description: "ダメージ80%<wbr/>黒雲態勢：手札のスキルカード数に応じてヒット数1回追加" },
+      { level: 0, cost: 1, description: "ダメージ120%<wbr/>黒雲態勢：手札のスキルカード数に応じてヒット数1回追加" },
     ]
   },
   // Orlea's starting cards
