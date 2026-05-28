@@ -12,8 +12,28 @@ import { render, act, screen } from '@testing-library/react';
 import { useState } from 'react';
 import { Deck } from '@/types';
 
-const { mockCalculateFaintMemory } = vi.hoisted(() => ({
+const {
+  mockCalculateFaintMemory,
+  mockRouterPush,
+  mockShareDeckHandler,
+  mockExportDeckImageHandler,
+  mockSetLoadOpen,
+  mockHandleSaveDeck,
+  mockOpenLoadDialog,
+  mockHandleLoadDeck,
+  mockHandleDeleteSaved,
+  mockValidateEquipment,
+} = vi.hoisted(() => ({
   mockCalculateFaintMemory: vi.fn(),
+  mockRouterPush: vi.fn(),
+  mockShareDeckHandler: vi.fn(),
+  mockExportDeckImageHandler: vi.fn(),
+  mockSetLoadOpen: vi.fn(),
+  mockHandleSaveDeck: vi.fn(),
+  mockOpenLoadDialog: vi.fn(),
+  mockHandleLoadDeck: vi.fn(),
+  mockHandleDeleteSaved: vi.fn(),
+  mockValidateEquipment: vi.fn(),
 }));
 
 // ------------------------------------------------------------------
@@ -86,26 +106,26 @@ vi.mock('next-intl', () => ({
 }));
 
 vi.mock('next/navigation', () => ({
-  useRouter: () => ({ push: vi.fn() }),
+  useRouter: () => ({ push: mockRouterPush }),
 }));
 
 vi.mock('@/hooks/useShareDeck', () => ({
-  useShareDeck: () => ({ isSharing: false, handleShareDeck: vi.fn() }),
+  useShareDeck: () => ({ isSharing: false, handleShareDeck: mockShareDeckHandler }),
 }));
 
 vi.mock('@/hooks/useExportDeckImage', () => ({
-  useExportDeckImage: () => ({ isExporting: false, handleExportDeckImage: vi.fn() }),
+  useExportDeckImage: () => ({ isExporting: false, handleExportDeckImage: mockExportDeckImageHandler }),
 }));
 
 vi.mock('@/hooks/useDeckSaveLoad', () => ({
   useDeckSaveLoad: () => ({
     savedList: [],
     loadOpen: false,
-    setLoadOpen: vi.fn(),
-    handleSaveDeck: vi.fn(),
-    openLoadDialog: vi.fn(),
-    handleLoadDeck: vi.fn(),
-    handleDeleteSaved: vi.fn(),
+    setLoadOpen: mockSetLoadOpen,
+    handleSaveDeck: mockHandleSaveDeck,
+    openLoadDialog: mockOpenLoadDialog,
+    handleLoadDeck: mockHandleLoadDeck,
+    handleDeleteSaved: mockHandleDeleteSaved,
   }),
 }));
 
@@ -113,7 +133,7 @@ vi.mock('@/hooks/useDeckBuilderAlerts', () => ({ useDeckBuilderAlerts: vi.fn() }
 vi.mock('@/hooks/useDeckBuilderInitialization', () => ({ useDeckBuilderInitialization: vi.fn() }));
 vi.mock('@/hooks/useDeckShareLoader', () => ({ useDeckShareLoader: vi.fn() }));
 vi.mock('@/hooks/useEquipmentValidation', () => ({
-  useEquipmentValidation: () => () => true,
+  useEquipmentValidation: () => mockValidateEquipment,
 }));
 vi.mock('@/hooks/useLoadedDeckSync', () => ({ useLoadedDeckSync: vi.fn() }));
 
@@ -126,12 +146,14 @@ vi.mock('@/lib/calculateFaintMemory', () => ({
   calculateFaintMemory: mockCalculateFaintMemory,
 }));
 
+let latestDeckWorkspaceProps: Record<string, unknown> | null = null;
 vi.mock('@/components/deck-builder', () => ({
   CardCatalogSection: () => <div data-testid="card-catalog" />,
   DeckBuilderHeader: () => <div data-testid="deck-builder-header" />,
-  DeckWorkspace: ({ faintMemoryPoints }: { faintMemoryPoints: number }) => (
-    <div data-testid="deck-workspace">{faintMemoryPoints}</div>
-  ),
+  DeckWorkspace: (props: { faintMemoryPoints: number }) => {
+    latestDeckWorkspaceProps = props as unknown as Record<string, unknown>;
+    return <div data-testid="deck-workspace">{props.faintMemoryPoints}</div>;
+  },
   LoadDeckDialog: () => <div data-testid="load-deck-dialog" />,
 }));
 
@@ -147,6 +169,8 @@ describe('DeckBuilder - faintMemoryPoints のメモ化', () => {
     vi.clearAllMocks();
     mockStore.deck = createMockDeck();
     mockCalculateFaintMemory.mockReturnValue(123);
+    mockValidateEquipment.mockReturnValue(true);
+    latestDeckWorkspaceProps = null;
   });
 
   it('デッキが変わらない再レンダーでは calculateFaintMemory を1回しか呼ばない', async () => {
@@ -199,5 +223,70 @@ describe('DeckBuilder - faintMemoryPoints のメモ化', () => {
 
     expect(mockCalculateFaintMemory).toHaveBeenCalledTimes(2);
     expect(screen.getByTestId('deck-workspace').textContent).toBe('456');
+  });
+
+  it('主要コールバックが正しくストア/ハンドラーに接続される', async () => {
+    mockStore.deck = {
+      ...createMockDeck(),
+      character: { id: 'char-1', name: 'Char', basicCards: [], optionalCards: [] },
+    };
+
+    const { DeckBuilder } = await import('@/components/DeckBuilder');
+    render(<DeckBuilder />);
+
+    expect(latestDeckWorkspaceProps).not.toBeNull();
+
+    const props = latestDeckWorkspaceProps as {
+      onDeckNameChange: (value: string) => void;
+      onSave: () => void;
+      onLoad: () => void;
+      onShare: () => void;
+      onExport: () => void;
+      onClear: () => void;
+      onEgoLevelChange: (level: number) => void;
+      onTogglePotential: () => void;
+      onEquipmentSelect: (equipment: unknown, type?: 'weapon' | 'armor' | 'pendant') => void;
+      onRemoveCard: (deckId: string) => void;
+      onCopyCard: (deckId: string) => void;
+      onConvertCard: (deckId: string, targetCard: { id: string }, options?: { asExclusion?: boolean }) => void;
+    };
+
+    act(() => {
+      props.onDeckNameChange('new-name');
+      props.onSave();
+      props.onLoad();
+      props.onShare();
+      props.onExport();
+      props.onClear();
+      props.onEgoLevelChange(3);
+      props.onTogglePotential();
+      props.onEquipmentSelect({ id: 'eq-1' }, 'weapon');
+      props.onEquipmentSelect({ id: 'eq-1' });
+      props.onRemoveCard('deck-card-1');
+      props.onCopyCard('deck-card-1');
+      props.onConvertCard('deck-card-1', { id: 'target-card' }, { asExclusion: true });
+    });
+
+    expect(mockStore.setDeck).toHaveBeenCalled();
+    expect(mockHandleSaveDeck).toHaveBeenCalledTimes(1);
+    expect(mockOpenLoadDialog).toHaveBeenCalledTimes(1);
+    expect(mockShareDeckHandler).toHaveBeenCalledTimes(1);
+    expect(mockExportDeckImageHandler).toHaveBeenCalledTimes(1);
+    expect(mockStore.reset).toHaveBeenCalledTimes(1);
+    expect(mockRouterPush).toHaveBeenCalledWith('/');
+    expect(mockStore.setEgoLevel).toHaveBeenCalledWith('char-1', 3);
+    expect(mockStore.setPotential).toHaveBeenCalledWith(true);
+    expect(mockStore.selectEquipment).toHaveBeenCalledWith('weapon', { id: 'eq-1' });
+    expect(mockStore.selectEquipment).toHaveBeenCalledTimes(1);
+    expect(mockStore.removeCard).toHaveBeenCalledWith('deck-card-1');
+    expect(mockStore.copyCard).toHaveBeenCalledWith('deck-card-1');
+    expect(mockStore.convertCard).toHaveBeenCalledWith('deck-card-1', 'target-card', { asExclusion: true });
+  });
+
+  it('デッキ未読込時は Loading を表示する', async () => {
+    mockStore.deck = null;
+    const { DeckBuilder } = await import('@/components/DeckBuilder');
+    render(<DeckBuilder />);
+    expect(screen.getByText('Loading...')).toBeTruthy();
   });
 });
