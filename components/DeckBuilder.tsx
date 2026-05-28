@@ -124,12 +124,12 @@ export function DeckBuilder({ shareId }: DeckBuilderProps) {
     router.push('/');
   }, [store, router]);
 
-  if (!store.deck) {
-    return <div className="min-h-screen flex items-center justify-center text-lg">Loading...</div>;
-  }
-
   const currentDeck = store.deck;
   const faintMemoryPoints = useMemo(() => calculateFaintMemory(currentDeck), [currentDeck]);
+
+  if (!currentDeck) {
+    return <div className="min-h-screen flex items-center justify-center text-lg">Loading...</div>;
+  }
 
   return (
     <div className="min-h-screen p-4 lg:p-8 bg-gray-50 dark:bg-gray-900">
