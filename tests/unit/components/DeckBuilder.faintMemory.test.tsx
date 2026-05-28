@@ -8,29 +8,36 @@
  * Green: useMemo を追加すると 1 回のみ → PASS
  */
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { render, act } from '@testing-library/react';
+import { render, act, screen } from '@testing-library/react';
 import { useState } from 'react';
-import * as calculateFaintMemoryModule from '@/lib/calculateFaintMemory';
 import { Deck } from '@/types';
+
+const { mockCalculateFaintMemory } = vi.hoisted(() => ({
+  mockCalculateFaintMemory: vi.fn(),
+}));
 
 // ------------------------------------------------------------------
 // 最小限のモックデッキ
 // ------------------------------------------------------------------
-const mockDeck: Deck = {
-  character: null,
-  equipment: {
-    weapon: { item: null, refinement: null, godHammerEquipmentId: null },
-    armor: { item: null, refinement: null, godHammerEquipmentId: null },
-    pendant: { item: null, refinement: null, godHammerEquipmentId: null },
-  },
-  cards: [],
-  egoLevel: 0,
-  hasPotential: false,
-  createdAt: new Date(),
-  removedCards: new Map(),
-  copiedCards: new Map(),
-  convertedCards: new Map(),
-};
+function createMockDeck(): Deck {
+  return {
+    character: null,
+    equipment: {
+      weapon: { item: null, refinement: null, godHammerEquipmentId: null },
+      armor: { item: null, refinement: null, godHammerEquipmentId: null },
+      pendant: { item: null, refinement: null, godHammerEquipmentId: null },
+    },
+    cards: [],
+    egoLevel: 0,
+    hasPotential: false,
+    createdAt: new Date(),
+    removedCards: new Map(),
+    copiedCards: new Map(),
+    convertedCards: new Map(),
+  };
+}
+
+const mockDeck = createMockDeck();
 
 const mockStore = {
   deck: mockDeck,
@@ -115,10 +122,16 @@ vi.mock('@/lib/card', () => ({
   EQUIPMENT: {},
 }));
 
+vi.mock('@/lib/calculateFaintMemory', () => ({
+  calculateFaintMemory: mockCalculateFaintMemory,
+}));
+
 vi.mock('@/components/deck-builder', () => ({
   CardCatalogSection: () => <div data-testid="card-catalog" />,
   DeckBuilderHeader: () => <div data-testid="deck-builder-header" />,
-  DeckWorkspace: () => <div data-testid="deck-workspace" />,
+  DeckWorkspace: ({ faintMemoryPoints }: { faintMemoryPoints: number }) => (
+    <div data-testid="deck-workspace">{faintMemoryPoints}</div>
+  ),
   LoadDeckDialog: () => <div data-testid="load-deck-dialog" />,
 }));
 
@@ -132,10 +145,38 @@ vi.mock('@/components/Footer', () => ({
 describe('DeckBuilder - faintMemoryPoints のメモ化', () => {
   beforeEach(() => {
     vi.clearAllMocks();
+    mockStore.deck = createMockDeck();
+    mockCalculateFaintMemory.mockReturnValue(123);
   });
 
   it('デッキが変わらない再レンダーでは calculateFaintMemory を1回しか呼ばない', async () => {
-    const spy = vi.spyOn(calculateFaintMemoryModule, 'calculateFaintMemory');
+    const { DeckBuilder } = await import('@/components/DeckBuilder');
+
+    let forceRerender!: () => void;
+
+    function Wrapper() {
+      const [, setTick] = useState(0);
+      forceRerender = () => setTick((t) => t + 1);
+      return <DeckBuilder />;
+    }
+
+    render(<Wrapper />);
+
+    expect(mockCalculateFaintMemory).toHaveBeenCalledTimes(1);
+    expect(screen.getByTestId('deck-workspace').textContent).toBe('123');
+
+    act(() => {
+      forceRerender();
+    });
+
+    // useMemo により再計算は抑制され、依然 1 回のみであること
+    // (useMemo なしの場合は 2 回になるためこのアサーションが FAIL する)
+    expect(mockCalculateFaintMemory).toHaveBeenCalledTimes(1);
+    expect(screen.getByTestId('deck-workspace').textContent).toBe('123');
+  });
+
+  it('デッキが変わった再レンダーでは calculateFaintMemory を再計算する', async () => {
+    mockCalculateFaintMemory.mockReturnValueOnce(123).mockReturnValueOnce(456);
 
     const { DeckBuilder } = await import('@/components/DeckBuilder');
 
@@ -149,16 +190,14 @@ describe('DeckBuilder - faintMemoryPoints のメモ化', () => {
 
     render(<Wrapper />);
 
-    // 初回レンダー: 1 回呼ばれるはず
-    expect(spy).toHaveBeenCalledTimes(1);
+    expect(screen.getByTestId('deck-workspace').textContent).toBe('123');
 
-    // デッキを変えずに親コンポーネントから強制再レンダー
     act(() => {
+      mockStore.deck = { ...createMockDeck(), name: 'updated-deck' };
       forceRerender();
     });
 
-    // useMemo により再計算は抑制され、依然 1 回のみであること
-    // (useMemo なしの場合は 2 回になるためこのアサーションが FAIL する)
-    expect(spy).toHaveBeenCalledTimes(1);
+    expect(mockCalculateFaintMemory).toHaveBeenCalledTimes(2);
+    expect(screen.getByTestId('deck-workspace').textContent).toBe('456');
   });
 });
