@@ -1,10 +1,28 @@
-import { useState } from "react";
+"use client";
+
+import { useState, lazy, Suspense } from "react";
+import dynamic from "next/dynamic";
 
 import { useTranslations } from "next-intl";
 import { Lightbulb, LightbulbOff, Sparkles, Zap, ZapOff } from "lucide-react";
 
 import { DeckCard, GodType, JobType, PersonaEngraving } from "@/types";
-import { ControlButton, GodHiramekiDialog, HiramekiDialog, PersonaEngravingDialog } from "./hirameki-controls";
+import { ControlButton } from "./hirameki-controls";
+
+const HiramekiDialog = dynamic(
+  () => import("./hirameki-controls/HiramekiDialog").then((m) => ({ default: m.HiramekiDialog })),
+  { ssr: false }
+);
+
+const GodHiramekiDialog = dynamic(
+  () => import("./hirameki-controls/GodHiramekiDialog").then((m) => ({ default: m.GodHiramekiDialog })),
+  { ssr: false }
+);
+
+const PersonaEngravingDialog = dynamic(
+  () => import("./hirameki-controls/PersonaEngravingDialog").then((m) => ({ default: m.PersonaEngravingDialog })),
+  { ssr: false }
+);
 
 interface HiramekiControlsProps {
   card: DeckCard;

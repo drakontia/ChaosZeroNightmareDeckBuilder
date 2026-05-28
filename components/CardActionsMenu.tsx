@@ -1,10 +1,15 @@
 "use client";
+import dynamic from "next/dynamic";
 import { useTranslations } from "next-intl";
 import { CircleX, Undo2, Copy, ArrowRightLeft, Menu } from "lucide-react";
 import { DeckCard, CznCard, JobType, CardStatus } from "@/types";
-import { ConversionModal } from "./ConversionModal";
 import { Button } from "./ui/button";
 import { useCardActionsMenu } from "@/hooks/useCardActionsMenu";
+
+const ConversionModal = dynamic(
+  () => import("./ConversionModal").then((m) => ({ default: m.ConversionModal })),
+  { ssr: false }
+);
 
 interface CardActionsMenuProps {
   card: DeckCard;
