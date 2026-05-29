@@ -1,4 +1,5 @@
 "use client";
+import { useCallback, useMemo } from 'react';
 import { useTranslations } from 'next-intl';
 
 import { CznCard, CardType, Character, RemovedCardEntry, ConvertedCardEntry, DeckCard } from "@/types";
@@ -38,32 +39,54 @@ export function CardSelector({ character, onAddCard, onRestoreCard, removedCards
       nameFallback: card.name,
     };
   };
-  const characterHiramekiCards = character ? getCharacterHiramekiCards(character) : [];
-  const addableCards = getAddableCards(character?.job);
+  const characterHiramekiCards = useMemo(
+    () => (character ? getCharacterHiramekiCards(character) : []),
+    [character]
+  );
+  const addableCards = useMemo(() => getAddableCards(character?.job), [character?.job]);
 
   // ヒラメキカードの表示制御：デッキに存在・削除済み・変換済みは非表示
-  const hiddenHiramekiIds = new Set<string>();
-  if (presentHiramekiIds) {
-    for (const id of presentHiramekiIds.values()) hiddenHiramekiIds.add(id);
-  }
-  if (removedCards) {
-    for (const id of removedCards.keys()) hiddenHiramekiIds.add(id);
-  }
-  if (convertedCards) {
-    for (const id of convertedCards.keys()) hiddenHiramekiIds.add(id);
-  }
+  const hiddenHiramekiIds = useMemo(() => {
+    const ids = new Set<string>();
+    if (presentHiramekiIds) {
+      for (const id of presentHiramekiIds.values()) ids.add(id);
+    }
+    if (removedCards) {
+      for (const id of removedCards.keys()) ids.add(id);
+    }
+    if (convertedCards) {
+      for (const id of convertedCards.keys()) ids.add(id);
+    }
+    return ids;
+  }, [presentHiramekiIds, removedCards, convertedCards]);
+
   const query = (searchQuery || '').toLowerCase().trim();
-  const matchesQuery = (card: CznCard) => {
+  const matchesQuery = useCallback((card: CznCard) => {
     if (!query) return true;
     const name = getCardNameInfo(card).name.toLowerCase();
     const baseDesc = t(`cards.${card.id}.descriptions.0`, { defaultValue: card.hiramekiVariations[0]?.description || '' }).toLowerCase();
     const category = t(`category.${card.category}`).toLowerCase();
     return name.includes(query) || baseDesc.includes(query) || category.includes(query);
-  };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [query, t]);
 
-  const visibleCharacterHiramekiCards = characterHiramekiCards
-    .filter(card => !hiddenHiramekiIds.has(card.id))
-    .filter(matchesQuery);
+  const visibleCharacterHiramekiCards = useMemo(
+    () => characterHiramekiCards.filter(card => !hiddenHiramekiIds.has(card.id)).filter(matchesQuery),
+    [characterHiramekiCards, hiddenHiramekiIds, matchesQuery]
+  );
+
+  const filteredSharedCards = useMemo(
+    () => addableCards.filter(c => c.type === CardType.SHARED).filter(matchesQuery),
+    [addableCards, matchesQuery]
+  );
+  const filteredMonsterCards = useMemo(
+    () => addableCards.filter(c => c.type === CardType.MONSTER).filter(matchesQuery),
+    [addableCards, matchesQuery]
+  );
+  const filteredForbiddenCards = useMemo(
+    () => addableCards.filter(c => c.type === CardType.FORBIDDEN).filter(matchesQuery),
+    [addableCards, matchesQuery]
+  );
 
   const getCardTypeLabel = (type: CardType) => {
     switch (type) {
@@ -168,8 +191,7 @@ export function CardSelector({ character, onAddCard, onRestoreCard, removedCards
   };
 
   // Accordionアイテムを生成する共通関数
-  const renderAccordionCardType = (cardType: CardType, value: string) => {
-    const filteredCards = addableCards.filter(c => c.type === cardType).filter(matchesQuery);
+  const renderAccordionCardType = (filteredCards: CznCard[], cardType: CardType, value: string) => {
     if (filteredCards.length === 0) return null;
 
     return (
@@ -237,9 +259,9 @@ export function CardSelector({ character, onAddCard, onRestoreCard, removedCards
 
         {/* Accordion for Shared, Monster, and Forbidden Cards */}
         <Accordion type="multiple" className="w-full">
-          {renderAccordionCardType(CardType.SHARED, 'shared')}
-          {renderAccordionCardType(CardType.MONSTER, 'monster')}
-          {renderAccordionCardType(CardType.FORBIDDEN, 'forbidden')}
+          {renderAccordionCardType(filteredSharedCards, CardType.SHARED, 'shared')}
+          {renderAccordionCardType(filteredMonsterCards, CardType.MONSTER, 'monster')}
+          {renderAccordionCardType(filteredForbiddenCards, CardType.FORBIDDEN, 'forbidden')}
         </Accordion>
       </CardContent>
     </Card>
