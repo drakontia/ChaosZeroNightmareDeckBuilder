@@ -11,6 +11,8 @@ jobs:
       options: --ipc=host
     steps:
     - uses: actions/checkout@v4
+    - name: Mark workspace as safe for git
+      run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
     - name: Setup pnpm
       uses: pnpm/action-setup@v2
       with:
