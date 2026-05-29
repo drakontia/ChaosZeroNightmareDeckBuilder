@@ -372,4 +372,138 @@ describe('CardSelector', () => {
 
     expect(screen.getByText('Select character')).toBeTruthy();
   });
+
+  it('hides hirameki card that is already in presentHiramekiIds', () => {
+    vi.mocked(getCharacterHiramekiCards).mockReturnValue([hiramekiCard] as any);
+    const character = { id: 'char_01', name: 'Character', job: 'warrior' };
+
+    render(
+      <NextIntlClientProvider locale="en" messages={messages}>
+        <CardSelector
+          character={character as any}
+          onAddCard={vi.fn()}
+          onRestoreCard={vi.fn()}
+          removedCards={new Map()}
+          convertedCards={new Map()}
+          presentHiramekiIds={new Set(['hirameki_01'])}
+          searchQuery=""
+        />
+      </NextIntlClientProvider>
+    );
+
+    expect(screen.queryByText('Hirameki Cards')).toBeNull();
+    expect(screen.queryByText('Hirameki Card')).toBeNull();
+  });
+
+  it('hides hirameki card whose id is in removedCards keys', () => {
+    vi.mocked(getCharacterHiramekiCards).mockReturnValue([hiramekiCard] as any);
+    vi.mocked(getCardById).mockReturnValue(undefined);
+    const character = { id: 'char_01', name: 'Character', job: 'warrior' };
+
+    render(
+      <NextIntlClientProvider locale="en" messages={messages}>
+        <CardSelector
+          character={character as any}
+          onAddCard={vi.fn()}
+          onRestoreCard={vi.fn()}
+          removedCards={new Map([['hirameki_01', 1]])}
+          convertedCards={new Map()}
+          presentHiramekiIds={new Set()}
+          searchQuery=""
+        />
+      </NextIntlClientProvider>
+    );
+
+    expect(screen.queryByText('Hirameki Cards')).toBeNull();
+    expect(screen.queryByText('Hirameki Card')).toBeNull();
+  });
+
+  it('hides hirameki card whose id is in convertedCards keys', () => {
+    vi.mocked(getCharacterHiramekiCards).mockReturnValue([hiramekiCard] as any);
+    vi.mocked(getCardById).mockReturnValue(undefined);
+    const character = { id: 'char_01', name: 'Character', job: 'warrior' };
+
+    render(
+      <NextIntlClientProvider locale="en" messages={messages}>
+        <CardSelector
+          character={character as any}
+          onAddCard={vi.fn()}
+          onRestoreCard={vi.fn()}
+          removedCards={new Map()}
+          convertedCards={new Map([['hirameki_01', 'other_01']])}
+          presentHiramekiIds={new Set()}
+          searchQuery=""
+        />
+      </NextIntlClientProvider>
+    );
+
+    expect(screen.queryByText('Hirameki Cards')).toBeNull();
+    expect(screen.queryByText('Hirameki Card')).toBeNull();
+  });
+
+  it('filters accordion cards by description via searchQuery', () => {
+    vi.mocked(getAddableCards).mockReturnValue([sharedCard, monsterCard] as any);
+
+    render(
+      <NextIntlClientProvider locale="en" messages={messages}>
+        <CardSelector
+          character={null}
+          onAddCard={vi.fn()}
+          onRestoreCard={vi.fn()}
+          removedCards={new Map()}
+          convertedCards={new Map()}
+          presentHiramekiIds={new Set()}
+          searchQuery="Monster description"
+        />
+      </NextIntlClientProvider>
+    );
+
+    expect(screen.getByText('Monster Card')).toBeTruthy();
+    expect(screen.queryByText('Shared Card')).toBeNull();
+  });
+
+  it('filters accordion cards by category via searchQuery', () => {
+    vi.mocked(getAddableCards).mockReturnValue([sharedCard, forbiddenCard] as any);
+
+    render(
+      <NextIntlClientProvider locale="en" messages={messages}>
+        <CardSelector
+          character={null}
+          onAddCard={vi.fn()}
+          onRestoreCard={vi.fn()}
+          removedCards={new Map()}
+          convertedCards={new Map()}
+          presentHiramekiIds={new Set()}
+          searchQuery="Upgrade"
+        />
+      </NextIntlClientProvider>
+    );
+
+    // forbiddenCard has category 'upgrade' → should appear
+    expect(screen.getByText('Forbidden Card')).toBeTruthy();
+    // sharedCard has category 'attack' → should not appear
+    expect(screen.queryByText('Shared Card')).toBeNull();
+  });
+
+  it('filters hirameki cards by searchQuery', () => {
+    vi.mocked(getCharacterHiramekiCards).mockReturnValue([hiramekiCard, sharedCard] as any);
+    const character = { id: 'char_01', name: 'Character', job: 'warrior' };
+
+    render(
+      <NextIntlClientProvider locale="en" messages={messages}>
+        <CardSelector
+          character={character as any}
+          onAddCard={vi.fn()}
+          onRestoreCard={vi.fn()}
+          removedCards={new Map()}
+          convertedCards={new Map()}
+          presentHiramekiIds={new Set()}
+          searchQuery="Hirameki"
+        />
+      </NextIntlClientProvider>
+    );
+
+    expect(screen.getByText('Hirameki Card')).toBeTruthy();
+    expect(screen.queryByText('Shared Card')).toBeNull();
+  });
 });
