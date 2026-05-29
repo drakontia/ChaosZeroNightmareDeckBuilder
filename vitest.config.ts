@@ -5,6 +5,7 @@ export default defineConfig({
   test: {
     globals: true,
     environment: 'jsdom',
+    maxWorkers: 5,
     include: ['lib/**/*.test.ts', 'tests/**/*.test.ts', 'tests/**/*.test.tsx'],
     exclude: ['node_modules', 'tests/**/*.spec.ts'],
     coverage: {
