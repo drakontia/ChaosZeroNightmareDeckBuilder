@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import { ReactNode, useState } from "react";
+import { memo, ReactNode, useState } from "react";
 import { useTranslations } from "next-intl";
 import { cn } from "@/lib/utils";
 import { Zap, Ban } from "lucide-react";
@@ -38,7 +38,7 @@ interface CardFrameProps {
   grade?: CardGrade; // Card grade for color styling
 }
 
-export function CardFrame({
+export const CardFrame = memo(function CardFrame({
   imgUrl,
   alt,
   cost,
@@ -155,4 +155,4 @@ export function CardFrame({
       )}
     </div>
   );
-}
+});

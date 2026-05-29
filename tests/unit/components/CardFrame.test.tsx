@@ -57,6 +57,10 @@ describe('CardFrame', () => {
     lastIconImageProps = null;
   });
 
+  it('should be wrapped with React.memo', () => {
+    expect((CardFrame as unknown as { $$typeof?: symbol }).$$typeof).toBe(Symbol.for('react.memo'));
+  });
+
   it('should render card with basic props', () => {
     renderWithIntl(
       <CardFrame
