@@ -3604,7 +3604,7 @@ export const CHARACTER_CARDS: CznCard[] = [
     hiramekiVariations: [ // Fallback descriptions
       { level: 0, cost: 1, description: "ダメージ100%<wbr/>1ターンの間、基本攻撃カードのダメージ量100%増加" },
       { level: 1, cost: 1, description: "ダメージ150%<wbr/>1ターンの間、基本攻撃カードのダメージ量150%増加"},
-      { level: 2, cost: 1, description: "ダメージ350%<wbr/>1ターンの間、ダメージ量20%減少", statuses: [] },
+      { level: 2, cost: 1, description: "ダメージ350%\nダメージ依存回復20%\n1ターンの間、ダメージ量20%減少", statuses: [] },
       { level: 3, cost: 1, description: "ダメージ150%<wbr/>基本カードを全て破棄、その数に応じて、ヒット数1回追加"},
       { level: 4, cost: 1, category: CardCategory.UPGRADE, description: "基本カードのダメージ量80%増加", statuses: [CardStatus.UNIQUE] },
       { level: 5, cost: 0, category: CardCategory.SKILL, description: "手札の基本カードすべて発動", statuses: [CardStatus.RETAIN] }
@@ -3619,12 +3619,12 @@ export const CHARACTER_CARDS: CznCard[] = [
     statuses: [CardStatus.UNIQUE],
     imgUrl: "/images/cards/rei_hirameki_1.png",
     hiramekiVariations: [ // Fallback descriptions
-      { level: 0, cost: 1, description: "コスト1のカードのダメージ量+40%" },
-      { level: 1, cost: 1, description: "コスト1のカードのダメージ量+60%"},
-      { level: 2, cost: 1, description: "空虚カードのダメージ量+40%"},
-      { level: 3, cost: 1, description: "コスト1のカードのダメージ量、シールド8)獲得量、治癒量+40%"},
-      { level: 4, cost: 1, description: "コスト1以下のカードのダメージ量+40%"},
-      { level: 5, cost: 0, category: CardCategory.SKILL, description: "1ターンの間、コスト1のカードのダメージ量+80%" }
+      { level: 0, cost: 1, description: "コスト1のカードのダメージ量+40%\nターン終了時、治癒60%" },
+      { level: 1, cost: 1, description: "コスト1のカードのダメージ量+60%\nターン終了時、治癒90%"},
+      { level: 2, cost: 1, description: "空虚カードのダメージ量+40%\nターン終了時、治癒90%"},
+      { level: 3, cost: 1, description: "コスト1のカードのダメージ量、シールド獲得量、獲得量、治癒量+40%\nターン終了時、治癒90%"},
+      { level: 4, cost: 1, description: "コスト1以下のカードのダメージ量+40%\nターン終了時、治癒90%"},
+      { level: 5, cost: 0, category: CardCategory.SKILL, description: "治癒100%\n1ターンの間、コスト1のカードのダメージ量+80%", statuses: [] }
     ]
   },
   {
@@ -3638,9 +3638,9 @@ export const CHARACTER_CARDS: CznCard[] = [
       { level: 0, cost: 0, description: "手札のカードを1枚選択し、消滅<wbr/>治癒200%<wbr/>ドロー1"},
       { level: 1, cost: 0, description: "手札のカードを1枚選択し、消滅<wbr/>治癒200%<wbr/>ドロー1", statuses: [CardStatus.EXHAUST2]},
       { level: 2, cost: 0, description: "治癒200%<wbr/>ドロー2", statuses: [CardStatus.RETAIN, CardStatus.EXHAUST] },
-      { level: 3, cost: 0, description: "治癒150%<wbr/>手札のカードを2枚まで選択し、消滅、その数に応じて、ドロー" },
-      { level: 4, cost: 0, description: "治癒150%<wbr/>山札から1枚まで選択し、消滅、その数に応じて、ドロー" },
-      { level: 5, cost: 0, description: "治癒150%<wbr/>手札のカードを2枚選択し、消滅、空虚カードを1枚選択し、ドロー" }
+      { level: 3, cost: 0, description: "治癒150%<wbr/>手札のカードを2枚まで選択し消滅、その数に応じてドロー" },
+      { level: 4, cost: 0, description: "治癒150%<wbr/>山札から1枚まで選択し消滅、その数に応じてドロー" },
+      { level: 5, cost: 0, description: "治癒150%<wbr/>手札のカードを2枚選択し、消滅\n空虚カードを1枚選択し、ドロー" }
     ]
   },
   {
