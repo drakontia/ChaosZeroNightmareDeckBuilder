@@ -243,6 +243,66 @@ describe('getCardInfo', () => {
     expect(info.description).toContain('Discard up to 2');
     expect(info.description).toContain('Attunement: cost -1 until used');
   });
+
+  it('should override base card statuses with empty array in hirameki variation', () => {
+    // Card has default status
+    baseCard.statuses = [CardStatus.UNIQUE];
+    
+    // Hirameki level 1 explicitly sets empty statuses
+    const variation1: HiramekiVariation = {
+      level: 1,
+      cost: 6,
+      description: 'Hirameki level 1',
+      statuses: [] // Explicitly override to no statuses
+    };
+    baseCard.hiramekiVariations[1] = variation1;
+    baseCard.selectedHiramekiLevel = 1;
+    
+    const info = getCardInfo(baseCard);
+    expect(info.statuses).toEqual([]); // Should be empty, not fallback to UNIQUE
+  });
+
+  it('should override base card statuses with empty array in ego variation', () => {
+    // Card has default status
+    baseCard.statuses = [CardStatus.UNIQUE];
+    
+    // Hirameki level 1 with ego variation that has empty statuses
+    const variation1: HiramekiVariation = {
+      level: 1,
+      cost: 6,
+      description: 'Hirameki level 1',
+      statuses: [CardStatus.RETAIN],
+      egoVariations: {
+        3: {
+          description: 'Ego level 3 variant',
+          statuses: [] // Explicitly override to no statuses at ego level 3
+        }
+      }
+    };
+    baseCard.hiramekiVariations[1] = variation1;
+    baseCard.selectedHiramekiLevel = 1;
+    
+    const info = getCardInfo(baseCard, 3);
+    expect(info.statuses).toEqual([]); // Should be empty, not fallback to RETAIN or UNIQUE
+  });
+
+  it('should fallback to base card statuses when hirameki variation has no statuses property', () => {
+    // Card has default status
+    baseCard.statuses = [CardStatus.UNIQUE];
+    
+    // Hirameki level 1 without statuses property (undefined)
+    const variation1: HiramekiVariation = {
+      level: 1,
+      cost: 6,
+      description: 'Hirameki level 1'
+      // No statuses property
+    };
+    baseCard.hiramekiVariations[1] = variation1;
+    baseCard.selectedHiramekiLevel = 1;
+    
+    const info = getCardInfo(baseCard);
+    expect(info.statuses).toEqual([CardStatus.UNIQUE]); // Should fallback to base card
+  });
 });
 
 describe('sortDeckCards', () => {

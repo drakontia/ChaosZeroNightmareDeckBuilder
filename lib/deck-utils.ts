@@ -36,7 +36,7 @@ export function getCardInfo(
   let cost = variation.cost;
   let description = variation.description;
   const category = variation.category ?? baseCard.category;
-  let statuses = (variation.statuses && variation.statuses.length > 0)
+  let statuses = variation.statuses !== undefined
     ? variation.statuses
     : (baseCard.statuses && baseCard.statuses.length > 0 ? baseCard.statuses : undefined);
 
@@ -47,7 +47,7 @@ export function getCardInfo(
     if (egoVar.cost !== undefined) {
       cost = egoVar.cost;
     }
-    if (egoVar.statuses && egoVar.statuses.length > 0) {
+    if (egoVar.statuses !== undefined) {
       statuses = egoVar.statuses;
     }
   }
