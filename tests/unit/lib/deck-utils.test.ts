@@ -314,7 +314,7 @@ describe('getCardInfo', () => {
       cost: 6,
       description: 'Hirameki level 1'
       // No statuses property
-    };
+    } as HiramekiVariation;
     baseCard.hiramekiVariations[1] = variation1;
     baseCard.selectedHiramekiLevel = 1;
      
