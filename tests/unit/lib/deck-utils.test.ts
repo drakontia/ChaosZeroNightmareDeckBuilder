@@ -335,14 +335,57 @@ describe('getCardInfo', () => {
     };
     baseCard.hiramekiVariations[1] = variation1;
     baseCard.selectedHiramekiLevel = 1;
-     
+      
     // Without ego level - should use empty array from hirameki
     let info = getCardInfo(baseCard, 0);
     expect(info.statuses).toEqual([]);
-     
+      
     // With ego level that has no statuses - should keep empty array from parent
     info = getCardInfo(baseCard, 2);
     expect(info.statuses).toEqual([]); // Should still be empty, not replaced
+  });
+
+  it('should fall back to base card statuses when hirameki variation has no statuses property', () => {
+    // Hirameki level 1 without statuses property
+    const variation1: HiramekiVariation = {
+      level: 1,
+      cost: 6,
+      description: 'Hirameki level 1'
+      // No statuses property - should fall back to baseCard
+    } as HiramekiVariation;
+    baseCard.hiramekiVariations[1] = variation1;
+    baseCard.selectedHiramekiLevel = 1;
+      
+    const info = getCardInfo(baseCard);
+    // Should fall back to baseCard.statuses which is [] (empty but not undefined)
+    // But baseCard.statuses.length === 0, so it should be undefined per the fallback logic
+    expect(info.statuses).toBeUndefined();
+  });
+
+  it('should override parent statuses with ego variation empty array', () => {
+    // Hirameki level 1 with statuses
+    const variation1: HiramekiVariation = {
+      level: 1,
+      cost: 6,
+      description: 'Hirameki level 1',
+      statuses: [CardStatus.INITIATION],
+      egoVariations: {
+        2: {
+          description: 'Ego level 2 variant',
+          statuses: [] // Explicitly empty to override parent
+        }
+      }
+    };
+    baseCard.hiramekiVariations[1] = variation1;
+    baseCard.selectedHiramekiLevel = 1;
+      
+    // Without ego level - should use statuses from hirameki
+    let info = getCardInfo(baseCard, 0);
+    expect(info.statuses).toEqual([CardStatus.INITIATION]);
+      
+    // With ego level - should override with empty array
+    info = getCardInfo(baseCard, 2);
+    expect(info.statuses).toEqual([]);
   });
 });
 
