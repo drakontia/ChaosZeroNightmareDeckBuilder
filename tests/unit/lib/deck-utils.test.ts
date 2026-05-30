@@ -330,10 +330,7 @@ describe('getCardInfo', () => {
       description: 'Hirameki level 1',
       statuses: [], // Explicitly empty
       egoVariations: {
-        2: {
-          description: 'Ego level 2 variant'
-          // No statuses - should NOT override the empty array from parent
-        }
+        2: { description: 'Ego level 2 variant' } // No statuses property defined
       }
     };
     baseCard.hiramekiVariations[1] = variation1;
