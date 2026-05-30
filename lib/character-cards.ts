@@ -3399,12 +3399,12 @@ export const CHARACTER_CARDS: CznCard[] = [
     statuses: [CardStatus.EXHAUST],
     imgUrl: "/images/cards/cassius_hirameki_2.png",
     hiramekiVariations: [ // Fallback descriptions
-      { level: 0, cost: 1, description: "手札のすべてのカードを破棄<wbr/>その数に応じてドロー"},
-      { level: 1, cost: 1, description: "手札のすべてのカードを破棄<wbr/>その数に応じてドロー", statuses: [CardStatus.EXHAUST2]},
-      { level: 2, cost: 1, description: "手札を好きな枚数破棄<wbr/>その数に応じてドロー" },
+      { level: 0, cost: 1, description: "手札のすべてのカードを破棄<wbr/>その枚数に応じてドロー"},
+      { level: 1, cost: 1, description: "手札のすべてのカードを破棄<wbr/>その枚数に応じてドロー", statuses: [CardStatus.EXHAUST2]},
+      { level: 2, cost: 1, description: "手札を好きな枚数破棄<wbr/>その枚数に応じてドロー" },
       { level: 3, cost: 1, description: "手札と捨て札の全てのカードを山札に移動<wbr/>ドロー5" },
       { level: 4, cost: 0, description: "捨て札からカードを5枚まで選択、山札の一番上に移動" },
-      { level: 5, cost: 0, description: "ドロー3<wbr/>ドローしたカードの合計コストが4以下の場合、すべて破棄", statuses: [] }
+      { level: 5, cost: 0, description: "ドロー3<wbr/>ドローしたカードの合計コストが4以下の場合、全て破棄", statuses: [] }
     ]
   },
   {
