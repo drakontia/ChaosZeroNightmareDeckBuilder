@@ -80,7 +80,7 @@ describe('DeckDisplay - Copied Card Feature', () => {
         level: 0,
         cost: 2,
         description: 'Base description',
-        statuses: []
+        statuses: overrides?.statuses
       }
     ],
     selectedHiramekiLevel: 0,

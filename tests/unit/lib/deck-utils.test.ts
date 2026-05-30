@@ -243,6 +243,150 @@ describe('getCardInfo', () => {
     expect(info.description).toContain('Discard up to 2');
     expect(info.description).toContain('Attunement: cost -1 until used');
   });
+
+  it('should override base card statuses with empty array in hirameki variation', () => {
+    // Card has default status
+    baseCard.statuses = [CardStatus.UNIQUE];
+    
+    // Hirameki level 1 explicitly sets empty statuses
+    const variation1: HiramekiVariation = {
+      level: 1,
+      cost: 6,
+      description: 'Hirameki level 1',
+      statuses: [] // Explicitly override to no statuses
+    };
+    baseCard.hiramekiVariations[1] = variation1;
+    baseCard.selectedHiramekiLevel = 1;
+    
+    const info = getCardInfo(baseCard);
+    expect(info.statuses).toEqual([]); // Should be empty, not fallback to UNIQUE
+  });
+
+  it('should override base card statuses with empty array in ego variation', () => {
+    // Card has default status
+    baseCard.statuses = [CardStatus.UNIQUE];
+    
+    // Hirameki level 1 with ego variation that has empty statuses
+    const variation1: HiramekiVariation = {
+      level: 1,
+      cost: 6,
+      description: 'Hirameki level 1',
+      statuses: [CardStatus.RETAIN],
+      egoVariations: {
+        3: {
+          description: 'Ego level 3 variant',
+          statuses: [] // Explicitly override to no statuses at ego level 3
+        }
+      }
+    };
+    baseCard.hiramekiVariations[1] = variation1;
+    baseCard.selectedHiramekiLevel = 1;
+    
+    const info = getCardInfo(baseCard, 3);
+    expect(info.statuses).toEqual([]); // Should be empty, not fallback to RETAIN or UNIQUE
+  });
+
+  it('should fallback to base card statuses when hirameki variation has no statuses property', () => {
+    // Card has default status
+    baseCard.statuses = [CardStatus.UNIQUE];
+    
+    // Hirameki level 1 without statuses property (undefined)
+    const variation1: HiramekiVariation = {
+      level: 1,
+      cost: 6,
+      description: 'Hirameki level 1'
+      // No statuses property
+    };
+    baseCard.hiramekiVariations[1] = variation1;
+    baseCard.selectedHiramekiLevel = 1;
+     
+    const info = getCardInfo(baseCard);
+    expect(info.statuses).toEqual([CardStatus.UNIQUE]); // Should fallback to base card
+  });
+
+  it('should return undefined statuses when no statuses are defined anywhere', () => {
+    // Card has no statuses
+    baseCard.statuses = undefined;
+     
+    // Hirameki level 1 without statuses property
+    const variation1: HiramekiVariation = {
+      level: 1,
+      cost: 6,
+      description: 'Hirameki level 1'
+      // No statuses property
+    } as HiramekiVariation;
+    baseCard.hiramekiVariations[1] = variation1;
+    baseCard.selectedHiramekiLevel = 1;
+     
+    const info = getCardInfo(baseCard);
+    expect(info.statuses).toBeUndefined(); // Should be undefined
+  });
+
+  it('should preserve empty array in hirameki variation even with ego variation without statuses', () => {
+    // Hirameki level 1 explicitly sets empty statuses
+    const variation1: HiramekiVariation = {
+      level: 1,
+      cost: 6,
+      description: 'Hirameki level 1',
+      statuses: [], // Explicitly empty
+      egoVariations: {
+        2: { description: 'Ego level 2 variant' } // No statuses property defined
+      }
+    };
+    baseCard.hiramekiVariations[1] = variation1;
+    baseCard.selectedHiramekiLevel = 1;
+      
+    // Without ego level - should use empty array from hirameki
+    let info = getCardInfo(baseCard, 0);
+    expect(info.statuses).toEqual([]);
+      
+    // With ego level that has no statuses - should keep empty array from parent
+    info = getCardInfo(baseCard, 2);
+    expect(info.statuses).toEqual([]); // Should still be empty, not replaced
+  });
+
+  it('should fall back to base card statuses when hirameki variation has no statuses property', () => {
+    // Hirameki level 1 without statuses property
+    const variation1: HiramekiVariation = {
+      level: 1,
+      cost: 6,
+      description: 'Hirameki level 1'
+      // No statuses property - should fall back to baseCard
+    } as HiramekiVariation;
+    baseCard.hiramekiVariations[1] = variation1;
+    baseCard.selectedHiramekiLevel = 1;
+      
+    const info = getCardInfo(baseCard);
+    // Should fall back to baseCard.statuses which is [] (empty but not undefined)
+    // But baseCard.statuses.length === 0, so it should be undefined per the fallback logic
+    expect(info.statuses).toBeUndefined();
+  });
+
+  it('should override parent statuses with ego variation empty array', () => {
+    // Hirameki level 1 with statuses
+    const variation1: HiramekiVariation = {
+      level: 1,
+      cost: 6,
+      description: 'Hirameki level 1',
+      statuses: [CardStatus.INITIATION],
+      egoVariations: {
+        2: {
+          description: 'Ego level 2 variant',
+          statuses: [] // Explicitly empty to override parent
+        }
+      }
+    };
+    baseCard.hiramekiVariations[1] = variation1;
+    baseCard.selectedHiramekiLevel = 1;
+      
+    // Without ego level - should use statuses from hirameki
+    let info = getCardInfo(baseCard, 0);
+    expect(info.statuses).toEqual([CardStatus.INITIATION]);
+      
+    // With ego level - should override with empty array
+    info = getCardInfo(baseCard, 2);
+    expect(info.statuses).toEqual([]);
+  });
 });
 
 describe('sortDeckCards', () => {
