@@ -40,9 +40,7 @@ export function CardActionsMenu({
   } = useCardActionsMenu({ onConvertCard, deckId: card.deckId });
 
   const variation = card.hiramekiVariations[card.selectedHiramekiLevel] ?? card.hiramekiVariations[0];
-  const effectiveStatuses = (variation?.statuses && variation.statuses.length > 0)
-    ? variation.statuses
-    : card.statuses;
+  const effectiveStatuses = variation?.statuses ?? card.statuses;
   const canCopy = !card.isBasicCard && !effectiveStatuses.includes(CardStatus.UNIQUE);
 
   // 統一されたボタンスタイル定数
