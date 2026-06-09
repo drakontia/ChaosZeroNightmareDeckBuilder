@@ -26,8 +26,8 @@ interface PersonaEngravingDialogProps {
 
 function PersonaEngravingSection({ title, engravings, selectedEngravings, onToggle }: { title: string; engravings: typeof PERSONA_CARD_ENGRAVINGS; selectedEngravings: PersonaEngraving[]; onToggle: (engraving: PersonaEngraving) => void; }) {
   const t = useTranslations();
-  const selectedCount = engravings.filter((definition) =>
-    selectedEngravings.some((e) => e.id === definition.id && e.alignment === definition.alignment)
+  const selectedCount = selectedEngravings.filter((engraving) =>
+    engravings.some((definition) => definition.id === engraving.id && definition.alignment === engraving.alignment)
   ).length;
 
   return (
@@ -45,7 +45,10 @@ function PersonaEngravingSection({ title, engravings, selectedEngravings, onTogg
       <AccordionContent>
         <div className="grid gap-2">
           {engravings.map((definition) => {
-            const isSelected = selectedEngravings.some((engraving) => engraving.id === definition.id && engraving.alignment === definition.alignment);
+            const selectedTimes = selectedEngravings.filter(
+              (engraving) => engraving.id === definition.id && engraving.alignment === definition.alignment
+            ).length;
+            const isSelected = selectedTimes > 0;
             return (
               <Button
                 key={definition.id}
@@ -57,6 +60,11 @@ function PersonaEngravingSection({ title, engravings, selectedEngravings, onTogg
                 <span className={`shrink-0 w-4 h-4 flex items-center justify-center rounded-full border ${isSelected ? "bg-primary border-primary text-primary-foreground" : "border-muted-foreground/40"}`}>
                   {isSelected && <Check className="w-3 h-3" />}
                 </span>
+                {selectedTimes > 1 && (
+                  <span className="inline-flex items-center justify-center rounded-full bg-primary text-primary-foreground text-[10px] font-medium w-4 h-4 shrink-0">
+                    {selectedTimes}
+                  </span>
+                )}
                 {t(`cards.personaMeta.engravings.${definition.descriptionKey}`, { defaultValue: definition.description })}
               </Button>
             );
@@ -97,7 +105,19 @@ export function PersonaEngravingDialog(props: PersonaEngravingDialogProps) {
     translateGodEffect: (effectId, fallback) => t(`godEffects.${effectId}`, { defaultValue: fallback }),
     translateHiddenEffect: (effectId, fallback) => t(`hiddenEffects.${effectId}`, { defaultValue: fallback }),
   });
-  const toggleEngraving = (engraving: PersonaEngraving) => setPendingEngravings((current) => current.some((item) => item.id === engraving.id && item.alignment === engraving.alignment) ? current.filter((item) => !(item.id === engraving.id && item.alignment === engraving.alignment)) : current.length >= 2 ? current : [...current, engraving]);
+  const toggleEngraving = (engraving: PersonaEngraving) =>
+    setPendingEngravings((current) => {
+      const sameCount = current.filter(
+        (item) => item.id === engraving.id && item.alignment === engraving.alignment
+      ).length;
+      if (sameCount >= 2) {
+        return current.filter((item) => !(item.id === engraving.id && item.alignment === engraving.alignment));
+      }
+      if (current.length >= 2) {
+        return current;
+      }
+      return [...current, engraving];
+    });
 
   const selectedDescriptions = pendingEngravings.map((engraving) => {
     const definition = PERSONA_CARD_ENGRAVINGS.find((d) => d.id === engraving.id && d.alignment === engraving.alignment);

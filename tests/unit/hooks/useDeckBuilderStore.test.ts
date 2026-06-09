@@ -332,6 +332,23 @@ describe('useDeckBuilderStore', () => {
     ]);
   });
 
+  it('setCardPersonaEngravingsで同じ刻印を2つ設定できる', () => {
+    const card = getPersonaCard();
+    act(() => {
+      useDeckBuilderStore.getState().setCharacter(CHARACTERS[0]);
+      useDeckBuilderStore.getState().addCard(card);
+      useDeckBuilderStore.getState().setCardPersonaEngravings(card.deckId, [
+        { id: 'lux_attunement_discount', alignment: 'light' },
+        { id: 'lux_attunement_discount', alignment: 'light' },
+      ]);
+    });
+    const updated = useDeckBuilderStore.getState().deck?.cards.find(c => c.deckId === card.deckId);
+    expect(updated?.personaEngravings).toEqual([
+      { id: 'lux_attunement_discount', alignment: 'light' },
+      { id: 'lux_attunement_discount', alignment: 'light' },
+    ]);
+  });
+
   it('setCardPersonaEngravingsは非ペルソナカードには適用されない', () => {
     const card = getTestCard();
     act(() => {

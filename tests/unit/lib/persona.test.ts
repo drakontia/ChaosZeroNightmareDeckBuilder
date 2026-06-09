@@ -126,6 +126,17 @@ describe('normalizePersonaCardEngravings', () => {
     ]);
     expect(result).toEqual([]);
   });
+
+  it('同じ刻印を2つ選択した場合は2件とも保持する', () => {
+    const result = normalizePersonaCardEngravings([
+      { id: 'lux_attunement_discount', alignment: 'light' },
+      { id: 'lux_attunement_discount', alignment: 'light' },
+    ]);
+    expect(result).toEqual([
+      { id: 'lux_attunement_discount', alignment: 'light' },
+      { id: 'lux_attunement_discount', alignment: 'light' },
+    ]);
+  });
 });
 
 describe('getPersonaCardPresentation - image selection by category', () => {
