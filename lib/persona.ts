@@ -348,12 +348,10 @@ export function normalizePersonaCardEngravings(
     if (job && definition.allowedJobs !== "all" && !definition.allowedJobs.includes(job)) {
       continue;
     }
-    if (!normalized.some((candidate) => candidate.id === engraving.id && candidate.alignment === engraving.alignment)) {
-      normalized.push({
-        id: engraving.id,
-        alignment: engraving.alignment,
-      });
-    }
+    normalized.push({
+      id: engraving.id,
+      alignment: engraving.alignment,
+    });
     if (normalized.length >= 2) {
       break;
     }

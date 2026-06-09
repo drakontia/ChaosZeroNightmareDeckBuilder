@@ -105,6 +105,29 @@ test.describe('Persona Card Engraving', () => {
     await expect(page.getByText('光輝のペルソナ', { exact: true }).first()).toBeVisible({ timeout: 5000 });
   });
 
+  test('clicking the same engraving cycles to two slots and updates to 光輝のペルソナ', async ({ page }) => {
+    await addPersonaCard(page);
+
+    const deckCard = getDeckCardContainerByName(page, 'ペルソナ');
+    await deckCard.getByRole('button', { name: '刻印', exact: true }).click();
+
+    const dialog = page.getByRole('dialog');
+    await expect(dialog).toBeVisible({ timeout: 5000 });
+
+    await dialog.getByRole('button', { name: '光の刻印' }).click();
+    await page.waitForTimeout(300);
+
+    const sameEngraving = dialog.getByRole('button').filter({ hasText: '感応' }).first();
+    await expect(sameEngraving).toBeVisible({ timeout: 3000 });
+    await sameEngraving.click();
+    await sameEngraving.click();
+
+    await dialog.getByRole('button', { name: '選択' }).click();
+
+    await expect(dialog).not.toBeVisible({ timeout: 5000 });
+    await expect(page.getByText('光輝のペルソナ', { exact: true }).first()).toBeVisible({ timeout: 5000 });
+  });
+
   test('non-persona season cards do not show 刻印 button', async ({ page }) => {
     await page.getByRole('button', { name: 'シーズンカード' }).click();
     const forbiddenSection = page.getByRole('heading', { name: 'シーズンカード' }).locator('..');
