@@ -107,16 +107,24 @@ export function PersonaEngravingDialog(props: PersonaEngravingDialogProps) {
   });
   const toggleEngraving = (engraving: PersonaEngraving) =>
     setPendingEngravings((current) => {
-      const sameCount = current.filter(
-        (item) => item.id === engraving.id && item.alignment === engraving.alignment
-      ).length;
-      if (sameCount >= 2) {
-        return current.filter((item) => !(item.id === engraving.id && item.alignment === engraving.alignment));
+      const isSame = (item: PersonaEngraving) => item.id === engraving.id && item.alignment === engraving.alignment;
+      const sameCount = current.filter(isSame).length;
+
+      // 0 -> 1
+      if (sameCount === 0) {
+        if (current.length >= 2) {
+          return current;
+        }
+        return [...current, engraving];
       }
-      if (current.length >= 2) {
-        return current;
+
+      // 1 -> 2 (2枠を同一刻印で埋める。別刻印が入っている場合は置き換える)
+      if (sameCount === 1) {
+        return [engraving, engraving];
       }
-      return [...current, engraving];
+
+      // 2 -> 0
+      return current.filter((item) => !isSame(item));
     });
 
   const selectedDescriptions = pendingEngravings.map((engraving) => {
