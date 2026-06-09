@@ -47,8 +47,8 @@ export function HiramekiControls(props: HiramekiControlsProps) {
 
   return (
     <>
-      <ControlButton active={props.card.selectedHiramekiLevel > 0 || props.card.selectedHiddenHiramekiId !== null} label={t("card.hirameki")} onClick={() => setOpenHirameki(true)} activeIcon={<Lightbulb className={actionIconClass} />} inactiveIcon={<LightbulbOff className={actionIconClass} />} />
-      <ControlButton active={Boolean(props.card.godHiramekiType)} label={t("card.godSelect")} onClick={() => setOpenGod(true)} activeIcon={<Zap className={actionIconClass} />} inactiveIcon={<ZapOff className={actionIconClass} />} />
+      {!isPersonaCard ? <ControlButton active={props.card.selectedHiramekiLevel > 0 || props.card.selectedHiddenHiramekiId !== null} label={t("card.hirameki")} onClick={() => setOpenHirameki(true)} activeIcon={<Lightbulb className={actionIconClass} />} inactiveIcon={<LightbulbOff className={actionIconClass} />} /> : null}
+      {!isPersonaCard ? <ControlButton active={Boolean(props.card.godHiramekiType)} label={t("card.godSelect")} onClick={() => setOpenGod(true)} activeIcon={<Zap className={actionIconClass} />} inactiveIcon={<ZapOff className={actionIconClass} />} /> : null}
       {isPersonaCard ? <ControlButton active={(props.card.personaEngravings?.length ?? 0) > 0} label={t("card.personaEngraving", { defaultValue: "刻印" })} onClick={() => setOpenPersona(true)} activeIcon={<Sparkles className={actionIconClass} />} inactiveIcon={<Sparkles className={actionIconClass} />} /> : null}
       <HiramekiDialog card={props.card} egoLevel={props.egoLevel} hasPotential={props.hasPotential} open={openHirameki} onOpenChange={setOpenHirameki} onUpdateHirameki={props.onUpdateHirameki} onSetHiddenHirameki={props.onSetHiddenHirameki} />
       <GodHiramekiDialog card={props.card} egoLevel={props.egoLevel} hasPotential={props.hasPotential} open={openGod} onOpenChange={setOpenGod} onSetGodHirameki={props.onSetGodHirameki} onSetGodHiramekiEffect={props.onSetGodHiramekiEffect} />
