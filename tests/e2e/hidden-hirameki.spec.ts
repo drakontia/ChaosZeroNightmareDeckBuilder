@@ -1,15 +1,17 @@
-import { test, expect } from '@playwright/test';
+import { test, expect, type Page } from '@playwright/test';
+
+async function waitForDeckBuilderReady(page: Page) {
+  await expect(page.getByTestId('total-cards')).toBeVisible();
+}
 
 test.describe('Hidden Hirameki E2E Tests', () => {
   test.beforeEach(async ({ page }) => {
     // Navigate to the deck builder
     await page.goto('/');
+    await waitForDeckBuilderReady(page);
   });
 
   test('should display hidden hirameki button for cards with hidden variants', async ({ page }) => {
-    // Wait for the page to load
-    await page.waitForLoadState('networkidle');
-
     // Check if hidden hirameki buttons are present when applicable
     // This test assumes cards with hidden variants are displayed
     const buttons = await page.locator('button').count();
@@ -19,8 +21,6 @@ test.describe('Hidden Hirameki E2E Tests', () => {
   });
 
   test('should toggle hidden hirameki state when button is clicked', async ({ page }) => {
-    await page.waitForLoadState('networkidle');
-
     // Get the hidden hirameki button (if it exists)
     const hiddenHiramekiButtons = await page.locator('button[title*="隠しヒラメキ"], button[title*="Hidden"]').count();
     
@@ -42,8 +42,6 @@ test.describe('Hidden Hirameki E2E Tests', () => {
   });
 
   test('should show hidden hirameki preview cards in modal', async ({ page }) => {
-    await page.waitForLoadState('networkidle');
-
     // Find and click a hidden hirameki button
     const hiddenButtons = await page.locator('button[title*="隠しヒラメキ"], button[title*="Hidden"]');
     const count = await hiddenButtons.count();
@@ -66,8 +64,6 @@ test.describe('Hidden Hirameki E2E Tests', () => {
   });
 
   test('should apply hidden hirameki and display correct card info', async ({ page }) => {
-    await page.waitForLoadState('networkidle');
-
     // Find a hidden hirameki button and click it
     const hiddenButtons = await page.locator('button[title*="隠しヒラメキ"], button[title*="Hidden"]');
     const count = await hiddenButtons.count();
@@ -93,8 +89,6 @@ test.describe('Hidden Hirameki E2E Tests', () => {
   });
 
   test('should handle multiple hidden hirameki levels correctly', async ({ page }) => {
-    await page.waitForLoadState('networkidle');
-
     // Get all hidden hirameki buttons
     const hiddenButtons = await page.locator('button[title*="隠しヒラメキ"], button[title*="Hidden"]');
     const buttonCount = await hiddenButtons.count();
@@ -131,8 +125,6 @@ test.describe('Hidden Hirameki E2E Tests', () => {
   });
 
   test('should preserve hidden hirameki state when copying card', async ({ page }) => {
-    await page.waitForLoadState('networkidle');
-
     // Find and apply hidden hirameki to a card
     const hiddenButtons = await page.locator('button[title*="隠しヒラメキ"], button[title*="Hidden"]');
     const count = await hiddenButtons.count();
@@ -158,8 +150,6 @@ test.describe('Hidden Hirameki E2E Tests', () => {
   });
 
   test('should reset hidden hirameki when removing it', async ({ page }) => {
-    await page.waitForLoadState('networkidle');
-
     // Apply hidden hirameki
     const hiddenButtons = await page.locator('button[title*="隠しヒラメキ"], button[title*="Hidden"]');
     const count = await hiddenButtons.count();

@@ -322,7 +322,6 @@ test.describe('Deck Builder', () => {
     expect(shareURL).toMatch(/^http:\/\/localhost:3000\/deck\//);
 
     await page.goto(shareURL);
-    await page.waitForLoadState('networkidle');
 
     // Verify shared page reflects the same deck state
     await expect.poll(async () => await page.locator('[data-testid="total-cards"]').count(), { timeout: 30000 }).toBeGreaterThan(0);
