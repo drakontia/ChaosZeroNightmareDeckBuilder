@@ -93,7 +93,7 @@ export const CardFrame = memo(function CardFrame({
       <div className="flex items-start pt-1 lg:pt-3 ml-2 sm:ml-4 lg:ml-6 xl:ml-6 gap-2 z-10 relative">
         <div className="flex flex-col items-start">
           {cost === "unusable" ? (
-            <Ban className="w-6 h-6 sm:w-8 sm:h-8 lg:w-12 lg:h-12 xl:w-14 xl:h-14 text-white text-shadow-2xl" strokeWidth={2.5} />
+            <Ban className="w-5 h-5 sm:w-6 sm:h-6 lg:w-9 lg:h-9 xl:w-12 xl:h-12 text-white text-shadow-2xl" strokeWidth={2.5} />
           ) : (
             <div className="text-lg sm:text-2xl lg:text-4xl xl:text-5xl font-extrabold text-white underline underline-offset-4 decoration-1 text-shadow-2xl align-middle leading-none">{cost}</div>
           )}
