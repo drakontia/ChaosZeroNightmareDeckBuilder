@@ -127,6 +127,22 @@ describe('useDeckBuilderStore', () => {
     expect(afterLength).toBe(initialLength - 1);
   });
 
+  it('ペルソナカードはデッキに2枚以上追加できない', () => {
+    const persona1 = getPersonaCard();
+    const persona2 = { ...getPersonaCard(), deckId: 'persona_card_2' };
+
+    act(() => {
+      useDeckBuilderStore.getState().setCharacter(CHARACTERS[0]);
+      useDeckBuilderStore.getState().addCard(persona1);
+      useDeckBuilderStore.getState().addCard(persona2);
+    });
+
+    const personaCards = useDeckBuilderStore
+      .getState()
+      .deck?.cards.filter((card) => card.id.startsWith('persona_')) ?? [];
+    expect(personaCards).toHaveLength(1);
+  });
+
   it('setDeckでcharacterがidの場合に正規化されcreatedAtがDateになる', () => {
     const deck = {
       name: 'stringdeck',
@@ -273,6 +289,22 @@ describe('useDeckBuilderStore', () => {
     });
     const updated = useDeckBuilderStore.getState().deck?.cards.find(c => c.deckId === card.deckId);
     expect(updated?.godHiramekiEffectId).toBe('effect-1');
+  });
+
+  it('ペルソナカードではヒラメキと神ヒラメキを更新できない', () => {
+    const card = getPersonaCard();
+    act(() => {
+      useDeckBuilderStore.getState().setCharacter(CHARACTERS[0]);
+      useDeckBuilderStore.getState().addCard(card);
+      useDeckBuilderStore.getState().updateCardHirameki(card.deckId, 2);
+      useDeckBuilderStore.getState().setCardGodHirameki(card.deckId, GodType.KILKEN);
+      useDeckBuilderStore.getState().setCardGodHiramekiEffect(card.deckId, 'effect-1');
+    });
+
+    const updated = useDeckBuilderStore.getState().deck?.cards.find(c => c.deckId === card.deckId);
+    expect(updated?.selectedHiramekiLevel).toBe(0);
+    expect(updated?.godHiramekiType).toBeNull();
+    expect(updated?.godHiramekiEffectId).toBeNull();
   });
 
   it('setCardHiddenHiramekiでselectedHiddenHiramekiIdが更新される', () => {
@@ -508,6 +540,21 @@ describe('useDeckBuilderStore', () => {
     expect(deck.convertedCards.has(card.id)).toBe(true);
   });
 
+  it('ペルソナカードは変換できない', () => {
+    const card = getPersonaCard();
+    const targetId = CHARACTERS[0].hiramekiCards[0];
+    act(() => {
+      useDeckBuilderStore.getState().setCharacter(CHARACTERS[0]);
+      useDeckBuilderStore.getState().addCard(card);
+      useDeckBuilderStore.getState().convertCard(card.deckId, targetId);
+    });
+
+    const deck = useDeckBuilderStore.getState().deck!;
+    expect(deck.cards.some(c => c.deckId === card.deckId)).toBe(true);
+    expect(deck.cards.some(c => c.id === targetId && c.deckId !== card.deckId)).toBe(false);
+    expect(deck.convertedCards.has(card.id)).toBe(false);
+  });
+
   it('convertCardで排除として変換すると変換先カードはデッキに入らない', () => {
     const card = getTestCard();
     const targetId = CHARACTERS[0].hiramekiCards[0];
@@ -611,6 +658,19 @@ describe('useDeckBuilderStore', () => {
     }
   });
 
+  it('ペルソナカードは削除できない', () => {
+    const card = getPersonaCard();
+    act(() => {
+      useDeckBuilderStore.getState().setCharacter(CHARACTERS[0]);
+      useDeckBuilderStore.getState().addCard(card);
+      useDeckBuilderStore.getState().removeCard(card.deckId);
+    });
+
+    const deck = useDeckBuilderStore.getState().deck!;
+    expect(deck.cards.some((deckCard) => deckCard.deckId === card.deckId)).toBe(true);
+    expect(deck.removedCards.has(card.id)).toBe(false);
+  });
+
   it('removeCardで同じカードを複数回削除するとcountが増える', () => {
     const card = getTestCard();
     act(() => {
@@ -635,9 +695,8 @@ describe('useDeckBuilderStore', () => {
 
   it('restoreCardで同じカードの削除カウントは1つずつ減る', () => {
     const card = {
-      ...getPersonaCard(),
+      ...getTestCard(),
       selectedHiddenHiramekiId: 'hiddenhirameki_01',
-      personaEngravings: [{ id: 'umbra_attack_boost', alignment: 'dark' }] as Array<{ id: string; alignment: 'light' | 'dark' }>,
     };
     act(() => {
       useDeckBuilderStore.getState().setCharacter(CHARACTERS[0]);
@@ -650,7 +709,7 @@ describe('useDeckBuilderStore', () => {
       useDeckBuilderStore.getState().removeCard('persona_card_2');
       useDeckBuilderStore.getState().restoreCard({
         ...card,
-        deckId: 'persona_restore_1',
+        deckId: 'test_restore_1',
       });
     });
 
@@ -658,7 +717,6 @@ describe('useDeckBuilderStore', () => {
     expect(entry).toMatchObject({
       count: 1,
       selectedHiddenHiramekiId: 'hiddenhirameki_01',
-      personaEngravings: [{ id: 'umbra_attack_boost', alignment: 'dark' }],
     });
   });
 
@@ -1150,7 +1208,7 @@ describe('useDeckBuilderStore', () => {
   });
 
   it('restoreCardで1回だけ削除されたカードを復元するとremovedCardsから削除される', () => {
-    const card = getPersonaCard();
+    const card = getTestCard();
     act(() => {
       useDeckBuilderStore.getState().setCharacter(CHARACTERS[0]);
       useDeckBuilderStore.getState().addCard(card);
@@ -1164,7 +1222,7 @@ describe('useDeckBuilderStore', () => {
     }
 
     act(() => {
-      useDeckBuilderStore.getState().restoreCard({ ...card, deckId: 'persona_restore_new' });
+      useDeckBuilderStore.getState().restoreCard({ ...card, deckId: 'test_restore_new' });
     });
 
     expect(useDeckBuilderStore.getState().deck?.removedCards.has(card.id)).toBe(false);

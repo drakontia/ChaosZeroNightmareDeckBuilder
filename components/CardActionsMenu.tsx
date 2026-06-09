@@ -41,7 +41,10 @@ export function CardActionsMenu({
 
   const variation = card.hiramekiVariations[card.selectedHiramekiLevel] ?? card.hiramekiVariations[0];
   const effectiveStatuses = variation?.statuses ?? card.statuses;
+  const isPersonaCard = card.id.startsWith("persona_");
   const canCopy = !card.isBasicCard && !effectiveStatuses.includes(CardStatus.UNIQUE);
+  const canRemove = !isPersonaCard;
+  const canConvert = !isPersonaCard;
 
   // 統一されたボタンスタイル定数
   const actionButtonClass = "h-6 xl:h-9 w-6 xl:w-9 rounded-full";
@@ -62,17 +65,19 @@ export function CardActionsMenu({
       </Button>
       {isOpen && (
         <div className="absolute right-0 mt-1 z-20">
-          <Button
-            type="button"
-            variant="destructive"
-            size="icon"
-            className={actionButtonClass}
-            onClick={() => { onRemoveCard(card.deckId); closeMenu(); }}
-            aria-label={t("common.delete", { defaultValue: "削除" })}
-            title={t("common.delete", { defaultValue: "削除" })}
-          >
-            <CircleX className={actionIconClass} />
-          </Button>
+          {canRemove && (
+            <Button
+              type="button"
+              variant="destructive"
+              size="icon"
+              className={actionButtonClass}
+              onClick={() => { onRemoveCard(card.deckId); closeMenu(); }}
+              aria-label={t("common.delete", { defaultValue: "削除" })}
+              title={t("common.delete", { defaultValue: "削除" })}
+            >
+              <CircleX className={actionIconClass} />
+            </Button>
+          )}
           {canCopy && (
             <Button
               type="button"
@@ -86,17 +91,19 @@ export function CardActionsMenu({
               <Copy className={actionIconClass} />
             </Button>
           )}
-          <Button
-            type="button"
-            variant="outline"
-            size="icon"
-            className={actionButtonClass}
-            onClick={handleConvertClick}
-            aria-label={t("common.convert", { defaultValue: "変換" })}
-            title={t("common.convert", { defaultValue: "変換" })}
-          >
-            <ArrowRightLeft className={actionIconClass} />
-          </Button>
+          {canConvert && (
+            <Button
+              type="button"
+              variant="outline"
+              size="icon"
+              className={actionButtonClass}
+              onClick={handleConvertClick}
+              aria-label={t("common.convert", { defaultValue: "変換" })}
+              title={t("common.convert", { defaultValue: "変換" })}
+            >
+              <ArrowRightLeft className={actionIconClass} />
+            </Button>
+          )}
           {!card.isBasicCard && (
             <Button
               type="button"

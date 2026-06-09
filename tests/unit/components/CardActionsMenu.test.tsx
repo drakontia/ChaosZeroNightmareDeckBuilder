@@ -118,4 +118,16 @@ describe("CardActionsMenu", () => {
 
     expect(screen.queryByRole("button", { name: "コピー" })).toBeNull();
   });
+
+  it("ペルソナカードでは削除と変換を表示しない", () => {
+    const card = createDeckCard({
+      id: "persona_01",
+      deckId: "persona_01_deck_1",
+    });
+
+    renderMenu(card);
+
+    expect(screen.queryByRole("button", { name: "削除" })).toBeNull();
+    expect(screen.queryByRole("button", { name: "変換" })).toBeNull();
+  });
 });

@@ -22,6 +22,7 @@ interface CardSelectorProps {
 
 export function CardSelector({ character, onAddCard, onRestoreCard, removedCards, convertedCards, presentHiramekiIds, searchQuery }: CardSelectorProps) {
   const t = useTranslations();
+  const isPersonaCard = (card: CznCard) => card.id.startsWith("persona_");
   const getCardNameInfo = (card: CznCard, level: number = 0) => {
     const variationName = card.hiramekiVariations[level]?.name;
     const levelKey = `cards.${card.id}.name.${level}`;
@@ -76,16 +77,25 @@ export function CardSelector({ character, onAddCard, onRestoreCard, removedCards
   );
 
   const filteredSharedCards = useMemo(
-    () => addableCards.filter(c => c.type === CardType.SHARED).filter(matchesQuery),
-    [addableCards, matchesQuery]
+    () => addableCards
+      .filter(c => c.type === CardType.SHARED)
+      .filter((card) => !(isPersonaCard(card) && hiddenHiramekiIds.has(card.id)))
+      .filter(matchesQuery),
+    [addableCards, hiddenHiramekiIds, matchesQuery]
   );
   const filteredMonsterCards = useMemo(
-    () => addableCards.filter(c => c.type === CardType.MONSTER).filter(matchesQuery),
-    [addableCards, matchesQuery]
+    () => addableCards
+      .filter(c => c.type === CardType.MONSTER)
+      .filter((card) => !(isPersonaCard(card) && hiddenHiramekiIds.has(card.id)))
+      .filter(matchesQuery),
+    [addableCards, hiddenHiramekiIds, matchesQuery]
   );
   const filteredForbiddenCards = useMemo(
-    () => addableCards.filter(c => c.type === CardType.FORBIDDEN).filter(matchesQuery),
-    [addableCards, matchesQuery]
+    () => addableCards
+      .filter(c => c.type === CardType.FORBIDDEN)
+      .filter((card) => !(isPersonaCard(card) && hiddenHiramekiIds.has(card.id)))
+      .filter(matchesQuery),
+    [addableCards, hiddenHiramekiIds, matchesQuery]
   );
 
   const getCardTypeLabel = (type: CardType) => {

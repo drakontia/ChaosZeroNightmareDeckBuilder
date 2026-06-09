@@ -244,6 +244,9 @@ export const useDeckBuilderStore = create<DeckBuilderStore>((set) => ({
   addCard: (card) => {
     set((state) => {
       if (!state.deck) return {};
+      if (isPersonaCard(card) && state.deck.cards.some(existing => isPersonaCard(existing))) {
+        return {};
+      }
       return {
         deck: { ...state.deck, cards: [...state.deck.cards, card] },
       };
@@ -254,6 +257,7 @@ export const useDeckBuilderStore = create<DeckBuilderStore>((set) => ({
       if (!state.deck) return {};
       const cardToRemove = state.deck.cards.find((c) => c.deckId === deckId);
       if (!cardToRemove) return {};
+      if (isPersonaCard(cardToRemove)) return {};
 
       // Check integrated removal+conversion limit (max 5 total)
       const removedCount = Array.from(state.deck.removedCards.values()).reduce((sum: number, entry) => {
@@ -426,7 +430,7 @@ export const useDeckBuilderStore = create<DeckBuilderStore>((set) => ({
         deck: {
           ...state.deck,
           cards: state.deck.cards.map((card) =>
-            card.deckId === deckId ? { ...card, selectedHiramekiLevel: level } : card
+            card.deckId === deckId && !isPersonaCard(card) ? { ...card, selectedHiramekiLevel: level } : card
           ),
         },
       };
@@ -439,7 +443,7 @@ export const useDeckBuilderStore = create<DeckBuilderStore>((set) => ({
         deck: {
           ...state.deck,
           cards: state.deck.cards.map((card) =>
-            card.deckId === deckId ? { ...card, godHiramekiType: godType } : card
+            card.deckId === deckId && !isPersonaCard(card) ? { ...card, godHiramekiType: godType } : card
           ),
         },
       };
@@ -452,7 +456,7 @@ export const useDeckBuilderStore = create<DeckBuilderStore>((set) => ({
         deck: {
           ...state.deck,
           cards: state.deck.cards.map((card) =>
-            card.deckId === deckId ? { ...card, godHiramekiEffectId: effectId } : card
+            card.deckId === deckId && !isPersonaCard(card) ? { ...card, godHiramekiEffectId: effectId } : card
           ),
         },
       };
@@ -465,7 +469,7 @@ export const useDeckBuilderStore = create<DeckBuilderStore>((set) => ({
         deck: {
           ...state.deck,
           cards: state.deck.cards.map((card) =>
-            card.deckId === deckId ? { ...card, selectedHiddenHiramekiId: hiddenHiramekiId } : card
+            card.deckId === deckId && !isPersonaCard(card) ? { ...card, selectedHiddenHiramekiId: hiddenHiramekiId } : card
           ),
         },
       };
@@ -648,6 +652,7 @@ export const useDeckBuilderStore = create<DeckBuilderStore>((set) => ({
       const asExclusion = options?.asExclusion ?? false;
       const cardToConvert = state.deck.cards.find((c) => c.deckId === deckId);
       if (!cardToConvert) return {};
+      if (isPersonaCard(cardToConvert)) return {};
       const target = getCardById(targetCardId);
       if (!target && !asExclusion) return {};
 

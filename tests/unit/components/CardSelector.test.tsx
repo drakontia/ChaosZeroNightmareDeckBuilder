@@ -506,4 +506,25 @@ describe('CardSelector', () => {
     expect(screen.getByText('Hirameki Card')).toBeTruthy();
     expect(screen.queryByText('Shared Card')).toBeNull();
   });
+
+  it('hides persona card from addable list when persona already exists in deck', () => {
+    vi.mocked(getAddableCards).mockReturnValue([personaCard, sharedCard] as any);
+
+    render(
+      <NextIntlClientProvider locale="en" messages={messages}>
+        <CardSelector
+          character={null}
+          onAddCard={vi.fn()}
+          onRestoreCard={vi.fn()}
+          removedCards={new Map()}
+          convertedCards={new Map()}
+          presentHiramekiIds={new Set(['persona_01'])}
+          searchQuery=""
+        />
+      </NextIntlClientProvider>
+    );
+
+    expect(screen.queryByText('Persona')).toBeNull();
+    expect(screen.getByText('Shared Card')).toBeTruthy();
+  });
 });

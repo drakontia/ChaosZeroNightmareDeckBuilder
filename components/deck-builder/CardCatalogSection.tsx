@@ -24,7 +24,11 @@ interface CardCatalogSectionProps {
 }
 
 export function CardCatalogSection(props: CardCatalogSectionProps) {
-  const presentHiramekiIds = new Set(props.deck.cards.filter((card) => card.type === CardType.CHARACTER).map((card) => card.id));
+  const presentHiramekiIds = new Set(
+    props.deck.cards
+      .filter((card) => card.type === CardType.CHARACTER || card.id.startsWith("persona_"))
+      .map((card) => card.id)
+  );
 
   return (
     <Card>
