@@ -9,10 +9,10 @@ export function Footer() {
             <Link href="https://github.com/drakontia/ChaosZeroNightmareDeckBuilder" target="_blank" rel="noopener noreferrer">
               <Image
                 className="w-6 h-6"
-                src="images/GitHub_Invertocat_Black_Clearspace.png"
+                src="/images/GitHub_Invertocat_Black_Clearspace.png"
                 alt="GitHub Mark"
-                width={6}
-                height={6}
+                width={24}
+                height={24}
               />
             </Link>
             <span className="hidden sm:inline">·</span>
