@@ -247,6 +247,25 @@ describe('CardFrame', () => {
     expect(image.getAttribute('src')).toBe('/images/cards/card_placeholder.png');
   });
 
+  it('should render Ban icon with size matching single-digit number when cost is unusable', () => {
+    const { container } = renderWithIntl(
+      <CardFrame
+        imgUrl="/test.jpg"
+        alt="Test Card"
+        cost="unusable"
+        name="Test Card"
+        category="Attack"
+        categoryId="attack"
+      />
+    );
+
+    const svg = container.querySelector('svg');
+    expect(svg).not.toBeNull();
+    // Ban icon should be sized to match single-digit number text (w-5 sm:w-6 lg:w-9 xl:w-12)
+    expect(svg!.className.baseVal ?? svg!.getAttribute('class')).toContain('w-5');
+    expect(svg!.className.baseVal ?? svg!.getAttribute('class')).toContain('h-5');
+  });
+
   it('should render hidden and god effect texts when provided', () => {
     const messagesWithEffects = {
       ...messages,
