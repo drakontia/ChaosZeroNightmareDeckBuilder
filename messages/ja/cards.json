@@ -1,19 +1,19 @@
 {
   "cards": {
     "tenebrea_starting_1": {
-      "name": "テンポショット",
+      "name": "サウンドチェック",
       "descriptions": {
         "0": "ダメージ100%"
       }
     },
     "tenebrea_starting_2": {
-      "name": "テンポショット",
+      "name": "サウンドチェック",
       "descriptions": {
         "0": "ダメージ100%"
       }
     },
     "tenebrea_starting_3": {
-      "name": "ハーモニーヒール",
+      "name": "ファンサービス",
       "descriptions": {
         "0": "治癒100%"
       }

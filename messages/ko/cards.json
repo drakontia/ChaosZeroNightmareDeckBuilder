@@ -1,19 +1,19 @@
 {
   "cards": {
     "tenebrea_starting_1": {
-      "name": "템포 샷",
+      "name": "사운드 체크",
       "descriptions": {
         "0": "데미지 100%"
       }
     },
     "tenebrea_starting_2": {
-      "name": "템포 샷",
+      "name": "사운드 체크",
       "descriptions": {
         "0": "데미지 100%"
       }
     },
     "tenebrea_starting_3": {
-      "name": "하모니 힐",
+      "name": "팬 서비스",
       "descriptions": {
         "0": "치유 100%"
       }

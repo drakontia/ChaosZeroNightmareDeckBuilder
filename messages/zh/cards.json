@@ -1,19 +1,19 @@
 {
   "cards": {
     "tenebrea_starting_1": {
-      "name": "节奏射击",
+      "name": "声音检查",
       "descriptions": {
         "0": "伤害100%"
       }
     },
     "tenebrea_starting_2": {
-      "name": "节奏射击",
+      "name": "声音检查",
       "descriptions": {
         "0": "伤害100%"
       }
     },
     "tenebrea_starting_3": {
-      "name": "和声治疗",
+      "name": "粉丝服务",
       "descriptions": {
         "0": "治愈100%"
       }

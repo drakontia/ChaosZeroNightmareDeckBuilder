@@ -37,16 +37,21 @@ describe("Tenebrea character", () => {
       expect(card?.isStartingCard).toBe(true);
     });
 
-    it("tenebrea_starting_1 is basic ATTACK card", () => {
-      const card = CHARACTER_CARDS.find((c) => c.id === "tenebrea_starting_1");
-      expect(card?.category).toBe(CardCategory.ATTACK);
+    it.each([
+      { id: "tenebrea_starting_1", name: "サウンドチェック", category: CardCategory.ATTACK, description: "ダメージ100%" },
+      { id: "tenebrea_starting_2", name: "サウンドチェック", category: CardCategory.ATTACK, description: "ダメージ100%" },
+      { id: "tenebrea_starting_3", name: "ファンサービス", category: CardCategory.SKILL, description: "治癒100%" },
+    ])("$id has expected basic card info", ({ id, name, category, description }) => {
+      const card = CHARACTER_CARDS.find((c) => c.id === id);
+      expect(card?.name).toBe(name);
+      expect(card?.category).toBe(category);
       expect(card?.isBasicCard).toBe(true);
-    });
-
-    it("tenebrea_starting_3 is basic SKILL card", () => {
-      const card = CHARACTER_CARDS.find((c) => c.id === "tenebrea_starting_3");
-      expect(card?.category).toBe(CardCategory.SKILL);
-      expect(card?.isBasicCard).toBe(true);
+      expect(card?.hiramekiVariations).toHaveLength(1);
+      expect(card?.hiramekiVariations[0]).toMatchObject({
+        level: 0,
+        cost: 1,
+        description,
+      });
     });
 
     it("ミュージックスタート is non-basic and has Lv5 variation", () => {
