@@ -1063,23 +1063,23 @@
     "haru_hirameki_2": {
       "name": "power charge",
       "descriptions": {
-        "0": "180% damage to all enemies\n",
-        "1": "270% damage to all enemies\n",
-        "2": "270% damage to all enemies",
+        "0": "240% damage to all enemies\n+100% damage when targeting a single enemy",
+        "1": "320% damage to all enemies\n+150% damage when targeting a single enemy",
+        "2": "320% damage to all enemies",
         "3": "270% damage to all enemies\n",
-        "4": "240% damage to all enemies\n",
-        "5": "300% damage to all enemies\n"
+        "4": "270% damage to all enemies\n+50% damage for next attack card per target hit",
+        "5": "320% damage to all enemies\n"
       }
     },
     "haru_hirameki_3": {
       "name": "energy charge",
       "descriptions": {
-        "0": "Increases own attack card damage amount by 30% for 1 turn",
-        "1": "Increases own attack card damage amount by 40% for 1 turn",
-        "2": "Increases damage amount of next attack card used by 50%, toughness damage 1",
+        "0": "Increases own attack card damage amount by 50% for 1 turn",
+        "1": "Increases own attack card damage amount by 50% for 1 turn, critical rate +20%",
+        "2": "Increases damage amount of next attack card used by 100%, toughness damage +2",
         "3": "For 1 turn, your attack card damage amount +70% according to the number of attack cards in your hand.",
-        "4": "Increases own attack card damage amount by 30% for 1 turn\n",
-        "5": "Increases damage of own attack card by 20%"
+        "4": "Increases own attack card damage amount by 50% for 1 turn\n",
+        "5": "Increases damage of own attack card by 40%"
       }
     },
     "haru_hirameki_4": {
@@ -1188,12 +1188,12 @@
     "yuki_hirameki_1": {
       "name": "Stealing",
       "descriptions": {
-        "0": "All enemy damage 180%\n",
-        "1": "All enemy damage 270%\n",
-        "2": "All enemy damage 180%\n",
-        "3": "All enemy damage 180%\n",
-        "4": "Damage 320%\n",
-        "5": "All enemy damage 300%\n"
+        "0": "All enemy damage 220%\n+50% damage when targeting a single enemy\nInspiration: Cost -1",
+        "1": "All enemy damage 330%\n+50% damage when targeting a single enemy\nInspiration: Cost -1",
+        "2": "All enemy damage 220%\n+50% damage when targeting a single enemy\nInspiration: Cost -2",
+        "3": "All enemy damage 220%\n+50% damage when targeting a single enemy\nInspiration: Add 1 hit",
+        "4": "Damage 400%\nFor 1 turn, +150% damage per card drawn (max 5)",
+        "5": "All enemy damage 360%\nReduce cost by 1 on use\n+50% damage when targeting a single enemy"
       }
     },
     "yuki_hirameki_2": {
@@ -1221,7 +1221,7 @@
     "yuki_hirameki_4": {
       "name": "iceberg cutting",
       "descriptions": {
-        "0": "All enemy damage 180%\n"
+        "0": "All enemy damage 180%\nInspiration: Add 1 hit"
       }
     },
     "chizuru_starting_1": {
@@ -1245,10 +1245,10 @@
     "chizuru_starting_4": {
       "name": "Hellfire",
       "descriptions": {
-        "0": "Damage 100%\n",
-        "1": "Damage 150%\n",
+        "0": "Damage 100%×2\nCursed Jutsu 1: Add 1 hit",
+        "1": "Damage 150%×2\nCursed Jutsu 1: Add 1 hit",
         "2": "Damage 150%\n",
-        "3": "Damage 180%\n",
+        "3": "Damage 250%\n",
         "4": "Cursed Jutsu 1\n",
         "5": "Cursed Jutsu 1\n"
       }
@@ -1278,12 +1278,12 @@
     "chizuru_hirameki_3": {
       "name": "demon hunting",
       "descriptions": {
-        "0": "Damage 60%×3\n",
-        "1": "Damage 50% x 4\n",
-        "2": "Damage 180%\n",
-        "3": "Damage 60%×3\n",
+        "0": "Damage 70%×3\n",
+        "1": "Damage 60% x 4\n",
+        "2": "Damage 150% × 2\n+120% damage to next unity card",
+        "3": "Damage 120%×3\n",
         "4": "Generate 2 true moons\n",
-        "5": "Tsukikage+ damage +40%\n"
+        "5": "Tsukikage+ damage +80%\nOnibi 4 at start of turn"
       }
     },
     "chizuru_hirameki_4": {

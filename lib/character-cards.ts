@@ -1977,12 +1977,12 @@ export const CHARACTER_CARDS: CznCard[] = [
     statuses: [],
     imgUrl: "/images/cards/haru_hirameki_2.png",
     hiramekiVariations: [ // Fallback descriptions
-      { level: 0, cost: 1, description: "敵全体にダメージ180%<wbr/>単体対象の場合ダメージ量＋80%" },
-      { level: 1, cost: 1, description: "敵全体にダメージ270%<wbr/>単体対象の場合ダメージ量＋120%" },
-      { level: 2, cost: 1, description: "敵全体にダメージ270%", statuses: [CardStatus.WEAKNESS_ATTACK] },
+      { level: 0, cost: 1, description: "敵全体にダメージ240%<wbr/>単体対象の場合ダメージ量＋100%" },
+      { level: 1, cost: 1, description: "敵全体にダメージ320%<wbr/>単体対象の場合ダメージ量＋150%" },
+      { level: 2, cost: 1, description: "敵全体にダメージ320%", statuses: [CardStatus.WEAKNESS_ATTACK] },
       { level: 3, cost: 1, description: "敵全体にダメージ270%<wbr/>撃破：このカードをもう1回発動（最大1回）" },
-      { level: 4, cost: 1, description: "敵全体にダメージ240%<wbr/>攻撃した対象の数に応じて次に使用する自分の攻撃カードのダメージ量＋30%" },
-      { level: 5, cost: 1, description: "敵全体にダメージ300%<wbr/>連続：このカードコスト1に変更" }
+      { level: 4, cost: 1, description: "敵全体にダメージ270%<wbr/>攻撃した対象の数に応じて次に使用する自分の攻撃カードのダメージ量＋50%" },
+      { level: 5, cost: 1, description: "敵全体にダメージ320%<wbr/>連続：このカードコスト1に変更" }
     ]
   },
   {
@@ -1993,12 +1993,12 @@ export const CHARACTER_CARDS: CznCard[] = [
     statuses: [CardStatus.RETAIN],
     imgUrl: "/images/cards/haru_hirameki_3.png",
     hiramekiVariations: [ // Fallback descriptions
-      { level: 0, cost: 2, description: "1ターンの間自分の攻撃カードダメージ量30%増加" },
-      { level: 1, cost: 2, description: "1ターンの間自分の攻撃カードダメージ量40%増加" },
-      { level: 2, cost: 2, description: "次に使用する攻撃カードのダメージ量50%増加、強靭度ダメージ1" },
+      { level: 0, cost: 0, description: "1ターンの間自分の攻撃カードダメージ量50%増加" },
+      { level: 1, cost: 0, description: "1ターンの間自分の攻撃カードダメージ量50%増加、会心率＋20%" },
+      { level: 2, cost: 0, description: "次に使用する攻撃カードのダメージ量100%増加、強靭度ダメージ＋2" },
       { level: 3, cost: 2, description: "1ターンの間、手札の自分の攻撃カード数に応じて自分の攻撃カードダメージ量+70%" },
-      { level: 4, cost: 1, description: "1ターンの間自分の攻撃カードダメージ量30%増加<wbr/>自分のカードをドロー12)1" },
-      { level: 5, cost: 3, description: "自分の攻撃カードのダメージ量20%増加", statuses: [CardStatus.UNIQUE] }
+      { level: 4, cost: 0, description: "1ターンの間自分の攻撃カードダメージ量50%増加<wbr/>自分のカードをドロー12)1" },
+      { level: 5, cost: 3, description: "自分の攻撃カードのダメージ量40%増加", statuses: [CardStatus.UNIQUE] }
     ]
   },
   {
@@ -2197,12 +2197,12 @@ export const CHARACTER_CARDS: CznCard[] = [
     statuses: [],
     imgUrl: "/images/cards/yuki_hirameki_1.png",
     hiramekiVariations: [ // Fallback descriptions
-      { level: 0, cost: 2, description: "敵全体ダメージ200%<wbr/>インスピレーション：コスト1減少" },
-      { level: 1, cost: 2, description: "敵全体ダメージ300%<wbr/>インスピレーション：コスト1減少"},
-      { level: 2, cost: 2, description: "敵全体ダメージ200%<wbr/>インスピレーション：コスト2減少"},
-      { level: 3, cost: 2, description: "敵全体ダメージ200%<wbr/>インスピレーション：ヒット数1回増加"},
-      { level: 4, cost: 2, description: "ダメージ320%<wbr/>1ターンの間、ドローした自分のカード数に応じて、ダメージ量+90%(最大5)", statuses: [CardStatus.RETAIN] },
-      { level: 5, cost: 3, description: "敵全体ダメージ330%<wbr/>このカードの使用時、コスト1減少" }
+      { level: 0, cost: 2, description: "敵全体ダメージ220%<wbr/>単体対象の場合ダメージ量＋50%<wbr/>インスピレーション：コスト1減少" },
+      { level: 1, cost: 2, description: "敵全体ダメージ330%<wbr/>単体対象の場合ダメージ量＋50%<wbr/>インスピレーション：コスト1減少"},
+      { level: 2, cost: 2, description: "敵全体ダメージ220%<wbr/>単体対象の場合ダメージ量＋50%<wbr/>インスピレーション：コスト2減少"},
+      { level: 3, cost: 2, description: "敵全体ダメージ220%<wbr/>単体対象の場合ダメージ量＋50%<wbr/>インスピレーション：ヒット数1回追加"},
+      { level: 4, cost: 2, description: "ダメージ400%<wbr/>1ターンの間、ドローした自分のカード数に応じて、ダメージ量+150%(最大5)", statuses: [CardStatus.RETAIN] },
+      { level: 5, cost: 3, description: "敵全体ダメージ360%<wbr/>このカードの使用時、コスト1減少<wbr/>単体対象の場合ダメージ量＋50%" }
     ]
   },
   {
@@ -2245,7 +2245,7 @@ export const CHARACTER_CARDS: CznCard[] = [
     statuses: [],
     imgUrl: "/images/cards/yuki_hirameki_4.png",
     hiramekiVariations: [ // Fallback descriptions
-      { level: 0, cost: 1, description: "敵全体ダメージ180%<wbr/>インスピレーション：ヒット数1回追加、ダメージ量20%減少" },
+      { level: 0, cost: 1, description: "敵全体ダメージ180%<wbr/>インスピレーション：ヒット数1回追加" },
     ]
   },
   // Chizuru's starting cards
@@ -2298,11 +2298,11 @@ export const CHARACTER_CARDS: CznCard[] = [
     isBasicCard: false,
     isStartingCard: true,
     hiramekiVariations: [ // Fallback descriptions
-      { level: 0, cost: 1, description: "ダメージ100%<wbr/>呪縛術6)1<wbr/>呪縛術：ヒット数2回追加" },
-      { level: 1, cost: 1, description: "ダメージ150%<wbr/>呪縛術1<wbr/>呪縛術：ヒット数2回追加"},
-      { level: 2, cost: 1, description: "ダメージ150%<wbr/>呪縛術1<wbr/>呪縛術：次に使用する自分のカードのコスト2減少" },
-      { level: 3, cost: 1, description: "ダメージ180%<wbr/>呪縛術1<wbr/>呪縛術：ダメージ量150%増加"},
-      { level: 4, cost: 1, category: CardCategory.SKILL, description: "呪縛術1<wbr/>月影1枚生成" },
+      { level: 0, cost: 1, description: "ダメージ100%×2<wbr/>呪縛術6)1<wbr/>呪縛術：ヒット数1回追加" },
+      { level: 1, cost: 1, description: "ダメージ150%×2<wbr/>呪縛術1<wbr/>呪縛術：ヒット数1回追加"},
+      { level: 2, cost: 0, description: "ダメージ150%<wbr/>呪縛術1<wbr/>呪縛術：次に使用する自分のカードのコスト2減少" },
+      { level: 3, cost: 1, description: "ダメージ250%<wbr/>呪縛術1<wbr/>呪縛術：ダメージ量150%増加"},
+      { level: 4, cost: 0, category: CardCategory.SKILL, description: "呪縛術1<wbr/>月影1枚生成" },
       { level: 5, cost: 0, category: CardCategory.SKILL, description: "呪縛術1<wbr/>呪縛術状態の対象を撃破した時、このカードを生成", statuses: [CardStatus.INITIATION, CardStatus.EXHAUST]}
     ]
   },
@@ -2347,12 +2347,12 @@ export const CHARACTER_CARDS: CznCard[] = [
     statuses: [CardStatus.HASTE],
     imgUrl: "/images/cards/chizuru_hirameki_3.png",
     hiramekiVariations: [ // Fallback descriptions
-      { level: 0, cost: 1, description: "ダメージ60%×3<wbr/>次に使用する結束カードのダメージ量+80%" },
-      { level: 1, cost: 1, description: "ダメージ50%×4<wbr/>次に使用する結束カードのダメージ量+100%" },
-      { level: 2, cost: 1, description: "ダメージ150% × 2<wbr/>次に使用する結束カードのダメージ量+60%" },
-      { level: 3, cost: 1, description: "ダメージ100%×3<wbr/>月影を除き手札に他のカードがない場合、ヒット数2回追加" },
+      { level: 0, cost: 1, description: "ダメージ70%×3<wbr/>次に使用する結束カードのダメージ量+80%" },
+      { level: 1, cost: 1, description: "ダメージ60%×4<wbr/>次に使用する結束カードのダメージ量+100%" },
+      { level: 2, cost: 1, description: "ダメージ150% × 2<wbr/>次に使用する結束カードのダメージ量+120%" },
+      { level: 3, cost: 1, description: "ダメージ120%×3<wbr/>月影を除き手札に他のカードがない場合、ヒット数2回追加" },
       { level: 4, cost: 1, category: CardCategory.SKILL, description: "真月2枚生成<wbr/>そのカードに消滅付与<wbr/>使用時までコスト1減少" },
-      { level: 5, cost: 1, description: "月影+のダメージ+80%<wbr/>ターン開始時、鬼火3", statuses: [CardStatus.UNIQUE] }
+      { level: 5, cost: 1, description: "月影+のダメージ+80%<wbr/>ターン開始時、鬼火4", statuses: [CardStatus.UNIQUE] }
     ]
   },
   {
