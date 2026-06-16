@@ -102,6 +102,7 @@ export enum CardStatus {
   FORM_UPGRADE = "form_upgrade",    // 形状強化
   LINKED = "linked",             // 連結
   BLESSING = "blessing",         // 祝福
+  PREMIERE = "premiere",         // 開幕
 }
 
 // Hirameki variation for a card

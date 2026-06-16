@@ -184,7 +184,8 @@
     "ignition": "点火",
     "form_upgrade": "形状強化",
     "linked": "連結",
-    "blessing": "祝福"
+    "blessing": "祝福",
+    "premiere": "開幕"
   },
   "actions": {
     "add": "追加",
@@ -241,6 +242,7 @@
     "cassius": "カシウス",
     "owen": "オーウェン",
     "rei": "レイ",
-    "heidemarie": "ハイデマリ"
+    "heidemarie": "ハイデマリ",
+    "tenebrea": "テネブレア"
   }
 }
