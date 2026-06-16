@@ -51,6 +51,7 @@
     "cassius": "Cassius",
     "chizuru": "Chizuru",
     "diana": "Diana",
+    "tenebrea": "Tenebrea",
     "egoManifest": "Ego Manifestation",
     "faintMemory": "Faint Memory",
     "rita": "Rita",
@@ -240,6 +241,7 @@
     "ignition": "Ignition",
     "form_upgrade": "Form Upgrade",
     "linked": "Linked",
-    "blessing": "Blessing"
+    "blessing": "Blessing",
+    "premiere": "Premiere"
   }
 }

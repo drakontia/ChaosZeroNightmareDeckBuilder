@@ -10,6 +10,124 @@ import { CznCard, CardType, CardCategory, CardStatus } from "@/types";
  * The name and description fields below serve as fallback values when translations are not available.
  */
 export const CHARACTER_CARDS: CznCard[] = [
+  // Tenebrea's starting cards (temporary implementation)
+  {
+    id: "tenebrea_starting_1",
+    name: "テンポショット", // TODO: 要確認
+    type: CardType.CHARACTER,
+    category: CardCategory.ATTACK,
+    statuses: [],
+    isBasicCard: true,
+    isStartingCard: true,
+    imgUrl: "/images/cards/card_placeholder.png",
+    hiramekiVariations: [
+      { level: 0, cost: 1, description: "ダメージ100%" } // TODO: 要確認
+    ]
+  },
+  {
+    id: "tenebrea_starting_2",
+    name: "テンポショット", // TODO: 要確認
+    type: CardType.CHARACTER,
+    category: CardCategory.ATTACK,
+    statuses: [],
+    isBasicCard: true,
+    isStartingCard: true,
+    imgUrl: "/images/cards/card_placeholder.png",
+    hiramekiVariations: [
+      { level: 0, cost: 1, description: "ダメージ100%" } // TODO: 要確認
+    ]
+  },
+  {
+    id: "tenebrea_starting_3",
+    name: "ハーモニーヒール", // TODO: 要確認
+    type: CardType.CHARACTER,
+    category: CardCategory.SKILL,
+    statuses: [],
+    isBasicCard: true,
+    isStartingCard: true,
+    imgUrl: "/images/cards/card_placeholder.png",
+    hiramekiVariations: [
+      { level: 0, cost: 1, description: "治癒100%" } // TODO: 要確認
+    ]
+  },
+  {
+    id: "tenebrea_starting_4",
+    name: "ミュージックスタート",
+    type: CardType.CHARACTER,
+    category: CardCategory.UPGRADE,
+    statuses: [CardStatus.UNIQUE, CardStatus.PREMIERE],
+    isBasicCard: false,
+    isStartingCard: true,
+    imgUrl: "/images/cards/card_placeholder.png",
+    hiramekiVariations: [
+      { level: 0, cost: 0, description: "すべての基本攻撃カード消滅、山札に味方のリズムを2枚ずつ生成、自分のリズムカードに迅速付与", statuses: [CardStatus.UNIQUE, CardStatus.PREMIERE] }, // TODO: 要確認
+      { level: 1, cost: 0, description: "すべての基本攻撃カード消滅、山札に味方のリズム：クレッシェンドを2枚ずつ生成、自分のリズムカードに迅速付与", statuses: [CardStatus.UNIQUE, CardStatus.PREMIERE] }, // TODO: 要確認
+      { level: 2, cost: 0, description: "すべての基本攻撃カード消滅、山札に味方のリズム：スタッカートを2枚ずつ生成、自分のリズムカードに迅速付与", statuses: [CardStatus.UNIQUE, CardStatus.PREMIERE] }, // TODO: 要確認
+      { level: 3, cost: 0, description: "すべての基本攻撃カード消滅、山札に味方のリズム：フォルティッシモを2枚ずつ生成、自分のリズムカードに迅速付与", statuses: [CardStatus.UNIQUE, CardStatus.PREMIERE] }, // TODO: 要確認
+      { level: 4, cost: 0, description: "すべての基本攻撃カード消滅、山札に味方のリズム：フェルマータを2枚ずつ生成", statuses: [CardStatus.UNIQUE, CardStatus.PREMIERE] }, // TODO: 要確認
+      { level: 5, cost: 0, description: "すべての基本攻撃カード消滅、山札に味方のリズム：アルペジオを1枚ずつ生成", statuses: [CardStatus.UNIQUE, CardStatus.PREMIERE] } // TODO: 要確認
+    ]
+  },
+  // Tenebrea's hirameki cards (temporary implementation)
+  {
+    id: "tenebrea_hirameki_1",
+    name: "スポットライト",
+    type: CardType.CHARACTER,
+    category: CardCategory.ATTACK,
+    statuses: [],
+    imgUrl: "/images/cards/card_placeholder.png",
+    hiramekiVariations: [
+      { level: 0, cost: 1, description: "ダメージ140%、リズムカードを1枚手札に移動、発動時までコスト2減少", statuses: [] }, // TODO: 要確認
+      { level: 1, cost: 1, description: "ダメージ210%、リズムカードを2枚手札に移動、そのカードのうち、1枚発動時までコスト2減少", statuses: [] }, // TODO: 要確認
+      { level: 2, cost: 1, category: CardCategory.UPGRADE, description: "1ターンにリズムカードを3枚発動時、手札に消滅が付与されたスポットライトを1枚生成、そのカードのコスト1減少(各ターン1回)", statuses: [] }, // TODO: 要確認
+      { level: 3, cost: 2, description: "ダメージ350%、リズムカード2枚まで選択し、手札に移動\nそのカード発動", statuses: [] }, // TODO: 要確認
+      { level: 4, cost: 0, category: CardCategory.SKILL, description: "山札と墓地のリズムカードを3枚まで選択し、山札の上に移動\nそのカードの内、1枚ドロー", statuses: [] }, // TODO: 要確認
+      { level: 5, cost: 0, description: "ダメージ140%、ドロー2、そのうち、リズムカード以外のカードすべて破棄", statuses: [] } // TODO: 要確認
+    ]
+  },
+  {
+    id: "tenebrea_hirameki_2",
+    name: "コール&レスポンス",
+    type: CardType.CHARACTER,
+    category: CardCategory.ATTACK,
+    statuses: [CardStatus.HASTE],
+    imgUrl: "/images/cards/card_placeholder.png",
+    hiramekiVariations: [
+      { level: 0, cost: 1, description: "ダメージ200%、手札にあるなら、リズムカードとしても扱う、感応：リズムカードドロー1", statuses: [CardStatus.HASTE] }, // TODO: 要確認
+      { level: 1, cost: 1, description: "ダメージ250%、手札にあるなら、リズムカードとしても扱う、感応：リズムカードドロー2", statuses: [CardStatus.HASTE] }, // TODO: 要確認
+      { level: 2, cost: 2, description: "ダメージ240%×2、山札と手札にあるなら、リズムカード発動時、このカード発動", statuses: [CardStatus.HASTE] }, // TODO: 要確認
+      { level: 3, cost: 1, category: CardCategory.SKILL, description: "リズムカードドロー2、山札にあるなら、リズムカード発動時、このカード発動", statuses: [] }, // TODO: 要確認
+      { level: 4, cost: 1, description: "ダメージ120%、リズムカード発動時、このカードのヒット数1回追加(最大5)", statuses: [CardStatus.HASTE] }, // TODO: 要確認
+      { level: 5, cost: 7, description: "ダメージ700%、手札にあるなら、リズムカードとしても扱う、リズムカード発動時、このカード発動時までコスト1減少", statuses: [CardStatus.RETAIN, CardStatus.HASTE] } // TODO: 要確認
+    ]
+  },
+  {
+    id: "tenebrea_hirameki_3",
+    name: "アンコール",
+    type: CardType.CHARACTER,
+    category: CardCategory.ATTACK,
+    statuses: [],
+    imgUrl: "/images/cards/card_placeholder.png",
+    hiramekiVariations: [
+      { level: 0, cost: 1, description: "ダメージ120%、直前に発動したカードがリズムカードなら、そのカード発動", statuses: [] }, // TODO: 要確認
+      { level: 1, cost: 1, description: "ダメージ120%、直前に発動したカードがリズムカードなら、そのカード2回発動", statuses: [] }, // TODO: 要確認
+      { level: 2, cost: 1, category: CardCategory.UPGRADE, description: "リズムカードを2枚発動するたびに、HPが最も低い敵にダメージ100%(各ターン15回)", statuses: [CardStatus.UNIQUE] }, // TODO: 要確認
+      { level: 3, cost: 1, category: CardCategory.SKILL, description: "次に発動する3枚のリズムカードコスト1減少、ヒット数1回追加", statuses: [] }, // TODO: 要確認
+      { level: 4, cost: 3, category: CardCategory.SKILL, description: "墓地のリズムカードすべて発動", statuses: [CardStatus.UNIQUE] }, // TODO: 要確認
+      { level: 5, cost: 0, category: CardCategory.SKILL, description: "ドロー1、そのカードがリズムカードなら、1ターンの間、発動時までダメージ量100%増加、1回繰り返す(最大2回)", statuses: [] } // TODO: 要確認
+    ]
+  },
+  {
+    id: "tenebrea_hirameki_4",
+    name: "フォトタイム",
+    type: CardType.CHARACTER,
+    category: CardCategory.SKILL,
+    statuses: [CardStatus.UNIQUE, CardStatus.RETAIN],
+    imgUrl: "/images/cards/card_placeholder.png",
+    hiramekiVariations: [
+      { level: 0, cost: 1, description: "ボルテージ1、リズムカードが発動または手札に移動したら、このカード発動時までボルテージ1増加(最大9回)", statuses: [CardStatus.UNIQUE, CardStatus.RETAIN] } // TODO: 要確認
+    ]
+  },
   // Adelheid's starting cards
   {
     id: "adelheid_starting_1",
@@ -3789,5 +3907,3 @@ export const CHARACTER_CARDS: CznCard[] = [
     ]
   },
 ];
-
-

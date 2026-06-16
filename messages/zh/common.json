@@ -148,7 +148,8 @@
     "pulverize": "粉碎",
     "bind": "结束",
     "ignition": "点火",
-    "blessing": "祝福"
+    "blessing": "祝福",
+    "premiere": "开幕"
   },
   "actions": {
     "add": "添加",
@@ -202,7 +203,8 @@
     "rei": "丽",
     "narja": "ナージャ",
     "sereniel": "セレニエル",
-    "diana": "ディアナ"
+    "diana": "ディアナ",
+    "tenebrea": "特涅布蕾雅"
   },
   "hiddenEffects": {
     "hiddenhirameki_01": "アクションポイント1獲得",

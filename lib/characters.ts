@@ -2,6 +2,16 @@ import { Character, ElementType, JobType } from "@/types";
 
 export const CHARACTERS: Character[] = [
   {
+    id: "tenebrea",
+    name: "character.tenebrea",
+    rarity: "★5",
+    job: JobType.PSIONIC,
+    element: ElementType.PASSION,
+    imgUrl: "/images/characters/character_placeholder.png",
+    startingCards: ["tenebrea_starting_1", "tenebrea_starting_2", "tenebrea_starting_3", "tenebrea_starting_4"],
+    hiramekiCards: ["tenebrea_hirameki_1", "tenebrea_hirameki_2", "tenebrea_hirameki_3", "tenebrea_hirameki_4"]
+  },
+  {
     id: "adelheid",
     name: "character.adelheid",
     rarity: "★5",
@@ -322,4 +332,3 @@ export const CHARACTERS: Character[] = [
     hiramekiCards: ["rei_hirameki_1", "rei_hirameki_2", "rei_hirameki_3", "rei_hirameki_4"]
   }
 ];
-
