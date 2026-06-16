@@ -13,42 +13,36 @@ export const CHARACTER_CARDS: CznCard[] = [
   // Tenebrea's starting cards (temporary implementation)
   {
     id: "tenebrea_starting_1",
-    name: "テンポショット", // TODO: 要確認
+    name: "サウンドチェック",
     type: CardType.CHARACTER,
     category: CardCategory.ATTACK,
     statuses: [],
     isBasicCard: true,
     isStartingCard: true,
     imgUrl: "/images/cards/card_placeholder.png",
-    hiramekiVariations: [
-      { level: 0, cost: 1, description: "ダメージ100%" } // TODO: 要確認
-    ]
+    hiramekiVariations: [{ level: 0, cost: 1, description: "ダメージ100%" }]
   },
   {
     id: "tenebrea_starting_2",
-    name: "テンポショット", // TODO: 要確認
+    name: "サウンドチェック",
     type: CardType.CHARACTER,
     category: CardCategory.ATTACK,
     statuses: [],
     isBasicCard: true,
     isStartingCard: true,
     imgUrl: "/images/cards/card_placeholder.png",
-    hiramekiVariations: [
-      { level: 0, cost: 1, description: "ダメージ100%" } // TODO: 要確認
-    ]
+    hiramekiVariations: [{ level: 0, cost: 1, description: "ダメージ100%" }]
   },
   {
     id: "tenebrea_starting_3",
-    name: "ハーモニーヒール", // TODO: 要確認
+    name: "ファンサービス",
     type: CardType.CHARACTER,
     category: CardCategory.SKILL,
     statuses: [],
     isBasicCard: true,
     isStartingCard: true,
     imgUrl: "/images/cards/card_placeholder.png",
-    hiramekiVariations: [
-      { level: 0, cost: 1, description: "治癒100%" } // TODO: 要確認
-    ]
+    hiramekiVariations: [{ level: 0, cost: 1, description: "治癒100%" }]
   },
   {
     id: "tenebrea_starting_4",

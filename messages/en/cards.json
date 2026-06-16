@@ -1,19 +1,19 @@
 {
   "cards": {
     "tenebrea_starting_1": {
-      "name": "Tempo Shot",
+      "name": "Sound Check",
       "descriptions": {
         "0": "Damage 100%"
       }
     },
     "tenebrea_starting_2": {
-      "name": "Tempo Shot",
+      "name": "Sound Check",
       "descriptions": {
         "0": "Damage 100%"
       }
     },
     "tenebrea_starting_3": {
-      "name": "Harmony Heal",
+      "name": "Fan Service",
       "descriptions": {
         "0": "Heal 100%"
       }
