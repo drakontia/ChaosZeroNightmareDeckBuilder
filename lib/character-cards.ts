@@ -19,7 +19,7 @@ export const CHARACTER_CARDS: CznCard[] = [
     statuses: [],
     isBasicCard: true,
     isStartingCard: true,
-    imgUrl: "/images/cards/card_placeholder.png",
+    imgUrl: "/images/cards/tenebria_starting_1.png",
     hiramekiVariations: [{ level: 0, cost: 1, description: "ダメージ100%" }]
   },
   {
@@ -30,7 +30,7 @@ export const CHARACTER_CARDS: CznCard[] = [
     statuses: [],
     isBasicCard: true,
     isStartingCard: true,
-    imgUrl: "/images/cards/card_placeholder.png",
+    imgUrl: "/images/cards/tenebria_starting_1.png",
     hiramekiVariations: [{ level: 0, cost: 1, description: "ダメージ100%" }]
   },
   {
@@ -41,7 +41,7 @@ export const CHARACTER_CARDS: CznCard[] = [
     statuses: [],
     isBasicCard: true,
     isStartingCard: true,
-    imgUrl: "/images/cards/card_placeholder.png",
+    imgUrl: "/images/cards/tenebria_starting_3.png",
     hiramekiVariations: [{ level: 0, cost: 1, description: "治癒100%" }]
   },
   {
@@ -52,7 +52,7 @@ export const CHARACTER_CARDS: CznCard[] = [
     statuses: [CardStatus.UNIQUE, CardStatus.PREMIERE],
     isBasicCard: false,
     isStartingCard: true,
-    imgUrl: "/images/cards/card_placeholder.png",
+    imgUrl: "/images/cards/tenebria_starting_4.png",
     hiramekiVariations: [
       { level: 0, cost: 0, description: "すべての基本攻撃カード消滅、山札に味方のリズムを2枚ずつ生成、自分のリズムカードに迅速付与", statuses: [CardStatus.UNIQUE, CardStatus.PREMIERE] }, // TODO: 要確認
       { level: 1, cost: 0, description: "すべての基本攻撃カード消滅、山札に味方のリズム：クレッシェンドを2枚ずつ生成、自分のリズムカードに迅速付与", statuses: [CardStatus.UNIQUE, CardStatus.PREMIERE] }, // TODO: 要確認
@@ -69,7 +69,7 @@ export const CHARACTER_CARDS: CznCard[] = [
     type: CardType.CHARACTER,
     category: CardCategory.ATTACK,
     statuses: [],
-    imgUrl: "/images/cards/card_placeholder.png",
+    imgUrl: "/images/cards/tenebria_hirameki_1.png",
     hiramekiVariations: [
       { level: 0, cost: 1, description: "ダメージ140%、リズムカードを1枚手札に移動、発動時までコスト2減少", statuses: [] }, // TODO: 要確認
       { level: 1, cost: 1, description: "ダメージ210%、リズムカードを2枚手札に移動、そのカードのうち、1枚発動時までコスト2減少", statuses: [] }, // TODO: 要確認
@@ -85,7 +85,7 @@ export const CHARACTER_CARDS: CznCard[] = [
     type: CardType.CHARACTER,
     category: CardCategory.ATTACK,
     statuses: [CardStatus.HASTE],
-    imgUrl: "/images/cards/card_placeholder.png",
+    imgUrl: "/images/cards/tenebria_hirameki_2.png",
     hiramekiVariations: [
       { level: 0, cost: 1, description: "ダメージ200%、手札にあるなら、リズムカードとしても扱う、感応：リズムカードドロー1", statuses: [CardStatus.HASTE] }, // TODO: 要確認
       { level: 1, cost: 1, description: "ダメージ250%、手札にあるなら、リズムカードとしても扱う、感応：リズムカードドロー2", statuses: [CardStatus.HASTE] }, // TODO: 要確認
@@ -101,7 +101,7 @@ export const CHARACTER_CARDS: CznCard[] = [
     type: CardType.CHARACTER,
     category: CardCategory.ATTACK,
     statuses: [],
-    imgUrl: "/images/cards/card_placeholder.png",
+    imgUrl: "/images/cards/tenebria_hirameki_3.png",
     hiramekiVariations: [
       { level: 0, cost: 1, description: "ダメージ120%、直前に発動したカードがリズムカードなら、そのカード発動", statuses: [] }, // TODO: 要確認
       { level: 1, cost: 1, description: "ダメージ120%、直前に発動したカードがリズムカードなら、そのカード2回発動", statuses: [] }, // TODO: 要確認
@@ -117,7 +117,7 @@ export const CHARACTER_CARDS: CznCard[] = [
     type: CardType.CHARACTER,
     category: CardCategory.SKILL,
     statuses: [CardStatus.UNIQUE, CardStatus.RETAIN],
-    imgUrl: "/images/cards/card_placeholder.png",
+    imgUrl: "/images/cards/tenebria_hirameki_4.png",
     hiramekiVariations: [
       { level: 0, cost: 1, description: "ボルテージ1、リズムカードが発動または手札に移動したら、このカード発動時までボルテージ1増加(最大9回)", statuses: [CardStatus.UNIQUE, CardStatus.RETAIN] } // TODO: 要確認
     ]

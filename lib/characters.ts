@@ -7,7 +7,7 @@ export const CHARACTERS: Character[] = [
     rarity: "★5",
     job: JobType.PSIONIC,
     element: ElementType.PASSION,
-    imgUrl: "/images/characters/character_placeholder.png",
+    imgUrl: "/images/characters/character_tenebria.png",
     startingCards: ["tenebria_starting_1", "tenebria_starting_2", "tenebria_starting_3", "tenebria_starting_4"],
     hiramekiCards: ["tenebria_hirameki_1", "tenebria_hirameki_2", "tenebria_hirameki_3", "tenebria_hirameki_4"]
   },
