@@ -1,24 +1,24 @@
 {
   "cards": {
-    "tenebrea_starting_1": {
+    "tenebria_starting_1": {
       "name": "サウンドチェック",
       "descriptions": {
         "0": "ダメージ100%"
       }
     },
-    "tenebrea_starting_2": {
+    "tenebria_starting_2": {
       "name": "サウンドチェック",
       "descriptions": {
         "0": "ダメージ100%"
       }
     },
-    "tenebrea_starting_3": {
+    "tenebria_starting_3": {
       "name": "ファンサービス",
       "descriptions": {
         "0": "治癒100%"
       }
     },
-    "tenebrea_starting_4": {
+    "tenebria_starting_4": {
       "name": "ミュージックスタート",
       "descriptions": {
         "0": "すべての基本攻撃カード消滅、山札に味方のリズムを2枚ずつ生成、自分のリズムカードに迅速付与",
@@ -29,7 +29,7 @@
         "5": "すべての基本攻撃カード消滅、山札に味方のリズム：アルペジオを1枚ずつ生成"
       }
     },
-    "tenebrea_hirameki_1": {
+    "tenebria_hirameki_1": {
       "name": "スポットライト",
       "descriptions": {
         "0": "ダメージ140%、リズムカードを1枚手札に移動、発動時までコスト2減少",
@@ -40,7 +40,7 @@
         "5": "ダメージ140%、ドロー2、そのうち、リズムカード以外のカードすべて破棄"
       }
     },
-    "tenebrea_hirameki_2": {
+    "tenebria_hirameki_2": {
       "name": "コール&レスポンス",
       "descriptions": {
         "0": "ダメージ200%、手札にあるなら、リズムカードとしても扱う、感応：リズムカードドロー1",
@@ -51,7 +51,7 @@
         "5": "ダメージ700%、手札にあるなら、リズムカードとしても扱う、リズムカード発動時、このカード発動時までコスト1減少"
       }
     },
-    "tenebrea_hirameki_3": {
+    "tenebria_hirameki_3": {
       "name": "アンコール",
       "descriptions": {
         "0": "ダメージ120%、直前に発動したカードがリズムカードなら、そのカード発動",
@@ -62,7 +62,7 @@
         "5": "ドロー1、そのカードがリズムカードなら、1ターンの間、発動時までダメージ量100%増加、1回繰り返す(最大2回)"
       }
     },
-    "tenebrea_hirameki_4": {
+    "tenebria_hirameki_4": {
       "name": "フォトタイム",
       "descriptions": {
         "0": "ボルテージ1、リズムカードが発動または手札に移動したら、このカード発動時までボルテージ1増加(最大9回)"

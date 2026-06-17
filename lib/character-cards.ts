@@ -10,9 +10,9 @@ import { CznCard, CardType, CardCategory, CardStatus } from "@/types";
  * The name and description fields below serve as fallback values when translations are not available.
  */
 export const CHARACTER_CARDS: CznCard[] = [
-  // Tenebrea's starting cards (temporary implementation)
+  // Tenebria's starting cards (temporary implementation)
   {
-    id: "tenebrea_starting_1",
+    id: "tenebria_starting_1",
     name: "サウンドチェック",
     type: CardType.CHARACTER,
     category: CardCategory.ATTACK,
@@ -23,7 +23,7 @@ export const CHARACTER_CARDS: CznCard[] = [
     hiramekiVariations: [{ level: 0, cost: 1, description: "ダメージ100%" }]
   },
   {
-    id: "tenebrea_starting_2",
+    id: "tenebria_starting_2",
     name: "サウンドチェック",
     type: CardType.CHARACTER,
     category: CardCategory.ATTACK,
@@ -34,7 +34,7 @@ export const CHARACTER_CARDS: CznCard[] = [
     hiramekiVariations: [{ level: 0, cost: 1, description: "ダメージ100%" }]
   },
   {
-    id: "tenebrea_starting_3",
+    id: "tenebria_starting_3",
     name: "ファンサービス",
     type: CardType.CHARACTER,
     category: CardCategory.SKILL,
@@ -45,7 +45,7 @@ export const CHARACTER_CARDS: CznCard[] = [
     hiramekiVariations: [{ level: 0, cost: 1, description: "治癒100%" }]
   },
   {
-    id: "tenebrea_starting_4",
+    id: "tenebria_starting_4",
     name: "ミュージックスタート",
     type: CardType.CHARACTER,
     category: CardCategory.UPGRADE,
@@ -62,9 +62,9 @@ export const CHARACTER_CARDS: CznCard[] = [
       { level: 5, cost: 0, description: "すべての基本攻撃カード消滅、山札に味方のリズム：アルペジオを1枚ずつ生成", statuses: [CardStatus.UNIQUE, CardStatus.PREMIERE] } // TODO: 要確認
     ]
   },
-  // Tenebrea's hirameki cards (temporary implementation)
+  // Tenebria's hirameki cards (temporary implementation)
   {
-    id: "tenebrea_hirameki_1",
+    id: "tenebria_hirameki_1",
     name: "スポットライト",
     type: CardType.CHARACTER,
     category: CardCategory.ATTACK,
@@ -80,7 +80,7 @@ export const CHARACTER_CARDS: CznCard[] = [
     ]
   },
   {
-    id: "tenebrea_hirameki_2",
+    id: "tenebria_hirameki_2",
     name: "コール&レスポンス",
     type: CardType.CHARACTER,
     category: CardCategory.ATTACK,
@@ -96,7 +96,7 @@ export const CHARACTER_CARDS: CznCard[] = [
     ]
   },
   {
-    id: "tenebrea_hirameki_3",
+    id: "tenebria_hirameki_3",
     name: "アンコール",
     type: CardType.CHARACTER,
     category: CardCategory.ATTACK,
@@ -112,7 +112,7 @@ export const CHARACTER_CARDS: CznCard[] = [
     ]
   },
   {
-    id: "tenebrea_hirameki_4",
+    id: "tenebria_hirameki_4",
     name: "フォトタイム",
     type: CardType.CHARACTER,
     category: CardCategory.SKILL,
