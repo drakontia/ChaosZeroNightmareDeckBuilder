@@ -3688,7 +3688,7 @@ export const CHARACTER_CARDS: CznCard[] = [
     isBasicCard: true,
     isStartingCard: true,
     hiramekiVariations: [
-      { level: 0, cost: 1, description: "シールド100%" } // Fallback
+      { level: 0, cost: 1, description: "ダメージ100%" } // Fallback
     ]
   },
   {
