@@ -3682,13 +3682,13 @@ export const CHARACTER_CARDS: CznCard[] = [
     id: "rei_starting_2",
     name: "闇黒の刃", // Fallback
     type: CardType.CHARACTER,
-    category: CardCategory.SKILL,
+    category: CardCategory.ATTACK,
     statuses: [],
     imgUrl: "/images/cards/rei_starting_1.png",
     isBasicCard: true,
     isStartingCard: true,
     hiramekiVariations: [
-      { level: 0, cost: 1, description: "シールド100%" } // Fallback
+      { level: 0, cost: 1, description: "ダメージ100%" } // Fallback
     ]
   },
   {
