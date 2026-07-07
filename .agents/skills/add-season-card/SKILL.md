@@ -1,3 +1,11 @@
+---
+name: add-season-card
+description: >
+  新規シーズンキャラクターカードをデッキビルダーに追加するためのスキルです。
+  画像からカードデータを読み取り、ユーザー確認を経て TDD で実装します。
+  Use this when you want to add a new season character card to the ChaosZeroNightmare Deck Builder.
+---
+
 # スキル: シーズンカード（キャラクター）追加
 
 ## 概要

@@ -1,3 +1,11 @@
+---
+name: add-equipment
+description: >
+  新規装備をデッキビルダーに追加するためのスキルです。
+  画像から装備データを読み取り、ユーザー確認を経て TDD で実装します。
+  Use this when you want to add a new equipment to the ChaosZeroNightmare Deck Builder.
+---
+
 # スキル: 装備の追加 (Add Equipment)
 
 ## 目的
