@@ -1,7 +1,9 @@
 ---
+name: add-new-character
 description: >
   新規キャラクターをデッキビルダーに仮実装するためのスキルです。
   画像からカードデータを読み取り、ユーザー確認を経て TDD で実装します。
+  Use this when you want to add a new character to the ChaosZeroNightmare Deck Builder.
 ---
 
 # スキル: 新規キャラクター仮実装

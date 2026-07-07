@@ -10,6 +10,116 @@ import { CznCard, CardType, CardCategory, CardStatus } from "@/types";
  * The name and description fields below serve as fallback values when translations are not available.
  */
 export const CHARACTER_CARDS: CznCard[] = [
+  // Fei's starting cards
+  {
+    id: "fei_starting_1",
+    name: "蒼炎",
+    type: CardType.CHARACTER,
+    category: CardCategory.ATTACK,
+    statuses: [],
+    isBasicCard: true,
+    isStartingCard: true,
+    imgUrl: "/images/cards/fei_starting_1.png", // TODO: フェイ画像差し替え
+    hiramekiVariations: [{ level: 0, cost: 1, description: "ダメージ100%" }]
+  },
+  {
+    id: "fei_starting_2",
+    name: "蒼炎",
+    type: CardType.CHARACTER,
+    category: CardCategory.ATTACK,
+    statuses: [],
+    isBasicCard: true,
+    isStartingCard: true,
+    imgUrl: "/images/cards/fei_starting_2.png", // TODO: フェイ画像差し替え
+    hiramekiVariations: [{ level: 0, cost: 1, description: "ダメージ100%" }]
+  },
+  {
+    id: "fei_starting_3",
+    name: "憂愁",
+    type: CardType.CHARACTER,
+    category: CardCategory.SKILL,
+    statuses: [],
+    isBasicCard: true,
+    isStartingCard: true,
+    imgUrl: "/images/cards/fei_starting_3.png", // TODO: フェイ画像差し替え
+    hiramekiVariations: [{ level: 0, cost: 1, description: "シールド100%" }]
+  },
+  {
+    id: "fei_starting_4",
+    name: "退魔の形勢",
+    type: CardType.CHARACTER,
+    category: CardCategory.UPGRADE,
+    statuses: [CardStatus.INITIATION, CardStatus.UNIQUE],
+    isBasicCard: false,
+    isStartingCard: true,
+    imgUrl: "/images/cards/fei_starting_4.png", // TODO: フェイ画像差し替え
+    hiramekiVariations: [
+      { level: 0, cost: 1, description: "能力でドロー時、降臨1\n山札に炎舞曲を8枚生成" },
+      { level: 1, cost: 1, description: "能力でドロー時、降臨1\n山札に炎舞曲を8枚生成\nそのカードのダメージ量+50%" },
+      { level: 2, cost: 1, description: "能力でドロー時、降臨1\n山札に炎舞曲を8枚生成\nターン開始時、炎舞曲を1枚ドロー" },
+      { level: 3, cost: 0, description: "能力でドロー時、降臨1\n山札に炎舞曲を8枚生成\nドロー2" },
+      { level: 4, cost: 1, description: "能力でドロー時、降臨1\n山札に炎舞曲を7枚生成\n炎舞発動時、対象に追加攻撃100%" }, // TODO: Lv4効果文は画像判読が不十分
+      { level: 5, cost: 1, description: "能力でドロー時、降臨1\n山札に炎舞曲：天を6枚生成" }
+    ]
+  },
+  // Fei's hirameki cards
+  {
+    id: "fei_hirameki_1",
+    name: "独舞",
+    type: CardType.CHARACTER,
+    category: CardCategory.SKILL,
+    statuses: [],
+    imgUrl: "/images/cards/fei_hirameki_1.png", // TODO: フェイ画像差し替え
+    hiramekiVariations: [
+      { level: 0, cost: 0, description: "ドロー2\nドローしたカードのうち、コストが1以上のカードすべて破棄" },
+      { level: 1, cost: 0, description: "ドロー3\nドローしたカードのうち、コストが1以上のカードすべて破棄" },
+      { level: 2, cost: 0, description: "コストが0の自分のカードドロー2" },
+      { level: 3, cost: 1, description: "対象に山札の炎舞曲を3枚発動\n発動数に応じて降臨2" },
+      { level: 4, cost: 0, description: "ドロー1\nコストが2以下の自分のカードドロー時、そのカードを発動してドロー2" },
+      { level: 5, cost: 0, description: "コストがXのカードドロー1\nそのカードのXを使用時までX+1として適用" } // TODO: Lv5効果文は画像判読が不十分
+    ]
+  },
+  {
+    id: "fei_hirameki_2",
+    name: "常夜の雨",
+    type: CardType.CHARACTER,
+    category: CardCategory.SKILL,
+    statuses: [],
+    imgUrl: "/images/cards/fei_hirameki_2.png", // TODO: フェイ画像差し替え
+    hiramekiVariations: [
+      { level: 0, cost: 0, description: "炎舞1\n連続：炎舞曲を1枚ドロー" },
+      { level: 1, cost: 0, description: "炎舞1\n連続：炎舞曲を2枚ドロー" },
+      { level: 2, cost: 0, description: "炎舞2\n連続：次の2回の炎舞発動時、炎舞2" },
+      { level: 3, cost: 1, description: "墓地の炎舞曲数に応じて炎舞1" },
+      { level: 4, cost: 0, description: "炎舞2\nターン開始時、手札に移動" },
+      { level: 5, cost: 0, description: "炎舞1\n連続：次のXをX+2として適用" }
+    ]
+  },
+  {
+    id: "fei_hirameki_3",
+    name: "魂焔舞",
+    type: CardType.CHARACTER,
+    category: CardCategory.ATTACK,
+    statuses: [],
+    imgUrl: "/images/cards/fei_hirameki_3.png", // TODO: フェイ画像差し替え
+    hiramekiVariations: [
+      { level: 0, cost: "X", description: "ダメージ100%×X+1。ドローX" },
+      { level: 1, cost: "X", description: "ダメージ150%×X+1。ドローX" },
+      { level: 2, cost: "X", description: "ダメージ100%×X+1。ヒット数に応じて対象に墓地の炎舞曲を発動", statuses: [CardStatus.UNIQUE] }, // TODO: 要確認
+      { level: 3, cost: "X", description: "ダメージ150%×X+1\nヒット数に応じて次の落九天のダメージ量50%増加（最大500%）" }, 
+      { level: 4, cost: "X", category: CardCategory.SKILL, description: "ドローX\n炎舞X × 2\n降臨X" },
+      { level: 5, cost: 2, category: CardCategory.UPGRADE, description: "炎舞のヒット数1回追加", statuses: [CardStatus.UNIQUE] }
+    ]
+  },
+  {
+    id: "fei_hirameki_4",
+    name: "炎舞舞曲",
+    type: CardType.CHARACTER,
+    category: CardCategory.SKILL,
+    statuses: [CardStatus.EXHAUST, CardStatus.UNIQUE],
+    imgUrl: "/images/cards/fei_hirameki_4.png", // TODO: フェイ画像差し替え
+    hiramekiVariations: [{ level: 0, cost: 0, category: CardCategory.SKILL, description: "このターン獲得した降臨数に応じて、炎舞曲を手札に移動" }]
+  },
   // Tenebria's starting cards (temporary implementation)
   {
     id: "tenebria_starting_1",

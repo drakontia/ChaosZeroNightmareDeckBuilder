@@ -1,3 +1,9 @@
+---
+type: Reference
+title: Specification in Season 1
+description: This is specification in season 1 about ChaosZeroNightmare
+---
+
 # カオスゼロナイトメア デッキビルダー 仕様書
 
 ## 概要
@@ -9,20 +15,6 @@
 - 攻略情報: https://nightmare.aosns.com/
 - デッキ参考画像: http://bit.ly/4oZ77Hx
 - 構造参考リポジトリ: https://github.com/danij91/resonanceDeckBuilder
-
-## 技術スタック
-
-### フロントエンド
-- **フレームワーク**: Next.js 16.x (最新版)
-- **言語**: TypeScript 5.9.x
-- **スタイリング**: Tailwind CSS 4.1.x
-- **国際化**: next-intl (日本語、英語、中国語、韓国語対応)
-
-### テスト
-- **E2Eテスト**: Playwright 1.57.x
-
-### ビルドツール
-- Turbopack (Next.js内蔵)
 
 ## UI/UXデザイン
 

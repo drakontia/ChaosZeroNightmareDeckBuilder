@@ -1,5 +1,73 @@
 {
   "cards": {
+    "fei_starting_1": {
+      "name": "Azure Flame",
+      "descriptions": {
+        "0": "Damage 100%"
+      }
+    },
+    "fei_starting_2": {
+      "name": "Azure Flame",
+      "descriptions": {
+        "0": "Damage 100%"
+      }
+    },
+    "fei_starting_3": {
+      "name": "Melancholy",
+      "descriptions": {
+        "0": "Shield 100%"
+      }
+    },
+    "fei_starting_4": {
+      "name": "Demon-Repelling Formation",
+      "descriptions": {
+        "0": "When drawn by an ability, gain Descend 1.\nGenerate 8 Flame Dance Melody cards in your deck.",
+        "1": "When drawn by an ability, gain Descend 1.\nGenerate 8 Flame Dance Melody cards in your deck.\nThose cards deal +50% damage.",
+        "2": "When drawn by an ability, gain Descend 1.\nGenerate 8 Flame Dance Melody cards in your deck.\nAt turn start, draw 1 Flame Dance Melody.",
+        "3": "When drawn by an ability, gain Descend 1.\nGenerate 8 Flame Dance Melody cards in your deck.\nDraw 2.",
+        "4": "When drawn by an ability, gain Descend 1.\nGenerate 7 Flame Dance Melody cards in your deck.\nWhen Flame Dance activates, perform an additional 100% attack on the target.",
+        "5": "When drawn by an ability, gain Descend 1.\nGenerate 6 Flame Dance Melody: Heaven cards in your deck."
+      }
+    },
+    "fei_hirameki_1": {
+      "name": "Solo Dance",
+      "descriptions": {
+        "0": "Draw 2.\nDiscard all drawn cards with cost 1 or higher.",
+        "1": "Draw 3.\nDiscard all drawn cards with cost 1 or higher.",
+        "2": "Draw 2 of your own cards with cost 0.",
+        "3": "Activate 3 Flame Dance Melody cards from your deck on the target.\nGain Descend 2 based on activation count.",
+        "4": "Draw 1.\nWhen you draw your own card with cost 2 or less, activate that card and draw 2.",
+        "5": "Draw 1 card with cost X.\nTreat that card's X as X+1 until use."
+      }
+    },
+    "fei_hirameki_2": {
+      "name": "Rain of Eternal Night",
+      "descriptions": {
+        "0": "Flame Dance 1.\nCombo: Draw 1 Flame Dance Melody.",
+        "1": "Flame Dance 1.\nCombo: Draw 2 Flame Dance Melody.",
+        "2": "Flame Dance 2.\nCombo: For the next 2 Flame Dance activations, apply Flame Dance 2.",
+        "3": "Apply Flame Dance 1 based on the number of Flame Dance Melody cards in the graveyard.",
+        "4": "Flame Dance 2.\nAt turn start, move to hand.",
+        "5": "Flame Dance 1.\nCombo: Apply the next X as X+2."
+      }
+    },
+    "fei_hirameki_3": {
+      "name": "Soul Flame Dance",
+      "descriptions": {
+        "0": "Damage 100% × (X+1). Draw X.",
+        "1": "Damage 150% × (X+1). Draw X.",
+        "2": "Damage 100% × (X+1). Based on hit count, activate Flame Dance Melody from the graveyard on the target.",
+        "3": "Damage 150% × (X+1).\nBased on hit count, increase the next Fallen Sky's damage by 50% (max 500%).",
+        "4": "Draw X.\nFlame Dance X × 2.\nDescend X.",
+        "5": "Add 1 hit to Flame Dance."
+      }
+    },
+    "fei_hirameki_4": {
+      "name": "Flame Dance Melody",
+      "descriptions": {
+        "0": "Move Flame Dance Melody to your hand based on the Descend gained this turn."
+      }
+    },
     "tenebria_starting_1": {
       "name": "Sound Check",
       "descriptions": {

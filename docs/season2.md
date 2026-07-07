@@ -1,3 +1,9 @@
+---
+type: Reference
+title: Specification in Season 2
+description: This is specification in season 2 about ChaosZeroNightmare
+---
+
 ## V2からの変更点
 2026年2月4日より適用される主要な変更点は以下の通り：
 
