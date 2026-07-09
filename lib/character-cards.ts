@@ -30,7 +30,7 @@ export const CHARACTER_CARDS: CznCard[] = [
     statuses: [],
     isBasicCard: true,
     isStartingCard: true,
-    imgUrl: "/images/cards/fei_starting_2.png", // TODO: フェイ画像差し替え
+    imgUrl: "/images/cards/fei_starting_1.png", // TODO: フェイ画像差し替え
     hiramekiVariations: [{ level: 0, cost: 1, description: "ダメージ100%" }]
   },
   {
