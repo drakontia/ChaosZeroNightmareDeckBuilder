@@ -1,3 +1,4 @@
+import { withOrganizedCardImage } from "@/lib/card-image-paths";
 import { CznCard, CardType, CardCategory, JobType, CardStatus } from "@/types";
 
 /**
@@ -9,7 +10,7 @@ import { CznCard, CardType, CardCategory, JobType, CardStatus } from "@/types";
  * 
  * The name and description fields below serve as fallback values when translations are not available.
  */
-export const SHARED_CARDS: CznCard[] = [
+export const SHARED_CARDS: CznCard[] = ([
   {
     id: "shared_01",
     name: "加虐性",
@@ -806,4 +807,4 @@ export const SHARED_CARDS: CznCard[] = [
       { level: 0, cost: 1, description: "ドロー3" }
     ]
   },
-];
+] satisfies CznCard[]).map(withOrganizedCardImage);

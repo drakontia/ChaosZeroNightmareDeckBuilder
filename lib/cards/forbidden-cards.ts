@@ -1,6 +1,9 @@
+import { withOrganizedCardImage } from "@/lib/card-image-paths";
+import {
+  PERSONA_CARD_IMAGE,
+} from "@/lib/persona-image-paths";
 import { CznCard, CardType, CardCategory, CardStatus, JobType } from "@/types";
 
-const PERSONA_CARD_IMAGE = "/images/cards/persona.png";
 const ALL_PERSONA_JOBS = [
   JobType.STRIKER,
   JobType.VANGUARD,
@@ -19,7 +22,7 @@ const ALL_PERSONA_JOBS = [
  * 
  * The name and description fields below serve as fallback values when translations are not available.
  */
-export const FORBIDDEN_CARDS: CznCard[] = [
+export const FORBIDDEN_CARDS: CznCard[] = ([
   {
     id: "forbidden_card_8",
     name: "筋肉強化進化体",
@@ -703,4 +706,4 @@ export const FORBIDDEN_CARDS: CznCard[] = [
     imgUrl: PERSONA_CARD_IMAGE,
     hiramekiVariations: [{ level: 0, cost: 1, description: "シールド250%\n墓地から自分のランダムな攻撃カード1枚を手札に移動" }],
   },
-];
+] satisfies CznCard[]).map(withOrganizedCardImage);

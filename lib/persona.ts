@@ -1,3 +1,17 @@
+import {
+  LUX_PERSONA_CARD_IMAGE,
+  LUX_PERSONA_SKILL_IMAGE,
+  PERSONA_CARD_IMAGE,
+  PERSONA_OF_BOUNDARY_CARD_IMAGE,
+  PERSONA_OF_BOUNDARY_SKILL_IMAGE,
+  PERSONA_OF_LUSTER_CARD_IMAGE,
+  PERSONA_OF_LUSTER_SKILL_IMAGE,
+  PERSONA_OF_OBSIDIAN_CARD_IMAGE,
+  PERSONA_OF_OBSIDIAN_SKILL_IMAGE,
+  PERSONA_SKILL_IMAGE,
+  UMBRA_PERSONA_CARD_IMAGE,
+  UMBRA_PERSONA_SKILL_IMAGE,
+} from "@/lib/persona-image-paths";
 import { CardStatus, JobType, PersonaEngraving, PersonaEngravingAlignment, CardCategory } from "@/types";
 
 export const VALID_PERSONA_ENGRAVING_ALIGNMENTS: ReadonlySet<PersonaEngravingAlignment> = new Set(["light", "dark"]);
@@ -278,23 +292,23 @@ export const PERSONA_CARD_ENGRAVINGS: PersonaEngravingDefinition[] = [
 ];
 
 const PERSONA_IMAGE_BY_SIGNATURE: Record<string, string> = {
-  none: "/images/cards/persona.png",
-  light: "/images/cards/lux_persona.png",
-  dark: "/images/cards/umbra_persona.png",
-  "light-light": "/images/cards/persona_of_luster.png",
-  "dark-dark": "/images/cards/persona_of_obsidian.png",
-  "dark-light": "/images/cards/persona_of_boundary.png",
-  "light-dark": "/images/cards/persona_of_boundary.png",
+  none: PERSONA_CARD_IMAGE,
+  light: LUX_PERSONA_CARD_IMAGE,
+  dark: UMBRA_PERSONA_CARD_IMAGE,
+  "light-light": PERSONA_OF_LUSTER_CARD_IMAGE,
+  "dark-dark": PERSONA_OF_OBSIDIAN_CARD_IMAGE,
+  "dark-light": PERSONA_OF_BOUNDARY_CARD_IMAGE,
+  "light-dark": PERSONA_OF_BOUNDARY_CARD_IMAGE,
 };
 
 const PERSONA_SKILL_IMAGE_BY_SIGNATURE: Record<string, string> = {
-  none: "/images/cards/persona_skill.png",
-  light: "/images/cards/lux_persona_skill.png",
-  dark: "/images/cards/umbra_persona_skill.png",
-  "light-light": "/images/cards/persona_of_luster_skill.png",
-  "dark-dark": "/images/cards/persona_of_obsidian_skill.png",
-  "dark-light": "/images/cards/persona_of_boundary_skill.png",
-  "light-dark": "/images/cards/persona_of_boundary_skill.png",
+  none: PERSONA_SKILL_IMAGE,
+  light: LUX_PERSONA_SKILL_IMAGE,
+  dark: UMBRA_PERSONA_SKILL_IMAGE,
+  "light-light": PERSONA_OF_LUSTER_SKILL_IMAGE,
+  "dark-dark": PERSONA_OF_OBSIDIAN_SKILL_IMAGE,
+  "dark-light": PERSONA_OF_BOUNDARY_SKILL_IMAGE,
+  "light-dark": PERSONA_OF_BOUNDARY_SKILL_IMAGE,
 };
 
 const PERSONA_NAME_BY_VARIANT: Record<PersonaNameVariant, string> = {

@@ -15,7 +15,7 @@ describe('getPersonaCardPresentation', () => {
     });
 
     expect(result.name).toBe('光のペルソナ');
-    expect(result.imgUrl).toBe('/images/cards/lux_persona.png');
+    expect(result.imgUrl).toBe('/images/cards/common/lux_persona.png');
     expect(result.cost).toBe(2);
     expect(result.statuses).toEqual([CardStatus.UNIQUE, CardStatus.HASTE]);
     expect(result.description).toContain('ダメージ250%');
@@ -36,7 +36,7 @@ describe('getPersonaCardPresentation', () => {
     });
 
     expect(result.name).toBe('境界のペルソナ');
-    expect(result.imgUrl).toBe('/images/cards/persona_of_boundary.png');
+    expect(result.imgUrl).toBe('/images/cards/common/persona_of_boundary.png');
     expect(result.cost).toBe(1);
     expect(result.statuses).toEqual([CardStatus.UNIQUE]);
     expect(result.description).toContain('感応：使用時までコスト1減少');
@@ -55,7 +55,7 @@ describe('getPersonaCardPresentation', () => {
 
     expect(result).toEqual({
       name: 'ペルソナ',
-      imgUrl: '/images/cards/persona.png',
+      imgUrl: '/images/cards/common/persona.png',
       cost: 1,
       description: '治癒250%',
       statuses: [CardStatus.UNIQUE],
@@ -150,7 +150,7 @@ describe('getPersonaCardPresentation - image selection by category', () => {
       category: CardCategory.ATTACK,
     });
 
-    expect(result.imgUrl).toBe('/images/cards/persona.png');
+    expect(result.imgUrl).toBe('/images/cards/common/persona.png');
   });
 
   it('uses SKILL image for SKILL category persona card', () => {
@@ -163,7 +163,7 @@ describe('getPersonaCardPresentation - image selection by category', () => {
       category: CardCategory.SKILL,
     });
 
-    expect(result.imgUrl).toBe('/images/cards/persona_skill.png');
+    expect(result.imgUrl).toBe('/images/cards/common/persona_skill.png');
   });
 
   it('uses light ATTACK image for ATTACK with light engraving', () => {
@@ -177,7 +177,7 @@ describe('getPersonaCardPresentation - image selection by category', () => {
       category: CardCategory.ATTACK,
     });
 
-    expect(result.imgUrl).toBe('/images/cards/lux_persona.png');
+    expect(result.imgUrl).toBe('/images/cards/common/lux_persona.png');
   });
 
   it('uses light SKILL image for SKILL with light engraving', () => {
@@ -191,7 +191,7 @@ describe('getPersonaCardPresentation - image selection by category', () => {
       category: CardCategory.SKILL,
     });
 
-    expect(result.imgUrl).toBe('/images/cards/lux_persona_skill.png');
+    expect(result.imgUrl).toBe('/images/cards/common/lux_persona_skill.png');
   });
 
   it('uses dark SKILL image for SKILL with dark engraving', () => {
@@ -205,7 +205,7 @@ describe('getPersonaCardPresentation - image selection by category', () => {
       category: CardCategory.SKILL,
     });
 
-    expect(result.imgUrl).toBe('/images/cards/umbra_persona_skill.png');
+    expect(result.imgUrl).toBe('/images/cards/common/umbra_persona_skill.png');
   });
 
   it('uses luster ATTACK image for ATTACK with double light engraving', () => {
@@ -222,7 +222,7 @@ describe('getPersonaCardPresentation - image selection by category', () => {
       category: CardCategory.ATTACK,
     });
 
-    expect(result.imgUrl).toBe('/images/cards/persona_of_luster.png');
+    expect(result.imgUrl).toBe('/images/cards/common/persona_of_luster.png');
   });
 
   it('uses luster SKILL image for SKILL with double light engraving', () => {
@@ -239,7 +239,7 @@ describe('getPersonaCardPresentation - image selection by category', () => {
       category: CardCategory.SKILL,
     });
 
-    expect(result.imgUrl).toBe('/images/cards/persona_of_luster_skill.png');
+    expect(result.imgUrl).toBe('/images/cards/common/persona_of_luster_skill.png');
   });
 
   it('uses boundary SKILL image for SKILL with mixed light/dark engravings', () => {
@@ -256,6 +256,6 @@ describe('getPersonaCardPresentation - image selection by category', () => {
       category: CardCategory.SKILL,
     });
 
-    expect(result.imgUrl).toBe('/images/cards/persona_of_boundary_skill.png');
+    expect(result.imgUrl).toBe('/images/cards/common/persona_of_boundary_skill.png');
   });
 });

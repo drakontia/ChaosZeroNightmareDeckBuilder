@@ -62,4 +62,11 @@ describe('card helpers', () => {
     expect(rangerCards.some(card => card.id === 'persona_08')).toBe(false);
     expect(vanguardCards.some(card => card.id === 'persona_08')).toBe(true);
   });
+
+  it('returns organized image paths for representative card groups', () => {
+    expect(getCardById('fei_starting_1')?.imgUrl).toBe('/images/cards/character/fei_starting_1.png');
+    expect(getCardById('shared_01')?.imgUrl).toBe('/images/cards/common/shared_01.png');
+    expect(getCardById('monster_01')?.imgUrl).toBe('/images/cards/monster/monster_01.png');
+    expect(getCardById('spore_harvester')?.imgUrl).toBe('/images/cards/season2/spore_harvester.png');
+  });
 });

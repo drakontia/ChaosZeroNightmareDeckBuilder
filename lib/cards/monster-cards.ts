@@ -1,3 +1,4 @@
+import { withOrganizedCardImage } from "@/lib/card-image-paths";
 import { CznCard, CardType, CardCategory, CardGrade, CardStatus } from "@/types";
 
 /**
@@ -9,7 +10,7 @@ import { CznCard, CardType, CardCategory, CardGrade, CardStatus } from "@/types"
  * 
  * The name and description fields below serve as fallback values when translations are not available.
  */
-export const MONSTER_CARDS: CznCard[] = [
+export const MONSTER_CARDS: CznCard[] = ([
   {
     id: "monster_01",
     name: "恥ずかしがり屋の庭師",
@@ -374,4 +375,4 @@ export const MONSTER_CARDS: CznCard[] = [
       { level: 0, cost: 5, description: "防御依存ダメージ600%\n焼却：このカード発動" }
     ]
   },
-];
+] satisfies CznCard[]).map(withOrganizedCardImage);

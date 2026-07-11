@@ -1,3 +1,4 @@
+import { withOrganizedCardImage } from "@/lib/card-image-paths";
 import { CznCard, CardType, CardCategory, CardStatus } from "@/types";
 
 /**
@@ -9,7 +10,7 @@ import { CznCard, CardType, CardCategory, CardStatus } from "@/types";
  * 
  * The name and description fields below serve as fallback values when translations are not available.
  */
-export const CHARACTER_CARDS: CznCard[] = [
+export const CHARACTER_CARDS: CznCard[] = ([
   // Fei's starting cards
   {
     id: "fei_starting_1",
@@ -4010,4 +4011,4 @@ export const CHARACTER_CARDS: CznCard[] = [
       { level: 0, cost: 1, description: "手札のコストが最も高い自分の攻撃カード1枚発動、そのカード消滅" }
     ]
   },
-];
+] satisfies CznCard[]).map(withOrganizedCardImage);
