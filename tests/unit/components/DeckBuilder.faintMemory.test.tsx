@@ -10,7 +10,7 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render, act, screen } from '@testing-library/react';
 import { useState } from 'react';
-import { Deck } from '@/types';
+import { Deck, JobType } from '@/types';
 
 const {
   mockCalculateFaintMemory,
@@ -59,7 +59,7 @@ function createMockDeck(): Deck {
 
 const mockDeck = createMockDeck();
 
-const mockStore = {
+const mockStore: { deck: Deck | null; [key: string]: unknown } = {
   deck: mockDeck,
   setDeck: vi.fn(),
   setCharacter: vi.fn(),
@@ -228,7 +228,7 @@ describe('DeckBuilder - faintMemoryPoints のメモ化', () => {
   it('主要コールバックが正しくストア/ハンドラーに接続される', async () => {
     mockStore.deck = {
       ...createMockDeck(),
-      character: { id: 'char-1', name: 'Char', basicCards: [], optionalCards: [] },
+      character: { id: 'char-1', name: 'Char', rarity: '★4', job: JobType.STRIKER, startingCards: [], hiramekiCards: [] },
     };
 
     const { DeckBuilder } = await import('@/components/DeckBuilder');
