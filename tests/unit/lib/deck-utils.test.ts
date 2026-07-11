@@ -196,7 +196,7 @@ describe('getCardInfo', () => {
 
     const info = getCardInfo(personaCard);
     expect(info.name).toBe('境界のペルソナ');
-    expect(info.imgUrl).toBe('/images/cards/persona_of_boundary.png');
+    expect(info.imgUrl).toBe('/images/cards/common/persona_of_boundary.png');
     expect(info.cost).toBe(2);
     expect(info.statuses).toContain(CardStatus.UNIQUE);
     expect(info.statuses).toContain(CardStatus.HASTE);
@@ -216,7 +216,7 @@ describe('getCardInfo', () => {
 
     const info = getCardInfo(personaCard);
     expect(info.name).toBe('ペルソナ');
-    expect(info.imgUrl).toBe('/images/cards/persona.png');
+    expect(info.imgUrl).toBe('/images/cards/common/persona.png');
     expect(info.cost).toBe(1);
     expect(info.statuses).toEqual([CardStatus.UNIQUE]);
   });
