@@ -41,4 +41,8 @@ describe('getOrganizedCardImagePath', () => {
       getOrganizedCardImagePath('card_placeholder', CardType.SHARED, '/images/other/card_placeholder.png')
     ).toBe('/images/other/card_placeholder.png');
   });
+
+  it('returns undefined when a card has no image path', () => {
+    expect(getOrganizedCardImagePath('shared_01', CardType.SHARED, undefined)).toBeUndefined();
+  });
 });
