@@ -306,7 +306,7 @@ describe('getCardInfo', () => {
 
   it('should return undefined statuses when no statuses are defined anywhere', () => {
     // Card has no statuses
-    baseCard.statuses = undefined;
+    (baseCard as unknown as Record<string, unknown>).statuses = undefined;
      
     // Hirameki level 1 without statuses property
     const variation1: HiramekiVariation = {
