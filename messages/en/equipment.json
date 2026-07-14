@@ -61,6 +61,8 @@
       "equipment_engraving_umbra_08": "When your card is discarded, the next attack card you use deals +100% damage (once per turn)",
       "equipment_engraving_lux_06": "At the start of turn, deal fixed damage 100% to the target with the lowest action count",
       "equipment_engraving_lux_07": "When attacked, randomly apply 1 of Weakened or Vulnerable to the attacker (once per turn)",
+      "equipment_engraving_lux_08": "When your card is activated, 30% chance to increase all enemies' action count by 1 (once per turn)",
+      "equipment_engraving_lux_09": "Increase the damage of your Swift cards by 25%",
       "equipment_engraving_umbra_09": "Lux Engraving +1",
       "equipment_engraving_umbra_10": "When your initiative card is discarded, activate (once per turn)",
       "equipment_engraving_umbra_11": "When allies discard 2 cards by ability, draw 1 Quietus card (once per combat)",
@@ -967,3 +969,4 @@
     }
   }
 }
+
