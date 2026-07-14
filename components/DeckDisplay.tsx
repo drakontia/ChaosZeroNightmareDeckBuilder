@@ -4,6 +4,7 @@ import { useTranslations } from 'next-intl';
 import { CardFrame } from './CardFrame';
 import { HiramekiControls } from './HiramekiControls';
 import { CardActionsMenu } from './CardActionsMenu';
+import { SeasonLevelControls } from "./SeasonLevelControls";
 
 import { DeckCard, GodType, CznCard, JobType, CardStatus, CardType, PersonaEngraving } from "@/types";
 import { Card } from "./ui/card";
@@ -105,18 +106,7 @@ export function DeckDisplay({ cards, egoLevel, hasPotential, allowedJob, onRemov
           displayStatuses.push(CardStatus.COPIED);
         }
         const leftControls = isSeason4 ? (
-            <div className="flex flex-col gap-1">
-              {[1, 2, 3].map((level) => (
-                <button
-                  key={`${card.deckId}-season-${level}`}
-                  type="button"
-                  className="h-6 xl:h-8 px-2 rounded-full border bg-background/90 text-foreground text-xs xl:text-sm"
-                  onClick={() => onUpdateSeasonLevel(card.deckId, level as 1 | 2 | 3)}
-                >
-                  {t("card.level")}.{level}
-                </button>
-              ))}
-            </div>
+            <SeasonLevelControls card={card} onUpdateSeasonLevel={onUpdateSeasonLevel} />
           ) : supportsHiramekiControls ? (
             <HiramekiControls
               card={card}
