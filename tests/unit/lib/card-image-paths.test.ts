@@ -20,6 +20,12 @@ describe('getOrganizedCardImagePath', () => {
     ).toBe('/images/cards/common/persona.png');
   });
 
+  it('keeps already organized persona image paths unchanged', () => {
+    expect(
+      getOrganizedCardImagePath('persona_01', CardType.FORBIDDEN, '/images/cards/common/persona.png')
+    ).toBe('/images/cards/common/persona.png');
+  });
+
   it('maps monster cards into the monster folder', () => {
     expect(
       getOrganizedCardImagePath('monster_01', CardType.MONSTER, '/images/cards/monster_01.png')

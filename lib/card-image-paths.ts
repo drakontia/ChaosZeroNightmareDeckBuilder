@@ -74,6 +74,10 @@ export const getOrganizedCardImagePath = (
   }
 
   const fileName = imgUrl.slice(LEGACY_CARD_IMAGE_PREFIX.length);
+  if (fileName.includes("/")) {
+    return imgUrl;
+  }
+
   const folder = getCardImageFolder(cardId, cardType);
 
   return `${LEGACY_CARD_IMAGE_PREFIX}${folder}/${fileName}`;

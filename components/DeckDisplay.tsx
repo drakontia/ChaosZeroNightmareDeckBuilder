@@ -126,7 +126,6 @@ export function DeckDisplay({ cards, egoLevel, hasPotential, allowedJob, onRemov
               imgUrl={cardInfo.imgUrl ?? card.imgUrl}
               alt={nameFallback}
               cost={cardInfo.cost}
-              levelLabel={isSeason4 ? `${t("card.level")}.${card.selectedSeasonLevel ?? 1}` : undefined}
               name={hasPersonaEngravings ? nameFallback : undefined}
               nameId={nameId}
               nameFallback={nameFallback}

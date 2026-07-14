@@ -297,6 +297,28 @@ describe('DeckDisplay - Copied Card Feature', () => {
     expect(screen.queryByTestId('hirameki-controls')).toBeNull();
   });
 
+  it('does not pass top levelLabel for season4 cards (avoid duplicate Lv display)', () => {
+    const season4Card = createMockCard({
+      id: 'traitors_execution',
+      deckId: 'd-season4-level-label',
+      type: CardType.FORBIDDEN,
+      selectedSeasonLevel: 3,
+      hiramekiVariations: [{ level: 0, cost: 2, description: 'Lv1', statuses: [] }],
+    });
+
+    renderWithIntl(
+      <DeckDisplay
+        cards={[season4Card]}
+        egoLevel={0}
+        hasPotential={false}
+        {...mockHandlers}
+      />
+    );
+
+    const lastProps = cardFrameProps[cardFrameProps.length - 1];
+    expect(lastProps.levelLabel).toBeUndefined();
+  });
+
   it('does NOT show HiramekiControls for character cards with only base variation', () => {
     const charBase: DeckCard = createMockCard({
       deckId: 'd-char-base',

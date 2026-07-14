@@ -1,6 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { getAddableCards, getCardById, getCharacterHiramekiCards, getCharacterStartingCards, CARDS } from '@/lib/card';
 import { CHARACTERS } from '@/lib/characters';
+import { FORBIDDEN_CARDS } from '@/lib/cards/forbidden-cards';
 import { CardType, JobType } from '@/types';
 
 describe('card helpers', () => {
@@ -93,6 +94,31 @@ describe('card helpers', () => {
       const card = getCardById(id);
       expect(card).toBeDefined();
       expect(card?.type).toBe(CardType.FORBIDDEN);
+    }
+  });
+
+  it('defines season4 card image paths directly under /images/cards/season4/', () => {
+    const season4Ids = [
+      'traitors_execution',
+      'mark_of_servitude',
+      'kneel_before_me',
+      'indiscriminate_slaughter',
+      'order_of_dominance',
+      'postmortem_analysis',
+      'sensory_overload',
+      'forbidden_hypothesis',
+      'sample_collection',
+      'knowledge_addiction',
+      'sever_ties',
+      'narcissism',
+      'its_all_mine',
+      'obsession',
+      'gilded_nest',
+    ];
+
+    for (const id of season4Ids) {
+      const card = FORBIDDEN_CARDS.find((candidate) => candidate.id === id);
+      expect(card?.imgUrl).toBe(`/images/cards/season4/${id}.png`);
     }
   });
 });

@@ -513,7 +513,7 @@ export const FORBIDDEN_CARDS: CznCard[] = ([
     category: CardCategory.ATTACK,
     statuses: [CardStatus.CONTROL],
     allowedJobs: [JobType.STRIKER, JobType.VANGUARD],
-    imgUrl: "/images/cards/traitors_execution.png",
+    imgUrl: "/images/cards/season4/traitors_execution.png",
     hiramekiVariations: [{ level: 0, cost: 2, description: "敵全体にダメージ200%。撃破：ランダムな敵に灼熱4" }],
     seasonLevelVariations: [
       { level: 1, cost: 2, description: "敵全体にダメージ200%。撃破：ランダムな敵に灼熱4" },
@@ -528,7 +528,7 @@ export const FORBIDDEN_CARDS: CznCard[] = ([
     category: CardCategory.ATTACK,
     statuses: [CardStatus.CONTROL],
     allowedJobs: [JobType.RANGER, JobType.HUNTER],
-    imgUrl: "/images/cards/mark_of_servitude.png",
+    imgUrl: "/images/cards/season4/mark_of_servitude.png",
     hiramekiVariations: [{ level: 0, cost: 1, description: "ダメージ130%。対象が灼熱状態なら、追加攻撃100%" }],
     seasonLevelVariations: [
       { level: 1, cost: 1, description: "ダメージ130%。対象が灼熱状態なら、追加攻撃100%" },
@@ -543,7 +543,7 @@ export const FORBIDDEN_CARDS: CznCard[] = ([
     category: CardCategory.SKILL,
     statuses: [CardStatus.CONTROL],
     allowedJobs: [JobType.PSIONIC, JobType.CONTROLLER],
-    imgUrl: "/images/cards/kneel_before_me.png",
+    imgUrl: "/images/cards/season4/kneel_before_me.png",
     hiramekiVariations: [{ level: 0, cost: 1, description: "デバフを所持中の対象に脆弱1。敵全体に弱体化1、灼熱3" }],
     seasonLevelVariations: [
       { level: 1, cost: 1, description: "デバフを所持中の対象に脆弱1。敵全体に弱体化1、灼熱3" },
@@ -558,7 +558,7 @@ export const FORBIDDEN_CARDS: CznCard[] = ([
     category: CardCategory.ATTACK,
     statuses: [CardStatus.CONTROL],
     allowedJobs: "all",
-    imgUrl: "/images/cards/indiscriminate_slaughter.png",
+    imgUrl: "/images/cards/season4/indiscriminate_slaughter.png",
     hiramekiVariations: [{ level: 0, cost: 1, description: "ダメージ240%。行動カウント2減少" }],
     seasonLevelVariations: [
       { level: 1, cost: 1, description: "ダメージ240%。行動カウント2減少" },
@@ -573,7 +573,7 @@ export const FORBIDDEN_CARDS: CznCard[] = ([
     category: CardCategory.ATTACK,
     statuses: [CardStatus.CONTROL],
     allowedJobs: "all",
-    imgUrl: "/images/cards/order_of_dominance.png",
+    imgUrl: "/images/cards/season4/order_of_dominance.png",
     hiramekiVariations: [{ level: 0, cost: 1, description: "ダメージ120%。対象が苦痛または灼熱状態なら、ダメージ量85%増加" }],
     seasonLevelVariations: [
       { level: 1, cost: 1, description: "ダメージ120%。対象が苦痛または灼熱状態なら、ダメージ量85%増加" },
@@ -588,7 +588,7 @@ export const FORBIDDEN_CARDS: CznCard[] = ([
     category: CardCategory.ATTACK,
     statuses: [CardStatus.INQUIRY],
     allowedJobs: [JobType.STRIKER, JobType.VANGUARD],
-    imgUrl: "/images/cards/postmortem_analysis.png",
+    imgUrl: "/images/cards/season4/postmortem_analysis.png",
     hiramekiVariations: [{ level: 0, cost: 2, description: "ダメージ200%。このターン中に、味方が撃破した敵数に応じて1ターンの間ダメージ量+50%(最大4回)" }],
     seasonLevelVariations: [
       { level: 1, cost: 2, description: "ダメージ200%。このターン中に、味方が撃破した敵数に応じて1ターンの間ダメージ量+50%(最大4回)" },
@@ -603,7 +603,7 @@ export const FORBIDDEN_CARDS: CznCard[] = ([
     category: CardCategory.SKILL,
     statuses: [CardStatus.INQUIRY],
     allowedJobs: [JobType.RANGER, JobType.HUNTER],
-    imgUrl: "/images/cards/sensory_overload.png",
+    imgUrl: "/images/cards/season4/sensory_overload.png",
     hiramekiVariations: [{ level: 0, cost: 1, description: "1ターンの間、自分の能力でドロー時、ランダムな敵に追加攻撃75%(最大3回)" }],
     seasonLevelVariations: [
       { level: 1, cost: 1, description: "1ターンの間、自分の能力でドロー時、ランダムな敵に追加攻撃75%(最大3回)" },
@@ -618,7 +618,7 @@ export const FORBIDDEN_CARDS: CznCard[] = ([
     category: CardCategory.SKILL,
     statuses: [CardStatus.INQUIRY],
     allowedJobs: [JobType.PSIONIC, JobType.CONTROLLER],
-    imgUrl: "/images/cards/forbidden_hypothesis.png",
+    imgUrl: "/images/cards/season4/forbidden_hypothesis.png",
     hiramekiVariations: [{ level: 0, cost: 1, description: "ドロー1。ランダムな敵に弱体化、脆弱、苦痛のうち、ランダム効果2回付与" }],
     seasonLevelVariations: [
       { level: 1, cost: 1, description: "ドロー1。ランダムな敵に弱体化、脆弱、苦痛のうち、ランダム効果2回付与" },
@@ -633,7 +633,7 @@ export const FORBIDDEN_CARDS: CznCard[] = ([
     category: CardCategory.ATTACK,
     statuses: [CardStatus.INQUIRY],
     allowedJobs: "all",
-    imgUrl: "/images/cards/sample_collection.png",
+    imgUrl: "/images/cards/season4/sample_collection.png",
     hiramekiVariations: [{ level: 0, cost: 1, description: "ダメージ100%。ドロー1" }],
     seasonLevelVariations: [
       { level: 1, cost: 1, description: "ダメージ100%。ドロー1" },
@@ -648,7 +648,7 @@ export const FORBIDDEN_CARDS: CznCard[] = ([
     category: CardCategory.SKILL,
     statuses: [CardStatus.INQUIRY],
     allowedJobs: "all",
-    imgUrl: "/images/cards/knowledge_addiction.png",
+    imgUrl: "/images/cards/season4/knowledge_addiction.png",
     hiramekiVariations: [{ level: 0, cost: 1, description: "このターンドローしたカード数に応じて1ターンの間、次に使用する攻撃カードのダメージ量+20%(最大5)" }],
     seasonLevelVariations: [
       { level: 1, cost: 1, description: "このターンドローしたカード数に応じて1ターンの間、次に使用する攻撃カードのダメージ量+20%(最大5)" },
@@ -663,7 +663,7 @@ export const FORBIDDEN_CARDS: CznCard[] = ([
     category: CardCategory.SKILL,
     statuses: [CardStatus.CLAIM],
     allowedJobs: [JobType.STRIKER, JobType.VANGUARD],
-    imgUrl: "/images/cards/sever_ties.png",
+    imgUrl: "/images/cards/season4/sever_ties.png",
     hiramekiVariations: [{ level: 0, cost: 1, description: "1ターンの間、対象が所持中のデバフ種類数に応じて与えるダメージ量+20%(最大60%)" }],
     seasonLevelVariations: [
       { level: 1, cost: 1, description: "1ターンの間、対象が所持中のデバフ種類数に応じて与えるダメージ量+20%(最大60%)" },
@@ -678,7 +678,7 @@ export const FORBIDDEN_CARDS: CznCard[] = ([
     category: CardCategory.SKILL,
     statuses: [CardStatus.CLAIM],
     allowedJobs: [JobType.RANGER, JobType.HUNTER],
-    imgUrl: "/images/cards/narcissism.png",
+    imgUrl: "/images/cards/season4/narcissism.png",
     hiramekiVariations: [{ level: 0, cost: 1, description: "1ターンの間、他の戦闘員の攻撃カード使用時、ランダムな敵に挟み撃ち60%(最大2回)。挟み撃ちの対象は1ターンの間、士気1減少" }],
     seasonLevelVariations: [
       { level: 1, cost: 1, description: "1ターンの間、他の戦闘員の攻撃カード使用時、ランダムな敵に挟み撃ち60%(最大2回)。挟み撃ちの対象は1ターンの間、士気1減少" },
@@ -693,7 +693,7 @@ export const FORBIDDEN_CARDS: CznCard[] = ([
     category: CardCategory.ATTACK,
     statuses: [CardStatus.CLAIM],
     allowedJobs: [JobType.PSIONIC, JobType.CONTROLLER],
-    imgUrl: "/images/cards/its_all_mine.png",
+    imgUrl: "/images/cards/season4/its_all_mine.png",
     hiramekiVariations: [{ level: 0, cost: 2, description: "ダメージ200%。撃破：対象が所持中のデバフ数に応じて1ターンの間、士気1" }],
     seasonLevelVariations: [
       { level: 1, cost: 2, description: "ダメージ200%。撃破：対象が所持中のデバフ数に応じて1ターンの間、士気1" },
@@ -708,7 +708,7 @@ export const FORBIDDEN_CARDS: CznCard[] = ([
     category: CardCategory.ATTACK,
     statuses: [CardStatus.CLAIM],
     allowedJobs: "all",
-    imgUrl: "/images/cards/obsession.png",
+    imgUrl: "/images/cards/season4/obsession.png",
     hiramekiVariations: [{ level: 0, cost: 1, description: "ダメージ120%。対象が所持中のデバフ種類数に応じてダメージ量+25%(最大100%)" }],
     seasonLevelVariations: [
       { level: 1, cost: 1, description: "ダメージ120%。対象が所持中のデバフ種類数に応じてダメージ量+25%(最大100%)" },
@@ -723,7 +723,7 @@ export const FORBIDDEN_CARDS: CznCard[] = ([
     category: CardCategory.SKILL,
     statuses: [CardStatus.CLAIM],
     allowedJobs: "all",
-    imgUrl: "/images/cards/gilded_nest.png",
+    imgUrl: "/images/cards/season4/gilded_nest.png",
     hiramekiVariations: [{ level: 0, cost: 1, description: "対象が所持中のデバフ1個につきシールド40%(最大200%)。苦痛2、灼熱2" }],
     seasonLevelVariations: [
       { level: 1, cost: 1, description: "対象が所持中のデバフ1個につきシールド40%(最大200%)。苦痛2、灼熱2" },
