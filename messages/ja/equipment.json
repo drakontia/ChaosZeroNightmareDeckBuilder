@@ -52,6 +52,8 @@
             "equipment_engraving_umbra_08": "自分のカードが破棄された場合、次に使用する攻撃カードのダメージ量+100％（各ターン1回）",
             "equipment_engraving_lux_06": "ターン開始時、行動カウントが最も低い対象に固定ダメージ100%",
             "equipment_engraving_lux_07": "攻撃を受けると、攻撃者に脆弱、弱体化のうち、ランダムで1個付与(各ターン1回)",
+            "equipment_engraving_lux_08": "自分のカード発動時、30%の確率で敵全体の行動カウント1増加(各ターン1回)",
+            "equipment_engraving_lux_09": "自分の迅速カードのダメージ量25%増加",
             "equipment_engraving_umbra_09": "光の刻印+1",
             "equipment_engraving_umbra_10": "自分の主導カードが破棄された場合、発動（各ターン1回）",
             "equipment_engraving_umbra_11": "味方が能力でカードを2枚破棄時、安息カードを1枚ドロー（各戦闘1回）",
@@ -939,3 +941,4 @@
         }
     }
 }
+

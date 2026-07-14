@@ -83,6 +83,16 @@ export const EQUIPMENT_ENGRAVING_EFFECTS: EquipmentEngravingEffect[] = [
     alignment: "light",
     description: "攻撃を受けると、攻撃者に脆弱、弱体化のうち、ランダムで1個付与(各ターン1回)",
   },
+  {
+    id: "equipment_engraving_lux_08",
+    alignment: "light",
+    description: "自分のカード発動時、30%の確率で敵全体の行動カウント1増加(各ターン1回)",
+  },
+  {
+    id: "equipment_engraving_lux_09",
+    alignment: "light",
+    description: "自分の迅速カードのダメージ量25%増加",
+  },
   // 追加：闇装備刻印
   {
     id: "equipment_engraving_umbra_09",
