@@ -3316,6 +3316,96 @@
         "0": "Shield 180%; Light Protection 1"
       }
     },
+    "traitors_execution": {
+      "name": "Traitor's Execution",
+      "descriptions": {
+        "0": "Deals 200% damage to all enemies. Kill: inflicts Burn 4 to a random enemy"
+      }
+    },
+    "mark_of_servitude": {
+      "name": "Mark of Servitude",
+      "descriptions": {
+        "0": "Deals 130% damage. If target is Burning, perform an additional 100% attack"
+      }
+    },
+    "kneel_before_me": {
+      "name": "Kneel Before Me",
+      "descriptions": {
+        "0": "Applies Weakness 1 to a debuffed target. Applies Weaken 1 and Burn 3 to all enemies"
+      }
+    },
+    "indiscriminate_slaughter": {
+      "name": "Indiscriminate Slaughter",
+      "descriptions": {
+        "0": "Deals 240% damage. Reduces Action Count by 2"
+      }
+    },
+    "order_of_dominance": {
+      "name": "Order of Dominance",
+      "descriptions": {
+        "0": "Deals 120% damage. If target has Pain or Burn, increases damage by 85%"
+      }
+    },
+    "postmortem_analysis": {
+      "name": "Postmortem Analysis",
+      "descriptions": {
+        "0": "Deals 200% damage. This turn, gain +50% damage for 1 turn per enemy defeated by allies (max 4)"
+      }
+    },
+    "sensory_overload": {
+      "name": "Sensory Overload",
+      "descriptions": {
+        "0": "For 1 turn, when you draw by your ability, perform an additional 75% attack on a random enemy (max 3)"
+      }
+    },
+    "forbidden_hypothesis": {
+      "name": "Forbidden Hypothesis",
+      "descriptions": {
+        "0": "Draw 1. Randomly apply 2 effects among Weaken, Weakness, and Pain to a random enemy"
+      }
+    },
+    "sample_collection": {
+      "name": "Sample Collection",
+      "descriptions": {
+        "0": "Deals 100% damage. Draw 1"
+      }
+    },
+    "knowledge_addiction": {
+      "name": "Knowledge Addiction",
+      "descriptions": {
+        "0": "For 1 turn, increase the next Attack card's damage by +20% per card drawn this turn (max 5)"
+      }
+    },
+    "sever_ties": {
+      "name": "Sever Ties",
+      "descriptions": {
+        "0": "For 1 turn, increase dealt damage by +20% per debuff type on target (max 60%)"
+      }
+    },
+    "narcissism": {
+      "name": "Narcissism",
+      "descriptions": {
+        "0": "For 1 turn, whenever another ally uses an Attack card, perform a 60% follow-up on a random enemy (max 2). Follow-up targets lose 1 Morale for 1 turn"
+      }
+    },
+    "its_all_mine": {
+      "name": "It's All Mine",
+      "descriptions": {
+        "0": "Deals 200% damage. Kill: grants Morale 1 for 1 turn based on debuff count on target"
+      }
+    },
+    "obsession": {
+      "name": "Obsession",
+      "descriptions": {
+        "0": "Deals 120% damage. Increases damage by +25% per debuff type on target (max 100%)"
+      }
+    },
+    "gilded_nest": {
+      "name": "Gilded Nest",
+      "descriptions": {
+        "0": "Gain Shield 40% per debuff on target (max 200%). Inflict Pain 2 and Burn 2"
+      }
+    },
     "faceless_woman": {
       "name": "Faceless Woman",
       "descriptions": {

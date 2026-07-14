@@ -1,4 +1,5 @@
 import { CardType, type CznCard } from "@/types";
+import { SEASON_4_CARD_IDS } from "@/lib/season4";
 
 const LEGACY_CARD_IMAGE_PREFIX = "/images/cards/";
 
@@ -52,6 +53,10 @@ export const getCardImageFolder = (cardId: string, cardType: CardType): CardImag
     return "season3";
   }
 
+  if (SEASON_4_CARD_IDS.has(cardId)) {
+    return "season4";
+  }
+
   return "common";
 };
 
@@ -69,6 +74,10 @@ export const getOrganizedCardImagePath = (
   }
 
   const fileName = imgUrl.slice(LEGACY_CARD_IMAGE_PREFIX.length);
+  if (fileName.includes("/")) {
+    return imgUrl;
+  }
+
   const folder = getCardImageFolder(cardId, cardType);
 
   return `${LEGACY_CARD_IMAGE_PREFIX}${folder}/${fileName}`;

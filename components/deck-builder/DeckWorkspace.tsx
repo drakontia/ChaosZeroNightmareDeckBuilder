@@ -48,6 +48,7 @@ interface DeckWorkspaceProps {
   onSetGodHiramekiEffect: (deckId: string, effectId: string | null) => void;
   onSetHiddenHirameki: (deckId: string, hiddenHiramekiId: string | null) => void;
   onSetPersonaEngravings: (deckId: string, engravings: PersonaEngraving[]) => void;
+  onUpdateSeasonLevel: (deckId: string, level: 1 | 2 | 3) => void;
 }
 
 const countTrackedActions = (entries: Iterable<number | { count: number }>) =>
@@ -81,7 +82,7 @@ export function DeckWorkspace(props: DeckWorkspaceProps) {
       <div className="sm:col-span-6 lg:col-span-8 space-y-6">
         <Card>
           <CardContent className="p-2 lg:p-6">
-            <DeckDisplay cards={props.deck.cards} egoLevel={props.deck.egoLevel} hasPotential={props.deck.hasPotential} allowedJob={props.deck.character?.job as JobType | undefined} onRemoveCard={props.onRemoveCard} onUndoCard={props.onUndoCard} onCopyCard={props.onCopyCard} onConvertCard={props.onConvertCard} onUpdateHirameki={props.onUpdateHirameki} onSetGodHirameki={props.onSetGodHirameki} onSetGodHiramekiEffect={props.onSetGodHiramekiEffect} onSetHiddenHirameki={props.onSetHiddenHirameki} onSetPersonaEngravings={props.onSetPersonaEngravings} />
+            <DeckDisplay cards={props.deck.cards} egoLevel={props.deck.egoLevel} hasPotential={props.deck.hasPotential} allowedJob={props.deck.character?.job as JobType | undefined} onRemoveCard={props.onRemoveCard} onUndoCard={props.onUndoCard} onCopyCard={props.onCopyCard} onConvertCard={props.onConvertCard} onUpdateHirameki={props.onUpdateHirameki} onSetGodHirameki={props.onSetGodHirameki} onSetGodHiramekiEffect={props.onSetGodHiramekiEffect} onSetHiddenHirameki={props.onSetHiddenHirameki} onSetPersonaEngravings={props.onSetPersonaEngravings} onUpdateSeasonLevel={props.onUpdateSeasonLevel} />
           </CardContent>
         </Card>
       </div>

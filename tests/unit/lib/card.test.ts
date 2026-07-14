@@ -1,6 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { getAddableCards, getCardById, getCharacterHiramekiCards, getCharacterStartingCards, CARDS } from '@/lib/card';
 import { CHARACTERS } from '@/lib/characters';
+import { FORBIDDEN_CARDS } from '@/lib/cards/forbidden-cards';
 import { CardType, JobType } from '@/types';
 
 describe('card helpers', () => {
@@ -68,5 +69,56 @@ describe('card helpers', () => {
     expect(getCardById('shared_01')?.imgUrl).toBe('/images/cards/common/shared_01.png');
     expect(getCardById('monster_01')?.imgUrl).toBe('/images/cards/monster/monster_01.png');
     expect(getCardById('spore_harvester')?.imgUrl).toBe('/images/cards/season2/spore_harvester.png');
+  });
+
+  it('includes all season4 desire cards in the global card registry', () => {
+    const season4Ids = [
+      'traitors_execution',
+      'mark_of_servitude',
+      'kneel_before_me',
+      'indiscriminate_slaughter',
+      'order_of_dominance',
+      'postmortem_analysis',
+      'sensory_overload',
+      'forbidden_hypothesis',
+      'sample_collection',
+      'knowledge_addiction',
+      'sever_ties',
+      'narcissism',
+      'its_all_mine',
+      'obsession',
+      'gilded_nest',
+    ];
+
+    for (const id of season4Ids) {
+      const card = getCardById(id);
+      expect(card).toBeDefined();
+      expect(card?.type).toBe(CardType.FORBIDDEN);
+    }
+  });
+
+  it('defines season4 card image paths directly under /images/cards/season4/', () => {
+    const season4Ids = [
+      'traitors_execution',
+      'mark_of_servitude',
+      'kneel_before_me',
+      'indiscriminate_slaughter',
+      'order_of_dominance',
+      'postmortem_analysis',
+      'sensory_overload',
+      'forbidden_hypothesis',
+      'sample_collection',
+      'knowledge_addiction',
+      'sever_ties',
+      'narcissism',
+      'its_all_mine',
+      'obsession',
+      'gilded_nest',
+    ];
+
+    for (const id of season4Ids) {
+      const card = FORBIDDEN_CARDS.find((candidate) => candidate.id === id);
+      expect(card?.imgUrl).toBe(`/images/cards/season4/${id}.png`);
+    }
   });
 });

@@ -4,12 +4,14 @@ import { useTranslations } from 'next-intl';
 import { CardFrame } from './CardFrame';
 import { HiramekiControls } from './HiramekiControls';
 import { CardActionsMenu } from './CardActionsMenu';
+import { SeasonLevelControls } from "./SeasonLevelControls";
 
 import { DeckCard, GodType, CznCard, JobType, CardStatus, CardType, PersonaEngraving } from "@/types";
 import { Card } from "./ui/card";
 import { getCardInfo, sortDeckCards } from "@/lib/deck-utils";
 import { GOD_HIRAMEKI_EFFECTS } from "@/lib/god-hirameki";
 import { HIDDEN_HIRAMEKI_EFFECTS } from "@/lib/hidden-hirameki";
+import { isSeason4Card } from "@/lib/season4";
 
 interface DeckDisplayProps {
   cards: DeckCard[];
@@ -25,9 +27,10 @@ interface DeckDisplayProps {
   onSetGodHiramekiEffect: (deckId: string, effectId: string | null) => void;
   onSetHiddenHirameki: (deckId: string, hiddenHiramekiId: string | null) => void;
   onSetPersonaEngravings: (deckId: string, engravings: PersonaEngraving[]) => void;
+  onUpdateSeasonLevel: (deckId: string, level: 1 | 2 | 3) => void;
 }
 
-export function DeckDisplay({ cards, egoLevel, hasPotential, allowedJob, onRemoveCard, onUndoCard, onCopyCard, onConvertCard, onUpdateHirameki, onSetGodHirameki, onSetGodHiramekiEffect, onSetHiddenHirameki, onSetPersonaEngravings }: DeckDisplayProps) {
+export function DeckDisplay({ cards, egoLevel, hasPotential, allowedJob, onRemoveCard, onUndoCard, onCopyCard, onConvertCard, onUpdateHirameki, onSetGodHirameki, onSetGodHiramekiEffect, onSetHiddenHirameki, onSetPersonaEngravings, onUpdateSeasonLevel }: DeckDisplayProps) {
   const t = useTranslations();
 
   // Sort cards to maintain consistent order: Character (Starting -> Hirameki) -> Shared -> Monster -> Forbidden
@@ -67,7 +70,9 @@ export function DeckDisplay({ cards, egoLevel, hasPotential, allowedJob, onRemov
           translateGodEffect: (effectId, fallback) => t(`godEffects.${effectId}`, { defaultValue: fallback }),
           translateHiddenEffect: (effectId, fallback) => t(`hiddenEffects.${effectId}`, { defaultValue: fallback }),
         });
+        const isSeason4 = isSeason4Card(card);
         const supportsHiramekiControls =
+          !isSeason4 &&
           card.hiramekiVariations.length > 0 &&
           (card.type !== CardType.CHARACTER || card.hiramekiVariations.length > 1);
         const hasPersonaEngravings = card.id.startsWith('persona_') && (card.personaEngravings?.length ?? 0) > 0;
@@ -100,7 +105,9 @@ export function DeckDisplay({ cards, egoLevel, hasPotential, allowedJob, onRemov
         if (card.isCopied) {
           displayStatuses.push(CardStatus.COPIED);
         }
-        const leftControls = supportsHiramekiControls ? (
+        const leftControls = isSeason4 ? (
+            <SeasonLevelControls card={card} onUpdateSeasonLevel={onUpdateSeasonLevel} />
+          ) : supportsHiramekiControls ? (
             <HiramekiControls
               card={card}
               egoLevel={egoLevel}
@@ -124,8 +131,8 @@ export function DeckDisplay({ cards, egoLevel, hasPotential, allowedJob, onRemov
               nameFallback={nameFallback}
               category={t(`category.${cardInfo.category ?? card.category}`)}
               categoryId={cardInfo.category ?? card.category}
-              description={hasPersonaEngravings ? cardInfo.description : undefined}
-              descriptionId={hasPersonaEngravings ? undefined : `cards.${card.id}.descriptions.${card.selectedHiramekiLevel}`}
+              description={hasPersonaEngravings || isSeason4 ? cardInfo.description : undefined}
+              descriptionId={hasPersonaEngravings || isSeason4 ? undefined : `cards.${card.id}.descriptions.${card.selectedHiramekiLevel}`}
               descriptionFallback={cardInfo.description}
                godEffectId={hasPersonaEngravings ? undefined : godEffectId}
                godEffectFallback={hasPersonaEngravings ? undefined : godEffectFallback}

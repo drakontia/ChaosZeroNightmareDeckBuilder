@@ -3,6 +3,7 @@ import { GOD_HIRAMEKI_EFFECTS } from "@/lib/god-hirameki";
 import { HIDDEN_HIRAMEKI_EFFECTS } from "@/lib/hidden-hirameki";
 import { getCardById } from "@/lib/card";
 import { getPersonaCardPresentation, PersonaPresentationLocalization } from "@/lib/persona";
+import { isSeason4Card } from "@/lib/season4";
 
 export interface CardInfoLocalization {
   persona?: PersonaPresentationLocalization;
@@ -39,6 +40,17 @@ export function getCardInfo(
   let statuses = variation.statuses !== undefined
     ? variation.statuses
     : (baseCard.statuses && baseCard.statuses.length > 0 ? baseCard.statuses : undefined);
+  const isSeason4 = isSeason4Card(baseCard);
+
+  if (isSeason4 && baseCard.seasonLevelVariations && baseCard.seasonLevelVariations.length > 0) {
+    const selectedSeasonLevel = card.selectedSeasonLevel ?? 1;
+    const seasonVariation =
+      baseCard.seasonLevelVariations.find((candidate) => candidate.level === selectedSeasonLevel) ??
+      baseCard.seasonLevelVariations[0];
+
+    cost = seasonVariation.cost;
+    description = seasonVariation.description;
+  }
 
   // Apply ego level variations
   if (variation.egoVariations && variation.egoVariations[egoLevel]) {
@@ -61,7 +73,7 @@ export function getCardInfo(
   }
 
   // Apply hidden hirameki if present and at base level (Lv0 only)
-  if (card.selectedHiddenHiramekiId && card.selectedHiramekiLevel === 0) {
+  if (!isSeason4 && card.selectedHiddenHiramekiId && card.selectedHiramekiLevel === 0) {
     const hiddenEffect = HIDDEN_HIRAMEKI_EFFECTS.find(e => e.id === card.selectedHiddenHiramekiId);
     if (hiddenEffect) {
       const hiddenEffectDescription =
@@ -75,7 +87,7 @@ export function getCardInfo(
   }
 
   // Apply god hirameki if active and an effect is selected
-  if (card.godHiramekiType && card.godHiramekiEffectId && !card.isBasicCard) {
+  if (!isSeason4 && card.godHiramekiType && card.godHiramekiEffectId && !card.isBasicCard) {
     const effect = GOD_HIRAMEKI_EFFECTS.find(e => e.id === card.godHiramekiEffectId);
     if (effect) {
       const godEffectDescription =

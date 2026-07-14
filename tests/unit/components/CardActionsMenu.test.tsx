@@ -130,4 +130,24 @@ describe("CardActionsMenu", () => {
     expect(screen.queryByRole("button", { name: "削除" })).toBeNull();
     expect(screen.queryByRole("button", { name: "変換" })).toBeNull();
   });
+
+  it("シーズン4カードではコピーを表示しない", () => {
+    const card = createDeckCard({
+      id: "traitors_execution",
+      deckId: "traitors_execution_deck_1",
+      statuses: [],
+      hiramekiVariations: [
+        {
+          level: 0,
+          cost: 2,
+          description: "lv1",
+          statuses: [],
+        },
+      ],
+    });
+
+    renderMenu(card);
+
+    expect(screen.queryByRole("button", { name: "コピー" })).toBeNull();
+  });
 });

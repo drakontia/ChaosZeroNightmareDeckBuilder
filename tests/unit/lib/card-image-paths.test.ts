@@ -20,6 +20,12 @@ describe('getOrganizedCardImagePath', () => {
     ).toBe('/images/cards/common/persona.png');
   });
 
+  it('keeps already organized persona image paths unchanged', () => {
+    expect(
+      getOrganizedCardImagePath('persona_01', CardType.FORBIDDEN, '/images/cards/common/persona.png')
+    ).toBe('/images/cards/common/persona.png');
+  });
+
   it('maps monster cards into the monster folder', () => {
     expect(
       getOrganizedCardImagePath('monster_01', CardType.MONSTER, '/images/cards/monster_01.png')
@@ -34,6 +40,10 @@ describe('getOrganizedCardImagePath', () => {
     expect(
       getOrganizedCardImagePath('doctrine_of_binding', CardType.FORBIDDEN, '/images/cards/doctrine_of_binding.png')
     ).toBe('/images/cards/season3/doctrine_of_binding.png');
+
+    expect(
+      getOrganizedCardImagePath('traitors_execution', CardType.FORBIDDEN, '/images/cards/traitors_execution.png')
+    ).toBe('/images/cards/season4/traitors_execution.png');
   });
 
   it('leaves non-card public assets untouched', () => {

@@ -5,6 +5,7 @@ import { CircleX, Undo2, Copy, ArrowRightLeft, Menu } from "lucide-react";
 import { DeckCard, CznCard, JobType, CardStatus } from "@/types";
 import { Button } from "./ui/button";
 import { useCardActionsMenu } from "@/hooks/useCardActionsMenu";
+import { isSeason4Card } from "@/lib/season4";
 
 const ConversionModal = dynamic(
   () => import("./ConversionModal").then((m) => ({ default: m.ConversionModal })),
@@ -42,7 +43,7 @@ export function CardActionsMenu({
   const variation = card.hiramekiVariations[card.selectedHiramekiLevel] ?? card.hiramekiVariations[0];
   const effectiveStatuses = variation?.statuses ?? card.statuses;
   const isPersonaCard = card.id.startsWith("persona_");
-  const canCopy = !card.isBasicCard && !effectiveStatuses.includes(CardStatus.UNIQUE);
+  const canCopy = !isSeason4Card(card) && !card.isBasicCard && !effectiveStatuses.includes(CardStatus.UNIQUE);
   const canRemove = !isPersonaCard;
   const canConvert = !isPersonaCard;
 

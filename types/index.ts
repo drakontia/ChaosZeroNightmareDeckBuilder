@@ -103,6 +103,9 @@ export enum CardStatus {
   LINKED = "linked",             // 連結
   BLESSING = "blessing",         // 祝福
   PREMIERE = "premiere",         // 開幕
+  CONTROL = "control",           // 統制
+  INQUIRY = "inquiry",           // 探求
+  CLAIM = "claim",               // 所有
 }
 
 // Hirameki variation for a card
@@ -127,6 +130,12 @@ export interface HiramekiVariation {
     description: string;
     cost?: number | "X" | "unusable";
   };
+}
+
+export interface SeasonLevelVariation {
+  level: 1 | 2 | 3;
+  cost: number | "X" | "unusable";
+  description: string;
 }
 
 // God types for God Hirameki system
@@ -181,6 +190,8 @@ export interface CznCard {
   imgUrl?: string;
   // Hirameki variations (index 0 is base, 1-5 for character cards, 1-3 for others)
   hiramekiVariations: HiramekiVariation[];
+  // Season 4 desire card level variations (Lv.1-Lv.3)
+  seasonLevelVariations?: SeasonLevelVariation[];
 }
 
 // Deck state
@@ -190,6 +201,7 @@ export interface DeckCard extends CznCard {
   godHiramekiType: GodType | null; // Which god's hirameki is applied (null = none)
   godHiramekiEffectId: string | null; // Which specific effect of that god is applied
   selectedHiddenHiramekiId: string | null; // Hidden hirameki effect ID (null = none)
+  selectedSeasonLevel?: 1 | 2 | 3; // Season 4 desire card level
   personaEngravings?: PersonaEngraving[]; // Persona-only engraving slots
   isCopied?: boolean; // True if this is a copied card
   copiedFromCardId?: string; // Original card id this copy was created from
@@ -202,6 +214,7 @@ export interface RemovedCardEntry {
   grade?: CardGrade; // Grade at removal time (for monster cards)
   selectedHiramekiLevel?: number;
   selectedHiddenHiramekiId?: string | null; // Hidden hirameki at removal time
+  selectedSeasonLevel?: 1 | 2 | 3;
   personaEngravings?: PersonaEngraving[];
   godHiramekiType?: GodType | null;
   godHiramekiEffectId?: string | null;
@@ -216,6 +229,7 @@ export interface CopiedCardEntry {
   grade?: CardGrade; // Grade at copy time (for monster cards)
   selectedHiramekiLevel?: number;
   selectedHiddenHiramekiId?: string | null; // Hidden hirameki at copy time
+  selectedSeasonLevel?: 1 | 2 | 3;
   personaEngravings?: PersonaEngraving[];
   godHiramekiType?: GodType | null;
   godHiramekiEffectId?: string | null;
@@ -228,6 +242,7 @@ export interface ConvertedCardEntry {
   originalGrade?: CardGrade; // Original grade before conversion (for monster cards)
   selectedHiramekiLevel?: number; // Hirameki level at conversion time
   selectedHiddenHiramekiId?: string | null; // Hidden hirameki at conversion time
+  selectedSeasonLevel?: 1 | 2 | 3;
   personaEngravings?: PersonaEngraving[];
   godHiramekiType?: GodType | null; // God hirameki at conversion time
   godHiramekiEffectId?: string | null; // God effect at conversion time

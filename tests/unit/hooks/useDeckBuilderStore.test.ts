@@ -318,6 +318,30 @@ describe('useDeckBuilderStore', () => {
     expect(updated?.selectedHiddenHiramekiId).toBe('hiddenhirameki_01');
   });
 
+  it('シーズン4カードではヒラメキ/神ヒラメキ/隠しヒラメキを更新できない', () => {
+    const card = {
+      ...getTestCard(),
+      id: 'traitors_execution',
+      deckId: 'season4_card_1',
+      hiramekiVariations: [{ level: 0, cost: 2, description: 'Lv1' }],
+    };
+
+    act(() => {
+      useDeckBuilderStore.getState().setCharacter(CHARACTERS[0]);
+      useDeckBuilderStore.getState().addCard(card);
+      useDeckBuilderStore.getState().updateCardHirameki(card.deckId, 2);
+      useDeckBuilderStore.getState().setCardGodHirameki(card.deckId, GodType.KILKEN);
+      useDeckBuilderStore.getState().setCardGodHiramekiEffect(card.deckId, 'effect-1');
+      useDeckBuilderStore.getState().setCardHiddenHirameki(card.deckId, 'hiddenhirameki_01');
+    });
+
+    const updated = useDeckBuilderStore.getState().deck?.cards.find(c => c.deckId === card.deckId);
+    expect(updated?.selectedHiramekiLevel).toBe(0);
+    expect(updated?.godHiramekiType).toBeNull();
+    expect(updated?.godHiramekiEffectId).toBeNull();
+    expect(updated?.selectedHiddenHiramekiId).toBeNull();
+  });
+
   it('setCardPersonaEngravingsでペルソナカードの刻印が更新される', () => {
     const card = getPersonaCard();
     act(() => {
@@ -433,6 +457,26 @@ describe('useDeckBuilderStore', () => {
       expect(entry.type).toBe(card.type);
       expect(entry.selectedHiramekiLevel).toBe(card.selectedHiramekiLevel);
     }
+  });
+
+  it('シーズン4カードはコピーできない', () => {
+    const card = {
+      ...getTestCard(),
+      id: 'traitors_execution',
+      deckId: 'season4_card_copy',
+      hiramekiVariations: [{ level: 0, cost: 2, description: 'Lv1' }],
+    };
+
+    act(() => {
+      useDeckBuilderStore.getState().setCharacter(CHARACTERS[0]);
+      useDeckBuilderStore.getState().addCard(card);
+      useDeckBuilderStore.getState().copyCard(card.deckId);
+    });
+
+    const deck = useDeckBuilderStore.getState().deck!;
+    const sameCards = deck.cards.filter(c => c.id === card.id);
+    expect(sameCards).toHaveLength(1);
+    expect(deck.copiedCards.has(card.id)).toBe(false);
   });
 
   it('copyCardで同じカードを複数回コピーするとcountが増える', () => {

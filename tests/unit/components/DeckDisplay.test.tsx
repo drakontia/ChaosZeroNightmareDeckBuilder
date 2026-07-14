@@ -51,7 +51,8 @@ describe('DeckDisplay - Copied Card Feature', () => {
     card: {
       hirameki: 'Hirameki',
       godSelect: 'God Select',
-      hiddenHirameki: 'Hidden Hirameki'
+      hiddenHirameki: 'Hidden Hirameki',
+      level: 'Lv'
     },
     status: {
       unique: 'Unique',
@@ -109,7 +110,8 @@ describe('DeckDisplay - Copied Card Feature', () => {
     onSetGodHirameki: vi.fn(),
     onSetGodHiramekiEffect: vi.fn(),
     onSetHiddenHirameki: vi.fn(),
-    onSetPersonaEngravings: vi.fn()
+    onSetPersonaEngravings: vi.fn(),
+    onUpdateSeasonLevel: vi.fn(),
   };
 
   beforeEach(() => {
@@ -273,6 +275,48 @@ describe('DeckDisplay - Copied Card Feature', () => {
 
     const controls = screen.getAllByTestId('hirameki-controls');
     expect(controls.length).toBe(3);
+  });
+
+  it('does NOT show HiramekiControls for season4 cards', () => {
+    const season4Card = createMockCard({
+      id: 'traitors_execution',
+      deckId: 'd-season4',
+      type: CardType.FORBIDDEN,
+      hiramekiVariations: [{ level: 0, cost: 2, description: 'Lv1', statuses: [] }],
+    });
+
+    renderWithIntl(
+      <DeckDisplay
+        cards={[season4Card]}
+        egoLevel={0}
+        hasPotential={false}
+        {...mockHandlers}
+      />
+    );
+
+    expect(screen.queryByTestId('hirameki-controls')).toBeNull();
+  });
+
+  it('does not pass top levelLabel for season4 cards (avoid duplicate Lv display)', () => {
+    const season4Card = createMockCard({
+      id: 'traitors_execution',
+      deckId: 'd-season4-level-label',
+      type: CardType.FORBIDDEN,
+      selectedSeasonLevel: 3,
+      hiramekiVariations: [{ level: 0, cost: 2, description: 'Lv1', statuses: [] }],
+    });
+
+    renderWithIntl(
+      <DeckDisplay
+        cards={[season4Card]}
+        egoLevel={0}
+        hasPotential={false}
+        {...mockHandlers}
+      />
+    );
+
+    const lastProps = cardFrameProps[cardFrameProps.length - 1];
+    expect(lastProps.levelLabel).toBeUndefined();
   });
 
   it('does NOT show HiramekiControls for character cards with only base variation', () => {
