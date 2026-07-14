@@ -1,4 +1,5 @@
 import { CardType, type CznCard } from "@/types";
+import { SEASON_4_CARD_IDS } from "@/lib/season4";
 
 const LEGACY_CARD_IMAGE_PREFIX = "/images/cards/";
 
@@ -50,6 +51,10 @@ export const getCardImageFolder = (cardId: string, cardType: CardType): CardImag
 
   if (SEASON_3_CARD_IDS.has(cardId)) {
     return "season3";
+  }
+
+  if (SEASON_4_CARD_IDS.has(cardId)) {
+    return "season4";
   }
 
   return "common";

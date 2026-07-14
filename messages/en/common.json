@@ -243,6 +243,9 @@
     "form_upgrade": "Form Upgrade",
     "linked": "Linked",
     "blessing": "Blessing",
-    "premiere": "Premiere"
+    "premiere": "Premiere",
+    "control": "Control",
+    "inquiry": "Inquiry",
+    "claim": "Claim"
   }
 }

@@ -3316,6 +3316,96 @@
         "0": "シールド180%\n光の加護1"
       }
     },
+    "traitors_execution": {
+      "name": "反逆者の粛清",
+      "descriptions": {
+        "0": "敵全体にダメージ200%。撃破：ランダムな敵に灼熱4"
+      }
+    },
+    "mark_of_servitude": {
+      "name": "服従の烙印",
+      "descriptions": {
+        "0": "ダメージ130%。対象が灼熱状態なら、追加攻撃100%"
+      }
+    },
+    "kneel_before_me": {
+      "name": "跪け",
+      "descriptions": {
+        "0": "デバフを所持中の対象に脆弱1。敵全体に弱体化1、灼熱3"
+      }
+    },
+    "indiscriminate_slaughter": {
+      "name": "見境なき殺戮",
+      "descriptions": {
+        "0": "ダメージ240%。行動カウント2減少"
+      }
+    },
+    "order_of_dominance": {
+      "name": "序列の確立",
+      "descriptions": {
+        "0": "ダメージ120%。対象が苦痛または灼熱状態なら、ダメージ量85%増加"
+      }
+    },
+    "postmortem_analysis": {
+      "name": "事後分析",
+      "descriptions": {
+        "0": "ダメージ200%。このターン中に、味方が撃破した敵数に応じて1ターンの間ダメージ量+50%(最大4回)"
+      }
+    },
+    "sensory_overload": {
+      "name": "感覚過負荷",
+      "descriptions": {
+        "0": "1ターンの間、自分の能力でドロー時、ランダムな敵に追加攻撃75%(最大3回)"
+      }
+    },
+    "forbidden_hypothesis": {
+      "name": "禁じられた仮説",
+      "descriptions": {
+        "0": "ドロー1。ランダムな敵に弱体化、脆弱、苦痛のうち、ランダム効果2回付与"
+      }
+    },
+    "sample_collection": {
+      "name": "標本収集",
+      "descriptions": {
+        "0": "ダメージ100%。ドロー1"
+      }
+    },
+    "knowledge_addiction": {
+      "name": "知識中毒",
+      "descriptions": {
+        "0": "このターンドローしたカード数に応じて1ターンの間、次に使用する攻撃カードのダメージ量+20%(最大5)"
+      }
+    },
+    "sever_ties": {
+      "name": "関係の抹消",
+      "descriptions": {
+        "0": "1ターンの間、対象が所持中のデバフ種類数に応じて与えるダメージ量+20%(最大60%)"
+      }
+    },
+    "narcissism": {
+      "name": "ナルシシズム",
+      "descriptions": {
+        "0": "1ターンの間、他の戦闘員の攻撃カード使用時、ランダムな敵に挟み撃ち60%(最大2回)。挟み撃ちの対象は1ターンの間、士気1減少"
+      }
+    },
+    "its_all_mine": {
+      "name": "すべて我が物に",
+      "descriptions": {
+        "0": "ダメージ200%。撃破：対象が所持中のデバフ数に応じて1ターンの間、士気1"
+      }
+    },
+    "obsession": {
+      "name": "執着",
+      "descriptions": {
+        "0": "ダメージ120%。対象が所持中のデバフ種類数に応じてダメージ量+25%(最大100%)"
+      }
+    },
+    "gilded_nest": {
+      "name": "黄金の巣",
+      "descriptions": {
+        "0": "対象が所持中のデバフ1個につきシールド40%(最大200%)。苦痛2、灼熱2"
+      }
+    },
     "faceless_woman": {
       "name": "顔のない女性",
       "descriptions": {

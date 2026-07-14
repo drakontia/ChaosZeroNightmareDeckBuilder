@@ -149,7 +149,10 @@
     "bind": "结束",
     "ignition": "点火",
     "blessing": "祝福",
-    "premiere": "开幕"
+    "premiere": "开幕",
+    "control": "统制",
+    "inquiry": "探求",
+    "claim": "所有"
   },
   "actions": {
     "add": "添加",

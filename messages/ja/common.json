@@ -185,7 +185,10 @@
     "form_upgrade": "形状強化",
     "linked": "連結",
     "blessing": "祝福",
-    "premiere": "開幕"
+    "premiere": "開幕",
+    "control": "統制",
+    "inquiry": "探求",
+    "claim": "所有"
   },
   "actions": {
     "add": "追加",

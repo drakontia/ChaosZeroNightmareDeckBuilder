@@ -3021,6 +3021,96 @@
           "0": "실드 180%\n빛의 보호 1"
         }
       },
+      "traitors_execution": {
+        "name": "반역자의 숙청",
+        "descriptions": {
+          "0": "적 전체에 데미지 200%. 처치: 랜덤한 적에게 작열 4"
+        }
+      },
+      "mark_of_servitude": {
+        "name": "복종의 낙인",
+        "descriptions": {
+          "0": "데미지 130%. 대상이 작열 상태면 추가 공격 100%"
+        }
+      },
+      "kneel_before_me": {
+        "name": "꿇어라",
+        "descriptions": {
+          "0": "디버프를 보유한 대상에게 취약 1. 적 전체에 약화 1, 작열 3"
+        }
+      },
+      "indiscriminate_slaughter": {
+        "name": "무차별 학살",
+        "descriptions": {
+          "0": "데미지 240%. 행동 카운트 2 감소"
+        }
+      },
+      "order_of_dominance": {
+        "name": "서열의 확립",
+        "descriptions": {
+          "0": "데미지 120%. 대상이 고통 또는 작열 상태면 데미지량 85% 증가"
+        }
+      },
+      "postmortem_analysis": {
+        "name": "사후 분석",
+        "descriptions": {
+          "0": "데미지 200%. 이번 턴 아군이 처치한 적 수에 따라 1턴 동안 데미지량 +50%(최대 4회)"
+        }
+      },
+      "sensory_overload": {
+        "name": "감각 과부하",
+        "descriptions": {
+          "0": "1턴 동안 자신의 능력으로 드로우 시 랜덤한 적에게 추가 공격 75%(최대 3회)"
+        }
+      },
+      "forbidden_hypothesis": {
+        "name": "금지된 가설",
+        "descriptions": {
+          "0": "드로우 1. 랜덤한 적에게 약화/취약/고통 중 랜덤 효과 2회 부여"
+        }
+      },
+      "sample_collection": {
+        "name": "표본 수집",
+        "descriptions": {
+          "0": "데미지 100%. 드로우 1"
+        }
+      },
+      "knowledge_addiction": {
+        "name": "지식 중독",
+        "descriptions": {
+          "0": "이번 턴 드로우한 카드 수에 따라 1턴 동안 다음 공격 카드의 데미지량 +20%(최대 5)"
+        }
+      },
+      "sever_ties": {
+        "name": "관계 말소",
+        "descriptions": {
+          "0": "1턴 동안 대상이 보유한 디버프 종류 수에 따라 주는 데미지량 +20%(최대 60%)"
+        }
+      },
+      "narcissism": {
+        "name": "나르시시즘",
+        "descriptions": {
+          "0": "1턴 동안 다른 전투원이 공격 카드 사용 시 랜덤한 적에게 협공 60%(최대 2회). 협공 대상은 1턴 동안 사기 1 감소"
+        }
+      },
+      "its_all_mine": {
+        "name": "모두 내 것",
+        "descriptions": {
+          "0": "데미지 200%. 처치: 대상이 보유한 디버프 수에 따라 1턴 동안 사기 1"
+        }
+      },
+      "obsession": {
+        "name": "집착",
+        "descriptions": {
+          "0": "데미지 120%. 대상이 보유한 디버프 종류 수에 따라 데미지량 +25%(최대 100%)"
+        }
+      },
+      "gilded_nest": {
+        "name": "황금의 둥지",
+        "descriptions": {
+          "0": "대상이 보유한 디버프 1개당 실드 40%(최대 200%). 고통 2, 작열 2"
+        }
+      },
       "faceless_woman": {
         "name": "얼굴 없는 여인",
         "descriptions": {

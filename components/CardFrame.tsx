@@ -17,6 +17,7 @@ interface CardFrameProps {
   imgUrl?: string;
   alt?: string;
   cost: number | string;
+  levelLabel?: string;
   name?: string;
   nameId?: string;
   nameFallback?: string;
@@ -42,6 +43,7 @@ export const CardFrame = memo(function CardFrame({
   imgUrl,
   alt,
   cost,
+  levelLabel,
   name,
   nameId,
   nameFallback,
@@ -97,6 +99,9 @@ export const CardFrame = memo(function CardFrame({
           ) : (
             <div className="text-lg sm:text-2xl lg:text-4xl xl:text-5xl font-extrabold text-white underline underline-offset-4 decoration-1 text-shadow-2xl align-middle leading-none">{cost}</div>
           )}
+          {levelLabel ? (
+            <div className="text-xs lg:text-sm text-white text-shadow-2xl mt-1">{levelLabel}</div>
+          ) : null}
         </div>
         <div className="min-w-0 flex-1 text-left">
           <div className={cn("text-xs sm:text-base lg:text-lg text-shadow-2xl truncate", nameColorClass)} title={displayName}>{displayName}</div>

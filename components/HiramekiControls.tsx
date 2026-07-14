@@ -8,6 +8,7 @@ import { Lightbulb, LightbulbOff, Sparkles, Zap, ZapOff } from "lucide-react";
 
 import { DeckCard, GodType, JobType, PersonaEngraving } from "@/types";
 import { ControlButton } from "./hirameki-controls";
+import { isSeason4Card } from "@/lib/season4";
 
 const HiramekiDialog = dynamic(
   () => import("./hirameki-controls/HiramekiDialog").then((m) => ({ default: m.HiramekiDialog })),
@@ -44,14 +45,15 @@ export function HiramekiControls(props: HiramekiControlsProps) {
   const [openGod, setOpenGod] = useState(false);
   const [openPersona, setOpenPersona] = useState(false);
   const isPersonaCard = props.card.id.startsWith("persona_");
+  const isSeason4 = isSeason4Card(props.card);
 
   return (
     <>
-      {!isPersonaCard ? <ControlButton active={props.card.selectedHiramekiLevel > 0 || props.card.selectedHiddenHiramekiId !== null} label={t("card.hirameki")} onClick={() => setOpenHirameki(true)} activeIcon={<Lightbulb className={actionIconClass} />} inactiveIcon={<LightbulbOff className={actionIconClass} />} /> : null}
-      {!isPersonaCard ? <ControlButton active={Boolean(props.card.godHiramekiType)} label={t("card.godSelect")} onClick={() => setOpenGod(true)} activeIcon={<Zap className={actionIconClass} />} inactiveIcon={<ZapOff className={actionIconClass} />} /> : null}
+      {!isPersonaCard && !isSeason4 ? <ControlButton active={props.card.selectedHiramekiLevel > 0 || props.card.selectedHiddenHiramekiId !== null} label={t("card.hirameki")} onClick={() => setOpenHirameki(true)} activeIcon={<Lightbulb className={actionIconClass} />} inactiveIcon={<LightbulbOff className={actionIconClass} />} /> : null}
+      {!isPersonaCard && !isSeason4 ? <ControlButton active={Boolean(props.card.godHiramekiType)} label={t("card.godSelect")} onClick={() => setOpenGod(true)} activeIcon={<Zap className={actionIconClass} />} inactiveIcon={<ZapOff className={actionIconClass} />} /> : null}
       {isPersonaCard ? <ControlButton active={(props.card.personaEngravings?.length ?? 0) > 0} label={t("card.personaEngraving", { defaultValue: "刻印" })} onClick={() => setOpenPersona(true)} activeIcon={<Sparkles className={actionIconClass} />} inactiveIcon={<Sparkles className={actionIconClass} />} /> : null}
-      <HiramekiDialog card={props.card} egoLevel={props.egoLevel} hasPotential={props.hasPotential} open={openHirameki} onOpenChange={setOpenHirameki} onUpdateHirameki={props.onUpdateHirameki} onSetHiddenHirameki={props.onSetHiddenHirameki} />
-      <GodHiramekiDialog card={props.card} egoLevel={props.egoLevel} hasPotential={props.hasPotential} open={openGod} onOpenChange={setOpenGod} onSetGodHirameki={props.onSetGodHirameki} onSetGodHiramekiEffect={props.onSetGodHiramekiEffect} />
+      {!isSeason4 ? <HiramekiDialog card={props.card} egoLevel={props.egoLevel} hasPotential={props.hasPotential} open={openHirameki} onOpenChange={setOpenHirameki} onUpdateHirameki={props.onUpdateHirameki} onSetHiddenHirameki={props.onSetHiddenHirameki} /> : null}
+      {!isSeason4 ? <GodHiramekiDialog card={props.card} egoLevel={props.egoLevel} hasPotential={props.hasPotential} open={openGod} onOpenChange={setOpenGod} onSetGodHirameki={props.onSetGodHirameki} onSetGodHiramekiEffect={props.onSetGodHiramekiEffect} /> : null}
       {isPersonaCard ? <PersonaEngravingDialog card={props.card} egoLevel={props.egoLevel} hasPotential={props.hasPotential} allowedJob={props.allowedJob} open={openPersona} onOpenChange={setOpenPersona} onSetPersonaEngravings={props.onSetPersonaEngravings} /> : null}
     </>
   );

@@ -3021,6 +3021,96 @@
           "0": "护盾180%\n光之庇护1"
         }
       },
+      "traitors_execution": {
+        "name": "反逆者的肃清",
+        "descriptions": {
+          "0": "对全体敌人造成200%伤害。击破：对随机敌人施加灼热4"
+        }
+      },
+      "mark_of_servitude": {
+        "name": "服从的烙印",
+        "descriptions": {
+          "0": "造成130%伤害。若目标处于灼热状态，追加攻击100%"
+        }
+      },
+      "kneel_before_me": {
+        "name": "跪下",
+        "descriptions": {
+          "0": "对持有减益的目标施加脆弱1。对全体敌人施加弱化1、灼热3"
+        }
+      },
+      "indiscriminate_slaughter": {
+        "name": "无差别屠戮",
+        "descriptions": {
+          "0": "造成240%伤害。行动计数减少2"
+        }
+      },
+      "order_of_dominance": {
+        "name": "序列的确立",
+        "descriptions": {
+          "0": "造成120%伤害。若目标处于苦痛或灼热状态，伤害量提高85%"
+        }
+      },
+      "postmortem_analysis": {
+        "name": "事后分析",
+        "descriptions": {
+          "0": "造成200%伤害。本回合中，按友军击破敌人数，在1回合内伤害量+50%(最多4次)"
+        }
+      },
+      "sensory_overload": {
+        "name": "感官过载",
+        "descriptions": {
+          "0": "1回合内，自身能力抽牌时，对随机敌人追加攻击75%(最多3次)"
+        }
+      },
+      "forbidden_hypothesis": {
+        "name": "被禁止的假说",
+        "descriptions": {
+          "0": "抽1。对随机敌人随机附加弱化、脆弱、苦痛中的2次效果"
+        }
+      },
+      "sample_collection": {
+        "name": "样本采集",
+        "descriptions": {
+          "0": "造成100%伤害。抽1"
+        }
+      },
+      "knowledge_addiction": {
+        "name": "知识成瘾",
+        "descriptions": {
+          "0": "按本回合抽牌数，在1回合内使下一张攻击牌伤害量+20%(最多5)"
+        }
+      },
+      "sever_ties": {
+        "name": "关系抹消",
+        "descriptions": {
+          "0": "1回合内，按目标持有的减益种类数，使造成伤害量+20%(最多60%)"
+        }
+      },
+      "narcissism": {
+        "name": "自恋",
+        "descriptions": {
+          "0": "1回合内，其他战斗员使用攻击牌时，对随机敌人夹击60%(最多2次)。夹击目标在1回合内士气-1"
+        }
+      },
+      "its_all_mine": {
+        "name": "一切都归我",
+        "descriptions": {
+          "0": "造成200%伤害。击破：按目标持有减益数，在1回合内士气1"
+        }
+      },
+      "obsession": {
+        "name": "执着",
+        "descriptions": {
+          "0": "造成120%伤害。按目标持有减益种类数，伤害量+25%(最多100%)"
+        }
+      },
+      "gilded_nest": {
+        "name": "黄金之巢",
+        "descriptions": {
+          "0": "按目标每个减益获得护盾40%(最多200%)。苦痛2、灼热2"
+        }
+      },
       "faceless_woman": {
         "name": "无脸的女人",
         "descriptions": {

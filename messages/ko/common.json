@@ -149,7 +149,10 @@
     "bind": "결속",
     "ignition": "점화",
     "blessing": "축복",
-    "premiere": "개막"
+    "premiere": "개막",
+    "control": "통제",
+    "inquiry": "탐구",
+    "claim": "소유"
   },
   "actions": {
     "add": "추가",

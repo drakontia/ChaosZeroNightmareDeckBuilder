@@ -177,6 +177,7 @@ export function CardSelector({ character, onAddCard, onRestoreCard, removedCards
     godHiramekiType: entry?.godHiramekiType ?? null,
     godHiramekiEffectId: entry?.godHiramekiEffectId ?? null,
     selectedHiddenHiramekiId: entry?.selectedHiddenHiramekiId ?? null,
+    selectedSeasonLevel: entry?.selectedSeasonLevel,
     personaEngravings: entry?.personaEngravings ?? [],
     isCopied: entry?.isCopied,
     copiedFromCardId: entry?.copiedFromCardId,

@@ -3,6 +3,7 @@ import { Input } from "@/components/ui/input";
 import { CardSelector } from "@/components/CardSelector";
 import type { Character, CznCard, Deck, DeckCard } from "@/types";
 import { CardType } from "@/types";
+import { isSeason4CardId } from "@/lib/season4";
 
 const toDeckCard = (card: CznCard): DeckCard => ({
   ...card,
@@ -11,6 +12,7 @@ const toDeckCard = (card: CznCard): DeckCard => ({
   godHiramekiType: null,
   godHiramekiEffectId: null,
   selectedHiddenHiramekiId: null,
+  selectedSeasonLevel: isSeason4CardId(card.id) ? 1 : undefined,
 });
 
 interface CardCatalogSectionProps {

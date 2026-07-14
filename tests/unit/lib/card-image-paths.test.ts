@@ -34,6 +34,10 @@ describe('getOrganizedCardImagePath', () => {
     expect(
       getOrganizedCardImagePath('doctrine_of_binding', CardType.FORBIDDEN, '/images/cards/doctrine_of_binding.png')
     ).toBe('/images/cards/season3/doctrine_of_binding.png');
+
+    expect(
+      getOrganizedCardImagePath('traitors_execution', CardType.FORBIDDEN, '/images/cards/traitors_execution.png')
+    ).toBe('/images/cards/season4/traitors_execution.png');
   });
 
   it('leaves non-card public assets untouched', () => {
