@@ -1,5 +1,6 @@
 import { Deck, CardType, CardGrade, RemovedCardEntry, CopiedCardEntry, ConvertedCardEntry } from "@/types";
 import { getCardById } from "./card";
+import { isSeason4CardId } from "./season4";
 
 // Calculate Faint Memory points based on deck edits
 
@@ -52,7 +53,7 @@ export function calculateFaintMemory(deck: Deck | null | undefined): number {
       }
 
       // Forbidden card: +20pt (always saved)
-      if (card.type === CardType.FORBIDDEN) {
+      if (card.type === CardType.FORBIDDEN && !isSeason4CardId(card.id)) {
         points += 20;
       }
       // V2: Hirameki points for shared cards removed (shared cards no longer gain hirameki points)
@@ -86,7 +87,7 @@ export function calculateFaintMemory(deck: Deck | null | undefined): number {
         points += 20;
       } else if (cardType === CardType.MONSTER) {
         points += getMonsterCardPoints(snapshot.grade);
-      } else if (cardType === CardType.FORBIDDEN) {
+      } else if (cardType === CardType.FORBIDDEN && !isSeason4CardId(cardId)) {
         points += 20;
       }
       // V2: Hirameki points for shared cards removed (shared cards no longer gain hirameki points)
