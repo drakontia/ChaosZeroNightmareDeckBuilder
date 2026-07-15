@@ -1,9 +1,9 @@
 import { describe, expect, it, vi } from "vitest";
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import { NextIntlClientProvider } from "next-intl";
 
 import { GodHiramekiDialog } from "@/components/hirameki-controls/GodHiramekiDialog";
-import { CardCategory, CardType, DeckCard } from "@/types";
+import { CardCategory, CardType, DeckCard, GodType } from "@/types";
 
 vi.mock("@/components/CardFrame", () => ({
   CardFrame: ({ cost }: { cost: number | string }) => <div data-testid="preview-cost">{String(cost)}</div>,
@@ -77,5 +77,37 @@ describe("GodHiramekiDialog", () => {
 
     expect(screen.queryAllByText("NaN")).toHaveLength(0);
     expect(screen.getAllByTestId("preview-cost").some((node) => node.textContent === "X")).toBe(true);
+  });
+
+  it("神ヒラメキ効果を選択するとコールバックを実行する", () => {
+    const onOpenChange = vi.fn();
+    const onSetGodHirameki = vi.fn();
+    const onSetGodHiramekiEffect = vi.fn();
+    const card = createXCostCard();
+
+    render(
+      <NextIntlClientProvider
+        locale="ja"
+        messages={messages}
+        onError={() => {}}
+        getMessageFallback={({ key }) => key}
+      >
+        <GodHiramekiDialog
+          card={card}
+          egoLevel={0}
+          hasPotential={false}
+          open={true}
+          onOpenChange={onOpenChange}
+          onSetGodHirameki={onSetGodHirameki}
+          onSetGodHiramekiEffect={onSetGodHiramekiEffect}
+        />
+      </NextIntlClientProvider>
+    );
+
+    fireEvent.click(screen.getAllByTestId("preview-cost")[0]);
+
+    expect(onSetGodHirameki).toHaveBeenCalledWith(card.deckId, GodType.KILKEN);
+    expect(onSetGodHiramekiEffect).toHaveBeenCalledWith(card.deckId, expect.any(String));
+    expect(onOpenChange).toHaveBeenCalledWith(false);
   });
 });
