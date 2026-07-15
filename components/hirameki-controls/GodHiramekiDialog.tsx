@@ -26,7 +26,25 @@ interface GodHiramekiDialogProps {
   onSetGodHiramekiEffect: (deckId: string, effectId: string | null) => void;
 }
 
-function GodEffectButton({ card, effectId, cost, selected, fallback, egoLevel, hasPotential, onSelect }: { card: DeckCard; effectId: string; cost: number; selected: boolean; fallback: string; egoLevel: number; hasPotential: boolean; onSelect: () => void; }) {
+function GodEffectButton({
+  card,
+  effectId,
+  cost,
+  selected,
+  fallback,
+  egoLevel,
+  hasPotential,
+  onSelect,
+}: {
+  card: DeckCard;
+  effectId: string;
+  cost: number | "X" | "unusable";
+  selected: boolean;
+  fallback: string;
+  egoLevel: number;
+  hasPotential: boolean;
+  onSelect: () => void;
+}) {
   const t = useTranslations();
   const previewBaseCard = {
     ...card,
@@ -82,7 +100,35 @@ export function GodHiramekiDialog(props: GodHiramekiDialogProps) {
         </DialogHeader>
         <div className="flex-1 overflow-y-auto">
           <div className={previewGridClass}>
-            {GOD_HIRAMEKI_EFFECTS.filter((effect) => effect.gods === "all" || effect.gods.includes(selectedGod ?? GodType.KILKEN)).map((effect) => <GodEffectButton key={effect.id} card={props.card} effectId={effect.id} cost={Number(getCardInfo({ ...props.card, godHiramekiType: null, godHiramekiEffectId: null }, props.egoLevel, props.hasPotential).cost) + (effect.costModifier ?? 0)} selected={props.card.godHiramekiType === (selectedGod ?? GodType.KILKEN) && props.card.godHiramekiEffectId === effect.id} fallback={effect.additionalEffect} egoLevel={props.egoLevel} hasPotential={props.hasPotential} onSelect={() => { props.onSetGodHirameki(props.card.deckId, selectedGod ?? GodType.KILKEN); props.onSetGodHiramekiEffect(props.card.deckId, effect.id); props.onOpenChange(false); }} />)}
+            {GOD_HIRAMEKI_EFFECTS.filter((effect) => effect.gods === "all" || effect.gods.includes(selectedGod ?? GodType.KILKEN)).map((effect) => {
+              const previewCost = getCardInfo(
+                {
+                  ...props.card,
+                  godHiramekiType: selectedGod ?? GodType.KILKEN,
+                  godHiramekiEffectId: effect.id,
+                },
+                props.egoLevel,
+                props.hasPotential
+              ).cost;
+
+              return (
+                <GodEffectButton
+                  key={effect.id}
+                  card={props.card}
+                  effectId={effect.id}
+                  cost={previewCost}
+                  selected={props.card.godHiramekiType === (selectedGod ?? GodType.KILKEN) && props.card.godHiramekiEffectId === effect.id}
+                  fallback={effect.additionalEffect}
+                  egoLevel={props.egoLevel}
+                  hasPotential={props.hasPotential}
+                  onSelect={() => {
+                    props.onSetGodHirameki(props.card.deckId, selectedGod ?? GodType.KILKEN);
+                    props.onSetGodHiramekiEffect(props.card.deckId, effect.id);
+                    props.onOpenChange(false);
+                  }}
+                />
+              );
+            })}
           </div>
         </div>
       </DialogContent>
