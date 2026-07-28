@@ -11,6 +11,127 @@ import { CznCard, CardType, CardCategory, CardStatus } from "@/types";
  * The name and description fields below serve as fallback values when translations are not available.
  */
 export const CHARACTER_CARDS: CznCard[] = ([
+  // Hilde's starting cards (temporary implementation)
+  {
+    id: "hilde_starting_1",
+    name: "マルチショット",
+    type: CardType.CHARACTER,
+    category: CardCategory.ATTACK,
+    statuses: [],
+    isBasicCard: true,
+    isStartingCard: true,
+    imgUrl: "/images/cards/hilde_starting_1.png",
+    hiramekiVariations: [{ level: 0, cost: 1, description: "敵全体にダメージ60%" }]
+  },
+  {
+    id: "hilde_starting_2",
+    name: "マルチショット",
+    type: CardType.CHARACTER,
+    category: CardCategory.ATTACK,
+    statuses: [],
+    isBasicCard: true,
+    isStartingCard: true,
+    imgUrl: "/images/cards/hilde_starting_2.png",
+    hiramekiVariations: [{ level: 0, cost: 1, description: "敵全体にダメージ60%" }]
+  },
+  {
+    id: "hilde_starting_3",
+    name: "ボウガード",
+    type: CardType.CHARACTER,
+    category: CardCategory.SKILL,
+    statuses: [],
+    isBasicCard: true,
+    isStartingCard: true,
+    imgUrl: "/images/cards/hilde_starting_3.png",
+    hiramekiVariations: [{ level: 0, cost: 1, description: "シールド100%" }]
+  },
+  {
+    id: "hilde_starting_4",
+    name: "クイバーロード",
+    type: CardType.CHARACTER,
+    category: CardCategory.SKILL,
+    statuses: [CardStatus.LEAD],
+    isBasicCard: false,
+    isStartingCard: true,
+    imgUrl: "/images/cards/hilde_starting_4.png",
+    hiramekiVariations: [
+      // TODO: Lv0/Lv1/Lv4/Lv5の正確な効果文とコストを確認
+      { level: 0, cost: 1, description: "山札にホーミングアローを3枚生成" },
+      { level: 1, cost: 1, description: "山札にホーミングアローを4枚生成、\nそのカードのうち1枚ドロー" },
+      { level: 2, cost: 1, description: "山札にホーミングアロー(亀裂)を3枚生成" },
+      { level: 3, cost: 1, description: "山札にホーミングアロー(特大)を1枚生成" },
+      { level: 4, cost: 1, category: CardCategory.UPGRADE, description: "山札にホーミングアローを2枚生成\n敵を倒した時、山札にホーミングアローを2枚生成(各ターン5回)", statuses: [CardStatus.UNIQUE, CardStatus.LEAD] },
+      { level: 5, cost: 1, category: CardCategory.UPGRADE, description: "ターン開始時、山札にホーミングアローを3枚生成\nホーミングアローがターンドロー対象にならない", statuses: [CardStatus.UNIQUE, CardStatus.INITIATION] }
+    ]
+  },
+  // Hilde's hirameki cards (temporary implementation)
+  {
+    id: "hilde_hirameki_1",
+    name: "プラズマレイン",
+    type: CardType.CHARACTER,
+    category: CardCategory.ATTACK,
+    statuses: [],
+    imgUrl: "/images/cards/hilde_hirameki_1.png",
+    hiramekiVariations: [
+      // TODO: 画像から再確認して効果文・コストを確定
+      { level: 0, cost: 1, description: "敵全体にダメージ60%、イオン化2" },
+      { level: 1, cost: 1, description: "敵全体にダメージ100%、イオン化2\n感応：ランダムな敵にイオン化2", statuses: [CardStatus.LEAD] },
+      { level: 2, cost: 1, category: CardCategory.SKILL, description: "敵全体にイオン化3\nドロー1", statuses: [CardStatus.LEAD] },
+      { level: 3, cost: 1, description: "敵全体にダメージ100%、イオン化3\n撃破：敵全体に亀裂3(最大1回)" },
+      { level: 4, cost: 3, description: "敵全体に貫通ダメージ180%、イオン化3", statuses: [CardStatus.IGNITION] },
+      { level: 5, cost: 1, description: "敵全体にダメージ120%\n自分の攻撃カードドロー1\n連続：コスト1減少" }
+    ]
+  },
+  {
+    id: "hilde_hirameki_2",
+    name: "ドロー&リリース",
+    type: CardType.CHARACTER,
+    category: CardCategory.SKILL,
+    statuses: [],
+    imgUrl: "/images/cards/hilde_hirameki_2.png",
+    hiramekiVariations: [
+      // TODO: 画像から再確認して効果文・コストを確定
+      { level: 0, cost: 1, description: "自分の攻撃カードドロー2\n1ターンの間、使用時までそのカードのダメージ量+50%" },
+      { level: 1, cost: 1, description: "自分の攻撃カードドロー2\n1ターンの間、使用時までそのカードのダメージ量+80%", statuses: [CardStatus.LEAD] },
+      { level: 2, cost: 1, description: "ドロー2\n次の3回の自分の追加攻撃時、敵全体に亀裂1", statuses: [CardStatus.LEAD] },
+      { level: 3, cost: 0, description: "手札のすべてのカードを山札に移動、その数に応じてドロー" },
+      { level: 4, cost: 1, description: "主導カードドロー2\n1ターンの間、使用時までそのカードのコスト1減少" },
+      { level: 5, cost: 2, description: "このターン能力でドローしたカード数に応じて次の自分の攻撃カードダメージ量30%増加(最大300%)" }
+    ]
+  },
+  {
+    id: "hilde_hirameki_3",
+    name: "ビッグゲームレンジャー",
+    type: CardType.CHARACTER,
+    category: CardCategory.UPGRADE,
+    statuses: [CardStatus.UNIQUE, CardStatus.LEAD],
+    imgUrl: "/images/cards/hilde_hirameki_3.png",
+    hiramekiVariations: [
+      // TODO: 画像から再確認して効果文・コストを確定
+      { level: 0, cost: 1, description: "ヒット時、一点照準2" },
+      { level: 1, cost: 1, description: "ヒット時、一点照準3" },
+      { level: 2, cost: 0, description: "ドロー2\nヒット時、一点照準2", statuses: [CardStatus.UNIQUE, CardStatus.INITIATION] },
+      { level: 3, cost: 1, description: "ヒット時、一点照準2\n感応効果発動時、一点照準2" },
+      { level: 4, cost: 1, description: "能力でデバフ付与時、一点照準5" },
+      { level: 5, cost: 1, description: "ターン開始時、一点照準30\n自分の攻撃カード使用不可" }
+    ]
+  },
+  {
+    id: "hilde_hirameki_4",
+    name: "ボルテックスアロー",
+    type: CardType.CHARACTER,
+    category: CardCategory.ATTACK,
+    statuses: [CardStatus.UNIQUE],
+    imgUrl: "/images/cards/hilde_hirameki_4.png",
+    hiramekiVariations: [
+      {
+        level: 0,
+        cost: 1,
+        description: "ドロー3\n敵全体にダメージ120%\nこのターン能力でドローした攻撃カード数に応じてダメージ量+60%(最大8枚)",
+        statuses: [CardStatus.UNIQUE]
+      }
+    ]
+  },
   // Fei's starting cards
   {
     id: "fei_starting_1",
