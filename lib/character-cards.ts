@@ -31,7 +31,7 @@ export const CHARACTER_CARDS: CznCard[] = ([
     statuses: [],
     isBasicCard: true,
     isStartingCard: true,
-    imgUrl: "/images/cards/hilde_starting_2.png",
+    imgUrl: "/images/cards/hilde_starting_1.png",
     hiramekiVariations: [{ level: 0, cost: 1, description: "敵全体にダメージ60%" }]
   },
   {
