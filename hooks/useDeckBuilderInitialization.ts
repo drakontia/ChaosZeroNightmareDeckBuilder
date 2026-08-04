@@ -19,10 +19,14 @@ const createEmptyDeck = (): Deck => ({
   convertedCards: new Map(),
 });
 
-export function useDeckBuilderInitialization(deck: Deck | null, setDeck: (deck: Deck) => void) {
+export function useDeckBuilderInitialization(
+  deck: Deck | null,
+  setDeck: (deck: Deck) => void,
+  options?: { skipInitialization?: boolean }
+) {
   useEffect(() => {
-    if (!deck) {
+    if (!deck && !options?.skipInitialization) {
       setDeck(createEmptyDeck());
     }
-  }, [deck, setDeck]);
+  }, [deck, setDeck, options?.skipInitialization]);
 }

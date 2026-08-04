@@ -6,14 +6,6 @@ import { calculateFaintMemory } from "@/lib/calculateFaintMemory";
 import { resolveLocale } from '@/i18n/locale';
 import { cookies, headers } from 'next/headers';
 
-const isSupportedOgImagePath = (imgUrl: string | null | undefined): imgUrl is string => {
-  if (!imgUrl) {
-    return false;
-  }
-  const normalized = imgUrl.toLowerCase();
-  return normalized.endsWith('.png') || normalized.endsWith('.jpg') || normalized.endsWith('.jpeg');
-};
-
 export const size = {
   width: 1200,
   height: 630,
@@ -75,11 +67,6 @@ export default async function Image({
     // Get ego level and potential from deck
     const egoLevel = deck.egoLevel ?? 0;
     const hasPotential = deck.hasPotential ?? false;
-    const isDev = process.env.NODE_ENV === 'development';
-    // In development, skip external image fetching to avoid localhost deadlock.
-    // Satori would make HTTP requests back to the same server, causing a hang.
-    const baseUrl = isDev ? null : (process.env.NEXT_PUBLIC_BASE_URL || 'https://czn-deck-builder.drakontia.com');
-
     // Get translated card info with correct costs
     const cardsWithTranslation = deck.cards.slice(0, 12).map((card) => {
       const localizedCard = {
@@ -107,14 +94,6 @@ export default async function Image({
       const categoryKey = `category.${resolvedCategory.toLowerCase()}`;
       const translatedCategory = t(categoryKey);
 
-      // Convert relative path to absolute URL (null in dev to avoid localhost deadlock)
-      const resolvedImgUrl = cardInfo.imgUrl ?? card.imgUrl;
-      const imgUrl = baseUrl && resolvedImgUrl
-        ? (resolvedImgUrl.startsWith('http')
-          ? resolvedImgUrl
-          : `${baseUrl}${resolvedImgUrl}`)
-        : null;
-
       const description = cardInfo.description || '';
       const statuses = (cardInfo.statuses || []).map((status) => t(`status.${status}`));
       if (card.isCopied) {
@@ -127,7 +106,6 @@ export default async function Image({
         translatedName,
         translatedCategory,
         type: card.type,
-        imgUrl,
         description,
         statuses,
         isCopied: card.isCopied ?? false,
@@ -191,19 +169,6 @@ export default async function Image({
                   position: 'relative',
                 }}
               >
-                {/* Card Image Background */}
-                {isSupportedOgImagePath(card.imgUrl) && (
-                  <img
-                    src={card.imgUrl}
-                    style={{
-                      position: 'absolute',
-                      width: '100%',
-                      height: '100%',
-                      objectFit: 'cover',
-                      transform: card.isCopied ? 'scaleX(-1)' : undefined,
-                    }}
-                  />
-                )}
                 {/* Gradient Overlay */}
                 <div
                   style={{
@@ -211,7 +176,7 @@ export default async function Image({
                     position: 'absolute',
                     width: '100%',
                     height: '100%',
-                    background: 'linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.1) 30%, rgba(0,0,0,0.6))',
+                    background: 'linear-gradient(135deg, #1f2937, #4b5563)',
                   }}
                 />
                 {/* Card Info Overlay */}

@@ -69,6 +69,7 @@ const shareDeckAndGetShareId = async (page: Page) => {
 };
 
 test.describe('OpenGraph Image Generation', () => {
+  test.describe.configure({ mode: 'serial' });
   test.describe.configure({ timeout: OG_ROUTE_TIMEOUT });
 
   test('should generate OpenGraph image for shared deck', async ({ page, request, context }) => {

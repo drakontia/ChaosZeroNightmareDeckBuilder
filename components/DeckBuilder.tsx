@@ -64,7 +64,7 @@ export function DeckBuilder({ shareId }: DeckBuilderProps) {
   const [shareError, setShareError] = useState<string | null>(null);
   const deckCaptureRef = useRef<HTMLDivElement | null>(null);
 
-  useDeckBuilderInitialization(store.deck, store.setDeck);
+  useDeckBuilderInitialization(store.deck, store.setDeck, { skipInitialization: Boolean(shareId) });
   useLoadedDeckSync(sharedDeck, store.setDeck);
   useDeckBuilderAlerts({
     t,
