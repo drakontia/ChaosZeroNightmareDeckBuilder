@@ -36,7 +36,9 @@ pnpm test
 
 - `package.json` に `typecheck` スクリプト（`tsc --noEmit`）を追加。
 - これまでビルドコマンド（`next build`）にのみ型チェックが内包されており、型チェック単体の所要時間を計測・CIで検証する手段がなかった。
-- `.github/workflows/build.yml` を新設し、PR/pushごとに `typecheck` → `build` を実行。既存の `coverage.yml`（ユニットテスト）・`playwright.yml`（E2E）に加え、ビルド健全性をCIで継続的に担保する。
+- ビルド健全性をCIで継続検証するワークフロー案を `docs/ci/build.yml` として用意した。既存の `coverage.yml`（ユニットテスト）・`playwright.yml`（E2E）に加え、`typecheck` → `build` を実行するジョブを想定している。
+
+> **手動追加が必要**: 本セッションで使用しているGitHub連携トークンには `workflow` スコープがなく、`.github/workflows/` 配下のファイルをpushできない制約がある。そのため、上記ファイルの内容をリポジトリ管理者が手動で `.github/workflows/build.yml` としてコピー・追加してください（GitHub Web UIでの新規作成、または `workflow` スコープを持つ認証情報でのpushで対応可能）。
 
 **トレードオフ**: CI実行時間がわずかに増える（型チェック + ビルドの追加ジョブ）が、ビルド破壊をマージ前に検知できる利益が上回ると判断。
 
