@@ -1,15 +1,21 @@
-import { ImageResponse } from 'next/og';
 import { getTranslations } from 'next-intl/server';
 import { decodeDeckShare } from '@/lib/deck-share';
 import { calculateFaintMemory } from "@/lib/calculateFaintMemory";
 import { resolveLocale } from '@/i18n/locale';
 import { cookies, headers } from 'next/headers';
-
 export const size = {
   width: 1200,
   height: 630,
 };
-export const contentType = 'image/png';
+export const contentType = 'image/svg+xml';
+
+const escapeSvgText = (value: string) =>
+  value
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;')
+    .replaceAll("'", '&#39;');
 
 // Next.js 16 OG Image Route - default export関数でparamsを受け取る
 export default async function Image({
@@ -62,83 +68,33 @@ export default async function Image({
       faintMemoryLabel: t('character.faintMemory'),
     };
 
-    return new ImageResponse(
-      (
-        <div
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            width: '100%',
-            height: '100%',
-            backgroundColor: '#fafafa',
-            padding: '40px',
-            fontFamily: 'system-ui',
-          }}
-        >
-          {/* Header */}
-          <div
-            style={{
-              display: 'flex',
-              fontSize: 18,
-              color: '#6b7280',
-              gap: '20px',
-              marginBottom: '20px',
-              alignItems: 'center',
-            }}
-          >
-            <span style={{ fontWeight: 'bold', color: '#111827' }}>{deckName}</span>
-            <span>•</span>
-            <span>{characterName}</span>
-            <span>•</span>
-            <span>{`${cardCount}${labels.shareCardUnit}`}</span>
-            <span>•</span>
-            <span>{faintMemoryPoints}pt</span>
-          </div>
+    const svg = `
+      <svg xmlns="http://www.w3.org/2000/svg" width="${size.width}" height="${size.height}" viewBox="0 0 ${size.width} ${size.height}">
+        <defs>
+          <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#111827" />
+            <stop offset="100%" stop-color="#1f2937" />
+          </linearGradient>
+        </defs>
+        <rect width="1200" height="630" fill="#fafafa" />
+        <text x="40" y="54" fill="#111827" font-size="28" font-family="system-ui" font-weight="700">${escapeSvgText(deckName)}</text>
+        <text x="40" y="96" fill="#6b7280" font-size="22" font-family="system-ui">${escapeSvgText(characterName)}</text>
+        <rect x="40" y="132" width="1120" height="410" rx="24" fill="url(#bg)" />
+        <text x="80" y="240" fill="#ffffff" font-size="48" font-family="system-ui" font-weight="700">${escapeSvgText(deckName)}</text>
+        <text x="80" y="302" fill="rgba(255,255,255,0.88)" font-size="30" font-family="system-ui">${escapeSvgText(characterName)}</text>
+        <text x="80" y="380" fill="#ffffff" font-size="28" font-family="system-ui">${escapeSvgText(`${labels.cardsLabel}: ${cardCount}${labels.shareCardUnit}`)}</text>
+        <text x="80" y="430" fill="#ffffff" font-size="28" font-family="system-ui">${escapeSvgText(`${labels.faintMemoryLabel}: ${faintMemoryPoints}pt`)}</text>
+        <text x="40" y="590" fill="#9ca3af" font-size="20" font-family="system-ui">${escapeSvgText(labels.title)}</text>
+        <text x="1030" y="590" fill="#9ca3af" font-size="20" font-family="system-ui">${escapeSvgText(createdDate)}</text>
+      </svg>
+    `;
 
-          <div
-            style={{
-              display: 'flex',
-              flex: 1,
-              flexDirection: 'column',
-              justifyContent: 'center',
-              gap: '20px',
-              padding: '24px 32px',
-              borderRadius: '24px',
-              background: 'linear-gradient(135deg, #111827, #1f2937)',
-              color: '#ffffff',
-            }}
-          >
-            <div style={{ display: 'flex', fontSize: 36, fontWeight: 700 }}>
-              {deckName}
-            </div>
-            <div style={{ display: 'flex', fontSize: 24, color: 'rgba(255,255,255,0.88)' }}>
-              {characterName}
-            </div>
-            <div style={{ display: 'flex', gap: '24px', fontSize: 22 }}>
-              <div style={{ display: 'flex' }}>{`${labels.cardsLabel}: ${cardCount}${labels.shareCardUnit}`}</div>
-              <div style={{ display: 'flex' }}>{`${labels.faintMemoryLabel}: ${faintMemoryPoints}pt`}</div>
-            </div>
-          </div>
-          {/* Footer */}
-          <div
-            style={{
-              display: 'flex',
-              marginTop: '20px',
-              fontSize: 16,
-              color: '#9ca3af',
-              justifyContent: 'space-between',
-            }}
-          >
-            <span>{labels.title}</span>
-            <span>{createdDate}</span>
-          </div>
-        </div>
-      ),
-      {
-        width: size.width,
-        height: size.height,
-      }
-    );
+    return new Response(svg, {
+      headers: {
+        'Content-Type': contentType,
+        'Cache-Control': 'public, max-age=0, must-revalidate',
+      },
+    });
   } catch (error) {
     console.error('[OG Image] Error generating image:', error);
     return new Response('Internal Server Error', { status: 500 });
