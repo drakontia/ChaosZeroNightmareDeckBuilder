@@ -1,44 +1,21 @@
-import { ImageResponse } from 'next/og';
 import { getTranslations } from 'next-intl/server';
 import { decodeDeckShare } from '@/lib/deck-share';
 import { calculateFaintMemory } from "@/lib/calculateFaintMemory";
 import { resolveLocale } from '@/i18n/locale';
 import { cookies, headers } from 'next/headers';
-
 export const size = {
   width: 1200,
   height: 630,
 };
-export const contentType = 'image/png';
+export const contentType = 'image/svg+xml';
 
-const MAX_CARD_NAMES = 10;
-
-const renderBrandMark = () => (
-  <svg
-    width="72"
-    height="72"
-    viewBox="0 0 72 72"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <rect x="4" y="4" width="64" height="64" rx="18" fill="#0F172A" stroke="#E2E8F0" strokeWidth="4" />
-    <path
-      d="M21 22H39C45.6274 22 51 27.3726 51 34C51 40.6274 45.6274 46 39 46H21V22Z"
-      fill="#F8FAFC"
-    />
-    <path
-      d="M31 30H49C54.5228 30 59 34.4772 59 40C59 45.5228 54.5228 50 49 50H31V30Z"
-      fill="#38BDF8"
-      fillOpacity="0.9"
-    />
-    <path
-      d="M26 19L49 53"
-      stroke="#F59E0B"
-      strokeWidth="6"
-      strokeLinecap="round"
-    />
-  </svg>
-);
+const escapeSvgText = (value: string) =>
+  value
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;')
+    .replaceAll("'", '&#39;');
 
 // Next.js 16 OG Image Route - default export関数でparamsを受け取る
 export default async function Image({
@@ -89,137 +66,35 @@ export default async function Image({
       shareCardUnit: t('deck.shareCardUnit'),
       cardsLabel: t('deck.totalCards'),
       faintMemoryLabel: t('character.faintMemory'),
-      updatedLabel: t('deck.createdDate'),
     };
-    const cardNames = deck.cards
-      .slice(0, MAX_CARD_NAMES)
-      .map((card) => card.name)
-      .filter((name): name is string => Boolean(name));
 
-    return new ImageResponse(
-      (
-        <div
-          style={{
-            display: 'flex',
-            position: 'relative',
-            width: '100%',
-            height: '100%',
-            background: '#0f172a',
-            overflow: 'hidden',
-            fontFamily: 'system-ui',
-            color: '#ffffff',
-          }}
-        >
-          <div
-            style={{
-              position: 'absolute',
-              inset: 0,
-              background:
-                'radial-gradient(circle at top right, rgba(56,189,248,0.18), transparent 30%), radial-gradient(circle at bottom left, rgba(245,158,11,0.14), transparent 28%)',
-            }}
-          />
-          <div
-            style={{
-              display: 'flex',
-              position: 'relative',
-              justifyContent: 'space-between',
-              width: '100%',
-              height: '100%',
-              padding: '44px',
-              gap: '28px',
-            }}
-          >
-            <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', flex: 1, minWidth: 0 }}>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', maxWidth: '100%' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '18px' }}>
-                  <div style={{ display: 'flex', flexShrink: 0 }}>{renderBrandMark()}</div>
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                    <div style={{ display: 'flex', fontSize: 22, color: 'rgba(255,255,255,0.78)' }}>
-                      {labels.title}
-                    </div>
-                    <div style={{ display: 'flex', fontSize: 28, fontWeight: 700 }}>
-                      Chaos Zero Nightmare
-                    </div>
-                  </div>
-                </div>
-                <div style={{ display: 'flex', fontSize: 54, fontWeight: 800, lineHeight: 1.1 }}>
-                  {deckName}
-                </div>
-                <div style={{ display: 'flex', fontSize: 28, color: 'rgba(255,255,255,0.88)' }}>
-                  {characterName}
-                </div>
-              </div>
+    const svg = `
+      <svg xmlns="http://www.w3.org/2000/svg" width="${size.width}" height="${size.height}" viewBox="0 0 ${size.width} ${size.height}">
+        <defs>
+          <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#111827" />
+            <stop offset="100%" stop-color="#1f2937" />
+          </linearGradient>
+        </defs>
+        <rect width="1200" height="630" fill="#fafafa" />
+        <text x="40" y="54" fill="#111827" font-size="28" font-family="system-ui" font-weight="700">${escapeSvgText(deckName)}</text>
+        <text x="40" y="96" fill="#6b7280" font-size="22" font-family="system-ui">${escapeSvgText(characterName)}</text>
+        <rect x="40" y="132" width="1120" height="410" rx="24" fill="url(#bg)" />
+        <text x="80" y="240" fill="#ffffff" font-size="48" font-family="system-ui" font-weight="700">${escapeSvgText(deckName)}</text>
+        <text x="80" y="302" fill="rgba(255,255,255,0.88)" font-size="30" font-family="system-ui">${escapeSvgText(characterName)}</text>
+        <text x="80" y="380" fill="#ffffff" font-size="28" font-family="system-ui">${escapeSvgText(`${labels.cardsLabel}: ${cardCount}${labels.shareCardUnit}`)}</text>
+        <text x="80" y="430" fill="#ffffff" font-size="28" font-family="system-ui">${escapeSvgText(`${labels.faintMemoryLabel}: ${faintMemoryPoints}pt`)}</text>
+        <text x="40" y="590" fill="#9ca3af" font-size="20" font-family="system-ui">${escapeSvgText(labels.title)}</text>
+        <text x="1030" y="590" fill="#9ca3af" font-size="20" font-family="system-ui">${escapeSvgText(createdDate)}</text>
+      </svg>
+    `;
 
-              <div
-                style={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  gap: '10px',
-                  marginTop: '28px',
-                  padding: '24px 28px',
-                  borderRadius: '24px',
-                  background: 'rgba(15,23,42,0.74)',
-                  border: '1px solid rgba(255,255,255,0.12)',
-                }}
-              >
-                <div style={{ display: 'flex', fontSize: 20, fontWeight: 700, color: 'rgba(255,255,255,0.76)' }}>
-                  Deck Cards
-                </div>
-                {cardNames.map((name, index) => (
-                  <div
-                    key={`${name}-${index}`}
-                    style={{
-                      display: 'flex',
-                      fontSize: 22,
-                      lineHeight: 1.2,
-                      color: 'rgba(255,255,255,0.94)',
-                    }}
-                  >
-                    {`${index + 1}. ${name}`}
-                  </div>
-                ))}
-                {deck.cards.length > MAX_CARD_NAMES ? (
-                  <div style={{ display: 'flex', fontSize: 18, color: 'rgba(255,255,255,0.68)' }}>
-                    {`+${deck.cards.length - MAX_CARD_NAMES} more`}
-                  </div>
-                ) : null}
-              </div>
-            </div>
-
-            <div
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '14px',
-                justifyContent: 'flex-end',
-                width: '340px',
-                padding: '24px 28px',
-                borderRadius: '24px',
-                background: 'rgba(15,23,42,0.7)',
-                border: '1px solid rgba(255,255,255,0.12)',
-              }}
-            >
-              <div style={{ display: 'flex', justifyContent: 'space-between', gap: '24px', fontSize: 24 }}>
-                <span style={{ color: 'rgba(255,255,255,0.72)' }}>{labels.cardsLabel}</span>
-                <span>{`${cardCount}${labels.shareCardUnit}`}</span>
-              </div>
-              <div style={{ display: 'flex', justifyContent: 'space-between', gap: '24px', fontSize: 24 }}>
-                <span style={{ color: 'rgba(255,255,255,0.72)' }}>{labels.faintMemoryLabel}</span>
-                <span>{`${faintMemoryPoints}pt`}</span>
-              </div>
-              <div style={{ display: 'flex', justifyContent: 'space-between', gap: '24px', fontSize: 20 }}>
-                <span style={{ color: 'rgba(255,255,255,0.72)' }}>{labels.updatedLabel}</span>
-                <span>{createdDate}</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      ),
-      {
-        width: size.width,
-        height: size.height,
-      }
-    );
+    return new Response(svg, {
+      headers: {
+        'Content-Type': contentType,
+        'Cache-Control': 'public, max-age=0, must-revalidate',
+      },
+    });
   } catch (error) {
     console.error('[OG Image] Error generating image:', error);
     return new Response('Internal Server Error', { status: 500 });

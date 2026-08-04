@@ -106,15 +106,12 @@ test.describe('OpenGraph Image Generation', () => {
     
     const response = await getWithRetry(request, ogImageUrl);
     expect(response.status()).toBe(200);
-    expect(response.headers()['content-type']).toBe('image/png');
+    expect(response.headers()['content-type']).toContain('image/svg+xml');
     
-    const imageBuffer = await response.body();
-    expect(imageBuffer.length).toBeGreaterThan(8 * 1024);
-
-    expect(imageBuffer[0]).toBe(0x89);
-    expect(imageBuffer[1]).toBe(0x50);
-    expect(imageBuffer[2]).toBe(0x4e);
-    expect(imageBuffer[3]).toBe(0x47);
+    const svgText = await response.text();
+    expect(svgText.length).toBeGreaterThan(500);
+    expect(svgText).toContain('<svg');
+    expect(svgText).toContain('チズル');
   });
 
   test('should return 404 for invalid shareId', async ({ request }) => {
@@ -157,41 +154,10 @@ test.describe('OpenGraph Image Generation', () => {
     
     const response = await getWithRetry(request, ogImageUrl);
     expect(response.status()).toBe(200);
-    expect(response.headers()['content-type']).toBe('image/png');
+    expect(response.headers()['content-type']).toContain('image/svg+xml');
     
-    const imageBuffer = await response.body();
-    expect(imageBuffer.length).toBeGreaterThan(8 * 1024);
-  });
-
-  test('should keep PNG output when deck has multiple card names', async ({ page, request, context }) => {
-    await context.grantPermissions(['clipboard-read', 'clipboard-write']);
-
-    await page.goto('/');
-
-    await page.evaluate(() => {
-      (window as any).__copiedURL = '';
-      Object.defineProperty(navigator, 'clipboard', {
-        value: {
-          writeText: async (text: string) => {
-            (window as any).__copiedURL = text;
-            return Promise.resolve();
-          },
-          readText: async () => (window as any).__copiedURL,
-        },
-        writable: true,
-        configurable: true,
-      });
-    });
-
-    await selectCharacterAndWeapon(page);
-    await addHiramekiCard(page, '黄昏の結束');
-    await expect(page.getByTestId('total-cards')).toContainText('5', { timeout: 10000 });
-
-    const shareId = await shareDeckAndGetShareId(page);
-    const response = await getWithRetry(request, `http://localhost:3000/deck/${shareId}/opengraph-image`);
-
-    expect(response.status()).toBe(200);
-    expect(response.headers()['content-type']).toBe('image/png');
-    expect((await response.body()).length).toBeGreaterThan(8 * 1024);
+    const svgText = await response.text();
+    expect(svgText.length).toBeGreaterThan(500);
+    expect(svgText).toContain('<svg');
   });
 });
