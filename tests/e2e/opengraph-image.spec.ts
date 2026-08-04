@@ -112,6 +112,8 @@ test.describe('OpenGraph Image Generation', () => {
     expect(svgText.length).toBeGreaterThan(500);
     expect(svgText).toContain('<svg');
     expect(svgText).toContain('チズル');
+    expect(svgText).toContain('Deck Cards');
+    expect(svgText).toContain('黄昏の結束');
   });
 
   test('should return 404 for invalid shareId', async ({ request }) => {
@@ -159,5 +161,6 @@ test.describe('OpenGraph Image Generation', () => {
     const svgText = await response.text();
     expect(svgText.length).toBeGreaterThan(500);
     expect(svgText).toContain('<svg');
+    expect(svgText).toContain('Deck Cards');
   });
 });
