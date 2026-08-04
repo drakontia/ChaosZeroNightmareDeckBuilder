@@ -1,7 +1,6 @@
 import { ImageResponse } from 'next/og';
 import { getTranslations } from 'next-intl/server';
 import { decodeDeckShare } from '@/lib/deck-share';
-import { getCardInfo } from '@/lib/deck-utils';
 import { calculateFaintMemory } from "@/lib/calculateFaintMemory";
 import { resolveLocale } from '@/i18n/locale';
 import { cookies, headers } from 'next/headers';
@@ -58,59 +57,10 @@ export default async function Image({
 
     const labels = {
       title: t('app.title'),
-      character: t('character.title'),
-      totalCards: t('deck.totalCards'),
-      faintMemory: t('character.faintMemory'),
       shareCardUnit: t('deck.shareCardUnit'),
+      cardsLabel: t('deck.totalCards'),
+      faintMemoryLabel: t('character.faintMemory'),
     };
-
-    // Get ego level and potential from deck
-    const egoLevel = deck.egoLevel ?? 0;
-    const hasPotential = deck.hasPotential ?? false;
-    // Get translated card info with correct costs
-    const cardsWithTranslation = deck.cards.slice(0, 12).map((card) => {
-      const localizedCard = {
-        ...card,
-        name: t(`cards.${card.id}.name`, { defaultValue: card.name }),
-        hiramekiVariations: card.hiramekiVariations.map((variation) => ({
-          ...variation,
-          name: variation.name ? t(`cards.${card.id}.name.${variation.level}`, { defaultValue: variation.name }) : variation.name,
-          description: t(`cards.${card.id}.descriptions.${variation.level}`, { defaultValue: variation.description }),
-        })),
-      };
-      const cardInfo = getCardInfo(localizedCard, egoLevel, hasPotential, undefined, {
-        persona: card.id.startsWith("persona_")
-          ? {
-              getName: (variant) => t(`cards.personaMeta.names.${variant}`),
-              getEngravingDescription: (definition) =>
-                t(`cards.personaMeta.engravings.${definition.descriptionKey}`, { defaultValue: definition.description }),
-            }
-          : undefined,
-        translateGodEffect: (effectId, fallback) => t(`godEffects.${effectId}`, { defaultValue: fallback }),
-        translateHiddenEffect: (effectId, fallback) => t(`hiddenEffects.${effectId}`, { defaultValue: fallback }),
-      });
-      const translatedName = cardInfo.name;
-      const resolvedCategory = cardInfo.category ?? card.category;
-      const categoryKey = `category.${resolvedCategory.toLowerCase()}`;
-      const translatedCategory = t(categoryKey);
-
-      const description = cardInfo.description || '';
-      const statuses = (cardInfo.statuses || []).map((status) => t(`status.${status}`));
-      if (card.isCopied) {
-        statuses.push(t('status.copied'));
-      }
-
-      return {
-        id: card.id,
-        cost: cardInfo.cost,
-        translatedName,
-        translatedCategory,
-        type: card.type,
-        description,
-        statuses,
-        isCopied: card.isCopied ?? false,
-      };
-    });
 
     return new ImageResponse(
       (
@@ -145,162 +95,29 @@ export default async function Image({
             <span>{faintMemoryPoints}pt</span>
           </div>
 
-          {/* Card Grid */}
           <div
             style={{
               display: 'flex',
-              flexWrap: 'wrap',
-              gap: '12px',
               flex: 1,
+              flexDirection: 'column',
+              justifyContent: 'center',
+              gap: '20px',
+              padding: '24px 32px',
+              borderRadius: '24px',
+              background: 'linear-gradient(135deg, #111827, #1f2937)',
+              color: '#ffffff',
             }}
           >
-            {cardsWithTranslation.map((card, index) => (
-              <div
-                key={index}
-                style={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  width: '165px',
-                  height: '248px',
-                  backgroundColor: '#ffffff',
-                  borderRadius: '8px',
-                  border: '2px solid #e5e7eb',
-                  overflow: 'hidden',
-                  position: 'relative',
-                }}
-              >
-                {/* Gradient Overlay */}
-                <div
-                  style={{
-                    display: 'flex',
-                    position: 'absolute',
-                    width: '100%',
-                    height: '100%',
-                    background: 'linear-gradient(135deg, #1f2937, #4b5563)',
-                  }}
-                />
-                {/* Card Info Overlay */}
-                <div
-                  style={{
-                    position: 'absolute',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    width: '100%',
-                    height: '100%',
-                    padding: '12px',
-                    justifyContent: 'space-between',
-                  }}
-                >
-                  {/* Top: Cost + Name */}
-                  <div
-                    style={{
-                      display: 'flex',
-                      flexDirection: 'column',
-                      gap: '4px',
-                    }}
-                  >
-                    <div
-                      style={{
-                        display: 'flex',
-                        gap: '8px',
-                        alignItems: 'flex-start',
-                      }}
-                    >
-                      <div
-                        style={{
-                          display: 'flex',
-                          fontSize: '32px',
-                          fontWeight: 'bold',
-                          color: '#ffffff',
-                          textShadow: '0 2px 4px rgba(0,0,0,0.8)',
-                        }}
-                      >
-                        {card.cost}
-                      </div>
-                      <div
-                        style={{
-                          display: 'flex',
-                          flexDirection: 'column',
-                          flex: 1,
-                        }}
-                      >
-                        <div
-                          style={{
-                            display: 'flex',
-                            fontSize: '14px',
-                            fontWeight: 'bold',
-                            color: '#ffffff',
-                            textShadow: '0 2px 4px rgba(0,0,0,0.8)',
-                            overflow: 'hidden',
-                            whiteSpace: 'nowrap',
-                            textOverflow: 'ellipsis',
-                          }}
-                        >
-                          {card.translatedName}
-                        </div>
-                        <div
-                          style={{
-                            display: 'flex',
-                            fontSize: '11px',
-                            color: 'rgba(255,255,255,0.9)',
-                            textShadow: '0 1px 2px rgba(0,0,0,0.8)',
-                          }}
-                        >
-                          {card.translatedCategory}
-                        </div>
-                      </div>
-                    </div>
-                    {/* Statuses */}
-                    {card.statuses.length > 0 && (
-                      <div
-                        style={{
-                          display: 'flex',
-                          flexWrap: 'wrap',
-                          gap: '4px',
-                        }}
-                      >
-                        {card.statuses.map((status: string, idx: number) => (
-                          <div
-                            key={idx}
-                            style={{
-                              display: 'flex',
-                              fontSize: '9px',
-                              padding: '2px 6px',
-                              backgroundColor: 'rgba(255,255,255,0.2)',
-                              borderRadius: '4px',
-                              color: '#ffffff',
-                              textShadow: '0 1px 2px rgba(0,0,0,0.8)',
-                            }}
-                          >
-                            {status}
-                          </div>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                  {/* Bottom: Description */}
-                  {card.description && (
-                    <div
-                      style={{
-                        display: 'flex',
-                        fontSize: '10px',
-                        lineHeight: 1.4,
-                        color: '#ffffff',
-                        textShadow: '0 1px 2px rgba(0,0,0,0.8)',
-                        padding: '8px',
-                        borderRadius: '4px',
-                        maxHeight: '80px',
-                        overflow: 'hidden',
-                      }}
-                    >
-                      {card.description.length > 100
-                        ? card.description.substring(0, 100) + '...'
-                        : card.description}
-                    </div>
-                  )}
-                </div>
-              </div>
-            ))}
+            <div style={{ display: 'flex', fontSize: 36, fontWeight: 700 }}>
+              {deckName}
+            </div>
+            <div style={{ display: 'flex', fontSize: 24, color: 'rgba(255,255,255,0.88)' }}>
+              {characterName}
+            </div>
+            <div style={{ display: 'flex', gap: '24px', fontSize: 22 }}>
+              <div style={{ display: 'flex' }}>{`${labels.cardsLabel}: ${cardCount}${labels.shareCardUnit}`}</div>
+              <div style={{ display: 'flex' }}>{`${labels.faintMemoryLabel}: ${faintMemoryPoints}pt`}</div>
+            </div>
           </div>
           {/* Footer */}
           <div
