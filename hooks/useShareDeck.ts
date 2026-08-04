@@ -18,10 +18,17 @@ export function useShareDeck() {
         const url = `${window.location.origin}/deck/${shareKey}`;
 
         if (navigator.clipboard?.writeText) {
-          await navigator.clipboard.writeText(url);
-          alert(
-            t("deck.shareCopied", { defaultValue: "共有URLをコピーしました。" })
-          );
+          try {
+            await navigator.clipboard.writeText(url);
+            alert(
+              t("deck.shareCopied", { defaultValue: "共有URLをコピーしました。" })
+            );
+          } catch {
+            window.prompt(
+              t("deck.sharePrompt", { defaultValue: "共有URL" }),
+              url
+            );
+          }
         } else {
           window.prompt(
             t("deck.sharePrompt", { defaultValue: "共有URL" }),
