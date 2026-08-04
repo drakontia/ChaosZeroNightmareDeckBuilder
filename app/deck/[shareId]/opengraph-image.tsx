@@ -6,6 +6,14 @@ import { calculateFaintMemory } from "@/lib/calculateFaintMemory";
 import { resolveLocale } from '@/i18n/locale';
 import { cookies, headers } from 'next/headers';
 
+const isSupportedOgImagePath = (imgUrl: string | null | undefined): imgUrl is string => {
+  if (!imgUrl) {
+    return false;
+  }
+  const normalized = imgUrl.toLowerCase();
+  return normalized.endsWith('.png') || normalized.endsWith('.jpg') || normalized.endsWith('.jpeg');
+};
+
 export const size = {
   width: 1200,
   height: 630,
@@ -184,7 +192,7 @@ export default async function Image({
                 }}
               >
                 {/* Card Image Background */}
-                {card.imgUrl && (
+                {isSupportedOgImagePath(card.imgUrl) && (
                   <img
                     src={card.imgUrl}
                     style={{
