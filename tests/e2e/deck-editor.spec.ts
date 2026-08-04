@@ -294,6 +294,20 @@ test.describe('Deck Builder', () => {
     await context.grantPermissions(['clipboard-read', 'clipboard-write']);
 
     await page.goto('/');
+    await page.evaluate(() => {
+      (window as any).__copiedURL = '';
+      Object.defineProperty(navigator, 'clipboard', {
+        value: {
+          writeText: async (text: string) => {
+            (window as any).__copiedURL = text;
+            return Promise.resolve();
+          },
+          readText: async () => (window as any).__copiedURL,
+        },
+        writable: true,
+        configurable: true,
+      });
+    });
     await selectCharacterAndWeapon(page);
 
     const addedCardName = await addFirstHiramekiCard(page);
@@ -317,8 +331,8 @@ test.describe('Deck Builder', () => {
     
     expect(alertMessage).toContain('共有URLをコピーしました');
 
-    // Read clipboard and navigate to shared URL
-    const shareURL = await page.evaluate(() => navigator.clipboard.readText());
+    // Read mocked clipboard and navigate to shared URL
+    const shareURL = await page.evaluate(() => (window as any).__copiedURL as string);
     expect(shareURL).toMatch(/^http:\/\/localhost:3000\/deck\//);
 
     await page.goto(shareURL);
