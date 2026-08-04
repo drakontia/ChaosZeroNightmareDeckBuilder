@@ -69,6 +69,7 @@ const shareDeckAndGetShareId = async (page: Page) => {
 };
 
 test.describe('OpenGraph Image Generation', () => {
+  test.describe.configure({ mode: 'serial' });
   test.describe.configure({ timeout: OG_ROUTE_TIMEOUT });
 
   test('should generate OpenGraph image for shared deck', async ({ page, request, context }) => {
@@ -105,16 +106,14 @@ test.describe('OpenGraph Image Generation', () => {
     
     const response = await getWithRetry(request, ogImageUrl);
     expect(response.status()).toBe(200);
-    expect(response.headers()['content-type']).toBe('image/png');
+    expect(response.headers()['content-type']).toContain('image/svg+xml');
     
-    const imageBuffer = await response.body();
-    expect(imageBuffer.length).toBeGreaterThan(10 * 1024);
-    
-    // PNGのマジックナンバーを確認
-    expect(imageBuffer[0]).toBe(0x89);
-    expect(imageBuffer[1]).toBe(0x50);
-    expect(imageBuffer[2]).toBe(0x4e);
-    expect(imageBuffer[3]).toBe(0x47);
+    const svgText = await response.text();
+    expect(svgText.length).toBeGreaterThan(500);
+    expect(svgText).toContain('<svg');
+    expect(svgText).toContain('チズル');
+    expect(svgText).toContain('Deck Cards');
+    expect(svgText).toContain('黄昏の結束');
   });
 
   test('should return 404 for invalid shareId', async ({ request }) => {
@@ -157,9 +156,11 @@ test.describe('OpenGraph Image Generation', () => {
     
     const response = await getWithRetry(request, ogImageUrl);
     expect(response.status()).toBe(200);
-    expect(response.headers()['content-type']).toBe('image/png');
+    expect(response.headers()['content-type']).toContain('image/svg+xml');
     
-    const imageBuffer = await response.body();
-    expect(imageBuffer.length).toBeGreaterThan(10 * 1024);
+    const svgText = await response.text();
+    expect(svgText.length).toBeGreaterThan(500);
+    expect(svgText).toContain('<svg');
+    expect(svgText).toContain('Deck Cards');
   });
 });
