@@ -3247,6 +3247,36 @@
           "0": "按目标每个减益获得护盾40%(最多200%)。苦痛2、灼热2"
         }
       },
+      "cutting_loose": {
+        "name": "Cutting Loose",
+        "descriptions": {
+          "0": "シールド140%。手札のランダムな攻撃カード破棄1。破棄された場合、シールド140%追加で獲得"
+        }
+      },
+      "driven_hunt": {
+        "name": "Driven Hunt",
+        "descriptions": {
+          "0": "ダメージ35%×3。1ターンの間、不屈2減少"
+        }
+      },
+      "feralization": {
+        "name": "Feralization",
+        "descriptions": {
+          "0": "1ターンの間、ダメージ量+50%(最大1重複)。味方に脆弱2"
+        }
+      },
+      "final_struggle": {
+        "name": "Final Struggle",
+        "descriptions": {
+          "0": "ダメージ110%。最大HP50%未満の場合、ダメージ量2倍"
+        }
+      },
+      "harrowing_reign": {
+        "name": "Harrowing Reign",
+        "descriptions": {
+          "0": "ダメージ160%。ダメージ依存回復20%"
+        }
+      },
       "faceless_woman": {
         "name": "无脸的女人",
         "descriptions": {

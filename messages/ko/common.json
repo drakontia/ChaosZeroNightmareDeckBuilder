@@ -152,7 +152,8 @@
     "premiere": "개막",
     "control": "통제",
     "inquiry": "탐구",
-    "claim": "소유"
+    "claim": "소유",
+    "survival": "생존"
   },
   "actions": {
     "add": "추가",

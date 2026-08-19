@@ -106,6 +106,7 @@ export enum CardStatus {
   CONTROL = "control",           // 統制
   INQUIRY = "inquiry",           // 探求
   CLAIM = "claim",               // 所有
+  SURVIVAL = "survival",         // 生存
 }
 
 // Hirameki variation for a card

@@ -152,7 +152,8 @@
     "premiere": "开幕",
     "control": "统制",
     "inquiry": "探求",
-    "claim": "所有"
+    "claim": "所有",
+    "survival": "生存"
   },
   "actions": {
     "add": "添加",

@@ -16,6 +16,11 @@ export const SEASON_4_CARD_IDS = new Set([
   "its_all_mine",
   "obsession",
   "gilded_nest",
+  "cutting_loose",
+  "driven_hunt",
+  "feralization",
+  "final_struggle",
+  "harrowing_reign",
 ]);
 
 export const isSeason4CardId = (cardId: string): boolean => SEASON_4_CARD_IDS.has(cardId);
