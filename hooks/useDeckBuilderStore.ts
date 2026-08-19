@@ -1,9 +1,9 @@
 import { create } from "zustand";
-import type { Character, Deck, Equipment, EquipmentType, DeckCard, GodType, CopiedCardEntry, RemovedCardEntry, PersonaEngraving, PersonaEngravingAlignment } from "@/types";
+import type { Character, Deck, Equipment, EquipmentType, DeckCard, GodType, CopiedCardEntry, RemovedCardEntry, PersonaEngraving, PersonaEngravingAlignment, Season4DesireStatus } from "@/types";
 import { getCardById, CHARACTERS } from "@/lib/card";
 import { normalizeEquipmentEngravingId } from "@/lib/equipment-engraving";
 import { normalizePersonaCardEngravings, VALID_PERSONA_ENGRAVING_ALIGNMENTS } from "@/lib/persona";
-import { isSeason4Card } from "@/lib/season4";
+import { getSeason4BaseStatus, isSeason4Card, normalizeSeason4SelectedStatuses } from "@/lib/season4";
 
 const PERSONA_CARD_ID_PREFIX = "persona_";
 
@@ -34,6 +34,19 @@ const normalizePersonaEngravings = (
   return normalizePersonaCardEngravings(normalized, character?.job);
 };
 
+const normalizeSeason4CardState = (
+  card: Pick<DeckCard, "id" | "statuses" | "selectedSeasonLevel" | "selectedSeasonStatuses">
+): { selectedSeasonLevel?: 1 | 2 | 3; selectedSeasonStatuses?: [Season4DesireStatus, Season4DesireStatus, Season4DesireStatus] } => {
+  if (!isSeason4Card(card)) {
+    return { selectedSeasonLevel: undefined, selectedSeasonStatuses: undefined };
+  }
+  const fallback = getSeason4BaseStatus(card);
+  return {
+    selectedSeasonLevel: card.selectedSeasonLevel ?? 1,
+    selectedSeasonStatuses: normalizeSeason4SelectedStatuses(card.selectedSeasonStatuses, fallback),
+  };
+};
+
 interface DeckBuilderStore {
   deck: Deck | null;
   egoLevels: Record<string, number>;
@@ -57,6 +70,7 @@ interface DeckBuilderStore {
   setCardGodHiramekiEffect: (deckId: string, effectId: string | null) => void;
   setCardHiddenHirameki: (deckId: string, hiddenHiramekiId: string | null) => void;
   updateCardSeasonLevel: (deckId: string, level: 1 | 2 | 3) => void;
+  updateCardSeasonStatuses: (deckId: string, statuses: Season4DesireStatus[]) => void;
   setCardPersonaEngravings: (deckId: string, engravings: PersonaEngraving[]) => void;
   undoCard: (deckId: string) => void;
   copyCard: (deckId: string) => void;
@@ -84,7 +98,12 @@ export const useDeckBuilderStore = create<DeckBuilderStore>((set) => ({
           godHiramekiType: null,
           godHiramekiEffectId: null,
           selectedHiddenHiramekiId: null,
-          selectedSeasonLevel: isSeason4Card(base) ? 1 : undefined,
+          ...normalizeSeason4CardState({
+            ...base,
+            id: base.id,
+            selectedSeasonLevel: 1,
+            selectedSeasonStatuses: undefined,
+          }),
           personaEngravings: [],
         }];
       }) ?? []) as DeckCard[];
@@ -172,6 +191,7 @@ export const useDeckBuilderStore = create<DeckBuilderStore>((set) => ({
         : null;
       const normalizedCards = deck.cards.map((card) => ({
         ...card,
+        ...normalizeSeason4CardState(card),
         personaEngravings: normalizePersonaEngravings(card.personaEngravings, normalizedCharacter),
       }));
       const normalizedRemovedCards = new Map(
@@ -181,8 +201,9 @@ export const useDeckBuilderStore = create<DeckBuilderStore>((set) => ({
             ? entry
             : {
                 ...entry,
-                personaEngravings: normalizePersonaEngravings(entry.personaEngravings, normalizedCharacter),
-              },
+                  selectedSeasonStatuses: entry.selectedSeasonStatuses,
+                  personaEngravings: normalizePersonaEngravings(entry.personaEngravings, normalizedCharacter),
+                },
         ])
       );
       const normalizedCopiedCards = new Map(
@@ -192,8 +213,9 @@ export const useDeckBuilderStore = create<DeckBuilderStore>((set) => ({
             ? entry
             : {
                 ...entry,
-                personaEngravings: normalizePersonaEngravings(entry.personaEngravings, normalizedCharacter),
-              },
+                  selectedSeasonStatuses: entry.selectedSeasonStatuses,
+                  personaEngravings: normalizePersonaEngravings(entry.personaEngravings, normalizedCharacter),
+                },
         ])
       );
       const normalizedConvertedCards = new Map(
@@ -203,8 +225,9 @@ export const useDeckBuilderStore = create<DeckBuilderStore>((set) => ({
             ? entry
             : {
                 ...entry,
-                personaEngravings: normalizePersonaEngravings(entry.personaEngravings, normalizedCharacter),
-              },
+                  selectedSeasonStatuses: entry.selectedSeasonStatuses,
+                  personaEngravings: normalizePersonaEngravings(entry.personaEngravings, normalizedCharacter),
+                },
         ])
       );
 
@@ -286,6 +309,7 @@ export const useDeckBuilderStore = create<DeckBuilderStore>((set) => ({
           selectedHiramekiLevel: cardToRemove.selectedHiramekiLevel,
           selectedHiddenHiramekiId: cardToRemove.selectedHiddenHiramekiId,
           selectedSeasonLevel: cardToRemove.selectedSeasonLevel,
+          selectedSeasonStatuses: cardToRemove.selectedSeasonStatuses,
           personaEngravings: normalizePersonaEngravings(cardToRemove.personaEngravings, state.deck.character),
           godHiramekiType: cardToRemove.godHiramekiType,
           godHiramekiEffectId: cardToRemove.godHiramekiEffectId,
@@ -311,7 +335,7 @@ export const useDeckBuilderStore = create<DeckBuilderStore>((set) => ({
       if (!state.deck) return {};
       const normalizedCard: DeckCard = {
         ...card,
-        selectedSeasonLevel: isSeason4Card(card) ? (card.selectedSeasonLevel ?? 1) : undefined,
+        ...normalizeSeason4CardState(card),
         personaEngravings: normalizePersonaEngravings(card.personaEngravings, state.deck.character),
       };
       // 変換済みカード（変換先）がデッキに存在する場合は除外
@@ -486,9 +510,39 @@ export const useDeckBuilderStore = create<DeckBuilderStore>((set) => ({
       return {
         deck: {
           ...state.deck,
-          cards: state.deck.cards.map((card) =>
-            card.deckId === deckId && isSeason4Card(card) ? { ...card, selectedSeasonLevel: level } : card
-          ),
+          cards: state.deck.cards.map((card) => {
+            if (card.deckId !== deckId || !isSeason4Card(card)) {
+              return card;
+            }
+            const normalized = normalizeSeason4CardState({
+              ...card,
+              selectedSeasonLevel: level,
+            });
+            return {
+              ...card,
+              ...normalized,
+            };
+          }),
+        },
+      };
+    });
+  },
+  updateCardSeasonStatuses: (deckId, statuses) => {
+    set((state) => {
+      if (!state.deck) return {};
+      return {
+        deck: {
+          ...state.deck,
+          cards: state.deck.cards.map((card) => {
+            if (card.deckId !== deckId || !isSeason4Card(card)) {
+              return card;
+            }
+            const fallback = getSeason4BaseStatus(card);
+            return {
+              ...card,
+              selectedSeasonStatuses: normalizeSeason4SelectedStatuses(statuses, fallback),
+            };
+          }),
         },
       };
     });
@@ -551,6 +605,12 @@ export const useDeckBuilderStore = create<DeckBuilderStore>((set) => ({
               godHiramekiEffectId: snapshot?.godHiramekiEffectId ?? null,
               selectedHiddenHiramekiId: snapshot?.selectedHiddenHiramekiId ?? null,
               selectedSeasonLevel: snapshot?.selectedSeasonLevel,
+              selectedSeasonStatuses: snapshot?.selectedSeasonStatuses,
+              ...normalizeSeason4CardState({
+                ...originalCard,
+                selectedSeasonLevel: snapshot?.selectedSeasonLevel,
+                selectedSeasonStatuses: snapshot?.selectedSeasonStatuses,
+              }),
               personaEngravings: normalizePersonaEngravings(snapshot?.personaEngravings, deckCharacter),
               isCopied: snapshot?.isCopied,
               copiedFromCardId: snapshot?.copiedFromCardId,
@@ -649,6 +709,7 @@ export const useDeckBuilderStore = create<DeckBuilderStore>((set) => ({
         selectedHiramekiLevel: card.selectedHiramekiLevel,
         selectedHiddenHiramekiId: card.selectedHiddenHiramekiId,
         selectedSeasonLevel: card.selectedSeasonLevel,
+        selectedSeasonStatuses: card.selectedSeasonStatuses,
         personaEngravings: normalizePersonaEngravings(card.personaEngravings, deckCharacter),
         godHiramekiType: card.godHiramekiType,
         godHiramekiEffectId: card.godHiramekiEffectId,
@@ -699,7 +760,12 @@ export const useDeckBuilderStore = create<DeckBuilderStore>((set) => ({
           godHiramekiType: null,
           godHiramekiEffectId: null,
           selectedHiddenHiramekiId: null,
-          selectedSeasonLevel: isSeason4Card(target) ? 1 : undefined,
+          ...normalizeSeason4CardState({
+            ...target,
+            id: target.id,
+            selectedSeasonLevel: 1,
+            selectedSeasonStatuses: undefined,
+          }),
           personaEngravings: [],
         };
         newCards[cardIndex] = convertedCard;
@@ -715,6 +781,7 @@ export const useDeckBuilderStore = create<DeckBuilderStore>((set) => ({
         selectedHiramekiLevel: cardToConvert.selectedHiramekiLevel,
         selectedHiddenHiramekiId: cardToConvert.selectedHiddenHiramekiId,
         selectedSeasonLevel: cardToConvert.selectedSeasonLevel,
+        selectedSeasonStatuses: cardToConvert.selectedSeasonStatuses,
         personaEngravings: normalizePersonaEngravings(cardToConvert.personaEngravings, deckCharacter),
         godHiramekiType: cardToConvert.godHiramekiType,
         godHiramekiEffectId: cardToConvert.godHiramekiEffectId,

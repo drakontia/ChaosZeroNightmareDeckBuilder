@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest';
 import { encodeDeckShare, decodeDeckShare } from '@/lib/deck-share';
-import { Deck, CardType, CardCategory, GodType, EquipmentType } from '@/types';
+import { Deck, CardStatus, CardType, CardCategory, GodType, EquipmentType } from '@/types';
 
 describe('deck-share', () => {
   let mockDeck: Deck;
@@ -258,6 +258,27 @@ describe('deck-share', () => {
       const decoded = decodeDeckShare(encoded);
 
       expect(decoded!.cards[0].selectedHiddenHiramekiId).toBe('hidden_hirameki_cost_minus_1');
+    });
+
+    it('should preserve season4 level and selected statuses through round trip', () => {
+      mockDeck.cards[0] = {
+        ...mockDeck.cards[0],
+        id: 'traitors_execution',
+        type: CardType.FORBIDDEN,
+        statuses: [CardStatus.CONTROL],
+        selectedSeasonLevel: 3,
+        selectedSeasonStatuses: [CardStatus.CONTROL, CardStatus.SURVIVAL, CardStatus.SURVIVAL],
+      };
+
+      const encoded = encodeDeckShare(mockDeck);
+      const decoded = decodeDeckShare(encoded);
+
+      expect(decoded!.cards[0].selectedSeasonLevel).toBe(3);
+      expect(decoded!.cards[0].selectedSeasonStatuses).toEqual([
+        CardStatus.CONTROL,
+        CardStatus.SURVIVAL,
+        CardStatus.SURVIVAL,
+      ]);
     });
 
     it('should default missing persona engraving fields from legacy payloads', () => {

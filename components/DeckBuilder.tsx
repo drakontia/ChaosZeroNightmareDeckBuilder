@@ -42,6 +42,7 @@ export function DeckBuilder({ shareId }: DeckBuilderProps) {
     setCardGodHiramekiEffect: state.setCardGodHiramekiEffect,
     setCardHiddenHirameki: state.setCardHiddenHirameki,
     updateCardSeasonLevel: state.updateCardSeasonLevel,
+    updateCardSeasonStatuses: state.updateCardSeasonStatuses,
     setCardPersonaEngravings: state.setCardPersonaEngravings,
     reset: state.reset,
     undoCard: state.undoCard,
@@ -185,6 +186,7 @@ export function DeckBuilder({ shareId }: DeckBuilderProps) {
             onSetHiddenHirameki={store.setCardHiddenHirameki}
             onSetPersonaEngravings={store.setCardPersonaEngravings}
             onUpdateSeasonLevel={store.updateCardSeasonLevel}
+            onUpdateSeasonStatuses={store.updateCardSeasonStatuses}
           />
         </main>
         <LoadDeckDialog

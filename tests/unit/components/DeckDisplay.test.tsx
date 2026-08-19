@@ -57,7 +57,11 @@ describe('DeckDisplay - Copied Card Feature', () => {
     status: {
       unique: 'Unique',
       copied: 'Copied',
-      exhaust: 'Exhaust'
+      exhaust: 'Exhaust',
+      control: 'Control',
+      inquiry: 'Inquiry',
+      claim: 'Claim',
+      survival: 'Survival',
     },
     cards: {
       'test-card': {
@@ -112,6 +116,7 @@ describe('DeckDisplay - Copied Card Feature', () => {
     onSetHiddenHirameki: vi.fn(),
     onSetPersonaEngravings: vi.fn(),
     onUpdateSeasonLevel: vi.fn(),
+    onUpdateSeasonStatuses: vi.fn(),
   };
 
   beforeEach(() => {
