@@ -191,8 +191,8 @@ test.describe('Deck Builder', () => {
     const monsterSection = page.getByRole('heading', { name: 'モンスターカード' }).locator('..');
     await monsterSection.getByText('恥ずかしがり屋の庭師', { exact: true }).first().click({ timeout: 10_000 });
 
-    await openAccordion(page, 'シーズンカード');
-    const forbiddenSection = page.getByRole('heading', { name: 'シーズンカード' }).locator('..');
+    await openAccordion(page, 'シーズンカード 1');
+    const forbiddenSection = page.getByRole('heading', { name: 'シーズンカード 1' }).locator('..');
     await forbiddenSection.getByText('禁じられたアルゴリズム', { exact: true }).first().click({ timeout: 10_000 });
 
     // Verify deck total now equals 8 (4 start + 4 added)

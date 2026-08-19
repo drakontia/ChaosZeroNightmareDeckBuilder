@@ -44,6 +44,10 @@ describe('getOrganizedCardImagePath', () => {
     expect(
       getOrganizedCardImagePath('traitors_execution', CardType.FORBIDDEN, '/images/cards/traitors_execution.png')
     ).toBe('/images/cards/season4/traitors_execution.png');
+
+    expect(
+      getOrganizedCardImagePath('marauders_charge', CardType.FORBIDDEN, '/images/cards/marauders_charge.png')
+    ).toBe('/images/cards/season4/marauders_charge.png');
   });
 
   it('leaves non-card public assets untouched', () => {

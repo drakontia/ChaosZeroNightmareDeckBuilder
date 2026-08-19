@@ -21,6 +21,16 @@ export const SEASON_4_CARD_IDS = new Set([
   "feralization",
   "final_struggle",
   "harrowing_reign",
+  "marauders_charge",
+  "barrier_utilization",
+  "horde_eradication",
+  "essence_tracking",
+  "refracted_insight",
+  "inner_corruption",
+  "hand_enthralled_by_light",
+  "instinct_resonance",
+  "jury_rigged_powder_keg",
+  "simulacrums_echo",
 ]);
 
 export const isSeason4CardId = (cardId: string): boolean => SEASON_4_CARD_IDS.has(cardId);

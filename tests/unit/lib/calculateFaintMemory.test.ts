@@ -148,6 +148,30 @@ describe('calculateFaintMemory', () => {
     expect(calculateFaintMemory(baseDeck)).toBe(0);
   });
 
+  it('should NOT add points for newly added season4 cards in deck', () => {
+    const variation: HiramekiVariation = {
+      level: 0,
+      cost: 0,
+      description: ''
+    };
+
+    baseDeck.cards.push({
+      deckId: 'season4-new-1',
+      id: 'marauders_charge',
+      name: '強奪者の進撃',
+      type: CardType.FORBIDDEN,
+      category: CardCategory.ATTACK,
+      statuses: [],
+      selectedHiramekiLevel: 0,
+      godHiramekiType: null,
+      godHiramekiEffectId: null,
+      selectedHiddenHiramekiId: null,
+      isBasicCard: false,
+      hiramekiVariations: [variation]
+    });
+    expect(calculateFaintMemory(baseDeck)).toBe(0);
+  });
+
   it('should NOT add forbidden snapshot points for removed season4 desire cards', () => {
     baseDeck.removedCards = new Map([
       ['traitors_execution', { count: 1, type: CardType.FORBIDDEN, selectedHiramekiLevel: 0 }]
