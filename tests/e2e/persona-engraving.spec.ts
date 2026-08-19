@@ -12,11 +12,12 @@ const getDeckCardContainerByName = (page: Page, cardName: string) => {
 };
 
 const addPersonaCard = async (page: Page) => {
-  await page.getByRole('button', { name: 'シーズンカード' }).click();
-  const forbiddenSection = page.getByRole('heading', { name: 'シーズンカード' }).locator('..');
+  await page.getByRole('button', { name: 'シーズンカード 3' }).click();
+  const forbiddenSection = page.getByRole('heading', { name: 'シーズンカード 3' }).locator('..');
   await forbiddenSection.getByTitle('ペルソナ').first().click({ timeout: 10_000 });
+
   // アコーディオンを閉じて「ペルソナ」テキストの重複を防ぐ
-  await page.getByRole('button', { name: 'シーズンカード' }).click();
+  await page.getByRole('button', { name: 'シーズンカード 3' }).click();
   await page.waitForTimeout(300);
 };
 
@@ -129,8 +130,8 @@ test.describe('Persona Card Engraving', () => {
   });
 
   test('non-persona season cards do not show 刻印 button', async ({ page }) => {
-    await page.getByRole('button', { name: 'シーズンカード' }).click();
-    const forbiddenSection = page.getByRole('heading', { name: 'シーズンカード' }).locator('..');
+    await page.getByRole('button', { name: 'シーズンカード 1' }).click();
+    const forbiddenSection = page.getByRole('heading', { name: 'シーズンカード 1' }).locator('..');
     await forbiddenSection.getByText('禁じられたアルゴリズム', { exact: true }).first().click({ timeout: 10_000 });
 
     const deckCard = getDeckCardContainerByName(page, '禁じられたアルゴリズム');
