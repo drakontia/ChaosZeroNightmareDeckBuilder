@@ -2771,6 +2771,66 @@
       },
       "name": "巣の心臓"
     },
+    "marauders_charge": {
+      "descriptions": {
+        "0": "ダメージ120%\n連続：ヒット数1回追加"
+      },
+      "name": "強奪者の進撃"
+    },
+    "barrier_utilization": {
+      "descriptions": {
+        "0": "シールド120%\n1ターンの間、攻撃を受けると、攻撃者に灼熱2(各ターン2回、重複不可)"
+      },
+      "name": "防壁活用"
+    },
+    "horde_eradication": {
+      "descriptions": {
+        "0": "敵全体にダメージ200%\n持続ダメージ効果状態の対象にダメージ量+50%"
+      },
+      "name": "群集掃討"
+    },
+    "essence_tracking": {
+      "descriptions": {
+        "0": "ランダムな攻撃カードドロー1\nそのカードは1ターンの間、ダメージ量+50%"
+      },
+      "name": "エッセンス追跡"
+    },
+    "refracted_insight": {
+      "descriptions": {
+        "0": "ダメージ120%\n脆弱1"
+      },
+      "name": "屈折した洞察"
+    },
+    "inner_corruption": {
+      "descriptions": {
+        "0": "敵を倒したとき、ランダムな敵に苦痛、灼熱のうち、ランダム効果2個付与\n(各ターン2回)"
+      },
+      "name": "侵食された内面"
+    },
+    "hand_enthralled_by_light": {
+      "descriptions": {
+        "0": "士気1\n敵全体に脆弱2"
+      },
+      "name": "光に魅せられた手"
+    },
+    "instinct_resonance": {
+      "descriptions": {
+        "0": "能力で持続ダメージ効果付与時、ランダムな敵に固定ダメージ80% × 4\n(各ターン1回、重複不可)"
+      },
+      "name": "本能の共鳴"
+    },
+    "jury_rigged_powder_keg": {
+      "descriptions": {
+        "0": "ダメージ50% × 1～12\nランダムな敵に灼熱3"
+      },
+      "name": "間に合わせの火薬樽"
+    },
+    "simulacrums_echo": {
+      "descriptions": {
+        "0": "弱体化2\n対象が行動前の場合、行動カウント2減少、弱体化1追加"
+      },
+      "name": "模倣体のこだま"
+    },
     "tressa_hirameki_1": {
       "descriptions": {
         "0": "1턴 동안 공격 카드 사용 시 대상에게 고통을 1 부여합니다.",

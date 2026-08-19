@@ -2745,6 +2745,66 @@
         "0": "Beating 1\nBeating 1 at start of turn (up to 4 duplicates)"
       }
     },
+    "marauders_charge": {
+      "name": "Marauder's Charge",
+      "descriptions": {
+        "0": "120% DMG\nCombo: +1 hit"
+      }
+    },
+    "barrier_utilization": {
+      "name": "Barrier Utilization",
+      "descriptions": {
+        "0": "Shield 120%\nFor 1 turn, when attacked, inflict Burn 2 on the attacker (max 2 times per turn, non-stackable)"
+      }
+    },
+    "horde_eradication": {
+      "name": "Horde Eradication",
+      "descriptions": {
+        "0": "200% DMG to all enemies\nDamage +50% against targets affected by damage-over-time effects"
+      }
+    },
+    "essence_tracking": {
+      "name": "Essence Tracking",
+      "descriptions": {
+        "0": "Draw 1 random attack card\nThat card gains +50% damage for 1 turn"
+      }
+    },
+    "refracted_insight": {
+      "name": "Refracted Insight",
+      "descriptions": {
+        "0": "120% DMG\nFragile 1"
+      }
+    },
+    "inner_corruption": {
+      "name": "Inner Corruption",
+      "descriptions": {
+        "0": "On defeating an enemy, apply 2 random effects from Agony and Burn to a random enemy\n(Max 2 times per turn)"
+      }
+    },
+    "hand_enthralled_by_light": {
+      "name": "Hand Enthralled by Light",
+      "descriptions": {
+        "0": "Morale 1\nFragile 2 to all enemies"
+      }
+    },
+    "instinct_resonance": {
+      "name": "Instinct Resonance",
+      "descriptions": {
+        "0": "When your abilities inflict a damage-over-time effect, deal 80% fixed damage × 4 to a random enemy\n(Max 1 time per turn, non-stackable)"
+      }
+    },
+    "jury_rigged_powder_keg": {
+      "name": "Jury-Rigged Powder Keg",
+      "descriptions": {
+        "0": "50% DMG × 1 to 12\nBurn 3 to a random enemy"
+      }
+    },
+    "simulacrums_echo": {
+      "name": "Simulacrum's Echo",
+      "descriptions": {
+        "0": "Enervate 2\nIf the target has not acted yet, reduce action count by 2 and apply Enervate 1"
+      }
+    },
     "monster_01": {
       "name": "Bashful Gardener",
       "descriptions": {
