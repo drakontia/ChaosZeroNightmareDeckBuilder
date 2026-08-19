@@ -44,10 +44,12 @@ describe("Arabella character", () => {
     expect(card?.hiramekiVariations).toHaveLength(6);
   });
 
-  it("observation game is UNIQUE upgrade card", () => {
+  it("observation game is UNIQUE skill card and only Lv5 is upgrade", () => {
     const card = CHARACTER_CARDS.find((c) => c.id === "arabella_hirameki_1");
-    expect(card?.category).toBe(CardCategory.UPGRADE);
+    expect(card?.category).toBe(CardCategory.SKILL);
     expect(card?.statuses).toContain(CardStatus.UNIQUE);
+    const lv5 = card?.hiramekiVariations.find((v) => v.level === 5);
+    expect(lv5?.category).toBe(CardCategory.UPGRADE);
   });
 
   it("aesthetics of dismantling is UNIQUE and Lv0 only", () => {

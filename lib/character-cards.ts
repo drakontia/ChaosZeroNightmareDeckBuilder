@@ -764,7 +764,7 @@ export const CHARACTER_CARDS: CznCard[] = ([
     id: "arabella_hirameki_1",
     name: "観察遊戯",
     type: CardType.CHARACTER,
-    category: CardCategory.UPGRADE,
+    category: CardCategory.SKILL,
     statuses: [CardStatus.UNIQUE],
     imgUrl: "/images/cards/arabella_hirameki_1.png",
     hiramekiVariations: [
@@ -773,7 +773,7 @@ export const CHARACTER_CARDS: CznCard[] = ([
       { level: 2, cost: 0, description: "亀裂拡張1\n対象が所持中のデバフ種類数に応じて1ターンの間、自分のダメージ量+20%(最大120%)" },
       { level: 3, cost: 1, description: "亀裂拡張1\n敵全体に亀裂2、脆弱2\n1ターンの間、自分の攻撃カードダメージ量50%増加", statuses: [CardStatus.UNIQUE, CardStatus.LEAD] },
       { level: 4, cost: 0, description: "亀裂拡張1\n1ターンの間、自分のダメージ量+80%\n味方が敵を倒した時、対象の亀裂をランダムな敵に転移" },
-      { level: 5, cost: 0, description: "ターン開始時、HPが最も高い敵に亀裂拡張1、亀裂6", statuses: [CardStatus.UNIQUE, CardStatus.PREMIERE] }
+      { level: 5, cost: 0, category: CardCategory.UPGRADE, description: "ターン開始時、HPが最も高い敵に亀裂拡張1、亀裂6", statuses: [CardStatus.UNIQUE, CardStatus.PREMIERE] }
     ]
   },
   {
