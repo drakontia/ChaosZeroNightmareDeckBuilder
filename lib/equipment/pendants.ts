@@ -675,4 +675,61 @@ export const PENDANTS: Equipment[] = [
     description: "equipment.pendant.an_eye_plucked_from_a_mural.description",
     imgUrl: "/images/equipment/pendants/an_eye_plucked_from_a_mural.png"
   },
+  // Season 4
+  {
+    id: "raiders_scanning_gear",
+    name: "equipment.pendant.raiders_scanning_gear.name",
+    type: EquipmentType.PENDANT,
+    rarity: "equipment.rarity.rare",
+    description: "equipment.pendant.raiders_scanning_gear.description",
+    imgUrl: "/images/equipment/pendants/raiders_scanning_gear.png"
+  },
+  {
+    id: "final_entry",
+    name: "equipment.pendant.final_entry.name",
+    type: EquipmentType.PENDANT,
+    rarity: "equipment.rarity.rare",
+    description: "equipment.pendant.final_entry.description",
+    imgUrl: "/images/equipment/pendants/final_entry.png"
+  },
+  {
+    id: "essence_fragmented_necklace",
+    name: "equipment.pendant.essence_fragmented_necklace.name",
+    type: EquipmentType.PENDANT,
+    rarity: "equipment.rarity.legendary",
+    description: "equipment.pendant.essence_fragmented_necklace.description",
+    imgUrl: "/images/equipment/pendants/essence_fragmented_necklace.png"
+  },
+  {
+    id: "kaleidoscope_fragment",
+    name: "equipment.pendant.kaleidoscope_fragment.name",
+    type: EquipmentType.PENDANT,
+    rarity: "equipment.rarity.legendary",
+    description: "equipment.pendant.kaleidoscope_fragment.description",
+    imgUrl: "/images/equipment/pendants/kaleidoscope_fragment.png"
+  },
+  {
+    id: "closed_circuit_terminal",
+    name: "equipment.pendant.closed_circuit_terminal.name",
+    type: EquipmentType.PENDANT,
+    rarity: "equipment.rarity.legendary",
+    description: "equipment.pendant.closed_circuit_terminal.description",
+    imgUrl: "/images/equipment/pendants/closed_circuit_terminal.png"
+  },
+  {
+    id: "cycle_of_circulation",
+    name: "equipment.pendant.cycle_of_circulation.name",
+    type: EquipmentType.PENDANT,
+    rarity: "equipment.rarity.legendary",
+    description: "equipment.pendant.cycle_of_circulation.description",
+    imgUrl: "/images/equipment/pendants/cycle_of_circulation.png"
+  },
+  {
+    id: "invader_observation_logs",
+    name: "equipment.pendant.invader_observation_logs.name",
+    type: EquipmentType.PENDANT,
+    rarity: "equipment.rarity.legendary",
+    description: "equipment.pendant.invader_observation_logs.description",
+    imgUrl: "/images/equipment/pendants/invader_observation_logs.png"
+  },
 ];
