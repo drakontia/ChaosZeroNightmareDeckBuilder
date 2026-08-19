@@ -2,7 +2,7 @@ import { describe, it, expect, beforeEach } from 'vitest';
 import { act } from '@testing-library/react';
 import { useDeckBuilderStore } from '@/hooks/useDeckBuilderStore';
 import { CHARACTERS } from '@/lib/characters';
-import { CardType, CardCategory, CardStatus, GodType, EquipmentType } from '@/types';
+import { CardType, CardCategory, CardStatus, GodType, EquipmentType, Season4DesireStatus } from '@/types';
 
 function getTestCard() {
   return {
@@ -350,7 +350,7 @@ describe('useDeckBuilderStore', () => {
       type: CardType.FORBIDDEN,
       statuses: [CardStatus.CONTROL],
       selectedSeasonLevel: 1 as const,
-      selectedSeasonStatuses: [CardStatus.CONTROL, CardStatus.INQUIRY, CardStatus.CLAIM] as CardStatus[],
+      selectedSeasonStatuses: [CardStatus.CONTROL, CardStatus.INQUIRY, CardStatus.CLAIM] as Season4DesireStatus[],
       hiramekiVariations: [{ level: 0, cost: 2, description: 'Lv1' }],
       seasonLevelVariations: [
         { level: 1 as const, cost: 2, description: 'Lv1' },
