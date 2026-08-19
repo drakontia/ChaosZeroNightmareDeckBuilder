@@ -4,16 +4,22 @@ import { CardSelector } from "@/components/CardSelector";
 import type { Character, CznCard, Deck, DeckCard } from "@/types";
 import { CardType } from "@/types";
 import { isSeason4CardId } from "@/lib/season4";
+import { getSeason4BaseStatus, normalizeSeason4SelectedStatuses } from "@/lib/season4";
 
-const toDeckCard = (card: CznCard): DeckCard => ({
-  ...card,
-  deckId: `${card.id}_${Date.now()}_${Math.random()}`,
-  selectedHiramekiLevel: 0,
-  godHiramekiType: null,
-  godHiramekiEffectId: null,
-  selectedHiddenHiramekiId: null,
-  selectedSeasonLevel: isSeason4CardId(card.id) ? 1 : undefined,
-});
+const toDeckCard = (card: CznCard): DeckCard => {
+  const isSeason4 = isSeason4CardId(card.id);
+  const baseStatus = getSeason4BaseStatus(card);
+  return {
+    ...card,
+    deckId: `${card.id}_${Date.now()}_${Math.random()}`,
+    selectedHiramekiLevel: 0,
+    godHiramekiType: null,
+    godHiramekiEffectId: null,
+    selectedHiddenHiramekiId: null,
+    selectedSeasonLevel: isSeason4 ? 1 : undefined,
+    selectedSeasonStatuses: isSeason4 ? normalizeSeason4SelectedStatuses(undefined, baseStatus) : undefined,
+  };
+};
 
 interface CardCatalogSectionProps {
   deck: Deck;

@@ -3,7 +3,7 @@ import { GOD_HIRAMEKI_EFFECTS } from "@/lib/god-hirameki";
 import { HIDDEN_HIRAMEKI_EFFECTS } from "@/lib/hidden-hirameki";
 import { getCardById } from "@/lib/card";
 import { getPersonaCardPresentation, PersonaPresentationLocalization } from "@/lib/persona";
-import { isSeason4Card } from "@/lib/season4";
+import { getSeason4BaseStatus, isSeason4Card, normalizeSeason4SelectedStatuses } from "@/lib/season4";
 
 export interface CardInfoLocalization {
   persona?: PersonaPresentationLocalization;
@@ -50,6 +50,11 @@ export function getCardInfo(
 
     cost = seasonVariation.cost;
     description = seasonVariation.description;
+    const normalizedSeasonStatuses = normalizeSeason4SelectedStatuses(
+      card.selectedSeasonStatuses,
+      getSeason4BaseStatus(baseCard)
+    );
+    statuses = normalizedSeasonStatuses.slice(0, selectedSeasonLevel);
   }
 
   // Apply ego level variations

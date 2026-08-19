@@ -4,6 +4,7 @@ import { useTranslations } from 'next-intl';
 
 import { CznCard, CardType, Character, RemovedCardEntry, ConvertedCardEntry, DeckCard } from "@/types";
 import { getCharacterHiramekiCards, getAddableCards, getCardById } from "@/lib/card";
+import { getSeason4BaseStatus, isSeason4CardId, normalizeSeason4SelectedStatuses } from "@/lib/season4";
 import { Card, CardContent } from "./ui/card";
 import { CardFrame } from "./CardFrame";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "./ui/accordion";
@@ -170,18 +171,25 @@ export function CardSelector({ character, onAddCard, onRestoreCard, removedCards
     });
   };
 
-  const createRestoredCard = (card: CznCard, entry?: RemovedCardEntry | ConvertedCardEntry): DeckCard => ({
-    ...card,
-    deckId: `${card.id}_${Date.now()}_${Math.random()}`,
-    selectedHiramekiLevel: entry?.selectedHiramekiLevel ?? 0,
-    godHiramekiType: entry?.godHiramekiType ?? null,
-    godHiramekiEffectId: entry?.godHiramekiEffectId ?? null,
-    selectedHiddenHiramekiId: entry?.selectedHiddenHiramekiId ?? null,
-    selectedSeasonLevel: entry?.selectedSeasonLevel,
-    personaEngravings: entry?.personaEngravings ?? [],
-    isCopied: entry?.isCopied,
-    copiedFromCardId: entry?.copiedFromCardId,
-  });
+  const createRestoredCard = (card: CznCard, entry?: RemovedCardEntry | ConvertedCardEntry): DeckCard => {
+    const isSeason4 = isSeason4CardId(card.id);
+    const baseStatus = getSeason4BaseStatus(card);
+    return {
+      ...card,
+      deckId: `${card.id}_${Date.now()}_${Math.random()}`,
+      selectedHiramekiLevel: entry?.selectedHiramekiLevel ?? 0,
+      godHiramekiType: entry?.godHiramekiType ?? null,
+      godHiramekiEffectId: entry?.godHiramekiEffectId ?? null,
+      selectedHiddenHiramekiId: entry?.selectedHiddenHiramekiId ?? null,
+      selectedSeasonLevel: isSeason4 ? (entry?.selectedSeasonLevel ?? 1) : undefined,
+      selectedSeasonStatuses: isSeason4
+        ? normalizeSeason4SelectedStatuses(entry?.selectedSeasonStatuses, baseStatus)
+        : undefined,
+      personaEngravings: entry?.personaEngravings ?? [],
+      isCopied: entry?.isCopied,
+      copiedFromCardId: entry?.copiedFromCardId,
+    };
+  };
 
   const renderRemovedTile = (card: CznCard, entry?: RemovedCardEntry) => {
     const translatedName = getCardNameInfo(card).name;

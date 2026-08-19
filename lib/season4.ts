@@ -1,4 +1,4 @@
-import { CznCard } from "@/types";
+import { CardStatus, CznCard, Season4DesireStatus } from "@/types";
 
 export const SEASON_4_CARD_IDS = new Set([
   "traitors_execution",
@@ -26,3 +26,32 @@ export const SEASON_4_CARD_IDS = new Set([
 export const isSeason4CardId = (cardId: string): boolean => SEASON_4_CARD_IDS.has(cardId);
 
 export const isSeason4Card = (card: Pick<CznCard, "id">): boolean => isSeason4CardId(card.id);
+
+export const SEASON4_DESIRE_STATUS_OPTIONS: Season4DesireStatus[] = [
+  CardStatus.CONTROL,
+  CardStatus.INQUIRY,
+  CardStatus.CLAIM,
+  CardStatus.SURVIVAL,
+];
+
+const isSeason4DesireStatus = (status: CardStatus): status is Season4DesireStatus =>
+  SEASON4_DESIRE_STATUS_OPTIONS.includes(status as Season4DesireStatus);
+
+export const getSeason4BaseStatus = (card: Pick<CznCard, "statuses">): Season4DesireStatus => {
+  const first = card.statuses?.[0];
+  if (first && isSeason4DesireStatus(first)) {
+    return first;
+  }
+  return CardStatus.CONTROL;
+};
+
+export const normalizeSeason4SelectedStatuses = (
+  statuses: readonly CardStatus[] | undefined,
+  fallback: Season4DesireStatus
+): [Season4DesireStatus, Season4DesireStatus, Season4DesireStatus] => {
+  const filtered = (statuses ?? []).filter(isSeason4DesireStatus);
+  const first = filtered[0] ?? fallback;
+  const second = filtered[1] ?? first;
+  const third = filtered[2] ?? second;
+  return [first, second, third];
+};
