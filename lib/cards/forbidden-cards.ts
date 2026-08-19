@@ -120,6 +120,126 @@ export const FORBIDDEN_CARDS: CznCard[] = ([
     ]
   },
   {
+    id: "marauders_charge",
+    name: "強奪者の進撃",
+    type: CardType.FORBIDDEN,
+    category: CardCategory.ATTACK,
+    statuses: [],
+    allowedJobs: [JobType.STRIKER, JobType.VANGUARD],
+    imgUrl: "/images/cards/season4/marauders_charge.png",
+    hiramekiVariations: [
+      { level: 0, cost: 1, description: "ダメージ120%\n連続：ヒット数1回追加" }
+    ]
+  },
+  {
+    id: "barrier_utilization",
+    name: "防壁活用",
+    type: CardType.FORBIDDEN,
+    category: CardCategory.SKILL,
+    statuses: [],
+    allowedJobs: [JobType.STRIKER, JobType.VANGUARD],
+    imgUrl: "/images/cards/season4/barrier_utilization.png",
+    hiramekiVariations: [
+      { level: 0, cost: 1, description: "シールド120%\n1ターンの間、攻撃を受けると、攻撃者に灼熱2(各ターン2回、重複不可)" }
+    ]
+  },
+  {
+    id: "horde_eradication",
+    name: "群集掃討",
+    type: CardType.FORBIDDEN,
+    category: CardCategory.ATTACK,
+    statuses: [],
+    allowedJobs: [JobType.RANGER, JobType.HUNTER],
+    imgUrl: "/images/cards/season4/horde_eradication.png",
+    hiramekiVariations: [
+      { level: 0, cost: 2, description: "敵全体にダメージ200%\n持続ダメージ効果状態の対象にダメージ量+50%" }
+    ]
+  },
+  {
+    id: "essence_tracking",
+    name: "エッセンス追跡",
+    type: CardType.FORBIDDEN,
+    category: CardCategory.SKILL,
+    statuses: [],
+    allowedJobs: [JobType.RANGER, JobType.HUNTER],
+    imgUrl: "/images/cards/season4/essence_tracking.png",
+    hiramekiVariations: [
+      { level: 0, cost: 1, description: "ランダムな攻撃カードドロー1\nそのカードは1ターンの間、ダメージ量+50%" }
+    ]
+  },
+  {
+    id: "refracted_insight",
+    name: "屈折した洞察",
+    type: CardType.FORBIDDEN,
+    category: CardCategory.ATTACK,
+    statuses: [],
+    allowedJobs: [JobType.CONTROLLER, JobType.PSIONIC],
+    imgUrl: "/images/cards/season4/refracted_insight.png",
+    hiramekiVariations: [
+      { level: 0, cost: 1, description: "ダメージ120%\n脆弱1" }
+    ]
+  },
+  {
+    id: "inner_corruption",
+    name: "侵食された内面",
+    type: CardType.FORBIDDEN,
+    category: CardCategory.UPGRADE,
+    statuses: [CardStatus.LEAD],
+    allowedJobs: [JobType.CONTROLLER, JobType.PSIONIC],
+    imgUrl: "/images/cards/season4/inner_corruption.png",
+    hiramekiVariations: [
+      { level: 0, cost: 1, description: "敵を倒したとき、ランダムな敵に苦痛、灼熱のうち、ランダム効果2個付与\n(各ターン2回)" }
+    ]
+  },
+  {
+    id: "hand_enthralled_by_light",
+    name: "光に魅せられた手",
+    type: CardType.FORBIDDEN,
+    category: CardCategory.SKILL,
+    statuses: [CardStatus.EXHAUST],
+    allowedJobs: "all",
+    imgUrl: "/images/cards/season4/hand_enthralled_by_light.png",
+    hiramekiVariations: [
+      { level: 0, cost: 1, description: "士気1\n敵全体に脆弱2" }
+    ]
+  },
+  {
+    id: "instinct_resonance",
+    name: "本能の共鳴",
+    type: CardType.FORBIDDEN,
+    category: CardCategory.UPGRADE,
+    statuses: [CardStatus.INITIATION],
+    allowedJobs: "all",
+    imgUrl: "/images/cards/season4/instinct_resonance.png",
+    hiramekiVariations: [
+      { level: 0, cost: 2, description: "能力で持続ダメージ効果付与時、ランダムな敵に固定ダメージ80% × 4\n(各ターン1回、重複不可)" }
+    ]
+  },
+  {
+    id: "jury_rigged_powder_keg",
+    name: "間に合わせの火薬樽",
+    type: CardType.FORBIDDEN,
+    category: CardCategory.ATTACK,
+    statuses: [CardStatus.EXHAUST],
+    allowedJobs: "all",
+    imgUrl: "/images/cards/season4/jury_rigged_powder_keg.png",
+    hiramekiVariations: [
+      { level: 0, cost: 1, description: "ダメージ50% × 1～12\nランダムな敵に灼熱3" }
+    ]
+  },
+  {
+    id: "simulacrums_echo",
+    name: "模倣体のこだま",
+    type: CardType.FORBIDDEN,
+    category: CardCategory.SKILL,
+    statuses: [],
+    allowedJobs: "all",
+    imgUrl: "/images/cards/season4/simulacrums_echo.png",
+    hiramekiVariations: [
+      { level: 0, cost: 1, description: "弱体化2\n対象が行動前の場合、行動カウント2減少、弱体化1追加" }
+    ]
+  },
+  {
     id: "forbidden_card_1",
     name: "禁忌:永生の飢え", // Fallback
     type: CardType.FORBIDDEN,
