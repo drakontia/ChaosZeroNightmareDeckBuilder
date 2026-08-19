@@ -707,6 +707,123 @@ export const CHARACTER_CARDS: CznCard[] = ([
       { level: 0, cost: 2, description: "消滅弾丸カードを2枚ドロー\nダメージ300%\n手札の異なる弾丸カード数に応じてダメージ量30%増加" }
     ]
   },
+  // Arabella's starting cards
+  {
+    id: "arabella_starting_1",
+    name: "斜め斬り",
+    type: CardType.CHARACTER,
+    category: CardCategory.ATTACK,
+    statuses: [],
+    isBasicCard: true,
+    isStartingCard: true,
+    imgUrl: "/images/cards/arabella_starting_1.png",
+    hiramekiVariations: [{ level: 0, cost: 1, description: "敵全体にダメージ60%" }]
+  },
+  {
+    id: "arabella_starting_2",
+    name: "斜め斬り",
+    type: CardType.CHARACTER,
+    category: CardCategory.ATTACK,
+    statuses: [],
+    isBasicCard: true,
+    isStartingCard: true,
+    imgUrl: "/images/cards/arabella_starting_1.png",
+    hiramekiVariations: [{ level: 0, cost: 1, description: "敵全体にダメージ60%" }]
+  },
+  {
+    id: "arabella_starting_3",
+    name: "真紅の領域",
+    type: CardType.CHARACTER,
+    category: CardCategory.SKILL,
+    statuses: [],
+    isBasicCard: true,
+    isStartingCard: true,
+    imgUrl: "/images/cards/arabella_starting_3.png",
+    hiramekiVariations: [{ level: 0, cost: 1, description: "シールド100%" }]
+  },
+  {
+    id: "arabella_starting_4",
+    name: "悲鳴を上げなさい",
+    type: CardType.CHARACTER,
+    category: CardCategory.ATTACK,
+    statuses: [CardStatus.LEAD],
+    isBasicCard: false,
+    isStartingCard: true,
+    imgUrl: "/images/cards/arabella_starting_4.png",
+    hiramekiVariations: [
+      { level: 0, cost: 1, description: "敵全体にダメージ40%、亀裂2\nHPが最も高い敵に亀裂4" },
+      { level: 1, cost: 1, description: "敵全体にダメージ60%、亀裂3\nHPが最も高い敵に亀裂6" },
+      { level: 2, cost: 1, description: "敵全体にダメージ60%、亀裂3\n1ターンの間、自分の攻撃カードダメージ量50%増加" },
+      { level: 3, cost: 1, description: "敵全体にダメージ60%、亀裂2\n対象が所持中のデバフ種類数に応じて亀裂1(最大5)" },
+      { level: 4, cost: 1, description: "敵全体にダメージ60%、亀裂3\n自分のカードドロー2" },
+      { level: 5, cost: 1, description: "敵全体にダメージ60%、亀裂2、苦痛4、灼熱2" }
+    ]
+  },
+  // Arabella's hirameki cards
+  {
+    id: "arabella_hirameki_1",
+    name: "観察遊戯",
+    type: CardType.CHARACTER,
+    category: CardCategory.UPGRADE,
+    statuses: [CardStatus.UNIQUE],
+    imgUrl: "/images/cards/arabella_hirameki_1.png",
+    hiramekiVariations: [
+      { level: 0, cost: 0, description: "亀裂拡張1\n敵数に応じて1ターンの間、自分のダメージ量+20%" },
+      { level: 1, cost: 0, description: "亀裂拡張1\n敵数に応じて1ターンの間、自分のダメージ量+30%" },
+      { level: 2, cost: 0, description: "亀裂拡張1\n対象が所持中のデバフ種類数に応じて1ターンの間、自分のダメージ量+20%(最大120%)" },
+      { level: 3, cost: 1, description: "亀裂拡張1\n敵全体に亀裂2、脆弱2\n1ターンの間、自分の攻撃カードダメージ量50%増加", statuses: [CardStatus.UNIQUE, CardStatus.LEAD] },
+      { level: 4, cost: 0, description: "亀裂拡張1\n1ターンの間、自分のダメージ量+80%\n味方が敵を倒した時、対象の亀裂をランダムな敵に転移" },
+      { level: 5, cost: 0, description: "ターン開始時、HPが最も高い敵に亀裂拡張1、亀裂6", statuses: [CardStatus.UNIQUE, CardStatus.PREMIERE] }
+    ]
+  },
+  {
+    id: "arabella_hirameki_2",
+    name: "虚ろな宣告",
+    type: CardType.CHARACTER,
+    category: CardCategory.ATTACK,
+    statuses: [],
+    imgUrl: "/images/cards/arabella_hirameki_2.png",
+    hiramekiVariations: [
+      { level: 0, cost: 1, description: "敵全体にダメージ40%、亀裂2\n自分の亀裂発動" },
+      { level: 1, cost: 1, description: "敵全体にダメージ60%、亀裂3\n亀裂拡張：味方の亀裂発動", statuses: [CardStatus.UNIQUE] },
+      { level: 2, cost: 1, description: "敵全体にダメージ60%、亀裂3\n自分の亀裂発動\n亀裂拡張：自分の亀裂発動" },
+      { level: 3, cost: 2, description: "敵全体にダメージ360%、亀裂2\n撃破：敵全体に自分の亀裂発動(最大1回)(各ターン1回)", statuses: [CardStatus.LEAD] },
+      { level: 4, cost: 1, description: "敵全体にダメージ60%、亀裂2、苦痛4\n亀裂拡張：味方の苦痛発動" },
+      { level: 5, cost: 1, description: "敵全体にダメージ100%\n味方の亀裂排除\nその数x2の分、亀裂拡張を対象に付与" }
+    ]
+  },
+  {
+    id: "arabella_hirameki_3",
+    name: "嗜虐の束縛",
+    type: CardType.CHARACTER,
+    category: CardCategory.ATTACK,
+    statuses: [],
+    imgUrl: "/images/cards/arabella_hirameki_3.png",
+    hiramekiVariations: [
+      { level: 0, cost: 1, description: "ダメージ60%、自分の亀裂2回発動\n対象が所持中のデバフ種類数に応じてヒット数1回追加(最大3回)" },
+      { level: 1, cost: 1, description: "ダメージ100%\n対象が所持中のデバフ種類数に応じてヒット数1回追加(最大3回)\n亀裂拡張：味方の亀裂発動", statuses: [CardStatus.UNIQUE] },
+      { level: 2, cost: 1, description: "ダメージ60%x4、自分の亀裂2回発動\n亀裂拡張：自分のカードドロー1" },
+      { level: 3, cost: 1, description: "ダメージ240%、自分の亀裂発動\n撃破：このカードを手札に移動(各ターン2回)" },
+      { level: 4, cost: 2, description: "ランダムな敵にダメージ40%x4、ヒットごとに亀裂2\nこのカードのコストが減少したなら、ヒット数1回追加", statuses: [CardStatus.LEAD] },
+      { level: 5, cost: 1, description: "ダメージ60%、自分の亀裂2回発動\nこのターン自分の亀裂発動数に応じてヒット数1回追加(最大5回)" }
+    ]
+  },
+  {
+    id: "arabella_hirameki_4",
+    name: "解体の美学",
+    type: CardType.CHARACTER,
+    category: CardCategory.ATTACK,
+    statuses: [CardStatus.UNIQUE],
+    imgUrl: "/images/cards/arabella_hirameki_4.png",
+    hiramekiVariations: [
+      {
+        level: 0,
+        cost: 1,
+        description: "敵全体にダメージ200%\n対象が所持中のデバフ種類数に応じてダメージ量15%増加(最大120%)\n亀裂拡張：ダメージ効果2倍",
+        statuses: [CardStatus.UNIQUE]
+      }
+    ]
+  },
   {
     id: "rita_starting_1",
     name: "時間加速", // Fallback: See messages/*.json for translations
