@@ -408,6 +408,74 @@
         "0": "アクションポイント1\nドロー1\n次に使用する攻撃カードの最初のヒット\nダメージ量40%増加"
       }
     },
+    "arabella_starting_1": {
+      "name": "Diagonal Slash",
+      "descriptions": {
+        "0": "Damage all enemies 60%"
+      }
+    },
+    "arabella_starting_2": {
+      "name": "Diagonal Slash",
+      "descriptions": {
+        "0": "Damage all enemies 60%"
+      }
+    },
+    "arabella_starting_3": {
+      "name": "Crimson Domain",
+      "descriptions": {
+        "0": "Shield 100%"
+      }
+    },
+    "arabella_starting_4": {
+      "name": "Scream",
+      "descriptions": {
+        "0": "Damage all enemies 40%, Rift 2\nInflict Rift 4 to the enemy with the highest HP",
+        "1": "Damage all enemies 60%, Rift 3\nInflict Rift 6 to the enemy with the highest HP",
+        "2": "Damage all enemies 60%, Rift 3\nIncrease your attack card damage by 50% for 1 turn",
+        "3": "Damage all enemies 60%, Rift 2\nInflict Rift 1 per debuff type on target (max 5)",
+        "4": "Damage all enemies 60%, Rift 3\nDraw 2 cards",
+        "5": "Damage all enemies 60%, Rift 2, Pain 4, Burn 2"
+      }
+    },
+    "arabella_hirameki_1": {
+      "name": "Observation Game",
+      "descriptions": {
+        "0": "Rift Expansion 1\nIncrease your damage by 20% for 1 turn based on enemy count",
+        "1": "Rift Expansion 1\nIncrease your damage by 30% for 1 turn based on enemy count",
+        "2": "Rift Expansion 1\nIncrease your damage by 20% for 1 turn per debuff type on target (max 120%)",
+        "3": "Rift Expansion 1\nInflict Rift 2 and Vulnerable 2 to all enemies\nIncrease your attack card damage by 50% for 1 turn",
+        "4": "Rift Expansion 1\nIncrease your damage by 80% for 1 turn\nWhen an ally defeats an enemy, transfer that target's Rift to a random enemy",
+        "5": "At turn start, inflict Rift Expansion 1 and Rift 6 to the enemy with the highest HP"
+      }
+    },
+    "arabella_hirameki_2": {
+      "name": "Hollow Declaration",
+      "descriptions": {
+        "0": "Damage all enemies 40%, Rift 2\nTrigger your Rift",
+        "1": "Damage all enemies 60%, Rift 3\nRift Expansion: Trigger allies' Rift",
+        "2": "Damage all enemies 60%, Rift 3\nTrigger your Rift\nRift Expansion: Trigger your Rift",
+        "3": "Damage all enemies 360%, Rift 2\nOn kill: trigger your Rift on all enemies (max 1 time, once per turn)",
+        "4": "Damage all enemies 60%, Rift 2, Pain 4\nRift Expansion: Trigger allies' Pain",
+        "5": "Damage all enemies 100%\nRemove allies' Rift\nApply Rift Expansion to target by that count x2"
+      }
+    },
+    "arabella_hirameki_3": {
+      "name": "Sadistic Restraint",
+      "descriptions": {
+        "0": "Damage 60%, trigger your Rift twice\nAdd 1 hit per debuff type on target (max 3)",
+        "1": "Damage 100%\nAdd 1 hit per debuff type on target (max 3)\nRift Expansion: Trigger allies' Rift",
+        "2": "Damage 60% x4, trigger your Rift twice\nRift Expansion: Draw 1 card",
+        "3": "Damage 240%, trigger your Rift\nOn kill: move this card to hand (up to 2 times per turn)",
+        "4": "Deal 40% x4 to random enemies, inflict Rift 2 per hit\nIf this card's cost was reduced, add 1 hit",
+        "5": "Damage 60%, trigger your Rift twice\nAdd 1 hit based on your Rift trigger count this turn (max 5)"
+      }
+    },
+    "arabella_hirameki_4": {
+      "name": "Aesthetics of Dismantling",
+      "descriptions": {
+        "0": "Damage all enemies 200%\nIncrease damage by 15% per debuff type on target (max 120%)\nRift Expansion: Double damage effect"
+      }
+    },
     "narja_starting_1": {
       "name": "NA: Attack Response",
       "descriptions": {

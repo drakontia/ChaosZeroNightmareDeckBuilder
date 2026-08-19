@@ -13,6 +13,12 @@ const selectWeapon = async (page: Page) => {
   await page.getByRole('button', { name: 'ガストロノミコン' }).click();
 };
 
+const selectArabella = async (page: Page) => {
+  await page.getByRole('button', { name: 'キャラクターを選択' }).click();
+  await page.getByRole('button', { name: 'アラベラ', exact: true }).waitFor({ state: 'visible' });
+  await page.getByRole('button', { name: 'アラベラ', exact: true }).click();
+};
+
 const getDeckCardContainerByName = (page: Page, cardName: string) => {
   const nameLocator = page.getByText(cardName, { exact: true }).first();
   return nameLocator.locator('xpath=ancestor::div[.//button[@aria-label="メニュー"]][1]');
@@ -137,5 +143,18 @@ test.describe('Diana Character', () => {
 
     const faintMemoryAfter = await getFaintMemory();
     expect(faintMemoryAfter).toBe(faintMemoryBefore);
+  });
+
+  test('Arabella appears in the character selection list', async ({ page }) => {
+    await page.getByRole('button', { name: 'キャラクターを選択' }).click();
+    await expect(page.getByRole('button', { name: 'アラベラ', exact: true })).toBeVisible();
+  });
+
+  test('selecting Arabella shows her starting and hirameki cards in the deck', async ({ page }) => {
+    await selectArabella(page);
+    await selectWeapon(page);
+
+    await expect(page.getByText('斜め斬り', { exact: true }).first()).toBeVisible();
+    await expect(page.getByText('観察遊戯', { exact: true }).first()).toBeVisible();
   });
 });
