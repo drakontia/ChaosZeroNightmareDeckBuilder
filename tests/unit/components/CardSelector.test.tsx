@@ -72,6 +72,56 @@ const forbiddenCard = {
   hiramekiVariations: [{ level: 0, cost: 3, description: 'Forbidden description', statuses: [] }],
 };
 
+const season1Card = {
+  id: 'forbidden_card_1',
+  name: 'Season 1 Card',
+  type: 'forbidden',
+  category: 'upgrade',
+  statuses: [],
+  imgUrl: '/forbidden_card_1.png',
+  hiramekiVariations: [{ level: 0, cost: 1, description: 'Season 1 description', statuses: [] }],
+};
+
+const season2Card = {
+  id: 'spore_harvester',
+  name: 'Season 2 Card',
+  type: 'forbidden',
+  category: 'skill',
+  statuses: [],
+  imgUrl: '/spore_harvester.png',
+  hiramekiVariations: [{ level: 0, cost: 1, description: 'Season 2 description', statuses: [] }],
+};
+
+const season3Card = {
+  id: 'doctrine_of_binding',
+  name: 'Season 3 Card',
+  type: 'forbidden',
+  category: 'attack',
+  statuses: [],
+  imgUrl: '/doctrine_of_binding.png',
+  hiramekiVariations: [{ level: 0, cost: 1, description: 'Season 3 description', statuses: [] }],
+};
+
+const season4Card = {
+  id: 'traitors_execution',
+  name: 'Season 4 Card',
+  type: 'forbidden',
+  category: 'attack',
+  statuses: [],
+  imgUrl: '/traitors_execution.png',
+  hiramekiVariations: [{ level: 0, cost: 1, description: 'Season 4 description', statuses: [] }],
+};
+
+const personaSeason3Card = {
+  id: 'persona_99',
+  name: 'Persona Season 3 Card',
+  type: 'forbidden',
+  category: 'attack',
+  statuses: [],
+  imgUrl: '/persona_01.png',
+  hiramekiVariations: [{ level: 0, cost: 1, description: 'Persona description', statuses: [] }],
+};
+
 const hiramekiCard = {
   id: 'hirameki_01',
   name: 'Hirameki Card',
@@ -109,6 +159,11 @@ describe('CardSelector', () => {
       monster_01: { name: 'Monster Card', descriptions: { 0: 'Monster description' } },
       forbidden_01: { name: 'Forbidden Card', descriptions: { 0: 'Forbidden description' } },
       hirameki_01: { name: 'Hirameki Card', descriptions: { 0: 'Hirameki description' } },
+      forbidden_card_1: { name: 'Season 1 Card', descriptions: { 0: 'Season 1 description' } },
+      spore_harvester: { name: 'Season 2 Card', descriptions: { 0: 'Season 2 description' } },
+      doctrine_of_binding: { name: 'Season 3 Card', descriptions: { 0: 'Season 3 description' } },
+      traitors_execution: { name: 'Season 4 Card', descriptions: { 0: 'Season 4 description' } },
+      persona_99: { name: 'Persona Season 3 Card', descriptions: { 0: 'Persona description' } },
     },
   };
 
@@ -210,8 +265,8 @@ describe('CardSelector', () => {
     expect(screen.getByText('Monster Card')).toBeTruthy();
   });
 
-  it('renders addable FORBIDDEN cards in accordion', () => {
-    vi.mocked(getAddableCards).mockReturnValue([forbiddenCard] as any);
+  it('renders addable FORBIDDEN cards in season accordions', () => {
+    vi.mocked(getAddableCards).mockReturnValue([season1Card] as any);
 
     render(
       <NextIntlClientProvider locale="en" messages={messages}>
@@ -227,8 +282,47 @@ describe('CardSelector', () => {
       </NextIntlClientProvider>
     );
 
-    expect(screen.getByText('Season Cards')).toBeTruthy();
-    expect(screen.getByText('Forbidden Card')).toBeTruthy();
+    expect(screen.getByText('Season Cards 1')).toBeTruthy();
+    expect(screen.getByText('Season 1 Card')).toBeTruthy();
+  });
+
+  it('renders season card accordions in season4 to season1 order before shared and monster', () => {
+    vi.mocked(getAddableCards).mockReturnValue([
+      sharedCard,
+      monsterCard,
+      season1Card,
+      season2Card,
+      season3Card,
+      season4Card,
+      personaSeason3Card,
+    ] as any);
+
+    render(
+      <NextIntlClientProvider locale="en" messages={messages}>
+        <CardSelector
+          character={null}
+          onAddCard={vi.fn()}
+          onRestoreCard={vi.fn()}
+          removedCards={new Map()}
+          convertedCards={new Map()}
+          presentHiramekiIds={new Set()}
+          searchQuery=""
+        />
+      </NextIntlClientProvider>
+    );
+
+    const renderedText = document.body.textContent || '';
+    expect(renderedText.indexOf('Season Cards 4')).toBeLessThan(renderedText.indexOf('Season Cards 3'));
+    expect(renderedText.indexOf('Season Cards 3')).toBeLessThan(renderedText.indexOf('Season Cards 2'));
+    expect(renderedText.indexOf('Season Cards 2')).toBeLessThan(renderedText.indexOf('Season Cards 1'));
+    expect(renderedText.indexOf('Season Cards 1')).toBeLessThan(renderedText.indexOf('Shared Cards'));
+    expect(renderedText.indexOf('Shared Cards')).toBeLessThan(renderedText.indexOf('Monster Cards'));
+
+    expect(screen.getByText('Season 4 Card')).toBeTruthy();
+    expect(screen.getByText('Season 3 Card')).toBeTruthy();
+    expect(screen.getByText('Persona Season 3 Card')).toBeTruthy();
+    expect(screen.getByText('Season 2 Card')).toBeTruthy();
+    expect(screen.getByText('Season 1 Card')).toBeTruthy();
   });
 
   it('calls onAddCard when an accordion card is clicked', () => {

@@ -4,11 +4,13 @@ import { useTranslations } from 'next-intl';
 
 import { CznCard, CardType, Character, RemovedCardEntry, ConvertedCardEntry, DeckCard } from "@/types";
 import { getCharacterHiramekiCards, getAddableCards, getCardById } from "@/lib/card";
+import { getCardImageFolder } from "@/lib/card-image-paths";
 import { Card, CardContent } from "./ui/card";
 import { CardFrame } from "./CardFrame";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "./ui/accordion";
 
 const cardGridClass = "grid grid-cols-2 sm:grid-cols-4 xl:grid-cols-6 gap-4";
+type SeasonNumber = 1 | 2 | 3 | 4;
 
 interface CardSelectorProps {
   character: Character | null;
@@ -98,18 +100,23 @@ export function CardSelector({ character, onAddCard, onRestoreCard, removedCards
     [addableCards, hiddenHiramekiIds, matchesQuery]
   );
 
-  const getCardTypeLabel = (type: CardType) => {
-    switch (type) {
-      case CardType.SHARED:
-        return t("card.sharedCards");
-      case CardType.MONSTER:
-        return t("card.monsterCards");
-      case CardType.FORBIDDEN:
-        return t("card.forbiddenCards");
-      default:
-        return t("card.title");
-    }
-  };
+  const getForbiddenSeason = useCallback((card: CznCard): SeasonNumber => {
+    if (card.id.startsWith("persona_")) return 3;
+
+    const folder = getCardImageFolder(card.id, card.type);
+    if (folder === "season4") return 4;
+    if (folder === "season3") return 3;
+    if (folder === "season2") return 2;
+    return 1;
+  }, []);
+
+  const forbiddenCardsBySeason = useMemo<Record<SeasonNumber, CznCard[]>>(() => {
+    const grouped: Record<SeasonNumber, CznCard[]> = { 1: [], 2: [], 3: [], 4: [] };
+    filteredForbiddenCards.forEach((card) => {
+      grouped[getForbiddenSeason(card)].push(card);
+    });
+    return grouped;
+  }, [filteredForbiddenCards, getForbiddenSeason]);
 
   // 共通のカードタイル描画関数
   const renderCardTile = (
@@ -202,13 +209,13 @@ export function CardSelector({ character, onAddCard, onRestoreCard, removedCards
   };
 
   // Accordionアイテムを生成する共通関数
-  const renderAccordionCardType = (filteredCards: CznCard[], cardType: CardType, value: string) => {
+  const renderAccordionSection = (filteredCards: CznCard[], label: string, value: string) => {
     if (filteredCards.length === 0) return null;
 
     return (
       <AccordionItem value={value}>
         <AccordionTrigger className="text-lg font-semibold">
-          {getCardTypeLabel(cardType)}
+          {label}
         </AccordionTrigger>
         <AccordionContent>
           <div className={cardGridClass}>
@@ -270,9 +277,12 @@ export function CardSelector({ character, onAddCard, onRestoreCard, removedCards
 
         {/* Accordion for Shared, Monster, and Forbidden Cards */}
         <Accordion type="multiple" className="w-full">
-          {renderAccordionCardType(filteredSharedCards, CardType.SHARED, 'shared')}
-          {renderAccordionCardType(filteredMonsterCards, CardType.MONSTER, 'monster')}
-          {renderAccordionCardType(filteredForbiddenCards, CardType.FORBIDDEN, 'forbidden')}
+          {renderAccordionSection(forbiddenCardsBySeason[4], `${t("card.forbiddenCards")} 4`, 'season-4')}
+          {renderAccordionSection(forbiddenCardsBySeason[3], `${t("card.forbiddenCards")} 3`, 'season-3')}
+          {renderAccordionSection(forbiddenCardsBySeason[2], `${t("card.forbiddenCards")} 2`, 'season-2')}
+          {renderAccordionSection(forbiddenCardsBySeason[1], `${t("card.forbiddenCards")} 1`, 'season-1')}
+          {renderAccordionSection(filteredSharedCards, t("card.sharedCards"), 'shared')}
+          {renderAccordionSection(filteredMonsterCards, t("card.monsterCards"), 'monster')}
         </Accordion>
       </CardContent>
     </Card>
