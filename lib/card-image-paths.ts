@@ -3,6 +3,24 @@ import { SEASON_4_CARD_IDS } from "@/lib/season4";
 
 const LEGACY_CARD_IMAGE_PREFIX = "/images/cards/";
 
+const SEASON_1_CARD_IDS = new Set([
+  "forbidden_card_1",
+  "forbidden_card_2",
+  "forbidden_card_3",
+  "forbidden_card_4",
+  "forbidden_card_5",
+  "forbidden_card_6",
+  "forbidden_card_7",
+  "forbidden_card_8",
+  "forbidden_card_9",
+  "forbidden_card_10",
+  "forbidden_card_11",
+  "forbidden_card_12",
+  "forbidden_card_13",
+  "forbidden_card_14",
+  "forbidden_card_15",
+]);
+
 const SEASON_2_CARD_IDS = new Set([
   "spore_harvester",
   "nutrient_absorption",
@@ -43,6 +61,10 @@ export const getCardImageFolder = (cardId: string, cardType: CardType): CardImag
 
   if (cardType === CardType.MONSTER) {
     return "monster";
+  }
+
+  if (SEASON_1_CARD_IDS.has(cardId)) {
+    return "season1";
   }
 
   if (SEASON_2_CARD_IDS.has(cardId)) {
