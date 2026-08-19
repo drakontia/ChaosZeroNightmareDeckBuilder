@@ -3542,6 +3542,36 @@
         "0": "Gain Shield 40% per debuff on target (max 200%). Inflict Pain 2 and Burn 2"
       }
     },
+    "cutting_loose": {
+      "name": "Cutting Loose",
+      "descriptions": {
+        "0": "Gain Shield 140%. Discard 1 random Attack card from hand. If discarded, gain an additional Shield 140%"
+      }
+    },
+    "driven_hunt": {
+      "name": "Driven Hunt",
+      "descriptions": {
+        "0": "Deal 35% damage ×3. For 1 turn, reduce Fortitude by 2"
+      }
+    },
+    "feralization": {
+      "name": "Feralization",
+      "descriptions": {
+        "0": "For 1 turn, damage dealt +50% (max 1 stack). Apply Weakness 2 to allies"
+      }
+    },
+    "final_struggle": {
+      "name": "Final Struggle",
+      "descriptions": {
+        "0": "Deal 110% damage. If Max HP is below 50%, damage is doubled"
+      }
+    },
+    "harrowing_reign": {
+      "name": "Harrowing Reign",
+      "descriptions": {
+        "0": "Deal 160% damage. Recover HP equal to 20% of damage dealt"
+      }
+    },
     "faceless_woman": {
       "name": "Faceless Woman",
       "descriptions": {

@@ -2,7 +2,7 @@ import { describe, it, expect } from 'vitest';
 import { getAddableCards, getCardById, getCharacterHiramekiCards, getCharacterStartingCards, CARDS } from '@/lib/card';
 import { CHARACTERS } from '@/lib/characters';
 import { FORBIDDEN_CARDS } from '@/lib/cards/forbidden-cards';
-import { CardType, JobType } from '@/types';
+import { CardStatus, CardType, JobType } from '@/types';
 
 describe('card helpers', () => {
   it('getCardById returns a card when it exists', () => {
@@ -88,12 +88,34 @@ describe('card helpers', () => {
       'its_all_mine',
       'obsession',
       'gilded_nest',
+      'cutting_loose',
+      'driven_hunt',
+      'feralization',
+      'final_struggle',
+      'harrowing_reign',
     ];
 
     for (const id of season4Ids) {
       const card = getCardById(id);
       expect(card).toBeDefined();
       expect(card?.type).toBe(CardType.FORBIDDEN);
+    }
+  });
+
+  it('defines survival status and 3 season levels for new season4 desire cards', () => {
+    const season4NewIds = [
+      'cutting_loose',
+      'driven_hunt',
+      'feralization',
+      'final_struggle',
+      'harrowing_reign',
+    ];
+
+    for (const id of season4NewIds) {
+      const card = FORBIDDEN_CARDS.find((candidate) => candidate.id === id);
+      expect(card).toBeDefined();
+      expect(card?.statuses).toContain(CardStatus.SURVIVAL);
+      expect(card?.seasonLevelVariations?.map((level) => level.level)).toEqual([1, 2, 3]);
     }
   });
 
@@ -114,6 +136,11 @@ describe('card helpers', () => {
       'its_all_mine',
       'obsession',
       'gilded_nest',
+      'cutting_loose',
+      'driven_hunt',
+      'feralization',
+      'final_struggle',
+      'harrowing_reign',
     ];
 
     for (const id of season4Ids) {

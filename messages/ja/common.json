@@ -188,7 +188,8 @@
     "premiere": "開幕",
     "control": "統制",
     "inquiry": "探求",
-    "claim": "所有"
+    "claim": "所有",
+    "survival": "生存"
   },
   "actions": {
     "add": "追加",
