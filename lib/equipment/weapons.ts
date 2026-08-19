@@ -571,4 +571,45 @@ export const WEAPONS: Equipment[] = [
     description: "equipment.weapon.yearning_left_hand.description",
     imgUrl: "/images/equipment/weapons/yearning_left_hand.png"
   },
+  // Season 4
+  {
+    id: "the_exsanguine",
+    name: "equipment.weapon.the_exsanguine.name",
+    type: EquipmentType.WEAPON,
+    rarity: "equipment.rarity.rare",
+    description: "equipment.weapon.the_exsanguine.description",
+    imgUrl: "/images/equipment/weapons/the_exsanguine.png"
+  },
+  {
+    id: "raiders_harpoon_gun",
+    name: "equipment.weapon.raiders_harpoon_gun.name",
+    type: EquipmentType.WEAPON,
+    rarity: "equipment.rarity.rare",
+    description: "equipment.weapon.raiders_harpoon_gun.description",
+    imgUrl: "/images/equipment/weapons/raiders_harpoon_gun.png"
+  },
+  {
+    id: "gauntlets_of_protection",
+    name: "equipment.weapon.gauntlets_of_protection.name",
+    type: EquipmentType.WEAPON,
+    rarity: "equipment.rarity.legendary",
+    description: "equipment.weapon.gauntlets_of_protection.description",
+    imgUrl: "/images/equipment/weapons/gauntlets_of_protection.png"
+  },
+  {
+    id: "eternal_wedge",
+    name: "equipment.weapon.eternal_wedge.name",
+    type: EquipmentType.WEAPON,
+    rarity: "equipment.rarity.legendary",
+    description: "equipment.weapon.eternal_wedge.description",
+    imgUrl: "/images/equipment/weapons/eternal_wedge.png"
+  },
+  {
+    id: "twisted_drill_bit",
+    name: "equipment.weapon.twisted_drill_bit.name",
+    type: EquipmentType.WEAPON,
+    rarity: "equipment.rarity.legendary",
+    description: "equipment.weapon.twisted_drill_bit.description",
+    imgUrl: "/images/equipment/weapons/twisted_drill_bit.png"
+  },
 ];

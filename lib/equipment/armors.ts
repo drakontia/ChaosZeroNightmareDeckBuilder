@@ -483,4 +483,53 @@ export const ARMORS: Equipment[] = [
     description: "equipment.armor.delicate_collarbone.description",
     imgUrl: "/images/equipment/armors/delicate_collarbone.png"
   },
+  // Season 4
+  {
+    id: "essence_fueled_gauntlets",
+    name: "equipment.armor.essence_fueled_gauntlets.name",
+    type: EquipmentType.ARMOR,
+    rarity: "equipment.rarity.rare",
+    description: "equipment.armor.essence_fueled_gauntlets.description",
+    imgUrl: "/images/equipment/armors/essence_fueled_gauntlets.png"
+  },
+  {
+    id: "pagna_mushroom",
+    name: "equipment.armor.pagna_mushroom.name",
+    type: EquipmentType.ARMOR,
+    rarity: "equipment.rarity.rare",
+    description: "equipment.armor.pagna_mushroom.description",
+    imgUrl: "/images/equipment/armors/pagna_mushroom.png"
+  },
+  {
+    id: "chitin_shield",
+    name: "equipment.armor.chitin_shield.name",
+    type: EquipmentType.ARMOR,
+    rarity: "equipment.rarity.legendary",
+    description: "equipment.armor.chitin_shield.description",
+    imgUrl: "/images/equipment/armors/chitin_shield.png"
+  },
+  {
+    id: "contaminated_cocoon_cape",
+    name: "equipment.armor.contaminated_cocoon_cape.name",
+    type: EquipmentType.ARMOR,
+    rarity: "equipment.rarity.legendary",
+    description: "equipment.armor.contaminated_cocoon_cape.description",
+    imgUrl: "/images/equipment/armors/contaminated_cocoon_cape.png"
+  },
+  {
+    id: "contaminated_drone_lens",
+    name: "equipment.armor.contaminated_drone_lens.name",
+    type: EquipmentType.ARMOR,
+    rarity: "equipment.rarity.legendary",
+    description: "equipment.armor.contaminated_drone_lens.description",
+    imgUrl: "/images/equipment/armors/contaminated_drone_lens.png"
+  },
+  {
+    id: "remnants_of_succession",
+    name: "equipment.armor.remnants_of_succession.name",
+    type: EquipmentType.ARMOR,
+    rarity: "equipment.rarity.mythical",
+    description: "equipment.armor.remnants_of_succession.description",
+    imgUrl: "/images/equipment/armors/remnants_of_succession.png"
+  },
 ];

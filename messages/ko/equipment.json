@@ -765,6 +765,26 @@
       "thirsting_left_hand": {
         "description": "HP 회복 시, 실드량 30%로 추가 획득",
         "name": "갈증 어린 왼손"
+      },
+      "the_exsanguine": {
+        "description": "When an attack card is activated, inflict Burn 2 on the target (once per turn)",
+        "name": "The Exsanguine"
+      },
+      "raiders_harpoon_gun": {
+        "description": "On critical hit, deal 150% fixed damage to all enemies (three times per turn)",
+        "name": "Raider's Harpoon Gun"
+      },
+      "gauntlets_of_protection": {
+        "description": "When directly using an attack card with base cost 3 or higher, deal 250% fixed damage to all enemies (twice per turn)",
+        "name": "Gauntlets of Protection"
+      },
+      "eternal_wedge": {
+        "description": "At the start of turn, deal 100% fixed damage to a random enemy with a damage-over-time effect",
+        "name": "Eternal Wedge"
+      },
+      "twisted_drill_bit": {
+        "description": "When an ally activates a Desire card, deal 100% fixed damage to all enemies (three times per turn)",
+        "name": "Twisted Drill Bit"
       }
     },
     "armor": {
@@ -791,6 +811,30 @@
       "shattered_angels_wing": {
         "description": "피해를 받으면, 1턴 간, 다음 턴 시작 시 고정 실드 120%",
         "name": "부서진 천사의 날개"
+      },
+      "essence_fueled_gauntlets": {
+        "description": "When gaining shield with an ability, increase critical rate of attack cards by 30% until activated for 1 turn (once per turn)",
+        "name": "Essence-Fueled Gauntlets"
+      },
+      "pagna_mushroom": {
+        "description": "When attacked, inflict one random effect on the attacker among Vulnerable, Weaken, Pain, and Burn (twice per turn)",
+        "name": "Pagna Mushroom"
+      },
+      "chitin_shield": {
+        "description": "Counter 3. On counterattack, inflict Shockwave 1 on the target (once per turn)",
+        "name": "Chitin Shield"
+      },
+      "contaminated_cocoon_cape": {
+        "description": "When attacked, inflict one random effect on the attacker among Pain, Vulnerable, and Burn (three times per turn)",
+        "name": "Contaminated Cocoon Cape"
+      },
+      "contaminated_drone_lens": {
+        "description": "At the start of turn, if an ally has a Desire card in hand, reduce stress of a random ally by 2",
+        "name": "Contaminated Drone Lens"
+      },
+      "remnants_of_succession": {
+        "description": "When attack cards are activated twice, inflict Burn 4 on all enemies (once per turn)",
+        "name": "Remnants of Succession"
       }
     },
     "pendant": {
@@ -817,8 +861,35 @@
       "mural_stripped_eye": {
         "description": "턴 시작 시, 적 전체가 광기 1 획득. 적 전체가 광기 상태 시, 데미지량 +50%",
         "name": "벽화에서 벗겨낸 눈"
+      },
+      "raiders_scanning_gear": {
+        "description": "At the start of turn, increase critical damage of the first activated attack card by 30%",
+        "name": "Raider's Scanning Gear"
+      },
+      "final_entry": {
+        "description": "At the start of turn, increase stress of a random ally by 2 and deal 150% fixed damage to all enemies",
+        "name": "Final Entry"
+      },
+      "essence_fragmented_necklace": {
+        "description": "For 1 turn, when allies defeat enemies three times, gain 1 action point (once per turn)",
+        "name": "Essence-Fragmented Necklace"
+      },
+      "kaleidoscope_fragment": {
+        "description": "When an ability inflicts Weaken, additionally inflict Weaken 1 and Burn 3 on the target (once per turn)",
+        "name": "Kaleidoscope Fragment"
+      },
+      "closed_circuit_terminal": {
+        "description": "When an ally uses an ability that hits all enemies, inflict Vulnerable 1 on a random enemy (once per turn)",
+        "name": "Closed-Circuit Terminal"
+      },
+      "cycle_of_circulation": {
+        "description": "At end of turn, if HP is below 50%, restore 70% fixed healing (three times per combat)",
+        "name": "Cycle of Circulation"
+      },
+      "invader_observation_logs": {
+        "description": "Attack card damage +20%, critical rate +2% based on enemy count",
+        "name": "Invader Observation Logs"
       }
     }
   }
 }
-

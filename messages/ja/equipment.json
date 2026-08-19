@@ -355,6 +355,26 @@
             "yearning_left_hand": {
                 "name": "渇望する左手",
                 "description": "HP回復時、シールド量30%として追加獲得"
+            },
+            "the_exsanguine": {
+                "name": "出血の双手剣",
+                "description": "攻撃カード発動時、対象に灼熱2(各ターン1回)"
+            },
+            "raiders_harpoon_gun": {
+                "name": "略奪者の銛砲",
+                "description": "会心攻撃時、敵全体に固定ダメージ150%(各ターン3回)"
+            },
+            "gauntlets_of_protection": {
+                "name": "保護の拳甲",
+                "description": "基本コストが3以上の攻撃カードを直接使用時、敵全体に固定ダメージ250%(各ターン2回)"
+            },
+            "eternal_wedge": {
+                "name": "永遠のくさび",
+                "description": "ターン開始時、持続ダメージ効果を所持中のランダムな敵に固定ダメージ100%"
+            },
+            "twisted_drill_bit": {
+                "name": "歪んだドリル刃",
+                "description": "味方の欲望カード発動時、敵全体に固定ダメージ100%(各ターン3回)"
             }
         },
         "armor": {
@@ -598,6 +618,30 @@
             "crushed_angel_feather": {
                 "name": "砕かれた天使の羽",
                 "description": "被ダメージ時、1ターンの間、次のターン開始時に固定シールド120%"
+            },
+            "essence_fueled_gauntlets": {
+                "name": "エッセンス動力ガントレット",
+                "description": "能力でシールド獲得時、1ターンの間、発動時まで攻撃カードの会心率+30%(各ターン1回)"
+            },
+            "pagna_mushroom": {
+                "name": "パグナきのこ",
+                "description": "攻撃を受けると、攻撃者に脆弱、弱体化、苦痛、灼熱のうち、ランダムに1個付与(各ターン2回)"
+            },
+            "chitin_shield": {
+                "name": "キチン質の盾",
+                "description": "反撃3、反撃時、対象に衝撃波1(各ターン1回)"
+            },
+            "contaminated_cocoon_cape": {
+                "name": "汚染された繭のマント",
+                "description": "攻撃を受けると、攻撃者に苦痛、脆弱、灼熱のうち、ランダムに1個付与(各ターン3回)"
+            },
+            "contaminated_drone_lens": {
+                "name": "汚染されたドローンレンズ",
+                "description": "ターン開始時、味方の欲望カードが手札にあるなら、ランダムな味方のストレス2減少"
+            },
+            "remnants_of_succession": {
+                "name": "継承の残痕",
+                "description": "攻撃カード2回発動時、敵全体に灼熱4(各ターン1回)"
             }
         },
         "pendant": {
@@ -937,8 +981,35 @@
             "an_eye_plucked_from_a_mural": {
                 "name": "壁画から剥ぎ取られた瞳",
                 "description": "ターン開始時、敵全体に狂気1。敵全体が狂気状態時、ダメージ量+50%"
+            },
+            "raiders_scanning_gear": {
+                "name": "略奪者のスキャンギア",
+                "description": "ターン開始時、最初に発動する攻撃カードの会心ダメージ+30%"
+            },
+            "final_entry": {
+                "name": "最後の日誌",
+                "description": "ターン開始時、ランダムな味方のストレス2増加、敵全体に固定ダメージ150%"
+            },
+            "essence_fragmented_necklace": {
+                "name": "エッセンスの破片ネックレス",
+                "description": "1ターンの間、味方が敵を3回倒した時、アクションポイント1獲得(各ターン1回)"
+            },
+            "kaleidoscope_fragment": {
+                "name": "万華鏡の欠片",
+                "description": "能力で弱体化付与時、対象に弱体化1、灼熱3(各ターン1回)"
+            },
+            "closed_circuit_terminal": {
+                "name": "閉鎖回路端子",
+                "description": "味方の能力で全体攻撃時、ランダムな敵に脆弱1(各ターン1回)"
+            },
+            "cycle_of_circulation": {
+                "name": "循環の輪",
+                "description": "ターン終了時、HPが50%未満なら固定治癒70%(各戦闘3回)"
+            },
+            "invader_observation_logs": {
+                "name": "インベーダー観察記録",
+                "description": "攻撃カードダメージ量+20%、敵数に応じて会心率+2%"
             }
         }
     }
 }
-
