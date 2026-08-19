@@ -180,6 +180,30 @@ describe('getCardInfo', () => {
     expect(info.cost).toBe(4);
   });
 
+  it('should use selected season statuses for season4 cards based on selected level', () => {
+    const season4Card: DeckCard = {
+      ...baseCard,
+      id: 'traitors_execution',
+      type: CardType.FORBIDDEN,
+      statuses: [CardStatus.CONTROL],
+      selectedSeasonLevel: 2,
+      selectedSeasonStatuses: [CardStatus.CONTROL, CardStatus.SURVIVAL, CardStatus.SURVIVAL],
+      hiramekiVariations: [{ level: 0, cost: 2, description: 'Lv1 description' }],
+      seasonLevelVariations: [
+        { level: 1, cost: 2, description: 'Lv1 description' },
+        { level: 2, cost: 2, description: 'Lv2 description' },
+        { level: 3, cost: 2, description: 'Lv3 description' },
+      ],
+    };
+
+    let info = getCardInfo(season4Card);
+    expect(info.statuses).toEqual([CardStatus.CONTROL, CardStatus.SURVIVAL]);
+
+    season4Card.selectedSeasonLevel = 1;
+    info = getCardInfo(season4Card);
+    expect(info.statuses).toEqual([CardStatus.CONTROL]);
+  });
+
   it('should derive persona presentation from persona engravings', () => {
     const personaCard: DeckCard = {
       ...baseCard,

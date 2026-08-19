@@ -2,6 +2,7 @@ import { CHARACTERS, EQUIPMENT, getCardById } from "@/lib/card";
 import { normalizeEquipmentEngravingId } from "@/lib/equipment-engraving";
 import { normalizePersonaCardEngravings, VALID_PERSONA_ENGRAVING_ALIGNMENTS } from "@/lib/persona";
 import { Character, CznCard, Deck, DeckCard, Equipment, EquipmentType, PersonaEngraving, PersonaEngravingAlignment } from "@/types";
+import { getSeason4BaseStatus, isSeason4Card, normalizeSeason4SelectedStatuses } from "@/lib/season4";
 
 interface SharedDeckCard {
   id: string;
@@ -9,6 +10,8 @@ interface SharedDeckCard {
   godHiramekiType?: DeckCard["godHiramekiType"];
   godHiramekiEffectId?: DeckCard["godHiramekiEffectId"];
   selectedHiddenHiramekiId?: DeckCard["selectedHiddenHiramekiId"];
+  selectedSeasonLevel?: DeckCard["selectedSeasonLevel"];
+  selectedSeasonStatuses?: DeckCard["selectedSeasonStatuses"];
   personaEngravings?: DeckCard["personaEngravings"];
   isCopied?: boolean;
   copiedFromCardId?: string;
@@ -169,6 +172,8 @@ export function encodeDeckShare(deck: Deck): string {
       ...(card.godHiramekiType && { godHiramekiType: card.godHiramekiType }),
       ...(card.godHiramekiEffectId && { godHiramekiEffectId: card.godHiramekiEffectId }),
       ...(card.selectedHiddenHiramekiId && { selectedHiddenHiramekiId: card.selectedHiddenHiramekiId }),
+      ...(card.selectedSeasonLevel !== undefined && { selectedSeasonLevel: card.selectedSeasonLevel }),
+      ...(card.selectedSeasonStatuses && { selectedSeasonStatuses: card.selectedSeasonStatuses }),
       ...(card.personaEngravings?.length && { personaEngravings: normalizePersonaEngravings(card.personaEngravings) }),
       ...(card.isCopied && { isCopied: card.isCopied }),
       ...(card.copiedFromCardId && { copiedFromCardId: card.copiedFromCardId }),
@@ -198,6 +203,18 @@ export function encodeDeckShare(deck: Deck): string {
 const toDeckCard = (card: CznCard, shared: SharedDeckCard, characterJob?: Character["job"]): DeckCard => {
   const maxLevel = Math.max(0, card.hiramekiVariations.length - 1);
   const safeLevel = Math.min(Math.max(shared.selectedHiramekiLevel ?? 0, 0), maxLevel);
+  const normalizedSeason = isSeason4Card(card)
+    ? {
+        selectedSeasonLevel: shared.selectedSeasonLevel ?? 1,
+        selectedSeasonStatuses: normalizeSeason4SelectedStatuses(
+          shared.selectedSeasonStatuses,
+          getSeason4BaseStatus(card)
+        ),
+      }
+    : {
+        selectedSeasonLevel: undefined,
+        selectedSeasonStatuses: undefined,
+      };
   return {
     ...card,
     deckId: createDeckId(card.id),
@@ -206,6 +223,8 @@ const toDeckCard = (card: CznCard, shared: SharedDeckCard, characterJob?: Charac
     godHiramekiEffectId: shared.godHiramekiEffectId ?? null,
     selectedHiddenHiramekiId:
       typeof shared.selectedHiddenHiramekiId === "string" ? shared.selectedHiddenHiramekiId : null,
+    selectedSeasonLevel: normalizedSeason.selectedSeasonLevel,
+    selectedSeasonStatuses: normalizedSeason.selectedSeasonStatuses,
     personaEngravings: normalizePersonaEngravings(shared.personaEngravings, characterJob),
     isCopied: shared.isCopied,
     copiedFromCardId: shared.copiedFromCardId,

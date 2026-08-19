@@ -6,7 +6,7 @@ import { HiramekiControls } from './HiramekiControls';
 import { CardActionsMenu } from './CardActionsMenu';
 import { SeasonLevelControls } from "./SeasonLevelControls";
 
-import { DeckCard, GodType, CznCard, JobType, CardStatus, CardType, PersonaEngraving } from "@/types";
+import { DeckCard, GodType, CznCard, JobType, CardStatus, CardType, PersonaEngraving, Season4DesireStatus } from "@/types";
 import { Card } from "./ui/card";
 import { getCardInfo, sortDeckCards } from "@/lib/deck-utils";
 import { GOD_HIRAMEKI_EFFECTS } from "@/lib/god-hirameki";
@@ -28,9 +28,10 @@ interface DeckDisplayProps {
   onSetHiddenHirameki: (deckId: string, hiddenHiramekiId: string | null) => void;
   onSetPersonaEngravings: (deckId: string, engravings: PersonaEngraving[]) => void;
   onUpdateSeasonLevel: (deckId: string, level: 1 | 2 | 3) => void;
+  onUpdateSeasonStatuses: (deckId: string, statuses: Season4DesireStatus[]) => void;
 }
 
-export function DeckDisplay({ cards, egoLevel, hasPotential, allowedJob, onRemoveCard, onUndoCard, onCopyCard, onConvertCard, onUpdateHirameki, onSetGodHirameki, onSetGodHiramekiEffect, onSetHiddenHirameki, onSetPersonaEngravings, onUpdateSeasonLevel }: DeckDisplayProps) {
+export function DeckDisplay({ cards, egoLevel, hasPotential, allowedJob, onRemoveCard, onUndoCard, onCopyCard, onConvertCard, onUpdateHirameki, onSetGodHirameki, onSetGodHiramekiEffect, onSetHiddenHirameki, onSetPersonaEngravings, onUpdateSeasonLevel, onUpdateSeasonStatuses }: DeckDisplayProps) {
   const t = useTranslations();
 
   // Sort cards to maintain consistent order: Character (Starting -> Hirameki) -> Shared -> Monster -> Forbidden
@@ -106,7 +107,7 @@ export function DeckDisplay({ cards, egoLevel, hasPotential, allowedJob, onRemov
           displayStatuses.push(CardStatus.COPIED);
         }
         const leftControls = isSeason4 ? (
-            <SeasonLevelControls card={card} onUpdateSeasonLevel={onUpdateSeasonLevel} />
+            <SeasonLevelControls card={card} onUpdateSeasonLevel={onUpdateSeasonLevel} onUpdateSeasonStatuses={onUpdateSeasonStatuses} />
           ) : supportsHiramekiControls ? (
             <HiramekiControls
               card={card}

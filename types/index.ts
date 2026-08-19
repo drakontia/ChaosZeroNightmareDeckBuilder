@@ -109,6 +109,12 @@ export enum CardStatus {
   SURVIVAL = "survival",         // 生存
 }
 
+export type Season4DesireStatus =
+  | CardStatus.CONTROL
+  | CardStatus.INQUIRY
+  | CardStatus.CLAIM
+  | CardStatus.SURVIVAL;
+
 // Hirameki variation for a card
 export interface HiramekiVariation {
   level: number; // 0 = base, 1-5 for character cards, 1-3 for other cards
@@ -203,6 +209,7 @@ export interface DeckCard extends CznCard {
   godHiramekiEffectId: string | null; // Which specific effect of that god is applied
   selectedHiddenHiramekiId: string | null; // Hidden hirameki effect ID (null = none)
   selectedSeasonLevel?: 1 | 2 | 3; // Season 4 desire card level
+  selectedSeasonStatuses?: Season4DesireStatus[]; // Season 4 desire statuses (up to 3, overflow retained)
   personaEngravings?: PersonaEngraving[]; // Persona-only engraving slots
   isCopied?: boolean; // True if this is a copied card
   copiedFromCardId?: string; // Original card id this copy was created from
@@ -216,6 +223,7 @@ export interface RemovedCardEntry {
   selectedHiramekiLevel?: number;
   selectedHiddenHiramekiId?: string | null; // Hidden hirameki at removal time
   selectedSeasonLevel?: 1 | 2 | 3;
+  selectedSeasonStatuses?: Season4DesireStatus[];
   personaEngravings?: PersonaEngraving[];
   godHiramekiType?: GodType | null;
   godHiramekiEffectId?: string | null;
@@ -231,6 +239,7 @@ export interface CopiedCardEntry {
   selectedHiramekiLevel?: number;
   selectedHiddenHiramekiId?: string | null; // Hidden hirameki at copy time
   selectedSeasonLevel?: 1 | 2 | 3;
+  selectedSeasonStatuses?: Season4DesireStatus[];
   personaEngravings?: PersonaEngraving[];
   godHiramekiType?: GodType | null;
   godHiramekiEffectId?: string | null;
@@ -244,6 +253,7 @@ export interface ConvertedCardEntry {
   selectedHiramekiLevel?: number; // Hirameki level at conversion time
   selectedHiddenHiramekiId?: string | null; // Hidden hirameki at conversion time
   selectedSeasonLevel?: 1 | 2 | 3;
+  selectedSeasonStatuses?: Season4DesireStatus[];
   personaEngravings?: PersonaEngraving[];
   godHiramekiType?: GodType | null; // God hirameki at conversion time
   godHiramekiEffectId?: string | null; // God effect at conversion time

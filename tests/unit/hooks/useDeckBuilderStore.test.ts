@@ -2,7 +2,7 @@ import { describe, it, expect, beforeEach } from 'vitest';
 import { act } from '@testing-library/react';
 import { useDeckBuilderStore } from '@/hooks/useDeckBuilderStore';
 import { CHARACTERS } from '@/lib/characters';
-import { CardType, CardCategory, GodType, EquipmentType } from '@/types';
+import { CardType, CardCategory, CardStatus, GodType, EquipmentType } from '@/types';
 
 function getTestCard() {
   return {
@@ -340,6 +340,45 @@ describe('useDeckBuilderStore', () => {
     expect(updated?.godHiramekiType).toBeNull();
     expect(updated?.godHiramekiEffectId).toBeNull();
     expect(updated?.selectedHiddenHiramekiId).toBeNull();
+  });
+
+  it('シーズン4カードのステータスはLv変更後も超過分を保持し、Lvを戻すと復元される', () => {
+    const card = {
+      ...getTestCard(),
+      id: 'traitors_execution',
+      deckId: 'season4_card_status_1',
+      type: CardType.FORBIDDEN,
+      statuses: [CardStatus.CONTROL],
+      selectedSeasonLevel: 1 as const,
+      selectedSeasonStatuses: [CardStatus.CONTROL, CardStatus.INQUIRY, CardStatus.CLAIM] as CardStatus[],
+      hiramekiVariations: [{ level: 0, cost: 2, description: 'Lv1' }],
+      seasonLevelVariations: [
+        { level: 1 as const, cost: 2, description: 'Lv1' },
+        { level: 2 as const, cost: 2, description: 'Lv2' },
+        { level: 3 as const, cost: 2, description: 'Lv3' },
+      ],
+    };
+
+    act(() => {
+      useDeckBuilderStore.getState().setCharacter(CHARACTERS[0]);
+      useDeckBuilderStore.getState().addCard(card);
+      useDeckBuilderStore.getState().updateCardSeasonStatuses(card.deckId, [
+        CardStatus.CONTROL,
+        CardStatus.SURVIVAL,
+        CardStatus.SURVIVAL,
+      ]);
+      useDeckBuilderStore.getState().updateCardSeasonLevel(card.deckId, 3);
+      useDeckBuilderStore.getState().updateCardSeasonLevel(card.deckId, 1);
+      useDeckBuilderStore.getState().updateCardSeasonLevel(card.deckId, 3);
+    });
+
+    const updated = useDeckBuilderStore.getState().deck?.cards.find(c => c.deckId === card.deckId);
+    expect(updated?.selectedSeasonStatuses).toEqual([
+      CardStatus.CONTROL,
+      CardStatus.SURVIVAL,
+      CardStatus.SURVIVAL,
+    ]);
+    expect(updated?.selectedSeasonLevel).toBe(3);
   });
 
   it('setCardPersonaEngravingsでペルソナカードの刻印が更新される', () => {
