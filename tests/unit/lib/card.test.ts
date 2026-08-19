@@ -68,7 +68,9 @@ describe('card helpers', () => {
     expect(getCardById('fei_starting_1')?.imgUrl).toBe('/images/cards/character/fei_starting_1.png');
     expect(getCardById('shared_01')?.imgUrl).toBe('/images/cards/common/shared_01.png');
     expect(getCardById('monster_01')?.imgUrl).toBe('/images/cards/monster/monster_01.png');
+    expect(getCardById('forbidden_card_1')?.imgUrl).toBe('/images/cards/season1/forbidden_card_1.png');
     expect(getCardById('spore_harvester')?.imgUrl).toBe('/images/cards/season2/spore_harvester.png');
+    expect(getCardById('persona_01')?.imgUrl).toBe('/images/cards/season3/persona.png');
   });
 
   it('includes all season4 desire cards in the global card registry', () => {

@@ -1,4 +1,4 @@
-const PERSONA_IMAGE_BASE = "/images/cards/common";
+const PERSONA_IMAGE_BASE = "/images/cards/season3";
 
 export const PERSONA_CARD_IMAGE = `${PERSONA_IMAGE_BASE}/persona.png`;
 export const PERSONA_SKILL_IMAGE = `${PERSONA_IMAGE_BASE}/persona_skill.png`;
