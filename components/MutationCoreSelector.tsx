@@ -17,6 +17,8 @@ interface MutationCoreSelectorProps {
   onSelect: (effectId: string | null) => void;
 }
 
+type MutationCoreTranslator = ReturnType<typeof useTranslations>;
+
 const CATEGORIES = [
   MutationCoreEffectCategory.BASIC_STATS,
   MutationCoreEffectCategory.CARD_DAMAGE,
@@ -25,11 +27,25 @@ const CATEGORIES = [
   MutationCoreEffectCategory.SPECIAL,
 ] as const;
 
+function getFallbackEffectName(fullDescription: string): string {
+  const fallback = fullDescription.split(" ").slice(0, 2).join(" ").trim();
+  return fallback || fullDescription;
+}
+
+function getEffectName(t: MutationCoreTranslator, effectId: string, fullDescription: string): string {
+  const nameKey = `mutationCore.effectNames.${effectId}`;
+  if (t.has(nameKey)) {
+    return t(nameKey);
+  }
+
+  return getFallbackEffectName(fullDescription);
+}
+
 function MutationCorePreviewButton({ selectedEffectId, onOpenChange }: { selectedEffectId: string | null; onOpenChange: (open: boolean) => void }) {
   const t = useTranslations();
   const selectedEffect = MUTATION_CORE_EFFECTS.find((e) => e.id === selectedEffectId);
   const fullDescription = selectedEffect ? t(`mutationCore.effects.${selectedEffectId}`, { defaultValue: selectedEffect.description }) : t("mutationCore.noEffect");
-  const displayText = selectedEffect ? fullDescription.split(' ').slice(0, 2).join(' ') || fullDescription : fullDescription;
+  const displayText = selectedEffect ? getEffectName(t, selectedEffect.id, fullDescription) : fullDescription;
 
   return (
     <Button onClick={() => onOpenChange(true)} variant="outline" className="w-full h-20 sm:h-16 lg:h-20 border-2 border-purple-600 bg-purple-600/10 text-purple-700 dark:text-purple-300 hover:bg-purple-600/20 flex items-center justify-between px-4">
@@ -45,9 +61,7 @@ function MutationCorePreviewButton({ selectedEffectId, onOpenChange }: { selecte
 function MutationCoreOptionCard({ effect, selected, onSelect }: { effect: (typeof MUTATION_CORE_EFFECTS)[0]; selected: boolean; onSelect: () => void }) {
   const t = useTranslations();
   const fullDescription = t(`mutationCore.effects.${effect.id}`, { defaultValue: effect.description });
-  
-  // 効果名: 説明の最初の単語（最初のスペースまで）
-  const effectName = fullDescription.split(' ').slice(0, 2).join(' ') || fullDescription;
+  const effectName = getEffectName(t, effect.id, fullDescription);
 
   return (
     <div className="group relative">
@@ -141,4 +155,3 @@ export function MutationCoreSelector({ selectedEffectId, onSelect }: MutationCor
     </Field>
   );
 }
-
