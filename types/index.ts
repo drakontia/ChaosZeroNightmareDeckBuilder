@@ -177,6 +177,24 @@ export interface HiddenHiramekiDefinition {
   costModifier?: number;   // Optional cost change
 }
 
+// Mutation Core effect category
+export enum MutationCoreEffectCategory {
+  BASIC_STATS = "basic_stats",           // 基本ステータス強化
+  CARD_DAMAGE = "card_damage",           // カードダメージ量強化
+  SHIELD = "shield",                     // カードシールド獲得量強化
+  HEAL = "heal",                         // カード治癒量強化
+  SPECIAL = "special",                   // 特殊効果
+}
+
+// Mutation Core effect definition
+export interface MutationCoreEffect {
+  id: string;                    // Effect ID (e.g. "attack_boost_lv1")
+  level: 1 | 2 | 3 | 4 | 5 | 6; // Level (1-6)
+  category: MutationCoreEffectCategory;
+  description: string;           // Description (fallback)
+  costModifier?: number;         // Optional cost modifier
+}
+
 export type PersonaEngravingAlignment = "light" | "dark";
 
 export interface PersonaEngraving {
@@ -282,6 +300,7 @@ export interface Deck {
   egoLevel: number; // 0-6, Ego Manifestation level
   hasPotential: boolean; // Whether potential is active
   createdAt: Date; // Deck creation date
+  selectedMutationCoreId: string | null; // Selected mutation core effect ID (null = none)
   // Tracking for Faint Memory calculation
   removedCards: Map<string, number | RemovedCardEntry>; // cardId -> removal count or snapshot entry
   copiedCards: Map<string, number | CopiedCardEntry>; // cardId -> copy count or snapshot entry

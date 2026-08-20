@@ -137,7 +137,8 @@ describe('Hidden Hirameki (Unified Structure)', () => {
         createdAt: new Date(),
         removedCards: new Map(),
         copiedCards: new Map(),
-        convertedCards: new Map()
+        convertedCards: new Map(),
+        selectedMutationCoreId: null,
       };
     });
 

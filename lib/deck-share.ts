@@ -300,6 +300,7 @@ export function decodeDeckShare(value: string): Deck | null {
         id,
         typeof entry === "string" ? entry : normalizeSnapshotPersonaEngravings(entry, character?.job),
       ])),
+      selectedMutationCoreId: null,
     };
   } catch (error) {
     console.error("Failed to decode deck share", error);

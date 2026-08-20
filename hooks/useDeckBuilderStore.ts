@@ -77,6 +77,7 @@ interface DeckBuilderStore {
   clearCopyLimitAlert: () => void;
   convertCard: (deckId: string, targetCardId: string, options?: { asExclusion?: boolean }) => void;
   clearConversionLimitAlert: () => void;
+  setDeckMutationCore: (effectId: string | null) => void;
   reset: () => void;
 }
 
@@ -121,6 +122,7 @@ export const useDeckBuilderStore = create<DeckBuilderStore>((set) => ({
              cards: startingCards,
              egoLevel: character.egoLevel ?? 0,
              hasPotential: false,
+            selectedMutationCoreId: null,
             createdAt: new Date(),
             removedCards: new Map(),
             copiedCards: new Map(),
@@ -138,6 +140,7 @@ export const useDeckBuilderStore = create<DeckBuilderStore>((set) => ({
             removedCards: new Map(),
             copiedCards: new Map(),
             convertedCards: new Map(),
+            selectedMutationCoreId: null,
         },
         removeLimitReached: false,
         copyLimitReached: false,
@@ -241,6 +244,7 @@ export const useDeckBuilderStore = create<DeckBuilderStore>((set) => ({
         copiedCards: normalizedCopiedCards,
         convertedCards: normalizedConvertedCards,
         createdAt: normalizedCreatedAt,
+        selectedMutationCoreId: deck.selectedMutationCoreId ?? null,
       };
       set({ deck: newDeck });
   },
@@ -802,5 +806,12 @@ export const useDeckBuilderStore = create<DeckBuilderStore>((set) => ({
     });
   },
   clearConversionLimitAlert: () => set({ conversionLimitReached: false }),
+  setDeckMutationCore: (effectId) =>
+    set((state) => {
+      if (!state.deck) return {};
+      return {
+        deck: { ...state.deck, selectedMutationCoreId: effectId },
+      };
+    }),
   reset: () => set({ deck: null, egoLevels: {}, removeLimitReached: false, copyLimitReached: false, conversionLimitReached: false }),
 }));

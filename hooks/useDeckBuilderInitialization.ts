@@ -17,6 +17,7 @@ const createEmptyDeck = (): Deck => ({
   removedCards: new Map(),
   copiedCards: new Map(),
   convertedCards: new Map(),
+  selectedMutationCoreId: null,
 });
 
 export function useDeckBuilderInitialization(

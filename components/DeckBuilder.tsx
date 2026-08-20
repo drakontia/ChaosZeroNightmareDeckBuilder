@@ -54,6 +54,7 @@ export function DeckBuilder({ shareId }: DeckBuilderProps) {
     clearRemoveLimitAlert: state.clearRemoveLimitAlert,
     clearCopyLimitAlert: state.clearCopyLimitAlert,
     clearConversionLimitAlert: state.clearConversionLimitAlert,
+    setDeckMutationCore: state.setDeckMutationCore,
   })));
 
   const t = useTranslations();
@@ -187,6 +188,7 @@ export function DeckBuilder({ shareId }: DeckBuilderProps) {
             onSetPersonaEngravings={store.setCardPersonaEngravings}
             onUpdateSeasonLevel={store.updateCardSeasonLevel}
             onUpdateSeasonStatuses={store.updateCardSeasonStatuses}
+            onSetDeckMutationCore={store.setDeckMutationCore}
           />
         </main>
         <LoadDeckDialog

@@ -204,7 +204,47 @@
     "hiddenhirameki_29": "ターン終了時、治癒40%",
     "hiddenhirameki_30": "エゴポイント2獲得",
     "hiddenhirameki_31": "次のターン、アクションポイント1",
-    "hiddenhirameki_32": "不屈2"
+    "hiddenhirameki_32": "Unyielding 2"
+  },
+  "mutationCore": {
+    "title": "Mutation Core",
+    "select": "Select Mutation Core Effect",
+    "noEffect": "No Effect",
+    "categories": {
+      "basic_stats": "Basic Stats Enhancement",
+      "card_damage": "Card Damage Enhancement",
+      "shield": "Card Shield Acquisition Enhancement",
+      "heal": "Card Heal Quantity Enhancement",
+      "special": "Special Effects"
+    },
+    "effects": {
+      "attack_boost_lv1": "Increase Attack Power by 8%",
+      "attack_boost_lv2": "Increase Attack Power by 10%",
+      "attack_boost_lv3": "Increase Attack Power by 12%",
+      "attack_boost_lv4": "Increase Attack Power by 14%",
+      "defense_boost_lv1": "Increase Defense by 8%",
+      "defense_boost_lv2": "Increase Defense by 10%",
+      "defense_boost_lv3": "Increase Defense by 12%",
+      "defense_boost_lv4": "Increase Defense by 14%",
+      "card_damage_lv1": "Increase own card damage by 8%",
+      "card_damage_lv2": "Increase own card damage by 9%",
+      "card_damage_lv3": "Increase own card damage by 10%",
+      "card_damage_lv4": "Increase own card damage by 11%",
+      "card_damage_lv5": "Increase own card damage by 12%",
+      "card_damage_lv6": "Increase own card damage by 13%",
+      "shield_acquisition_lv1": "Increase own card shield acquisition by 8%",
+      "shield_acquisition_lv2": "Increase own card shield acquisition by 9%",
+      "shield_acquisition_lv3": "Increase own card shield acquisition by 10%",
+      "shield_acquisition_lv4": "Increase own card shield acquisition by 11%",
+      "shield_acquisition_lv5": "Increase own card shield acquisition by 12%",
+      "shield_acquisition_lv6": "Increase own card shield acquisition by 13%",
+      "heal_quantity_lv1": "Increase own card heal quantity by 8%",
+      "heal_quantity_lv2": "Increase own card heal quantity by 9%",
+      "heal_quantity_lv3": "Increase own card heal quantity by 10%",
+      "heal_quantity_lv4": "Increase own card heal quantity by 11%",
+      "heal_quantity_lv5": "Increase own card heal quantity by 12%",
+      "heal_quantity_lv6": "Increase own card heal quantity by 13%"
+    }
   },
   "job": {
     "controller": "Controller",

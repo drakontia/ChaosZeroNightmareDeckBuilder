@@ -172,6 +172,46 @@
   },
   "conversion": {
   },
+  "mutationCore": {
+    "title": "突变核心",
+    "select": "选择突变核心效果",
+    "noEffect": "无效果",
+    "categories": {
+      "basic_stats": "基本属性增强",
+      "card_damage": "卡牌伤害增强",
+      "shield": "卡牌护盾获取增强",
+      "heal": "卡牌治疗量增强",
+      "special": "特殊效果"
+    },
+    "effects": {
+      "attack_boost_lv1": "攻击力增加 8%",
+      "attack_boost_lv2": "攻击力增加 10%",
+      "attack_boost_lv3": "攻击力增加 12%",
+      "attack_boost_lv4": "攻击力增加 14%",
+      "defense_boost_lv1": "防御力增加 8%",
+      "defense_boost_lv2": "防御力增加 10%",
+      "defense_boost_lv3": "防御力增加 12%",
+      "defense_boost_lv4": "防御力增加 14%",
+      "card_damage_lv1": "自己的卡牌伤害增加 8%",
+      "card_damage_lv2": "自己的卡牌伤害增加 9%",
+      "card_damage_lv3": "自己的卡牌伤害增加 10%",
+      "card_damage_lv4": "自己的卡牌伤害增加 11%",
+      "card_damage_lv5": "自己的卡牌伤害增加 12%",
+      "card_damage_lv6": "自己的卡牌伤害增加 13%",
+      "shield_acquisition_lv1": "自己的卡牌护盾获取增加 8%",
+      "shield_acquisition_lv2": "自己的卡牌护盾获取增加 9%",
+      "shield_acquisition_lv3": "自己的卡牌护盾获取增加 10%",
+      "shield_acquisition_lv4": "自己的卡牌护盾获取增加 11%",
+      "shield_acquisition_lv5": "自己的卡牌护盾获取增加 12%",
+      "shield_acquisition_lv6": "自己的卡牌护盾获取增加 13%",
+      "heal_quantity_lv1": "自己的卡牌治疗量增加 8%",
+      "heal_quantity_lv2": "自己的卡牌治疗量增加 9%",
+      "heal_quantity_lv3": "自己的卡牌治疗量增加 10%",
+      "heal_quantity_lv4": "自己的卡牌治疗量增加 11%",
+      "heal_quantity_lv5": "自己的卡牌治疗量增加 12%",
+      "heal_quantity_lv6": "自己的卡牌治疗量增加 13%"
+    }
+  },
   "character": {
     "title": "角色",
     "select": "选择角色",

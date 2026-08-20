@@ -53,7 +53,8 @@ describe('deck-share', () => {
       createdAt: new Date('2024-01-01T12:00:00Z'),
       removedCards: new Map([['removed-1', 2]]),
       copiedCards: new Map([['shared_01', 1]]),
-      convertedCards: new Map([['original-1', 'converted-1']])
+      convertedCards: new Map([['original-1', 'converted-1']]),
+      selectedMutationCoreId: null,
     };
   });
 
@@ -98,7 +99,8 @@ describe('deck-share', () => {
         createdAt: new Date(),
         removedCards: new Map(),
         copiedCards: new Map(),
-        convertedCards: new Map()
+        convertedCards: new Map(),
+      selectedMutationCoreId: null,
       };
 
       const encoded = encodeDeckShare(emptyDeck);
@@ -522,7 +524,8 @@ describe('deck-share', () => {
         ]),
         convertedCards: new Map([
           ['c3', { convertedToId: 'c4', originalType: CardType.FORBIDDEN, selectedHiramekiLevel: 3, godHiramekiType: GodType.DIALOS, excluded: true }]
-        ])
+        ]),
+        selectedMutationCoreId: null,
       };
       const encoded = encodeDeckShare(deck);
       const decoded = decodeDeckShare(encoded)!;
@@ -549,3 +552,4 @@ describe('deck-share', () => {
     });
   });
 });
+
