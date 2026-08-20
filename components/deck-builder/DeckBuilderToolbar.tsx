@@ -1,4 +1,4 @@
-import { Camera, Eraser, FolderOpen, Save as SaveIcon, Share2 } from "lucide-react";
+import { Camera, Download, Eraser, FolderOpen, Save as SaveIcon, Share2 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 
@@ -6,6 +6,7 @@ interface DeckBuilderToolbarProps {
   disabled: boolean;
   isSharing: boolean;
   isExporting: boolean;
+  onImport: () => void;
   onSave: () => void;
   onLoad: () => void;
   onShare: () => void;
@@ -16,9 +17,11 @@ interface DeckBuilderToolbarProps {
   shareLabel: string;
   exportLabel: string;
   clearLabel: string;
+  importLabel: string;
 }
 
 const toolbarButtons = [
+  { key: "import", icon: Download },
   { key: "save", icon: SaveIcon },
   { key: "load", icon: FolderOpen },
   { key: "share", icon: Share2 },
@@ -30,6 +33,7 @@ export function DeckBuilderToolbar(props: DeckBuilderToolbarProps) {
   const labels = {
     save: props.saveLabel,
     load: props.loadLabel,
+    import: props.importLabel,
     share: props.shareLabel,
     export: props.exportLabel,
     clear: props.clearLabel,
@@ -37,6 +41,7 @@ export function DeckBuilderToolbar(props: DeckBuilderToolbarProps) {
   const handlers = {
     save: props.onSave,
     load: props.onLoad,
+    import: props.onImport,
     share: props.onShare,
     export: props.onExport,
     clear: props.onClear,

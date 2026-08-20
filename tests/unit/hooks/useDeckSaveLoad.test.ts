@@ -229,4 +229,29 @@ describe('useDeckSaveLoad', () => {
     expect(name).toBe('newname');
     expect(window.alert).toHaveBeenCalled();
   });
+
+  it('ゲーム内コード取込で共有デッキが設定される', () => {
+    const { result } = renderHook(() => useDeckSaveLoad({ deck, setName, setSharedDeck, setShareError, t }));
+    window.prompt = vi.fn(() => 'v6l80O7yNr_Nzwd5bz8d-GD2ReyrtB0zomKkYPcWHSevgIys0f1EFVQl') as any;
+
+    act(() => {
+      result.current.handleImportGamePreset();
+    });
+
+    expect(sharedDeck).not.toBeNull();
+    expect(sharedDeck?.character?.id).toBe('fei');
+    expect(sharedDeck?.cards).toHaveLength(8);
+  });
+
+  it('未知のゲーム内コード取込は失敗通知する', () => {
+    const { result } = renderHook(() => useDeckSaveLoad({ deck, setName, setSharedDeck, setShareError, t }));
+    window.prompt = vi.fn(() => 'unknown-code') as any;
+
+    act(() => {
+      result.current.handleImportGamePreset();
+    });
+
+    expect(sharedDeck).toBeNull();
+    expect(window.alert).toHaveBeenCalled();
+  });
 });
