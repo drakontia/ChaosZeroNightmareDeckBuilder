@@ -2,7 +2,7 @@
 
 import React, { useMemo, useState } from "react";
 import { useTranslations } from "next-intl";
-import { Zap } from "lucide-react";
+import { Zap, Info } from "lucide-react";
 
 import { MUTATION_CORE_EFFECTS, getMutationCoreEffectsByCategory } from "@/lib/mutation-core";
 import { MutationCoreEffectCategory } from "@/types";
@@ -10,6 +10,7 @@ import { Button } from "./ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "./ui/dialog";
 import { Field } from "./ui/field";
 import { DialogCloseButton } from "./DialogCloseButton";
+import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
 
 interface MutationCoreSelectorProps {
   selectedEffectId: string | null;
@@ -27,7 +28,8 @@ const CATEGORIES = [
 function MutationCorePreviewButton({ selectedEffectId, onOpenChange }: { selectedEffectId: string | null; onOpenChange: (open: boolean) => void }) {
   const t = useTranslations();
   const selectedEffect = MUTATION_CORE_EFFECTS.find((e) => e.id === selectedEffectId);
-  const displayText = selectedEffect ? t(`mutationCore.effects.${selectedEffectId}`, { defaultValue: selectedEffect.description }) : t("mutationCore.noEffect");
+  const fullDescription = selectedEffect ? t(`mutationCore.effects.${selectedEffectId}`, { defaultValue: selectedEffect.description }) : t("mutationCore.noEffect");
+  const displayText = selectedEffect ? fullDescription.split(' ').slice(0, 2).join(' ') || fullDescription : fullDescription;
 
   return (
     <Button onClick={() => onOpenChange(true)} variant="outline" className="w-full h-20 sm:h-16 lg:h-20 border-2 border-purple-600 bg-purple-600/10 text-purple-700 dark:text-purple-300 hover:bg-purple-600/20 flex items-center justify-between px-4">
@@ -35,22 +37,46 @@ function MutationCorePreviewButton({ selectedEffectId, onOpenChange }: { selecte
         <Zap className="w-5 h-5" />
         <span className="font-semibold text-sm">{t("mutationCore.title")}</span>
       </div>
-      <span className="text-xs text-center flex-1 ml-2">{displayText}</span>
+      <span className="text-sm font-semibold">{displayText}</span>
     </Button>
   );
 }
 
 function MutationCoreOptionCard({ effect, selected, onSelect }: { effect: (typeof MUTATION_CORE_EFFECTS)[0]; selected: boolean; onSelect: () => void }) {
   const t = useTranslations();
-  const description = t(`mutationCore.effects.${effect.id}`, { defaultValue: effect.description });
+  const fullDescription = t(`mutationCore.effects.${effect.id}`, { defaultValue: effect.description });
+  
+  // 効果名: 説明の最初の単語（最初のスペースまで）
+  const effectName = fullDescription.split(' ').slice(0, 2).join(' ') || fullDescription;
 
   return (
-    <Button variant={selected ? "default" : "outline"} className={`h-auto flex-col justify-start p-3 text-left w-full ${selected ? "bg-purple-600 text-white border-purple-600" : "border-gray-300 dark:border-gray-600"}`} onClick={onSelect}>
-      <div className="w-full">
-        <span className="text-sm font-semibold">{description}</span>
-        {effect.costModifier && <span className="text-xs text-gray-500 dark:text-gray-400 block">Cost: {effect.costModifier > 0 ? "+" : ""}{effect.costModifier}</span>}
-      </div>
-    </Button>
+    <div className="group relative">
+      <Button
+        variant={selected ? "default" : "outline"}
+        className={`h-auto p-3 text-left w-full transition-colors ${selected ? "bg-purple-600 text-white border-purple-600" : "border-gray-300 dark:border-gray-600 hover:border-purple-400"}`}
+        onClick={onSelect}
+      >
+        <div className="flex items-center gap-2 w-full">
+          <span className="text-sm font-semibold flex-1">{effectName}</span>
+          <Popover>
+            <PopoverTrigger asChild>
+              <Info className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0 cursor-help" onClick={(e) => e.stopPropagation()} />
+            </PopoverTrigger>
+            <PopoverContent className="w-72 p-3 text-sm" side="right">
+              <div className="space-y-2">
+                <div className="font-semibold text-purple-600 dark:text-purple-400">{effectName}</div>
+                <div className="text-gray-700 dark:text-gray-300">{fullDescription}</div>
+                {effect.costModifier && (
+                  <div className="text-xs text-gray-500 dark:text-gray-400 border-t pt-2 mt-2">
+                    Cost: {effect.costModifier > 0 ? "+" : ""}{effect.costModifier}
+                  </div>
+                )}
+              </div>
+            </PopoverContent>
+          </Popover>
+        </div>
+      </Button>
+    </div>
   );
 }
 
