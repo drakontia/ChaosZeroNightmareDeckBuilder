@@ -19,7 +19,8 @@ describe('calculateFaintMemory', () => {
       createdAt: new Date(),
       removedCards: new Map(),
       copiedCards: new Map(),
-      convertedCards: new Map()
+      convertedCards: new Map(),
+      selectedMutationCoreId: null,
     };
   });
 
@@ -505,7 +506,8 @@ describe('calculateFaintMemory (removed/copied attribute handling)', () => {
       createdAt: new Date(),
       removedCards: new Map(),
       copiedCards: new Map(),
-      convertedCards: new Map()
+      convertedCards: new Map(),
+    selectedMutationCoreId: null,
     };
   });
 
@@ -567,7 +569,8 @@ describe('calculateFaintMemory (snapshot attribute handling)', () => {
       createdAt: new Date(),
       removedCards: new Map(),
       copiedCards: new Map(),
-      convertedCards: new Map()
+      convertedCards: new Map(),
+    selectedMutationCoreId: null,
     };
   });
 
@@ -837,7 +840,8 @@ describe('calculateFaintMemory (copy double-counting issue)', () => {
       createdAt: new Date(),
       removedCards: new Map(),
       copiedCards: new Map(),
-      convertedCards: new Map()
+      convertedCards: new Map(),
+    selectedMutationCoreId: null,
     };
   });
 
@@ -1416,6 +1420,7 @@ describe('calculateFaintMemory (排除変換)', () => {
           },
         ],
       ]),
+      selectedMutationCoreId: null,
     };
 
     // 変換ポイント: 0pt（排除のため）、元カード種別: 20pt（SHARED）
@@ -1450,6 +1455,7 @@ describe('calculateFaintMemory (追加カバレッジ)', () => {
       ]),
       copiedCards: new Map(),
       convertedCards: new Map(),
+      selectedMutationCoreId: null,
     };
 
     expect(calculateFaintMemory(deck)).toBe(70); // 50 (rare monster) + 20 (god)
@@ -1469,6 +1475,7 @@ describe('calculateFaintMemory (追加カバレッジ)', () => {
       ]),
       copiedCards: new Map(),
       convertedCards: new Map(),
+      selectedMutationCoreId: null,
     };
 
     expect(calculateFaintMemory(deck)).toBe(20);
@@ -1515,6 +1522,7 @@ describe('calculateFaintMemory (追加カバレッジ)', () => {
         ],
       ]),
       convertedCards: new Map(),
+      selectedMutationCoreId: null,
     };
 
     expect(calculateFaintMemory(deck)).toBe(60); // 20 (deck forbidden) + 20 (snapshot forbidden) + 20 (god)
@@ -1542,6 +1550,7 @@ describe('calculateFaintMemory (追加カバレッジ)', () => {
           },
         ],
       ]),
+      selectedMutationCoreId: null,
     };
 
     expect(calculateFaintMemory(deck)).toBe(40); // 20 (starting) + 20 (shared type)
@@ -1570,6 +1579,7 @@ describe('calculateFaintMemory (追加カバレッジ)', () => {
           },
         ],
       ]),
+      selectedMutationCoreId: null,
     };
 
     expect(calculateFaintMemory(deck)).toBe(80);
@@ -1592,7 +1602,8 @@ describe('calculateFaintMemory (追加カバレッジ)', () => {
         createdAt: new Date(),
         removedCards: new Map(),
         copiedCards: new Map(),
-        convertedCards: new Map()
+        convertedCards: new Map(),
+      selectedMutationCoreId: null,
       };
     });
 
@@ -1666,3 +1677,4 @@ describe('calculateFaintMemory (追加カバレッジ)', () => {
     });
   });
 });
+

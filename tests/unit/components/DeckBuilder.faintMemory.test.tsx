@@ -54,6 +54,7 @@ function createMockDeck(): Deck {
     removedCards: new Map(),
     copiedCards: new Map(),
     convertedCards: new Map(),
+    selectedMutationCoreId: null,
   };
 }
 

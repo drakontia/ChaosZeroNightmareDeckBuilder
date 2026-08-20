@@ -153,6 +153,46 @@
     "hiddenhirameki_31": "次のターン、アクションポイント1",
     "hiddenhirameki_32": "不屈2"
   },
+  "mutationCore": {
+    "title": "変異のコア",
+    "select": "変異のコア効果を選択",
+    "noEffect": "効果なし",
+    "categories": {
+      "basic_stats": "基本ステータス強化",
+      "card_damage": "カードダメージ量強化",
+      "shield": "カードシールド獲得量強化",
+      "heal": "カード治癒量強化",
+      "special": "特殊効果"
+    },
+    "effects": {
+      "attack_boost_lv1": "攻撃力 8% 増加",
+      "attack_boost_lv2": "攻撃力 10% 増加",
+      "attack_boost_lv3": "攻撃力 12% 増加",
+      "attack_boost_lv4": "攻撃力 14% 増加",
+      "defense_boost_lv1": "防御力 8% 増加",
+      "defense_boost_lv2": "防御力 10% 増加",
+      "defense_boost_lv3": "防御力 12% 増加",
+      "defense_boost_lv4": "防御力 14% 増加",
+      "card_damage_lv1": "自分のカードダメージ量 8% 増加",
+      "card_damage_lv2": "自分のカードダメージ量 9% 増加",
+      "card_damage_lv3": "自分のカードダメージ量 10% 増加",
+      "card_damage_lv4": "自分のカードダメージ量 11% 増加",
+      "card_damage_lv5": "自分のカードダメージ量 12% 増加",
+      "card_damage_lv6": "自分のカードダメージ量 13% 増加",
+      "shield_acquisition_lv1": "自分のカードシールド獲得量 8% 増加",
+      "shield_acquisition_lv2": "自分のカードシールド獲得量 9% 増加",
+      "shield_acquisition_lv3": "自分のカードシールド獲得量 10% 増加",
+      "shield_acquisition_lv4": "自分のカードシールド獲得量 11% 増加",
+      "shield_acquisition_lv5": "自分のカードシールド獲得量 12% 増加",
+      "shield_acquisition_lv6": "自分のカードシールド獲得量 13% 増加",
+      "heal_quantity_lv1": "自分のカード治癒量 8% 増加",
+      "heal_quantity_lv2": "自分のカード治癒量 9% 増加",
+      "heal_quantity_lv3": "自分のカード治癒量 10% 増加",
+      "heal_quantity_lv4": "自分のカード治癒量 11% 増加",
+      "heal_quantity_lv5": "自分のカード治癒量 12% 増加",
+      "heal_quantity_lv6": "自分のカード治癒量 13% 増加"
+    }
+  },
   "category": {
     "attack": "攻撃",
     "upgrade": "強化",

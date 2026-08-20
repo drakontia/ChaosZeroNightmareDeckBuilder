@@ -172,6 +172,46 @@
   },
   "conversion": {
   },
+  "mutationCore": {
+    "title": "뮤테이션 코어",
+    "select": "뮤테이션 코어 효과 선택",
+    "noEffect": "효과 없음",
+    "categories": {
+      "basic_stats": "기본 스탯 강화",
+      "card_damage": "카드 데미지 강화",
+      "shield": "카드 실드 획득 강화",
+      "heal": "카드 회복량 강화",
+      "special": "특수 효과"
+    },
+    "effects": {
+      "attack_boost_lv1": "공격력 8% 증가",
+      "attack_boost_lv2": "공격력 10% 증가",
+      "attack_boost_lv3": "공격력 12% 증가",
+      "attack_boost_lv4": "공격력 14% 증가",
+      "defense_boost_lv1": "방어력 8% 증가",
+      "defense_boost_lv2": "방어력 10% 증가",
+      "defense_boost_lv3": "방어력 12% 증가",
+      "defense_boost_lv4": "방어력 14% 증가",
+      "card_damage_lv1": "자신의 카드 데미지 8% 증가",
+      "card_damage_lv2": "자신의 카드 데미지 9% 증가",
+      "card_damage_lv3": "자신의 카드 데미지 10% 증가",
+      "card_damage_lv4": "자신의 카드 데미지 11% 증가",
+      "card_damage_lv5": "자신의 카드 데미지 12% 증가",
+      "card_damage_lv6": "자신의 카드 데미지 13% 증가",
+      "shield_acquisition_lv1": "자신의 카드 실드 획득 8% 증가",
+      "shield_acquisition_lv2": "자신의 카드 실드 획득 9% 증가",
+      "shield_acquisition_lv3": "자신의 카드 실드 획득 10% 증가",
+      "shield_acquisition_lv4": "자신의 카드 실드 획득 11% 증가",
+      "shield_acquisition_lv5": "자신의 카드 실드 획득 12% 증가",
+      "shield_acquisition_lv6": "자신의 카드 실드 획득 13% 증가",
+      "heal_quantity_lv1": "자신의 카드 회복량 8% 증가",
+      "heal_quantity_lv2": "자신의 카드 회복량 9% 증가",
+      "heal_quantity_lv3": "자신의 카드 회복량 10% 증가",
+      "heal_quantity_lv4": "자신의 카드 회복량 11% 증가",
+      "heal_quantity_lv5": "자신의 카드 회복량 12% 증가",
+      "heal_quantity_lv6": "자신의 카드 회복량 13% 증가"
+    }
+  },
   "character": {
     "title": "캐릭터",
     "select": "캐릭터 선택",

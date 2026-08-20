@@ -18,7 +18,8 @@ describe('useShareDeck (functional)', () => {
       createdAt: new Date(),
       removedCards: new Map(),
       copiedCards: new Map(),
-      convertedCards: new Map()
+      convertedCards: new Map(),
+      selectedMutationCoreId: null,
     };
 
     const encoded = encodeDeckShare(mockDeck);
@@ -41,7 +42,8 @@ describe('useShareDeck (functional)', () => {
       createdAt: new Date(),
       removedCards: new Map(),
       copiedCards: new Map(),
-      convertedCards: new Map()
+      convertedCards: new Map(),
+      selectedMutationCoreId: null,
     };
 
     const encoded = encodeDeckShare(mockDeck);

@@ -1,6 +1,7 @@
 import { CharacterSelector } from "@/components/CharacterSelector";
 import { DeckDisplay } from "@/components/DeckDisplay";
 import { EquipmentSelector } from "@/components/EquipmentSelector";
+import { MutationCoreSelector } from "@/components/MutationCoreSelector";
 import { Card, CardContent } from "@/components/ui/card";
 import { Field, FieldGroup, FieldSet } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
@@ -50,6 +51,7 @@ interface DeckWorkspaceProps {
   onSetPersonaEngravings: (deckId: string, engravings: PersonaEngraving[]) => void;
   onUpdateSeasonLevel: (deckId: string, level: 1 | 2 | 3) => void;
   onUpdateSeasonStatuses: (deckId: string, statuses: Season4DesireStatus[]) => void;
+  onSetDeckMutationCore: (effectId: string | null) => void;
 }
 
 const countTrackedActions = (entries: Iterable<number | { count: number }>) =>
@@ -75,6 +77,7 @@ export function DeckWorkspace(props: DeckWorkspaceProps) {
               <div className="space-y-4">
                 <DeckStatsPanel createdAt={new Date(props.deck.createdAt)} totalCards={props.deck.cards.length} faintMemoryPoints={props.faintMemoryPoints} copiedCards={copiedTotal} removedCards={removedTotal} createdDateLabel={props.createdDateLabel} totalCardsLabel={props.totalCardsLabel} faintMemoryLabel={props.faintMemoryLabel} copiedCardsLabel={props.copiedCardsLabel} removedCardsLabel={props.removedCardsLabel} />
                 <EquipmentSelector equipment={props.equipment} selectedEquipment={props.deck.equipment} onSelect={props.onEquipmentSelect} onRefinementChange={props.onEquipmentRefinementChange} onGodHammerChange={props.onEquipmentGodHammerChange} onEquipmentEngravingChange={props.onEquipmentEngravingChange} />
+                <MutationCoreSelector selectedEffectId={props.deck.selectedMutationCoreId ?? null} onSelect={props.onSetDeckMutationCore} />
               </div>
             </div>
           </CardContent>

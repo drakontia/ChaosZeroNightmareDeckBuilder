@@ -54,6 +54,7 @@ describe('useDeckBuilderStore', () => {
       removedCards: new Map(),
       copiedCards: new Map(),
       convertedCards: new Map(),
+      selectedMutationCoreId: null,
     };
     act(() => {
       useDeckBuilderStore.getState().setDeck(deck);
@@ -186,6 +187,7 @@ describe('useDeckBuilderStore', () => {
       removedCards: new Map(),
       copiedCards: new Map(),
       convertedCards: new Map(),
+      selectedMutationCoreId: null,
     };
 
     act(() => {
