@@ -200,7 +200,7 @@ describe('useDeckBuilderStore', () => {
   it('selectEquipmentで装備が更新される', () => {
     act(() => {
       useDeckBuilderStore.getState().setCharacter(CHARACTERS[0]);
-      useDeckBuilderStore.getState().selectEquipment(EquipmentType.WEAPON, { id: 'weapon_1', name: '武器', type: EquipmentType.WEAPON, rarity: 'R' });
+      useDeckBuilderStore.getState().selectEquipment(EquipmentType.WEAPON, { id: 'weapon_1', name: '武器', type: EquipmentType.WEAPON, rarity: 'R', obtainableChaosIds: [] });
     });
     expect(useDeckBuilderStore.getState().deck?.equipment.weapon?.item?.id).toBe('weapon_1');
   });
@@ -208,7 +208,7 @@ describe('useDeckBuilderStore', () => {
   it('setEquipmentEngravingで装備刻印が更新される', () => {
     act(() => {
       useDeckBuilderStore.getState().setCharacter(CHARACTERS[0]);
-      useDeckBuilderStore.getState().selectEquipment(EquipmentType.WEAPON, { id: 'weapon_1', name: '武器', type: EquipmentType.WEAPON, rarity: 'R' });
+      useDeckBuilderStore.getState().selectEquipment(EquipmentType.WEAPON, { id: 'weapon_1', name: '武器', type: EquipmentType.WEAPON, rarity: 'R', obtainableChaosIds: [] });
       useDeckBuilderStore.getState().setEquipmentEngraving(EquipmentType.WEAPON, 'equipment_engraving_lux_01');
     });
     expect(useDeckBuilderStore.getState().deck?.equipment.weapon?.engravingId).toBe('equipment_engraving_lux_01');
@@ -217,9 +217,9 @@ describe('useDeckBuilderStore', () => {
   it('selectEquipmentで装備を入れ替えると装備刻印はリセットされる', () => {
     act(() => {
       useDeckBuilderStore.getState().setCharacter(CHARACTERS[0]);
-      useDeckBuilderStore.getState().selectEquipment(EquipmentType.WEAPON, { id: 'weapon_1', name: '武器', type: EquipmentType.WEAPON, rarity: 'R' });
+      useDeckBuilderStore.getState().selectEquipment(EquipmentType.WEAPON, { id: 'weapon_1', name: '武器', type: EquipmentType.WEAPON, rarity: 'R', obtainableChaosIds: [] });
       useDeckBuilderStore.getState().setEquipmentEngraving(EquipmentType.WEAPON, 'equipment_engraving_lux_01');
-      useDeckBuilderStore.getState().selectEquipment(EquipmentType.WEAPON, { id: 'weapon_2', name: '武器2', type: EquipmentType.WEAPON, rarity: 'R' });
+      useDeckBuilderStore.getState().selectEquipment(EquipmentType.WEAPON, { id: 'weapon_2', name: '武器2', type: EquipmentType.WEAPON, rarity: 'R', obtainableChaosIds: [] });
     });
     expect(useDeckBuilderStore.getState().deck?.equipment.weapon?.engravingId).toBeNull();
   });
@@ -1276,7 +1276,7 @@ describe('useDeckBuilderStore', () => {
     it('setEquipmentRefinementはスロットがある場合に精錬値が設定される', () => {
       act(() => {
         useDeckBuilderStore.getState().setCharacter(CHARACTERS[0]);
-        useDeckBuilderStore.getState().selectEquipment(EquipmentType.WEAPON, { id: 'weapon_1', name: '武器', type: EquipmentType.WEAPON, rarity: 'R' });
+        useDeckBuilderStore.getState().selectEquipment(EquipmentType.WEAPON, { id: 'weapon_1', name: '武器', type: EquipmentType.WEAPON, rarity: 'R', obtainableChaosIds: [] });
         useDeckBuilderStore.getState().setEquipmentRefinement(EquipmentType.WEAPON, 'refinement_1');
       });
       expect(useDeckBuilderStore.getState().deck?.equipment.weapon?.refinement).toBe('refinement_1');
@@ -1285,7 +1285,7 @@ describe('useDeckBuilderStore', () => {
     it('setEquipmentGodHammerはスロットがある場合に神ハンマー装備IDが設定される', () => {
       act(() => {
         useDeckBuilderStore.getState().setCharacter(CHARACTERS[0]);
-        useDeckBuilderStore.getState().selectEquipment(EquipmentType.WEAPON, { id: 'weapon_1', name: '武器', type: EquipmentType.WEAPON, rarity: 'R' });
+        useDeckBuilderStore.getState().selectEquipment(EquipmentType.WEAPON, { id: 'weapon_1', name: '武器', type: EquipmentType.WEAPON, rarity: 'R', obtainableChaosIds: [] });
         useDeckBuilderStore.getState().setEquipmentGodHammer(EquipmentType.WEAPON, 'god_weapon_1');
       });
       expect(useDeckBuilderStore.getState().deck?.equipment.weapon?.godHammerEquipmentId).toBe('god_weapon_1');
