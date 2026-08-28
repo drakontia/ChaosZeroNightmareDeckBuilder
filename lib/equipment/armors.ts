@@ -1,4 +1,4 @@
-import { Equipment, EquipmentType } from "@/types";
+import { Equipment, EquipmentObtainableChaosId, EquipmentType } from "@/types";
 
 export const ARMORS: Equipment[] = [
   {
@@ -6,6 +6,7 @@ export const ARMORS: Equipment[] = [
     name: "equipment.armor.scouts_combat_boots.name",
     type: EquipmentType.ARMOR,
     rarity: "equipment.rarity.rare",
+    obtainableChaosIds: [EquipmentObtainableChaosId.ALL],
     description: "equipment.armor.scouts_combat_boots.description",
     imgUrl: "/images/equipment/armors/scouts_combat_boots.png"
   },
@@ -14,6 +15,7 @@ export const ARMORS: Equipment[] = [
     name: "equipment.armor.lush_seaweed_armor.name",
     type: EquipmentType.ARMOR,
     rarity: "equipment.rarity.rare",
+    obtainableChaosIds: [EquipmentObtainableChaosId.ALL],
     description: "equipment.armor.lush_seaweed_armor.description",
     imgUrl: "/images/equipment/armors/lush_seaweed_armor.png"
   },
@@ -22,6 +24,7 @@ export const ARMORS: Equipment[] = [
     name: "equipment.armor.assault_gauntlets.name",
     type: EquipmentType.ARMOR,
     rarity: "equipment.rarity.rare",
+    obtainableChaosIds: [EquipmentObtainableChaosId.ALL],
     description: "equipment.armor.assault_gauntlets.description",
     imgUrl: "/images/equipment/armors/assault_gauntlets.png"
   },
@@ -30,6 +33,7 @@ export const ARMORS: Equipment[] = [
     name: "equipment.armor.survivors_hood.name",
     type: EquipmentType.ARMOR,
     rarity: "equipment.rarity.rare",
+    obtainableChaosIds: [EquipmentObtainableChaosId.ALL],
     description: "equipment.armor.survivors_hood.description",
     imgUrl: "/images/equipment/armors/survivors_hood.png"
   },
@@ -38,6 +42,7 @@ export const ARMORS: Equipment[] = [
     name: "equipment.armor.titan_combat_suit.name",
     type: EquipmentType.ARMOR,
     rarity: "equipment.rarity.rare",
+    obtainableChaosIds: [EquipmentObtainableChaosId.ALL],
     description: "equipment.armor.titan_combat_suit.description",
     imgUrl: "/images/equipment/armors/titan_combat_suit.png"
   },
@@ -46,6 +51,7 @@ export const ARMORS: Equipment[] = [
     name: "equipment.armor.gladiators_helmet.name",
     type: EquipmentType.ARMOR,
     rarity: "equipment.rarity.rare",
+    obtainableChaosIds: [EquipmentObtainableChaosId.ALL],
     description: "equipment.armor.gladiators_helmet.description",
     imgUrl: "/images/equipment/armors/gladiators_helmet.png"
   },
@@ -54,6 +60,7 @@ export const ARMORS: Equipment[] = [
     name: "equipment.armor.standard_gas_mask.name",
     type: EquipmentType.ARMOR,
     rarity: "equipment.rarity.rare",
+    obtainableChaosIds: [EquipmentObtainableChaosId.ALL],
     description: "equipment.armor.standard_gas_mask.description",
     imgUrl: "/images/equipment/armors/standard_gas_mask.png"
   },
@@ -62,6 +69,7 @@ export const ARMORS: Equipment[] = [
     name: "equipment.armor.assault_boots.name",
     type: EquipmentType.ARMOR,
     rarity: "equipment.rarity.legendary",
+    obtainableChaosIds: [EquipmentObtainableChaosId.ALL],
     description: "equipment.armor.assault_boots.description",
     imgUrl: "/images/equipment/armors/assault_boots.png"
   },
@@ -70,6 +78,7 @@ export const ARMORS: Equipment[] = [
     name: "equipment.armor.reinforced_combat_suit.name",
     type: EquipmentType.ARMOR,
     rarity: "equipment.rarity.legendary",
+    obtainableChaosIds: [EquipmentObtainableChaosId.ALL],
     description: "equipment.armor.reinforced_combat_suit.description",
     imgUrl: "/images/equipment/armors/reinforced_combat_suit.png"
   },
@@ -78,6 +87,7 @@ export const ARMORS: Equipment[] = [
     name: "equipment.armor.cloud_walking_shoes.name",
     type: EquipmentType.ARMOR,
     rarity: "equipment.rarity.legendary",
+    obtainableChaosIds: [EquipmentObtainableChaosId.ALL],
     description: "equipment.armor.cloud_walking_shoes.description",
     imgUrl: "/images/equipment/armors/cloud_walking_shoes.png"
   },
@@ -86,6 +96,7 @@ export const ARMORS: Equipment[] = [
     name: "equipment.armor.psionic_combat_suit.name",
     type: EquipmentType.ARMOR,
     rarity: "equipment.rarity.legendary",
+    obtainableChaosIds: [EquipmentObtainableChaosId.ALL],
     description: "equipment.armor.psionic_combat_suit.description",
     imgUrl: "/images/equipment/armors/psionic_combat_suit.png"
   },
@@ -94,6 +105,7 @@ export const ARMORS: Equipment[] = [
     name: "equipment.armor.shell_of_aberration.name",
     type: EquipmentType.ARMOR,
     rarity: "equipment.rarity.mythical",
+    obtainableChaosIds: [EquipmentObtainableChaosId.ALL],
     description: "equipment.armor.shell_of_aberration.description",
     imgUrl: "/images/equipment/armors/shell_of_aberration.png"
   },
@@ -102,6 +114,7 @@ export const ARMORS: Equipment[] = [
     name: "equipment.armor.disaster_shroud.name",
     type: EquipmentType.ARMOR,
     rarity: "equipment.rarity.mythical",
+    obtainableChaosIds: [EquipmentObtainableChaosId.ALL],
     description: "equipment.armor.disaster_shroud.description",
     imgUrl: "/images/equipment/armors/disaster_shroud.png"
   },
@@ -110,6 +123,7 @@ export const ARMORS: Equipment[] = [
     name: "equipment.armor.resolute_gauntlets.name",
     type: EquipmentType.ARMOR,
     rarity: "equipment.rarity.rare",
+    obtainableChaosIds: [EquipmentObtainableChaosId.THE_BLUE_POT],
     description: "equipment.armor.resolute_gauntlets.description",
     imgUrl: "/images/equipment/armors/resolute_gauntlets.png"
   },
@@ -118,6 +132,7 @@ export const ARMORS: Equipment[] = [
     name: "equipment.armor.wolves_banes_spine.name",
     type: EquipmentType.ARMOR,
     rarity: "equipment.rarity.legendary",
+    obtainableChaosIds: [EquipmentObtainableChaosId.THE_BLUE_POT, EquipmentObtainableChaosId.CITY_OF_MIST, EquipmentObtainableChaosId.LABORATORY_0, EquipmentObtainableChaosId.BURNING_LIFE],
     description: "equipment.armor.wolves_banes_spine.description",
     imgUrl: "/images/equipment/armors/wolves_banes_spine.png"
   },
@@ -126,6 +141,7 @@ export const ARMORS: Equipment[] = [
     name: "equipment.armor.shield_of_the_watcher.name",
     type: EquipmentType.ARMOR,
     rarity: "equipment.rarity.legendary",
+    obtainableChaosIds: [EquipmentObtainableChaosId.THE_BLUE_POT, EquipmentObtainableChaosId.CITY_OF_MIST, EquipmentObtainableChaosId.LABORATORY_0, EquipmentObtainableChaosId.BURNING_LIFE],
     description: "equipment.armor.shield_of_the_watcher.description",
     imgUrl: "/images/equipment/armors/shield_of_the_watcher.png"
   },
@@ -134,6 +150,7 @@ export const ARMORS: Equipment[] = [
     name: "equipment.armor.the_chosen_vessel.name",
     type: EquipmentType.ARMOR,
     rarity: "equipment.rarity.legendary",
+    obtainableChaosIds: [EquipmentObtainableChaosId.THE_BLUE_POT],
     description: "equipment.armor.the_chosen_vessel.description",
     imgUrl: "/images/equipment/armors/the_chosen_vessel.png"
   },
@@ -142,6 +159,7 @@ export const ARMORS: Equipment[] = [
     name: "equipment.armor.cursed_doll.name",
     type: EquipmentType.ARMOR,
     rarity: "equipment.rarity.legendary",
+    obtainableChaosIds: [EquipmentObtainableChaosId.THE_BLUE_POT, EquipmentObtainableChaosId.TWIN_STARS_SHADOW, EquipmentObtainableChaosId.THE_FORETOLD_RUIN, EquipmentObtainableChaosId.THEATER_OF_ILLUSIONS],
     description: "equipment.armor.cursed_doll.description",
     imgUrl: "/images/equipment/armors/cursed_doll.png"
   },
@@ -150,6 +168,7 @@ export const ARMORS: Equipment[] = [
     name: "equipment.armor.torture_toolbox.name",
     type: EquipmentType.ARMOR,
     rarity: "equipment.rarity.legendary",
+    obtainableChaosIds: [EquipmentObtainableChaosId.THE_BLUE_POT, EquipmentObtainableChaosId.TWIN_STARS_SHADOW, EquipmentObtainableChaosId.THE_FORETOLD_RUIN, EquipmentObtainableChaosId.THEATER_OF_ILLUSIONS],
     description: "equipment.armor.torture_toolbox.description",
     imgUrl: "/images/equipment/armors/torture_toolbox.png"
   },
@@ -158,6 +177,7 @@ export const ARMORS: Equipment[] = [
     name: "equipment.armor.chains_of_obsession.name",
     type: EquipmentType.ARMOR,
     rarity: "equipment.rarity.legendary",
+    obtainableChaosIds: [EquipmentObtainableChaosId.THE_BLUE_POT, EquipmentObtainableChaosId.TWIN_STARS_SHADOW, EquipmentObtainableChaosId.THE_FORETOLD_RUIN, EquipmentObtainableChaosId.THEATER_OF_ILLUSIONS],
     description: "equipment.armor.chains_of_obsession.description",
     imgUrl: "/images/equipment/armors/chains_of_obsession.png"
   },
@@ -166,6 +186,7 @@ export const ARMORS: Equipment[] = [
     name: "equipment.armor.wild_fur_cloak.name",
     type: EquipmentType.ARMOR,
     rarity: "equipment.rarity.mythical",
+    obtainableChaosIds: [EquipmentObtainableChaosId.THE_BLUE_POT],
     description: "equipment.armor.wild_fur_cloak.description",
     imgUrl: "/images/equipment/armors/wild_fur_cloak.png"
   },
@@ -174,6 +195,7 @@ export const ARMORS: Equipment[] = [
     name: "equipment.armor.kentris_chitin_armor.name",
     type: EquipmentType.ARMOR,
     rarity: "equipment.rarity.mythical",
+    obtainableChaosIds: [EquipmentObtainableChaosId.THE_BLUE_POT],
     description: "equipment.armor.kentris_chitin_armor.description",
     imgUrl: "/images/equipment/armors/kentris_chitin_armor.png"
   },
@@ -182,6 +204,7 @@ export const ARMORS: Equipment[] = [
     name: "equipment.armor.crustacean_fluider.name",
     type: EquipmentType.ARMOR,
     rarity: "equipment.rarity.rare",
+    obtainableChaosIds: [EquipmentObtainableChaosId.TWIN_STARS_SHADOW],
     description: "equipment.armor.crustacean_fluider.description",
     imgUrl: "/images/equipment/armors/crustacean_fluider.png"
   },
@@ -190,6 +213,7 @@ export const ARMORS: Equipment[] = [
     name: "equipment.armor.growing_carapace.name",
     type: EquipmentType.ARMOR,
     rarity: "equipment.rarity.legendary",
+    obtainableChaosIds: [EquipmentObtainableChaosId.TWIN_STARS_SHADOW],
     description: "equipment.armor.growing_carapace.description",
     imgUrl: "/images/equipment/armors/growing_carapace.png"
   },
@@ -198,6 +222,7 @@ export const ARMORS: Equipment[] = [
     name: "equipment.armor.dance_of_the_night_butterflies.name",
     type: EquipmentType.ARMOR,
     rarity: "equipment.rarity.legendary",
+    obtainableChaosIds: [EquipmentObtainableChaosId.TWIN_STARS_SHADOW, EquipmentObtainableChaosId.THE_KALEIDOSCOPE_HATCHERY],
     description: "equipment.armor.dance_of_the_night_butterflies.description",
     imgUrl: "/images/equipment/armors/dance_of_the_night_butterflies.png"
   },
@@ -206,6 +231,7 @@ export const ARMORS: Equipment[] = [
     name: "equipment.armor.wings_of_the_swarm.name",
     type: EquipmentType.ARMOR,
     rarity: "equipment.rarity.mythical",
+    obtainableChaosIds: [EquipmentObtainableChaosId.TWIN_STARS_SHADOW, EquipmentObtainableChaosId.THE_KALEIDOSCOPE_HATCHERY],
     description: "equipment.armor.wings_of_the_swarm.description",
     imgUrl: "/images/equipment/armors/wings_of_the_swarm.png"
   },
@@ -214,6 +240,7 @@ export const ARMORS: Equipment[] = [
     name: "equipment.armor.contaminated_helmet.name",
     type: EquipmentType.ARMOR,
     rarity: "equipment.rarity.rare",
+    obtainableChaosIds: [EquipmentObtainableChaosId.CITY_OF_MIST],
     description: "equipment.armor.contaminated_helmet.description",
     imgUrl: "/images/equipment/armors/contaminated_helmet.png"
   },
@@ -222,6 +249,7 @@ export const ARMORS: Equipment[] = [
     name: "equipment.armor.mss_scope.name",
     type: EquipmentType.ARMOR,
     rarity: "equipment.rarity.legendary",
+    obtainableChaosIds: [EquipmentObtainableChaosId.CITY_OF_MIST],
     description: "equipment.armor.mss_scope.description",
     imgUrl: "/images/equipment/armors/mss_scope.png"
   },
@@ -230,6 +258,7 @@ export const ARMORS: Equipment[] = [
     name: "equipment.armor.regenerative_ribcage.name",
     type: EquipmentType.ARMOR,
     rarity: "equipment.rarity.legendary",
+    obtainableChaosIds: [EquipmentObtainableChaosId.CITY_OF_MIST, EquipmentObtainableChaosId.LABORATORY_0],
     description: "equipment.armor.regenerative_ribcage.description",
     imgUrl: "/images/equipment/armors/regenerative_ribcage.png"
   },
@@ -238,6 +267,7 @@ export const ARMORS: Equipment[] = [
     name: "equipment.armor.gluttonous_tailcoat.name",
     type: EquipmentType.ARMOR,
     rarity: "equipment.rarity.legendary",
+    obtainableChaosIds: [EquipmentObtainableChaosId.CITY_OF_MIST, EquipmentObtainableChaosId.LABORATORY_0],
     description: "equipment.armor.gluttonous_tailcoat.description",
     imgUrl: "/images/equipment/armors/gluttonous_tailcoat.png"
   },
@@ -246,6 +276,7 @@ export const ARMORS: Equipment[] = [
     name: "equipment.armor.fragment_of_the_empty_void.name",
     type: EquipmentType.ARMOR,
     rarity: "equipment.rarity.mythical",
+    obtainableChaosIds: [EquipmentObtainableChaosId.CITY_OF_MIST, EquipmentObtainableChaosId.LABORATORY_0],
     description: "equipment.armor.fragment_of_the_empty_void.description",
     imgUrl: "/images/equipment/armors/fragment_of_the_empty_void.png"
   },
@@ -254,6 +285,7 @@ export const ARMORS: Equipment[] = [
     name: "equipment.armor.mask_of_evil_spirits.name",
     type: EquipmentType.ARMOR,
     rarity: "equipment.rarity.rare",
+    obtainableChaosIds: [EquipmentObtainableChaosId.SWAMP_OF_JUDGMENT],
     description: "equipment.armor.mask_of_evil_spirits.description",
     imgUrl: "/images/equipment/armors/mask_of_evil_spirits.png"
   },
@@ -262,6 +294,7 @@ export const ARMORS: Equipment[] = [
     name: "equipment.armor.immortal_scale.name",
     type: EquipmentType.ARMOR,
     rarity: "equipment.rarity.legendary",
+    obtainableChaosIds: [EquipmentObtainableChaosId.SWAMP_OF_JUDGMENT, EquipmentObtainableChaosId.BURNING_LIFE],
     description: "equipment.armor.immortal_scale.description",
     imgUrl: "/images/equipment/armors/immortal_scale.png"
   },
@@ -270,6 +303,7 @@ export const ARMORS: Equipment[] = [
     name: "equipment.armor.fairy_kings_crown.name",
     type: EquipmentType.ARMOR,
     rarity: "equipment.rarity.legendary",
+    obtainableChaosIds: [EquipmentObtainableChaosId.SWAMP_OF_JUDGMENT, EquipmentObtainableChaosId.BURNING_LIFE],
     description: "equipment.armor.fairy_kings_crown.description",
     imgUrl: "/images/equipment/armors/fairy_kings_crown.png"
   },
@@ -278,6 +312,7 @@ export const ARMORS: Equipment[] = [
     name: "equipment.armor.wings_of_light.name",
     type: EquipmentType.ARMOR,
     rarity: "equipment.rarity.legendary",
+    obtainableChaosIds: [EquipmentObtainableChaosId.SWAMP_OF_JUDGMENT, EquipmentObtainableChaosId.THE_FORETOLD_RUIN, EquipmentObtainableChaosId.THEATER_OF_ILLUSIONS],
     description: "equipment.armor.wings_of_light.description",
     imgUrl: "/images/equipment/armors/wings_of_light.png"
   },
@@ -286,6 +321,7 @@ export const ARMORS: Equipment[] = [
     name: "equipment.armor.ring_of_the_seraphim.name",
     type: EquipmentType.ARMOR,
     rarity: "equipment.rarity.legendary",
+    obtainableChaosIds: [EquipmentObtainableChaosId.SWAMP_OF_JUDGMENT, EquipmentObtainableChaosId.THE_FORETOLD_RUIN, EquipmentObtainableChaosId.THEATER_OF_ILLUSIONS],
     description: "equipment.armor.ring_of_the_seraphim.description",
     imgUrl: "/images/equipment/armors/ring_of_the_seraphim.png"
   },
@@ -294,6 +330,7 @@ export const ARMORS: Equipment[] = [
     name: "equipment.armor.star_lit_cloak.name",
     type: EquipmentType.ARMOR,
     rarity: "equipment.rarity.mythical",
+    obtainableChaosIds: [EquipmentObtainableChaosId.SWAMP_OF_JUDGMENT, EquipmentObtainableChaosId.BURNING_LIFE],
     description: "equipment.armor.star_lit_cloak.description",
     imgUrl: "/images/equipment/armors/star_lit_cloak.png"
   },
@@ -302,6 +339,7 @@ export const ARMORS: Equipment[] = [
     name: "equipment.armor.mask_of_flames.name",
     type: EquipmentType.ARMOR,
     rarity: "equipment.rarity.mythical",
+    obtainableChaosIds: [EquipmentObtainableChaosId.SWAMP_OF_JUDGMENT, EquipmentObtainableChaosId.BURNING_LIFE],
     description: "equipment.armor.mask_of_flames.description",
     imgUrl: "/images/equipment/armors/mask_of_flames.png"
   },
@@ -310,6 +348,7 @@ export const ARMORS: Equipment[] = [
     name: "equipment.armor.twisted_discipline.name",
     type: EquipmentType.ARMOR,
     rarity: "equipment.rarity.legendary",
+    obtainableChaosIds: [EquipmentObtainableChaosId.THE_FORETOLD_RUIN],
     description: "equipment.armor.twisted_discipline.description",
     imgUrl: "/images/equipment/armors/twisted_discipline.png"
   },
@@ -318,6 +357,7 @@ export const ARMORS: Equipment[] = [
     name: "equipment.armor.primordial_discipline.name",
     type: EquipmentType.ARMOR,
     rarity: "equipment.rarity.mythical",
+    obtainableChaosIds: [EquipmentObtainableChaosId.THE_FORETOLD_RUIN],
     description: "equipment.armor.primordial_discipline.description",
     imgUrl: "/images/equipment/armors/primordial_discipline.png"
   },
@@ -326,6 +366,7 @@ export const ARMORS: Equipment[] = [
     name: "equipment.armor.consecrated_halo.name",
     type: EquipmentType.ARMOR,
     rarity: "equipment.rarity.mythical",
+    obtainableChaosIds: [EquipmentObtainableChaosId.THE_FORETOLD_RUIN],
     description: "equipment.armor.consecrated_halo.description",
     imgUrl: "/images/equipment/armors/consecrated_halo.png"
   },
@@ -334,6 +375,7 @@ export const ARMORS: Equipment[] = [
     name: "equipment.armor.incomplete_carapace.name",
     type: EquipmentType.ARMOR,
     rarity: "equipment.rarity.rare",
+    obtainableChaosIds: [EquipmentObtainableChaosId.LABORATORY_0],
     description: "equipment.armor.incomplete_carapace.description",
     imgUrl: "/images/equipment/armors/incomplete_carapace.png"
   },
@@ -342,6 +384,7 @@ export const ARMORS: Equipment[] = [
     name: "equipment.armor.brainwave_blocking_helmet.name",
     type: EquipmentType.ARMOR,
     rarity: "equipment.rarity.rare",
+    obtainableChaosIds: [EquipmentObtainableChaosId.LABORATORY_0],
     description: "equipment.armor.brainwave_blocking_helmet.description",
     imgUrl: "/images/equipment/armors/brainwave_blocking_helmet.png"
   },
@@ -350,6 +393,7 @@ export const ARMORS: Equipment[] = [
     name: "equipment.armor.wings_of_freedom.name",
     type: EquipmentType.ARMOR,
     rarity: "equipment.rarity.legendary",
+    obtainableChaosIds: [EquipmentObtainableChaosId.LABORATORY_0],
     description: "equipment.armor.wings_of_freedom.description",
     imgUrl: "/images/equipment/armors/wings_of_freedom.png"
   },
@@ -358,6 +402,7 @@ export const ARMORS: Equipment[] = [
     name: "equipment.armor.rocket_adorned_cape.name",
     type: EquipmentType.ARMOR,
     rarity: "equipment.rarity.legendary",
+    obtainableChaosIds: [EquipmentObtainableChaosId.LABORATORY_0],
     description: "equipment.armor.rocket_adorned_cape.description",
     imgUrl: "/images/equipment/armors/rocket_adorned_cape.png"
   },
@@ -367,6 +412,7 @@ export const ARMORS: Equipment[] = [
     name: "equipment.armor.vine_camouflage.name",
     type: EquipmentType.ARMOR,
     rarity: "equipment.rarity.rare",
+    obtainableChaosIds: [EquipmentObtainableChaosId.BURNING_LIFE],
     description: "equipment.armor.vine_camouflage.description",
     imgUrl: "/images/equipment/armors/vine_camouflage.png"
   },
@@ -375,6 +421,7 @@ export const ARMORS: Equipment[] = [
     name: "equipment.armor.moss_armor.name",
     type: EquipmentType.ARMOR,
     rarity: "equipment.rarity.rare",
+    obtainableChaosIds: [EquipmentObtainableChaosId.BURNING_LIFE],
     description: "equipment.armor.moss_armor.description",
     imgUrl: "/images/equipment/armors/moss_armor.png"
   },
@@ -383,6 +430,7 @@ export const ARMORS: Equipment[] = [
     name: "equipment.armor.shining_lyre.name",
     type: EquipmentType.ARMOR,
     rarity: "equipment.rarity.rare",
+    obtainableChaosIds: [EquipmentObtainableChaosId.BURNING_LIFE],
     description: "equipment.armor.shining_lyre.description",
     imgUrl: "/images/equipment/armors/shining_lyre.png"
   },
@@ -391,6 +439,7 @@ export const ARMORS: Equipment[] = [
     name: "equipment.armor.phytotype_synthetic.name",
     type: EquipmentType.ARMOR,
     rarity: "equipment.rarity.legendary",
+    obtainableChaosIds: [EquipmentObtainableChaosId.BURNING_LIFE],
     description: "equipment.armor.phytotype_synthetic.description",
     imgUrl: "/images/equipment/armors/phytotype_synthetic.png"
   },
@@ -399,6 +448,7 @@ export const ARMORS: Equipment[] = [
     name: "equipment.armor.robe_of_oblivion.name",
     type: EquipmentType.ARMOR,
     rarity: "equipment.rarity.legendary",
+    obtainableChaosIds: [EquipmentObtainableChaosId.BURNING_LIFE],
     description: "equipment.armor.robe_of_oblivion.description",
     imgUrl: "/images/equipment/armors/robe_of_oblivion.png"
   },
@@ -407,6 +457,7 @@ export const ARMORS: Equipment[] = [
     name: "equipment.armor.vine_lords_mask.name",
     type: EquipmentType.ARMOR,
     rarity: "equipment.rarity.legendary",
+    obtainableChaosIds: [EquipmentObtainableChaosId.BURNING_LIFE],
     description: "equipment.armor.vine_lords_mask.description",
     imgUrl: "/images/equipment/armors/vine_lords_mask.png"
   },
@@ -415,6 +466,7 @@ export const ARMORS: Equipment[] = [
     name: "equipment.armor.victors_laurel.name",
     type: EquipmentType.ARMOR,
     rarity: "equipment.rarity.legendary",
+    obtainableChaosIds: [EquipmentObtainableChaosId.BURNING_LIFE],
     description: "equipment.armor.victors_laurel.description",
     imgUrl: "/images/equipment/armors/victors_laurel.png"
   },
@@ -423,6 +475,7 @@ export const ARMORS: Equipment[] = [
     name: "equipment.armor.shield_of_ashen_sacrifice.name",
     type: EquipmentType.ARMOR,
     rarity: "equipment.rarity.rare",
+    obtainableChaosIds: [EquipmentObtainableChaosId.BURNING_LIFE],
     description: "equipment.armor.shield_of_ashen_sacrifice.description",
     imgUrl: "/images/equipment/armors/shield_of_ashen_sacrifice.png"
   },
@@ -431,6 +484,7 @@ export const ARMORS: Equipment[] = [
     name: "equipment.armor.bangle_of_valor.name",
     type: EquipmentType.ARMOR,
     rarity: "equipment.rarity.mythical",
+    obtainableChaosIds: [EquipmentObtainableChaosId.BURNING_LIFE],
     description: "equipment.armor.bangle_of_valor.description",
     imgUrl: "/images/equipment/armors/bangle_of_valor.png"
   },
@@ -440,6 +494,7 @@ export const ARMORS: Equipment[] = [
     name: "equipment.armor.cloak_of_the_heart.name",
     type: EquipmentType.ARMOR,
     rarity: "equipment.rarity.rare",
+    obtainableChaosIds: [EquipmentObtainableChaosId.THEATER_OF_ILLUSIONS],
     description: "equipment.armor.cloak_of_the_heart.description",
     imgUrl: "/images/equipment/armors/cloak_of_the_heart.png"
   },
@@ -448,6 +503,7 @@ export const ARMORS: Equipment[] = [
     name: "equipment.armor.mask_of_emotions.name",
     type: EquipmentType.ARMOR,
     rarity: "equipment.rarity.rare",
+    obtainableChaosIds: [EquipmentObtainableChaosId.THEATER_OF_ILLUSIONS],
     description: "equipment.armor.mask_of_emotions.description",
     imgUrl: "/images/equipment/armors/mask_of_emotions.png"
   },
@@ -456,6 +512,7 @@ export const ARMORS: Equipment[] = [
     name: "equipment.armor.crushed_angel_feather.name",
     type: EquipmentType.ARMOR,
     rarity: "equipment.rarity.rare",
+    obtainableChaosIds: [EquipmentObtainableChaosId.THEATER_OF_ILLUSIONS],
     description: "equipment.armor.crushed_angel_feather.description",
     imgUrl: "/images/equipment/armors/crushed_angel_feather.png"
   },
@@ -464,6 +521,7 @@ export const ARMORS: Equipment[] = [
     name: "equipment.armor.nightmare_hairpin.name",
     type: EquipmentType.ARMOR,
     rarity: "equipment.rarity.rare",
+    obtainableChaosIds: [EquipmentObtainableChaosId.THEATER_OF_ILLUSIONS],
     description: "equipment.armor.nightmare_hairpin.description",
     imgUrl: "/images/equipment/armors/nightmare_hairpin.png"
   },
@@ -472,6 +530,7 @@ export const ARMORS: Equipment[] = [
     name: "equipment.armor.incomprehensible_holy_object.name",
     type: EquipmentType.ARMOR,
     rarity: "equipment.rarity.rare",
+    obtainableChaosIds: [EquipmentObtainableChaosId.THEATER_OF_ILLUSIONS],
     description: "equipment.armor.incomprehensible_holy_object.description",
     imgUrl: "/images/equipment/armors/incomprehensible_holy_object.png"
   },
@@ -480,6 +539,7 @@ export const ARMORS: Equipment[] = [
     name: "equipment.armor.delicate_collarbone.name",
     type: EquipmentType.ARMOR,
     rarity: "equipment.rarity.rare",
+    obtainableChaosIds: [EquipmentObtainableChaosId.THEATER_OF_ILLUSIONS],
     description: "equipment.armor.delicate_collarbone.description",
     imgUrl: "/images/equipment/armors/delicate_collarbone.png"
   },
@@ -489,6 +549,7 @@ export const ARMORS: Equipment[] = [
     name: "equipment.armor.essence_fueled_gauntlets.name",
     type: EquipmentType.ARMOR,
     rarity: "equipment.rarity.rare",
+    obtainableChaosIds: [EquipmentObtainableChaosId.THE_KALEIDOSCOPE_HATCHERY],
     description: "equipment.armor.essence_fueled_gauntlets.description",
     imgUrl: "/images/equipment/armors/essence_fueled_gauntlets.png"
   },
@@ -497,6 +558,7 @@ export const ARMORS: Equipment[] = [
     name: "equipment.armor.pagna_mushroom.name",
     type: EquipmentType.ARMOR,
     rarity: "equipment.rarity.rare",
+    obtainableChaosIds: [EquipmentObtainableChaosId.THE_KALEIDOSCOPE_HATCHERY],
     description: "equipment.armor.pagna_mushroom.description",
     imgUrl: "/images/equipment/armors/pagna_mushroom.png"
   },
@@ -505,6 +567,7 @@ export const ARMORS: Equipment[] = [
     name: "equipment.armor.chitin_shield.name",
     type: EquipmentType.ARMOR,
     rarity: "equipment.rarity.legendary",
+    obtainableChaosIds: [EquipmentObtainableChaosId.THE_KALEIDOSCOPE_HATCHERY],
     description: "equipment.armor.chitin_shield.description",
     imgUrl: "/images/equipment/armors/chitin_shield.png"
   },
@@ -513,6 +576,7 @@ export const ARMORS: Equipment[] = [
     name: "equipment.armor.contaminated_cocoon_cape.name",
     type: EquipmentType.ARMOR,
     rarity: "equipment.rarity.legendary",
+    obtainableChaosIds: [EquipmentObtainableChaosId.THE_KALEIDOSCOPE_HATCHERY],
     description: "equipment.armor.contaminated_cocoon_cape.description",
     imgUrl: "/images/equipment/armors/contaminated_cocoon_cape.png"
   },
@@ -521,6 +585,7 @@ export const ARMORS: Equipment[] = [
     name: "equipment.armor.contaminated_drone_lens.name",
     type: EquipmentType.ARMOR,
     rarity: "equipment.rarity.legendary",
+    obtainableChaosIds: [EquipmentObtainableChaosId.THE_KALEIDOSCOPE_HATCHERY],
     description: "equipment.armor.contaminated_drone_lens.description",
     imgUrl: "/images/equipment/armors/contaminated_drone_lens.png"
   },
@@ -529,6 +594,7 @@ export const ARMORS: Equipment[] = [
     name: "equipment.armor.remnants_of_succession.name",
     type: EquipmentType.ARMOR,
     rarity: "equipment.rarity.mythical",
+    obtainableChaosIds: [EquipmentObtainableChaosId.THE_KALEIDOSCOPE_HATCHERY],
     description: "equipment.armor.remnants_of_succession.description",
     imgUrl: "/images/equipment/armors/remnants_of_succession.png"
   },

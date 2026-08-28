@@ -3,13 +3,14 @@ import { useTranslations } from "next-intl";
 import { Popover, PopoverTrigger, PopoverContent } from "./ui/popover";
 import { Toggle } from "./ui/toggle";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger, DropdownMenuSeparator } from "./ui/dropdown-menu";
-import { Equipment } from "@/types";
+import { Equipment, EquipmentObtainableChaosId } from "@/types";
 import { EQUIPMENT_ENGRAVING_EFFECTS } from "@/lib/equipment-engraving";
 import { REFINEMENT_EFFECTS } from "@/lib/refinement";
 
 interface InfoDialogProps {
   description: string;
   rarity: string;
+  obtainableChaosIds?: EquipmentObtainableChaosId[];
   showEnhancements?: boolean;
   refinement?: string | null;
   onRefinementChange?: (refinementId: string | null) => void;
@@ -23,6 +24,7 @@ interface InfoDialogProps {
 export function InfoDialog({ 
   description, 
   rarity, 
+  obtainableChaosIds = [],
   showEnhancements = false,
   refinement = null,
   onRefinementChange,
@@ -52,6 +54,18 @@ export function InfoDialog({
       <PopoverContent className="max-w-xs text-sm text-muted-foreground bg-background border">
         <div className="font-bold mb-2">{t('equipment.info', { defaultValue: '詳細情報' })}</div>
         <div className="mb-1"><span className="font-semibold">{t('equipment.rarity.name', { defaultValue: 'レアリティ' })}: </span>{rarity}</div>
+        {obtainableChaosIds.length > 0 ? (
+          <div className="mb-1">
+            <span className="font-semibold">
+              {t('equipment.obtainableChaos.label', { defaultValue: '入手場所' })}:{" "}
+            </span>
+            {obtainableChaosIds
+              .map((chaosId) =>
+                t(`equipment.obtainableChaos.options.${chaosId}`, { defaultValue: chaosId })
+              )
+              .join(", ")}
+          </div>
+        ) : null}
         <div className="mb-4">{description}</div>
         
         {showEnhancements && (

@@ -19,6 +19,23 @@
       "title": "Refinement Not Selected",
       "message": "Refinement is not selected for equipment with God's Hammer active. It is recommended to enable refinement."
     },
+    "obtainableChaos": {
+      "label": "Obtainable from",
+      "filterLabel": "Obtainable chaos filter",
+      "all": "All",
+      "options": {
+        "all": "Common",
+        "the_blue_pot": "The Blue Pot",
+        "twin_stars_shadow": "Twin Star's Shadow",
+        "city_of_mist": "City of Mist",
+        "swamp_of_judgment": "Swamp of Judgment",
+        "the_foretold_ruin": "The Foretold Ruin",
+        "laboratory_0": "Laboratory 0",
+        "burning_life": "Burning Life",
+        "theater_of_illusions": "Theater of Illusions",
+        "the_kaleidoscope_hatchery": "The Kaleidoscope Hatchery"
+      }
+    },
     "refinementEffects": {
       "refinement_01": "When storing or extinguishing a card, deal 100% fixed damage to a random enemy (once per turn)",
       "refinement_02": "When hunting a turn while you have a shield, deal 100% fixed damage to all enemies",

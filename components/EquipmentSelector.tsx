@@ -7,8 +7,9 @@ import { useTranslations } from "next-intl";
 import { toast } from "sonner";
 import { HardHat, Hammer, Sparkles, Swords } from "lucide-react";
 
+import { filterEquipmentByChaosLocation } from "@/lib/equipment-chaos";
 import { EQUIPMENT_ENGRAVING_EFFECTS } from "@/lib/equipment-engraving";
-import { Equipment, EquipmentSlot, EquipmentType } from "@/types";
+import { Equipment, EquipmentObtainableChaosId, EquipmentSlot, EquipmentType } from "@/types";
 import { Button } from "./ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "./ui/dialog";
 import { Field, FieldGroup, FieldLabel } from "./ui/field";
@@ -22,6 +23,17 @@ const EQUIPMENT_PLACEHOLDER: Record<EquipmentType, string> = {
 };
 
 const EQUIPMENT_TYPES: EquipmentType[] = [EquipmentType.WEAPON, EquipmentType.ARMOR, EquipmentType.PENDANT];
+const CHAOS_FILTER_OPTIONS: EquipmentObtainableChaosId[] = [
+  EquipmentObtainableChaosId.THE_BLUE_POT,
+  EquipmentObtainableChaosId.TWIN_STARS_SHADOW,
+  EquipmentObtainableChaosId.CITY_OF_MIST,
+  EquipmentObtainableChaosId.SWAMP_OF_JUDGMENT,
+  EquipmentObtainableChaosId.THE_FORETOLD_RUIN,
+  EquipmentObtainableChaosId.LABORATORY_0,
+  EquipmentObtainableChaosId.BURNING_LIFE,
+  EquipmentObtainableChaosId.THEATER_OF_ILLUSIONS,
+  EquipmentObtainableChaosId.THE_KALEIDOSCOPE_HATCHERY,
+];
 
 interface EquipmentSelectorProps {
   equipment: Equipment[];
@@ -98,11 +110,12 @@ interface EquipmentOptionCardProps {
   onImageError: () => void;
   name: string;
   rarity: string;
+  obtainableChaosIds: EquipmentObtainableChaosId[];
   description?: string;
   onSelect: () => void;
 }
 
-function EquipmentOptionCard({ selected, imageSrc, onImageError, name, rarity, description, onSelect }: EquipmentOptionCardProps) {
+function EquipmentOptionCard({ selected, imageSrc, onImageError, name, rarity, obtainableChaosIds, description, onSelect }: EquipmentOptionCardProps) {
   return (
     <div className="relative">
       <Button variant={selected ? "secondary" : "outline"} className="h-auto flex-col justify-start p-2 text-center relative w-full" onClick={onSelect}>
@@ -113,7 +126,7 @@ function EquipmentOptionCard({ selected, imageSrc, onImageError, name, rarity, d
           <span className="text-xs md:text-sm">{name}</span>
         </div>
       </Button>
-      {description ? <InfoDialog description={description} rarity={rarity} /> : null}
+      {description ? <InfoDialog description={description} rarity={rarity} obtainableChaosIds={obtainableChaosIds} /> : null}
     </div>
   );
 }
@@ -123,6 +136,8 @@ interface EquipmentFieldProps extends EquipmentSelectorProps {
   titleKey: string;
   open: boolean;
   onOpenChange: (open: boolean) => void;
+  selectedChaosId: EquipmentObtainableChaosId | null;
+  onSelectedChaosIdChange: (chaosId: EquipmentObtainableChaosId | null) => void;
   imageErrors: Set<string>;
   onImageError: (equipmentId: string) => void;
 }
@@ -130,6 +145,10 @@ interface EquipmentFieldProps extends EquipmentSelectorProps {
 function EquipmentField(props: EquipmentFieldProps) {
   const t = useTranslations();
   const items = props.equipment.filter((item) => item.type === props.type);
+  const filteredItems = useMemo(
+    () => filterEquipmentByChaosLocation(items, props.selectedChaosId),
+    [items, props.selectedChaosId]
+  );
   const slot = props.selectedEquipment[props.type];
   const selected = slot?.item ?? null;
   const imageSrc = props.imageErrors.has(selected?.id ?? "") ? "/images/equipment/equipment_placeholder.png" : selected?.imgUrl ?? EQUIPMENT_PLACEHOLDER[props.type];
@@ -142,17 +161,43 @@ function EquipmentField(props: EquipmentFieldProps) {
           <DialogTrigger asChild>
             <EquipmentPreviewButton title={selected ? t(selected.name) : t(props.titleKey)} slot={slot} imageSrc={imageSrc} imageAlt={selected ? t(selected.name) : t(props.titleKey)} onImageError={() => selected && props.onImageError(selected.id)} />
           </DialogTrigger>
-          {selected?.description ? <InfoDialog description={t(selected.description)} rarity={t(selected.rarity)} showEnhancements refinement={slot?.refinement ?? null} onRefinementChange={(refinementId) => props.onRefinementChange?.(props.type, refinementId)} equipmentEngravingId={slot?.engravingId ?? null} onEquipmentEngravingChange={(engravingId) => props.onEquipmentEngravingChange?.(props.type, engravingId)} equipment={props.equipment} godHammerEquipmentId={slot?.godHammerEquipmentId ?? null} onGodHammerEquipmentSelect={(equipmentId) => props.onGodHammerChange?.(props.type, equipmentId)} /> : null}
+          {selected?.description ? <InfoDialog description={t(selected.description)} rarity={t(selected.rarity)} obtainableChaosIds={selected.obtainableChaosIds} showEnhancements refinement={slot?.refinement ?? null} onRefinementChange={(refinementId) => props.onRefinementChange?.(props.type, refinementId)} equipmentEngravingId={slot?.engravingId ?? null} onEquipmentEngravingChange={(engravingId) => props.onEquipmentEngravingChange?.(props.type, engravingId)} equipment={props.equipment} godHammerEquipmentId={slot?.godHammerEquipmentId ?? null} onGodHammerEquipmentSelect={(equipmentId) => props.onGodHammerChange?.(props.type, equipmentId)} /> : null}
         </div>
         <DialogContent className="max-h-[90vh] overflow-hidden w-[80vw] max-w-5xl flex flex-col">
           <DialogHeader className="flex-row items-center justify-between space-y-0 shrink-0">
-            <div className="flex items-center gap-3"><DialogTitle>{t(props.titleKey)}</DialogTitle></div>
+            <div className="flex items-center gap-3">
+              <DialogTitle>{t(props.titleKey)}</DialogTitle>
+              <label htmlFor={`${props.type}-chaos-filter`} className="sr-only">
+                {t("equipment.obtainableChaos.filterLabel", { defaultValue: "入手場所フィルター" })}
+              </label>
+              <select
+                id={`${props.type}-chaos-filter`}
+                aria-label={t("equipment.obtainableChaos.filterLabel", { defaultValue: "入手場所フィルター" })}
+                className="h-8 rounded-md border border-input bg-background px-2 text-xs md:text-sm"
+                value={props.selectedChaosId ?? ""}
+                onChange={(event) => {
+                  const value = event.target.value as EquipmentObtainableChaosId | "";
+                  props.onSelectedChaosIdChange(value === "" ? null : value);
+                }}
+              >
+                <option value="">
+                  {t("equipment.obtainableChaos.all", { defaultValue: "すべて" })}
+                </option>
+                {CHAOS_FILTER_OPTIONS.map((chaosId) => (
+                  <option key={chaosId} value={chaosId}>
+                    {t(`equipment.obtainableChaos.options.${chaosId}`, {
+                      defaultValue: chaosId,
+                    })}
+                  </option>
+                ))}
+              </select>
+            </div>
             <DialogCloseButton onClick={() => { props.onSelect(null, props.type); props.onOpenChange(false); }} />
           </DialogHeader>
           <div className="flex-1 p-2 md:p-6 pt-0 overflow-y-auto">
             <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-2">
-              {items.map((item) => (
-                <EquipmentOptionCard key={item.id} selected={selected?.id === item.id} imageSrc={props.imageErrors.has(item.id) ? "/images/equipment/equipment_placeholder.png" : item.imgUrl ?? "/images/equipment/equipment_placeholder.png"} onImageError={() => props.onImageError(item.id)} name={t(item.name)} rarity={t(item.rarity)} description={item.description ? t(item.description) : undefined} onSelect={() => props.onSelect(item, props.type)} />
+              {filteredItems.map((item) => (
+                <EquipmentOptionCard key={item.id} selected={selected?.id === item.id} imageSrc={props.imageErrors.has(item.id) ? "/images/equipment/equipment_placeholder.png" : item.imgUrl ?? "/images/equipment/equipment_placeholder.png"} onImageError={() => props.onImageError(item.id)} name={t(item.name)} rarity={t(item.rarity)} obtainableChaosIds={item.obtainableChaosIds} description={item.description ? t(item.description) : undefined} onSelect={() => props.onSelect(item, props.type)} />
               ))}
             </div>
             {descriptions.engraving ? <div className="mt-4 text-sm text-muted-foreground"><span className="font-semibold">{t("equipment.engraving", { defaultValue: "刻印" })}: </span>{descriptions.engraving}</div> : null}
@@ -166,6 +211,7 @@ function EquipmentField(props: EquipmentFieldProps) {
 export function EquipmentSelector(props: EquipmentSelectorProps) {
   const t = useTranslations();
   const [openType, setOpenType] = useState<EquipmentType | null>(null);
+  const [selectedChaosId, setSelectedChaosId] = useState<EquipmentObtainableChaosId | null>(null);
   const [imageErrors, setImageErrors] = useState<Set<string>>(new Set());
 
   const handleImageError = (equipmentId: string) => {
@@ -188,7 +234,7 @@ export function EquipmentSelector(props: EquipmentSelectorProps) {
     <FieldGroup className="pt-4 gap-2">
       <FieldLabel className="text-base lg:text-2xl text-gray-500"><Swords />{t("equipment.title")}</FieldLabel>
       <div className="grid grid-cols-3 gap-2">
-        {EQUIPMENT_TYPES.map((type) => <EquipmentField key={type} {...props} type={type} titleKey={`equipment.${type}.title`} open={openType === type} onOpenChange={(open) => setOpenType(open ? type : null)} imageErrors={imageErrors} onImageError={handleImageError} onSelect={handleSelect} />)}
+        {EQUIPMENT_TYPES.map((type) => <EquipmentField key={type} {...props} type={type} titleKey={`equipment.${type}.title`} open={openType === type} onOpenChange={(open) => setOpenType(open ? type : null)} selectedChaosId={selectedChaosId} onSelectedChaosIdChange={setSelectedChaosId} imageErrors={imageErrors} onImageError={handleImageError} onSelect={handleSelect} />)}
       </div>
     </FieldGroup>
   );

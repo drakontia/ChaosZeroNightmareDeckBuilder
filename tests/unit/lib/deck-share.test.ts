@@ -19,7 +19,7 @@ describe('deck-share', () => {
       } as any,
       equipment: {
         weapon: {
-          item: { id: 'obsidian_sword', name: 'equipment.weapon.obsidian_sword.name', type: EquipmentType.WEAPON, rarity: 'equipment.rarity.rare' },
+          item: { id: 'obsidian_sword', name: 'equipment.weapon.obsidian_sword.name', type: EquipmentType.WEAPON, rarity: 'equipment.rarity.rare', obtainableChaosIds: [] },
           refinement: 'refinement_01',
           godHammerEquipmentId: 'assault_gauntlets',
           engravingId: 'equipment_engraving_lux_01',

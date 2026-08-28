@@ -4,6 +4,7 @@ import { WEAPONS } from '@/lib/equipment/weapons';
 import { ARMORS } from '@/lib/equipment/armors';
 import { PENDANTS } from '@/lib/equipment/pendants';
 import { EQUIPMENT } from '@/lib/equipment';
+import { EquipmentObtainableChaosId } from '@/types';
 
 const VALID_RARITIES = [
   'equipment.rarity.rare',
@@ -12,6 +13,8 @@ const VALID_RARITIES = [
 ];
 
 describe('equipment data integrity', () => {
+  const validChaosIds = new Set(Object.values(EquipmentObtainableChaosId));
+
   describe('WEAPONS', () => {
     it('all weapon IDs are unique', () => {
       const ids = WEAPONS.map((w) => w.id);
@@ -49,6 +52,15 @@ describe('equipment data integrity', () => {
         if (w.imgUrl !== undefined) {
           expect(w.imgUrl).toBe(`/images/equipment/weapons/${w.id}.png`);
         }
+      });
+    });
+
+    it('all weapons define valid obtainable chaos IDs', () => {
+      WEAPONS.forEach((w) => {
+        expect(w.obtainableChaosIds.length).toBeGreaterThan(0);
+        w.obtainableChaosIds.forEach((chaosId) => {
+          expect(validChaosIds.has(chaosId)).toBe(true);
+        });
       });
     });
   });
@@ -92,6 +104,15 @@ describe('equipment data integrity', () => {
         }
       });
     });
+
+    it('all armors define valid obtainable chaos IDs', () => {
+      ARMORS.forEach((a) => {
+        expect(a.obtainableChaosIds.length).toBeGreaterThan(0);
+        a.obtainableChaosIds.forEach((chaosId) => {
+          expect(validChaosIds.has(chaosId)).toBe(true);
+        });
+      });
+    });
   });
 
   describe('PENDANTS', () => {
@@ -131,6 +152,15 @@ describe('equipment data integrity', () => {
         if (p.imgUrl !== undefined) {
           expect(p.imgUrl).toBe(`/images/equipment/pendants/${p.id}.png`);
         }
+      });
+    });
+
+    it('all pendants define valid obtainable chaos IDs', () => {
+      PENDANTS.forEach((p) => {
+        expect(p.obtainableChaosIds.length).toBeGreaterThan(0);
+        p.obtainableChaosIds.forEach((chaosId) => {
+          expect(validChaosIds.has(chaosId)).toBe(true);
+        });
       });
     });
   });
