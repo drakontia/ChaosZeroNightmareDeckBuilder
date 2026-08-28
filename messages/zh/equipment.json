@@ -7,6 +7,23 @@
       "title": "未选择精炼",
       "message": "已启用神之锤的装备未选择精炼。建议启用精炼。"
     },
+    "obtainableChaos": {
+      "label": "获取地点",
+      "filterLabel": "获取地点筛选",
+      "all": "全部",
+      "options": {
+        "all": "通用",
+        "the_blue_pot": "The Blue Pot",
+        "twin_stars_shadow": "Twin Star's Shadow",
+        "city_of_mist": "City of Mist",
+        "swamp_of_judgment": "Swamp of Judgment",
+        "the_foretold_ruin": "The Foretold Ruin",
+        "laboratory_0": "Laboratory 0",
+        "burning_life": "Burning Life",
+        "theater_of_illusions": "Theater of Illusions",
+        "the_kaleidoscope_hatchery": "The Kaleidoscope Hatchery"
+      }
+    },
     "refinementEffects": {
       "refinement_01": "カード保存、消滅時、ランダムな敵意固定ダメージ100%(各ターン1回)",
       "refinement_02": "シールドを所持した状態でターン狩猟時、敵全体に固定ダメージ100%",

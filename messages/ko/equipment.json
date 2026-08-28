@@ -7,6 +7,23 @@
       "title": "정련이 선택되지 않음",
       "message": "신의 망치가 활성화된 장비에 정련이 선택되지 않았습니다. 정련을 활성화하는 것을 권장합니다."
     },
+    "obtainableChaos": {
+      "label": "획득 장소",
+      "filterLabel": "획득 장소 필터",
+      "all": "전체",
+      "options": {
+        "all": "공통",
+        "the_blue_pot": "The Blue Pot",
+        "twin_stars_shadow": "Twin Star's Shadow",
+        "city_of_mist": "City of Mist",
+        "swamp_of_judgment": "Swamp of Judgment",
+        "the_foretold_ruin": "The Foretold Ruin",
+        "laboratory_0": "Laboratory 0",
+        "burning_life": "Burning Life",
+        "theater_of_illusions": "Theater of Illusions",
+        "the_kaleidoscope_hatchery": "The Kaleidoscope Hatchery"
+      }
+    },
     "refinementEffects": {
       "refinement_01": "カード保存、消滅時、ランダムな敵意固定ダメージ100%(各ターン1回)",
       "refinement_02": "シールドを所持した状態でターン狩猟時、敵全体に固定ダメージ100%",

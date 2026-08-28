@@ -43,6 +43,19 @@ export enum EquipmentType {
   PENDANT = "pendant"
 }
 
+export enum EquipmentObtainableChaosId {
+  ALL = "all",
+  THE_BLUE_POT = "the_blue_pot",
+  TWIN_STARS_SHADOW = "twin_stars_shadow",
+  CITY_OF_MIST = "city_of_mist",
+  SWAMP_OF_JUDGMENT = "swamp_of_judgment",
+  THE_FORETOLD_RUIN = "the_foretold_ruin",
+  LABORATORY_0 = "laboratory_0",
+  BURNING_LIFE = "burning_life",
+  THEATER_OF_ILLUSIONS = "theater_of_illusions",
+  THE_KALEIDOSCOPE_HATCHERY = "the_kaleidoscope_hatchery",
+}
+
 export interface Equipment {
   id: string;
   name: string;
@@ -50,6 +63,7 @@ export interface Equipment {
   rarity: string;
   description?: string;
   imgUrl?: string;
+  obtainableChaosIds: EquipmentObtainableChaosId[];
 }
 
 // Card types with enhanced Hirameki support

@@ -10,6 +10,23 @@
             "title": "精錬が選択されていません",
             "message": "神のハンマーが有効な装備に精錬が選択されていません。精錬を有効にすることを推奨します。"
         },
+        "obtainableChaos": {
+            "label": "入手場所",
+            "filterLabel": "入手場所フィルター",
+            "all": "すべて",
+            "options": {
+                "all": "共通",
+                "the_blue_pot": "青い壺",
+                "twin_stars_shadow": "連星の影",
+                "city_of_mist": "霧の都市",
+                "swamp_of_judgment": "裁きの沼",
+                "the_foretold_ruin": "到来した混沌",
+                "laboratory_0": "第0研究所",
+                "burning_life": "燃ゆる生命",
+                "theater_of_illusions": "虚像の劇場",
+                "the_kaleidoscope_hatchery": "万華鏡の孵化場"
+            }
+        },
         "refinementEffects": {
             "refinement_01": "カード保存、消滅時、ランダムな敵意固定ダメージ100%(各ターン2回)",
             "refinement_02": "ターン開始時とターン終了後にシールドがある場合、敵全体に固定ダメージ100%",
