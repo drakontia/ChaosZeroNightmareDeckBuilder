@@ -7,7 +7,7 @@ jobs:
     timeout-minutes: 60
     runs-on: ubuntu-latest
     container:
-      image: mcr.microsoft.com/playwright:v1.57.0-noble-amd64
+      image: mcr.microsoft.com/playwright:v1.62.1-noble-amd64
       options: --ipc=host
     steps:
     - uses: actions/checkout@v5
