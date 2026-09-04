@@ -1,6 +1,7 @@
 import { create } from "zustand";
 import type { Character, Deck, Equipment, EquipmentType, DeckCard, GodType, CopiedCardEntry, RemovedCardEntry, PersonaEngraving, PersonaEngravingAlignment, Season4DesireStatus } from "@/types";
-import { getCardById, CHARACTERS } from "@/lib/card";
+import { getCardById } from "@/lib/card";
+import { getCharacterById } from "@/lib/characters";
 import { normalizeEquipmentEngravingId } from "@/lib/equipment-engraving";
 import { normalizePersonaCardEngravings, VALID_PERSONA_ENGRAVING_ALIGNMENTS } from "@/lib/persona";
 import { getSeason4BaseStatus, isSeason4Card, normalizeSeason4SelectedStatuses } from "@/lib/season4";
@@ -154,7 +155,7 @@ export const useDeckBuilderStore = create<DeckBuilderStore>((set) => ({
     if (deck.character) {
       if (typeof deck.character === 'string') {
         const charId = deck.character as string;
-        charObj = CHARACTERS.find((c: Character) => c.id === charId) ?? null;
+       charObj = getCharacterById(charId);
       } else {
         charObj = deck.character;
       }

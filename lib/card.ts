@@ -15,13 +15,16 @@ import { OTHER_CARDS } from "./other-cards";
 
 export const CARDS: CznCard[] = [...CHARACTER_CARDS, ...OTHER_CARDS];
 
+// Create a Map for O(1) lookup performance
+const CARDS_MAP = new Map<string, CznCard>(CARDS.map(card => [card.id, card]));
+
 // ============================================================
 // ヘルパー関数 (Helper Functions)
 // ============================================================
 
-// Helper function to get card by ID
+// Helper function to get card by ID (O(1) lookup with Map)
 export function getCardById(id: string): CznCard | undefined {
-  return CARDS.find(card => card.id === id);
+  return CARDS_MAP.get(id);
 }
 
 // Helper function to get character's starting cards

@@ -1,4 +1,5 @@
-import { CHARACTERS, EQUIPMENT, getCardById } from "@/lib/card";
+import { EQUIPMENT, getCardById } from "@/lib/card";
+import { getCharacterById } from "@/lib/characters";
 import { normalizeEquipmentEngravingId } from "@/lib/equipment-engraving";
 import { normalizePersonaCardEngravings, VALID_PERSONA_ENGRAVING_ALIGNMENTS } from "@/lib/persona";
 import { Character, CznCard, Deck, DeckCard, Equipment, EquipmentType, PersonaEngraving, PersonaEngravingAlignment } from "@/types";
@@ -135,7 +136,7 @@ const pickEquipment = (id: string | null | undefined, type: EquipmentType): Equi
   return EQUIPMENT.find((item) => item.id === id && item.type === type) ?? null;
 };
 
-const pickCharacter = (id: string | null | undefined) => CHARACTERS.find((char) => char.id === id) ?? null;
+const pickCharacter = (id: string | null | undefined) => getCharacterById(id);
 
 const normalizeSnapshotPersonaEngravings = <T extends { personaEngravings?: PersonaEngraving[] }>(
   entry: T,
