@@ -1,6 +1,6 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import type { ImgHTMLAttributes } from "react";
-import { describe, expect, it, vi } from "vitest";
+import { describe, expect, it, vi } from "vite-plus/test";
 
 import { EquipmentSelector } from "@/components/EquipmentSelector";
 import { Equipment, EquipmentObtainableChaosId, EquipmentType } from "@/types";

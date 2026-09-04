@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeEach, vi } from 'vitest';
+import { describe, it, expect, beforeEach, vi } from 'vite-plus/test';
 import { encodeDeckShare, decodeDeckShare } from '@/lib/deck-share';
 import { Deck, CardStatus, CardType, CardCategory, GodType, EquipmentType } from '@/types';
 

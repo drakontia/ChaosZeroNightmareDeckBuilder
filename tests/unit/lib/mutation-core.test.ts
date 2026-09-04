@@ -1,4 +1,4 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect } from 'vite-plus/test';
 import {
   MUTATION_CORE_EFFECTS,
   getMutationCoreEffectById,

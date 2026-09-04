@@ -1,4 +1,4 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect } from 'vite-plus/test';
 import { getAddableCards, getCardById, getCharacterHiramekiCards, getCharacterStartingCards, CARDS } from '@/lib/card';
 import { CHARACTERS } from '@/lib/characters';
 import { FORBIDDEN_CARDS } from '@/lib/cards/forbidden-cards';

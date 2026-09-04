@@ -1,4 +1,4 @@
-import { describe, it, expect, vi, beforeEach } from 'vitest';
+import { describe, it, expect, vi, beforeEach } from 'vite-plus/test';
 import { render, screen } from '@testing-library/react';
 import { DeckDisplay } from '@/components/DeckDisplay';
 import { CardType, CardCategory, CardStatus, DeckCard, GodType } from '@/types';

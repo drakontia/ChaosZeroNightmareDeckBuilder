@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it } from 'vite-plus/test';
 
 import { EQUIPMENT_ENGRAVING_EFFECTS } from '@/lib/equipment-engraving';
 
