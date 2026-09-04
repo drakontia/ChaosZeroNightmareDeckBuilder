@@ -7,7 +7,7 @@
  * Red: useMemo なしでは 2 回呼ばれるため FAIL
  * Green: useMemo を追加すると 1 回のみ → PASS
  */
-import { describe, it, expect, vi, beforeEach } from 'vitest';
+import { describe, it, expect, vi, beforeEach } from 'vite-plus/test';
 import { render, act, screen } from '@testing-library/react';
 import { useState } from 'react';
 import { Deck, JobType } from '@/types';

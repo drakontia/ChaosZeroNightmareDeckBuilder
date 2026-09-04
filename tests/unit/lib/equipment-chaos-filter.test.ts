@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it } from 'vite-plus/test';
 
 import { filterEquipmentByChaosLocation } from '@/lib/equipment-chaos';
 import { Equipment, EquipmentObtainableChaosId, EquipmentType } from '@/types';

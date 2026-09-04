@@ -1,4 +1,4 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect } from 'vite-plus/test';
 import { EquipmentType } from '@/types';
 import { WEAPONS } from '@/lib/equipment/weapons';
 import { ARMORS } from '@/lib/equipment/armors';

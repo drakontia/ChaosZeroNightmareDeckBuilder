@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeEach, vi, afterEach } from 'vitest';
+import { describe, it, expect, beforeEach, vi, afterEach } from 'vite-plus/test';
 import { renderHook, act } from '@testing-library/react';
 import { useExportDeckImage } from '@/hooks/useExportDeckImage';
 import * as htmlToImage from 'html-to-image';

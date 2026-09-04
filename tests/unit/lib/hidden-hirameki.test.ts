@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeEach } from 'vitest';
+import { describe, it, expect, beforeEach } from 'vite-plus/test';
 import { DeckCard, CardType, CardCategory, CardGrade, Deck, HiramekiVariation } from '@/types';
 import { getCardInfo } from '@/lib/deck-utils';
 import { calculateFaintMemory } from "@/lib/calculateFaintMemory";

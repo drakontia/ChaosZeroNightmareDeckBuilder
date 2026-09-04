@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeEach, vi } from 'vitest';
+import { describe, it, expect, beforeEach, vi } from 'vite-plus/test';
 import { renderHook, act } from '@testing-library/react';
 import { useDeckSaveLoad } from '@/hooks/useDeckSaveLoad';
 import { CHARACTERS } from '@/lib/characters';

@@ -21,3 +21,19 @@ onlyBuiltDependencies:
   - esbuild
   - lefthook
   - sharp
+catalog:
+  vite: npm:@voidzero-dev/vite-plus-core@0.3.0
+  vitest: 4.1.11
+  vite-plus: 0.3.0
+  '@vitest/coverage-v8': 4.1.11
+  '@vitest/ui': 4.1.11
+overrides:
+  vite@*: 'catalog:'
+  vitest@*: 'catalog:'
+peerDependencyRules:
+  allowAny:
+    - vite
+    - vitest
+  allowedVersions:
+    vite: '*'
+    vitest: '*'

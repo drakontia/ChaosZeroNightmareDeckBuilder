@@ -1,4 +1,4 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect } from 'vite-plus/test';
 import { CardCategory, CardStatus, CardType, ElementType, JobType } from '@/types';
 import { CHARACTERS } from '@/lib/characters';
 import { CHARACTER_CARDS } from '@/lib/character-cards';
