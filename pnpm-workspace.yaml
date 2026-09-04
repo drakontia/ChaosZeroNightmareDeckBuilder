@@ -30,9 +30,14 @@ catalog:
 overrides:
   vite@*: "catalog:"
   vitest@*: "catalog:"
+  "@vitest/ui@*": "catalog:"
+  "@vitest/coverage-v8@*": "catalog:"
 peerDependencyRules:
   allowAny:
     - vite
+    - vitest
+    - "@vitest/ui"
+    - "@vitest/coverage-v8"
     - vitest
   allowedVersions:
     vite: "*"
