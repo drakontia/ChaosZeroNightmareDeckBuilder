@@ -3,6 +3,7 @@
 import { useCallback, useState } from "react";
 import { Deck } from "@/types";
 import { encodeDeckShare, decodeDeckShare } from "@/lib/deck-share";
+import { decodeExperimentalGamePreset } from "@/lib/game-preset-experimental";
 
 type DeckUpdater = (deck: Deck | null) => void;
 type NameUpdater = (name: string) => void;
@@ -154,6 +155,27 @@ export function useDeckSaveLoad({ deck, setName, setSharedDeck, setShareError, t
     [listSaved, remove, t]
   );
 
+  const handleImportGamePreset = useCallback(() => {
+    const code = window.prompt(
+      t("deck.importGamePrompt", { defaultValue: "ゲーム内コードを入力" }),
+      ""
+    );
+    if (!code) return;
+
+    const decoded = decodeExperimentalGamePreset(code);
+    if (!decoded.deck) {
+      alert(t("deck.importGameFailed", { defaultValue: "ゲーム内コードの読み込みに失敗しました" }));
+      return;
+    }
+
+    setSharedDeck(decoded.deck);
+    setShareError(null);
+
+    if (decoded.warnings.length > 0) {
+      alert(decoded.warnings.join("\n"));
+    }
+  }, [setShareError, setSharedDeck, t]);
+
   return {
     savedList,
     loadOpen,
@@ -162,5 +184,6 @@ export function useDeckSaveLoad({ deck, setName, setSharedDeck, setShareError, t
     openLoadDialog,
     handleLoadDeck,
     handleDeleteSaved,
+    handleImportGamePreset,
   };
 }

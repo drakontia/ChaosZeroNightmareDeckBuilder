@@ -104,6 +104,7 @@ export function DeckBuilder({ shareId }: DeckBuilderProps) {
     openLoadDialog,
     handleLoadDeck,
     handleDeleteSaved,
+    handleImportGamePreset,
   } = useDeckSaveLoad({ deck: store.deck ?? undefined, setName, setSharedDeck, setShareError, t });
   const validateEquipment = useEquipmentValidation(store.deck, t);
 
@@ -145,6 +146,7 @@ export function DeckBuilder({ shareId }: DeckBuilderProps) {
             equipment={EQUIPMENT}
             characters={CHARACTERS}
             deckNamePlaceholder={t('deck.namePlaceholder')}
+            importLabel={t('deck.importGamePreset', { defaultValue: '取込' })}
             saveLabel={t('deck.save', { defaultValue: 'デッキを保存' })}
             loadLabel={t('deck.load', { defaultValue: 'デッキを読み込み' })}
             shareLabel={t('deck.share')}
@@ -162,6 +164,7 @@ export function DeckBuilder({ shareId }: DeckBuilderProps) {
               store.setDeck({ ...currentDeck, name: value });
               setName(value);
             }}
+            onImport={handleImportGamePreset}
             onSave={handleSaveDeck}
             onLoad={openLoadDialog}
             onShare={handleShareDeck}

@@ -14,6 +14,7 @@ interface DeckWorkspaceProps {
   equipment: Equipment[];
   characters: Character[];
   deckNamePlaceholder: string;
+  importLabel: string;
   saveLabel: string;
   loadLabel: string;
   shareLabel: string;
@@ -27,6 +28,7 @@ interface DeckWorkspaceProps {
   faintMemoryPoints: number;
   isSharing: boolean;
   isExporting: boolean;
+  onImport: () => void;
   onDeckNameChange: (value: string) => void;
   onSave: () => void;
   onLoad: () => void;
@@ -67,7 +69,7 @@ export function DeckWorkspace(props: DeckWorkspaceProps) {
         <Field orientation="horizontal" className="col-span-1 md:col-span-4 lg:col-span-4">
           <Input id="deck-name" type="text" value={props.deck.name ?? ""} onChange={(event) => props.onDeckNameChange(event.target.value)} className="text-base sm:text-lg md:text-xl lg:text-2xl h-12 font-bold" placeholder={props.deckNamePlaceholder} />
         </Field>
-        <DeckBuilderToolbar disabled={!props.deck.character || props.isSharing} isSharing={props.isSharing} isExporting={props.isExporting} onSave={props.onSave} onLoad={props.onLoad} onShare={props.onShare} onExport={props.onExport} onClear={props.onClear} saveLabel={props.saveLabel} loadLabel={props.loadLabel} shareLabel={props.shareLabel} exportLabel={props.exportLabel} clearLabel={props.clearLabel} />
+        <DeckBuilderToolbar disabled={!props.deck.character || props.isSharing} isSharing={props.isSharing} isExporting={props.isExporting} onImport={props.onImport} onSave={props.onSave} onLoad={props.onLoad} onShare={props.onShare} onExport={props.onExport} onClear={props.onClear} importLabel={props.importLabel} saveLabel={props.saveLabel} loadLabel={props.loadLabel} shareLabel={props.shareLabel} exportLabel={props.exportLabel} clearLabel={props.clearLabel} />
       </FieldGroup>
       <div className="sm:col-span-6 lg:col-span-4 space-y-6">
         <Card>
