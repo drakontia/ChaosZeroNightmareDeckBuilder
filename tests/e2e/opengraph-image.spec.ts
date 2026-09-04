@@ -1,4 +1,4 @@
-import { test, expect, Page, APIRequestContext } from '@playwright/test';
+import { test, expect, Page, APIRequestContext } from "@playwright/test";
 
 const getWithRetry = async (request: APIRequestContext, url: string, retries: number = 2) => {
   let lastError: unknown;
@@ -20,16 +20,16 @@ const OG_ROUTE_TIMEOUT = 90_000;
 
 // ヘルパー関数：キャラクターと武器を選択
 const selectCharacterAndWeapon = async (page: Page) => {
-  await page.getByRole('button', { name: 'キャラクターを選択' }).click();
-  await page.getByRole('button', { name: 'チズル', exact: true }).waitFor({ state: 'visible' });
-  await page.getByRole('button', { name: 'チズル', exact: true }).click();
-  await page.getByRole('button', { name: '武器' }).click();
-  await page.getByRole('button', { name: 'ガストロノミコン' }).click();
+  await page.getByRole("button", { name: "キャラクターを選択" }).click();
+  await page.getByRole("button", { name: "チズル", exact: true }).waitFor({ state: "visible" });
+  await page.getByRole("button", { name: "チズル", exact: true }).click();
+  await page.getByRole("button", { name: "武器" }).click();
+  await page.getByRole("button", { name: "ガストロノミコン" }).click();
 };
 
 // ヘルパー関数：ヒラメキカードを追加
 const addHiramekiCard = async (page: Page, cardName: string) => {
-  const hiramekiSection = page.getByRole('heading', { name: 'ヒラメキカード' }).locator('..');
+  const hiramekiSection = page.getByRole("heading", { name: "ヒラメキカード" }).locator("..");
   const card = hiramekiSection.getByText(cardName, { exact: true }).first();
   await expect(card).toBeVisible({ timeout: 10000 });
   await card.click({ timeout: 10000 });
@@ -39,17 +39,17 @@ const addHiramekiCard = async (page: Page, cardName: string) => {
 const shareDeckAndGetShareId = async (page: Page) => {
   // コンソールエラーをキャプチャ
   const consoleErrors: string[] = [];
-  page.on('console', (msg) => {
-    if (msg.type() === 'error') {
+  page.on("console", (msg) => {
+    if (msg.type() === "error") {
       consoleErrors.push(msg.text());
     }
   });
 
-  const shareBtn = page.getByRole('button', { name: '共有' });
+  const shareBtn = page.getByRole("button", { name: "共有" });
   await expect(shareBtn).toBeEnabled({ timeout: 5000 });
 
   const alertPromise = new Promise<string>((resolve) => {
-    page.once('dialog', async (dialog) => {
+    page.once("dialog", async (dialog) => {
       resolve(dialog.message());
       await dialog.accept();
     });
@@ -57,8 +57,8 @@ const shareDeckAndGetShareId = async (page: Page) => {
 
   await shareBtn.click();
   const alertMessage = await alertPromise;
-  
-  expect(alertMessage).toContain('共有URLをコピーしました');
+
+  expect(alertMessage).toContain("共有URLをコピーしました");
 
   const shareUrl = await page.evaluate(() => (window as any).__copiedURL);
   expect(shareUrl).toMatch(/^http:\/\/localhost:3000\/deck\//);
@@ -68,21 +68,21 @@ const shareDeckAndGetShareId = async (page: Page) => {
   return shareIdMatch![1];
 };
 
-test.describe('OpenGraph Image Generation', () => {
-  test.describe.configure({ mode: 'serial' });
+test.describe("OpenGraph Image Generation", () => {
+  test.describe.configure({ mode: "serial" });
   test.describe.configure({ timeout: OG_ROUTE_TIMEOUT });
 
-  test('should generate OpenGraph image for shared deck', async ({ page, request, context }) => {
+  test("should generate OpenGraph image for shared deck", async ({ page, request, context }) => {
     // クリップボードの権限を付与
-    await context.grantPermissions(['clipboard-read', 'clipboard-write']);
-    
-    await page.goto('/');
-    
+    await context.grantPermissions(["clipboard-read", "clipboard-write"]);
+
+    await page.goto("/");
+
     // ページロード直後にクリップボードAPIをモック
     await page.evaluate(() => {
-      (window as any).__copiedURL = '';
+      (window as any).__copiedURL = "";
       const originalClipboard = navigator.clipboard;
-      Object.defineProperty(navigator, 'clipboard', {
+      Object.defineProperty(navigator, "clipboard", {
         value: {
           writeText: async (text: string) => {
             (window as any).__copiedURL = text;
@@ -94,46 +94,46 @@ test.describe('OpenGraph Image Generation', () => {
         configurable: true,
       });
     });
-    
+
     await selectCharacterAndWeapon(page);
-    await addHiramekiCard(page, '黄昏の結束');
-    
+    await addHiramekiCard(page, "黄昏の結束");
+
     // カードが追加されたことを確認
-    await expect(page.getByTestId('total-cards')).toContainText('5', { timeout: 10000 });
-    
+    await expect(page.getByTestId("total-cards")).toContainText("5", { timeout: 10000 });
+
     const shareId = await shareDeckAndGetShareId(page);
     const ogImageUrl = `http://localhost:3000/deck/${shareId}/opengraph-image`;
-    
+
     const response = await getWithRetry(request, ogImageUrl);
     expect(response.status()).toBe(200);
-    expect(response.headers()['content-type']).toContain('image/svg+xml');
-    
+    expect(response.headers()["content-type"]).toContain("image/svg+xml");
+
     const svgText = await response.text();
     expect(svgText.length).toBeGreaterThan(500);
-    expect(svgText).toContain('<svg');
-    expect(svgText).toContain('チズル');
-    expect(svgText).toContain('Deck Cards');
-    expect(svgText).toContain('黄昏の結束');
+    expect(svgText).toContain("<svg");
+    expect(svgText).toContain("チズル");
+    expect(svgText).toContain("Deck Cards");
+    expect(svgText).toContain("黄昏の結束");
   });
 
-  test('should return 404 for invalid shareId', async ({ request }) => {
-    const invalidShareId = 'invalid-share-id-123';
+  test("should return 404 for invalid shareId", async ({ request }) => {
+    const invalidShareId = "invalid-share-id-123";
     const ogImageUrl = `http://localhost:3000/deck/${invalidShareId}/opengraph-image`;
-    
+
     const response = await getWithRetry(request, ogImageUrl);
     expect(response.status()).toBe(404);
   });
 
-  test('should generate image with multiple cards', async ({ page, request, context }) => {
+  test("should generate image with multiple cards", async ({ page, request, context }) => {
     // クリップボードの権限を付与
-    await context.grantPermissions(['clipboard-read', 'clipboard-write']);
-    
-    await page.goto('/');
-    
+    await context.grantPermissions(["clipboard-read", "clipboard-write"]);
+
+    await page.goto("/");
+
     // ページロード直後にクリップボードAPIをモック
     await page.evaluate(() => {
-      (window as any).__copiedURL = '';
-      Object.defineProperty(navigator, 'clipboard', {
+      (window as any).__copiedURL = "";
+      Object.defineProperty(navigator, "clipboard", {
         value: {
           writeText: async (text: string) => {
             (window as any).__copiedURL = text;
@@ -145,22 +145,22 @@ test.describe('OpenGraph Image Generation', () => {
         configurable: true,
       });
     });
-    
+
     await selectCharacterAndWeapon(page);
-    await addHiramekiCard(page, '黄昏の結束');
-    
-    await expect(page.getByTestId('total-cards')).toContainText('5', { timeout: 10000 });
-    
+    await addHiramekiCard(page, "黄昏の結束");
+
+    await expect(page.getByTestId("total-cards")).toContainText("5", { timeout: 10000 });
+
     const shareId = await shareDeckAndGetShareId(page);
     const ogImageUrl = `http://localhost:3000/deck/${shareId}/opengraph-image`;
-    
+
     const response = await getWithRetry(request, ogImageUrl);
     expect(response.status()).toBe(200);
-    expect(response.headers()['content-type']).toContain('image/svg+xml');
-    
+    expect(response.headers()["content-type"]).toContain("image/svg+xml");
+
     const svgText = await response.text();
     expect(svgText.length).toBeGreaterThan(500);
-    expect(svgText).toContain('<svg');
-    expect(svgText).toContain('Deck Cards');
+    expect(svgText).toContain("<svg");
+    expect(svgText).toContain("Deck Cards");
   });
 });

@@ -1,14 +1,14 @@
-import { act, renderHook } from '@testing-library/react';
-import { describe, expect, it, vi } from 'vite-plus/test';
+import { act, renderHook } from "@testing-library/react";
+import { describe, expect, it, vi } from "vite-plus/test";
 
-import { useCharacterSelection } from '@/hooks/useCharacterSelection';
-import { CHARACTERS } from '@/lib/characters';
+import { useCharacterSelection } from "@/hooks/useCharacterSelection";
+import { CHARACTERS } from "@/lib/characters";
 
-describe('useCharacterSelection', () => {
-  it('does not reselect a different character when incrementing ego without sync', () => {
+describe("useCharacterSelection", () => {
+  it("does not reselect a different character when incrementing ego without sync", () => {
     const onSelect = vi.fn();
     const onEgoLevelChange = vi.fn();
-    const selectedCharacter = CHARACTERS.find((entry) => entry.id === 'chizuru')!;
+    const selectedCharacter = CHARACTERS.find((entry) => entry.id === "chizuru")!;
     const otherCharacter = CHARACTERS.find((entry) => entry.id !== selectedCharacter.id)!;
 
     const { result } = renderHook(() =>
@@ -16,7 +16,7 @@ describe('useCharacterSelection', () => {
         character: selectedCharacter,
         onSelect,
         onEgoLevelChange,
-      })
+      }),
     );
 
     act(() => {
@@ -28,17 +28,17 @@ describe('useCharacterSelection', () => {
     expect(onEgoLevelChange).not.toHaveBeenCalled();
   });
 
-  it('updates ego through the dedicated callback for the selected character', () => {
+  it("updates ego through the dedicated callback for the selected character", () => {
     const onSelect = vi.fn();
     const onEgoLevelChange = vi.fn();
-    const selectedCharacter = CHARACTERS.find((entry) => entry.id === 'chizuru')!;
+    const selectedCharacter = CHARACTERS.find((entry) => entry.id === "chizuru")!;
 
     const { result } = renderHook(() =>
       useCharacterSelection({
         character: selectedCharacter,
         onSelect,
         onEgoLevelChange,
-      })
+      }),
     );
 
     act(() => {
@@ -49,16 +49,16 @@ describe('useCharacterSelection', () => {
     expect(onEgoLevelChange).toHaveBeenCalledWith((selectedCharacter.egoLevel ?? 0) + 1);
   });
 
-  it('applies the locally adjusted ego level when selecting a candidate', () => {
+  it("applies the locally adjusted ego level when selecting a candidate", () => {
     const onSelect = vi.fn();
-    const selectedCharacter = CHARACTERS.find((entry) => entry.id === 'chizuru')!;
+    const selectedCharacter = CHARACTERS.find((entry) => entry.id === "chizuru")!;
     const otherCharacter = CHARACTERS.find((entry) => entry.id !== selectedCharacter.id)!;
 
     const { result } = renderHook(() =>
       useCharacterSelection({
         character: selectedCharacter,
         onSelect,
-      })
+      }),
     );
 
     act(() => {
@@ -75,9 +75,9 @@ describe('useCharacterSelection', () => {
     });
   });
 
-  it('syncs the selected character ego level when props change', () => {
+  it("syncs the selected character ego level when props change", () => {
     const onSelect = vi.fn();
-    const selectedCharacter = CHARACTERS.find((entry) => entry.id === 'chizuru')!;
+    const selectedCharacter = CHARACTERS.find((entry) => entry.id === "chizuru")!;
 
     const { result, rerender } = renderHook(
       ({ character }) =>
@@ -89,7 +89,7 @@ describe('useCharacterSelection', () => {
         initialProps: {
           character: selectedCharacter,
         },
-      }
+      },
     );
 
     rerender({
@@ -99,19 +99,21 @@ describe('useCharacterSelection', () => {
       },
     });
 
-    expect(result.current.getEgoLevel({
-      ...selectedCharacter,
-      egoLevel: 4,
-    })).toBe(4);
+    expect(
+      result.current.getEgoLevel({
+        ...selectedCharacter,
+        egoLevel: 4,
+      }),
+    ).toBe(4);
   });
 
-  it('character が null の場合は egoLevels を更新しない', () => {
+  it("character が null の場合は egoLevels を更新しない", () => {
     const onSelect = vi.fn();
     const { result } = renderHook(() =>
       useCharacterSelection({
         character: null,
         onSelect,
-      })
+      }),
     );
     expect(result.current.egoLevels).toEqual({});
   });

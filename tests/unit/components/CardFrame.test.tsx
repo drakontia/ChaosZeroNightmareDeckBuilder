@@ -1,13 +1,13 @@
-import { describe, it, expect, vi, beforeEach } from 'vite-plus/test';
-import { render, screen, fireEvent } from '@testing-library/react';
-import { CardFrame } from '@/components/CardFrame';
-import { NextIntlClientProvider } from 'next-intl';
+import { describe, it, expect, vi, beforeEach } from "vite-plus/test";
+import { render, screen, fireEvent } from "@testing-library/react";
+import { CardFrame } from "@/components/CardFrame";
+import { NextIntlClientProvider } from "next-intl";
 
 // Mock next/image
 let lastCardImageProps: any = null;
 let lastIconImageProps: any = null;
 
-vi.mock('next/image', () => ({
+vi.mock("next/image", () => ({
   default: ({ src, alt, className, width, height, onError }: any) => {
     // Distinguish between card image and icon image
     const isIcon = width && height && (width <= 16 || height <= 16);
@@ -17,37 +17,37 @@ vi.mock('next/image', () => ({
       lastCardImageProps = { src, alt, className, width, height, onError };
     }
     return (
-      <img 
-        src={src} 
-        alt={alt} 
-        className={className} 
-        data-testid={isIcon ? "category-icon" : "card-image"} 
+      <img
+        src={src}
+        alt={alt}
+        className={className}
+        data-testid={isIcon ? "category-icon" : "card-image"}
         width={width}
         height={height}
         onError={onError}
       />
     );
-  }
+  },
 }));
 
-describe('CardFrame', () => {
+describe("CardFrame", () => {
   const messages = {
     category: {
-      attack: 'Attack',
-      skill: 'Skill',
-      upgrade: 'Upgrade'
+      attack: "Attack",
+      skill: "Skill",
+      upgrade: "Upgrade",
     },
     status: {
-      unique: 'Unique',
-      copied: 'Copied'
-    }
+      unique: "Unique",
+      copied: "Copied",
+    },
   };
 
   const renderWithIntl = (ui: React.ReactElement) => {
     return render(
       <NextIntlClientProvider locale="en" messages={messages}>
         {ui}
-      </NextIntlClientProvider>
+      </NextIntlClientProvider>,
     );
   };
 
@@ -57,11 +57,11 @@ describe('CardFrame', () => {
     lastIconImageProps = null;
   });
 
-  it('should be wrapped with React.memo', () => {
-    expect((CardFrame as unknown as { $$typeof?: symbol }).$$typeof).toBe(Symbol.for('react.memo'));
+  it("should be wrapped with React.memo", () => {
+    expect((CardFrame as unknown as { $$typeof?: symbol }).$$typeof).toBe(Symbol.for("react.memo"));
   });
 
-  it('should render card with basic props', () => {
+  it("should render card with basic props", () => {
     renderWithIntl(
       <CardFrame
         imgUrl="/test.jpg"
@@ -70,18 +70,18 @@ describe('CardFrame', () => {
         name="Test Card"
         category="Attack"
         categoryId="attack"
-      />
+      />,
     );
 
-    const image = screen.getByTestId('card-image');
+    const image = screen.getByTestId("card-image");
     expect(image).toBeDefined();
-    expect(image.getAttribute('src')).toBe('/test.jpg');
-    expect(screen.getByText('3')).toBeDefined();
-    expect(screen.getByText('Test Card')).toBeDefined();
-    expect(screen.getByTestId('category-icon')).toBeDefined();
+    expect(image.getAttribute("src")).toBe("/test.jpg");
+    expect(screen.getByText("3")).toBeDefined();
+    expect(screen.getByText("Test Card")).toBeDefined();
+    expect(screen.getByTestId("category-icon")).toBeDefined();
   });
 
-  it('should flip image when isCopied is true', () => {
+  it("should flip image when isCopied is true", () => {
     renderWithIntl(
       <CardFrame
         imgUrl="/test.jpg"
@@ -91,14 +91,14 @@ describe('CardFrame', () => {
         category="Attack"
         categoryId="attack"
         isCopied={true}
-      />
+      />,
     );
 
-    const image = screen.getByTestId('card-image');
-    expect(image.className).toContain('scale-x-[-1]');
+    const image = screen.getByTestId("card-image");
+    expect(image.className).toContain("scale-x-[-1]");
   });
 
-  it('should not flip image when isCopied is false', () => {
+  it("should not flip image when isCopied is false", () => {
     renderWithIntl(
       <CardFrame
         imgUrl="/test.jpg"
@@ -108,14 +108,14 @@ describe('CardFrame', () => {
         category="Attack"
         categoryId="attack"
         isCopied={false}
-      />
+      />,
     );
 
-    const image = screen.getByTestId('card-image');
-    expect(image.className).not.toContain('scale-x-[-1]');
+    const image = screen.getByTestId("card-image");
+    expect(image.className).not.toContain("scale-x-[-1]");
   });
 
-  it('should display statuses including copied status', () => {
+  it("should display statuses including copied status", () => {
     renderWithIntl(
       <CardFrame
         imgUrl="/test.jpg"
@@ -124,23 +124,23 @@ describe('CardFrame', () => {
         name="Test Card"
         category="Attack"
         categoryId="attack"
-        statuses={['Unique', 'Copied']}
+        statuses={["Unique", "Copied"]}
         description="Test description"
-      />
+      />,
     );
 
     expect(screen.getByText(/Unique/)).toBeDefined();
     expect(screen.getByText(/Copied/)).toBeDefined();
   });
 
-  it('should use nameId for translation when provided', () => {
+  it("should use nameId for translation when provided", () => {
     const messagesWithCardName = {
       ...messages,
       cards: {
-        'test-card': {
-          name: 'Translated Card Name'
-        }
-      }
+        "test-card": {
+          name: "Translated Card Name",
+        },
+      },
     };
 
     render(
@@ -154,26 +154,22 @@ describe('CardFrame', () => {
           category="Attack"
           categoryId="attack"
         />
-      </NextIntlClientProvider>
+      </NextIntlClientProvider>,
     );
 
-    expect(screen.getByText('Translated Card Name')).toBeDefined();
+    expect(screen.getByText("Translated Card Name")).toBeDefined();
   });
 
-  it('should use nameFallback when nameId translation is not available', () => {
+  it("should use nameFallback when nameId translation is not available", () => {
     const messagesWithDefault = {
-      ...messages
+      ...messages,
     };
 
     // Create a provider that doesn't throw on missing messages
     const onError = vi.fn();
-    
+
     render(
-      <NextIntlClientProvider 
-        locale="en" 
-        messages={messagesWithDefault}
-        onError={onError}
-      >
+      <NextIntlClientProvider locale="en" messages={messagesWithDefault} onError={onError}>
         <CardFrame
           imgUrl="/test.jpg"
           alt="Test Card"
@@ -183,7 +179,7 @@ describe('CardFrame', () => {
           category="Attack"
           categoryId="attack"
         />
-      </NextIntlClientProvider>
+      </NextIntlClientProvider>,
     );
 
     // The component uses defaultValue in t() which returns the fallback when key is missing
@@ -192,7 +188,7 @@ describe('CardFrame', () => {
     expect(onError).toHaveBeenCalled();
   });
 
-  it('should render compact variant with correct styling', () => {
+  it("should render compact variant with correct styling", () => {
     const { container } = renderWithIntl(
       <CardFrame
         imgUrl="/test.jpg"
@@ -202,15 +198,15 @@ describe('CardFrame', () => {
         category="Attack"
         categoryId="attack"
         variant="compact"
-      />
+      />,
     );
 
     // Check if cost has compact styling class
-    const costElement = screen.getByText('3');
-    expect(costElement.className).toContain('text-2xl');
+    const costElement = screen.getByText("3");
+    expect(costElement.className).toContain("text-2xl");
   });
 
-  it('should render controls when provided', () => {
+  it("should render controls when provided", () => {
     renderWithIntl(
       <CardFrame
         imgUrl="/test.jpg"
@@ -221,14 +217,14 @@ describe('CardFrame', () => {
         categoryId="attack"
         leftControls={<div data-testid="left-control">Left</div>}
         rightControls={<div data-testid="right-control">Right</div>}
-      />
+      />,
     );
 
-    expect(screen.getByTestId('left-control')).toBeDefined();
-    expect(screen.getByTestId('right-control')).toBeDefined();
+    expect(screen.getByTestId("left-control")).toBeDefined();
+    expect(screen.getByTestId("right-control")).toBeDefined();
   });
 
-  it('should switch to placeholder image on error', () => {
+  it("should switch to placeholder image on error", () => {
     renderWithIntl(
       <CardFrame
         imgUrl="/test.jpg"
@@ -237,17 +233,17 @@ describe('CardFrame', () => {
         name="Test Card"
         category="Attack"
         categoryId="attack"
-      />
+      />,
     );
 
-    const image = screen.getByTestId('card-image');
+    const image = screen.getByTestId("card-image");
     fireEvent.error(image);
 
-    expect(lastCardImageProps?.src).toBe('/images/cards/card_placeholder.png');
-    expect(image.getAttribute('src')).toBe('/images/cards/card_placeholder.png');
+    expect(lastCardImageProps?.src).toBe("/images/cards/card_placeholder.png");
+    expect(image.getAttribute("src")).toBe("/images/cards/card_placeholder.png");
   });
 
-  it('should render Ban icon with size matching single-digit number when cost is unusable', () => {
+  it("should render Ban icon with size matching single-digit number when cost is unusable", () => {
     const { container } = renderWithIntl(
       <CardFrame
         imgUrl="/test.jpg"
@@ -256,25 +252,25 @@ describe('CardFrame', () => {
         name="Test Card"
         category="Attack"
         categoryId="attack"
-      />
+      />,
     );
 
-    const svg = container.querySelector('svg');
+    const svg = container.querySelector("svg");
     expect(svg).not.toBeNull();
     // Ban icon should be sized to match single-digit number text (w-5 sm:w-6 lg:w-9 xl:w-12)
-    expect(svg!.className.baseVal ?? svg!.getAttribute('class')).toContain('w-5');
-    expect(svg!.className.baseVal ?? svg!.getAttribute('class')).toContain('h-5');
+    expect(svg!.className.baseVal ?? svg!.getAttribute("class")).toContain("w-5");
+    expect(svg!.className.baseVal ?? svg!.getAttribute("class")).toContain("h-5");
   });
 
-  it('should render hidden and god effect texts when provided', () => {
+  it("should render hidden and god effect texts when provided", () => {
     const messagesWithEffects = {
       ...messages,
       hiddenEffects: {
-        hiddenhirameki_01: 'Hidden Effect'
+        hiddenhirameki_01: "Hidden Effect",
       },
       godEffects: {
-        godhirameki_1: 'God Effect'
-      }
+        godhirameki_1: "God Effect",
+      },
     };
 
     render(
@@ -292,10 +288,10 @@ describe('CardFrame', () => {
           godEffectId="godhirameki_1"
           godEffectFallback="God Effect"
         />
-      </NextIntlClientProvider>
+      </NextIntlClientProvider>,
     );
 
-    expect(screen.getByText('Hidden Effect')).toBeDefined();
-    expect(screen.getByText('God Effect')).toBeDefined();
+    expect(screen.getByText("Hidden Effect")).toBeDefined();
+    expect(screen.getByText("God Effect")).toBeDefined();
   });
 });

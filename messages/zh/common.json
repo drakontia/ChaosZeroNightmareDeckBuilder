@@ -170,8 +170,7 @@
     "remove": "移除",
     "copy": "复制"
   },
-  "conversion": {
-  },
+  "conversion": {},
   "mutationCore": {
     "title": "突变核心",
     "select": "选择突变核心效果",

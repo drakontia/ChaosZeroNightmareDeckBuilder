@@ -33,9 +33,7 @@ function parseAcceptLanguage(acceptLanguage: string | null | undefined): AppLoca
     .split(",")
     .map((part, index) => {
       const [tagPart, ...params] = part.trim().split(";");
-      const quality = params
-        .map((param) => param.trim())
-        .find((param) => param.startsWith("q="));
+      const quality = params.map((param) => param.trim()).find((param) => param.startsWith("q="));
 
       return {
         locale: normalizeLocaleTag(tagPart),
@@ -43,7 +41,9 @@ function parseAcceptLanguage(acceptLanguage: string | null | undefined): AppLoca
         index,
       };
     })
-    .filter((candidate): candidate is { locale: AppLocale; quality: number; index: number } => Boolean(candidate.locale))
+    .filter((candidate): candidate is { locale: AppLocale; quality: number; index: number } =>
+      Boolean(candidate.locale),
+    )
     .sort((left, right) => {
       if (right.quality !== left.quality) {
         return right.quality - left.quality;

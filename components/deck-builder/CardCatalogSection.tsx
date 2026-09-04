@@ -17,7 +17,9 @@ const toDeckCard = (card: CznCard): DeckCard => {
     godHiramekiEffectId: null,
     selectedHiddenHiramekiId: null,
     selectedSeasonLevel: isSeason4 ? 1 : undefined,
-    selectedSeasonStatuses: isSeason4 ? normalizeSeason4SelectedStatuses(undefined, baseStatus) : undefined,
+    selectedSeasonStatuses: isSeason4
+      ? normalizeSeason4SelectedStatuses(undefined, baseStatus)
+      : undefined,
   };
 };
 
@@ -35,14 +37,20 @@ export function CardCatalogSection(props: CardCatalogSectionProps) {
   const presentHiramekiIds = new Set(
     props.deck.cards
       .filter((card) => card.type === CardType.CHARACTER || card.id.startsWith("persona_"))
-      .map((card) => card.id)
+      .map((card) => card.id),
   );
 
   return (
     <Card>
       <CardHeader className="flex flex-row items-center justify-between p-4">
         <CardTitle>{props.title}</CardTitle>
-        <Input type="text" value={props.searchQuery} onChange={(event) => props.onSearchQueryChange(event.target.value)} className="w-32 sm:w-64" placeholder={props.searchLabel} />
+        <Input
+          type="text"
+          value={props.searchQuery}
+          onChange={(event) => props.onSearchQueryChange(event.target.value)}
+          className="w-32 sm:w-64"
+          placeholder={props.searchLabel}
+        />
       </CardHeader>
       <CardContent className="p-4 lg:p-6 pt-2">
         <CardSelector

@@ -1,11 +1,22 @@
 "use client";
-import { useCallback, useMemo } from 'react';
-import { useTranslations } from 'next-intl';
+import { useCallback, useMemo } from "react";
+import { useTranslations } from "next-intl";
 
-import { CznCard, CardType, Character, RemovedCardEntry, ConvertedCardEntry, DeckCard } from "@/types";
+import {
+  CznCard,
+  CardType,
+  Character,
+  RemovedCardEntry,
+  ConvertedCardEntry,
+  DeckCard,
+} from "@/types";
 import { getCharacterHiramekiCards, getAddableCards, getCardById } from "@/lib/card";
 import { getCardImageFolder } from "@/lib/card-image-paths";
-import { getSeason4BaseStatus, isSeason4CardId, normalizeSeason4SelectedStatuses } from "@/lib/season4";
+import {
+  getSeason4BaseStatus,
+  isSeason4CardId,
+  normalizeSeason4SelectedStatuses,
+} from "@/lib/season4";
 import { Card, CardContent } from "./ui/card";
 import { CardFrame } from "./CardFrame";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "./ui/accordion";
@@ -23,7 +34,15 @@ interface CardSelectorProps {
   searchQuery?: string;
 }
 
-export function CardSelector({ character, onAddCard, onRestoreCard, removedCards, convertedCards, presentHiramekiIds, searchQuery }: CardSelectorProps) {
+export function CardSelector({
+  character,
+  onAddCard,
+  onRestoreCard,
+  removedCards,
+  convertedCards,
+  presentHiramekiIds,
+  searchQuery,
+}: CardSelectorProps) {
   const t = useTranslations();
   const isPersonaCard = (card: CznCard) => card.id.startsWith("persona_");
   const getCardNameInfo = (card: CznCard, level: number = 0) => {
@@ -45,7 +64,7 @@ export function CardSelector({ character, onAddCard, onRestoreCard, removedCards
   };
   const characterHiramekiCards = useMemo(
     () => (character ? getCharacterHiramekiCards(character) : []),
-    [character]
+    [character],
   );
   const addableCards = useMemo(() => getAddableCards(character?.job), [character?.job]);
 
@@ -64,41 +83,50 @@ export function CardSelector({ character, onAddCard, onRestoreCard, removedCards
     return ids;
   }, [presentHiramekiIds, removedCards, convertedCards]);
 
-  const query = (searchQuery || '').toLowerCase().trim();
-  const matchesQuery = useCallback((card: CznCard) => {
-    if (!query) return true;
-    const name = getCardNameInfo(card).name.toLowerCase();
-    const baseDesc = t(`cards.${card.id}.descriptions.0`, { defaultValue: card.hiramekiVariations[0]?.description || '' }).toLowerCase();
-    const category = t(`category.${card.category}`).toLowerCase();
-    return name.includes(query) || baseDesc.includes(query) || category.includes(query);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [query, t]);
+  const query = (searchQuery || "").toLowerCase().trim();
+  const matchesQuery = useCallback(
+    (card: CznCard) => {
+      if (!query) return true;
+      const name = getCardNameInfo(card).name.toLowerCase();
+      const baseDesc = t(`cards.${card.id}.descriptions.0`, {
+        defaultValue: card.hiramekiVariations[0]?.description || "",
+      }).toLowerCase();
+      const category = t(`category.${card.category}`).toLowerCase();
+      return name.includes(query) || baseDesc.includes(query) || category.includes(query);
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    },
+    [query, t],
+  );
 
   const visibleCharacterHiramekiCards = useMemo(
-    () => characterHiramekiCards.filter(card => !hiddenHiramekiIds.has(card.id)).filter(matchesQuery),
-    [characterHiramekiCards, hiddenHiramekiIds, matchesQuery]
+    () =>
+      characterHiramekiCards.filter((card) => !hiddenHiramekiIds.has(card.id)).filter(matchesQuery),
+    [characterHiramekiCards, hiddenHiramekiIds, matchesQuery],
   );
 
   const filteredSharedCards = useMemo(
-    () => addableCards
-      .filter(c => c.type === CardType.SHARED)
-      .filter((card) => !(isPersonaCard(card) && hiddenHiramekiIds.has(card.id)))
-      .filter(matchesQuery),
-    [addableCards, hiddenHiramekiIds, matchesQuery]
+    () =>
+      addableCards
+        .filter((c) => c.type === CardType.SHARED)
+        .filter((card) => !(isPersonaCard(card) && hiddenHiramekiIds.has(card.id)))
+        .filter(matchesQuery),
+    [addableCards, hiddenHiramekiIds, matchesQuery],
   );
   const filteredMonsterCards = useMemo(
-    () => addableCards
-      .filter(c => c.type === CardType.MONSTER)
-      .filter((card) => !(isPersonaCard(card) && hiddenHiramekiIds.has(card.id)))
-      .filter(matchesQuery),
-    [addableCards, hiddenHiramekiIds, matchesQuery]
+    () =>
+      addableCards
+        .filter((c) => c.type === CardType.MONSTER)
+        .filter((card) => !(isPersonaCard(card) && hiddenHiramekiIds.has(card.id)))
+        .filter(matchesQuery),
+    [addableCards, hiddenHiramekiIds, matchesQuery],
   );
   const filteredForbiddenCards = useMemo(
-    () => addableCards
-      .filter(c => c.type === CardType.FORBIDDEN)
-      .filter((card) => !(isPersonaCard(card) && hiddenHiramekiIds.has(card.id)))
-      .filter(matchesQuery),
-    [addableCards, hiddenHiramekiIds, matchesQuery]
+    () =>
+      addableCards
+        .filter((c) => c.type === CardType.FORBIDDEN)
+        .filter((card) => !(isPersonaCard(card) && hiddenHiramekiIds.has(card.id)))
+        .filter(matchesQuery),
+    [addableCards, hiddenHiramekiIds, matchesQuery],
   );
 
   const getForbiddenSeason = useCallback((card: CznCard): SeasonNumber => {
@@ -127,32 +155,24 @@ export function CardSelector({ character, onAddCard, onRestoreCard, removedCards
       onClick?: () => void;
       className?: string;
       title?: string;
-    } = {}
+    } = {},
   ) => {
-    const {
-      keyPrefix = '',
-      onClick,
-      className = 'cursor-pointer',
-      title
-    } = options;
+    const { keyPrefix = "", onClick, className = "cursor-pointer", title } = options;
     const baseVariation = card.hiramekiVariations[0];
-    const rawStatuses = (baseVariation.statuses && baseVariation.statuses.length > 0)
-      ? baseVariation.statuses
-      : card.statuses;
+    const rawStatuses =
+      baseVariation.statuses && baseVariation.statuses.length > 0
+        ? baseVariation.statuses
+        : card.statuses;
     const key = keyPrefix ? `${keyPrefix}-${card.id}` : card.id;
     const { name: translatedName, nameId, nameFallback } = getCardNameInfo(card);
     const cardTitle = title || translatedName;
-    const statuses = rawStatuses?.map(s => t(`status.${s}`));
-    const description = t(`cards.${card.id}.descriptions.0`, { defaultValue: baseVariation.description })
+    const statuses = rawStatuses?.map((s) => t(`status.${s}`));
+    const description = t(`cards.${card.id}.descriptions.0`, {
+      defaultValue: baseVariation.description,
+    });
 
     return (
-      <button
-        key={key}
-        type="button"
-        className={className}
-        onClick={onClick}
-        title={cardTitle}
-      >
+      <button key={key} type="button" className={className} onClick={onClick} title={cardTitle}>
         <Card className="cursor-pointer">
           <CardFrame
             imgUrl={card.imgUrl}
@@ -178,7 +198,10 @@ export function CardSelector({ character, onAddCard, onRestoreCard, removedCards
     });
   };
 
-  const createRestoredCard = (card: CznCard, entry?: RemovedCardEntry | ConvertedCardEntry): DeckCard => {
+  const createRestoredCard = (
+    card: CznCard,
+    entry?: RemovedCardEntry | ConvertedCardEntry,
+  ): DeckCard => {
     const isSeason4 = isSeason4CardId(card.id);
     const baseStatus = getSeason4BaseStatus(card);
     return {
@@ -201,16 +224,16 @@ export function CardSelector({ character, onAddCard, onRestoreCard, removedCards
   const renderRemovedTile = (card: CznCard, entry?: RemovedCardEntry) => {
     const translatedName = getCardNameInfo(card).name;
     return renderCardTile(card, {
-      keyPrefix: 'removed',
+      keyPrefix: "removed",
       onClick: () => onRestoreCard(createRestoredCard(card, entry)),
-      title: `${translatedName}${t('card.restoreTooltipSuffix', { defaultValue: 'をデッキに戻す' })}`,
+      title: `${translatedName}${t("card.restoreTooltipSuffix", { defaultValue: "をデッキに戻す" })}`,
     });
   };
 
   const renderConvertedTile = (card: CznCard, entry?: ConvertedCardEntry) => {
     const translatedName = getCardNameInfo(card).name;
     return renderCardTile(card, {
-      keyPrefix: 'converted',
+      keyPrefix: "converted",
       onClick: () => onRestoreCard(createRestoredCard(card, entry)),
       title: translatedName,
     });
@@ -222,13 +245,9 @@ export function CardSelector({ character, onAddCard, onRestoreCard, removedCards
 
     return (
       <AccordionItem value={value}>
-        <AccordionTrigger className="text-lg font-semibold">
-          {label}
-        </AccordionTrigger>
+        <AccordionTrigger className="text-lg font-semibold">{label}</AccordionTrigger>
         <AccordionContent>
-          <div className={cardGridClass}>
-            {filteredCards.map(card => renderCardButton(card))}
-          </div>
+          <div className={cardGridClass}>{filteredCards.map((card) => renderCardButton(card))}</div>
         </AccordionContent>
       </AccordionItem>
     );
@@ -242,11 +261,13 @@ export function CardSelector({ character, onAddCard, onRestoreCard, removedCards
             {t("character.select")}
           </div>
         )}
-        
+
         {/* Removed Cards */}
         {removedCards && removedCards.size > 0 && (
           <div className="space-y-3">
-            <h3 className="text-lg font-semibold">{t('card.removedCardsSection', { defaultValue: '削除したカード' })}</h3>
+            <h3 className="text-lg font-semibold">
+              {t("card.removedCardsSection", { defaultValue: "削除したカード" })}
+            </h3>
             <div className={cardGridClass}>
               {Array.from(removedCards.entries()).map(([id, entry]) => {
                 const card = getCardById(id);
@@ -261,13 +282,18 @@ export function CardSelector({ character, onAddCard, onRestoreCard, removedCards
         {/* Converted Cards: show ORIGINAL card, click to restore */}
         {convertedCards && convertedCards.size > 0 && (
           <div className="space-y-3">
-            <h3 className="text-lg font-semibold">{t('card.convertedCardsSection', { defaultValue: '変換したカード' })}</h3>
+            <h3 className="text-lg font-semibold">
+              {t("card.convertedCardsSection", { defaultValue: "変換したカード" })}
+            </h3>
             <div className={cardGridClass}>
               {Array.from(convertedCards.entries()).map(([originalId, entry]) => {
                 const originalCard = getCardById(originalId);
                 if (!originalCard) return null;
                 if (!matchesQuery(originalCard)) return null;
-                return renderConvertedTile(originalCard, typeof entry === "string" ? undefined : entry);
+                return renderConvertedTile(
+                  originalCard,
+                  typeof entry === "string" ? undefined : entry,
+                );
               })}
             </div>
           </div>
@@ -276,21 +302,39 @@ export function CardSelector({ character, onAddCard, onRestoreCard, removedCards
         {/* Character Hirameki Cards */}
         {visibleCharacterHiramekiCards.length > 0 && (
           <div className="space-y-3">
-            <h3 className="text-lg font-semibold">{t('card.hiramekiCards', { defaultValue: 'ヒラメキカード' })}</h3>
+            <h3 className="text-lg font-semibold">
+              {t("card.hiramekiCards", { defaultValue: "ヒラメキカード" })}
+            </h3>
             <div className={cardGridClass}>
-              {visibleCharacterHiramekiCards.map(card => renderCardButton(card))}
+              {visibleCharacterHiramekiCards.map((card) => renderCardButton(card))}
             </div>
           </div>
         )}
 
         {/* Accordion for Shared, Monster, and Forbidden Cards */}
         <Accordion type="multiple" className="w-full">
-          {renderAccordionSection(forbiddenCardsBySeason[4], `${t("card.forbiddenCards")} 4`, 'season-4')}
-          {renderAccordionSection(forbiddenCardsBySeason[3], `${t("card.forbiddenCards")} 3`, 'season-3')}
-          {renderAccordionSection(forbiddenCardsBySeason[2], `${t("card.forbiddenCards")} 2`, 'season-2')}
-          {renderAccordionSection(forbiddenCardsBySeason[1], `${t("card.forbiddenCards")} 1`, 'season-1')}
-          {renderAccordionSection(filteredSharedCards, t("card.sharedCards"), 'shared')}
-          {renderAccordionSection(filteredMonsterCards, t("card.monsterCards"), 'monster')}
+          {renderAccordionSection(
+            forbiddenCardsBySeason[4],
+            `${t("card.forbiddenCards")} 4`,
+            "season-4",
+          )}
+          {renderAccordionSection(
+            forbiddenCardsBySeason[3],
+            `${t("card.forbiddenCards")} 3`,
+            "season-3",
+          )}
+          {renderAccordionSection(
+            forbiddenCardsBySeason[2],
+            `${t("card.forbiddenCards")} 2`,
+            "season-2",
+          )}
+          {renderAccordionSection(
+            forbiddenCardsBySeason[1],
+            `${t("card.forbiddenCards")} 1`,
+            "season-1",
+          )}
+          {renderAccordionSection(filteredSharedCards, t("card.sharedCards"), "shared")}
+          {renderAccordionSection(filteredMonsterCards, t("card.monsterCards"), "monster")}
         </Accordion>
       </CardContent>
     </Card>

@@ -10,7 +10,6 @@ type ErrorUpdater = (value: string | null) => void;
 
 type TranslationFn = (key: string, opts?: { defaultValue?: string }) => string;
 
-
 type Params = {
   deck?: Deck;
   setName: NameUpdater;
@@ -44,8 +43,8 @@ export function useDeckSaveLoad({ deck, setName, setSharedDeck, setShareError, t
 
       return Object.fromEntries(
         Object.entries(parsed).filter((entry): entry is [string, { id: string; savedAt: string }] =>
-          isSavedDeckEntry(entry[1])
-        )
+          isSavedDeckEntry(entry[1]),
+        ),
       );
     } catch {
       return {};
@@ -75,7 +74,7 @@ export function useDeckSaveLoad({ deck, setName, setSharedDeck, setShareError, t
       writeStorage(store);
       return true;
     },
-    [readStorage, writeStorage]
+    [readStorage, writeStorage],
   );
 
   const load = useCallback(
@@ -85,7 +84,7 @@ export function useDeckSaveLoad({ deck, setName, setSharedDeck, setShareError, t
       if (!entry) return null;
       return decodeDeckShare(entry.id);
     },
-    [readStorage]
+    [readStorage],
   );
 
   const remove = useCallback(
@@ -96,7 +95,7 @@ export function useDeckSaveLoad({ deck, setName, setSharedDeck, setShareError, t
       writeStorage(store);
       return true;
     },
-    [readStorage, writeStorage]
+    [readStorage, writeStorage],
   );
 
   const handleSaveDeck = useCallback(() => {
@@ -113,7 +112,7 @@ export function useDeckSaveLoad({ deck, setName, setSharedDeck, setShareError, t
     const ok = save(deckToSave, name, false);
     if (!ok) {
       const confirmOverwrite = window.confirm(
-        t("deck.overwriteConfirm", { defaultValue: "同名のデッキを上書きしますか？" })
+        t("deck.overwriteConfirm", { defaultValue: "同名のデッキを上書きしますか？" }),
       );
       if (confirmOverwrite) {
         save(deckToSave, name, true);
@@ -140,18 +139,20 @@ export function useDeckSaveLoad({ deck, setName, setSharedDeck, setShareError, t
         alert(t("deck.loadFailed", { defaultValue: "読み込みに失敗しました" }));
       }
     },
-    [load, setShareError, setSharedDeck, t]
+    [load, setShareError, setSharedDeck, t],
   );
 
   const handleDeleteSaved = useCallback(
     (name: string) => {
-      const ok = window.confirm(t("deck.deleteConfirm", { defaultValue: "このデッキを削除しますか？" }));
+      const ok = window.confirm(
+        t("deck.deleteConfirm", { defaultValue: "このデッキを削除しますか？" }),
+      );
       if (!ok) return;
       if (remove(name)) {
         setSavedList(listSaved());
       }
     },
-    [listSaved, remove, t]
+    [listSaved, remove, t],
   );
 
   return {

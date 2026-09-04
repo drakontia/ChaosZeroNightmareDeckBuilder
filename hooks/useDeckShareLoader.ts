@@ -29,7 +29,7 @@ export function useDeckShareLoader(
   shareId: string | undefined,
   setDeck: (deck: Deck) => void,
   setShareError: (message: string | null) => void,
-  t: Translate
+  t: Translate,
 ) {
   const lastLoadedShareId = useRef<string | null>(null);
 
@@ -47,4 +47,3 @@ export function useDeckShareLoader(
     lastLoadedShareId.current = shareId;
   }, [shareId, setDeck, setShareError, t]);
 }
-

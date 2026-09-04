@@ -38,11 +38,11 @@ messages/
 ### 言語別サンプル
 
 | 言語 | 例（adelheid） |
-|------|--------------|
-| ja | `"Adelheid"` |
-| en | `"Adelheid"` |
-| zh | `"Adelheid"` |
-| ko | `"Adelheid"` |
+| ---- | -------------- |
+| ja   | `"Adelheid"`   |
+| en   | `"Adelheid"`   |
+| zh   | `"Adelheid"`   |
+| ko   | `"Adelheid"`   |
 
 ---
 

@@ -8,16 +8,16 @@
 export enum EquipmentType {
   WEAPON = "weapon",
   ARMOR = "armor",
-  PENDANT = "pendant"
+  PENDANT = "pendant",
 }
 
 export interface Equipment {
-  id: string;           // snake_case（英語正式名称から導出）
-  name: string;         // i18n キー: "equipment.{type}.{id}.name"
-  type: EquipmentType;  // WEAPON / ARMOR / PENDANT
-  rarity: string;       // i18n キー（下記参照）
+  id: string; // snake_case（英語正式名称から導出）
+  name: string; // i18n キー: "equipment.{type}.{id}.name"
+  type: EquipmentType; // WEAPON / ARMOR / PENDANT
+  rarity: string; // i18n キー（下記参照）
   description?: string; // i18n キー: "equipment.{type}.{id}.description"（省略可能）
-  imgUrl?: string;      // 画像パス（省略可能）
+  imgUrl?: string; // 画像パス（省略可能）
 }
 ```
 
@@ -49,11 +49,11 @@ export interface Equipment {
 
 有効な値は以下の3つのみ:
 
-| 値 | 日本語 | 英語 |
-|---|---|---|
-| `"equipment.rarity.rare"` | 希少 | Rare |
-| `"equipment.rarity.legendary"` | 伝説 | Legendary |
-| `"equipment.rarity.mythical"` | 神話 | Mythical |
+| 値                             | 日本語 | 英語      |
+| ------------------------------ | ------ | --------- |
+| `"equipment.rarity.rare"`      | 希少   | Rare      |
+| `"equipment.rarity.legendary"` | 伝説   | Legendary |
+| `"equipment.rarity.mythical"`  | 神話   | Mythical  |
 
 > **神話級（mythical）は各スロット1個制限**: UIが警告を表示するが、データ層には制限なし。意図的に複数追加しないこと。
 

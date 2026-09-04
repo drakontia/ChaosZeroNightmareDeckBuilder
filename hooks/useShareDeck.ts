@@ -20,20 +20,12 @@ export function useShareDeck() {
         if (navigator.clipboard?.writeText) {
           try {
             await navigator.clipboard.writeText(url);
-            alert(
-              t("deck.shareCopied", { defaultValue: "共有URLをコピーしました。" })
-            );
+            alert(t("deck.shareCopied", { defaultValue: "共有URLをコピーしました。" }));
           } catch {
-            window.prompt(
-              t("deck.sharePrompt", { defaultValue: "共有URL" }),
-              url
-            );
+            window.prompt(t("deck.sharePrompt", { defaultValue: "共有URL" }), url);
           }
         } else {
-          window.prompt(
-            t("deck.sharePrompt", { defaultValue: "共有URL" }),
-            url
-          );
+          window.prompt(t("deck.sharePrompt", { defaultValue: "共有URL" }), url);
         }
       } catch (err) {
         const errorMsg = err instanceof Error ? err.message : String(err);
@@ -41,13 +33,13 @@ export function useShareDeck() {
         alert(
           t("deck.shareFailed", {
             defaultValue: "共有URLの生成に失敗しました。",
-          })
+          }),
         );
       } finally {
         setIsSharing(false);
       }
     },
-    [isSharing, t]
+    [isSharing, t],
   );
 
   return { isSharing, handleShareDeck };

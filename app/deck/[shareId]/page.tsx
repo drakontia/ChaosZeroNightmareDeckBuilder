@@ -1,8 +1,8 @@
-import { DeckBuilder } from '@/components/DeckBuilder';
-import { decodeDeckShare } from '@/lib/deck-share';
+import { DeckBuilder } from "@/components/DeckBuilder";
+import { decodeDeckShare } from "@/lib/deck-share";
 import { calculateFaintMemory } from "@/lib/calculateFaintMemory";
-import { getLocale, getTranslations } from 'next-intl/server';
-import type { Metadata, ResolvingMetadata } from 'next';
+import { getLocale, getTranslations } from "next-intl/server";
+import type { Metadata, ResolvingMetadata } from "next";
 
 export async function generateMetadata(
   {
@@ -10,7 +10,7 @@ export async function generateMetadata(
   }: {
     params: Promise<{ shareId: string }>;
   },
-  parent: ResolvingMetadata
+  parent: ResolvingMetadata,
 ): Promise<Metadata> {
   const { shareId } = await params;
   const deck = decodeDeckShare(shareId);
@@ -19,29 +19,39 @@ export async function generateMetadata(
 
   if (!deck) {
     return {
-      title: t('app.title'),
-      description: t('app.description'),
-      keywords: ['カオスゼロナイトメア', 'カオゼロ', 'Chaos Zero Nightmare', 'Deck Builder', 'デッキビルダー', 'ローグライク', 'Roguelike', 'カードゲーム', 'Card Game' ],
+      title: t("app.title"),
+      description: t("app.description"),
+      keywords: [
+        "カオスゼロナイトメア",
+        "カオゼロ",
+        "Chaos Zero Nightmare",
+        "Deck Builder",
+        "デッキビルダー",
+        "ローグライク",
+        "Roguelike",
+        "カードゲーム",
+        "Card Game",
+      ],
     };
   }
 
-  const deckName = deck.name || t('deck.noDeck');
-  const characterName = deck.character?.name 
+  const deckName = deck.name || t("deck.noDeck");
+  const characterName = deck.character?.name
     ? t(deck.character.name as any, { defaultValue: deck.character.name })
-    : t('character.select');
+    : t("character.select");
   const cardCount = deck.cards.length;
   const faintMemoryPoints = calculateFaintMemory(deck);
   const createdDate = new Date(deck.createdAt).toLocaleDateString(locale, {
-    year: 'numeric',
-    month: '2-digit',
-    day: '2-digit',
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
   });
 
-  const description = `${characterName}${t('deck.shareDescriptionSuffix', {
-    defaultValue: 'のデッキ',
-  })} (${cardCount}${t('deck.shareCardUnit', { defaultValue: '枚' })}) | ${t('character.faintMemory')}: ${faintMemoryPoints}pt | ${t('deck.createdDate')}: ${createdDate}`;
+  const description = `${characterName}${t("deck.shareDescriptionSuffix", {
+    defaultValue: "のデッキ",
+  })} (${cardCount}${t("deck.shareCardUnit", { defaultValue: "枚" })}) | ${t("character.faintMemory")}: ${faintMemoryPoints}pt | ${t("deck.createdDate")}: ${createdDate}`;
 
-  const title = `${deckName} - ${t('app.title')}`;
+  const title = `${deckName} - ${t("app.title")}`;
 
   return {
     title,
@@ -49,22 +59,18 @@ export async function generateMetadata(
     openGraph: {
       title,
       description,
-      type: 'website',
+      type: "website",
       locale: locale,
     },
     twitter: {
-      card: 'summary_large_image',
+      card: "summary_large_image",
       title,
       description,
     },
   };
 }
 
-export default async function SharedDeckPage({
-  params,
-}: {
-  params: Promise<{ shareId: string }>;
-}) {
+export default async function SharedDeckPage({ params }: { params: Promise<{ shareId: string }> }) {
   const { shareId } = await params;
   return <DeckBuilder shareId={shareId} />;
 }

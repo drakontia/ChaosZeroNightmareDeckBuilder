@@ -1,4 +1,4 @@
-import { AlertCircle, X } from 'lucide-react';
+import { AlertCircle, X } from "lucide-react";
 import { Alert, AlertDescription, AlertTitle } from "./ui/alert";
 import { Button } from "./ui/button";
 
@@ -15,7 +15,7 @@ export function LimitAlert({
   title,
   message,
   onClose,
-  closeLabel = '閉じる',
+  closeLabel = "閉じる",
 }: LimitAlertProps) {
   if (!isOpen) return null;
 

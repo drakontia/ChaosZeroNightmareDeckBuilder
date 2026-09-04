@@ -3,7 +3,11 @@ import { GOD_HIRAMEKI_EFFECTS } from "@/lib/god-hirameki";
 import { HIDDEN_HIRAMEKI_EFFECTS } from "@/lib/hidden-hirameki";
 import { getCardById } from "@/lib/card";
 import { getPersonaCardPresentation, PersonaPresentationLocalization } from "@/lib/persona";
-import { getSeason4BaseStatus, isSeason4Card, normalizeSeason4SelectedStatuses } from "@/lib/season4";
+import {
+  getSeason4BaseStatus,
+  isSeason4Card,
+  normalizeSeason4SelectedStatuses,
+} from "@/lib/season4";
 
 export interface CardInfoLocalization {
   persona?: PersonaPresentationLocalization;
@@ -17,7 +21,7 @@ export function getCardInfo(
   egoLevel: number = 0,
   hasPotential: boolean = false,
   convertedCards?: Map<string, string>,
-  localization?: CardInfoLocalization
+  localization?: CardInfoLocalization,
 ): {
   name: string;
   imgUrl?: string;
@@ -31,15 +35,19 @@ export function getCardInfo(
   const baseCard = convertedId ? (getCardById(convertedId) ?? card) : card;
 
   // Regular hirameki handling (with hidden hirameki as additional effect)
-  const variation = baseCard.hiramekiVariations[card.selectedHiramekiLevel] || baseCard.hiramekiVariations[0];
-  
+  const variation =
+    baseCard.hiramekiVariations[card.selectedHiramekiLevel] || baseCard.hiramekiVariations[0];
+
   const name = variation.name ?? baseCard.name;
   let cost = variation.cost;
   let description = variation.description;
   const category = variation.category ?? baseCard.category;
-  let statuses = variation.statuses !== undefined
-    ? variation.statuses
-    : (baseCard.statuses && baseCard.statuses.length > 0 ? baseCard.statuses : undefined);
+  let statuses =
+    variation.statuses !== undefined
+      ? variation.statuses
+      : baseCard.statuses && baseCard.statuses.length > 0
+        ? baseCard.statuses
+        : undefined;
   const isSeason4 = isSeason4Card(baseCard);
 
   if (isSeason4 && baseCard.seasonLevelVariations && baseCard.seasonLevelVariations.length > 0) {
@@ -52,7 +60,7 @@ export function getCardInfo(
     description = seasonVariation.description;
     const normalizedSeasonStatuses = normalizeSeason4SelectedStatuses(
       card.selectedSeasonStatuses,
-      getSeason4BaseStatus(baseCard)
+      getSeason4BaseStatus(baseCard),
     );
     statuses = normalizedSeasonStatuses.slice(0, selectedSeasonLevel);
   }
@@ -79,13 +87,15 @@ export function getCardInfo(
 
   // Apply hidden hirameki if present and at base level (Lv0 only)
   if (!isSeason4 && card.selectedHiddenHiramekiId && card.selectedHiramekiLevel === 0) {
-    const hiddenEffect = HIDDEN_HIRAMEKI_EFFECTS.find(e => e.id === card.selectedHiddenHiramekiId);
+    const hiddenEffect = HIDDEN_HIRAMEKI_EFFECTS.find(
+      (e) => e.id === card.selectedHiddenHiramekiId,
+    );
     if (hiddenEffect) {
       const hiddenEffectDescription =
         localization?.translateHiddenEffect?.(hiddenEffect.id, hiddenEffect.additionalEffect) ??
         hiddenEffect.additionalEffect;
       description = `${description}\n${hiddenEffectDescription}`;
-      if (hiddenEffect.costModifier !== undefined && typeof cost === 'number') {
+      if (hiddenEffect.costModifier !== undefined && typeof cost === "number") {
         cost = cost + hiddenEffect.costModifier;
       }
     }
@@ -93,10 +103,11 @@ export function getCardInfo(
 
   // Apply god hirameki if active and an effect is selected
   if (!isSeason4 && card.godHiramekiType && card.godHiramekiEffectId && !card.isBasicCard) {
-    const effect = GOD_HIRAMEKI_EFFECTS.find(e => e.id === card.godHiramekiEffectId);
+    const effect = GOD_HIRAMEKI_EFFECTS.find((e) => e.id === card.godHiramekiEffectId);
     if (effect) {
       const godEffectDescription =
-        localization?.translateGodEffect?.(effect.id, effect.additionalEffect) ?? effect.additionalEffect;
+        localization?.translateGodEffect?.(effect.id, effect.additionalEffect) ??
+        effect.additionalEffect;
       description = `${description}\n${godEffectDescription}`;
       if (effect.costModifier !== undefined && typeof cost === "number") {
         cost += effect.costModifier;
@@ -140,7 +151,7 @@ export function sortDeckCards(cards: DeckCard[]): DeckCard[] {
     [CardType.CHARACTER]: 1,
     [CardType.SHARED]: 2,
     [CardType.MONSTER]: 3,
-    [CardType.FORBIDDEN]: 4
+    [CardType.FORBIDDEN]: 4,
   };
 
   return [...cards].sort((a, b) => {
@@ -155,7 +166,7 @@ export function sortDeckCards(cards: DeckCard[]): DeckCard[] {
       // Starting cards come before hirameki cards
       const aIsStarting = a.isStartingCard ?? false;
       const bIsStarting = b.isStartingCard ?? false;
-      
+
       if (aIsStarting && !bIsStarting) return -1;
       if (!aIsStarting && bIsStarting) return 1;
     }

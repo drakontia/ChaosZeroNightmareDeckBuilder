@@ -1,5 +1,5 @@
 "use client";
-import { useTranslations } from 'next-intl';
+import { useTranslations } from "next-intl";
 import { CardFrame } from "./CardFrame";
 import { CznCard, CardType, JobType, CardCategory } from "@/types";
 import { getAddableCards } from "@/lib/card";
@@ -14,7 +14,12 @@ interface ConversionModalProps {
   allowedJob?: JobType;
 }
 
-export function ConversionModal({ isOpen, onClose, onSelectCard, allowedJob }: ConversionModalProps) {
+export function ConversionModal({
+  isOpen,
+  onClose,
+  onSelectCard,
+  allowedJob,
+}: ConversionModalProps) {
   const t = useTranslations();
   const getCardNameInfo = (card: CznCard, level: number = 0) => {
     const levelKey = `cards.${card.id}.name.${level}`;
@@ -33,14 +38,14 @@ export function ConversionModal({ isOpen, onClose, onSelectCard, allowedJob }: C
       nameFallback: card.name,
     };
   };
-  
+
   // 変換候補: 共用 / 禁忌のみ
   const allAddableCards = getAddableCards(allowedJob);
   const conversionCards = allAddableCards.filter(
-    card => card.type === CardType.SHARED || card.type === CardType.FORBIDDEN
+    (card) => card.type === CardType.SHARED || card.type === CardType.FORBIDDEN,
   );
-  const sharedCards = conversionCards.filter(c => c.type === CardType.SHARED);
-  const forbiddenCards = conversionCards.filter(c => c.type === CardType.FORBIDDEN);
+  const sharedCards = conversionCards.filter((c) => c.type === CardType.SHARED);
+  const forbiddenCards = conversionCards.filter((c) => c.type === CardType.FORBIDDEN);
 
   // 排除カード（UI専用の疑似カード。選択時は除外変換として扱う）
   const exclusionCard: CznCard = {
@@ -53,16 +58,18 @@ export function ConversionModal({ isOpen, onClose, onSelectCard, allowedJob }: C
       {
         level: 0,
         cost: 0,
-        description: t("cards.__exclusion__.descriptions.0")
-      }
-    ]
+        description: t("cards.__exclusion__.descriptions.0"),
+      },
+    ],
   };
 
   const renderCardTile = (card: CznCard) => {
     const baseVariation = card.hiramekiVariations[0];
     const { name: translatedName, nameId, nameFallback } = getCardNameInfo(card);
-    const description = t(`cards.${card.id}.descriptions.0`, { defaultValue: baseVariation.description });
-    const statuses = baseVariation.statuses?.map(s => t(`status.${s}`));
+    const description = t(`cards.${card.id}.descriptions.0`, {
+      defaultValue: baseVariation.description,
+    });
+    const statuses = baseVariation.statuses?.map((s) => t(`status.${s}`));
 
     return (
       <button
@@ -70,7 +77,7 @@ export function ConversionModal({ isOpen, onClose, onSelectCard, allowedJob }: C
         key={card.id}
         className={cn(
           "rounded-xl border bg-card text-card-foreground shadow-sm cursor-pointer hover:ring-2 hover:ring-primary",
-          "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+          "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
         )}
         onClick={() => {
           onSelectCard(card);
@@ -101,7 +108,6 @@ export function ConversionModal({ isOpen, onClose, onSelectCard, allowedJob }: C
         </DialogHeader>
         <div className="space-y-6">
           <Accordion type="multiple" className="w-full" defaultValue={["shared", "forbidden"]}>
-
             {/* Shared Cards */}
             {sharedCards.length > 0 && (
               <AccordionItem value="shared">
@@ -110,7 +116,7 @@ export function ConversionModal({ isOpen, onClose, onSelectCard, allowedJob }: C
                 </AccordionTrigger>
                 <AccordionContent>
                   <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
-                    {[exclusionCard, ...sharedCards].map(card => renderCardTile(card))}
+                    {[exclusionCard, ...sharedCards].map((card) => renderCardTile(card))}
                   </div>
                 </AccordionContent>
               </AccordionItem>
@@ -124,7 +130,7 @@ export function ConversionModal({ isOpen, onClose, onSelectCard, allowedJob }: C
                 </AccordionTrigger>
                 <AccordionContent>
                   <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
-                    {forbiddenCards.map(card => renderCardTile(card))}
+                    {forbiddenCards.map((card) => renderCardTile(card))}
                   </div>
                 </AccordionContent>
               </AccordionItem>

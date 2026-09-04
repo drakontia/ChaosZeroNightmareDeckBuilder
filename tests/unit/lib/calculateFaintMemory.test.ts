@@ -1,8 +1,17 @@
-import { describe, it, expect, beforeEach } from 'vite-plus/test';
+import { describe, it, expect, beforeEach } from "vite-plus/test";
 import { calculateFaintMemory } from "@/lib/calculateFaintMemory";
-import { CardCategory, CardGrade, CardType, Deck, GodType, HiramekiVariation, Equipment, EquipmentType } from '@/types';
+import {
+  CardCategory,
+  CardGrade,
+  CardType,
+  Deck,
+  GodType,
+  HiramekiVariation,
+  Equipment,
+  EquipmentType,
+} from "@/types";
 
-describe('calculateFaintMemory', () => {
+describe("calculateFaintMemory", () => {
   let baseDeck: Deck;
 
   beforeEach(() => {
@@ -11,7 +20,7 @@ describe('calculateFaintMemory', () => {
       equipment: {
         weapon: { item: null, refinement: null, godHammerEquipmentId: null },
         armor: { item: null, refinement: null, godHammerEquipmentId: null },
-        pendant: { item: null, refinement: null, godHammerEquipmentId: null }
+        pendant: { item: null, refinement: null, godHammerEquipmentId: null },
       },
       cards: [],
       egoLevel: 0,
@@ -24,21 +33,21 @@ describe('calculateFaintMemory', () => {
     };
   });
 
-  it('should return 0 for empty deck', () => {
+  it("should return 0 for empty deck", () => {
     expect(calculateFaintMemory(baseDeck)).toBe(0);
   });
 
-  it('should return 0 for character cards', () => {
+  it("should return 0 for character cards", () => {
     const variation: HiramekiVariation = {
       level: 0,
       cost: 0,
-      description: ''
+      description: "",
     };
 
     baseDeck.cards.push({
-      deckId: '1',
-      id: 'char-1',
-      name: 'Character Card',
+      deckId: "1",
+      id: "char-1",
+      name: "Character Card",
       type: CardType.CHARACTER,
       category: CardCategory.ATTACK,
       statuses: [],
@@ -47,22 +56,22 @@ describe('calculateFaintMemory', () => {
       godHiramekiEffectId: null,
       selectedHiddenHiramekiId: null,
       isBasicCard: false,
-      hiramekiVariations: [variation]
+      hiramekiVariations: [variation],
     });
     expect(calculateFaintMemory(baseDeck)).toBe(0);
   });
 
-  it('should add 20pt for shared card', () => {
+  it("should add 20pt for shared card", () => {
     const variation: HiramekiVariation = {
       level: 0,
       cost: 0,
-      description: ''
+      description: "",
     };
 
     baseDeck.cards.push({
-      deckId: '1',
-      id: 'shared-1',
-      name: 'Shared Card',
+      deckId: "1",
+      id: "shared-1",
+      name: "Shared Card",
       type: CardType.SHARED,
       category: CardCategory.ATTACK,
       statuses: [],
@@ -71,22 +80,22 @@ describe('calculateFaintMemory', () => {
       godHiramekiEffectId: null,
       selectedHiddenHiramekiId: null,
       isBasicCard: false,
-      hiramekiVariations: [variation]
+      hiramekiVariations: [variation],
     });
     expect(calculateFaintMemory(baseDeck)).toBe(20);
   });
 
-  it('should add points based on monster card grade', () => {
+  it("should add points based on monster card grade", () => {
     const variation: HiramekiVariation = {
       level: 0,
       cost: 0,
-      description: ''
+      description: "",
     };
 
     baseDeck.cards.push({
-      deckId: '1',
-      id: 'monster-1',
-      name: 'Monster Card',
+      deckId: "1",
+      id: "monster-1",
+      name: "Monster Card",
       type: CardType.MONSTER,
       category: CardCategory.ATTACK,
       grade: CardGrade.LEGEND,
@@ -96,22 +105,22 @@ describe('calculateFaintMemory', () => {
       godHiramekiEffectId: null,
       selectedHiddenHiramekiId: null,
       isBasicCard: false,
-      hiramekiVariations: [variation]
+      hiramekiVariations: [variation],
     });
     expect(calculateFaintMemory(baseDeck)).toBe(80);
   });
 
-  it('should add 20pt for forbidden card', () => {
+  it("should add 20pt for forbidden card", () => {
     const variation: HiramekiVariation = {
       level: 0,
       cost: 0,
-      description: ''
+      description: "",
     };
 
     baseDeck.cards.push({
-      deckId: '1',
-      id: 'forbidden-1',
-      name: 'Forbidden Card',
+      deckId: "1",
+      id: "forbidden-1",
+      name: "Forbidden Card",
       type: CardType.FORBIDDEN,
       category: CardCategory.ATTACK,
       statuses: [],
@@ -120,22 +129,22 @@ describe('calculateFaintMemory', () => {
       godHiramekiEffectId: null,
       selectedHiddenHiramekiId: null,
       isBasicCard: false,
-      hiramekiVariations: [variation]
+      hiramekiVariations: [variation],
     });
     expect(calculateFaintMemory(baseDeck)).toBe(20);
   });
 
-  it('should NOT add points for season4 desire cards in deck', () => {
+  it("should NOT add points for season4 desire cards in deck", () => {
     const variation: HiramekiVariation = {
       level: 0,
       cost: 0,
-      description: ''
+      description: "",
     };
 
     baseDeck.cards.push({
-      deckId: 'season4-1',
-      id: 'traitors_execution',
-      name: '反逆者の粛清',
+      deckId: "season4-1",
+      id: "traitors_execution",
+      name: "反逆者の粛清",
       type: CardType.FORBIDDEN,
       category: CardCategory.ATTACK,
       statuses: [],
@@ -144,22 +153,22 @@ describe('calculateFaintMemory', () => {
       godHiramekiEffectId: null,
       selectedHiddenHiramekiId: null,
       isBasicCard: false,
-      hiramekiVariations: [variation]
+      hiramekiVariations: [variation],
     });
     expect(calculateFaintMemory(baseDeck)).toBe(0);
   });
 
-  it('should NOT add points for newly added season4 cards in deck', () => {
+  it("should NOT add points for newly added season4 cards in deck", () => {
     const variation: HiramekiVariation = {
       level: 0,
       cost: 0,
-      description: ''
+      description: "",
     };
 
     baseDeck.cards.push({
-      deckId: 'season4-new-1',
-      id: 'marauders_charge',
-      name: '強奪者の進撃',
+      deckId: "season4-new-1",
+      id: "marauders_charge",
+      name: "強奪者の進撃",
       type: CardType.FORBIDDEN,
       category: CardCategory.ATTACK,
       statuses: [],
@@ -168,30 +177,30 @@ describe('calculateFaintMemory', () => {
       godHiramekiEffectId: null,
       selectedHiddenHiramekiId: null,
       isBasicCard: false,
-      hiramekiVariations: [variation]
+      hiramekiVariations: [variation],
     });
     expect(calculateFaintMemory(baseDeck)).toBe(0);
   });
 
-  it('should NOT add forbidden snapshot points for removed season4 desire cards', () => {
+  it("should NOT add forbidden snapshot points for removed season4 desire cards", () => {
     baseDeck.removedCards = new Map([
-      ['traitors_execution', { count: 1, type: CardType.FORBIDDEN, selectedHiramekiLevel: 0 }]
+      ["traitors_execution", { count: 1, type: CardType.FORBIDDEN, selectedHiramekiLevel: 0 }],
     ]);
 
     expect(calculateFaintMemory(baseDeck)).toBe(0);
   });
 
-  it('should NOT add hirameki points for shared cards (only base 20pt)', () => {
+  it("should NOT add hirameki points for shared cards (only base 20pt)", () => {
     const variation: HiramekiVariation = {
       level: 0,
       cost: 0,
-      description: ''
+      description: "",
     };
 
     baseDeck.cards.push({
-      deckId: '1',
-      id: 'shared-1',
-      name: 'Shared Card',
+      deckId: "1",
+      id: "shared-1",
+      name: "Shared Card",
       type: CardType.SHARED,
       category: CardCategory.ATTACK,
       statuses: [],
@@ -200,22 +209,22 @@ describe('calculateFaintMemory', () => {
       godHiramekiEffectId: null,
       selectedHiddenHiramekiId: null,
       isBasicCard: false,
-      hiramekiVariations: [variation]
+      hiramekiVariations: [variation],
     });
     expect(calculateFaintMemory(baseDeck)).toBe(20); // 20 only, no hirameki bonus
   });
 
-  it('should NOT add hirameki points for monster cards', () => {
+  it("should NOT add hirameki points for monster cards", () => {
     const variation: HiramekiVariation = {
       level: 0,
       cost: 0,
-      description: ''
+      description: "",
     };
 
     baseDeck.cards.push({
-      deckId: '1',
-      id: 'monster-1',
-      name: 'Monster Card',
+      deckId: "1",
+      id: "monster-1",
+      name: "Monster Card",
       type: CardType.MONSTER,
       category: CardCategory.ATTACK,
       grade: CardGrade.RARE,
@@ -225,22 +234,22 @@ describe('calculateFaintMemory', () => {
       godHiramekiEffectId: null,
       selectedHiddenHiramekiId: null,
       isBasicCard: false,
-      hiramekiVariations: [variation]
+      hiramekiVariations: [variation],
     });
     expect(calculateFaintMemory(baseDeck)).toBe(50); // grade-based points only
   });
 
-  it('should NOT add hirameki points for monster cards with hidden hirameki', () => {
+  it("should NOT add hirameki points for monster cards with hidden hirameki", () => {
     const variation: HiramekiVariation = {
       level: 0,
       cost: 0,
-      description: ''
+      description: "",
     };
 
     baseDeck.cards.push({
-      deckId: '1',
-      id: 'monster-1',
-      name: 'Monster Card',
+      deckId: "1",
+      id: "monster-1",
+      name: "Monster Card",
       type: CardType.MONSTER,
       category: CardCategory.ATTACK,
       grade: CardGrade.COMMON,
@@ -248,102 +257,102 @@ describe('calculateFaintMemory', () => {
       selectedHiramekiLevel: 0,
       godHiramekiType: null,
       godHiramekiEffectId: null,
-      selectedHiddenHiramekiId: 'hidden-1', // Has hidden hirameki but should NOT add points
+      selectedHiddenHiramekiId: "hidden-1", // Has hidden hirameki but should NOT add points
       isBasicCard: false,
-      hiramekiVariations: [variation]
+      hiramekiVariations: [variation],
     });
     expect(calculateFaintMemory(baseDeck)).toBe(20); // grade-based points only
   });
 
-  it('should add 20pt for god hirameki', () => {
+  it("should add 20pt for god hirameki", () => {
     const variation: HiramekiVariation = {
       level: 0,
       cost: 0,
-      description: ''
+      description: "",
     };
 
     baseDeck.cards.push({
-      deckId: '1',
-      id: 'shared-1',
-      name: 'Shared Card',
+      deckId: "1",
+      id: "shared-1",
+      name: "Shared Card",
       type: CardType.SHARED,
       category: CardCategory.ATTACK,
       statuses: [],
       selectedHiramekiLevel: 0,
       godHiramekiType: GodType.KILKEN,
-      godHiramekiEffectId: 'godhirameki_1',
+      godHiramekiEffectId: "godhirameki_1",
       selectedHiddenHiramekiId: null,
       isBasicCard: false,
-      hiramekiVariations: [variation]
+      hiramekiVariations: [variation],
     });
     expect(calculateFaintMemory(baseDeck)).toBe(40); // 20 (shared) + 20 (god)
   });
 
-  it('should treat non-starting card removals as 0pt even with multiple counts', () => {
-    baseDeck.removedCards.set('card-1', 1);
-    baseDeck.removedCards.set('card-2', 3);
-    baseDeck.removedCards.set('shared-1', 2);
+  it("should treat non-starting card removals as 0pt even with multiple counts", () => {
+    baseDeck.removedCards.set("card-1", 1);
+    baseDeck.removedCards.set("card-2", 3);
+    baseDeck.removedCards.set("shared-1", 2);
 
     expect(calculateFaintMemory(baseDeck)).toBe(0);
   });
 
-  it('should add +20 for first removed character card', () => {
-    baseDeck.removedCards.set('luke_starting_1', 1);
+  it("should add +20 for first removed character card", () => {
+    baseDeck.removedCards.set("luke_starting_1", 1);
     expect(calculateFaintMemory(baseDeck)).toBe(20);
   });
 
-  it('should add +30 for second removed character card', () => {
+  it("should add +30 for second removed character card", () => {
     // 非開始カードは0pt、開始カードは1回20ptで累積
-    baseDeck.removedCards.set('card-1', 1); // 0pt
-    baseDeck.removedCards.set('luke_starting_1', 2);
+    baseDeck.removedCards.set("card-1", 1); // 0pt
+    baseDeck.removedCards.set("luke_starting_1", 2);
     expect(calculateFaintMemory(baseDeck)).toBe(40); // 2枚分×20pt
   });
 
-  it('should add removal points for third removed character card', () => {
-    baseDeck.removedCards.set('card-1', 1); // 0pt
-    baseDeck.removedCards.set('card-2', 2); // 0pt
-    baseDeck.removedCards.set('luke_starting_1', 3);
+  it("should add removal points for third removed character card", () => {
+    baseDeck.removedCards.set("card-1", 1); // 0pt
+    baseDeck.removedCards.set("card-2", 2); // 0pt
+    baseDeck.removedCards.set("luke_starting_1", 3);
     expect(calculateFaintMemory(baseDeck)).toBe(60); // 3枚分×20pt
   });
 
-  it('should add removal points for 3 different character cards', () => {
-    baseDeck.removedCards.set('luke_starting_1', 1);
-    baseDeck.removedCards.set('luke_starting_2', 2);
-    baseDeck.removedCards.set('luke_starting_3', 3);
+  it("should add removal points for 3 different character cards", () => {
+    baseDeck.removedCards.set("luke_starting_1", 1);
+    baseDeck.removedCards.set("luke_starting_2", 2);
+    baseDeck.removedCards.set("luke_starting_3", 3);
     expect(calculateFaintMemory(baseDeck)).toBe(120); // 1+2+3 回分 ×20pt
   });
 
-  it('should add +80 for removed 4 different character cards', () => {
-    baseDeck.removedCards.set('luke_starting_1', 1);
-    baseDeck.removedCards.set('luke_starting_2', 1);
-    baseDeck.removedCards.set('luke_starting_3', 1);
-    baseDeck.removedCards.set('luke_starting_4', 1);
+  it("should add +80 for removed 4 different character cards", () => {
+    baseDeck.removedCards.set("luke_starting_1", 1);
+    baseDeck.removedCards.set("luke_starting_2", 1);
+    baseDeck.removedCards.set("luke_starting_3", 1);
+    baseDeck.removedCards.set("luke_starting_4", 1);
     expect(calculateFaintMemory(baseDeck)).toBe(80); // 4枚分×20pt
   });
 
-  it('should add +260 for removed 5 different character cards', () => {
-    baseDeck.removedCards.set('luke_starting_1', 1);
-    baseDeck.removedCards.set('luke_starting_2', 1);
-    baseDeck.removedCards.set('luke_starting_3', 1);
-    baseDeck.removedCards.set('luke_starting_4', 1);
-    baseDeck.removedCards.set('luke_hirameki_1', 1);
+  it("should add +260 for removed 5 different character cards", () => {
+    baseDeck.removedCards.set("luke_starting_1", 1);
+    baseDeck.removedCards.set("luke_starting_2", 1);
+    baseDeck.removedCards.set("luke_starting_3", 1);
+    baseDeck.removedCards.set("luke_starting_4", 1);
+    baseDeck.removedCards.set("luke_hirameki_1", 1);
     // luke_hirameki_1 は開始カード扱いではないため 4枚分×20pt = 80
     expect(calculateFaintMemory(baseDeck)).toBe(80);
   });
 
-  it('should calculate copied cards correctly', () => {
+  it("should calculate copied cards correctly", () => {
     const variation: HiramekiVariation = {
       level: 0,
       cost: 0,
-      description: ''
+      description: "",
     };
 
     // V2 copy points: 1st/2nd=0, 3rd/4th=40 (最大4回)
     baseDeck.cards.push(
       {
-        deckId: 'copy-1',
-        id: 'char-copy-1',
-        name: 'Copied Character 1',
+        deckId: "copy-1",
+        id: "char-copy-1",
+        name: "Copied Character 1",
         type: CardType.CHARACTER,
         category: CardCategory.ATTACK,
         statuses: [],
@@ -354,12 +363,12 @@ describe('calculateFaintMemory', () => {
         isBasicCard: false,
         hiramekiVariations: [variation],
         isCopied: true,
-        copiedFromCardId: 'card-1'
+        copiedFromCardId: "card-1",
       },
       {
-        deckId: 'copy-2',
-        id: 'char-copy-2',
-        name: 'Copied Character 2',
+        deckId: "copy-2",
+        id: "char-copy-2",
+        name: "Copied Character 2",
         type: CardType.CHARACTER,
         category: CardCategory.ATTACK,
         statuses: [],
@@ -370,12 +379,12 @@ describe('calculateFaintMemory', () => {
         isBasicCard: false,
         hiramekiVariations: [variation],
         isCopied: true,
-        copiedFromCardId: 'card-2'
+        copiedFromCardId: "card-2",
       },
       {
-        deckId: 'copy-3',
-        id: 'char-copy-3',
-        name: 'Copied Character 3',
+        deckId: "copy-3",
+        id: "char-copy-3",
+        name: "Copied Character 3",
         type: CardType.CHARACTER,
         category: CardCategory.ATTACK,
         statuses: [],
@@ -386,12 +395,12 @@ describe('calculateFaintMemory', () => {
         isBasicCard: false,
         hiramekiVariations: [variation],
         isCopied: true,
-        copiedFromCardId: 'card-3'
+        copiedFromCardId: "card-3",
       },
       {
-        deckId: 'copy-4',
-        id: 'char-copy-4',
-        name: 'Copied Character 4',
+        deckId: "copy-4",
+        id: "char-copy-4",
+        name: "Copied Character 4",
         type: CardType.CHARACTER,
         category: CardCategory.ATTACK,
         statuses: [],
@@ -402,67 +411,67 @@ describe('calculateFaintMemory', () => {
         isBasicCard: false,
         hiramekiVariations: [variation],
         isCopied: true,
-        copiedFromCardId: 'card-3'
-      }
+        copiedFromCardId: "card-3",
+      },
     );
 
     expect(calculateFaintMemory(baseDeck)).toBe(80);
   });
 
-  it('should add 10pt for each converted card', () => {
-    baseDeck.convertedCards.set('card-1', 'converted-1');
-    baseDeck.convertedCards.set('card-2', 'converted-2');
-    baseDeck.convertedCards.set('card-3', 'converted-3');
+  it("should add 10pt for each converted card", () => {
+    baseDeck.convertedCards.set("card-1", "converted-1");
+    baseDeck.convertedCards.set("card-2", "converted-2");
+    baseDeck.convertedCards.set("card-3", "converted-3");
 
     // V2: 変換は排除扱い、開始カード以外は0pt
     expect(calculateFaintMemory(baseDeck)).toBe(0);
   });
 
-  it('should calculate combined faint memory correctly', () => {
+  it("should calculate combined faint memory correctly", () => {
     const variation: HiramekiVariation = {
       level: 0,
       cost: 0,
-      description: ''
+      description: "",
     };
 
     // Add 1 shared card with hirameki and god hirameki
     baseDeck.cards.push({
-      deckId: '1',
-      id: 'shared-1',
-      name: 'Shared Card',
+      deckId: "1",
+      id: "shared-1",
+      name: "Shared Card",
       type: CardType.SHARED,
       category: CardCategory.ATTACK,
       statuses: [],
       selectedHiramekiLevel: 2,
       godHiramekiType: GodType.KILKEN,
-      godHiramekiEffectId: 'godhirameki_1',
+      godHiramekiEffectId: "godhirameki_1",
       selectedHiddenHiramekiId: null,
       isBasicCard: false,
-      hiramekiVariations: [variation]
+      hiramekiVariations: [variation],
     });
     // 20 (shared) + 0 (hiramekiなし) + 20 (god hirameki) = 40
 
     // Add removed card: 非開始カードは0pt
-    baseDeck.removedCards.set('card-1', 2);
+    baseDeck.removedCards.set("card-1", 2);
 
     // Add converted card
-    baseDeck.convertedCards.set('card-2', 'converted-2'); // 0
+    baseDeck.convertedCards.set("card-2", "converted-2"); // 0
 
     expect(calculateFaintMemory(baseDeck)).toBe(40);
   });
 
-  it('should handle multiple cards of same type', () => {
+  it("should handle multiple cards of same type", () => {
     const variation: HiramekiVariation = {
       level: 0,
       cost: 0,
-      description: ''
+      description: "",
     };
 
     baseDeck.cards.push(
       {
-        deckId: '1',
-        id: 'shared-1',
-        name: 'Shared Card 1',
+        deckId: "1",
+        id: "shared-1",
+        name: "Shared Card 1",
         type: CardType.SHARED,
         category: CardCategory.ATTACK,
         statuses: [],
@@ -471,12 +480,12 @@ describe('calculateFaintMemory', () => {
         godHiramekiEffectId: null,
         selectedHiddenHiramekiId: null,
         isBasicCard: false,
-        hiramekiVariations: [variation]
+        hiramekiVariations: [variation],
       },
       {
-        deckId: '2',
-        id: 'shared-2',
-        name: 'Shared Card 2',
+        deckId: "2",
+        id: "shared-2",
+        name: "Shared Card 2",
         type: CardType.SHARED,
         category: CardCategory.ATTACK,
         statuses: [],
@@ -485,21 +494,25 @@ describe('calculateFaintMemory', () => {
         godHiramekiEffectId: null,
         selectedHiddenHiramekiId: null,
         isBasicCard: false,
-        hiramekiVariations: [variation]
-      }
+        hiramekiVariations: [variation],
+      },
     );
 
     expect(calculateFaintMemory(baseDeck)).toBe(40); // 20 + 20
   });
 });
 
-describe('calculateFaintMemory (removed/copied attribute handling)', () => {
+describe("calculateFaintMemory (removed/copied attribute handling)", () => {
   let deck: Deck;
 
   beforeEach(() => {
     deck = {
       character: null,
-      equipment: { weapon: { item: null, refinement: null, godHammerEquipmentId: null }, armor: { item: null, refinement: null, godHammerEquipmentId: null }, pendant: { item: null, refinement: null, godHammerEquipmentId: null } },
+      equipment: {
+        weapon: { item: null, refinement: null, godHammerEquipmentId: null },
+        armor: { item: null, refinement: null, godHammerEquipmentId: null },
+        pendant: { item: null, refinement: null, godHammerEquipmentId: null },
+      },
       cards: [],
       egoLevel: 0,
       hasPotential: false,
@@ -507,39 +520,39 @@ describe('calculateFaintMemory (removed/copied attribute handling)', () => {
       removedCards: new Map(),
       copiedCards: new Map(),
       convertedCards: new Map(),
-    selectedMutationCoreId: null,
+      selectedMutationCoreId: null,
     };
   });
 
-  it('should NOT add shared/monster/god/hirameki points for removed cards (only sequence base points apply)', () => {
+  it("should NOT add shared/monster/god/hirameki points for removed cards (only sequence base points apply)", () => {
     // 1st removal (shared): base 0
-    deck.removedCards.set('shared_01', 1);
+    deck.removedCards.set("shared_01", 1);
     expect(calculateFaintMemory(deck)).toBe(0);
 
     // 1st + 2nd removal (shared + monster): both non-starting => 0
     deck.removedCards.clear();
-    deck.removedCards.set('shared_01', 1);
-    deck.removedCards.set('monster_01', 1);
+    deck.removedCards.set("shared_01", 1);
+    deck.removedCards.set("monster_01", 1);
     expect(calculateFaintMemory(deck)).toBe(0);
 
     // Two removals of a shared card: still 0
     deck.removedCards.clear();
-    deck.removedCards.set('shared_01', 2);
+    deck.removedCards.set("shared_01", 2);
     expect(calculateFaintMemory(deck)).toBe(0);
   });
 
-  it('should NOT add shared/monster/god/hirameki points for copied cards (only sequence base points apply)', () => {
+  it("should NOT add shared/monster/god/hirameki points for copied cards (only sequence base points apply)", () => {
     const variation: HiramekiVariation = {
       level: 0,
       cost: 0,
-      description: ''
+      description: "",
     };
 
     // 1st copy: base 0
     deck.cards.push({
-      deckId: 'copy-1',
-      id: 'char-copy-1',
-      name: 'Copied Character',
+      deckId: "copy-1",
+      id: "char-copy-1",
+      name: "Copied Character",
       type: CardType.CHARACTER,
       category: CardCategory.ATTACK,
       statuses: [],
@@ -550,19 +563,23 @@ describe('calculateFaintMemory (removed/copied attribute handling)', () => {
       isBasicCard: false,
       hiramekiVariations: [variation],
       isCopied: true,
-      copiedFromCardId: 'shared_01'
+      copiedFromCardId: "shared_01",
     });
     expect(calculateFaintMemory(deck)).toBe(0);
   });
 });
 
-describe('calculateFaintMemory (snapshot attribute handling)', () => {
+describe("calculateFaintMemory (snapshot attribute handling)", () => {
   let deck: Deck;
 
   beforeEach(() => {
     deck = {
       character: null,
-      equipment: { weapon: { item: null, refinement: null, godHammerEquipmentId: null }, armor: { item: null, refinement: null, godHammerEquipmentId: null }, pendant: { item: null, refinement: null, godHammerEquipmentId: null } },
+      equipment: {
+        weapon: { item: null, refinement: null, godHammerEquipmentId: null },
+        armor: { item: null, refinement: null, godHammerEquipmentId: null },
+        pendant: { item: null, refinement: null, godHammerEquipmentId: null },
+      },
       cards: [],
       egoLevel: 0,
       hasPotential: false,
@@ -570,19 +587,19 @@ describe('calculateFaintMemory (snapshot attribute handling)', () => {
       removedCards: new Map(),
       copiedCards: new Map(),
       convertedCards: new Map(),
-    selectedMutationCoreId: null,
+      selectedMutationCoreId: null,
     };
   });
 
-  it('should add attribute points for removed cards when snapshot provided', () => {
+  it("should add attribute points for removed cards when snapshot provided", () => {
     // Removed shared card with hirameki level 2 and god effect, count=2
-    deck.removedCards.set('shared_01', {
+    deck.removedCards.set("shared_01", {
       count: 2,
       type: CardType.SHARED,
       selectedHiramekiLevel: 2,
       godHiramekiType: GodType.KILKEN,
-      godHiramekiEffectId: 'godhirameki_1',
-      isBasicCard: false
+      godHiramekiEffectId: "godhirameki_1",
+      isBasicCard: false,
     });
 
     // Base points: 非開始カードのため0
@@ -590,18 +607,18 @@ describe('calculateFaintMemory (snapshot attribute handling)', () => {
     expect(calculateFaintMemory(deck)).toBe(40);
   });
 
-  it('should add attribute points for copied cards when snapshot provided', () => {
+  it("should add attribute points for copied cards when snapshot provided", () => {
     const variation: HiramekiVariation = {
       level: 0,
       cost: 0,
-      description: ''
+      description: "",
     };
 
     deck.cards.push(
       {
-        deckId: 'copy-1',
-        id: 'char-copy-1',
-        name: 'Copied Character 1',
+        deckId: "copy-1",
+        id: "char-copy-1",
+        name: "Copied Character 1",
         type: CardType.CHARACTER,
         category: CardCategory.ATTACK,
         statuses: [],
@@ -612,12 +629,12 @@ describe('calculateFaintMemory (snapshot attribute handling)', () => {
         isBasicCard: false,
         hiramekiVariations: [variation],
         isCopied: true,
-        copiedFromCardId: 'monster_01'
+        copiedFromCardId: "monster_01",
       },
       {
-        deckId: 'copy-2',
-        id: 'char-copy-2',
-        name: 'Copied Character 2',
+        deckId: "copy-2",
+        id: "char-copy-2",
+        name: "Copied Character 2",
         type: CardType.CHARACTER,
         category: CardCategory.ATTACK,
         statuses: [],
@@ -628,12 +645,12 @@ describe('calculateFaintMemory (snapshot attribute handling)', () => {
         isBasicCard: false,
         hiramekiVariations: [variation],
         isCopied: true,
-        copiedFromCardId: 'monster_01'
+        copiedFromCardId: "monster_01",
       },
       {
-        deckId: 'copy-3',
-        id: 'char-copy-3',
-        name: 'Copied Character 3',
+        deckId: "copy-3",
+        id: "char-copy-3",
+        name: "Copied Character 3",
         type: CardType.CHARACTER,
         category: CardCategory.ATTACK,
         statuses: [],
@@ -644,19 +661,19 @@ describe('calculateFaintMemory (snapshot attribute handling)', () => {
         isBasicCard: false,
         hiramekiVariations: [variation],
         isCopied: true,
-        copiedFromCardId: 'monster_01'
-      }
+        copiedFromCardId: "monster_01",
+      },
     );
 
     // Copied monster card with hirameki level 1, no god, count=3
-    deck.copiedCards.set('monster_01', {
+    deck.copiedCards.set("monster_01", {
       count: 3,
       type: CardType.MONSTER,
       grade: CardGrade.LEGEND,
       selectedHiramekiLevel: 1,
       godHiramekiType: null,
       godHiramekiEffectId: null,
-      isBasicCard: false
+      isBasicCard: false,
     });
 
     // Sequence base points: copy #1=0, #2=0, #3=40 => 40
@@ -665,15 +682,15 @@ describe('calculateFaintMemory (snapshot attribute handling)', () => {
     expect(calculateFaintMemory(deck)).toBe(120);
   });
 
-  it('should add conversion points with snapshot attributes', () => {
+  it("should add conversion points with snapshot attributes", () => {
     // Convert shared card (with hirameki Lv1 and god) to monster card (with hirameki Lv2 and no god)
     // Original shared card: ヒラメキLv1 + 神ヒラメキ有り
     // Converted-to monster card in deck: ヒラメキLv2
     deck.cards = [
       {
-        id: 'monster_01',
-        deckId: 'monster_01_001',
-        name: 'モンスター1',
+        id: "monster_01",
+        deckId: "monster_01_001",
+        name: "モンスター1",
         type: CardType.MONSTER,
         category: CardCategory.ATTACK,
         grade: CardGrade.LEGEND,
@@ -687,19 +704,19 @@ describe('calculateFaintMemory (snapshot attribute handling)', () => {
           {
             level: 0,
             cost: 5,
-            description: 'モンスター説明'
-          }
-        ]
-      }
+            description: "モンスター説明",
+          },
+        ],
+      },
     ];
 
-    deck.convertedCards.set('shared_01', {
-      convertedToId: 'monster_01',
+    deck.convertedCards.set("shared_01", {
+      convertedToId: "monster_01",
       originalType: CardType.SHARED,
       selectedHiramekiLevel: 1,
       godHiramekiType: GodType.KILKEN,
-      godHiramekiEffectId: 'kilken_01',
-      isBasicCard: false
+      godHiramekiEffectId: "kilken_01",
+      isBasicCard: false,
     });
 
     // Deck card points: type(80) only (monster hirameki does NOT count) = 80
@@ -709,18 +726,18 @@ describe('calculateFaintMemory (snapshot attribute handling)', () => {
     expect(calculateFaintMemory(deck)).toBe(120);
   });
 
-  it('should preserve conversion points even after converted card is removed', () => {
+  it("should preserve conversion points even after converted card is removed", () => {
     // Convert shared card with hirameki to monster, then remove the monster
     // Original shared card: ヒラメキLv1
     deck.cards = []; // Monster card removed from deck
 
-    deck.convertedCards.set('shared_01', {
-      convertedToId: 'monster_01',
+    deck.convertedCards.set("shared_01", {
+      convertedToId: "monster_01",
       originalType: CardType.SHARED,
       selectedHiramekiLevel: 1,
       godHiramekiType: null,
       godHiramekiEffectId: null,
-      isBasicCard: false
+      isBasicCard: false,
     });
 
     // Base conversion: 0pt（排除扱い）
@@ -730,19 +747,19 @@ describe('calculateFaintMemory (snapshot attribute handling)', () => {
     expect(calculateFaintMemory(deck)).toBe(20);
   });
 
-  it('should subtract conversion points when conversion is undone', () => {
+  it("should subtract conversion points when conversion is undone", () => {
     // Shared card with hirameki converted to monster
     const variation: HiramekiVariation = {
       level: 0,
       cost: 0,
-      description: ''
+      description: "",
     };
 
     deck.cards = [
       {
-        deckId: 'monster_01_deck',
-        id: 'monster_01',
-        name: 'Monster Card',
+        deckId: "monster_01_deck",
+        id: "monster_01",
+        name: "Monster Card",
         type: CardType.MONSTER,
         category: CardCategory.ATTACK,
         grade: CardGrade.LEGEND,
@@ -752,18 +769,18 @@ describe('calculateFaintMemory (snapshot attribute handling)', () => {
         godHiramekiEffectId: null,
         selectedHiddenHiramekiId: null,
         isBasicCard: false,
-        hiramekiVariations: [variation]
-      }
+        hiramekiVariations: [variation],
+      },
     ];
 
     // Conversion entry: shared card (Lv1) was converted to monster
-    deck.convertedCards.set('shared_01', {
-      convertedToId: 'monster_01',
+    deck.convertedCards.set("shared_01", {
+      convertedToId: "monster_01",
       originalType: CardType.SHARED,
       selectedHiramekiLevel: 1,
       godHiramekiType: null,
       godHiramekiEffectId: null,
-      isBasicCard: false
+      isBasicCard: false,
     });
 
     // With conversion: type(80) + conversion(0) + original_type(20) = 100
@@ -771,7 +788,7 @@ describe('calculateFaintMemory (snapshot attribute handling)', () => {
     expect(pointsBeforeUndo).toBe(100);
 
     // After undoing the conversion (removing from convertedCards)
-    deck.convertedCards.delete('shared_01');
+    deck.convertedCards.delete("shared_01");
 
     // Without conversion: type(80) only = 80
     // The preserved original type加算は消える
@@ -779,19 +796,19 @@ describe('calculateFaintMemory (snapshot attribute handling)', () => {
     expect(pointsAfterUndo).toBe(80);
   });
 
-  it('should correctly calculate points when converting back with preserved hirameki', () => {
+  it("should correctly calculate points when converting back with preserved hirameki", () => {
     const variation: HiramekiVariation = {
       level: 0,
       cost: 0,
-      description: ''
+      description: "",
     };
 
     // Initial: monster card with hirameki Lv2
     deck.cards = [
       {
-        deckId: 'shared_01_deck',
-        id: 'shared_01',
-        name: 'Shared Card',
+        deckId: "shared_01_deck",
+        id: "shared_01",
+        name: "Shared Card",
         type: CardType.SHARED,
         category: CardCategory.ATTACK,
         statuses: [],
@@ -800,18 +817,18 @@ describe('calculateFaintMemory (snapshot attribute handling)', () => {
         godHiramekiEffectId: null,
         selectedHiddenHiramekiId: null,
         isBasicCard: false,
-        hiramekiVariations: [variation]
-      }
+        hiramekiVariations: [variation],
+      },
     ];
 
     // Conversion entry: shared card (Lv2) was converted to monster
-    deck.convertedCards.set('shared_01', {
-      convertedToId: 'monster_01',
+    deck.convertedCards.set("shared_01", {
+      convertedToId: "monster_01",
       originalType: CardType.SHARED,
       selectedHiramekiLevel: 2,
       godHiramekiType: null,
       godHiramekiEffectId: null,
-      isBasicCard: false
+      isBasicCard: false,
     });
 
     // After conversion: shared(20) + conversion(0) + preserved_type(20) = 40
@@ -819,7 +836,7 @@ describe('calculateFaintMemory (snapshot attribute handling)', () => {
     expect(pointsWithConversion).toBe(40);
 
     // When undoing conversion
-    deck.convertedCards.delete('shared_01');
+    deck.convertedCards.delete("shared_01");
 
     // After undo: shared(20)のみ（ヒラメキ加算なし）
     const pointsAfterUndo = calculateFaintMemory(deck);
@@ -827,13 +844,17 @@ describe('calculateFaintMemory (snapshot attribute handling)', () => {
   });
 });
 
-describe('calculateFaintMemory (copy double-counting issue)', () => {
+describe("calculateFaintMemory (copy double-counting issue)", () => {
   let deck: Deck;
 
   beforeEach(() => {
     deck = {
       character: null,
-      equipment: { weapon: { item: null, refinement: null, godHammerEquipmentId: null }, armor: { item: null, refinement: null, godHammerEquipmentId: null }, pendant: { item: null, refinement: null, godHammerEquipmentId: null } },
+      equipment: {
+        weapon: { item: null, refinement: null, godHammerEquipmentId: null },
+        armor: { item: null, refinement: null, godHammerEquipmentId: null },
+        pendant: { item: null, refinement: null, godHammerEquipmentId: null },
+      },
       cards: [],
       egoLevel: 0,
       hasPotential: false,
@@ -841,23 +862,23 @@ describe('calculateFaintMemory (copy double-counting issue)', () => {
       removedCards: new Map(),
       copiedCards: new Map(),
       convertedCards: new Map(),
-    selectedMutationCoreId: null,
+      selectedMutationCoreId: null,
     };
   });
 
-  it('should NOT double-count points when original card remains in deck after copy', () => {
+  it("should NOT double-count points when original card remains in deck after copy", () => {
     const variation: HiramekiVariation = {
       level: 0,
       cost: 5,
-      description: 'Base'
+      description: "Base",
     };
 
     // Shared card with hirameki level 1 in deck
     deck.cards = [
       {
-        id: 'shared_01',
-        deckId: 'shared_01_original',
-        name: 'Shared Card',
+        id: "shared_01",
+        deckId: "shared_01_original",
+        name: "Shared Card",
         type: CardType.SHARED,
         category: CardCategory.ATTACK,
         statuses: [],
@@ -866,12 +887,12 @@ describe('calculateFaintMemory (copy double-counting issue)', () => {
         godHiramekiEffectId: null,
         selectedHiddenHiramekiId: null,
         isBasicCard: false,
-        hiramekiVariations: [variation]
+        hiramekiVariations: [variation],
       },
       {
-        id: 'char-copy-1',
-        deckId: 'shared_01_copy_1',
-        name: 'Copied Character',
+        id: "char-copy-1",
+        deckId: "shared_01_copy_1",
+        name: "Copied Character",
         type: CardType.CHARACTER,
         category: CardCategory.ATTACK,
         statuses: [],
@@ -882,18 +903,18 @@ describe('calculateFaintMemory (copy double-counting issue)', () => {
         isBasicCard: false,
         hiramekiVariations: [variation],
         isCopied: true,
-        copiedFromCardId: 'shared_01'
-      }
+        copiedFromCardId: "shared_01",
+      },
     ];
 
     // Then copy it (card remains in deck, plus a copy is added)
-    deck.copiedCards.set('shared_01', {
+    deck.copiedCards.set("shared_01", {
       count: 1,
       type: CardType.SHARED,
       selectedHiramekiLevel: 1,
       godHiramekiType: null,
       godHiramekiEffectId: null,
-      isBasicCard: false
+      isBasicCard: false,
     });
 
     // Expected calculation:
@@ -908,15 +929,15 @@ describe('calculateFaintMemory (copy double-counting issue)', () => {
     expect(points).toBe(20);
   });
 
-  it('should count snapshot points only when copy is made AFTER removing original from deck', () => {
+  it("should count snapshot points only when copy is made AFTER removing original from deck", () => {
     // Scenario: Card was copied while in deck with certain attributes, then original was removed
     // In this case, we should count the snapshot attributes
 
     deck.cards = [
       {
-        id: 'char-copy-1',
-        deckId: 'shared_01_copy_1',
-        name: 'Copied Character',
+        id: "char-copy-1",
+        deckId: "shared_01_copy_1",
+        name: "Copied Character",
         type: CardType.CHARACTER,
         category: CardCategory.ATTACK,
         statuses: [],
@@ -929,21 +950,21 @@ describe('calculateFaintMemory (copy double-counting issue)', () => {
           {
             level: 0,
             cost: 5,
-            description: 'Base'
-          }
+            description: "Base",
+          },
         ],
         isCopied: true,
-        copiedFromCardId: 'shared_01'
-      }
+        copiedFromCardId: "shared_01",
+      },
     ]; // Original card removed, copy remains
 
-    deck.copiedCards.set('shared_01', {
+    deck.copiedCards.set("shared_01", {
       count: 1,
       type: CardType.SHARED,
       selectedHiramekiLevel: 1,
       godHiramekiType: null,
       godHiramekiEffectId: null,
-      isBasicCard: false
+      isBasicCard: false,
     });
 
     // Copy sequence: copy #1 = base 0
@@ -952,19 +973,19 @@ describe('calculateFaintMemory (copy double-counting issue)', () => {
     expect(calculateFaintMemory(deck)).toBe(20);
   });
 
-  it('should NOT double-count when copy has different attributes than current deck card', () => {
+  it("should NOT double-count when copy has different attributes than current deck card", () => {
     const variation: HiramekiVariation = {
       level: 0,
       cost: 5,
-      description: 'Base'
+      description: "Base",
     };
 
     // Card was copied at hirameki Lv1, then original was upgraded to Lv2
     deck.cards = [
       {
-        id: 'shared_01',
-        deckId: 'shared_01_original',
-        name: 'Shared Card',
+        id: "shared_01",
+        deckId: "shared_01_original",
+        name: "Shared Card",
         type: CardType.SHARED,
         category: CardCategory.ATTACK,
         statuses: [],
@@ -973,12 +994,12 @@ describe('calculateFaintMemory (copy double-counting issue)', () => {
         godHiramekiEffectId: null,
         selectedHiddenHiramekiId: null,
         isBasicCard: false,
-        hiramekiVariations: [variation]
+        hiramekiVariations: [variation],
       },
       {
-        id: 'char-copy-1',
-        deckId: 'shared_01_copy_1',
-        name: 'Copied Character',
+        id: "char-copy-1",
+        deckId: "shared_01_copy_1",
+        name: "Copied Character",
         type: CardType.CHARACTER,
         category: CardCategory.ATTACK,
         statuses: [],
@@ -989,18 +1010,18 @@ describe('calculateFaintMemory (copy double-counting issue)', () => {
         isBasicCard: false,
         hiramekiVariations: [variation],
         isCopied: true,
-        copiedFromCardId: 'shared_01'
-      }
+        copiedFromCardId: "shared_01",
+      },
     ];
 
     // Copy was made when card was at Lv1
-    deck.copiedCards.set('shared_01', {
+    deck.copiedCards.set("shared_01", {
       count: 1,
       type: CardType.SHARED,
       selectedHiramekiLevel: 1, // Copied at Lv1
       godHiramekiType: null,
       godHiramekiEffectId: null,
-      isBasicCard: false
+      isBasicCard: false,
     });
 
     // Current deck card: type(20)
@@ -1014,34 +1035,34 @@ describe('calculateFaintMemory (copy double-counting issue)', () => {
     expect(points).toBe(20);
   });
 
-  it('should handle multiple copies with original still in deck', () => {
+  it("should handle multiple copies with original still in deck", () => {
     const variation: HiramekiVariation = {
       level: 0,
       cost: 5,
-      description: 'Base'
+      description: "Base",
     };
 
     // Original card in deck
     deck.cards = [
       {
-        id: 'monster_01',
-        deckId: 'monster_01_original',
-        name: 'Monster Card',
+        id: "monster_01",
+        deckId: "monster_01_original",
+        name: "Monster Card",
         type: CardType.MONSTER,
         category: CardCategory.ATTACK,
         grade: CardGrade.LEGEND,
         statuses: [],
         selectedHiramekiLevel: 2,
         godHiramekiType: GodType.KILKEN,
-        godHiramekiEffectId: 'godhirameki_1',
+        godHiramekiEffectId: "godhirameki_1",
         selectedHiddenHiramekiId: null,
         isBasicCard: false,
-        hiramekiVariations: [variation]
+        hiramekiVariations: [variation],
       },
       {
-        id: 'char-copy-1',
-        deckId: 'monster_01_copy_1',
-        name: 'Copied Character 1',
+        id: "char-copy-1",
+        deckId: "monster_01_copy_1",
+        name: "Copied Character 1",
         type: CardType.CHARACTER,
         category: CardCategory.ATTACK,
         statuses: [],
@@ -1052,12 +1073,12 @@ describe('calculateFaintMemory (copy double-counting issue)', () => {
         isBasicCard: false,
         hiramekiVariations: [variation],
         isCopied: true,
-        copiedFromCardId: 'monster_01'
+        copiedFromCardId: "monster_01",
       },
       {
-        id: 'char-copy-2',
-        deckId: 'monster_01_copy_2',
-        name: 'Copied Character 2',
+        id: "char-copy-2",
+        deckId: "monster_01_copy_2",
+        name: "Copied Character 2",
         type: CardType.CHARACTER,
         category: CardCategory.ATTACK,
         statuses: [],
@@ -1068,12 +1089,12 @@ describe('calculateFaintMemory (copy double-counting issue)', () => {
         isBasicCard: false,
         hiramekiVariations: [variation],
         isCopied: true,
-        copiedFromCardId: 'monster_01'
+        copiedFromCardId: "monster_01",
       },
       {
-        id: 'char-copy-3',
-        deckId: 'monster_01_copy_3',
-        name: 'Copied Character 3',
+        id: "char-copy-3",
+        deckId: "monster_01_copy_3",
+        name: "Copied Character 3",
         type: CardType.CHARACTER,
         category: CardCategory.ATTACK,
         statuses: [],
@@ -1084,18 +1105,18 @@ describe('calculateFaintMemory (copy double-counting issue)', () => {
         isBasicCard: false,
         hiramekiVariations: [variation],
         isCopied: true,
-        copiedFromCardId: 'monster_01'
-      }
+        copiedFromCardId: "monster_01",
+      },
     ];
 
     // Made 3 copies
-    deck.copiedCards.set('monster_01', {
+    deck.copiedCards.set("monster_01", {
       count: 3,
       type: CardType.MONSTER,
       selectedHiramekiLevel: 2,
       godHiramekiType: GodType.KILKEN,
-      godHiramekiEffectId: 'godhirameki_1',
-      isBasicCard: false
+      godHiramekiEffectId: "godhirameki_1",
+      isBasicCard: false,
     });
 
     // Current deck card: type(80) + god(20) = 100 (monster hirameki does NOT count)
@@ -1109,16 +1130,16 @@ describe('calculateFaintMemory (copy double-counting issue)', () => {
     expect(points).toBe(140);
   });
 
-  it('should handle undo copy correctly - removing copy should clear copiedCards entry', () => {
+  it("should handle undo copy correctly - removing copy should clear copiedCards entry", () => {
     // This tests the interaction with useDeckBuilder's undoCard function
     // When a copied card is undone, the copiedCards count should decrease
 
     // Original card in deck
     deck.cards = [
       {
-        id: 'shared_01',
-        deckId: 'shared_01_original',
-        name: 'Shared Card',
+        id: "shared_01",
+        deckId: "shared_01_original",
+        name: "Shared Card",
         type: CardType.SHARED,
         category: CardCategory.ATTACK,
         statuses: [],
@@ -1131,10 +1152,10 @@ describe('calculateFaintMemory (copy double-counting issue)', () => {
           {
             level: 0,
             cost: 5,
-            description: 'Base'
-          }
-        ]
-      }
+            description: "Base",
+          },
+        ],
+      },
     ];
 
     // Copy was made and then undone (copiedCards should be empty/0)
@@ -1146,13 +1167,13 @@ describe('calculateFaintMemory (copy double-counting issue)', () => {
     expect(calculateFaintMemory(deck)).toBe(20);
   });
 
-  it('should reduce points when a copy is undone (count decreases)', () => {
+  it("should reduce points when a copy is undone (count decreases)", () => {
     // Original card in deck
     deck.cards = [
       {
-        id: 'shared_01',
-        deckId: 'shared_01_original',
-        name: 'Shared Card',
+        id: "shared_01",
+        deckId: "shared_01_original",
+        name: "Shared Card",
         type: CardType.SHARED,
         category: CardCategory.ATTACK,
         statuses: [],
@@ -1165,54 +1186,54 @@ describe('calculateFaintMemory (copy double-counting issue)', () => {
           {
             level: 0,
             cost: 5,
-            description: 'Base'
-          }
-        ]
-      }
+            description: "Base",
+          },
+        ],
+      },
     ];
 
     // Made 3 copies, then undone 1 copy (now count = 2)
-    deck.copiedCards.set('shared_01', {
+    deck.copiedCards.set("shared_01", {
       count: 2,
       type: CardType.SHARED,
       selectedHiramekiLevel: 1,
       godHiramekiType: null,
       godHiramekiEffectId: null,
-      isBasicCard: false
+      isBasicCard: false,
     });
 
     // type(20) + copy(0 + 0) = 20
     expect(calculateFaintMemory(deck)).toBe(20);
   });
 
-  it('should handle multiple undo operations reducing copy count progressively', () => {
+  it("should handle multiple undo operations reducing copy count progressively", () => {
     const variation: HiramekiVariation = {
       level: 0,
       cost: 5,
-      description: 'Base'
+      description: "Base",
     };
 
     // Original card in deck
     deck.cards = [
       {
-        id: 'monster_01',
-        deckId: 'monster_01_original',
-        name: 'Monster Card',
+        id: "monster_01",
+        deckId: "monster_01_original",
+        name: "Monster Card",
         type: CardType.MONSTER,
         category: CardCategory.ATTACK,
         grade: CardGrade.LEGEND,
         statuses: [],
         selectedHiramekiLevel: 2,
         godHiramekiType: GodType.KILKEN,
-        godHiramekiEffectId: 'godhirameki_1',
+        godHiramekiEffectId: "godhirameki_1",
         selectedHiddenHiramekiId: null,
         isBasicCard: false,
-        hiramekiVariations: [variation]
+        hiramekiVariations: [variation],
       },
       {
-        id: 'char-copy-1',
-        deckId: 'monster_01_copy_1',
-        name: 'Copied Character 1',
+        id: "char-copy-1",
+        deckId: "monster_01_copy_1",
+        name: "Copied Character 1",
         type: CardType.CHARACTER,
         category: CardCategory.ATTACK,
         statuses: [],
@@ -1223,12 +1244,12 @@ describe('calculateFaintMemory (copy double-counting issue)', () => {
         isBasicCard: false,
         hiramekiVariations: [variation],
         isCopied: true,
-        copiedFromCardId: 'monster_01'
+        copiedFromCardId: "monster_01",
       },
       {
-        id: 'char-copy-2',
-        deckId: 'monster_01_copy_2',
-        name: 'Copied Character 2',
+        id: "char-copy-2",
+        deckId: "monster_01_copy_2",
+        name: "Copied Character 2",
         type: CardType.CHARACTER,
         category: CardCategory.ATTACK,
         statuses: [],
@@ -1239,12 +1260,12 @@ describe('calculateFaintMemory (copy double-counting issue)', () => {
         isBasicCard: false,
         hiramekiVariations: [variation],
         isCopied: true,
-        copiedFromCardId: 'monster_01'
+        copiedFromCardId: "monster_01",
       },
       {
-        id: 'char-copy-3',
-        deckId: 'monster_01_copy_3',
-        name: 'Copied Character 3',
+        id: "char-copy-3",
+        deckId: "monster_01_copy_3",
+        name: "Copied Character 3",
         type: CardType.CHARACTER,
         category: CardCategory.ATTACK,
         statuses: [],
@@ -1255,32 +1276,32 @@ describe('calculateFaintMemory (copy double-counting issue)', () => {
         isBasicCard: false,
         hiramekiVariations: [variation],
         isCopied: true,
-        copiedFromCardId: 'monster_01'
-      }
+        copiedFromCardId: "monster_01",
+      },
     ];
 
     // Originally made 5 copies, undone 2 copies (now count = 3)
-    deck.copiedCards.set('monster_01', {
+    deck.copiedCards.set("monster_01", {
       count: 3,
       type: CardType.MONSTER,
       selectedHiramekiLevel: 2,
       godHiramekiType: GodType.KILKEN,
-      godHiramekiEffectId: 'godhirameki_1',
-      isBasicCard: false
+      godHiramekiEffectId: "godhirameki_1",
+      isBasicCard: false,
     });
 
     // type(80) + god(20) + copy(0 + 0 + 40) = 140 (monster hirameki does NOT count)
     expect(calculateFaintMemory(deck)).toBe(140);
   });
 
-  it('should correctly calculate points after all copies are undone', () => {
+  it("should correctly calculate points after all copies are undone", () => {
     // Scenario: made copies, then undone all of them
     // Original card in deck
     deck.cards = [
       {
-        id: 'forbidden_01',
-        deckId: 'forbidden_01_original',
-        name: 'Forbidden Card',
+        id: "forbidden_01",
+        deckId: "forbidden_01_original",
+        name: "Forbidden Card",
         type: CardType.FORBIDDEN,
         category: CardCategory.ATTACK,
         statuses: [],
@@ -1293,10 +1314,10 @@ describe('calculateFaintMemory (copy double-counting issue)', () => {
           {
             level: 0,
             cost: 5,
-            description: 'Base'
-          }
-        ]
-      }
+            description: "Base",
+          },
+        ],
+      },
     ];
 
     // All copies were undone
@@ -1306,20 +1327,20 @@ describe('calculateFaintMemory (copy double-counting issue)', () => {
     expect(calculateFaintMemory(deck)).toBe(20);
   });
 
-  it('should NOT add conversion points for exclusion conversions', () => {
+  it("should NOT add conversion points for exclusion conversions", () => {
     // Scenario: converted a shared card with hirameki to exclusion
     // Original card NO LONGER in deck (converted away)
     deck.cards = [];
 
     // Exclusion conversion: excluded flag = true
-    deck.convertedCards.set('shared_01', {
-      convertedToId: '__exclusion__',
+    deck.convertedCards.set("shared_01", {
+      convertedToId: "__exclusion__",
       originalType: CardType.SHARED,
       selectedHiramekiLevel: 1,
       godHiramekiType: null,
       godHiramekiEffectId: null,
       isBasicCard: false,
-      excluded: true // This is the key flag
+      excluded: true, // This is the key flag
     });
 
     // Expected:
@@ -1329,14 +1350,14 @@ describe('calculateFaintMemory (copy double-counting issue)', () => {
     expect(calculateFaintMemory(deck)).toBe(20);
   });
 
-  it('should add conversion points for normal (non-exclusion) conversions', () => {
+  it("should add conversion points for normal (non-exclusion) conversions", () => {
     // Scenario: converted a shared card with hirameki to another card
     // Original card NO LONGER in deck, converted card IS in deck
     deck.cards = [
       {
-        id: 'forbidden_02',
-        deckId: 'forbidden_02_deck',
-        name: 'Forbidden Card 2',
+        id: "forbidden_02",
+        deckId: "forbidden_02_deck",
+        name: "Forbidden Card 2",
         type: CardType.FORBIDDEN,
         category: CardCategory.ATTACK,
         statuses: [],
@@ -1349,21 +1370,21 @@ describe('calculateFaintMemory (copy double-counting issue)', () => {
           {
             level: 0,
             cost: 5,
-            description: 'Base'
-          }
-        ]
-      }
+            description: "Base",
+          },
+        ],
+      },
     ];
 
     // Normal conversion: excluded flag = false (or omitted)
-    deck.convertedCards.set('shared_01', {
-      convertedToId: 'forbidden_02',
+    deck.convertedCards.set("shared_01", {
+      convertedToId: "forbidden_02",
       originalType: CardType.SHARED,
       selectedHiramekiLevel: 1,
       godHiramekiType: null,
       godHiramekiEffectId: null,
       isBasicCard: false,
-      excluded: false // Normal conversion
+      excluded: false, // Normal conversion
     });
 
     // Expected:
@@ -1374,18 +1395,18 @@ describe('calculateFaintMemory (copy double-counting issue)', () => {
     expect(calculateFaintMemory(deck)).toBe(40);
   });
 
-  it('should handle exclusion conversion with god hirameki correctly', () => {
+  it("should handle exclusion conversion with god hirameki correctly", () => {
     // Scenario: converted a shared card with hirameki + god hirameki to exclusion
     deck.cards = [];
 
-    deck.convertedCards.set('shared_02', {
-      convertedToId: '__exclusion__',
+    deck.convertedCards.set("shared_02", {
+      convertedToId: "__exclusion__",
       originalType: CardType.SHARED,
       selectedHiramekiLevel: 2,
       godHiramekiType: GodType.KILKEN,
-      godHiramekiEffectId: 'godhirameki_1',
+      godHiramekiEffectId: "godhirameki_1",
       isBasicCard: false,
-      excluded: true
+      excluded: true,
     });
 
     // Expected:
@@ -1397,12 +1418,16 @@ describe('calculateFaintMemory (copy double-counting issue)', () => {
   });
 });
 
-describe('calculateFaintMemory (排除変換)', () => {
-  it('変換先が排除の場合、変換先カードはポイントに影響しない', () => {
+describe("calculateFaintMemory (排除変換)", () => {
+  it("変換先が排除の場合、変換先カードはポイントに影響しない", () => {
     const deck: Deck = {
-      name: 'test',
+      name: "test",
       character: null,
-      equipment: { weapon: { item: null, refinement: null, godHammerEquipmentId: null }, armor: { item: null, refinement: null, godHammerEquipmentId: null }, pendant: { item: null, refinement: null, godHammerEquipmentId: null } },
+      equipment: {
+        weapon: { item: null, refinement: null, godHammerEquipmentId: null },
+        armor: { item: null, refinement: null, godHammerEquipmentId: null },
+        pendant: { item: null, refinement: null, godHammerEquipmentId: null },
+      },
       cards: [],
       egoLevel: 0,
       hasPotential: false,
@@ -1411,9 +1436,9 @@ describe('calculateFaintMemory (排除変換)', () => {
       copiedCards: new Map(),
       convertedCards: new Map([
         [
-          'shared_01',
+          "shared_01",
           {
-            convertedToId: 'shared_99',
+            convertedToId: "shared_99",
             originalType: CardType.SHARED,
             selectedHiramekiLevel: 1,
             excluded: true,
@@ -1429,26 +1454,30 @@ describe('calculateFaintMemory (排除変換)', () => {
   });
 });
 
-describe('calculateFaintMemory (追加カバレッジ)', () => {
-  it('removedCardsのスナップショットでモンスターと神ヒラメキを加算する', () => {
+describe("calculateFaintMemory (追加カバレッジ)", () => {
+  it("removedCardsのスナップショットでモンスターと神ヒラメキを加算する", () => {
     const deck: Deck = {
-      name: 'test',
+      name: "test",
       character: null,
-      equipment: { weapon: { item: null, refinement: null, godHammerEquipmentId: null }, armor: { item: null, refinement: null, godHammerEquipmentId: null }, pendant: { item: null, refinement: null, godHammerEquipmentId: null } },
+      equipment: {
+        weapon: { item: null, refinement: null, godHammerEquipmentId: null },
+        armor: { item: null, refinement: null, godHammerEquipmentId: null },
+        pendant: { item: null, refinement: null, godHammerEquipmentId: null },
+      },
       cards: [],
       egoLevel: 0,
       hasPotential: false,
       createdAt: new Date(),
       removedCards: new Map([
         [
-          'shared_01',
+          "shared_01",
           {
             count: 1,
             type: CardType.MONSTER,
             grade: CardGrade.RARE,
             selectedHiramekiLevel: 0,
             godHiramekiType: GodType.KILKEN,
-            godHiramekiEffectId: 'godhirameki_1',
+            godHiramekiEffectId: "godhirameki_1",
             isBasicCard: false,
           },
         ],
@@ -1461,17 +1490,21 @@ describe('calculateFaintMemory (追加カバレッジ)', () => {
     expect(calculateFaintMemory(deck)).toBe(70); // 50 (rare monster) + 20 (god)
   });
 
-  it('removedCardsのスナップショットで禁忌カードの加算を行う', () => {
+  it("removedCardsのスナップショットで禁忌カードの加算を行う", () => {
     const deck: Deck = {
-      name: 'test',
+      name: "test",
       character: null,
-      equipment: { weapon: { item: null, refinement: null, godHammerEquipmentId: null }, armor: { item: null, refinement: null, godHammerEquipmentId: null }, pendant: { item: null, refinement: null, godHammerEquipmentId: null } },
+      equipment: {
+        weapon: { item: null, refinement: null, godHammerEquipmentId: null },
+        armor: { item: null, refinement: null, godHammerEquipmentId: null },
+        pendant: { item: null, refinement: null, godHammerEquipmentId: null },
+      },
       cards: [],
       egoLevel: 0,
       hasPotential: false,
       createdAt: new Date(),
       removedCards: new Map([
-        ['shared_01', { count: 1, type: CardType.FORBIDDEN, selectedHiramekiLevel: 0 }],
+        ["shared_01", { count: 1, type: CardType.FORBIDDEN, selectedHiramekiLevel: 0 }],
       ]),
       copiedCards: new Map(),
       convertedCards: new Map(),
@@ -1481,16 +1514,20 @@ describe('calculateFaintMemory (追加カバレッジ)', () => {
     expect(calculateFaintMemory(deck)).toBe(20);
   });
 
-  it('copiedCardsのスナップショットで禁忌カードと神ヒラメキを加算する', () => {
+  it("copiedCardsのスナップショットで禁忌カードと神ヒラメキを加算する", () => {
     const deck: Deck = {
-      name: 'test',
+      name: "test",
       character: null,
-      equipment: { weapon: { item: null, refinement: null, godHammerEquipmentId: null }, armor: { item: null, refinement: null, godHammerEquipmentId: null }, pendant: { item: null, refinement: null, godHammerEquipmentId: null } },
+      equipment: {
+        weapon: { item: null, refinement: null, godHammerEquipmentId: null },
+        armor: { item: null, refinement: null, godHammerEquipmentId: null },
+        pendant: { item: null, refinement: null, godHammerEquipmentId: null },
+      },
       cards: [
         {
-          deckId: 'copy-1',
-          id: 'forbidden_01',
-          name: 'Forbidden',
+          deckId: "copy-1",
+          id: "forbidden_01",
+          name: "Forbidden",
           type: CardType.FORBIDDEN,
           category: CardCategory.SKILL,
           statuses: [],
@@ -1500,8 +1537,8 @@ describe('calculateFaintMemory (追加カバレッジ)', () => {
           selectedHiddenHiramekiId: null,
           isBasicCard: false,
           isCopied: true,
-          copiedFromCardId: 'forbidden_01',
-          hiramekiVariations: [{ level: 0, cost: 0, description: '' }],
+          copiedFromCardId: "forbidden_01",
+          hiramekiVariations: [{ level: 0, cost: 0, description: "" }],
         },
       ],
       egoLevel: 0,
@@ -1510,13 +1547,13 @@ describe('calculateFaintMemory (追加カバレッジ)', () => {
       removedCards: new Map(),
       copiedCards: new Map([
         [
-          'forbidden_01',
+          "forbidden_01",
           {
             count: 1,
             type: CardType.FORBIDDEN,
             selectedHiramekiLevel: 0,
             godHiramekiType: GodType.KILKEN,
-            godHiramekiEffectId: 'godhirameki_1',
+            godHiramekiEffectId: "godhirameki_1",
             isBasicCard: false,
           },
         ],
@@ -1528,11 +1565,15 @@ describe('calculateFaintMemory (追加カバレッジ)', () => {
     expect(calculateFaintMemory(deck)).toBe(60); // 20 (deck forbidden) + 20 (snapshot forbidden) + 20 (god)
   });
 
-  it('convertedCardsで開始カードの基本ポイントを加算する', () => {
+  it("convertedCardsで開始カードの基本ポイントを加算する", () => {
     const deck: Deck = {
-      name: 'test',
+      name: "test",
       character: null,
-      equipment: { weapon: { item: null, refinement: null, godHammerEquipmentId: null }, armor: { item: null, refinement: null, godHammerEquipmentId: null }, pendant: { item: null, refinement: null, godHammerEquipmentId: null } },
+      equipment: {
+        weapon: { item: null, refinement: null, godHammerEquipmentId: null },
+        armor: { item: null, refinement: null, godHammerEquipmentId: null },
+        pendant: { item: null, refinement: null, godHammerEquipmentId: null },
+      },
       cards: [],
       egoLevel: 0,
       hasPotential: false,
@@ -1541,9 +1582,9 @@ describe('calculateFaintMemory (追加カバレッジ)', () => {
       copiedCards: new Map(),
       convertedCards: new Map([
         [
-          'luke_starting_1',
+          "luke_starting_1",
           {
-            convertedToId: 'shared_01',
+            convertedToId: "shared_01",
             originalType: CardType.SHARED,
             selectedHiramekiLevel: 0,
             excluded: false,
@@ -1556,11 +1597,15 @@ describe('calculateFaintMemory (追加カバレッジ)', () => {
     expect(calculateFaintMemory(deck)).toBe(40); // 20 (starting) + 20 (shared type)
   });
 
-  it('convertedCardsでモンスターのグレード加算を行う', () => {
+  it("convertedCardsでモンスターのグレード加算を行う", () => {
     const deck: Deck = {
-      name: 'test',
+      name: "test",
       character: null,
-      equipment: { weapon: { item: null, refinement: null, godHammerEquipmentId: null }, armor: { item: null, refinement: null, godHammerEquipmentId: null }, pendant: { item: null, refinement: null, godHammerEquipmentId: null } },
+      equipment: {
+        weapon: { item: null, refinement: null, godHammerEquipmentId: null },
+        armor: { item: null, refinement: null, godHammerEquipmentId: null },
+        pendant: { item: null, refinement: null, godHammerEquipmentId: null },
+      },
       cards: [],
       egoLevel: 0,
       hasPotential: false,
@@ -1569,9 +1614,9 @@ describe('calculateFaintMemory (追加カバレッジ)', () => {
       copiedCards: new Map(),
       convertedCards: new Map([
         [
-          'shared_01',
+          "shared_01",
           {
-            convertedToId: 'monster_01',
+            convertedToId: "monster_01",
             originalType: CardType.MONSTER,
             originalGrade: CardGrade.LEGEND,
             selectedHiramekiLevel: 0,
@@ -1585,7 +1630,7 @@ describe('calculateFaintMemory (追加カバレッジ)', () => {
     expect(calculateFaintMemory(deck)).toBe(80);
   });
 
-  describe('equipment enhancements', () => {
+  describe("equipment enhancements", () => {
     let baseDeck: Deck;
 
     beforeEach(() => {
@@ -1594,7 +1639,7 @@ describe('calculateFaintMemory (追加カバレッジ)', () => {
         equipment: {
           weapon: { item: null, refinement: null, godHammerEquipmentId: null },
           armor: { item: null, refinement: null, godHammerEquipmentId: null },
-          pendant: { item: null, refinement: null, godHammerEquipmentId: null }
+          pendant: { item: null, refinement: null, godHammerEquipmentId: null },
         },
         cards: [],
         egoLevel: 0,
@@ -1603,65 +1648,147 @@ describe('calculateFaintMemory (追加カバレッジ)', () => {
         removedCards: new Map(),
         copiedCards: new Map(),
         convertedCards: new Map(),
-      selectedMutationCoreId: null,
+        selectedMutationCoreId: null,
       };
     });
 
-    it('should add 10pt for equipment refinement', () => {
-      const mockEquipment: Equipment = { id: 'weapon-1', name: 'Test Weapon', type: EquipmentType.WEAPON, rarity: 'common', obtainableChaosIds: [] };
-      baseDeck.equipment.weapon = { item: mockEquipment, refinement: 'refinement-1', godHammerEquipmentId: null };
+    it("should add 10pt for equipment refinement", () => {
+      const mockEquipment: Equipment = {
+        id: "weapon-1",
+        name: "Test Weapon",
+        type: EquipmentType.WEAPON,
+        rarity: "common",
+        obtainableChaosIds: [],
+      };
+      baseDeck.equipment.weapon = {
+        item: mockEquipment,
+        refinement: "refinement-1",
+        godHammerEquipmentId: null,
+      };
 
       expect(calculateFaintMemory(baseDeck)).toBe(10);
     });
 
-    it('should add 10pt for equipment god hammer', () => {
-      const mockEquipment: Equipment = { id: 'weapon-1', name: 'Test Weapon', type: EquipmentType.WEAPON, rarity: 'common', obtainableChaosIds: [] };
-      baseDeck.equipment.weapon = { item: mockEquipment, refinement: null, godHammerEquipmentId: 'hammer-effect-1' };
+    it("should add 10pt for equipment god hammer", () => {
+      const mockEquipment: Equipment = {
+        id: "weapon-1",
+        name: "Test Weapon",
+        type: EquipmentType.WEAPON,
+        rarity: "common",
+        obtainableChaosIds: [],
+      };
+      baseDeck.equipment.weapon = {
+        item: mockEquipment,
+        refinement: null,
+        godHammerEquipmentId: "hammer-effect-1",
+      };
 
       expect(calculateFaintMemory(baseDeck)).toBe(10);
     });
 
-    it('should add 20pt for both refinement and god hammer on same equipment', () => {
-      const mockEquipment: Equipment = { id: 'weapon-1', name: 'Test Weapon', type: EquipmentType.WEAPON, rarity: 'common', obtainableChaosIds: [] };
-      baseDeck.equipment.weapon = { item: mockEquipment, refinement: 'refinement-1', godHammerEquipmentId: 'hammer-effect-1' };
+    it("should add 20pt for both refinement and god hammer on same equipment", () => {
+      const mockEquipment: Equipment = {
+        id: "weapon-1",
+        name: "Test Weapon",
+        type: EquipmentType.WEAPON,
+        rarity: "common",
+        obtainableChaosIds: [],
+      };
+      baseDeck.equipment.weapon = {
+        item: mockEquipment,
+        refinement: "refinement-1",
+        godHammerEquipmentId: "hammer-effect-1",
+      };
 
       expect(calculateFaintMemory(baseDeck)).toBe(20);
     });
 
-    it('should add 60pt for all three equipment types with both enhancements', () => {
-      const mockWeapon: Equipment = { id: 'weapon-1', name: 'Test Weapon', type: EquipmentType.WEAPON, rarity: 'common', obtainableChaosIds: [] };
-      const mockArmor: Equipment = { id: 'armor-1', name: 'Test Armor', type: EquipmentType.ARMOR, rarity: 'common', obtainableChaosIds: [] };
-      const mockPendant: Equipment = { id: 'pendant-1', name: 'Test Pendant', type: EquipmentType.PENDANT, rarity: 'common', obtainableChaosIds: [] };
+    it("should add 60pt for all three equipment types with both enhancements", () => {
+      const mockWeapon: Equipment = {
+        id: "weapon-1",
+        name: "Test Weapon",
+        type: EquipmentType.WEAPON,
+        rarity: "common",
+        obtainableChaosIds: [],
+      };
+      const mockArmor: Equipment = {
+        id: "armor-1",
+        name: "Test Armor",
+        type: EquipmentType.ARMOR,
+        rarity: "common",
+        obtainableChaosIds: [],
+      };
+      const mockPendant: Equipment = {
+        id: "pendant-1",
+        name: "Test Pendant",
+        type: EquipmentType.PENDANT,
+        rarity: "common",
+        obtainableChaosIds: [],
+      };
 
-      baseDeck.equipment.weapon = { item: mockWeapon, refinement: 'refinement-1', godHammerEquipmentId: 'hammer-effect-1' };
-      baseDeck.equipment.armor = { item: mockArmor, refinement: 'refinement-1', godHammerEquipmentId: 'hammer-effect-2' };
-      baseDeck.equipment.pendant = { item: mockPendant, refinement: 'refinement-1', godHammerEquipmentId: 'hammer-effect-3' };
+      baseDeck.equipment.weapon = {
+        item: mockWeapon,
+        refinement: "refinement-1",
+        godHammerEquipmentId: "hammer-effect-1",
+      };
+      baseDeck.equipment.armor = {
+        item: mockArmor,
+        refinement: "refinement-1",
+        godHammerEquipmentId: "hammer-effect-2",
+      };
+      baseDeck.equipment.pendant = {
+        item: mockPendant,
+        refinement: "refinement-1",
+        godHammerEquipmentId: "hammer-effect-3",
+      };
 
       expect(calculateFaintMemory(baseDeck)).toBe(60); // 20 each * 3
     });
 
-    it('should not add points if equipment is not selected', () => {
-      baseDeck.equipment.weapon = { item: null, refinement: 'refinement-1', godHammerEquipmentId: 'hammer-effect-1' };
-      baseDeck.equipment.armor = { item: null, refinement: 'refinement-1', godHammerEquipmentId: 'hammer-effect-2' };
-      baseDeck.equipment.pendant = { item: null, refinement: 'refinement-1', godHammerEquipmentId: 'hammer-effect-3' };
+    it("should not add points if equipment is not selected", () => {
+      baseDeck.equipment.weapon = {
+        item: null,
+        refinement: "refinement-1",
+        godHammerEquipmentId: "hammer-effect-1",
+      };
+      baseDeck.equipment.armor = {
+        item: null,
+        refinement: "refinement-1",
+        godHammerEquipmentId: "hammer-effect-2",
+      };
+      baseDeck.equipment.pendant = {
+        item: null,
+        refinement: "refinement-1",
+        godHammerEquipmentId: "hammer-effect-3",
+      };
 
       expect(calculateFaintMemory(baseDeck)).toBe(0);
     });
 
-    it('should combine equipment and card points', () => {
-      const mockEquipment: Equipment = { id: 'weapon-1', name: 'Test Weapon', type: EquipmentType.WEAPON, rarity: 'common', obtainableChaosIds: [] };
-      baseDeck.equipment.weapon = { item: mockEquipment, refinement: 'refinement-1', godHammerEquipmentId: null };
+    it("should combine equipment and card points", () => {
+      const mockEquipment: Equipment = {
+        id: "weapon-1",
+        name: "Test Weapon",
+        type: EquipmentType.WEAPON,
+        rarity: "common",
+        obtainableChaosIds: [],
+      };
+      baseDeck.equipment.weapon = {
+        item: mockEquipment,
+        refinement: "refinement-1",
+        godHammerEquipmentId: null,
+      };
 
       const variation: HiramekiVariation = {
         level: 0,
         cost: 0,
-        description: ''
+        description: "",
       };
 
       baseDeck.cards.push({
-        deckId: '1',
-        id: 'shared-1',
-        name: 'Shared Card',
+        deckId: "1",
+        id: "shared-1",
+        name: "Shared Card",
         type: CardType.SHARED,
         category: CardCategory.ATTACK,
         statuses: [],
@@ -1670,11 +1797,10 @@ describe('calculateFaintMemory (追加カバレッジ)', () => {
         godHiramekiEffectId: null,
         selectedHiddenHiramekiId: null,
         isBasicCard: false,
-        hiramekiVariations: [variation]
+        hiramekiVariations: [variation],
       });
 
       expect(calculateFaintMemory(baseDeck)).toBe(30); // 10 (equipment refinement) + 20 (shared card)
     });
   });
 });
-

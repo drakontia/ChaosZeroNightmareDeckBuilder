@@ -15,11 +15,12 @@ export const EQUIPMENT_OBTAINABLE_CHAOS_IDS: EquipmentObtainableChaosId[] = [
 
 export const filterEquipmentByChaosLocation = (
   equipment: Equipment[],
-  selectedChaosId: EquipmentObtainableChaosId | null
+  selectedChaosId: EquipmentObtainableChaosId | null,
 ) => {
   if (!selectedChaosId) return equipment;
-  return equipment.filter((item) =>
-    item.obtainableChaosIds.includes(EquipmentObtainableChaosId.ALL) ||
-    item.obtainableChaosIds.includes(selectedChaosId)
+  return equipment.filter(
+    (item) =>
+      item.obtainableChaosIds.includes(EquipmentObtainableChaosId.ALL) ||
+      item.obtainableChaosIds.includes(selectedChaosId),
   );
 };

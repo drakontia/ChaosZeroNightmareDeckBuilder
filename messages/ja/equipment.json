@@ -1,1032 +1,1032 @@
 {
-    "equipment": {
-        "title": "獲得装備",
-        "none": "なし",
-        "info": "詳細情報",
-        "refinement": "精錬",
-        "engraving": "刻印",
-        "godHammer": "神のハンマー",
-        "godHammerWithoutRefinement": {
-            "title": "精錬が選択されていません",
-            "message": "神のハンマーが有効な装備に精錬が選択されていません。精錬を有効にすることを推奨します。"
-        },
-        "obtainableChaos": {
-            "label": "入手場所",
-            "filterLabel": "入手場所フィルター",
-            "all": "すべて",
-            "options": {
-                "all": "共通",
-                "the_blue_pot": "青い壺",
-                "twin_stars_shadow": "連星の影",
-                "city_of_mist": "霧の都市",
-                "swamp_of_judgment": "裁きの沼",
-                "the_foretold_ruin": "到来した混沌",
-                "laboratory_0": "第0研究所",
-                "burning_life": "燃ゆる生命",
-                "theater_of_illusions": "虚像の劇場",
-                "the_kaleidoscope_hatchery": "万華鏡の孵化場"
-            }
-        },
-        "refinementEffects": {
-            "refinement_01": "カード保存、消滅時、ランダムな敵意固定ダメージ100%(各ターン2回)",
-            "refinement_02": "ターン開始時とターン終了後にシールドがある場合、敵全体に固定ダメージ100%",
-            "refinement_03": "ターン開始時、30%の確率で、消滅カードをドロー1",
-            "refinement_04": "戦闘開始時、自分の消滅カードをドロー1",
-            "refinement_05": "消滅カードを能力でドロー時、即座に発動(各ターン1回)",
-            "refinement_06": "攻撃カードのダメージ量20%増加",
-            "refinement_07": "シールド獲得量と治癒量15%増加",
-            "refinement_08": "ダメージを完全に防ぐと、次のターン開始時、1ターンの間、味方のダメージ量10%増加(各ターン1回)",
-            "refinement_09": "戦闘開始時、所持中のカードが33枚以上の場合、攻撃カードのダメージ量30%増加",
-            "refinement_10": "戦闘開始時、所持中のカードが18枚以下の場合、攻撃カードのダメージ量30%増加",
-            "refinement_11": "消滅カードのダメージ量25%増加",
-            "refinement_12": "コスト2以上の攻撃カードのダメージ量25%増加",
-            "refinement_13": "戦闘開始時、保存1",
-            "refinement_14": "脆弱状態の敵に攻撃カード発動時、会心率+15%",
-            "refinement_15": "1ターンの間、ダメージを与えなかった場合、次のターン開始時、1ターンの間、ダメージ量50%増加",
-            "refinement_16": "ターン開始時、手札の味方消滅カード数に応じて、ランダムな敵に固定ダメージ60%",
-            "refinement_17": "反撃時、敵全体に防御依存ダメージ200%(各ターン1回)",
-            "refinement_18": "シールド獲得時、固定シールド100%(各ターン1回)",
-            "refinement_19": "コスト3以上のカード発動時、アクションポイント1(各ターン1回)",
-            "refinement_20": "アクションポイント1以上を所持した状態でターン終了時、敵全体に脆弱1",
-            "refinement_21": "コスト1以下の攻撃カードのダメージ量+30%",
-            "refinement_22": "追加攻撃のダメージ量25%増加",
-            "refinement_23": "能力で自分の攻撃カードをドロー時、そのカードは1ターンの間、ダメージ量50%増加",
-            "refinement_24": "防御依存ダメージ量+30%"
-        },
-        "engravingEffects": {
-            "equipment_engraving_lux_01": "味方が能力でカードを5枚以上生成した場合、自分の追加攻撃ダメージ量+30％（各ターン1回）",
-            "equipment_engraving_lux_02": "味方が大破時、対象の行動カウント2増加（各ターン1回）",
-            "equipment_engraving_lux_03": "ターン開始時、行動カウントが最も低い対象に弱体化２",
-            "equipment_engraving_lux_04": "今回のターンで行動カウントが３以上減少した場合、行動カウントが最も低い対象に弱体化１",
-            "equipment_engraving_lux_05": "ターン終了時、保存したカードがある場合、固定シールド50％",
-            "equipment_engraving_umbra_01": "闇の刻印+1",
-            "equipment_engraving_umbra_02": "自身の消滅カードのダメージ量25％増加",
-            "equipment_engraving_umbra_03": "自身の安息カードのダメージ量25％増加",
-            "equipment_engraving_umbra_04": "ターン開始時、手札に安息カードがある場合、ランダムの敵に固定ダメージ60％",
-            "equipment_engraving_umbra_05": "攻撃を受けると、手札のランダムな安息カードを1枚破棄（各ターン1回）",
-            "equipment_engraving_umbra_06": "追加攻撃時、１ターンの間、士気１（各ターン1回）",
-            "equipment_engraving_umbra_07": "味方が能力で安息カードを破棄した場合、ドロー1（各ターン1回）",
-            "equipment_engraving_umbra_08": "自分のカードが破棄された場合、次に使用する攻撃カードのダメージ量+100％（各ターン1回）",
-            "equipment_engraving_lux_06": "ターン開始時、行動カウントが最も低い対象に固定ダメージ100%",
-            "equipment_engraving_lux_07": "攻撃を受けると、攻撃者に脆弱、弱体化のうち、ランダムで1個付与(各ターン1回)",
-            "equipment_engraving_lux_08": "自分のカード発動時、30%の確率で敵全体の行動カウント1増加(各ターン1回)",
-            "equipment_engraving_lux_09": "自分の迅速カードのダメージ量25%増加",
-            "equipment_engraving_umbra_09": "光の刻印+1",
-            "equipment_engraving_umbra_10": "自分の主導カードが破棄された場合、発動（各ターン1回）",
-            "equipment_engraving_umbra_11": "味方が能力でカードを2枚破棄時、安息カードを1枚ドロー（各戦闘1回）",
-            "equipment_engraving_umbra_12": "墓地のカード数が7枚以上の場合、自分の攻撃カードのダメージ量30%増加",
-            "equipment_engraving_umbra_13": "墓地のカードが15枚以上の場合、自身の攻撃カードの会心ダメージ+15%",
-            "equipment_engraving_umbra_14": "墓地のカードが40枚以上の場合、士気2（各戦闘1回）"
-        },
-        "duplicate": {
-            "warning": "{type}で神話級装備が選択されているため、別の神話級装備は選択できません"
-        },
-        "rarity": {
-            "name": "レアリティ",
-            "mythical": "神話",
-            "legendary": "伝説",
-            "rare": "希少"
-        },
-        "weapon": {
-            "title": "武器",
-            "obsidian_sword": {
-                "name": "黒曜石の剣",
-                "description": "ダメージ量12%増加"
-            },
-            "gastronomicon": {
-                "name": "ガストロノミコン",
-                "description": "コスト2以上の攻撃カードを使用時、対象に苦痛3"
-            },
-            "m85_military_grenade": {
-                "name": "M85軍用手榴弾",
-                "description": "強化カード使用時、敵全体固定ダメージ150%"
-            },
-            "big_game_hunter": {
-                "name": "大物狩人",
-                "description": "各戦闘で、最初に使用する攻撃カードの強靭度ダメージ100%増加"
-            },
-            "torch_of_wrath": {
-                "name": "お怒りの松明",
-                "description": "戦闘開始時、ランダムな敵に標識2"
-            },
-            "bone_cutter": {
-                "name": "ボーンカッター",
-                "description": "弱体化状態の対象への攻撃ヒット時、ダメージ量+30%"
-            },
-            "flashbang": {
-                "name": "閃光弾",
-                "description": "戦闘開始時、ランダムな敵に弱体化3"
-            },
-            "command_108": {
-                "name": "命令：108号",
-                "description": "攻撃カードのダメージ量40%増加（各戦闘1回）"
-            },
-            "the_fading_flower_of_life": {
-                "name": "枯れた生命の花",
-                "description": "最大HPの場合、ダメージ量+40%"
-            },
-            "crimson_sword": {
-                "name": "赤い剣",
-                "description": "ターゲッティング攻撃カードでダメージを与えた対象に、苦痛3（各ターン1回）"
-            },
-            "second_method": {
-                "name": "第2の手段",
-                "description": "追加攻撃ダメージ量+35%"
-            },
-            "sneering_dagger": {
-                "name": "嘲笑う短剣",
-                "description": "敵を倒した時、敵全体に脆弱2"
-            },
-            "rfs_17": {
-                "name": "RFS-17",
-                "description": "コストが0の攻撃カードの会心率+10%"
-            },
-            "mountain_of_corpses": {
-                "name": "屍山血海",
-                "description": "攻撃カードのダメージ量25%増加（各ターン1回）"
-            },
-            "intellect_of_discord": {
-                "name": "混沌の指摘",
-                "description": "攻撃力+18%。大破時、味方のストレス1減少"
-            },
-            "tentacles_of_chaos": {
-                "name": "混沌した時代の触手",
-                "description": "味方の攻撃力+8%。撃破時、ストレスが高い戦闘員のストレス2減少"
-            },
-            "steelers_dagger": {
-                "name": "ステラーの短刀",
-                "description": "敵を倒すと5～10クレジット獲得（各戦闘1回）"
-            },
-            "dull_bone_blade": {
-                "name": "鋭い骨刀",
-                "description": "攻撃力10%、会心率-5%"
-            },
-            "natures_hostility": {
-                "name": "自然の敵意",
-                "description": "敵を倒した時、敵全体に固定ダメージ200%"
-            },
-            "mutated_claws": {
-                "name": "変異した爪",
-                "description": "状態異常、呪いカードのドロー時、1ターンの間ダメージ量+15%"
-            },
-            "executioners_edge": {
-                "name": "処刑者の刃",
-                "description": "最大HPの50%以下の対象へのダメージ量35%増加"
-            },
-            "ritual_dagger": {
-                "name": "祭礼用の短剣",
-                "description": "敵を倒すと攻撃カードのダメージ量+25%（最大2回）"
-            },
-            "esophagus_of_madness": {
-                "name": "凶器の咽頭",
-                "description": "苦痛状態の対象へのダメージ量20%増加"
-            },
-            "dark_grips_claws": {
-                "name": "闇の掌中の爪",
-                "description": "全体攻撃のダメージ量25%増加"
-            },
-            "mutated_order": {
-                "name": "変異の権能",
-                "description": "行動前の対象へのダメージ量25%増加"
-            },
-            "bug_killer": {
-                "name": "バグキラー",
-                "description": "攻撃カード使用時、対象に苦痛1（各ターン1回）。インベーダーとの戦闘の場合、苦痛2追加"
-            },
-            "violet_butterflys_whip": {
-                "name": "紫蝶のムチ",
-                "description": "コスト1以下の攻撃カードのダメージ量20%増加"
-            },
-            "abyssal_bug_tooth": {
-                "name": "奈落の虫の歯",
-                "description": "会心攻撃時、対象に50%の確率で苦痛1"
-            },
-            "the_destruction_of_erysichthon": {
-                "name": "エリュシクトーンの破滅",
-                "description": "攻撃カード使用時、5%の確率でヒット数1回追加"
-            },
-            "formicas_perfect_spear": {
-                "name": "完全なフォルミカの槍",
-                "description": "敵数に応じてダメージ量7%増加。全体攻撃のダメージ量10%増加"
-            },
-            "lepidolas_whip": {
-                "name": "レピドラのムチ",
-                "description": "コスト1以下の攻撃カードのダメージ量25%増加"
-            },
-            "twin_swords_of_greater_and_lesser_evil": {
-                "name": "大顎と小顎の両手剣",
-                "description": "大破状態の対象へのダメージ量30%増加"
-            },
-            "shell_bug_horn": {
-                "name": "甲殻虫の角",
-                "description": "会心ダメージ+12%"
-            },
-            "dream_of_the_devoured": {
-                "name": "喰われた者の夢",
-                "description": "カード消滅時、次に使用するカードのダメージ量25%増加（最大1回重複）"
-            },
-            "unexploded_plasma_bomb": {
-                "name": "不発したプラズマボンバー",
-                "description": "カード消滅時、ランダムな敵に固定ダメージ40%"
-            },
-            "blood_giant_claw": {
-                "name": "ブラッドジャイアントクロー",
-                "description": "敵数に応じてダメージ量6%増加"
-            },
-            "void_of_the_devourer": {
-                "name": "吞み込んだ者の空虚",
-                "description": "カード消滅時、次に使用するカードのダメージ量35%増加（最大1回重複）"
-            },
-            "foggy_crystal_ball": {
-                "name": "霧がかかった水晶玉",
-                "description": "コスト0の攻撃カードのダメージ量40%増加"
-            },
-            "formicas_broken_spear": {
-                "name": "破損したフォルミカの槍",
-                "description": "敵数に応じてダメージ量6%増加"
-            },
-            "dagger_that_tricked_the_shadow": {
-                "name": "影を騙した短剣",
-                "description": "会心ダメージ+12% "
-            },
-            "sword_reflected_in_the_lake": {
-                "name": "湖に捧げた剣",
-                "description": "手札のカードが6枚以上の場合、ダメージ量25%増加"
-            },
-            "sun_setting_bow": {
-                "name": "太陽を撃ち落とした弓",
-                "description": "コストが2以上の攻撃カードはダメージ量30%増加（各ターン1回）"
-            },
-            "branch_of_the_sacred_tree": {
-                "name": "神木の枝",
-                "description": "治癒または回復時、治癒量の35%分、敵全体に固定ダメージ"
-            },
-            "the_flower_of_life": {
-                "name": "生命の花",
-                "description": "最大HPの場合、ダメージ量+50%"
-            },
-            "branch_of_the_evil_tree": {
-                "name": "悪木の枝",
-                "description": "治癒または回復時、回復量の50%分、ランダムな敵に固定ダメージ"
-            },
-            "cavalry_of_lightning": {
-                "name": "電撃のランス",
-                "description": "シールド所持中の対象にダメージを与えると、次に使用する攻撃カードのダメージ量+100%"
-            },
-            "branch_of_eternity": {
-                "name": "永劫の枝",
-                "description": "治癒または回復時、回復量の50%分、敵全体に固定ダメージ"
-            },
-            "rune_lance": {
-                "name": "ルーンランス",
-                "description": "アクションポイントを5以上使用時、ダメージ量、シールド獲得量、治癒量+25%(各戦闘1回)"
-            },
-            "flame_of_purification": {
-                "name": "浄化の炎",
-                "description": "カードが消滅するとき、ランダムな敵に報復1（各ターン2回）"
-            },
-            "trumpet_of_revelation": {
-                "name": "啓示のラッパ",
-                "description": "カードでドロー時、1ターンの間、ダメージ量+20%（各ターン2回）"
-            },
-            "singing_sword": {
-                "name": "歌う剣",
-                "description": "攻撃力+15%。シールド保有中の対象にダメージを与えた場合、対象に報復1"
-            },
-            "radiant_orb": {
-                "name": "光り輝く宝珠",
-                "description": "シールド所持中の対象にダメージ量25%"
-            },
-            "overcurrent_shock_unit": {
-                "name": "過電流ショッカー",
-                "description": "能力でドロー時、ランダムな敵に固定ダメージ50%"
-            },
-            "mutant_predator_spike": {
-                "name": "変種捕食体の突起",
-                "description": "手札のカードが4枚以上の場合、ダメージ量30%増加"
-            },
-            "w_52_dopamine_injector": {
-                "name": "W-52「ドーパミン注入器」",
-                "description": "能力でドロー時、1ターンの間、ダメージ量20%増加(各ターン2回)"
-            },
-            "mutagenic_wave_amplifier": {
-                "name": "変異波動増幅器",
-                "description": "状態異常、呪いカードのドロー時、1ターンの間、ダメージ量+12%"
-            },
-            "replica_core": {
-                "name": "レプリカコア",
-                "description": "能力で自分のカードをドロー時、そのカードは1ターンの間、ダメージ量+50%"
-            },
-            "chimeranite": {
-                "name": "キメルナイト",
-                "description": "能力でドロー時、1ターンの間、自分の攻撃カードのダメージ量35%増加（各ターン1回）"
-            },
-            "millennium_arbor": {
-                "name": "千年木",
-                "description": "コスト3以上のカード発動時、ランダムな敵に脆弱1"
-            },
-            "sword_of_judgment": {
-                "name": "審判の剣",
-                "description": "カード消滅時、1ターンの間、ダメージ量10%増加(各ターン1回)"
-            },
-            "veiled_thorn": {
-                "name": "ぼやけたトゲ",
-                "description": "1ターンの間、味方がダメージを与えなかった場合、次のターン開始時、1ターンの間、ダメージ量50%増加"
-            },
-            "pale_eternal_flame": {
-                "name": "青白い永劫の炎",
-                "description": "カード消滅時、1ターンの間、味方のダメージ10%増加(各ターン1回)"
-            },
-            "brilliant_eternal_flame": {
-                "name": "輝かしい永劫の炎",
-                "description": "コスト2以上の消滅カードのダメージ量40%増加"
-            },
-            "harp_of_conflict": {
-                "name": "闘争のハープ",
-                "description": "1ターンの間、味方カードでダメージ、シールド、治癒をすべて発動時、1ターンの間、味方ダメージ量15%増加"
-            },
-            "arm_of_lost_valor": {
-                "name": "消えた勇気の腕",
-                "description": "1ターンの間、攻撃カードを発動せずにターン終了時、ロケットパンチ1枚生成"
-            },
-            "harpoon_case_of_broken_resolve": {
-                "name": "折れた意志の銛筒",
-                "description": "奇数ターンごとに貫き1枚生成"
-            },
-            "corrupted_gauntlet": {
-                "name": "浸食されたガントレット",
-                "description": "シールド獲得時、シールド量+15%"
-            },
-            "broken_golden_quill_pen": {
-                "name": "折れた黄金の羽ペン",
-                "description": "コスト1以下の攻撃カード発動時、敵全体に固定ダメージ80%"
-            },
-            "orders_baton": {
-                "name": "教団の指揮棒",
-                "description": "味方が禁忌カード使用時、敵全体に固定ダメージ60%（各ターン2回）"
-            },
-            "key_of_sleep": {
-                "name": "眠りの鍵",
-                "description": "敵が行動不能状態時、攻撃カードのダメージ量30%増加"
-            },
-            "yearning_left_hand": {
-                "name": "渇望する左手",
-                "description": "HP回復時、シールド量30%として追加獲得"
-            },
-            "the_exsanguine": {
-                "name": "出血の双手剣",
-                "description": "攻撃カード発動時、対象に灼熱2(各ターン1回)"
-            },
-            "raiders_harpoon_gun": {
-                "name": "略奪者の銛砲",
-                "description": "会心攻撃時、敵全体に固定ダメージ150%(各ターン3回)"
-            },
-            "gauntlets_of_protection": {
-                "name": "保護の拳甲",
-                "description": "基本コストが3以上の攻撃カードを直接使用時、敵全体に固定ダメージ250%(各ターン2回)"
-            },
-            "eternal_wedge": {
-                "name": "永遠のくさび",
-                "description": "ターン開始時、持続ダメージ効果を所持中のランダムな敵に固定ダメージ100%"
-            },
-            "twisted_drill_bit": {
-                "name": "歪んだドリル刃",
-                "description": "味方の欲望カード発動時、敵全体に固定ダメージ100%(各ターン3回)"
-            }
-        },
-        "armor": {
-            "title": "防具",
-            "scouts_combat_boots": {
-                "name": "斥候の軍靴",
-                "description": "敵を倒すと固定シールド60%"
-            },
-            "lush_seaweed_armor": {
-                "name": "生い茂った海草の鎧",
-                "description": "シールド獲得時、固定シールド30%"
-            },
-            "assault_gauntlets": {
-                "name": "強襲ガントレット",
-                "description": "戦闘開始時、反撃3"
-            },
-            "survivors_hood": {
-                "name": "生存者のフード",
-                "description": "戦闘開始時、固定シールド140%"
-            },
-            "titan_combat_suit": {
-                "name": "タイタン戦闘アーマー",
-                "description": "ダメージを受けると、HP2%回復（各ターン1回）"
-            },
-            "gladiators_helmet": {
-                "name": "剣闘士のヘルメット",
-                "description": "戦闘開始時、ダメージ減少2"
-            },
-            "standard_gas_mask": {
-                "name": "標準型ガスマスク",
-                "description": "戦闘開始時、免疫1"
-            },
-            "assault_boots": {
-                "name": "強襲ブーツ",
-                "description": "戦闘開始2ターン後、次のターン開始時に固定シールド200%"
-            },
-            "reinforced_combat_suit": {
-                "name": "補強型戦闘アーマー",
-                "description": "ターン終了時、シールドがない場合、固定シールド60%"
-            },
-            "cloud_walking_shoes": {
-                "name": "雲の上を歩く靴",
-                "description": "味方が大破時、固定シールド40%"
-            },
-            "psionic_combat_suit": {
-                "name": "サイオニック戦闘アーマー",
-                "description": "カード消滅時、固定シールド30%(各ターン5回)"
-            },
-            "shell_of_aberration": {
-                "name": "奇妙な殻",
-                "description": "防御力+12%。ストレス増加時、50%の確率で1減少して受ける"
-            },
-            "disaster_shroud": {
-                "name": "災厄の聖骸布",
-                "description": "防御力+12%。全戦闘員崩壊の回復に必要なカード数1枚減少"
-            },
-            "resolute_gauntlets": {
-                "name": "決死のガントレット",
-                "description": "カオス教団との戦闘開始時、ダメージ量+20%、ダメージ減少1"
-            },
-            "wolves_banes_spine": {
-                "name": "ウルブス・ヴェインの背骨",
-                "description": "会心攻撃時、固定シールド10%"
-            },
-            "shield_of_the_watcher": {
-                "name": "注視する盾",
-                "description": "ダメージを受けると攻撃者に標識1"
-            },
-            "the_chosen_vessel": {
-                "name": "器となる者",
-                "description": "戦闘開始3ターン後、次のターン開始時に固定シールド250%"
-            },
-            "cursed_doll": {
-                "name": "呪われた人形",
-                "description": "ターン開始時、手札の状態異常、呪いカードの数に応じて治癒60%"
-            },
-            "torture_toolbox": {
-                "name": "拷問道具箱",
-                "description": "ターン開始時、敵全体の行動カウント3増加"
-            },
-            "chains_of_obsession": {
-                "name": "強迫の枷",
-                "description": "攻撃カード使用時、HP減少1%、固定シールド60%"
-            },
-            "wild_fur_cloak": {
-                "name": "野性の毛皮マント",
-                "description": "ターン開始時、反撃1"
-            },
-            "kentris_chitin_armor": {
-                "name": "ケントリスキチン甲冑",
-                "description": "味方のシールド獲得量15%増加"
-            },
-            "crustacean_fluider": {
-                "name": "フリュードの甲殻",
-                "description": "ダメージを受けると1ターン後、次のターン開始時に固定シールド60%"
-            },
-            "growing_carapace": {
-                "name": "成長する甲殻",
-                "description": "ターン開始時、固定シールド40%"
-            },
-            "dance_of_the_night_butterflies": {
-                "name": "夜蝶の舞い",
-                "description": "大破時、固定シールド60%"
-            },
-            "wings_of_the_swarm": {
-                "name": "群体の羽",
-                "description": "戦闘開始時、免疫2"
-            },
-            "contaminated_helmet": {
-                "name": "汚染されたヘルメット",
-                "description": "最大HP+6%。防御力+12%"
-            },
-            "mss_scope": {
-                "name": "M.S.Sスコープ",
-                "description": "1ターン中、デバフ効果を付与した場合、ターン終了時固定シールド80%"
-            },
-            "regenerative_ribcage": {
-                "name": "再生型の肋骨",
-                "description": "最大HP+12%"
-            },
-            "gluttonous_tailcoat": {
-                "name": "意地汚い燕尾服",
-                "description": "ダメージを受けると、1ターンの間次のターン開始時に固定シールド80%"
-            },
-            "fragment_of_the_empty_void": {
-                "name": "虚ろな空虚の破片",
-                "description": "戦闘開始時、3枚まで破棄、その枚数に応じてドロー"
-            },
-            "mask_of_evil_spirits": {
-                "name": "悪霊の仮面",
-                "description": "ダメージを受けると、1ターンの間、次のターン開始時に固定シールド60%"
-            },
-            "immortal_scale": {
-                "name": "不滅の鱗",
-                "description": "能力で反撃獲得時、反撃1追加"
-            },
-            "fairy_kings_crown": {
-                "name": "妖精王の冠",
-                "description": "会心率+6%"
-            },
-            "wings_of_light": {
-                "name": "光の翼",
-                "description": "エゴポイントが3以下の時、会心攻撃を与えるとエゴポイント0.2獲得"
-            },
-            "ring_of_the_seraphim": {
-                "name": "天使の輪",
-                "description": "強化カード使用時、1ターンの間、ダメージ量+30%"
-            },
-            "star_lit_cloak": {
-                "name": "星明かりの宿るマント",
-                "description": "受けるダメージ量10%減少（各ターン1回）"
-            },
-            "mask_of_flames": {
-                "name": "炎の仮面",
-                "description": "脆弱対象へのダメージ量35%増加"
-            },
-            "twisted_discipline": {
-                "name": "歪んだ規律",
-                "description": "アクションポイントを10以上使用時、免疫2(各戦闘1回)"
-            },
-            "primordial_discipline": {
-                "name": "太古の規律",
-                "description": "戦闘開始時、免疫2"
-            },
-            "consecrated_halo": {
-                "name": "聖別された光輪",
-                "description": "シールド獲得量25%増加"
-            },
-            "incomplete_carapace": {
-                "name": "不完全甲殻",
-                "description": "ターン終了時、手札のカードが3枚以上なら固定シールド140%"
-            },
-            "brainwave_blocking_helmet": {
-                "name": "脳波遮断ヘルメット",
-                "description": "能力でドロー時、固定シールド40%(各ターン5回)"
-            },
-            "wings_of_freedom": {
-                "name": "自由の翼",
-                "description": "攻撃を受けた時、ダメージ量10%増加（最大3回重複）"
-            },
-            "rocket_adorned_cape": {
-                "name": "ロケットの飾り付きマント",
-                "description": "戦闘開始時、ダメージ減少1、ドロー1"
-            },
-            "vine_camouflage": {
-                "name": "蔓の迷彩服",
-                "description": "ターン開始時、HPが30%以下の場合、回避1(各戦闘2回)"
-            },
-            "moss_armor": {
-                "name": "苔の鎧",
-                "description": "1ターンの間、味方が攻撃カードを発動せずにターン終了時、固定シールド100%"
-            },
-            "shining_lyre": {
-                "name": "輝くリラ",
-                "description": "ターン開始時、味方消滅カードが手札にある場合、固定シールド60%"
-            },
-            "phytotype_synthetic": {
-                "name": "植物型義体",
-                "description": "シールド獲得時、1ターンの間、次に発動する攻撃カード1枚のダメージ量20%増加(各ターン2回)"
-            },
-            "robe_of_oblivion": {
-                "name": "忘却のローブ",
-                "description": "消滅カードでシールド獲得時、1ターンの間、ダメージ量20%増加(各ターン1回)"
-            },
-            "vine_lords_mask": {
-                "name": "ヴァインロードの仮面",
-                "description": "味方の能力で消滅カードドロー時、固定シールド80%(各ターン2回)"
-            },
-            "victors_laurel": {
-                "name": "勝者の月桂冠",
-                "description": "反撃ダメージ量40%増加"
-            },
-            "shield_of_ashen_sacrifice": {
-                "name": "色あせた犠牲の盾",
-                "description": "ダメージを完全に防ぐと、次のターン開始時、盾爆発1枚生成"
-            },
-            "bangle_of_valor": {
-                "name": "勇猛のブレスレット",
-                "description": "味方の闘技場カードダメージ量20%増加\n戦闘開始時、忘れ去られた剣1枚生成"
-            },
-            "cloak_of_the_heart": {
-                "name": "心の外套",
-                "description": "防御力+20%。ターン開始時、精神ダメージ1減少"
-            },
-            "mask_of_emotions": {
-                "name": "感情の仮面",
-                "description": "状態異常、呪いの効果1つが無効化される（各ターン1回）"
-            },
-            "nightmare_hairpin": {
-                "name": "悪夢のヘアピン",
-                "description": "敵全体に夢見状態が付与されている時、防御力+15%"
-            },
-            "incomprehensible_holy_object": {
-                "name": "理解できない神物",
-                "description": "能力でカードドロー時、そのカードコスト1減少（各ターン2回）"
-            },
-            "delicate_collarbone": {
-                "name": "華奢な鎖骨",
-                "description": "シールド獲得時、最大HP+5%（最大3回）"
-            },
-            "crushed_angel_feather": {
-                "name": "砕かれた天使の羽",
-                "description": "被ダメージ時、1ターンの間、次のターン開始時に固定シールド120%"
-            },
-            "essence_fueled_gauntlets": {
-                "name": "エッセンス動力ガントレット",
-                "description": "能力でシールド獲得時、1ターンの間、発動時まで攻撃カードの会心率+30%(各ターン1回)"
-            },
-            "pagna_mushroom": {
-                "name": "パグナきのこ",
-                "description": "攻撃を受けると、攻撃者に脆弱、弱体化、苦痛、灼熱のうち、ランダムに1個付与(各ターン2回)"
-            },
-            "chitin_shield": {
-                "name": "キチン質の盾",
-                "description": "反撃3、反撃時、対象に衝撃波1(各ターン1回)"
-            },
-            "contaminated_cocoon_cape": {
-                "name": "汚染された繭のマント",
-                "description": "攻撃を受けると、攻撃者に苦痛、脆弱、灼熱のうち、ランダムに1個付与(各ターン3回)"
-            },
-            "contaminated_drone_lens": {
-                "name": "汚染されたドローンレンズ",
-                "description": "ターン開始時、味方の欲望カードが手札にあるなら、ランダムな味方のストレス2減少"
-            },
-            "remnants_of_succession": {
-                "name": "継承の残痕",
-                "description": "攻撃カード2回発動時、敵全体に灼熱4(各ターン1回)"
-            }
-        },
-        "pendant": {
-            "title": "ペンダント",
-            "amorphous_cube": {
-                "name": "非定型キューブ",
-                "description": "ダメージ量+25%"
-            },
-            "multifaceted_parallel_universe_nexus": {
-                "name": "多面平衡宇宙連結体",
-                "description": "ターン開始時、手札にあるランダムな主導カード1枚発動"
-            },
-            "time_regulator": {
-                "name": "時間調整器",
-                "description": "装備している戦闘員がひらめき発動"
-            },
-            "absolute_zero_tetrahedron": {
-                "name": "絶対零度の四面体",
-                "description": "戦闘開始時、シールド獲得量+20%"
-            },
-            "magic_infused_sapphire": {
-                "name": "魔力が宿ったサファイア",
-                "description": "戦闘開始時、開戦カードが手札にある場合、敵全体に強靭度ダメージ1"
-            },
-            "heart_of_the_jewel": {
-                "name": "宝石の心臓",
-                "description": "xをx+1として適用"
-            },
-            "heart_of_gold": {
-                "name": "黄金の心臓",
-                "description": "戦闘終了時にHPが50%以下なら、8%回復"
-            },
-            "quantum_collector": {
-                "name": "量子コレクター",
-                "description": "味方が強化カードを使用時、1ターンの間、ダメージ量、シールド獲得量、治癒量が20%増加"
-            },
-            "moon_of_destruction": {
-                "name": "破壊の月",
-                "description": "戦闘開始時、敵全体に固定ダメージ200%"
-            },
-            "dimensional_cube": {
-                "name": "次元のキューブ",
-                "description": "カードを捨てるとき、1ターンの間、ダメージ量＋15%(最大3重複)"
-            },
-            "water_drops_of_the_goddess": {
-                "name": "女神の雫",
-                "description": "戦闘開始時、セーブ１"
-            },
-            "grey_orb": {
-                "name": "グレイの球体",
-                "description": "戦闘開始時、ダメージ減少3"
-            },
-            "sphere_of_randomness": {
-                "name": "乱数の玉",
-                "description": "最大HP+10%。戦闘開始時、アクションポイント1獲得、ドロー1"
-            },
-            "dice_of_derangement": {
-                "name": "錯乱のダイス",
-                "description": "最大HP+10%。戦闘終了時最大HPが50%未満なら最大HPの8%回復。戦闘終了時最大HPが50%以上ならストレスが高い戦闘員のストレス5減少"
-            },
-            "bloodstone_of_the_void": {
-                "name": "空虚な血石",
-                "description": "攻撃カード使用時に与ダメージの6%分HP回復（各ターン1回）"
-            },
-            "proof_of_initiation": {
-                "name": "入信の証",
-                "description": "カオス教団との戦闘時、防御力+10%"
-            },
-            "natures_gift": {
-                "name": "自然の賜りもの",
-                "description": "ターン終了時、治癒40%"
-            },
-            "eternal_stone": {
-                "name": "風化しない石",
-                "description": "ターン開始時、敵の数に応じて固定シールド25%"
-            },
-            "madmans_masterpiece": {
-                "name": "狂った芸術家の芸術作品",
-                "description": "精鋭戦闘開始時、ダメージ量+50%"
-            },
-            "chaos_bible": {
-                "name": "カオス聖書",
-                "description": " 戦闘開始4ターン後、次のターン開始時に敵全体に固定ダメージ400%"
-            },
-            "crimson_bloodstone": {
-                "name": "赤い血石",
-                "description": " 攻撃カード使用時に与ダメージの9%分HP回復（ターンごとに1回）"
-            },
-            "orders_emblem": {
-                "name": "教団の証",
-                "description": " カオス教団との戦闘時、防御力+15%"
-            },
-            "bloody_pendant": {
-                "name": "血塗られたペンダント",
-                "description": "コピー済みカード使用時、1ターンの間、敵全体の行動カウントが減少しない（各戦闘1回）"
-            },
-            "gloomy_primes_eye": {
-                "name": "グルーミープライムの目",
-                "description": "シールド 獲得量+40%"
-            },
-            "forbidden_bible": {
-                "name": "禁止された聖書",
-                "description": "戦闘開始4ターン後、次のターン開始時に敵全体に固定ダメージ550%"
-            },
-            "dice_of_chaos": {
-                "name": "混沌のダイス",
-                "description": "ターン終了時、「ランダムな敵に固定ダメージ40%×2～6」か「味方に固定ダメージ200%」のうちランダムで1個の効果発動"
-            },
-            "first_aid_kit": {
-                "name": "救急キット",
-                "description": "戦闘終了時、回復5%"
-            },
-            "lepidolas_wing": {
-                "name": "レピドラの翼",
-                "description": "戦闘開始時、回避1"
-            },
-            "kiraks_core": {
-                "name": "キーロックの核",
-                "description": "ターン開始時、最大HPの40%未満なら回復5%"
-            },
-            "natural_predator": {
-                "name": "先天的捕食者",
-                "description": "大破時、次に使用する攻撃カード1枚のダメージ量+100%"
-            },
-            "voracious_swarm": {
-                "name": "捕食する群体",
-                "description": "ダメージを受けると攻撃者に苦痛4"
-            },
-            "pulsating_egg": {
-                "name": "鼓動する卵",
-                "description": "攻撃力+15%、最大HP+10%"
-            },
-            "soul_orb": {
-                "name": "魂の玉",
-                "description": "カード消滅時、敵全体に強靭度ダメージ1（各戦闘1回）"
-            },
-            "the_famished_ones_belly": {
-                "name": "飢えた者の腹",
-                "description": "カード消滅時、ダメージ量+25%、回復5%（各戦闘1回）"
-            },
-            "mss_data_pad": {
-                "name": "M.S.Sデータパッド",
-                "description": "ニヒルムとの戦闘開始時、敵全体に脆弱2"
-            },
-            "flower_of_dead_souls": {
-                "name": "亡魂の花",
-                "description": "ターンごとに、2枚目の攻撃カードからダメージ量20%増加"
-            },
-            "mss_data_pad_se": {
-                "name": "M.S.SデータパッドSE",
-                "description": "ニヒルムとの戦闘開始時、敵全体に脆弱3"
-            },
-            "eye_of_the_eyeless": {
-                "name": "目なき者の瞳",
-                "description": "基本攻撃カードのダメージ量40%増加"
-            },
-            "palasias_orb": {
-                "name": "恥ずかしがり屋の庭師の玉",
-                "description": "カードで脆弱付与時、対象に弱体化1"
-            },
-            "torch_that_should_not_be_extinguished": {
-                "name": "消えてはならない灯",
-                "description": "シールド所持中にターン開始時、固定シールド80%"
-            },
-            "revelations_of_futility": {
-                "name": "虚無の啓示録",
-                "description": "攻撃カード使用時、固定シールド20%（各ターン10回）"
-            },
-            "eye_of_gluttony": {
-                "name": "貪食の目",
-                "description": "ダメージ量+40%、ターン終了時30%の確率で手札のカードを1枚消滅"
-            },
-            "clover_of_the_forest": {
-                "name": "森のクローバー",
-                "description": "カードで回復時1ターンの間、味方の攻撃力+10%（最大1回重複）"
-            },
-            "poachers_pathfinder": {
-                "name": "密猟者のパスファインダー",
-                "description": "セクレドとの戦闘時、ダメージ量+25%、敵全体に脆弱2"
-            },
-            "bone_ring_of_wildfire": {
-                "name": "野火を抱える骨の指輪",
-                "description": "強化カード使用時、1ターンの間、ダメージ量+30%"
-            },
-            "call_of_the_ancient_spirit": {
-                "name": "古の魂の呼びかけ",
-                "description": "会心攻撃時、治癒10%"
-            },
-            "verdant_day": {
-                "name": "深緑の昼",
-                "description": "奇数ターンに攻撃力+8%、防御力+12%"
-            },
-            "verdant_night": {
-                "name": "深緑の夜",
-                "description": "偶数ターンに攻撃力+12%、防御力+8%"
-            },
-            "lead_colored_holy_water": {
-                "name": "鉛色の聖水",
-                "description": "大破時、対象に損傷2"
-            },
-            "vladeus_reactor": {
-                "name": "ヴィアデウス原子炉",
-                "description": "強化カード使用時、ダメージ減少1"
-            },
-            "the_golden_rule": {
-                "name": "黄金律",
-                "description": "ダメージ量+20%、シールド 獲得量+20%"
-            },
-            "dormant_seeds": {
-                "name": "冬眠する種",
-                "description": "シールド獲得時、固定シールド100%（各ターン1回）"
-            },
-            "verdant_shackles": {
-                "name": "深緑の羈絆",
-                "description": "攻撃力+12%、防御力+12%"
-            },
-            "rune_chord": {
-                "name": "ルーンコード",
-                "description": "ターン終了時、保存したカードがある場合、固定シールド60%"
-            },
-            "guardian_core": {
-                "name": "守護コア",
-                "description": "行動予告が攻撃する敵にあれば、固定シールド60%（各ターン1回）"
-            },
-            "corroded_core": {
-                "name": "浸食コア",
-                "description": "攻撃をシールドで完璧に防いだ場合、敵全体に損傷1（各ターン1回）"
-            },
-            "corrupted_core": {
-                "name": "堕落コア",
-                "description": "防御力+15%、シールド20%保存"
-            },
-            "eye_of_the_punisher": {
-                "name": "懲罰者の目",
-                "description": "敵が1人の場合、ダメージ量30%増加"
-            },
-            "nerve_hacking_module": {
-                "name": "神経ハッキングモジュール",
-                "description": "味方が禁忌カード使用時、ダメージ量+20%、シールド獲得量+20%(各戦闘2回) "
-            },
-            "hyperimmunity_hormone": {
-                "name": "過剰免疫ホルモン",
-                "description": "能力でドロー時、1ターンの間、シールド獲得量+25%（各ターン2回）"
-            },
-            "administrator_id_badge": {
-                "name": "管理者身分証",
-                "description": "戦闘開始時、回避1"
-            },
-            "emblem_of_an_exceptional_entity": {
-                "name": "優秀な個体の証",
-                "description": "ダメージ量+30%\n受けるストレス0に変更（各戦闘1回）"
-            },
-            "superconductive_protein": {
-                "name": "超伝導タンパク質",
-                "description": "戦闘開始時、手札のカード1枚が1ターンの間、コスト0に変更"
-            },
-            "unconfirmed_recovery_ampule": {
-                "name": "未確認アンプル",
-                "description": "味方が禁忌カード使用時、最大HPの3%回復、固定シールド80%"
-            },
-            "source_of_the_forbidden": {
-                "name": "禁忌の根源",
-                "description": "攻撃を受けた時、攻撃者に脆弱、弱体化、損傷のうち、ランダムで1個付与（各ターン3回）"
-            },
-            "plant_doll": {
-                "name": "植物人形",
-                "description": "スキルカード4枚消滅時、ランダムな味方のストレス1減少"
-            },
-            "golden_bell": {
-                "name": "金色の瞳",
-                "description": "戦闘開始時、ランダムな味方のストレス3減少"
-            },
-            "summoned_lump_of_light": {
-                "name": "召喚された光の塊",
-                "description": "3回目に生成された攻撃カード1ターンの間、ダメージ量+30%増加"
-            },
-            "lightless_stem": {
-                "name": "光を失った茎",
-                "description": "治癒量15%増加"
-            },
-            "leaf_of_the_world_tree": {
-                "name": "世界樹の葉",
-                "description": "コスト2以上のカード3枚使用時、保存1"
-            },
-            "luminescent_shroom": {
-                "name": "発光キノコ",
-                "description": "6回目に生成された攻撃カード1ターンの間、胞子増殖効果2倍"
-            },
-            "shining_world_tree_stem": {
-                "name": "輝く世界樹の茎",
-                "description": "治癒量25%増加"
-            },
-            "liberated_essence": {
-                "name": "解放されたエッセンス",
-                "description": "ターン開始時、手札のランダウな消滅カード1枚を1ターンの間、コスト1減少"
-            },
-            "combat_drum": {
-                "name": "戦闘用太鼓",
-                "description": "スキルカード5枚生成時、次に発動する味方カードのダメージ量20%増加(最大1重複)"
-            },
-            "gladiators_medallion": {
-                "name": "剣闘士の証",
-                "description": "カードでシールド3回獲得時、敵全体に固定ダメージ100%"
-            },
-            "rage_potion": {
-                "name": "激怒ポーション",
-                "description": "攻撃カード4回発動時、次に発動する攻撃カードのダメージ量40%増加"
-            },
-            "launcher_of_ruined_honor": {
-                "name": "崩れた名誉の発射機",
-                "description": "偶数ターンごとに重打撃1枚生成"
-            },
-            "charger_of_weathered_glory": {
-                "name": "古びた栄光の充電器",
-                "description": "アクションポイント1以上のままターンを終了すると、次のターン開始時にチャージ一撃1枚生成"
-            },
-            "gospel_of_lament": {
-                "name": "悲鳴の福音書",
-                "description": "敵全体が弱体化、脆弱状態時、ダメージ量+35%"
-            },
-            "a_lonesome_wedding_ring": {
-                "name": "片方だけの結婚指輪",
-                "description": "味方が2人以上戦闘中時、ダメージ量+20%"
-            },
-            "someones_letter": {
-                "name": "誰かの手紙",
-                "description": "カード発動時、回避の確率+10%"
-            },
-            "stele_of_heresy": {
-                "name": "異端の石碑",
-                "description": "敵が異常状態の場合、シールド獲得量+25%"
-            },
-            "hymn_singing_lips": {
-                "name": "聖歌を歌う唇",
-                "description": "治癒カード発動時、敵全体に固定ダメージ100%（各ターン1回）"
-            },
-            "an_eye_plucked_from_a_mural": {
-                "name": "壁画から剥ぎ取られた瞳",
-                "description": "ターン開始時、敵全体に狂気1。敵全体が狂気状態時、ダメージ量+50%"
-            },
-            "raiders_scanning_gear": {
-                "name": "略奪者のスキャンギア",
-                "description": "ターン開始時、最初に発動する攻撃カードの会心ダメージ+30%"
-            },
-            "final_entry": {
-                "name": "最後の日誌",
-                "description": "ターン開始時、ランダムな味方のストレス2増加、敵全体に固定ダメージ150%"
-            },
-            "essence_fragmented_necklace": {
-                "name": "エッセンスの破片ネックレス",
-                "description": "1ターンの間、味方が敵を3回倒した時、アクションポイント1獲得(各ターン1回)"
-            },
-            "kaleidoscope_fragment": {
-                "name": "万華鏡の欠片",
-                "description": "能力で弱体化付与時、対象に弱体化1、灼熱3(各ターン1回)"
-            },
-            "closed_circuit_terminal": {
-                "name": "閉鎖回路端子",
-                "description": "味方の能力で全体攻撃時、ランダムな敵に脆弱1(各ターン1回)"
-            },
-            "cycle_of_circulation": {
-                "name": "循環の輪",
-                "description": "ターン終了時、HPが50%未満なら固定治癒70%(各戦闘3回)"
-            },
-            "invader_observation_logs": {
-                "name": "インベーダー観察記録",
-                "description": "攻撃カードダメージ量+20%、敵数に応じて会心率+2%"
-            }
-        }
+  "equipment": {
+    "title": "獲得装備",
+    "none": "なし",
+    "info": "詳細情報",
+    "refinement": "精錬",
+    "engraving": "刻印",
+    "godHammer": "神のハンマー",
+    "godHammerWithoutRefinement": {
+      "title": "精錬が選択されていません",
+      "message": "神のハンマーが有効な装備に精錬が選択されていません。精錬を有効にすることを推奨します。"
+    },
+    "obtainableChaos": {
+      "label": "入手場所",
+      "filterLabel": "入手場所フィルター",
+      "all": "すべて",
+      "options": {
+        "all": "共通",
+        "the_blue_pot": "青い壺",
+        "twin_stars_shadow": "連星の影",
+        "city_of_mist": "霧の都市",
+        "swamp_of_judgment": "裁きの沼",
+        "the_foretold_ruin": "到来した混沌",
+        "laboratory_0": "第0研究所",
+        "burning_life": "燃ゆる生命",
+        "theater_of_illusions": "虚像の劇場",
+        "the_kaleidoscope_hatchery": "万華鏡の孵化場"
+      }
+    },
+    "refinementEffects": {
+      "refinement_01": "カード保存、消滅時、ランダムな敵意固定ダメージ100%(各ターン2回)",
+      "refinement_02": "ターン開始時とターン終了後にシールドがある場合、敵全体に固定ダメージ100%",
+      "refinement_03": "ターン開始時、30%の確率で、消滅カードをドロー1",
+      "refinement_04": "戦闘開始時、自分の消滅カードをドロー1",
+      "refinement_05": "消滅カードを能力でドロー時、即座に発動(各ターン1回)",
+      "refinement_06": "攻撃カードのダメージ量20%増加",
+      "refinement_07": "シールド獲得量と治癒量15%増加",
+      "refinement_08": "ダメージを完全に防ぐと、次のターン開始時、1ターンの間、味方のダメージ量10%増加(各ターン1回)",
+      "refinement_09": "戦闘開始時、所持中のカードが33枚以上の場合、攻撃カードのダメージ量30%増加",
+      "refinement_10": "戦闘開始時、所持中のカードが18枚以下の場合、攻撃カードのダメージ量30%増加",
+      "refinement_11": "消滅カードのダメージ量25%増加",
+      "refinement_12": "コスト2以上の攻撃カードのダメージ量25%増加",
+      "refinement_13": "戦闘開始時、保存1",
+      "refinement_14": "脆弱状態の敵に攻撃カード発動時、会心率+15%",
+      "refinement_15": "1ターンの間、ダメージを与えなかった場合、次のターン開始時、1ターンの間、ダメージ量50%増加",
+      "refinement_16": "ターン開始時、手札の味方消滅カード数に応じて、ランダムな敵に固定ダメージ60%",
+      "refinement_17": "反撃時、敵全体に防御依存ダメージ200%(各ターン1回)",
+      "refinement_18": "シールド獲得時、固定シールド100%(各ターン1回)",
+      "refinement_19": "コスト3以上のカード発動時、アクションポイント1(各ターン1回)",
+      "refinement_20": "アクションポイント1以上を所持した状態でターン終了時、敵全体に脆弱1",
+      "refinement_21": "コスト1以下の攻撃カードのダメージ量+30%",
+      "refinement_22": "追加攻撃のダメージ量25%増加",
+      "refinement_23": "能力で自分の攻撃カードをドロー時、そのカードは1ターンの間、ダメージ量50%増加",
+      "refinement_24": "防御依存ダメージ量+30%"
+    },
+    "engravingEffects": {
+      "equipment_engraving_lux_01": "味方が能力でカードを5枚以上生成した場合、自分の追加攻撃ダメージ量+30％（各ターン1回）",
+      "equipment_engraving_lux_02": "味方が大破時、対象の行動カウント2増加（各ターン1回）",
+      "equipment_engraving_lux_03": "ターン開始時、行動カウントが最も低い対象に弱体化２",
+      "equipment_engraving_lux_04": "今回のターンで行動カウントが３以上減少した場合、行動カウントが最も低い対象に弱体化１",
+      "equipment_engraving_lux_05": "ターン終了時、保存したカードがある場合、固定シールド50％",
+      "equipment_engraving_umbra_01": "闇の刻印+1",
+      "equipment_engraving_umbra_02": "自身の消滅カードのダメージ量25％増加",
+      "equipment_engraving_umbra_03": "自身の安息カードのダメージ量25％増加",
+      "equipment_engraving_umbra_04": "ターン開始時、手札に安息カードがある場合、ランダムの敵に固定ダメージ60％",
+      "equipment_engraving_umbra_05": "攻撃を受けると、手札のランダムな安息カードを1枚破棄（各ターン1回）",
+      "equipment_engraving_umbra_06": "追加攻撃時、１ターンの間、士気１（各ターン1回）",
+      "equipment_engraving_umbra_07": "味方が能力で安息カードを破棄した場合、ドロー1（各ターン1回）",
+      "equipment_engraving_umbra_08": "自分のカードが破棄された場合、次に使用する攻撃カードのダメージ量+100％（各ターン1回）",
+      "equipment_engraving_lux_06": "ターン開始時、行動カウントが最も低い対象に固定ダメージ100%",
+      "equipment_engraving_lux_07": "攻撃を受けると、攻撃者に脆弱、弱体化のうち、ランダムで1個付与(各ターン1回)",
+      "equipment_engraving_lux_08": "自分のカード発動時、30%の確率で敵全体の行動カウント1増加(各ターン1回)",
+      "equipment_engraving_lux_09": "自分の迅速カードのダメージ量25%増加",
+      "equipment_engraving_umbra_09": "光の刻印+1",
+      "equipment_engraving_umbra_10": "自分の主導カードが破棄された場合、発動（各ターン1回）",
+      "equipment_engraving_umbra_11": "味方が能力でカードを2枚破棄時、安息カードを1枚ドロー（各戦闘1回）",
+      "equipment_engraving_umbra_12": "墓地のカード数が7枚以上の場合、自分の攻撃カードのダメージ量30%増加",
+      "equipment_engraving_umbra_13": "墓地のカードが15枚以上の場合、自身の攻撃カードの会心ダメージ+15%",
+      "equipment_engraving_umbra_14": "墓地のカードが40枚以上の場合、士気2（各戦闘1回）"
+    },
+    "duplicate": {
+      "warning": "{type}で神話級装備が選択されているため、別の神話級装備は選択できません"
+    },
+    "rarity": {
+      "name": "レアリティ",
+      "mythical": "神話",
+      "legendary": "伝説",
+      "rare": "希少"
+    },
+    "weapon": {
+      "title": "武器",
+      "obsidian_sword": {
+        "name": "黒曜石の剣",
+        "description": "ダメージ量12%増加"
+      },
+      "gastronomicon": {
+        "name": "ガストロノミコン",
+        "description": "コスト2以上の攻撃カードを使用時、対象に苦痛3"
+      },
+      "m85_military_grenade": {
+        "name": "M85軍用手榴弾",
+        "description": "強化カード使用時、敵全体固定ダメージ150%"
+      },
+      "big_game_hunter": {
+        "name": "大物狩人",
+        "description": "各戦闘で、最初に使用する攻撃カードの強靭度ダメージ100%増加"
+      },
+      "torch_of_wrath": {
+        "name": "お怒りの松明",
+        "description": "戦闘開始時、ランダムな敵に標識2"
+      },
+      "bone_cutter": {
+        "name": "ボーンカッター",
+        "description": "弱体化状態の対象への攻撃ヒット時、ダメージ量+30%"
+      },
+      "flashbang": {
+        "name": "閃光弾",
+        "description": "戦闘開始時、ランダムな敵に弱体化3"
+      },
+      "command_108": {
+        "name": "命令：108号",
+        "description": "攻撃カードのダメージ量40%増加（各戦闘1回）"
+      },
+      "the_fading_flower_of_life": {
+        "name": "枯れた生命の花",
+        "description": "最大HPの場合、ダメージ量+40%"
+      },
+      "crimson_sword": {
+        "name": "赤い剣",
+        "description": "ターゲッティング攻撃カードでダメージを与えた対象に、苦痛3（各ターン1回）"
+      },
+      "second_method": {
+        "name": "第2の手段",
+        "description": "追加攻撃ダメージ量+35%"
+      },
+      "sneering_dagger": {
+        "name": "嘲笑う短剣",
+        "description": "敵を倒した時、敵全体に脆弱2"
+      },
+      "rfs_17": {
+        "name": "RFS-17",
+        "description": "コストが0の攻撃カードの会心率+10%"
+      },
+      "mountain_of_corpses": {
+        "name": "屍山血海",
+        "description": "攻撃カードのダメージ量25%増加（各ターン1回）"
+      },
+      "intellect_of_discord": {
+        "name": "混沌の指摘",
+        "description": "攻撃力+18%。大破時、味方のストレス1減少"
+      },
+      "tentacles_of_chaos": {
+        "name": "混沌した時代の触手",
+        "description": "味方の攻撃力+8%。撃破時、ストレスが高い戦闘員のストレス2減少"
+      },
+      "steelers_dagger": {
+        "name": "ステラーの短刀",
+        "description": "敵を倒すと5～10クレジット獲得（各戦闘1回）"
+      },
+      "dull_bone_blade": {
+        "name": "鋭い骨刀",
+        "description": "攻撃力10%、会心率-5%"
+      },
+      "natures_hostility": {
+        "name": "自然の敵意",
+        "description": "敵を倒した時、敵全体に固定ダメージ200%"
+      },
+      "mutated_claws": {
+        "name": "変異した爪",
+        "description": "状態異常、呪いカードのドロー時、1ターンの間ダメージ量+15%"
+      },
+      "executioners_edge": {
+        "name": "処刑者の刃",
+        "description": "最大HPの50%以下の対象へのダメージ量35%増加"
+      },
+      "ritual_dagger": {
+        "name": "祭礼用の短剣",
+        "description": "敵を倒すと攻撃カードのダメージ量+25%（最大2回）"
+      },
+      "esophagus_of_madness": {
+        "name": "凶器の咽頭",
+        "description": "苦痛状態の対象へのダメージ量20%増加"
+      },
+      "dark_grips_claws": {
+        "name": "闇の掌中の爪",
+        "description": "全体攻撃のダメージ量25%増加"
+      },
+      "mutated_order": {
+        "name": "変異の権能",
+        "description": "行動前の対象へのダメージ量25%増加"
+      },
+      "bug_killer": {
+        "name": "バグキラー",
+        "description": "攻撃カード使用時、対象に苦痛1（各ターン1回）。インベーダーとの戦闘の場合、苦痛2追加"
+      },
+      "violet_butterflys_whip": {
+        "name": "紫蝶のムチ",
+        "description": "コスト1以下の攻撃カードのダメージ量20%増加"
+      },
+      "abyssal_bug_tooth": {
+        "name": "奈落の虫の歯",
+        "description": "会心攻撃時、対象に50%の確率で苦痛1"
+      },
+      "the_destruction_of_erysichthon": {
+        "name": "エリュシクトーンの破滅",
+        "description": "攻撃カード使用時、5%の確率でヒット数1回追加"
+      },
+      "formicas_perfect_spear": {
+        "name": "完全なフォルミカの槍",
+        "description": "敵数に応じてダメージ量7%増加。全体攻撃のダメージ量10%増加"
+      },
+      "lepidolas_whip": {
+        "name": "レピドラのムチ",
+        "description": "コスト1以下の攻撃カードのダメージ量25%増加"
+      },
+      "twin_swords_of_greater_and_lesser_evil": {
+        "name": "大顎と小顎の両手剣",
+        "description": "大破状態の対象へのダメージ量30%増加"
+      },
+      "shell_bug_horn": {
+        "name": "甲殻虫の角",
+        "description": "会心ダメージ+12%"
+      },
+      "dream_of_the_devoured": {
+        "name": "喰われた者の夢",
+        "description": "カード消滅時、次に使用するカードのダメージ量25%増加（最大1回重複）"
+      },
+      "unexploded_plasma_bomb": {
+        "name": "不発したプラズマボンバー",
+        "description": "カード消滅時、ランダムな敵に固定ダメージ40%"
+      },
+      "blood_giant_claw": {
+        "name": "ブラッドジャイアントクロー",
+        "description": "敵数に応じてダメージ量6%増加"
+      },
+      "void_of_the_devourer": {
+        "name": "吞み込んだ者の空虚",
+        "description": "カード消滅時、次に使用するカードのダメージ量35%増加（最大1回重複）"
+      },
+      "foggy_crystal_ball": {
+        "name": "霧がかかった水晶玉",
+        "description": "コスト0の攻撃カードのダメージ量40%増加"
+      },
+      "formicas_broken_spear": {
+        "name": "破損したフォルミカの槍",
+        "description": "敵数に応じてダメージ量6%増加"
+      },
+      "dagger_that_tricked_the_shadow": {
+        "name": "影を騙した短剣",
+        "description": "会心ダメージ+12% "
+      },
+      "sword_reflected_in_the_lake": {
+        "name": "湖に捧げた剣",
+        "description": "手札のカードが6枚以上の場合、ダメージ量25%増加"
+      },
+      "sun_setting_bow": {
+        "name": "太陽を撃ち落とした弓",
+        "description": "コストが2以上の攻撃カードはダメージ量30%増加（各ターン1回）"
+      },
+      "branch_of_the_sacred_tree": {
+        "name": "神木の枝",
+        "description": "治癒または回復時、治癒量の35%分、敵全体に固定ダメージ"
+      },
+      "the_flower_of_life": {
+        "name": "生命の花",
+        "description": "最大HPの場合、ダメージ量+50%"
+      },
+      "branch_of_the_evil_tree": {
+        "name": "悪木の枝",
+        "description": "治癒または回復時、回復量の50%分、ランダムな敵に固定ダメージ"
+      },
+      "cavalry_of_lightning": {
+        "name": "電撃のランス",
+        "description": "シールド所持中の対象にダメージを与えると、次に使用する攻撃カードのダメージ量+100%"
+      },
+      "branch_of_eternity": {
+        "name": "永劫の枝",
+        "description": "治癒または回復時、回復量の50%分、敵全体に固定ダメージ"
+      },
+      "rune_lance": {
+        "name": "ルーンランス",
+        "description": "アクションポイントを5以上使用時、ダメージ量、シールド獲得量、治癒量+25%(各戦闘1回)"
+      },
+      "flame_of_purification": {
+        "name": "浄化の炎",
+        "description": "カードが消滅するとき、ランダムな敵に報復1（各ターン2回）"
+      },
+      "trumpet_of_revelation": {
+        "name": "啓示のラッパ",
+        "description": "カードでドロー時、1ターンの間、ダメージ量+20%（各ターン2回）"
+      },
+      "singing_sword": {
+        "name": "歌う剣",
+        "description": "攻撃力+15%。シールド保有中の対象にダメージを与えた場合、対象に報復1"
+      },
+      "radiant_orb": {
+        "name": "光り輝く宝珠",
+        "description": "シールド所持中の対象にダメージ量25%"
+      },
+      "overcurrent_shock_unit": {
+        "name": "過電流ショッカー",
+        "description": "能力でドロー時、ランダムな敵に固定ダメージ50%"
+      },
+      "mutant_predator_spike": {
+        "name": "変種捕食体の突起",
+        "description": "手札のカードが4枚以上の場合、ダメージ量30%増加"
+      },
+      "w_52_dopamine_injector": {
+        "name": "W-52「ドーパミン注入器」",
+        "description": "能力でドロー時、1ターンの間、ダメージ量20%増加(各ターン2回)"
+      },
+      "mutagenic_wave_amplifier": {
+        "name": "変異波動増幅器",
+        "description": "状態異常、呪いカードのドロー時、1ターンの間、ダメージ量+12%"
+      },
+      "replica_core": {
+        "name": "レプリカコア",
+        "description": "能力で自分のカードをドロー時、そのカードは1ターンの間、ダメージ量+50%"
+      },
+      "chimeranite": {
+        "name": "キメルナイト",
+        "description": "能力でドロー時、1ターンの間、自分の攻撃カードのダメージ量35%増加（各ターン1回）"
+      },
+      "millennium_arbor": {
+        "name": "千年木",
+        "description": "コスト3以上のカード発動時、ランダムな敵に脆弱1"
+      },
+      "sword_of_judgment": {
+        "name": "審判の剣",
+        "description": "カード消滅時、1ターンの間、ダメージ量10%増加(各ターン1回)"
+      },
+      "veiled_thorn": {
+        "name": "ぼやけたトゲ",
+        "description": "1ターンの間、味方がダメージを与えなかった場合、次のターン開始時、1ターンの間、ダメージ量50%増加"
+      },
+      "pale_eternal_flame": {
+        "name": "青白い永劫の炎",
+        "description": "カード消滅時、1ターンの間、味方のダメージ10%増加(各ターン1回)"
+      },
+      "brilliant_eternal_flame": {
+        "name": "輝かしい永劫の炎",
+        "description": "コスト2以上の消滅カードのダメージ量40%増加"
+      },
+      "harp_of_conflict": {
+        "name": "闘争のハープ",
+        "description": "1ターンの間、味方カードでダメージ、シールド、治癒をすべて発動時、1ターンの間、味方ダメージ量15%増加"
+      },
+      "arm_of_lost_valor": {
+        "name": "消えた勇気の腕",
+        "description": "1ターンの間、攻撃カードを発動せずにターン終了時、ロケットパンチ1枚生成"
+      },
+      "harpoon_case_of_broken_resolve": {
+        "name": "折れた意志の銛筒",
+        "description": "奇数ターンごとに貫き1枚生成"
+      },
+      "corrupted_gauntlet": {
+        "name": "浸食されたガントレット",
+        "description": "シールド獲得時、シールド量+15%"
+      },
+      "broken_golden_quill_pen": {
+        "name": "折れた黄金の羽ペン",
+        "description": "コスト1以下の攻撃カード発動時、敵全体に固定ダメージ80%"
+      },
+      "orders_baton": {
+        "name": "教団の指揮棒",
+        "description": "味方が禁忌カード使用時、敵全体に固定ダメージ60%（各ターン2回）"
+      },
+      "key_of_sleep": {
+        "name": "眠りの鍵",
+        "description": "敵が行動不能状態時、攻撃カードのダメージ量30%増加"
+      },
+      "yearning_left_hand": {
+        "name": "渇望する左手",
+        "description": "HP回復時、シールド量30%として追加獲得"
+      },
+      "the_exsanguine": {
+        "name": "出血の双手剣",
+        "description": "攻撃カード発動時、対象に灼熱2(各ターン1回)"
+      },
+      "raiders_harpoon_gun": {
+        "name": "略奪者の銛砲",
+        "description": "会心攻撃時、敵全体に固定ダメージ150%(各ターン3回)"
+      },
+      "gauntlets_of_protection": {
+        "name": "保護の拳甲",
+        "description": "基本コストが3以上の攻撃カードを直接使用時、敵全体に固定ダメージ250%(各ターン2回)"
+      },
+      "eternal_wedge": {
+        "name": "永遠のくさび",
+        "description": "ターン開始時、持続ダメージ効果を所持中のランダムな敵に固定ダメージ100%"
+      },
+      "twisted_drill_bit": {
+        "name": "歪んだドリル刃",
+        "description": "味方の欲望カード発動時、敵全体に固定ダメージ100%(各ターン3回)"
+      }
+    },
+    "armor": {
+      "title": "防具",
+      "scouts_combat_boots": {
+        "name": "斥候の軍靴",
+        "description": "敵を倒すと固定シールド60%"
+      },
+      "lush_seaweed_armor": {
+        "name": "生い茂った海草の鎧",
+        "description": "シールド獲得時、固定シールド30%"
+      },
+      "assault_gauntlets": {
+        "name": "強襲ガントレット",
+        "description": "戦闘開始時、反撃3"
+      },
+      "survivors_hood": {
+        "name": "生存者のフード",
+        "description": "戦闘開始時、固定シールド140%"
+      },
+      "titan_combat_suit": {
+        "name": "タイタン戦闘アーマー",
+        "description": "ダメージを受けると、HP2%回復（各ターン1回）"
+      },
+      "gladiators_helmet": {
+        "name": "剣闘士のヘルメット",
+        "description": "戦闘開始時、ダメージ減少2"
+      },
+      "standard_gas_mask": {
+        "name": "標準型ガスマスク",
+        "description": "戦闘開始時、免疫1"
+      },
+      "assault_boots": {
+        "name": "強襲ブーツ",
+        "description": "戦闘開始2ターン後、次のターン開始時に固定シールド200%"
+      },
+      "reinforced_combat_suit": {
+        "name": "補強型戦闘アーマー",
+        "description": "ターン終了時、シールドがない場合、固定シールド60%"
+      },
+      "cloud_walking_shoes": {
+        "name": "雲の上を歩く靴",
+        "description": "味方が大破時、固定シールド40%"
+      },
+      "psionic_combat_suit": {
+        "name": "サイオニック戦闘アーマー",
+        "description": "カード消滅時、固定シールド30%(各ターン5回)"
+      },
+      "shell_of_aberration": {
+        "name": "奇妙な殻",
+        "description": "防御力+12%。ストレス増加時、50%の確率で1減少して受ける"
+      },
+      "disaster_shroud": {
+        "name": "災厄の聖骸布",
+        "description": "防御力+12%。全戦闘員崩壊の回復に必要なカード数1枚減少"
+      },
+      "resolute_gauntlets": {
+        "name": "決死のガントレット",
+        "description": "カオス教団との戦闘開始時、ダメージ量+20%、ダメージ減少1"
+      },
+      "wolves_banes_spine": {
+        "name": "ウルブス・ヴェインの背骨",
+        "description": "会心攻撃時、固定シールド10%"
+      },
+      "shield_of_the_watcher": {
+        "name": "注視する盾",
+        "description": "ダメージを受けると攻撃者に標識1"
+      },
+      "the_chosen_vessel": {
+        "name": "器となる者",
+        "description": "戦闘開始3ターン後、次のターン開始時に固定シールド250%"
+      },
+      "cursed_doll": {
+        "name": "呪われた人形",
+        "description": "ターン開始時、手札の状態異常、呪いカードの数に応じて治癒60%"
+      },
+      "torture_toolbox": {
+        "name": "拷問道具箱",
+        "description": "ターン開始時、敵全体の行動カウント3増加"
+      },
+      "chains_of_obsession": {
+        "name": "強迫の枷",
+        "description": "攻撃カード使用時、HP減少1%、固定シールド60%"
+      },
+      "wild_fur_cloak": {
+        "name": "野性の毛皮マント",
+        "description": "ターン開始時、反撃1"
+      },
+      "kentris_chitin_armor": {
+        "name": "ケントリスキチン甲冑",
+        "description": "味方のシールド獲得量15%増加"
+      },
+      "crustacean_fluider": {
+        "name": "フリュードの甲殻",
+        "description": "ダメージを受けると1ターン後、次のターン開始時に固定シールド60%"
+      },
+      "growing_carapace": {
+        "name": "成長する甲殻",
+        "description": "ターン開始時、固定シールド40%"
+      },
+      "dance_of_the_night_butterflies": {
+        "name": "夜蝶の舞い",
+        "description": "大破時、固定シールド60%"
+      },
+      "wings_of_the_swarm": {
+        "name": "群体の羽",
+        "description": "戦闘開始時、免疫2"
+      },
+      "contaminated_helmet": {
+        "name": "汚染されたヘルメット",
+        "description": "最大HP+6%。防御力+12%"
+      },
+      "mss_scope": {
+        "name": "M.S.Sスコープ",
+        "description": "1ターン中、デバフ効果を付与した場合、ターン終了時固定シールド80%"
+      },
+      "regenerative_ribcage": {
+        "name": "再生型の肋骨",
+        "description": "最大HP+12%"
+      },
+      "gluttonous_tailcoat": {
+        "name": "意地汚い燕尾服",
+        "description": "ダメージを受けると、1ターンの間次のターン開始時に固定シールド80%"
+      },
+      "fragment_of_the_empty_void": {
+        "name": "虚ろな空虚の破片",
+        "description": "戦闘開始時、3枚まで破棄、その枚数に応じてドロー"
+      },
+      "mask_of_evil_spirits": {
+        "name": "悪霊の仮面",
+        "description": "ダメージを受けると、1ターンの間、次のターン開始時に固定シールド60%"
+      },
+      "immortal_scale": {
+        "name": "不滅の鱗",
+        "description": "能力で反撃獲得時、反撃1追加"
+      },
+      "fairy_kings_crown": {
+        "name": "妖精王の冠",
+        "description": "会心率+6%"
+      },
+      "wings_of_light": {
+        "name": "光の翼",
+        "description": "エゴポイントが3以下の時、会心攻撃を与えるとエゴポイント0.2獲得"
+      },
+      "ring_of_the_seraphim": {
+        "name": "天使の輪",
+        "description": "強化カード使用時、1ターンの間、ダメージ量+30%"
+      },
+      "star_lit_cloak": {
+        "name": "星明かりの宿るマント",
+        "description": "受けるダメージ量10%減少（各ターン1回）"
+      },
+      "mask_of_flames": {
+        "name": "炎の仮面",
+        "description": "脆弱対象へのダメージ量35%増加"
+      },
+      "twisted_discipline": {
+        "name": "歪んだ規律",
+        "description": "アクションポイントを10以上使用時、免疫2(各戦闘1回)"
+      },
+      "primordial_discipline": {
+        "name": "太古の規律",
+        "description": "戦闘開始時、免疫2"
+      },
+      "consecrated_halo": {
+        "name": "聖別された光輪",
+        "description": "シールド獲得量25%増加"
+      },
+      "incomplete_carapace": {
+        "name": "不完全甲殻",
+        "description": "ターン終了時、手札のカードが3枚以上なら固定シールド140%"
+      },
+      "brainwave_blocking_helmet": {
+        "name": "脳波遮断ヘルメット",
+        "description": "能力でドロー時、固定シールド40%(各ターン5回)"
+      },
+      "wings_of_freedom": {
+        "name": "自由の翼",
+        "description": "攻撃を受けた時、ダメージ量10%増加（最大3回重複）"
+      },
+      "rocket_adorned_cape": {
+        "name": "ロケットの飾り付きマント",
+        "description": "戦闘開始時、ダメージ減少1、ドロー1"
+      },
+      "vine_camouflage": {
+        "name": "蔓の迷彩服",
+        "description": "ターン開始時、HPが30%以下の場合、回避1(各戦闘2回)"
+      },
+      "moss_armor": {
+        "name": "苔の鎧",
+        "description": "1ターンの間、味方が攻撃カードを発動せずにターン終了時、固定シールド100%"
+      },
+      "shining_lyre": {
+        "name": "輝くリラ",
+        "description": "ターン開始時、味方消滅カードが手札にある場合、固定シールド60%"
+      },
+      "phytotype_synthetic": {
+        "name": "植物型義体",
+        "description": "シールド獲得時、1ターンの間、次に発動する攻撃カード1枚のダメージ量20%増加(各ターン2回)"
+      },
+      "robe_of_oblivion": {
+        "name": "忘却のローブ",
+        "description": "消滅カードでシールド獲得時、1ターンの間、ダメージ量20%増加(各ターン1回)"
+      },
+      "vine_lords_mask": {
+        "name": "ヴァインロードの仮面",
+        "description": "味方の能力で消滅カードドロー時、固定シールド80%(各ターン2回)"
+      },
+      "victors_laurel": {
+        "name": "勝者の月桂冠",
+        "description": "反撃ダメージ量40%増加"
+      },
+      "shield_of_ashen_sacrifice": {
+        "name": "色あせた犠牲の盾",
+        "description": "ダメージを完全に防ぐと、次のターン開始時、盾爆発1枚生成"
+      },
+      "bangle_of_valor": {
+        "name": "勇猛のブレスレット",
+        "description": "味方の闘技場カードダメージ量20%増加\n戦闘開始時、忘れ去られた剣1枚生成"
+      },
+      "cloak_of_the_heart": {
+        "name": "心の外套",
+        "description": "防御力+20%。ターン開始時、精神ダメージ1減少"
+      },
+      "mask_of_emotions": {
+        "name": "感情の仮面",
+        "description": "状態異常、呪いの効果1つが無効化される（各ターン1回）"
+      },
+      "nightmare_hairpin": {
+        "name": "悪夢のヘアピン",
+        "description": "敵全体に夢見状態が付与されている時、防御力+15%"
+      },
+      "incomprehensible_holy_object": {
+        "name": "理解できない神物",
+        "description": "能力でカードドロー時、そのカードコスト1減少（各ターン2回）"
+      },
+      "delicate_collarbone": {
+        "name": "華奢な鎖骨",
+        "description": "シールド獲得時、最大HP+5%（最大3回）"
+      },
+      "crushed_angel_feather": {
+        "name": "砕かれた天使の羽",
+        "description": "被ダメージ時、1ターンの間、次のターン開始時に固定シールド120%"
+      },
+      "essence_fueled_gauntlets": {
+        "name": "エッセンス動力ガントレット",
+        "description": "能力でシールド獲得時、1ターンの間、発動時まで攻撃カードの会心率+30%(各ターン1回)"
+      },
+      "pagna_mushroom": {
+        "name": "パグナきのこ",
+        "description": "攻撃を受けると、攻撃者に脆弱、弱体化、苦痛、灼熱のうち、ランダムに1個付与(各ターン2回)"
+      },
+      "chitin_shield": {
+        "name": "キチン質の盾",
+        "description": "反撃3、反撃時、対象に衝撃波1(各ターン1回)"
+      },
+      "contaminated_cocoon_cape": {
+        "name": "汚染された繭のマント",
+        "description": "攻撃を受けると、攻撃者に苦痛、脆弱、灼熱のうち、ランダムに1個付与(各ターン3回)"
+      },
+      "contaminated_drone_lens": {
+        "name": "汚染されたドローンレンズ",
+        "description": "ターン開始時、味方の欲望カードが手札にあるなら、ランダムな味方のストレス2減少"
+      },
+      "remnants_of_succession": {
+        "name": "継承の残痕",
+        "description": "攻撃カード2回発動時、敵全体に灼熱4(各ターン1回)"
+      }
+    },
+    "pendant": {
+      "title": "ペンダント",
+      "amorphous_cube": {
+        "name": "非定型キューブ",
+        "description": "ダメージ量+25%"
+      },
+      "multifaceted_parallel_universe_nexus": {
+        "name": "多面平衡宇宙連結体",
+        "description": "ターン開始時、手札にあるランダムな主導カード1枚発動"
+      },
+      "time_regulator": {
+        "name": "時間調整器",
+        "description": "装備している戦闘員がひらめき発動"
+      },
+      "absolute_zero_tetrahedron": {
+        "name": "絶対零度の四面体",
+        "description": "戦闘開始時、シールド獲得量+20%"
+      },
+      "magic_infused_sapphire": {
+        "name": "魔力が宿ったサファイア",
+        "description": "戦闘開始時、開戦カードが手札にある場合、敵全体に強靭度ダメージ1"
+      },
+      "heart_of_the_jewel": {
+        "name": "宝石の心臓",
+        "description": "xをx+1として適用"
+      },
+      "heart_of_gold": {
+        "name": "黄金の心臓",
+        "description": "戦闘終了時にHPが50%以下なら、8%回復"
+      },
+      "quantum_collector": {
+        "name": "量子コレクター",
+        "description": "味方が強化カードを使用時、1ターンの間、ダメージ量、シールド獲得量、治癒量が20%増加"
+      },
+      "moon_of_destruction": {
+        "name": "破壊の月",
+        "description": "戦闘開始時、敵全体に固定ダメージ200%"
+      },
+      "dimensional_cube": {
+        "name": "次元のキューブ",
+        "description": "カードを捨てるとき、1ターンの間、ダメージ量＋15%(最大3重複)"
+      },
+      "water_drops_of_the_goddess": {
+        "name": "女神の雫",
+        "description": "戦闘開始時、セーブ１"
+      },
+      "grey_orb": {
+        "name": "グレイの球体",
+        "description": "戦闘開始時、ダメージ減少3"
+      },
+      "sphere_of_randomness": {
+        "name": "乱数の玉",
+        "description": "最大HP+10%。戦闘開始時、アクションポイント1獲得、ドロー1"
+      },
+      "dice_of_derangement": {
+        "name": "錯乱のダイス",
+        "description": "最大HP+10%。戦闘終了時最大HPが50%未満なら最大HPの8%回復。戦闘終了時最大HPが50%以上ならストレスが高い戦闘員のストレス5減少"
+      },
+      "bloodstone_of_the_void": {
+        "name": "空虚な血石",
+        "description": "攻撃カード使用時に与ダメージの6%分HP回復（各ターン1回）"
+      },
+      "proof_of_initiation": {
+        "name": "入信の証",
+        "description": "カオス教団との戦闘時、防御力+10%"
+      },
+      "natures_gift": {
+        "name": "自然の賜りもの",
+        "description": "ターン終了時、治癒40%"
+      },
+      "eternal_stone": {
+        "name": "風化しない石",
+        "description": "ターン開始時、敵の数に応じて固定シールド25%"
+      },
+      "madmans_masterpiece": {
+        "name": "狂った芸術家の芸術作品",
+        "description": "精鋭戦闘開始時、ダメージ量+50%"
+      },
+      "chaos_bible": {
+        "name": "カオス聖書",
+        "description": " 戦闘開始4ターン後、次のターン開始時に敵全体に固定ダメージ400%"
+      },
+      "crimson_bloodstone": {
+        "name": "赤い血石",
+        "description": " 攻撃カード使用時に与ダメージの9%分HP回復（ターンごとに1回）"
+      },
+      "orders_emblem": {
+        "name": "教団の証",
+        "description": " カオス教団との戦闘時、防御力+15%"
+      },
+      "bloody_pendant": {
+        "name": "血塗られたペンダント",
+        "description": "コピー済みカード使用時、1ターンの間、敵全体の行動カウントが減少しない（各戦闘1回）"
+      },
+      "gloomy_primes_eye": {
+        "name": "グルーミープライムの目",
+        "description": "シールド 獲得量+40%"
+      },
+      "forbidden_bible": {
+        "name": "禁止された聖書",
+        "description": "戦闘開始4ターン後、次のターン開始時に敵全体に固定ダメージ550%"
+      },
+      "dice_of_chaos": {
+        "name": "混沌のダイス",
+        "description": "ターン終了時、「ランダムな敵に固定ダメージ40%×2～6」か「味方に固定ダメージ200%」のうちランダムで1個の効果発動"
+      },
+      "first_aid_kit": {
+        "name": "救急キット",
+        "description": "戦闘終了時、回復5%"
+      },
+      "lepidolas_wing": {
+        "name": "レピドラの翼",
+        "description": "戦闘開始時、回避1"
+      },
+      "kiraks_core": {
+        "name": "キーロックの核",
+        "description": "ターン開始時、最大HPの40%未満なら回復5%"
+      },
+      "natural_predator": {
+        "name": "先天的捕食者",
+        "description": "大破時、次に使用する攻撃カード1枚のダメージ量+100%"
+      },
+      "voracious_swarm": {
+        "name": "捕食する群体",
+        "description": "ダメージを受けると攻撃者に苦痛4"
+      },
+      "pulsating_egg": {
+        "name": "鼓動する卵",
+        "description": "攻撃力+15%、最大HP+10%"
+      },
+      "soul_orb": {
+        "name": "魂の玉",
+        "description": "カード消滅時、敵全体に強靭度ダメージ1（各戦闘1回）"
+      },
+      "the_famished_ones_belly": {
+        "name": "飢えた者の腹",
+        "description": "カード消滅時、ダメージ量+25%、回復5%（各戦闘1回）"
+      },
+      "mss_data_pad": {
+        "name": "M.S.Sデータパッド",
+        "description": "ニヒルムとの戦闘開始時、敵全体に脆弱2"
+      },
+      "flower_of_dead_souls": {
+        "name": "亡魂の花",
+        "description": "ターンごとに、2枚目の攻撃カードからダメージ量20%増加"
+      },
+      "mss_data_pad_se": {
+        "name": "M.S.SデータパッドSE",
+        "description": "ニヒルムとの戦闘開始時、敵全体に脆弱3"
+      },
+      "eye_of_the_eyeless": {
+        "name": "目なき者の瞳",
+        "description": "基本攻撃カードのダメージ量40%増加"
+      },
+      "palasias_orb": {
+        "name": "恥ずかしがり屋の庭師の玉",
+        "description": "カードで脆弱付与時、対象に弱体化1"
+      },
+      "torch_that_should_not_be_extinguished": {
+        "name": "消えてはならない灯",
+        "description": "シールド所持中にターン開始時、固定シールド80%"
+      },
+      "revelations_of_futility": {
+        "name": "虚無の啓示録",
+        "description": "攻撃カード使用時、固定シールド20%（各ターン10回）"
+      },
+      "eye_of_gluttony": {
+        "name": "貪食の目",
+        "description": "ダメージ量+40%、ターン終了時30%の確率で手札のカードを1枚消滅"
+      },
+      "clover_of_the_forest": {
+        "name": "森のクローバー",
+        "description": "カードで回復時1ターンの間、味方の攻撃力+10%（最大1回重複）"
+      },
+      "poachers_pathfinder": {
+        "name": "密猟者のパスファインダー",
+        "description": "セクレドとの戦闘時、ダメージ量+25%、敵全体に脆弱2"
+      },
+      "bone_ring_of_wildfire": {
+        "name": "野火を抱える骨の指輪",
+        "description": "強化カード使用時、1ターンの間、ダメージ量+30%"
+      },
+      "call_of_the_ancient_spirit": {
+        "name": "古の魂の呼びかけ",
+        "description": "会心攻撃時、治癒10%"
+      },
+      "verdant_day": {
+        "name": "深緑の昼",
+        "description": "奇数ターンに攻撃力+8%、防御力+12%"
+      },
+      "verdant_night": {
+        "name": "深緑の夜",
+        "description": "偶数ターンに攻撃力+12%、防御力+8%"
+      },
+      "lead_colored_holy_water": {
+        "name": "鉛色の聖水",
+        "description": "大破時、対象に損傷2"
+      },
+      "vladeus_reactor": {
+        "name": "ヴィアデウス原子炉",
+        "description": "強化カード使用時、ダメージ減少1"
+      },
+      "the_golden_rule": {
+        "name": "黄金律",
+        "description": "ダメージ量+20%、シールド 獲得量+20%"
+      },
+      "dormant_seeds": {
+        "name": "冬眠する種",
+        "description": "シールド獲得時、固定シールド100%（各ターン1回）"
+      },
+      "verdant_shackles": {
+        "name": "深緑の羈絆",
+        "description": "攻撃力+12%、防御力+12%"
+      },
+      "rune_chord": {
+        "name": "ルーンコード",
+        "description": "ターン終了時、保存したカードがある場合、固定シールド60%"
+      },
+      "guardian_core": {
+        "name": "守護コア",
+        "description": "行動予告が攻撃する敵にあれば、固定シールド60%（各ターン1回）"
+      },
+      "corroded_core": {
+        "name": "浸食コア",
+        "description": "攻撃をシールドで完璧に防いだ場合、敵全体に損傷1（各ターン1回）"
+      },
+      "corrupted_core": {
+        "name": "堕落コア",
+        "description": "防御力+15%、シールド20%保存"
+      },
+      "eye_of_the_punisher": {
+        "name": "懲罰者の目",
+        "description": "敵が1人の場合、ダメージ量30%増加"
+      },
+      "nerve_hacking_module": {
+        "name": "神経ハッキングモジュール",
+        "description": "味方が禁忌カード使用時、ダメージ量+20%、シールド獲得量+20%(各戦闘2回) "
+      },
+      "hyperimmunity_hormone": {
+        "name": "過剰免疫ホルモン",
+        "description": "能力でドロー時、1ターンの間、シールド獲得量+25%（各ターン2回）"
+      },
+      "administrator_id_badge": {
+        "name": "管理者身分証",
+        "description": "戦闘開始時、回避1"
+      },
+      "emblem_of_an_exceptional_entity": {
+        "name": "優秀な個体の証",
+        "description": "ダメージ量+30%\n受けるストレス0に変更（各戦闘1回）"
+      },
+      "superconductive_protein": {
+        "name": "超伝導タンパク質",
+        "description": "戦闘開始時、手札のカード1枚が1ターンの間、コスト0に変更"
+      },
+      "unconfirmed_recovery_ampule": {
+        "name": "未確認アンプル",
+        "description": "味方が禁忌カード使用時、最大HPの3%回復、固定シールド80%"
+      },
+      "source_of_the_forbidden": {
+        "name": "禁忌の根源",
+        "description": "攻撃を受けた時、攻撃者に脆弱、弱体化、損傷のうち、ランダムで1個付与（各ターン3回）"
+      },
+      "plant_doll": {
+        "name": "植物人形",
+        "description": "スキルカード4枚消滅時、ランダムな味方のストレス1減少"
+      },
+      "golden_bell": {
+        "name": "金色の瞳",
+        "description": "戦闘開始時、ランダムな味方のストレス3減少"
+      },
+      "summoned_lump_of_light": {
+        "name": "召喚された光の塊",
+        "description": "3回目に生成された攻撃カード1ターンの間、ダメージ量+30%増加"
+      },
+      "lightless_stem": {
+        "name": "光を失った茎",
+        "description": "治癒量15%増加"
+      },
+      "leaf_of_the_world_tree": {
+        "name": "世界樹の葉",
+        "description": "コスト2以上のカード3枚使用時、保存1"
+      },
+      "luminescent_shroom": {
+        "name": "発光キノコ",
+        "description": "6回目に生成された攻撃カード1ターンの間、胞子増殖効果2倍"
+      },
+      "shining_world_tree_stem": {
+        "name": "輝く世界樹の茎",
+        "description": "治癒量25%増加"
+      },
+      "liberated_essence": {
+        "name": "解放されたエッセンス",
+        "description": "ターン開始時、手札のランダウな消滅カード1枚を1ターンの間、コスト1減少"
+      },
+      "combat_drum": {
+        "name": "戦闘用太鼓",
+        "description": "スキルカード5枚生成時、次に発動する味方カードのダメージ量20%増加(最大1重複)"
+      },
+      "gladiators_medallion": {
+        "name": "剣闘士の証",
+        "description": "カードでシールド3回獲得時、敵全体に固定ダメージ100%"
+      },
+      "rage_potion": {
+        "name": "激怒ポーション",
+        "description": "攻撃カード4回発動時、次に発動する攻撃カードのダメージ量40%増加"
+      },
+      "launcher_of_ruined_honor": {
+        "name": "崩れた名誉の発射機",
+        "description": "偶数ターンごとに重打撃1枚生成"
+      },
+      "charger_of_weathered_glory": {
+        "name": "古びた栄光の充電器",
+        "description": "アクションポイント1以上のままターンを終了すると、次のターン開始時にチャージ一撃1枚生成"
+      },
+      "gospel_of_lament": {
+        "name": "悲鳴の福音書",
+        "description": "敵全体が弱体化、脆弱状態時、ダメージ量+35%"
+      },
+      "a_lonesome_wedding_ring": {
+        "name": "片方だけの結婚指輪",
+        "description": "味方が2人以上戦闘中時、ダメージ量+20%"
+      },
+      "someones_letter": {
+        "name": "誰かの手紙",
+        "description": "カード発動時、回避の確率+10%"
+      },
+      "stele_of_heresy": {
+        "name": "異端の石碑",
+        "description": "敵が異常状態の場合、シールド獲得量+25%"
+      },
+      "hymn_singing_lips": {
+        "name": "聖歌を歌う唇",
+        "description": "治癒カード発動時、敵全体に固定ダメージ100%（各ターン1回）"
+      },
+      "an_eye_plucked_from_a_mural": {
+        "name": "壁画から剥ぎ取られた瞳",
+        "description": "ターン開始時、敵全体に狂気1。敵全体が狂気状態時、ダメージ量+50%"
+      },
+      "raiders_scanning_gear": {
+        "name": "略奪者のスキャンギア",
+        "description": "ターン開始時、最初に発動する攻撃カードの会心ダメージ+30%"
+      },
+      "final_entry": {
+        "name": "最後の日誌",
+        "description": "ターン開始時、ランダムな味方のストレス2増加、敵全体に固定ダメージ150%"
+      },
+      "essence_fragmented_necklace": {
+        "name": "エッセンスの破片ネックレス",
+        "description": "1ターンの間、味方が敵を3回倒した時、アクションポイント1獲得(各ターン1回)"
+      },
+      "kaleidoscope_fragment": {
+        "name": "万華鏡の欠片",
+        "description": "能力で弱体化付与時、対象に弱体化1、灼熱3(各ターン1回)"
+      },
+      "closed_circuit_terminal": {
+        "name": "閉鎖回路端子",
+        "description": "味方の能力で全体攻撃時、ランダムな敵に脆弱1(各ターン1回)"
+      },
+      "cycle_of_circulation": {
+        "name": "循環の輪",
+        "description": "ターン終了時、HPが50%未満なら固定治癒70%(各戦闘3回)"
+      },
+      "invader_observation_logs": {
+        "name": "インベーダー観察記録",
+        "description": "攻撃カードダメージ量+20%、敵数に応じて会心率+2%"
+      }
     }
+  }
 }

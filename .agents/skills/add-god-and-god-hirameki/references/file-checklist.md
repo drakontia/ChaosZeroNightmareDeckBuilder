@@ -10,12 +10,12 @@
 
 ```typescript
 export enum GodType {
-  KILKEN = "kilken",       // キルケン
-  SECLAID = "seclaid",     // セクレド
-  DIALOS = "dialos",       // ディアロス
-  NIHILUM = "nihilum",     // ニヒルム
-  VITOL = "vitol",         // ヴィトル
-  ORDER = "order",         // ORDER
+  KILKEN = "kilken", // キルケン
+  SECLAID = "seclaid", // セクレド
+  DIALOS = "dialos", // ディアロス
+  NIHILUM = "nihilum", // ニヒルム
+  VITOL = "vitol", // ヴィトル
+  ORDER = "order", // ORDER
   // ↓ 新しい神を追加する
   NEW_GOD = "new_god",
 }
@@ -41,11 +41,17 @@ export const GOD_HIRAMEKI_EFFECTS: GodHiramekiDefinition[] = [
   { id: "godhirameki_31", additionalEffect: "効果の説明", gods: [GodType.NEW_GOD] },
 
   // コスト修正付きエフェクト
-  { id: "godhirameki_32", additionalEffect: "効果の説明", costModifier: -1, gods: [GodType.NEW_GOD] },
+  {
+    id: "godhirameki_32",
+    additionalEffect: "効果の説明",
+    costModifier: -1,
+    gods: [GodType.NEW_GOD],
+  },
 ];
 ```
 
 **IDの採番**:
+
 - 現在の最大ID: `godhirameki_29`（2026年5月時点）
 - 次の番号から連番で採番する（`godhirameki_30`, `godhirameki_31`, ...）
 - 既存IDとの重複は許容されない
@@ -54,9 +60,9 @@ export const GOD_HIRAMEKI_EFFECTS: GodHiramekiDefinition[] = [
 
 ```typescript
 interface GodHiramekiDefinition {
-  id: string;              // "godhirameki_N" 形式
+  id: string; // "godhirameki_N" 形式
   additionalEffect: string; // フォールバック文字列（i18nが優先）
-  costModifier?: number;   // コスト修正（省略可）
+  costModifier?: number; // コスト修正（省略可）
   gods: GodType[] | "all"; // 適用可能な神
 }
 ```
@@ -169,7 +175,7 @@ const GOD_TYPES = [
 
 ## 変更ファイル数サマリー
 
-| シナリオ | 変更ファイル数 |
-|----------|--------------|
-| 神ヒラメキエフェクトのみ追加 | 5ファイル（god-hirameki.ts + 4言語） |
-| 新しい神 + エフェクト追加 | 8ファイル（上記 + types/index.ts + Dialog + E2Eテスト） |
+| シナリオ                     | 変更ファイル数                                          |
+| ---------------------------- | ------------------------------------------------------- |
+| 神ヒラメキエフェクトのみ追加 | 5ファイル（god-hirameki.ts + 4言語）                    |
+| 新しい神 + エフェクト追加    | 8ファイル（上記 + types/index.ts + Dialog + E2Eテスト） |

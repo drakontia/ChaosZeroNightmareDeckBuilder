@@ -170,8 +170,7 @@
     "remove": "제거",
     "copy": "복사"
   },
-  "conversion": {
-  },
+  "conversion": {},
   "mutationCore": {
     "title": "뮤테이션 코어",
     "select": "뮤테이션 코어 효과 선택",

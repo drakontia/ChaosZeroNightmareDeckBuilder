@@ -1,25 +1,25 @@
-import { test, expect, Page } from '@playwright/test';
+import { test, expect, Page } from "@playwright/test";
 
 const selectCharacterAndWeapon = async (page: Page) => {
   // Character selection
-  await page.getByRole('button', { name: 'キャラクターを選択' }).click();
+  await page.getByRole("button", { name: "キャラクターを選択" }).click();
   // ダイアログが開いて「チズル」ボタンが表示されるまで待機
-  await page.getByRole('button', { name: 'チズル', exact: true }).waitFor({ state: 'visible' });
-  await page.getByRole('button', { name: 'チズル', exact: true }).click();
+  await page.getByRole("button", { name: "チズル", exact: true }).waitFor({ state: "visible" });
+  await page.getByRole("button", { name: "チズル", exact: true }).click();
 
   // Weapon selection
-  await page.getByRole('button', { name: '武器' }).click();
-  await page.getByRole('button', { name: 'ガストロノミコン' }).click();
+  await page.getByRole("button", { name: "武器" }).click();
+  await page.getByRole("button", { name: "ガストロノミコン" }).click();
 };
 
 const addFirstHiramekiCard = async (page: Page) => {
   // Use a stable card name that exists in fixtures
-  const defaultName = '黄昏の結束';
+  const defaultName = "黄昏の結束";
   return addHiramekiCardByName(page, defaultName);
 };
 
 const addHiramekiCardByName = async (page: Page, cardName: string) => {
-  const hiramekiSection = page.getByRole('heading', { name: 'ヒラメキカード' }).locator('..');
+  const hiramekiSection = page.getByRole("heading", { name: "ヒラメキカード" }).locator("..");
   const target = hiramekiSection.getByText(cardName, { exact: true }).first();
   await expect(target).toBeVisible();
   await target.click({ timeout: 10_000 });
@@ -27,7 +27,7 @@ const addHiramekiCardByName = async (page: Page, cardName: string) => {
 };
 
 const openAccordion = async (page: Page, name: string) => {
-  const trigger = page.getByRole('button', { name });
+  const trigger = page.getByRole("button", { name });
   await trigger.click();
 };
 
@@ -37,41 +37,41 @@ const getDeckCardContainerByName = (page: Page, cardName: string) => {
   return nameLocator.locator('xpath=ancestor::div[.//button[@aria-label="メニュー"]][1]');
 };
 
-test.describe('Deck Builder', () => {
-  test('should load the deck builder page', async ({ page }) => {
-    await page.goto('/');
-    await expect(page.getByText('カオスゼロナイトメア デッキビルダー')).toBeVisible();
+test.describe("Deck Builder", () => {
+  test("should load the deck builder page", async ({ page }) => {
+    await page.goto("/");
+    await expect(page.getByText("カオスゼロナイトメア デッキビルダー")).toBeVisible();
   });
 
-  test('should export deck image', async ({ page }) => {
-    await page.goto('/');
-    const exportBtn = page.getByRole('button', { name: 'エクスポート' });
+  test("should export deck image", async ({ page }) => {
+    await page.goto("/");
+    const exportBtn = page.getByRole("button", { name: "エクスポート" });
     await expect(exportBtn).toBeVisible();
 
-    const downloadPromise = page.waitForEvent('download');
+    const downloadPromise = page.waitForEvent("download");
     await exportBtn.click();
     const download = await downloadPromise;
-    expect(download.suggestedFilename().toLowerCase()).toContain('.png');
+    expect(download.suggestedFilename().toLowerCase()).toContain(".png");
   });
 
-  test('should select a character', async ({ page }) => {
-    await page.goto('/');
+  test("should select a character", async ({ page }) => {
+    await page.goto("/");
     await selectCharacterAndWeapon(page);
 
     // Verify character is shown in the deck
-    await expect(page.getByText('チズル').first()).toBeVisible();
+    await expect(page.getByText("チズル").first()).toBeVisible();
   });
 
-  test('should select equipment', async ({ page }) => {
-    await page.goto('/');
+  test("should select equipment", async ({ page }) => {
+    await page.goto("/");
     await selectCharacterAndWeapon(page);
 
     // Verify weapon is shown in the deck (selected equipment button reflects the choice)
-    await expect(page.getByRole('button', { name: 'ガストロノミコン' })).toBeVisible();
+    await expect(page.getByRole("button", { name: "ガストロノミコン" })).toBeVisible();
   });
 
-  test('should add cards to deck', async ({ page }) => {
-    await page.goto('/');
+  test("should add cards to deck", async ({ page }) => {
+    await page.goto("/");
     await selectCharacterAndWeapon(page);
 
     const addedCardName = await addFirstHiramekiCard(page);
@@ -80,15 +80,17 @@ test.describe('Deck Builder', () => {
     await expect(deckCard).toBeVisible();
 
     // Deck total should go from 4 to 5
-    await expect(page.getByTestId('total-cards')).toContainText('5');
+    await expect(page.getByTestId("total-cards")).toContainText("5");
   });
 
-  test('should change card hirameki state and update description to selected level', async ({ page }) => {
-    await page.goto('/');
+  test("should change card hirameki state and update description to selected level", async ({
+    page,
+  }) => {
+    await page.goto("/");
     await selectCharacterAndWeapon(page);
-    const cardName = await addHiramekiCardByName(page, '月読');
+    const cardName = await addHiramekiCardByName(page, "月読");
     const deckCard = getDeckCardContainerByName(page, cardName);
-    const hiramekiBtn = deckCard.getByRole('button', { name: 'ヒラメキ', exact: true });
+    const hiramekiBtn = deckCard.getByRole("button", { name: "ヒラメキ", exact: true });
     await expect(hiramekiBtn).toBeVisible();
     await hiramekiBtn.click();
 
@@ -96,7 +98,7 @@ test.describe('Deck Builder', () => {
     const lv1Tile = page.locator('[title="Lv1"]').first();
     const lv1Text = await lv1Tile.innerText();
     const lv1Lines = lv1Text
-      .split('\n')
+      .split("\n")
       .map((line) => line.trim())
       .filter(Boolean);
     await lv1Tile.click();
@@ -110,24 +112,26 @@ test.describe('Deck Builder', () => {
     }
   });
 
-  test('should change card to god hirameki state and show localized effect with correct cost', async ({ page }) => {
-    await page.goto('/');
+  test("should change card to god hirameki state and show localized effect with correct cost", async ({
+    page,
+  }) => {
+    await page.goto("/");
     await selectCharacterAndWeapon(page);
     const cardName = await addFirstHiramekiCard(page);
     const deckCard = getDeckCardContainerByName(page, cardName);
-    const godBtn = deckCard.getByRole('button', { name: '神ヒラメキ選択', exact: true });
+    const godBtn = deckCard.getByRole("button", { name: "神ヒラメキ選択", exact: true });
     await expect(godBtn).toBeVisible();
     await godBtn.click();
 
     // 新しいドロップダウンUIから神を選択し、最初の効果プレビューをクリック
-    const dialog = page.getByRole('dialog');
-    const godDropdown = dialog.getByRole('button', { name: '神ヒラメキ選択' }).first();
+    const dialog = page.getByRole("dialog");
+    const godDropdown = dialog.getByRole("button", { name: "神ヒラメキ選択" }).first();
     await godDropdown.click();
-    const kilkenOption = page.getByRole('menuitem', { name: 'キルケン' }).first();
+    const kilkenOption = page.getByRole("menuitem", { name: "キルケン" }).first();
     await kilkenOption.click();
-    const effectTile = dialog.locator('button[title]').first();
+    const effectTile = dialog.locator("button[title]").first();
     const effectText = await effectTile.innerText();
-    const effectSnippet = effectText.split('\n')[0]?.trim();
+    const effectSnippet = effectText.split("\n")[0]?.trim();
     const tileCostMatch = effectText.match(/\b(\d+)\b/);
     const expectedCost = tileCostMatch ? parseInt(tileCostMatch[1], 10) : undefined;
     await effectTile.click();
@@ -149,66 +153,72 @@ test.describe('Deck Builder', () => {
     }
   });
 
-  test('should remove card from deck', async ({ page }) => {
-    await page.goto('/');
+  test("should remove card from deck", async ({ page }) => {
+    await page.goto("/");
     await selectCharacterAndWeapon(page);
     const cardName = await addFirstHiramekiCard(page);
 
     // Remove the card
     const deckCard = getDeckCardContainerByName(page, cardName);
-    await deckCard.getByRole('button', { name: 'メニュー' }).click();
-    const deleteBtn = page.getByRole('button', { name: '削除', exact: true });
+    await deckCard.getByRole("button", { name: "メニュー" }).click();
+    const deleteBtn = page.getByRole("button", { name: "削除", exact: true });
     await expect(deleteBtn).toBeVisible();
     await deleteBtn.click();
 
     // Verify card is removed
-    await expect(page.getByTestId('total-cards')).toContainText('4');
+    await expect(page.getByTestId("total-cards")).toContainText("4");
   });
 
-  test('should clear entire deck', async ({ page }) => {
-    await page.goto('/');
+  test("should clear entire deck", async ({ page }) => {
+    await page.goto("/");
     await selectCharacterAndWeapon(page);
     await addFirstHiramekiCard(page);
 
     // Clear deck
-    await page.getByRole('button', { name: 'クリア' }).click();
+    await page.getByRole("button", { name: "クリア" }).click();
 
     // Verify deck is cleared
-    await expect(page.getByText('キャラクターを選択すると開始カードが表示されます')).toBeVisible();
+    await expect(page.getByText("キャラクターを選択すると開始カードが表示されます")).toBeVisible();
   });
 
-  test('should add different card types', async ({ page }) => {
-    await page.goto('/');
+  test("should add different card types", async ({ page }) => {
+    await page.goto("/");
     await selectCharacterAndWeapon(page);
 
     await addFirstHiramekiCard(page);
 
-    await openAccordion(page, '共用カード');
-    const sharedSection = page.getByRole('heading', { name: '共用カード' }).locator('..');
-    await sharedSection.getByText('加虐性', { exact: true }).first().click({ timeout: 10_000 });
+    await openAccordion(page, "共用カード");
+    const sharedSection = page.getByRole("heading", { name: "共用カード" }).locator("..");
+    await sharedSection.getByText("加虐性", { exact: true }).first().click({ timeout: 10_000 });
 
-    await openAccordion(page, 'モンスターカード');
-    const monsterSection = page.getByRole('heading', { name: 'モンスターカード' }).locator('..');
-    await monsterSection.getByText('恥ずかしがり屋の庭師', { exact: true }).first().click({ timeout: 10_000 });
+    await openAccordion(page, "モンスターカード");
+    const monsterSection = page.getByRole("heading", { name: "モンスターカード" }).locator("..");
+    await monsterSection
+      .getByText("恥ずかしがり屋の庭師", { exact: true })
+      .first()
+      .click({ timeout: 10_000 });
 
-    await openAccordion(page, 'シーズンカード 1');
-    const forbiddenSection = page.getByRole('heading', { name: 'シーズンカード 1' }).locator('..');
-    await forbiddenSection.getByText('禁じられたアルゴリズム', { exact: true }).first().click({ timeout: 10_000 });
+    await openAccordion(page, "シーズンカード 1");
+    const forbiddenSection = page.getByRole("heading", { name: "シーズンカード 1" }).locator("..");
+    await forbiddenSection
+      .getByText("禁じられたアルゴリズム", { exact: true })
+      .first()
+      .click({ timeout: 10_000 });
 
     // Verify deck total now equals 8 (4 start + 4 added)
-    await expect(page.getByTestId('total-cards')).toContainText('8');
+    await expect(page.getByTestId("total-cards")).toContainText("8");
   });
 
-  test('hirameki cards should hide after add and reappear on undo', async ({ page }) => {
-    await page.goto('/');
+  test("hirameki cards should hide after add and reappear on undo", async ({ page }) => {
+    await page.goto("/");
     await selectCharacterAndWeapon(page);
 
     // Locate the Hirameki section and its grid
-    const hiramekiSection = page.getByRole('heading', { name: 'ヒラメキカード' }).locator('..');
-    const hiramekiGrid = hiramekiSection.locator('.grid');
+    const hiramekiSection = page.getByRole("heading", { name: "ヒラメキカード" }).locator("..");
+    const hiramekiGrid = hiramekiSection.locator(".grid");
 
-    const firstCard = hiramekiGrid.locator('div[title]').first();
-    const clickedTitle = await firstCard.getAttribute('title');
+    const firstCard = hiramekiGrid.locator("div[title]").first();
+    const clickedTitle = await firstCard.getAttribute("title");
     await firstCard.click();
 
     // After adding, the clicked card should disappear from the list
@@ -216,40 +226,40 @@ test.describe('Deck Builder', () => {
 
     // Undo from deck to bring it back
     // The added card appears at the end of deck; open its menu
-    await page.getByRole('button', { name: 'メニュー' }).last().click();
-    const undoBtn = page.getByRole('button', { name: '戻す' }).first();
+    await page.getByRole("button", { name: "メニュー" }).last().click();
+    const undoBtn = page.getByRole("button", { name: "戻す" }).first();
     await expect(undoBtn).toBeVisible();
     await undoBtn.click();
 
     // Deck count should return to the original size after undo
-    await expect(page.getByTestId('total-cards')).toContainText('4');
+    await expect(page.getByTestId("total-cards")).toContainText("4");
   });
 
-  test('should convert a card to shared and restore from converted list', async ({ page }) => {
-    await page.goto('/');
+  test("should convert a card to shared and restore from converted list", async ({ page }) => {
+    await page.goto("/");
     await selectCharacterAndWeapon(page);
 
     const originalName = await addFirstHiramekiCard(page);
 
     // Open actions menu for the added card
     const deckCard = getDeckCardContainerByName(page, originalName);
-    await expect(deckCard.getByRole('button', { name: 'メニュー' })).toBeVisible();
-    await deckCard.getByRole('button', { name: 'メニュー' }).click();
-    await deckCard.getByRole('button', { name: '変換' }).click();
+    await expect(deckCard.getByRole("button", { name: "メニュー" })).toBeVisible();
+    await deckCard.getByRole("button", { name: "メニュー" }).click();
+    await deckCard.getByRole("button", { name: "変換" }).click();
 
     // Pick a shared card from the conversion modal
-    const targetName = '加虐性';
-    const dialog = page.getByRole('dialog');
+    const targetName = "加虐性";
+    const dialog = page.getByRole("dialog");
     const targetTile = dialog.getByText(targetName, { exact: true }).first();
     await expect(targetTile).toBeVisible();
     await targetTile.click({ timeout: 10_000 });
 
     // Deck should now show the converted target card (with actions menu available)
     const convertedDeckCard = getDeckCardContainerByName(page, targetName);
-    await expect(convertedDeckCard.getByRole('button', { name: 'メニュー' })).toBeVisible();
+    await expect(convertedDeckCard.getByRole("button", { name: "メニュー" })).toBeVisible();
 
     // Converted list should show the original card for restoration
-    const convertedSection = page.getByRole('heading', { name: '変換したカード' }).locator('..');
+    const convertedSection = page.getByRole("heading", { name: "変換したカード" }).locator("..");
     const originalTile = convertedSection.locator(`div[title="${originalName}"]`).first();
     await expect(originalTile).toBeVisible();
 
@@ -258,17 +268,17 @@ test.describe('Deck Builder', () => {
 
     // Deck shows the original card again and converted list entry disappears
     const restoredDeckCard = getDeckCardContainerByName(page, originalName);
-    await expect(restoredDeckCard.getByRole('button', { name: 'メニュー' })).toBeVisible();
+    await expect(restoredDeckCard.getByRole("button", { name: "メニュー" })).toBeVisible();
     await expect(convertedSection.locator(`div[title="${originalName}"]`)).toHaveCount(0);
   });
 
-  test('should copy a card via actions menu', async ({ page }) => {
-    await page.goto('/');
+  test("should copy a card via actions menu", async ({ page }) => {
+    await page.goto("/");
     await selectCharacterAndWeapon(page);
 
-    const cardName = '加虐性';
-    await openAccordion(page, '共用カード');
-    const sharedSection = page.getByRole('heading', { name: '共用カード' }).locator('..');
+    const cardName = "加虐性";
+    await openAccordion(page, "共用カード");
+    const sharedSection = page.getByRole("heading", { name: "共用カード" }).locator("..");
     await sharedSection.getByText(cardName, { exact: true }).first().click({ timeout: 10_000 });
 
     // Copy the card from its actions menu
@@ -277,26 +287,26 @@ test.describe('Deck Builder', () => {
       .getByText(cardName, { exact: true })
       .locator('xpath=ancestor::div[.//button[@aria-label="メニュー"]][1]');
     const countBefore = await copies.count();
-    const totalText = await page.getByTestId('total-cards').innerText();
-    const totalBefore = parseInt(totalText.replace(/[^0-9]/g, ''), 10);
-    await deckCard.getByRole('button', { name: 'メニュー' }).click();
-    const copyBtn = page.getByRole('button', { name: 'コピー', exact: true });
+    const totalText = await page.getByTestId("total-cards").innerText();
+    const totalBefore = parseInt(totalText.replace(/[^0-9]/g, ""), 10);
+    await deckCard.getByRole("button", { name: "メニュー" }).click();
+    const copyBtn = page.getByRole("button", { name: "コピー", exact: true });
     await expect(copyBtn).toBeVisible();
     await copyBtn.click();
 
     // Copies increase by 1 and total card count increments accordingly
     await expect.poll(async () => copies.count()).toBe(countBefore + 1);
-    await expect(page.getByTestId('total-cards')).toContainText(String(totalBefore + 1));
+    await expect(page.getByTestId("total-cards")).toContainText(String(totalBefore + 1));
   });
 
-  test('should copy share URL and load shared deck', async ({ page, context }) => {
+  test("should copy share URL and load shared deck", async ({ page, context }) => {
     // Grant clipboard permissions
-    await context.grantPermissions(['clipboard-read', 'clipboard-write']);
+    await context.grantPermissions(["clipboard-read", "clipboard-write"]);
 
-    await page.goto('/');
+    await page.goto("/");
     await page.evaluate(() => {
-      (window as any).__copiedURL = '';
-      Object.defineProperty(navigator, 'clipboard', {
+      (window as any).__copiedURL = "";
+      Object.defineProperty(navigator, "clipboard", {
         value: {
           writeText: async (text: string) => {
             (window as any).__copiedURL = text;
@@ -313,14 +323,14 @@ test.describe('Deck Builder', () => {
     const addedCardName = await addFirstHiramekiCard(page);
 
     // Confirm deck card count is now 5
-    await expect(page.getByTestId('total-cards')).toContainText('5');
+    await expect(page.getByTestId("total-cards")).toContainText("5");
 
     // Click share and capture alert
-    const shareBtn = page.getByRole('button', { name: '共有' });
+    const shareBtn = page.getByRole("button", { name: "共有" });
     await expect(shareBtn).toBeEnabled();
 
     const alertPromise = new Promise<string>((resolve) => {
-      page.once('dialog', async (dialog) => {
+      page.once("dialog", async (dialog) => {
         resolve(dialog.message());
         await dialog.accept();
       });
@@ -328,8 +338,8 @@ test.describe('Deck Builder', () => {
 
     await shareBtn.click();
     const alertMessage = await alertPromise;
-    
-    expect(alertMessage).toContain('共有URLをコピーしました');
+
+    expect(alertMessage).toContain("共有URLをコピーしました");
 
     // Read mocked clipboard and navigate to shared URL
     const shareURL = await page.evaluate(() => (window as any).__copiedURL as string);
@@ -338,18 +348,22 @@ test.describe('Deck Builder', () => {
     await page.goto(shareURL);
 
     // Verify shared page reflects the same deck state
-    await expect.poll(async () => await page.locator('[data-testid="total-cards"]').count(), { timeout: 30000 }).toBeGreaterThan(0);
-    await expect(page.getByTestId('total-cards')).toContainText('5', { timeout: 30000 });
+    await expect
+      .poll(async () => await page.locator('[data-testid="total-cards"]').count(), {
+        timeout: 30000,
+      })
+      .toBeGreaterThan(0);
+    await expect(page.getByTestId("total-cards")).toContainText("5", { timeout: 30000 });
 
     // Verify the previously added card is present in the shared deck
     const sharedDeckCard = getDeckCardContainerByName(page, addedCardName);
     await expect(sharedDeckCard).toBeVisible();
   });
 
-  test('should save and load deck via localStorage', async ({ page }) => {
-    await page.goto('/');
+  test("should save and load deck via localStorage", async ({ page }) => {
+    await page.goto("/");
 
-    const saveBtn = page.getByRole('button', { name: '保存', exact: true });
+    const saveBtn = page.getByRole("button", { name: "保存", exact: true });
     await expect(saveBtn).toBeDisabled();
 
     await selectCharacterAndWeapon(page);
@@ -360,50 +374,52 @@ test.describe('Deck Builder', () => {
     await page.evaluate(() => {
       (window as any).__alerts = [];
       window.alert = (msg?: string) => {
-        (window as any).__alerts.push(msg ?? '');
+        (window as any).__alerts.push(msg ?? "");
       };
-      window.prompt = () => 'e2e-save';
+      window.prompt = () => "e2e-save";
     });
 
     await saveBtn.click();
 
     const alerts = await page.evaluate(() => (window as any).__alerts as string[]);
-    expect(alerts[0]).toContain('保存');
+    expect(alerts[0]).toContain("保存");
 
     // Clear to simulate loading later
-    await page.getByRole('button', { name: 'クリア' }).click();
-    await expect(page.getByText('キャラクターを選択すると開始カードが表示されます')).toBeVisible();
+    await page.getByRole("button", { name: "クリア" }).click();
+    await expect(page.getByText("キャラクターを選択すると開始カードが表示されます")).toBeVisible();
 
     // Open load dialog and load the saved deck
-    await page.getByRole('button', { name: '読込' }).click();
-    const dialog = page.getByRole('dialog');
-    const row = dialog.locator('div').filter({ hasText: 'e2e-save' }).first();
+    await page.getByRole("button", { name: "読込" }).click();
+    const dialog = page.getByRole("dialog");
+    const row = dialog.locator("div").filter({ hasText: "e2e-save" }).first();
     await expect(row).toBeVisible();
-    await row.getByRole('button', { name: '読込' }).click();
+    await row.getByRole("button", { name: "読込" }).click();
 
     // Verify restored deck
-    await expect(page.getByText('チズル').first()).toBeVisible();
-    await expect(page.getByTestId('total-cards')).toContainText('5');
-    await expect(page.locator('#deck-name')).toHaveValue('e2e-save');
+    await expect(page.getByText("チズル").first()).toBeVisible();
+    await expect(page.getByTestId("total-cards")).toContainText("5");
+    await expect(page.locator("#deck-name")).toHaveValue("e2e-save");
   });
 
-  test('should copy card and reflect points in Faint Memory', async ({ page }) => {
-    await page.goto('/');
+  test("should copy card and reflect points in Faint Memory", async ({ page }) => {
+    await page.goto("/");
     await selectCharacterAndWeapon(page);
 
     // Use a copyable starting card (non-basic, non-UNIQUE)
-    const cardName = '業火';
+    const cardName = "業火";
     const deckCard = getDeckCardContainerByName(page, cardName);
     await expect(deckCard).toBeVisible();
 
-    const totalCardsBefore = parseInt(await page.locator('[data-testid="total-cards"]').innerText());
+    const totalCardsBefore = parseInt(
+      await page.locator('[data-testid="total-cards"]').innerText(),
+    );
 
-    const menuBtn = deckCard.getByRole('button', { name: 'メニュー' });
+    const menuBtn = deckCard.getByRole("button", { name: "メニュー" });
     await expect(menuBtn).toBeVisible({ timeout: 5000 });
     await menuBtn.click();
     await page.waitForTimeout(200);
 
-    const copyBtn = page.getByRole('button', { name: 'コピー', exact: true });
+    const copyBtn = page.getByRole("button", { name: "コピー", exact: true });
     await expect(copyBtn).toBeVisible({ timeout: 5000 });
     await copyBtn.click();
 
@@ -413,36 +429,38 @@ test.describe('Deck Builder', () => {
     expect(totalCardsAfter).toBe(totalCardsBefore + 1);
   });
 
-  test('should remove card and reflect points in Faint Memory', async ({ page }) => {
-    await page.goto('/');
+  test("should remove card and reflect points in Faint Memory", async ({ page }) => {
+    await page.goto("/");
     await selectCharacterAndWeapon(page);
-    
+
     // Add a card
     const cardName = await addFirstHiramekiCard(page);
-    
+
     // Get initial total cards count
-    const totalCardsBefore = parseInt(await page.locator('[data-testid="total-cards"]').innerText());
-    
+    const totalCardsBefore = parseInt(
+      await page.locator('[data-testid="total-cards"]').innerText(),
+    );
+
     // Open menu and remove card
     const deckCard = getDeckCardContainerByName(page, cardName);
-    const menuBtn = deckCard.getByRole('button', { name: 'メニュー' });
+    const menuBtn = deckCard.getByRole("button", { name: "メニュー" });
     await expect(menuBtn).toBeVisible({ timeout: 5000 });
     await menuBtn.click();
     await page.waitForTimeout(300);
-    const deleteBtn = page.getByRole('button', { name: '削除', exact: true });
+    const deleteBtn = page.getByRole("button", { name: "削除", exact: true });
     await expect(deleteBtn).toBeVisible();
     await deleteBtn.click();
-    
+
     // Wait for UI to update
     await page.waitForTimeout(500);
-    
+
     // Verify card count decreased
     const totalCardsAfter = parseInt(await page.locator('[data-testid="total-cards"]').innerText());
     expect(totalCardsAfter).toBe(totalCardsBefore - 1);
   });
 
-  test('should restore removed card from removed list', async ({ page }) => {
-    await page.goto('/');
+  test("should restore removed card from removed list", async ({ page }) => {
+    await page.goto("/");
     await selectCharacterAndWeapon(page);
 
     // Add a card and then remove it
@@ -450,18 +468,18 @@ test.describe('Deck Builder', () => {
     const totalBefore = parseInt(await page.locator('[data-testid="total-cards"]').innerText());
 
     const deckCard = getDeckCardContainerByName(page, cardName);
-    const menuBtn = deckCard.getByRole('button', { name: 'メニュー' });
+    const menuBtn = deckCard.getByRole("button", { name: "メニュー" });
     await expect(menuBtn).toBeVisible({ timeout: 5000 });
     await menuBtn.click();
     await page.waitForTimeout(300);
 
-    const deleteBtn = page.getByRole('button', { name: '削除', exact: true });
+    const deleteBtn = page.getByRole("button", { name: "削除", exact: true });
     await expect(deleteBtn).toBeVisible();
     await deleteBtn.click();
     await page.waitForTimeout(400);
 
     // Confirm it moved to removed list
-    const removedSection = page.getByRole('heading', { name: '削除したカード' }).locator('..');
+    const removedSection = page.getByRole("heading", { name: "削除したカード" }).locator("..");
     await expect(removedSection).toBeVisible();
     const removedTile = removedSection.getByText(cardName, { exact: true }).first();
     await expect(removedTile).toBeVisible();
@@ -471,33 +489,36 @@ test.describe('Deck Builder', () => {
     await page.waitForTimeout(500);
 
     // Verify deck count restored
-    const totalAfterRestore = parseInt(await page.locator('[data-testid="total-cards"]').innerText());
+    const totalAfterRestore = parseInt(
+      await page.locator('[data-testid="total-cards"]').innerText(),
+    );
     expect(totalAfterRestore).toBe(totalBefore);
 
     // Verify the card is removed from the removed list (refresh the section)
-    const updatedRemovedSection = page.getByRole('heading', { name: '削除したカード' }).locator('..');
+    const updatedRemovedSection = page
+      .getByRole("heading", { name: "削除したカード" })
+      .locator("..");
     const removedCount = await updatedRemovedSection.getByText(cardName, { exact: true }).count();
     expect(removedCount).toBe(0);
   });
 
-
-  test('should copy card multiple times and accumulate Faint Memory points', async ({ page }) => {
-    await page.goto('/');
+  test("should copy card multiple times and accumulate Faint Memory points", async ({ page }) => {
+    await page.goto("/");
     await selectCharacterAndWeapon(page);
 
-    const cardName = '業火';
+    const cardName = "業火";
     const deckCard = getDeckCardContainerByName(page, cardName);
     await expect(deckCard).toBeVisible();
 
     const initialCount = parseInt(await page.locator('[data-testid="total-cards"]').innerText());
 
     for (let i = 0; i < 2; i++) {
-      const menuBtn = deckCard.getByRole('button', { name: 'メニュー' });
+      const menuBtn = deckCard.getByRole("button", { name: "メニュー" });
       await expect(menuBtn).toBeVisible({ timeout: 5000 });
       await menuBtn.click();
       await page.waitForTimeout(200);
 
-      const copyBtn = page.getByRole('button', { name: 'コピー', exact: true });
+      const copyBtn = page.getByRole("button", { name: "コピー", exact: true });
       await expect(copyBtn).toBeVisible({ timeout: 5000 });
       await copyBtn.click();
       await page.waitForTimeout(400);
@@ -507,8 +528,8 @@ test.describe('Deck Builder', () => {
     expect(finalCount).toBe(initialCount + 2);
   });
 
-  test('should undo converted card to restore original card', async ({ page }) => {
-    await page.goto('/');
+  test("should undo converted card to restore original card", async ({ page }) => {
+    await page.goto("/");
     await selectCharacterAndWeapon(page);
 
     const originalName = await addFirstHiramekiCard(page);
@@ -516,11 +537,11 @@ test.describe('Deck Builder', () => {
 
     // Convert the card
     const deckCard = getDeckCardContainerByName(page, originalName);
-    await deckCard.getByRole('button', { name: 'メニュー' }).click();
-    await deckCard.getByRole('button', { name: '変換' }).click();
+    await deckCard.getByRole("button", { name: "メニュー" }).click();
+    await deckCard.getByRole("button", { name: "変換" }).click();
 
-    const targetName = '加虐性';
-    const dialog = page.getByRole('dialog');
+    const targetName = "加虐性";
+    const dialog = page.getByRole("dialog");
     const targetTile = dialog.getByText(targetName, { exact: true }).first();
     await expect(targetTile).toBeVisible();
     await targetTile.click({ timeout: 10_000 });
@@ -531,9 +552,9 @@ test.describe('Deck Builder', () => {
     await expect(convertedDeckCard).toBeVisible();
 
     // Undo the converted card
-    await convertedDeckCard.getByRole('button', { name: 'メニュー' }).click();
+    await convertedDeckCard.getByRole("button", { name: "メニュー" }).click();
     await page.waitForTimeout(200);
-    const undoBtn = page.getByRole('button', { name: '戻す' });
+    const undoBtn = page.getByRole("button", { name: "戻す" });
     await expect(undoBtn).toBeVisible();
     await undoBtn.click();
     await page.waitForTimeout(500);
@@ -543,7 +564,8 @@ test.describe('Deck Builder', () => {
     await expect(restoredDeckCard).toBeVisible();
 
     // Verify converted card is no longer in deck
-    const convertedCards = page.getByText(targetName, { exact: true })
+    const convertedCards = page
+      .getByText(targetName, { exact: true })
       .locator('xpath=ancestor::div[.//button[@aria-label="メニュー"]][1]');
     await expect(convertedCards).toHaveCount(0);
 
@@ -552,17 +574,17 @@ test.describe('Deck Builder', () => {
     expect(totalAfter).toBe(totalBefore);
 
     // Verify converted list is cleared
-    const convertedSection = page.getByRole('heading', { name: '変換したカード' }).locator('..');
+    const convertedSection = page.getByRole("heading", { name: "変換したカード" }).locator("..");
     await expect(convertedSection.locator(`div[title="${originalName}"]`)).toHaveCount(0);
   });
 
-  test('should undo copied card to remove it from deck', async ({ page }) => {
-    await page.goto('/');
+  test("should undo copied card to remove it from deck", async ({ page }) => {
+    await page.goto("/");
     await selectCharacterAndWeapon(page);
 
-    const cardName = '加虐性';
-    await openAccordion(page, '共用カード');
-    const sharedSection = page.getByRole('heading', { name: '共用カード' }).locator('..');
+    const cardName = "加虐性";
+    await openAccordion(page, "共用カード");
+    const sharedSection = page.getByRole("heading", { name: "共用カード" }).locator("..");
     await sharedSection.getByText(cardName, { exact: true }).first().click({ timeout: 10_000 });
     await page.waitForTimeout(400);
 
@@ -570,8 +592,8 @@ test.describe('Deck Builder', () => {
 
     // Copy the card
     const deckCard = getDeckCardContainerByName(page, cardName);
-    await deckCard.getByRole('button', { name: 'メニュー' }).first().click();
-    const copyBtn = page.getByRole('button', { name: 'コピー', exact: true });
+    await deckCard.getByRole("button", { name: "メニュー" }).first().click();
+    const copyBtn = page.getByRole("button", { name: "コピー", exact: true });
     await expect(copyBtn).toBeVisible();
     await copyBtn.click();
     await page.waitForTimeout(400);
@@ -585,8 +607,8 @@ test.describe('Deck Builder', () => {
     const menuButtonCount = await allMenuButtons.count();
     await allMenuButtons.nth(menuButtonCount - 1).click();
     await page.waitForTimeout(200);
-    
-    const undoBtn = page.getByRole('button', { name: '戻す' });
+
+    const undoBtn = page.getByRole("button", { name: "戻す" });
     await expect(undoBtn).toBeVisible({ timeout: 5000 });
     await undoBtn.click();
     await page.waitForTimeout(1000);
@@ -596,8 +618,8 @@ test.describe('Deck Builder', () => {
     expect(totalAfterUndo).toBe(totalBefore);
   });
 
-  test('should undo added card to remove it from deck', async ({ page }) => {
-    await page.goto('/');
+  test("should undo added card to remove it from deck", async ({ page }) => {
+    await page.goto("/");
     await selectCharacterAndWeapon(page);
 
     const totalBefore = parseInt(await page.locator('[data-testid="total-cards"]').innerText());
@@ -611,9 +633,9 @@ test.describe('Deck Builder', () => {
     // Undo the added card
     // Use getDeckCardContainerByName to find the specific card and click its menu
     const deckCard = getDeckCardContainerByName(page, cardName);
-    await deckCard.getByRole('button', { name: 'メニュー' }).first().click();
+    await deckCard.getByRole("button", { name: "メニュー" }).first().click();
     await page.waitForTimeout(300);
-    let undoBtn = page.getByRole('button', { name: '戻す' });
+    let undoBtn = page.getByRole("button", { name: "戻す" });
     await expect(undoBtn).toBeVisible({ timeout: 10000 });
     await undoBtn.click();
     await page.waitForTimeout(2000);
@@ -626,32 +648,37 @@ test.describe('Deck Builder', () => {
     await page.waitForTimeout(500);
     // Look for the card only in the deck display area (not in the card selector)
     // First, find the main deck display container
-    const deckCardContainers = await page.locator('main').getByText(cardName, { exact: true }).all();
+    const deckCardContainers = await page
+      .locator("main")
+      .getByText(cardName, { exact: true })
+      .all();
     expect(deckCardContainers).toHaveLength(0);
   });
 
-  test('should reduce Faint Memory points when undoing a copied card', async ({ page }) => {
-    await page.goto('/');
+  test("should reduce Faint Memory points when undoing a copied card", async ({ page }) => {
+    await page.goto("/");
     await selectCharacterAndWeapon(page);
     await page.waitForTimeout(1000);
 
-    const cardName = '加虐性';
-    await openAccordion(page, '共用カード');
-    const sharedSection = page.getByRole('heading', { name: '共用カード' }).locator('..');
+    const cardName = "加虐性";
+    await openAccordion(page, "共用カード");
+    const sharedSection = page.getByRole("heading", { name: "共用カード" }).locator("..");
     await sharedSection.getByText(cardName, { exact: true }).first().click({ timeout: 10_000 });
     await page.waitForTimeout(400);
-    
+
     // Ensure faint memory element is visible
-    await page.locator('[data-testid="faint-memory"]').waitFor({ state: 'visible', timeout: 10000 });
+    await page
+      .locator('[data-testid="faint-memory"]')
+      .waitFor({ state: "visible", timeout: 10000 });
 
     // Get initial faint memory points
     const faintMemoryText = await page.locator('[data-testid="faint-memory"]').innerText();
-    const initialPoints = parseInt(faintMemoryText.replace(/[^0-9]/g, ''));
+    const initialPoints = parseInt(faintMemoryText.replace(/[^0-9]/g, ""));
 
     // Copy the card
     const deckCard = getDeckCardContainerByName(page, cardName);
-    await deckCard.getByRole('button', { name: 'メニュー' }).click();
-    const copyBtn = page.getByRole('button', { name: 'コピー', exact: true });
+    await deckCard.getByRole("button", { name: "メニュー" }).click();
+    const copyBtn = page.getByRole("button", { name: "コピー", exact: true });
     await expect(copyBtn).toBeVisible();
     await copyBtn.click();
     await page.waitForTimeout(400);
@@ -659,7 +686,7 @@ test.describe('Deck Builder', () => {
     // Get points after copy
     // (共用カード 20pt + コピー属性 20pt = 40pt)
     const afterCopyText = await page.locator('[data-testid="faint-memory"]').innerText();
-    const afterCopyPoints = parseInt(afterCopyText.replace(/[^0-9]/g, ''));
+    const afterCopyPoints = parseInt(afterCopyText.replace(/[^0-9]/g, ""));
     expect(afterCopyPoints).toBe(initialPoints + 20); // 共用カード属性が1回加算される
 
     // Undo the copied card (the most recently added card)
@@ -667,44 +694,48 @@ test.describe('Deck Builder', () => {
     const menuButtonCount = await allMenuButtons.count();
     await allMenuButtons.nth(menuButtonCount - 1).click();
     await page.waitForTimeout(300);
-    const undoBtn = page.getByRole('button', { name: '戻す' });
+    const undoBtn = page.getByRole("button", { name: "戻す" });
     await expect(undoBtn).toBeVisible({ timeout: 10000 });
     await undoBtn.click();
     await page.waitForTimeout(1500);
 
     // Verify points returned to initial value
     const afterUndoText = await page.locator('[data-testid="faint-memory"]').innerText();
-    const afterUndoPoints = parseInt(afterUndoText.replace(/[^0-9]/g, ''));
+    const afterUndoPoints = parseInt(afterUndoText.replace(/[^0-9]/g, ""));
     expect(afterUndoPoints).toBe(initialPoints); // コピーされたカードを削除したので、点数は元に戻る
   });
 
-  test('should reduce Faint Memory points progressively when undoing multiple copies', async ({ page }) => {
+  test("should reduce Faint Memory points progressively when undoing multiple copies", async ({
+    page,
+  }) => {
     test.slow();
 
-    await page.goto('/');
+    await page.goto("/");
     await selectCharacterAndWeapon(page);
     await page.waitForTimeout(1000);
 
-    const cardName = '加虐性';
-    await openAccordion(page, '共用カード');
-    const sharedSection = page.getByRole('heading', { name: '共用カード' }).locator('..');
+    const cardName = "加虐性";
+    await openAccordion(page, "共用カード");
+    const sharedSection = page.getByRole("heading", { name: "共用カード" }).locator("..");
     await sharedSection.getByText(cardName, { exact: true }).first().click({ timeout: 10_000 });
     await page.waitForTimeout(400);
-    
+
     // Ensure faint memory element is visible
-    await page.locator('[data-testid="faint-memory"]').waitFor({ state: 'visible', timeout: 10000 });
+    await page
+      .locator('[data-testid="faint-memory"]')
+      .waitFor({ state: "visible", timeout: 10000 });
 
     // Get initial points
     const initialText = await page.locator('[data-testid="faint-memory"]').innerText();
-    const initialPoints = parseInt(initialText.replace(/[^0-9]/g, ''));
+    const initialPoints = parseInt(initialText.replace(/[^0-9]/g, ""));
 
     const deckCard = getDeckCardContainerByName(page, cardName);
 
     // Make 3 copies
     for (let i = 0; i < 3; i++) {
-      await deckCard.getByRole('button', { name: 'メニュー' }).click();
+      await deckCard.getByRole("button", { name: "メニュー" }).click();
       await page.waitForTimeout(200);
-      const copyBtn = page.getByRole('button', { name: 'コピー', exact: true });
+      const copyBtn = page.getByRole("button", { name: "コピー", exact: true });
       await expect(copyBtn).toBeVisible();
       await copyBtn.click();
       await page.waitForTimeout(400);
@@ -713,7 +744,7 @@ test.describe('Deck Builder', () => {
     // Points after 3 copies: 120 points total
     // (Note: This seems high, may need to investigate calculateFaintMemory logic)
     const after3CopiesText = await page.locator('[data-testid="faint-memory"]').innerText();
-    const after3CopiesPoints = parseInt(after3CopiesText.replace(/[^0-9]/g, ''));
+    const after3CopiesPoints = parseInt(after3CopiesText.replace(/[^0-9]/g, ""));
     expect(after3CopiesPoints).toBe(120);
 
     // Undo one copy (undo the last added copy - 3rd copy)
@@ -721,108 +752,114 @@ test.describe('Deck Builder', () => {
     let menuButtonCount = await allMenuButtons.count();
     await allMenuButtons.nth(menuButtonCount - 1).click();
     await page.waitForTimeout(300);
-    let undoBtn = page.getByRole('button', { name: '戻す' });
+    let undoBtn = page.getByRole("button", { name: "戻す" });
     await expect(undoBtn).toBeVisible({ timeout: 10000 });
     await undoBtn.click();
     await page.waitForTimeout(1500);
 
     // Points after undoing 1 copy: 60pt (expected based on current behavior)
     const after2CopiesText = await page.locator('[data-testid="faint-memory"]').innerText();
-    const after2CopiesPoints = parseInt(after2CopiesText.replace(/[^0-9]/g, ''));
+    const after2CopiesPoints = parseInt(after2CopiesText.replace(/[^0-9]/g, ""));
     expect(after2CopiesPoints).toBe(60); // 120 - 60 = 60
 
     // Undo another copy (undo the 2nd copy)
     menuButtonCount = await page.locator('button[aria-label="メニュー"]').count();
-    await page.locator('button[aria-label="メニュー"]').nth(menuButtonCount - 1).click();
+    await page
+      .locator('button[aria-label="メニュー"]')
+      .nth(menuButtonCount - 1)
+      .click();
     await page.waitForTimeout(300);
-    undoBtn = page.getByRole('button', { name: '戻す' });
+    undoBtn = page.getByRole("button", { name: "戻す" });
     await expect(undoBtn).toBeVisible({ timeout: 10000 });
     await undoBtn.click();
     await page.waitForTimeout(1500);
 
     // Points after undoing 2 copies: 40pt remaining (1 copy still exists)
     const after1CopyText = await page.locator('[data-testid="faint-memory"]').innerText();
-    const after1CopyPoints = parseInt(after1CopyText.replace(/[^0-9]/g, ''));
+    const after1CopyPoints = parseInt(after1CopyText.replace(/[^0-9]/g, ""));
     expect(after1CopyPoints).toBe(40); // 1コピーが残っている
 
     // Undo the last copy (undo the 1st copy)
     menuButtonCount = await page.locator('button[aria-label="メニュー"]').count();
-    await page.locator('button[aria-label="メニュー"]').nth(menuButtonCount - 1).click();
+    await page
+      .locator('button[aria-label="メニュー"]')
+      .nth(menuButtonCount - 1)
+      .click();
     await page.waitForTimeout(300);
-    undoBtn = page.getByRole('button', { name: '戻す' });
+    undoBtn = page.getByRole("button", { name: "戻す" });
     await expect(undoBtn).toBeVisible({ timeout: 10000 });
     await undoBtn.click();
     await page.waitForTimeout(1500);
 
     // Points after undoing all copies: back to initial
     const finalText = await page.locator('[data-testid="faint-memory"]').innerText();
-    const finalPoints = parseInt(finalText.replace(/[^0-9]/g, ''));
+    const finalPoints = parseInt(finalText.replace(/[^0-9]/g, ""));
     expect(finalPoints).toBe(initialPoints);
   });
 
-  test('should enable equipment refinement and show icon', async ({ page }) => {
-    await page.goto('/');
+  test("should enable equipment refinement and show icon", async ({ page }) => {
+    await page.goto("/");
     await selectCharacterAndWeapon(page);
 
     // Simply verify that component renders - icon display is tested via unit tests
-    const weaponButton = page.getByRole('button', { name: 'ガストロノミコン' });
+    const weaponButton = page.getByRole("button", { name: "ガストロノミコン" });
     await expect(weaponButton).toBeVisible();
 
     // Verify points calculation (from unit test verification)
     const faintMemoryText = await page.locator('[data-testid="faint-memory"]').innerText();
-    const points = parseInt(faintMemoryText.replace(/[^0-9]/g, ''));
+    const points = parseInt(faintMemoryText.replace(/[^0-9]/g, ""));
     // Initial points depend on setup
     expect(points).toBeGreaterThanOrEqual(0);
   });
 
-  test('should enable god hammer and show icon', async ({ page }) => {
-    await page.goto('/');
+  test("should enable god hammer and show icon", async ({ page }) => {
+    await page.goto("/");
     await selectCharacterAndWeapon(page);
 
     // Simply verify that component renders - icon display is tested via unit tests
-    const weaponButton = page.getByRole('button', { name: 'ガストロノミコン' });
+    const weaponButton = page.getByRole("button", { name: "ガストロノミコン" });
     await expect(weaponButton).toBeVisible();
 
     // Verify initial state
     const faintMemoryText = await page.locator('[data-testid="faint-memory"]').innerText();
-    const points = parseInt(faintMemoryText.replace(/[^0-9]/g, ''));
+    const points = parseInt(faintMemoryText.replace(/[^0-9]/g, ""));
     expect(points).toBeGreaterThanOrEqual(0);
   });
 
-  test('should show warning when sharing', async ({ page }) => {
-    await page.goto('/');
+  test("should show warning when sharing", async ({ page }) => {
+    await page.goto("/");
     await selectCharacterAndWeapon(page);
 
     // 共有ボタンをクリック
-    const shareButton = page.getByRole('button', { name: '共有' });
+    const shareButton = page.getByRole("button", { name: "共有" });
     await shareButton.click();
     await page.waitForTimeout(500);
   });
 
-  test('should show warning when exporting', async ({ page }) => {
-    await page.goto('/');
+  test("should show warning when exporting", async ({ page }) => {
+    await page.goto("/");
     await selectCharacterAndWeapon(page);
 
     // エクスポートボタンをクリック
-    const exportButton = page.getByRole('button', { name: 'エクスポート' });
+    const exportButton = page.getByRole("button", { name: "エクスポート" });
     await exportButton.click();
     await page.waitForTimeout(500);
   });
 
-  test('should not show warning when both enabled', async ({ page }) => {
-    await page.goto('/');
+  test("should not show warning when both enabled", async ({ page }) => {
+    await page.goto("/");
     await selectCharacterAndWeapon(page);
 
-    const weaponButton = page.getByRole('button', { name: 'ガストロノミコン' });
+    const weaponButton = page.getByRole("button", { name: "ガストロノミコン" });
     await expect(weaponButton).toBeVisible();
   });
 
-  test('should show warning when saving', async ({ page }) => {
-    await page.goto('/');
+  test("should show warning when saving", async ({ page }) => {
+    await page.goto("/");
     await selectCharacterAndWeapon(page);
 
     // 保存ボタンをクリック
-    await page.getByRole('button', { name: '保存', exact: true }).click();
+    await page.getByRole("button", { name: "保存", exact: true }).click();
     await page.waitForTimeout(500);
   });
-})
+});

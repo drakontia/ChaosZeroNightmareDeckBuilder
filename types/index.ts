@@ -1,20 +1,20 @@
 // Character Job/Class types
 export enum JobType {
-  STRIKER = "striker",       // ストライカー
-  VANGUARD = "vanguard",     // ヴァンガード
-  RANGER = "ranger",         // レンジャー
-  HUNTER = "hunter",         // ハンター
+  STRIKER = "striker", // ストライカー
+  VANGUARD = "vanguard", // ヴァンガード
+  RANGER = "ranger", // レンジャー
+  HUNTER = "hunter", // ハンター
   CONTROLLER = "controller", // コントローラー
-  PSIONIC = "psionic"       // サイオニック
+  PSIONIC = "psionic", // サイオニック
 }
 
 // Elemental affinities
 export enum ElementType {
-  PASSION = "passion",   // 情熱
-  JUSTICE = "justice",   // 正義
-  ORDER = "order",       // 秩序
+  PASSION = "passion", // 情熱
+  JUSTICE = "justice", // 正義
+  ORDER = "order", // 秩序
   INSTINCT = "instinct", // 本能
-  VOID = "void"          // 空虚
+  VOID = "void", // 空虚
 }
 
 // Job icon information
@@ -40,7 +40,7 @@ export interface Character {
 export enum EquipmentType {
   WEAPON = "weapon",
   ARMOR = "armor",
-  PENDANT = "pendant"
+  PENDANT = "pendant",
 }
 
 export enum EquipmentObtainableChaosId {
@@ -69,58 +69,58 @@ export interface Equipment {
 // Card types with enhanced Hirameki support
 export enum CardType {
   CHARACTER = "character",
-  SHARED = "shared",      // 共用カード
-  MONSTER = "monster",    // モンスターカード
-  FORBIDDEN = "forbidden" // 禁忌カード
+  SHARED = "shared", // 共用カード
+  MONSTER = "monster", // モンスターカード
+  FORBIDDEN = "forbidden", // 禁忌カード
 }
 
 // Monster card grade types
 export enum CardGrade {
-  COMMON = "common",    // Common: 20pt
-  RARE = "rare",      // Rare: 50pt
-  LEGEND = "legendary"     // Legend: 80pt
+  COMMON = "common", // Common: 20pt
+  RARE = "rare", // Rare: 50pt
+  LEGEND = "legendary", // Legend: 80pt
 }
 
 // Card category types
 export enum CardCategory {
-  ATTACK = "attack",       // 攻撃
+  ATTACK = "attack", // 攻撃
   UPGRADE = "upgrade", // 強化
-  SKILL = "skill"         // スキル
+  SKILL = "skill", // スキル
 }
 
 // Card status types (can have multiple)
 export enum CardStatus {
-  INITIATION = "initiation",     // 開戦
+  INITIATION = "initiation", // 開戦
   RETAIN = "retain", // 保存
   CELESTIAL = "celestial", // 天上
   COMBO = "combo", // 連携
-  EXHAUST = "exhaust",       // 消滅
-  EXHAUST2 = "exhaust2",       // 消滅2
-  EXHAUST3 = "exhaust3",       // 消滅3
-  EXHAUST5 = "exhaust5",       // 消滅5
-  LEAD = "lead",             // 主導
-  UNIQUE = "unique",          // 唯一
-  HASTE = "haste",         // 迅速
-  FINALE = "finale",   // 終極
-  RETRIEVE = "retrieve",    // 回収
-  RETRIEVE2 = "retrieve2",    // 回収2
-  RETRIEVE3 = "retrieve3",    // 回収3
-  EPHEMERAL = "ephemeral",   // 蒸発
-  BULLET = "bullet",        // 弾丸
-  QUIETUS = "quietus",      // 安息
+  EXHAUST = "exhaust", // 消滅
+  EXHAUST2 = "exhaust2", // 消滅2
+  EXHAUST3 = "exhaust3", // 消滅3
+  EXHAUST5 = "exhaust5", // 消滅5
+  LEAD = "lead", // 主導
+  UNIQUE = "unique", // 唯一
+  HASTE = "haste", // 迅速
+  FINALE = "finale", // 終極
+  RETRIEVE = "retrieve", // 回収
+  RETRIEVE2 = "retrieve2", // 回収2
+  RETRIEVE3 = "retrieve3", // 回収3
+  EPHEMERAL = "ephemeral", // 蒸発
+  BULLET = "bullet", // 弾丸
+  QUIETUS = "quietus", // 安息
   WEAKNESS_ATTACK = "weakness_attack", // 弱点攻撃
-  PULVERIZE = "pulverize",     // 粉砕
-  BIND = "bind",               // 結束
-  IGNITION = "ignition",         // 点火
-  COPIED = "copied",            // コピー済み
-  FORM_UPGRADE = "form_upgrade",    // 形状強化
-  LINKED = "linked",             // 連結
-  BLESSING = "blessing",         // 祝福
-  PREMIERE = "premiere",         // 開幕
-  CONTROL = "control",           // 統制
-  INQUIRY = "inquiry",           // 探求
-  CLAIM = "claim",               // 所有
-  SURVIVAL = "survival",         // 生存
+  PULVERIZE = "pulverize", // 粉砕
+  BIND = "bind", // 結束
+  IGNITION = "ignition", // 点火
+  COPIED = "copied", // コピー済み
+  FORM_UPGRADE = "form_upgrade", // 形状強化
+  LINKED = "linked", // 連結
+  BLESSING = "blessing", // 祝福
+  PREMIERE = "premiere", // 開幕
+  CONTROL = "control", // 統制
+  INQUIRY = "inquiry", // 探求
+  CLAIM = "claim", // 所有
+  SURVIVAL = "survival", // 生存
 }
 
 export type Season4DesireStatus =
@@ -161,52 +161,52 @@ export interface SeasonLevelVariation {
 
 // God types for God Hirameki system
 export enum GodType {
-  KILKEN = "kilken",       // キルケン
-  SECLAID = "seclaid",     // セクレド
-  DIALOS = "dialos",       // ディアロス
-  NIHILUM = "nihilum",     // ニヒルム
-  VITOL = "vitol",         // ヴィトル
-  ORDER = "order"          // @?#$
+  KILKEN = "kilken", // キルケン
+  SECLAID = "seclaid", // セクレド
+  DIALOS = "dialos", // ディアロス
+  NIHILUM = "nihilum", // ニヒルム
+  VITOL = "vitol", // ヴィトル
+  ORDER = "order", // @?#$
 }
 
 // Single God Hirameki effect option
 export interface GodHiramekiEffectOption {
-  id: string;              // Unique ID for this effect
+  id: string; // Unique ID for this effect
   additionalEffect: string; // Description of the effect
-  costModifier?: number;   // Optional cost change
+  costModifier?: number; // Optional cost change
 }
 
 // Unified God Hirameki effect definition (not grouped by god)
 export interface GodHiramekiDefinition {
-  id: string;              // Effect id (matches i18n key under godEffects)
+  id: string; // Effect id (matches i18n key under godEffects)
   additionalEffect: string; // Fallback description
-  costModifier?: number;   // Optional cost change
+  costModifier?: number; // Optional cost change
   gods: GodType[] | "all"; // Applicable gods or all
 }
 
 // Hidden Hirameki definition (common effect like God Hirameki, no gods field)
 export interface HiddenHiramekiDefinition {
-  id: string;              // Effect id (matches i18n key under hiddenEffects)
+  id: string; // Effect id (matches i18n key under hiddenEffects)
   additionalEffect: string; // Fallback description
-  costModifier?: number;   // Optional cost change
+  costModifier?: number; // Optional cost change
 }
 
 // Mutation Core effect category
 export enum MutationCoreEffectCategory {
-  BASIC_STATS = "basic_stats",           // 基本ステータス強化
-  CARD_DAMAGE = "card_damage",           // カードダメージ量強化
-  SHIELD = "shield",                     // カードシールド獲得量強化
-  HEAL = "heal",                         // カード治癒量強化
-  SPECIAL = "special",                   // 特殊効果
+  BASIC_STATS = "basic_stats", // 基本ステータス強化
+  CARD_DAMAGE = "card_damage", // カードダメージ量強化
+  SHIELD = "shield", // カードシールド獲得量強化
+  HEAL = "heal", // カード治癒量強化
+  SPECIAL = "special", // 特殊効果
 }
 
 // Mutation Core effect definition
 export interface MutationCoreEffect {
-  id: string;                    // Effect ID (e.g. "attack_boost_lv1")
+  id: string; // Effect ID (e.g. "attack_boost_lv1")
   level: 1 | 2 | 3 | 4 | 5 | 6; // Level (1-6)
   category: MutationCoreEffectCategory;
-  description: string;           // Description (fallback)
-  costModifier?: number;         // Optional cost modifier
+  description: string; // Description (fallback)
+  costModifier?: number; // Optional cost modifier
 }
 
 export type PersonaEngravingAlignment = "light" | "dark";

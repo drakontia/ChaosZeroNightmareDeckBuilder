@@ -8,7 +8,7 @@ export const PENDANTS: Equipment[] = [
     rarity: "equipment.rarity.rare",
     obtainableChaosIds: [EquipmentObtainableChaosId.ALL],
     description: "equipment.pendant.amorphous_cube.description",
-    imgUrl: "/images/equipment/pendants/amorphous_cube.png"
+    imgUrl: "/images/equipment/pendants/amorphous_cube.png",
   },
   {
     id: "multifaceted_parallel_universe_nexus",
@@ -17,7 +17,7 @@ export const PENDANTS: Equipment[] = [
     rarity: "equipment.rarity.rare",
     obtainableChaosIds: [EquipmentObtainableChaosId.ALL],
     description: "equipment.pendant.multifaceted_parallel_universe_nexus.description",
-    imgUrl: "/images/equipment/pendants/multifaceted_parallel_universe_nexus.png"
+    imgUrl: "/images/equipment/pendants/multifaceted_parallel_universe_nexus.png",
   },
   {
     id: "time_regulator",
@@ -26,7 +26,7 @@ export const PENDANTS: Equipment[] = [
     rarity: "equipment.rarity.rare",
     obtainableChaosIds: [EquipmentObtainableChaosId.ALL],
     description: "equipment.pendant.time_regulator.description",
-    imgUrl: "/images/equipment/pendants/time_regulator.png"
+    imgUrl: "/images/equipment/pendants/time_regulator.png",
   },
   {
     id: "absolute_zero_tetrahedron",
@@ -35,7 +35,7 @@ export const PENDANTS: Equipment[] = [
     rarity: "equipment.rarity.rare",
     obtainableChaosIds: [EquipmentObtainableChaosId.ALL],
     description: "equipment.pendant.absolute_zero_tetrahedron.description",
-    imgUrl: "/images/equipment/pendants/absolute_zero_tetrahedron.png"
+    imgUrl: "/images/equipment/pendants/absolute_zero_tetrahedron.png",
   },
   {
     id: "magic_infused_sapphire",
@@ -44,7 +44,7 @@ export const PENDANTS: Equipment[] = [
     rarity: "equipment.rarity.rare",
     obtainableChaosIds: [EquipmentObtainableChaosId.ALL],
     description: "equipment.pendant.magic_infused_sapphire.description",
-    imgUrl: "/images/equipment/pendants/magic_infused_sapphire.png"
+    imgUrl: "/images/equipment/pendants/magic_infused_sapphire.png",
   },
   {
     id: "heart_of_the_jewel",
@@ -53,7 +53,7 @@ export const PENDANTS: Equipment[] = [
     rarity: "equipment.rarity.legendary",
     obtainableChaosIds: [EquipmentObtainableChaosId.ALL],
     description: "equipment.pendant.heart_of_the_jewel.description",
-    imgUrl: "/images/equipment/pendants/heart_of_the_jewel.png"
+    imgUrl: "/images/equipment/pendants/heart_of_the_jewel.png",
   },
   {
     id: "heart_of_gold",
@@ -62,7 +62,7 @@ export const PENDANTS: Equipment[] = [
     rarity: "equipment.rarity.legendary",
     obtainableChaosIds: [EquipmentObtainableChaosId.ALL],
     description: "equipment.pendant.heart_of_gold.description",
-    imgUrl: "/images/equipment/pendants/heart_of_gold.png"
+    imgUrl: "/images/equipment/pendants/heart_of_gold.png",
   },
   {
     id: "quantum_collector",
@@ -71,7 +71,7 @@ export const PENDANTS: Equipment[] = [
     rarity: "equipment.rarity.legendary",
     obtainableChaosIds: [EquipmentObtainableChaosId.ALL],
     description: "equipment.pendant.quantum_collector.description",
-    imgUrl: "/images/equipment/pendants/quantum_collector.png"
+    imgUrl: "/images/equipment/pendants/quantum_collector.png",
   },
   {
     id: "moon_of_destruction",
@@ -80,7 +80,7 @@ export const PENDANTS: Equipment[] = [
     rarity: "equipment.rarity.legendary",
     obtainableChaosIds: [EquipmentObtainableChaosId.ALL],
     description: "equipment.pendant.moon_of_destruction.description",
-    imgUrl: "/images/equipment/pendants/moon_of_destruction.png"
+    imgUrl: "/images/equipment/pendants/moon_of_destruction.png",
   },
   {
     id: "dimensional_cube",
@@ -89,7 +89,7 @@ export const PENDANTS: Equipment[] = [
     rarity: "equipment.rarity.legendary",
     obtainableChaosIds: [EquipmentObtainableChaosId.ALL],
     description: "equipment.pendant.dimensional_cube.description",
-    imgUrl: "/images/equipment/pendants/dimensional_cube.png"
+    imgUrl: "/images/equipment/pendants/dimensional_cube.png",
   },
   {
     id: "water_drops_of_the_goddess",
@@ -98,7 +98,7 @@ export const PENDANTS: Equipment[] = [
     rarity: "equipment.rarity.legendary",
     obtainableChaosIds: [EquipmentObtainableChaosId.ALL],
     description: "equipment.pendant.water_drops_of_the_goddess.description",
-    imgUrl: "/images/equipment/pendants/water_drops_of_the_goddess.png"
+    imgUrl: "/images/equipment/pendants/water_drops_of_the_goddess.png",
   },
   {
     id: "grey_orb",
@@ -107,7 +107,7 @@ export const PENDANTS: Equipment[] = [
     rarity: "equipment.rarity.legendary",
     obtainableChaosIds: [EquipmentObtainableChaosId.ALL],
     description: "equipment.pendant.grey_orb.description",
-    imgUrl: "/images/equipment/pendants/grey_orb.png"
+    imgUrl: "/images/equipment/pendants/grey_orb.png",
   },
   {
     id: "sphere_of_randomness",
@@ -116,7 +116,7 @@ export const PENDANTS: Equipment[] = [
     rarity: "equipment.rarity.mythical",
     obtainableChaosIds: [EquipmentObtainableChaosId.ALL],
     description: "equipment.pendant.sphere_of_randomness.description",
-    imgUrl: "/images/equipment/pendants/sphere_of_randomness.png"
+    imgUrl: "/images/equipment/pendants/sphere_of_randomness.png",
   },
   {
     id: "dice_of_derangement",
@@ -125,7 +125,7 @@ export const PENDANTS: Equipment[] = [
     rarity: "equipment.rarity.mythical",
     obtainableChaosIds: [EquipmentObtainableChaosId.ALL],
     description: "equipment.pendant.dice_of_derangement.description",
-    imgUrl: "/images/equipment/pendants/dice_of_derangement.png"
+    imgUrl: "/images/equipment/pendants/dice_of_derangement.png",
   },
   {
     id: "bloodstone_of_the_void",
@@ -134,7 +134,7 @@ export const PENDANTS: Equipment[] = [
     rarity: "equipment.rarity.rare",
     obtainableChaosIds: [EquipmentObtainableChaosId.THE_BLUE_POT],
     description: "equipment.pendant.bloodstone_of_the_void.description",
-    imgUrl: "/images/equipment/pendants/bloodstone_of_the_void.png"
+    imgUrl: "/images/equipment/pendants/bloodstone_of_the_void.png",
   },
   {
     id: "proof_of_initiation",
@@ -143,25 +143,35 @@ export const PENDANTS: Equipment[] = [
     rarity: "equipment.rarity.rare",
     obtainableChaosIds: [EquipmentObtainableChaosId.THE_BLUE_POT],
     description: "equipment.pendant.proof_of_initiation.description",
-    imgUrl: "/images/equipment/pendants/proof_of_initiation.png"
+    imgUrl: "/images/equipment/pendants/proof_of_initiation.png",
   },
   {
     id: "natures_gift",
     name: "equipment.pendant.natures_gift.name",
     type: EquipmentType.PENDANT,
     rarity: "equipment.rarity.legendary",
-    obtainableChaosIds: [EquipmentObtainableChaosId.THE_BLUE_POT, EquipmentObtainableChaosId.CITY_OF_MIST, EquipmentObtainableChaosId.LABORATORY_0, EquipmentObtainableChaosId.BURNING_LIFE],
+    obtainableChaosIds: [
+      EquipmentObtainableChaosId.THE_BLUE_POT,
+      EquipmentObtainableChaosId.CITY_OF_MIST,
+      EquipmentObtainableChaosId.LABORATORY_0,
+      EquipmentObtainableChaosId.BURNING_LIFE,
+    ],
     description: "equipment.pendant.natures_gift.description",
-    imgUrl: "/images/equipment/pendants/natures_gift.png"
+    imgUrl: "/images/equipment/pendants/natures_gift.png",
   },
   {
     id: "eternal_stone",
     name: "equipment.pendant.eternal_stone.name",
     type: EquipmentType.PENDANT,
     rarity: "equipment.rarity.legendary",
-    obtainableChaosIds: [EquipmentObtainableChaosId.THE_BLUE_POT, EquipmentObtainableChaosId.CITY_OF_MIST, EquipmentObtainableChaosId.LABORATORY_0, EquipmentObtainableChaosId.BURNING_LIFE],
+    obtainableChaosIds: [
+      EquipmentObtainableChaosId.THE_BLUE_POT,
+      EquipmentObtainableChaosId.CITY_OF_MIST,
+      EquipmentObtainableChaosId.LABORATORY_0,
+      EquipmentObtainableChaosId.BURNING_LIFE,
+    ],
     description: "equipment.pendant.eternal_stone.description",
-    imgUrl: "/images/equipment/pendants/eternal_stone.png"
+    imgUrl: "/images/equipment/pendants/eternal_stone.png",
   },
   {
     id: "madmans_masterpiece",
@@ -170,7 +180,7 @@ export const PENDANTS: Equipment[] = [
     rarity: "equipment.rarity.legendary",
     obtainableChaosIds: [EquipmentObtainableChaosId.THE_BLUE_POT],
     description: "equipment.pendant.madmans_masterpiece.description",
-    imgUrl: "/images/equipment/pendants/madmans_masterpiece.png"
+    imgUrl: "/images/equipment/pendants/madmans_masterpiece.png",
   },
   {
     id: "chaos_bible",
@@ -179,7 +189,7 @@ export const PENDANTS: Equipment[] = [
     rarity: "equipment.rarity.legendary",
     obtainableChaosIds: [EquipmentObtainableChaosId.THE_BLUE_POT],
     description: "equipment.pendant.chaos_bible.description",
-    imgUrl: "/images/equipment/pendants/chaos_bible.png"
+    imgUrl: "/images/equipment/pendants/chaos_bible.png",
   },
   {
     id: "crimson_bloodstone",
@@ -188,7 +198,7 @@ export const PENDANTS: Equipment[] = [
     rarity: "equipment.rarity.legendary",
     obtainableChaosIds: [EquipmentObtainableChaosId.THE_BLUE_POT],
     description: "equipment.pendant.crimson_bloodstone.description",
-    imgUrl: "/images/equipment/pendants/crimson_bloodstone.png"
+    imgUrl: "/images/equipment/pendants/crimson_bloodstone.png",
   },
   {
     id: "orders_emblem",
@@ -197,16 +207,21 @@ export const PENDANTS: Equipment[] = [
     rarity: "equipment.rarity.legendary",
     obtainableChaosIds: [EquipmentObtainableChaosId.THE_BLUE_POT],
     description: "equipment.pendant.orders_emblem.description",
-    imgUrl: "/images/equipment/pendants/orders_emblem.png"
+    imgUrl: "/images/equipment/pendants/orders_emblem.png",
   },
   {
     id: "bloody_pendant",
     name: "equipment.pendant.bloody_pendant.name",
     type: EquipmentType.PENDANT,
     rarity: "equipment.rarity.legendary",
-    obtainableChaosIds: [EquipmentObtainableChaosId.THE_BLUE_POT, EquipmentObtainableChaosId.TWIN_STARS_SHADOW, EquipmentObtainableChaosId.THE_FORETOLD_RUIN, EquipmentObtainableChaosId.THEATER_OF_ILLUSIONS],
+    obtainableChaosIds: [
+      EquipmentObtainableChaosId.THE_BLUE_POT,
+      EquipmentObtainableChaosId.TWIN_STARS_SHADOW,
+      EquipmentObtainableChaosId.THE_FORETOLD_RUIN,
+      EquipmentObtainableChaosId.THEATER_OF_ILLUSIONS,
+    ],
     description: "equipment.pendant.bloody_pendant.description",
-    imgUrl: "/images/equipment/pendants/bloody_pendant.png"
+    imgUrl: "/images/equipment/pendants/bloody_pendant.png",
   },
   {
     id: "gloomy_primes_eye",
@@ -215,7 +230,7 @@ export const PENDANTS: Equipment[] = [
     rarity: "equipment.rarity.mythical",
     obtainableChaosIds: [EquipmentObtainableChaosId.THE_BLUE_POT],
     description: "equipment.pendant.gloomy_primes_eye.description",
-    imgUrl: "/images/equipment/pendants/gloomy_primes_eye.png"
+    imgUrl: "/images/equipment/pendants/gloomy_primes_eye.png",
   },
   {
     id: "forbidden_bible",
@@ -224,16 +239,19 @@ export const PENDANTS: Equipment[] = [
     rarity: "equipment.rarity.mythical",
     obtainableChaosIds: [EquipmentObtainableChaosId.THE_BLUE_POT],
     description: "equipment.pendant.forbidden_bible.description",
-    imgUrl: "/images/equipment/pendants/forbidden_bible.png"
+    imgUrl: "/images/equipment/pendants/forbidden_bible.png",
   },
   {
     id: "dice_of_chaos",
     name: "equipment.pendant.dice_of_chaos.name",
     type: EquipmentType.PENDANT,
     rarity: "equipment.rarity.mythical",
-    obtainableChaosIds: [EquipmentObtainableChaosId.THE_BLUE_POT, EquipmentObtainableChaosId.THEATER_OF_ILLUSIONS],
+    obtainableChaosIds: [
+      EquipmentObtainableChaosId.THE_BLUE_POT,
+      EquipmentObtainableChaosId.THEATER_OF_ILLUSIONS,
+    ],
     description: "equipment.pendant.dice_of_chaos.description",
-    imgUrl: "/images/equipment/pendants/dice_of_chaos.png"
+    imgUrl: "/images/equipment/pendants/dice_of_chaos.png",
   },
   {
     id: "first_aid_kit",
@@ -242,7 +260,7 @@ export const PENDANTS: Equipment[] = [
     rarity: "equipment.rarity.rare",
     obtainableChaosIds: [EquipmentObtainableChaosId.TWIN_STARS_SHADOW],
     description: "equipment.pendant.first_aid_kit.description",
-    imgUrl: "/images/equipment/pendants/first_aid_kit.png"
+    imgUrl: "/images/equipment/pendants/first_aid_kit.png",
   },
   {
     id: "lepidolas_wing",
@@ -251,7 +269,7 @@ export const PENDANTS: Equipment[] = [
     rarity: "equipment.rarity.legendary",
     obtainableChaosIds: [EquipmentObtainableChaosId.TWIN_STARS_SHADOW],
     description: "equipment.pendant.lepidolas_wing.description",
-    imgUrl: "/images/equipment/pendants/lepidolas_wing.png"
+    imgUrl: "/images/equipment/pendants/lepidolas_wing.png",
   },
   {
     id: "kiraks_core",
@@ -260,34 +278,43 @@ export const PENDANTS: Equipment[] = [
     rarity: "equipment.rarity.legendary",
     obtainableChaosIds: [EquipmentObtainableChaosId.TWIN_STARS_SHADOW],
     description: "equipment.pendant.kiraks_core.description",
-    imgUrl: "/images/equipment/pendants/kiraks_core.png"
+    imgUrl: "/images/equipment/pendants/kiraks_core.png",
   },
   {
     id: "natural_predator",
     name: "equipment.pendant.natural_predator.name",
     type: EquipmentType.PENDANT,
     rarity: "equipment.rarity.legendary",
-    obtainableChaosIds: [EquipmentObtainableChaosId.TWIN_STARS_SHADOW, EquipmentObtainableChaosId.THE_KALEIDOSCOPE_HATCHERY],
+    obtainableChaosIds: [
+      EquipmentObtainableChaosId.TWIN_STARS_SHADOW,
+      EquipmentObtainableChaosId.THE_KALEIDOSCOPE_HATCHERY,
+    ],
     description: "equipment.pendant.natural_predator.description",
-    imgUrl: "/images/equipment/pendants/natural_predator.png"
+    imgUrl: "/images/equipment/pendants/natural_predator.png",
   },
   {
     id: "voracious_swarm",
     name: "equipment.pendant.voracious_swarm.name",
     type: EquipmentType.PENDANT,
     rarity: "equipment.rarity.legendary",
-    obtainableChaosIds: [EquipmentObtainableChaosId.TWIN_STARS_SHADOW, EquipmentObtainableChaosId.THE_KALEIDOSCOPE_HATCHERY],
+    obtainableChaosIds: [
+      EquipmentObtainableChaosId.TWIN_STARS_SHADOW,
+      EquipmentObtainableChaosId.THE_KALEIDOSCOPE_HATCHERY,
+    ],
     description: "equipment.pendant.voracious_swarm.description",
-    imgUrl: "/images/equipment/pendants/voracious_swarm.png"
+    imgUrl: "/images/equipment/pendants/voracious_swarm.png",
   },
   {
     id: "pulsating_egg",
     name: "equipment.pendant.pulsating_egg.name",
     type: EquipmentType.PENDANT,
     rarity: "equipment.rarity.mythical",
-    obtainableChaosIds: [EquipmentObtainableChaosId.TWIN_STARS_SHADOW, EquipmentObtainableChaosId.THE_KALEIDOSCOPE_HATCHERY],
+    obtainableChaosIds: [
+      EquipmentObtainableChaosId.TWIN_STARS_SHADOW,
+      EquipmentObtainableChaosId.THE_KALEIDOSCOPE_HATCHERY,
+    ],
     description: "equipment.pendant.pulsating_egg.description",
-    imgUrl: "/images/equipment/pendants/pulsating_egg.png"
+    imgUrl: "/images/equipment/pendants/pulsating_egg.png",
   },
   {
     id: "soul_orb",
@@ -296,7 +323,7 @@ export const PENDANTS: Equipment[] = [
     rarity: "equipment.rarity.rare",
     obtainableChaosIds: [EquipmentObtainableChaosId.CITY_OF_MIST],
     description: "equipment.pendant.soul_orb.description",
-    imgUrl: "/images/equipment/pendants/soul_orb.png"
+    imgUrl: "/images/equipment/pendants/soul_orb.png",
   },
   {
     id: "the_famished_ones_belly",
@@ -305,7 +332,7 @@ export const PENDANTS: Equipment[] = [
     rarity: "equipment.rarity.rare",
     obtainableChaosIds: [EquipmentObtainableChaosId.CITY_OF_MIST],
     description: "equipment.pendant.the_famished_ones_belly.description",
-    imgUrl: "/images/equipment/pendants/the_famished_ones_belly.png"
+    imgUrl: "/images/equipment/pendants/the_famished_ones_belly.png",
   },
   {
     id: "mss_data_pad",
@@ -314,7 +341,7 @@ export const PENDANTS: Equipment[] = [
     rarity: "equipment.rarity.rare",
     obtainableChaosIds: [EquipmentObtainableChaosId.CITY_OF_MIST],
     description: "equipment.pendant.mss_data_pad.description",
-    imgUrl: "/images/equipment/pendants/mss_data_pad.png"
+    imgUrl: "/images/equipment/pendants/mss_data_pad.png",
   },
   {
     id: "flower_of_dead_souls",
@@ -323,7 +350,7 @@ export const PENDANTS: Equipment[] = [
     rarity: "equipment.rarity.legendary",
     obtainableChaosIds: [EquipmentObtainableChaosId.CITY_OF_MIST],
     description: "equipment.pendant.flower_of_dead_souls.description",
-    imgUrl: "/images/equipment/pendants/flower_of_dead_souls.png"
+    imgUrl: "/images/equipment/pendants/flower_of_dead_souls.png",
   },
   {
     id: "mss_data_pad_se",
@@ -332,34 +359,43 @@ export const PENDANTS: Equipment[] = [
     rarity: "equipment.rarity.legendary",
     obtainableChaosIds: [EquipmentObtainableChaosId.CITY_OF_MIST],
     description: "equipment.pendant.mss_data_pad_se.description",
-    imgUrl: "/images/equipment/pendants/mss_data_pad_se.png"
+    imgUrl: "/images/equipment/pendants/mss_data_pad_se.png",
   },
   {
     id: "eye_of_the_eyeless",
     name: "equipment.pendant.eye_of_the_eyeless.name",
     type: EquipmentType.PENDANT,
     rarity: "equipment.rarity.legendary",
-    obtainableChaosIds: [EquipmentObtainableChaosId.CITY_OF_MIST, EquipmentObtainableChaosId.LABORATORY_0],
+    obtainableChaosIds: [
+      EquipmentObtainableChaosId.CITY_OF_MIST,
+      EquipmentObtainableChaosId.LABORATORY_0,
+    ],
     description: "equipment.pendant.eye_of_the_eyeless.description",
-    imgUrl: "/images/equipment/pendants/eye_of_the_eyeless.png"
+    imgUrl: "/images/equipment/pendants/eye_of_the_eyeless.png",
   },
   {
     id: "palasias_orb",
     name: "equipment.pendant.palasias_orb.name",
     type: EquipmentType.PENDANT,
     rarity: "equipment.rarity.legendary",
-    obtainableChaosIds: [EquipmentObtainableChaosId.CITY_OF_MIST, EquipmentObtainableChaosId.LABORATORY_0],
+    obtainableChaosIds: [
+      EquipmentObtainableChaosId.CITY_OF_MIST,
+      EquipmentObtainableChaosId.LABORATORY_0,
+    ],
     description: "equipment.pendant.palasias_orb.description",
-    imgUrl: "/images/equipment/pendants/palasias_orb.png"
+    imgUrl: "/images/equipment/pendants/palasias_orb.png",
   },
   {
     id: "torch_that_should_not_be_extinguished",
     name: "equipment.pendant.torch_that_should_not_be_extinguished.name",
     type: EquipmentType.PENDANT,
     rarity: "equipment.rarity.legendary",
-    obtainableChaosIds: [EquipmentObtainableChaosId.CITY_OF_MIST, EquipmentObtainableChaosId.LABORATORY_0],
+    obtainableChaosIds: [
+      EquipmentObtainableChaosId.CITY_OF_MIST,
+      EquipmentObtainableChaosId.LABORATORY_0,
+    ],
     description: "equipment.pendant.torch_that_should_not_be_extinguished.description",
-    imgUrl: "/images/equipment/pendants/torch_that_should_not_be_extinguished.png"
+    imgUrl: "/images/equipment/pendants/torch_that_should_not_be_extinguished.png",
   },
   {
     id: "revelations_of_futility",
@@ -368,7 +404,7 @@ export const PENDANTS: Equipment[] = [
     rarity: "equipment.rarity.mythical",
     obtainableChaosIds: [EquipmentObtainableChaosId.CITY_OF_MIST],
     description: "equipment.pendant.revelations_of_futility.description",
-    imgUrl: "/images/equipment/pendants/revelations_of_futility.png"
+    imgUrl: "/images/equipment/pendants/revelations_of_futility.png",
   },
   {
     id: "eye_of_gluttony",
@@ -377,7 +413,7 @@ export const PENDANTS: Equipment[] = [
     rarity: "equipment.rarity.mythical",
     obtainableChaosIds: [EquipmentObtainableChaosId.CITY_OF_MIST],
     description: "equipment.pendant.eye_of_gluttony.description",
-    imgUrl: "/images/equipment/pendants/eye_of_gluttony.png"
+    imgUrl: "/images/equipment/pendants/eye_of_gluttony.png",
   },
   {
     id: "clover_of_the_forest",
@@ -386,7 +422,7 @@ export const PENDANTS: Equipment[] = [
     rarity: "equipment.rarity.rare",
     obtainableChaosIds: [EquipmentObtainableChaosId.SWAMP_OF_JUDGMENT],
     description: "equipment.pendant.clover_of_the_forest.description",
-    imgUrl: "/images/equipment/pendants/clover_of_the_forest.png"
+    imgUrl: "/images/equipment/pendants/clover_of_the_forest.png",
   },
   {
     id: "poachers_pathfinder",
@@ -395,25 +431,31 @@ export const PENDANTS: Equipment[] = [
     rarity: "equipment.rarity.rare",
     obtainableChaosIds: [EquipmentObtainableChaosId.SWAMP_OF_JUDGMENT],
     description: "equipment.pendant.poachers_pathfinder.description",
-    imgUrl: "/images/equipment/pendants/poachers_pathfinder.png"
+    imgUrl: "/images/equipment/pendants/poachers_pathfinder.png",
   },
   {
     id: "bone_ring_of_wildfire",
     name: "equipment.pendant.bone_ring_of_wildfire.name",
     type: EquipmentType.PENDANT,
     rarity: "equipment.rarity.legendary",
-    obtainableChaosIds: [EquipmentObtainableChaosId.SWAMP_OF_JUDGMENT, EquipmentObtainableChaosId.BURNING_LIFE],
+    obtainableChaosIds: [
+      EquipmentObtainableChaosId.SWAMP_OF_JUDGMENT,
+      EquipmentObtainableChaosId.BURNING_LIFE,
+    ],
     description: "equipment.pendant.bone_ring_of_wildfire.description",
-    imgUrl: "/images/equipment/pendants/bone_ring_of_wildfire.png"
+    imgUrl: "/images/equipment/pendants/bone_ring_of_wildfire.png",
   },
   {
     id: "call_of_the_ancient_spirit",
     name: "equipment.pendant.call_of_the_ancient_spirit.name",
     type: EquipmentType.PENDANT,
     rarity: "equipment.rarity.legendary",
-    obtainableChaosIds: [EquipmentObtainableChaosId.SWAMP_OF_JUDGMENT, EquipmentObtainableChaosId.BURNING_LIFE],
+    obtainableChaosIds: [
+      EquipmentObtainableChaosId.SWAMP_OF_JUDGMENT,
+      EquipmentObtainableChaosId.BURNING_LIFE,
+    ],
     description: "equipment.pendant.call_of_the_ancient_spirit.description",
-    imgUrl: "/images/equipment/pendants/call_of_the_ancient_spirit.png"
+    imgUrl: "/images/equipment/pendants/call_of_the_ancient_spirit.png",
   },
   {
     id: "verdant_day",
@@ -422,7 +464,7 @@ export const PENDANTS: Equipment[] = [
     rarity: "equipment.rarity.legendary",
     obtainableChaosIds: [EquipmentObtainableChaosId.SWAMP_OF_JUDGMENT],
     description: "equipment.pendant.verdant_day.description",
-    imgUrl: "/images/equipment/pendants/verdant_day.png"
+    imgUrl: "/images/equipment/pendants/verdant_day.png",
   },
   {
     id: "verdant_night",
@@ -431,43 +473,58 @@ export const PENDANTS: Equipment[] = [
     rarity: "equipment.rarity.legendary",
     obtainableChaosIds: [EquipmentObtainableChaosId.SWAMP_OF_JUDGMENT],
     description: "equipment.pendant.verdant_night.description",
-    imgUrl: "/images/equipment/pendants/verdant_night.png"
+    imgUrl: "/images/equipment/pendants/verdant_night.png",
   },
   {
     id: "lead_colored_holy_water",
     name: "equipment.pendant.lead_colored_holy_water.name",
     type: EquipmentType.PENDANT,
     rarity: "equipment.rarity.legendary",
-    obtainableChaosIds: [EquipmentObtainableChaosId.SWAMP_OF_JUDGMENT, EquipmentObtainableChaosId.THE_FORETOLD_RUIN, EquipmentObtainableChaosId.THEATER_OF_ILLUSIONS],
+    obtainableChaosIds: [
+      EquipmentObtainableChaosId.SWAMP_OF_JUDGMENT,
+      EquipmentObtainableChaosId.THE_FORETOLD_RUIN,
+      EquipmentObtainableChaosId.THEATER_OF_ILLUSIONS,
+    ],
     description: "equipment.pendant.lead_colored_holy_water.description",
-    imgUrl: "/images/equipment/pendants/lead_colored_holy_water.png"
+    imgUrl: "/images/equipment/pendants/lead_colored_holy_water.png",
   },
   {
     id: "vladeus_reactor",
     name: "equipment.pendant.vladeus_reactor.name",
     type: EquipmentType.PENDANT,
     rarity: "equipment.rarity.legendary",
-    obtainableChaosIds: [EquipmentObtainableChaosId.SWAMP_OF_JUDGMENT, EquipmentObtainableChaosId.THE_FORETOLD_RUIN, EquipmentObtainableChaosId.THEATER_OF_ILLUSIONS],
+    obtainableChaosIds: [
+      EquipmentObtainableChaosId.SWAMP_OF_JUDGMENT,
+      EquipmentObtainableChaosId.THE_FORETOLD_RUIN,
+      EquipmentObtainableChaosId.THEATER_OF_ILLUSIONS,
+    ],
     description: "equipment.pendant.vladeus_reactor.description",
-    imgUrl: "/images/equipment/pendants/vladeus_reactor.png"
+    imgUrl: "/images/equipment/pendants/vladeus_reactor.png",
   },
   {
     id: "the_golden_rule",
     name: "equipment.pendant.the_golden_rule.name",
     type: EquipmentType.PENDANT,
     rarity: "equipment.rarity.legendary",
-    obtainableChaosIds: [EquipmentObtainableChaosId.SWAMP_OF_JUDGMENT, EquipmentObtainableChaosId.THE_FORETOLD_RUIN, EquipmentObtainableChaosId.THEATER_OF_ILLUSIONS],
+    obtainableChaosIds: [
+      EquipmentObtainableChaosId.SWAMP_OF_JUDGMENT,
+      EquipmentObtainableChaosId.THE_FORETOLD_RUIN,
+      EquipmentObtainableChaosId.THEATER_OF_ILLUSIONS,
+    ],
     description: "equipment.pendant.the_golden_rule.description",
-    imgUrl: "/images/equipment/pendants/the_golden_rule.png"
+    imgUrl: "/images/equipment/pendants/the_golden_rule.png",
   },
   {
     id: "dormant_seeds",
     name: "equipment.pendant.dormant_seeds.name",
     type: EquipmentType.PENDANT,
     rarity: "equipment.rarity.mythical",
-    obtainableChaosIds: [EquipmentObtainableChaosId.SWAMP_OF_JUDGMENT, EquipmentObtainableChaosId.BURNING_LIFE],
+    obtainableChaosIds: [
+      EquipmentObtainableChaosId.SWAMP_OF_JUDGMENT,
+      EquipmentObtainableChaosId.BURNING_LIFE,
+    ],
     description: "equipment.pendant.dormant_seeds.description",
-    imgUrl: "/images/equipment/pendants/dormant_seeds.png"
+    imgUrl: "/images/equipment/pendants/dormant_seeds.png",
   },
   {
     id: "verdant_shackles",
@@ -476,7 +533,7 @@ export const PENDANTS: Equipment[] = [
     rarity: "equipment.rarity.mythical",
     obtainableChaosIds: [EquipmentObtainableChaosId.SWAMP_OF_JUDGMENT],
     description: "equipment.pendant.verdant_shackles.description",
-    imgUrl: "/images/equipment/pendants/verdant_shackles.png"
+    imgUrl: "/images/equipment/pendants/verdant_shackles.png",
   },
   {
     id: "rune_chord",
@@ -485,7 +542,7 @@ export const PENDANTS: Equipment[] = [
     rarity: "equipment.rarity.rare",
     obtainableChaosIds: [EquipmentObtainableChaosId.THE_FORETOLD_RUIN],
     description: "equipment.pendant.rune_chord.description",
-    imgUrl: "/images/equipment/pendants/rune_chord.png"
+    imgUrl: "/images/equipment/pendants/rune_chord.png",
   },
   {
     id: "guardian_core",
@@ -494,7 +551,7 @@ export const PENDANTS: Equipment[] = [
     rarity: "equipment.rarity.legendary",
     obtainableChaosIds: [EquipmentObtainableChaosId.THE_FORETOLD_RUIN],
     description: "equipment.pendant.guardian_core.description",
-    imgUrl: "/images/equipment/pendants/guardian_core.png"
+    imgUrl: "/images/equipment/pendants/guardian_core.png",
   },
   {
     id: "corroded_core",
@@ -503,7 +560,7 @@ export const PENDANTS: Equipment[] = [
     rarity: "equipment.rarity.legendary",
     obtainableChaosIds: [EquipmentObtainableChaosId.THE_FORETOLD_RUIN],
     description: "equipment.pendant.corroded_core.description",
-    imgUrl: "/images/equipment/pendants/corroded_core.png"
+    imgUrl: "/images/equipment/pendants/corroded_core.png",
   },
   {
     id: "corrupted_core",
@@ -512,7 +569,7 @@ export const PENDANTS: Equipment[] = [
     rarity: "equipment.rarity.mythical",
     obtainableChaosIds: [EquipmentObtainableChaosId.THE_FORETOLD_RUIN],
     description: "equipment.pendant.corrupted_core.description",
-    imgUrl: "/images/equipment/pendants/corrupted_core.png"
+    imgUrl: "/images/equipment/pendants/corrupted_core.png",
   },
   {
     id: "eye_of_the_punisher",
@@ -521,7 +578,7 @@ export const PENDANTS: Equipment[] = [
     rarity: "equipment.rarity.mythical",
     obtainableChaosIds: [EquipmentObtainableChaosId.THE_FORETOLD_RUIN],
     description: "equipment.pendant.eye_of_the_punisher.description",
-    imgUrl: "/images/equipment/pendants/eye_of_the_punisher.png"
+    imgUrl: "/images/equipment/pendants/eye_of_the_punisher.png",
   },
   {
     id: "nerve_hacking_module",
@@ -530,7 +587,7 @@ export const PENDANTS: Equipment[] = [
     rarity: "equipment.rarity.rare",
     obtainableChaosIds: [EquipmentObtainableChaosId.LABORATORY_0],
     description: "equipment.pendant.nerve_hacking_module.description",
-    imgUrl: "/images/equipment/pendants/nerve_hacking_module.png"
+    imgUrl: "/images/equipment/pendants/nerve_hacking_module.png",
   },
   {
     id: "hyperimmunity_hormone",
@@ -539,7 +596,7 @@ export const PENDANTS: Equipment[] = [
     rarity: "equipment.rarity.rare",
     obtainableChaosIds: [EquipmentObtainableChaosId.LABORATORY_0],
     description: "equipment.pendant.hyperimmunity_hormone.description",
-    imgUrl: "/images/equipment/pendants/hyperimmunity_hormone.png"
+    imgUrl: "/images/equipment/pendants/hyperimmunity_hormone.png",
   },
   {
     id: "administrator_id_badge",
@@ -548,7 +605,7 @@ export const PENDANTS: Equipment[] = [
     rarity: "equipment.rarity.rare",
     obtainableChaosIds: [EquipmentObtainableChaosId.LABORATORY_0],
     description: "equipment.pendant.administrator_id_badge.description",
-    imgUrl: "/images/equipment/pendants/administrator_id_badge.png"
+    imgUrl: "/images/equipment/pendants/administrator_id_badge.png",
   },
   {
     id: "emblem_of_an_exceptional_entity",
@@ -557,7 +614,7 @@ export const PENDANTS: Equipment[] = [
     rarity: "equipment.rarity.legendary",
     obtainableChaosIds: [EquipmentObtainableChaosId.LABORATORY_0],
     description: "equipment.pendant.emblem_of_an_exceptional_entity.description",
-    imgUrl: "/images/equipment/pendants/emblem_of_an_exceptional_entity.png"
+    imgUrl: "/images/equipment/pendants/emblem_of_an_exceptional_entity.png",
   },
   {
     id: "superconductive_protein",
@@ -566,7 +623,7 @@ export const PENDANTS: Equipment[] = [
     rarity: "equipment.rarity.legendary",
     obtainableChaosIds: [EquipmentObtainableChaosId.LABORATORY_0],
     description: "equipment.pendant.superconductive_protein.description",
-    imgUrl: "/images/equipment/pendants/superconductive_protein.png"
+    imgUrl: "/images/equipment/pendants/superconductive_protein.png",
   },
   {
     id: "unconfirmed_recovery_ampule",
@@ -575,7 +632,7 @@ export const PENDANTS: Equipment[] = [
     rarity: "equipment.rarity.legendary",
     obtainableChaosIds: [EquipmentObtainableChaosId.LABORATORY_0],
     description: "equipment.pendant.unconfirmed_recovery_ampule.description",
-    imgUrl: "/images/equipment/pendants/unconfirmed_recovery_ampule.png"
+    imgUrl: "/images/equipment/pendants/unconfirmed_recovery_ampule.png",
   },
   {
     id: "source_of_the_forbidden",
@@ -584,7 +641,7 @@ export const PENDANTS: Equipment[] = [
     rarity: "equipment.rarity.legendary",
     obtainableChaosIds: [EquipmentObtainableChaosId.LABORATORY_0],
     description: "equipment.pendant.source_of_the_forbidden.description",
-    imgUrl: "/images/equipment/pendants/source_of_the_forbidden.png"
+    imgUrl: "/images/equipment/pendants/source_of_the_forbidden.png",
   },
   // Season 2 Pendants
   {
@@ -594,7 +651,7 @@ export const PENDANTS: Equipment[] = [
     rarity: "equipment.rarity.rare",
     obtainableChaosIds: [EquipmentObtainableChaosId.BURNING_LIFE],
     description: "equipment.pendant.plant_doll.description",
-    imgUrl: "/images/equipment/pendants/plant_doll.png"
+    imgUrl: "/images/equipment/pendants/plant_doll.png",
   },
   {
     id: "golden_bell",
@@ -603,7 +660,7 @@ export const PENDANTS: Equipment[] = [
     rarity: "equipment.rarity.rare",
     obtainableChaosIds: [EquipmentObtainableChaosId.BURNING_LIFE],
     description: "equipment.pendant.golden_bell.description",
-    imgUrl: "/images/equipment/pendants/golden_bell.png"
+    imgUrl: "/images/equipment/pendants/golden_bell.png",
   },
   {
     id: "summoned_lump_of_light",
@@ -612,7 +669,7 @@ export const PENDANTS: Equipment[] = [
     rarity: "equipment.rarity.rare",
     obtainableChaosIds: [EquipmentObtainableChaosId.BURNING_LIFE],
     description: "equipment.pendant.summoned_lump_of_light.description",
-    imgUrl: "/images/equipment/pendants/summoned_lump_of_light.png"
+    imgUrl: "/images/equipment/pendants/summoned_lump_of_light.png",
   },
   {
     id: "lightless_stem",
@@ -621,7 +678,7 @@ export const PENDANTS: Equipment[] = [
     rarity: "equipment.rarity.rare",
     obtainableChaosIds: [EquipmentObtainableChaosId.BURNING_LIFE],
     description: "equipment.pendant.lightless_stem.description",
-    imgUrl: "/images/equipment/pendants/lightless_stem.png"
+    imgUrl: "/images/equipment/pendants/lightless_stem.png",
   },
   {
     id: "leaf_of_the_world_tree",
@@ -630,7 +687,7 @@ export const PENDANTS: Equipment[] = [
     rarity: "equipment.rarity.legendary",
     obtainableChaosIds: [EquipmentObtainableChaosId.BURNING_LIFE],
     description: "equipment.pendant.leaf_of_the_world_tree.description",
-    imgUrl: "/images/equipment/pendants/leaf_of_the_world_tree.png"
+    imgUrl: "/images/equipment/pendants/leaf_of_the_world_tree.png",
   },
   {
     id: "luminescent_shroom",
@@ -639,7 +696,7 @@ export const PENDANTS: Equipment[] = [
     rarity: "equipment.rarity.legendary",
     obtainableChaosIds: [EquipmentObtainableChaosId.BURNING_LIFE],
     description: "equipment.pendant.luminescent_shroom.description",
-    imgUrl: "/images/equipment/pendants/luminescent_shroom.png"
+    imgUrl: "/images/equipment/pendants/luminescent_shroom.png",
   },
   {
     id: "shining_world_tree_stem",
@@ -648,7 +705,7 @@ export const PENDANTS: Equipment[] = [
     rarity: "equipment.rarity.legendary",
     obtainableChaosIds: [EquipmentObtainableChaosId.BURNING_LIFE],
     description: "equipment.pendant.shining_world_tree_stem.description",
-    imgUrl: "/images/equipment/pendants/shining_world_tree_stem.png"
+    imgUrl: "/images/equipment/pendants/shining_world_tree_stem.png",
   },
   {
     id: "liberated_essence",
@@ -657,7 +714,7 @@ export const PENDANTS: Equipment[] = [
     rarity: "equipment.rarity.mythical",
     obtainableChaosIds: [EquipmentObtainableChaosId.BURNING_LIFE],
     description: "equipment.pendant.liberated_essence.description",
-    imgUrl: "/images/equipment/pendants/liberated_essence.png"
+    imgUrl: "/images/equipment/pendants/liberated_essence.png",
   },
   {
     id: "combat_drum",
@@ -666,7 +723,7 @@ export const PENDANTS: Equipment[] = [
     rarity: "equipment.rarity.legendary",
     obtainableChaosIds: [EquipmentObtainableChaosId.BURNING_LIFE],
     description: "equipment.pendant.combat_drum.description",
-    imgUrl: "/images/equipment/pendants/combat_drum.png"
+    imgUrl: "/images/equipment/pendants/combat_drum.png",
   },
   {
     id: "gladiators_medallion",
@@ -675,7 +732,7 @@ export const PENDANTS: Equipment[] = [
     rarity: "equipment.rarity.legendary",
     obtainableChaosIds: [EquipmentObtainableChaosId.BURNING_LIFE],
     description: "equipment.pendant.gladiators_medallion.description",
-    imgUrl: "/images/equipment/pendants/gladiators_medallion.png"
+    imgUrl: "/images/equipment/pendants/gladiators_medallion.png",
   },
   {
     id: "rage_potion",
@@ -684,7 +741,7 @@ export const PENDANTS: Equipment[] = [
     rarity: "equipment.rarity.legendary",
     obtainableChaosIds: [EquipmentObtainableChaosId.BURNING_LIFE],
     description: "equipment.pendant.rage_potion.description",
-    imgUrl: "/images/equipment/pendants/rage_potion.png"
+    imgUrl: "/images/equipment/pendants/rage_potion.png",
   },
   {
     id: "launcher_of_ruined_honor",
@@ -693,7 +750,7 @@ export const PENDANTS: Equipment[] = [
     rarity: "equipment.rarity.rare",
     obtainableChaosIds: [EquipmentObtainableChaosId.BURNING_LIFE],
     description: "equipment.pendant.launcher_of_ruined_honor.description",
-    imgUrl: "/images/equipment/pendants/launcher_of_ruined_honor.png"
+    imgUrl: "/images/equipment/pendants/launcher_of_ruined_honor.png",
   },
   {
     id: "charger_of_weathered_glory",
@@ -702,7 +759,7 @@ export const PENDANTS: Equipment[] = [
     rarity: "equipment.rarity.rare",
     obtainableChaosIds: [EquipmentObtainableChaosId.BURNING_LIFE],
     description: "equipment.pendant.charger_of_weathered_glory.description",
-    imgUrl: "/images/equipment/pendants/charger_of_weathered_glory.png"
+    imgUrl: "/images/equipment/pendants/charger_of_weathered_glory.png",
   },
   // Season 3
   {
@@ -712,7 +769,7 @@ export const PENDANTS: Equipment[] = [
     rarity: "equipment.rarity.rare",
     obtainableChaosIds: [EquipmentObtainableChaosId.THEATER_OF_ILLUSIONS],
     description: "equipment.pendant.gospel_of_lament.description",
-    imgUrl: "/images/equipment/pendants/gospel_of_lament.png"
+    imgUrl: "/images/equipment/pendants/gospel_of_lament.png",
   },
   {
     id: "hymn_singing_lips",
@@ -721,7 +778,7 @@ export const PENDANTS: Equipment[] = [
     rarity: "equipment.rarity.rare",
     obtainableChaosIds: [EquipmentObtainableChaosId.THEATER_OF_ILLUSIONS],
     description: "equipment.pendant.hymn_singing_lips.description",
-    imgUrl: "/images/equipment/pendants/hymn_singing_lips.png"
+    imgUrl: "/images/equipment/pendants/hymn_singing_lips.png",
   },
   {
     id: "a_lonesome_wedding_ring",
@@ -730,7 +787,7 @@ export const PENDANTS: Equipment[] = [
     rarity: "equipment.rarity.rare",
     obtainableChaosIds: [EquipmentObtainableChaosId.THEATER_OF_ILLUSIONS],
     description: "equipment.pendant.a_lonesome_wedding_ring.description",
-    imgUrl: "/images/equipment/pendants/a_lonesome_wedding_ring.png"
+    imgUrl: "/images/equipment/pendants/a_lonesome_wedding_ring.png",
   },
   {
     id: "someones_letter",
@@ -739,7 +796,7 @@ export const PENDANTS: Equipment[] = [
     rarity: "equipment.rarity.rare",
     obtainableChaosIds: [EquipmentObtainableChaosId.THEATER_OF_ILLUSIONS],
     description: "equipment.pendant.someones_letter.description",
-    imgUrl: "/images/equipment/pendants/someones_letter.png"
+    imgUrl: "/images/equipment/pendants/someones_letter.png",
   },
   {
     id: "stele_of_heresy",
@@ -748,7 +805,7 @@ export const PENDANTS: Equipment[] = [
     rarity: "equipment.rarity.rare",
     obtainableChaosIds: [EquipmentObtainableChaosId.THEATER_OF_ILLUSIONS],
     description: "equipment.pendant.stele_of_heresy.description",
-    imgUrl: "/images/equipment/pendants/stele_of_heresy.png"
+    imgUrl: "/images/equipment/pendants/stele_of_heresy.png",
   },
   {
     id: "an_eye_plucked_from_a_mural",
@@ -757,7 +814,7 @@ export const PENDANTS: Equipment[] = [
     rarity: "equipment.rarity.rare",
     obtainableChaosIds: [EquipmentObtainableChaosId.THEATER_OF_ILLUSIONS],
     description: "equipment.pendant.an_eye_plucked_from_a_mural.description",
-    imgUrl: "/images/equipment/pendants/an_eye_plucked_from_a_mural.png"
+    imgUrl: "/images/equipment/pendants/an_eye_plucked_from_a_mural.png",
   },
   // Season 4
   {
@@ -767,7 +824,7 @@ export const PENDANTS: Equipment[] = [
     rarity: "equipment.rarity.rare",
     obtainableChaosIds: [EquipmentObtainableChaosId.THE_KALEIDOSCOPE_HATCHERY],
     description: "equipment.pendant.raiders_scanning_gear.description",
-    imgUrl: "/images/equipment/pendants/raiders_scanning_gear.png"
+    imgUrl: "/images/equipment/pendants/raiders_scanning_gear.png",
   },
   {
     id: "final_entry",
@@ -776,7 +833,7 @@ export const PENDANTS: Equipment[] = [
     rarity: "equipment.rarity.rare",
     obtainableChaosIds: [EquipmentObtainableChaosId.THE_KALEIDOSCOPE_HATCHERY],
     description: "equipment.pendant.final_entry.description",
-    imgUrl: "/images/equipment/pendants/final_entry.png"
+    imgUrl: "/images/equipment/pendants/final_entry.png",
   },
   {
     id: "essence_fragmented_necklace",
@@ -785,7 +842,7 @@ export const PENDANTS: Equipment[] = [
     rarity: "equipment.rarity.legendary",
     obtainableChaosIds: [EquipmentObtainableChaosId.THE_KALEIDOSCOPE_HATCHERY],
     description: "equipment.pendant.essence_fragmented_necklace.description",
-    imgUrl: "/images/equipment/pendants/essence_fragmented_necklace.png"
+    imgUrl: "/images/equipment/pendants/essence_fragmented_necklace.png",
   },
   {
     id: "kaleidoscope_fragment",
@@ -794,7 +851,7 @@ export const PENDANTS: Equipment[] = [
     rarity: "equipment.rarity.legendary",
     obtainableChaosIds: [EquipmentObtainableChaosId.THE_KALEIDOSCOPE_HATCHERY],
     description: "equipment.pendant.kaleidoscope_fragment.description",
-    imgUrl: "/images/equipment/pendants/kaleidoscope_fragment.png"
+    imgUrl: "/images/equipment/pendants/kaleidoscope_fragment.png",
   },
   {
     id: "closed_circuit_terminal",
@@ -803,7 +860,7 @@ export const PENDANTS: Equipment[] = [
     rarity: "equipment.rarity.legendary",
     obtainableChaosIds: [EquipmentObtainableChaosId.THE_KALEIDOSCOPE_HATCHERY],
     description: "equipment.pendant.closed_circuit_terminal.description",
-    imgUrl: "/images/equipment/pendants/closed_circuit_terminal.png"
+    imgUrl: "/images/equipment/pendants/closed_circuit_terminal.png",
   },
   {
     id: "cycle_of_circulation",
@@ -812,7 +869,7 @@ export const PENDANTS: Equipment[] = [
     rarity: "equipment.rarity.legendary",
     obtainableChaosIds: [EquipmentObtainableChaosId.THE_KALEIDOSCOPE_HATCHERY],
     description: "equipment.pendant.cycle_of_circulation.description",
-    imgUrl: "/images/equipment/pendants/cycle_of_circulation.png"
+    imgUrl: "/images/equipment/pendants/cycle_of_circulation.png",
   },
   {
     id: "invader_observation_logs",
@@ -821,6 +878,6 @@ export const PENDANTS: Equipment[] = [
     rarity: "equipment.rarity.legendary",
     obtainableChaosIds: [EquipmentObtainableChaosId.THE_KALEIDOSCOPE_HATCHERY],
     description: "equipment.pendant.invader_observation_logs.description",
-    imgUrl: "/images/equipment/pendants/invader_observation_logs.png"
+    imgUrl: "/images/equipment/pendants/invader_observation_logs.png",
   },
 ];

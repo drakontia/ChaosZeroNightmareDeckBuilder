@@ -14,8 +14,8 @@ export function DialogCloseButton({
   label,
   ...buttonProps
 }: DialogCloseButtonProps) {
-  const t = useTranslations()
-  const resolvedLabel = label ?? t('common.remove', { defaultValue: '外す' })
+  const t = useTranslations();
+  const resolvedLabel = label ?? t("common.remove", { defaultValue: "外す" });
 
   return (
     <Button

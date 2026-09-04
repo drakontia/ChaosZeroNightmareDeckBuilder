@@ -52,7 +52,14 @@ const SEASON_3_CARD_IDS = new Set([
   "faceless_woman",
 ]);
 
-type CardImageFolder = "character" | "common" | "monster" | "season1" | "season2" | "season3" | "season4";
+type CardImageFolder =
+  | "character"
+  | "common"
+  | "monster"
+  | "season1"
+  | "season2"
+  | "season3"
+  | "season4";
 
 export const getCardImageFolder = (cardId: string, cardType: CardType): CardImageFolder => {
   if (cardType === CardType.CHARACTER) {

@@ -49,7 +49,13 @@ export function DeckBuilderToolbar(props: DeckBuilderToolbarProps) {
           key={key}
           onClick={handlers[key]}
           variant={key === "clear" ? "destructive" : "secondary"}
-          disabled={(key === "save" || key === "share") ? props.disabled : key === "export" ? props.isExporting : false}
+          disabled={
+            key === "save" || key === "share"
+              ? props.disabled
+              : key === "export"
+                ? props.isExporting
+                : false
+          }
           title={labels[key]}
           aria-label={labels[key]}
         >

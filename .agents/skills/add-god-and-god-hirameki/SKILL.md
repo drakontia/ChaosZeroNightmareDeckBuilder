@@ -18,16 +18,16 @@ origin: project
 
 新しい「神」を追加する場合は以下すべてを変更する。神ヒラメキエフェクトのみ追加する場合は★印のファイルのみ変更する。
 
-| ファイル | 変更内容 | 必須 |
-|----------|----------|------|
-| `types/index.ts` | `GodType` enumに新しい神を追加 | 神を追加する場合 |
-| `lib/god-hirameki.ts` | `GOD_HIRAMEKI_EFFECTS` に新エフェクト追加 ★ | 常に |
-| `components/hirameki-controls/GodHiramekiDialog.tsx` | `GOD_TYPES` 配列に新しい神を追加 | 神を追加する場合 |
-| `messages/ja/common.json` | `god.*` / `godEffects.*` にキー追加 ★ | 常に |
-| `messages/en/common.json` | `god.*` / `godEffects.*` にキー追加 ★ | 常に |
-| `messages/ko/common.json` | `god.*` / `godEffects.*` にキー追加 ★ | 常に |
-| `messages/zh/common.json` | `god.*` / `godEffects.*` にキー追加 ★ | 常に |
-| `tests/e2e/hirameki-controls.spec.ts` | 新しい神のドロップダウン表示テストを追加 | 神を追加する場合 |
+| ファイル                                             | 変更内容                                    | 必須             |
+| ---------------------------------------------------- | ------------------------------------------- | ---------------- |
+| `types/index.ts`                                     | `GodType` enumに新しい神を追加              | 神を追加する場合 |
+| `lib/god-hirameki.ts`                                | `GOD_HIRAMEKI_EFFECTS` に新エフェクト追加 ★ | 常に             |
+| `components/hirameki-controls/GodHiramekiDialog.tsx` | `GOD_TYPES` 配列に新しい神を追加            | 神を追加する場合 |
+| `messages/ja/common.json`                            | `god.*` / `godEffects.*` にキー追加 ★       | 常に             |
+| `messages/en/common.json`                            | `god.*` / `godEffects.*` にキー追加 ★       | 常に             |
+| `messages/ko/common.json`                            | `god.*` / `godEffects.*` にキー追加 ★       | 常に             |
+| `messages/zh/common.json`                            | `god.*` / `godEffects.*` にキー追加 ★       | 常に             |
+| `tests/e2e/hirameki-controls.spec.ts`                | 新しい神のドロップダウン表示テストを追加    | 神を追加する場合 |
 
 詳細は [`references/file-checklist.md`](./references/file-checklist.md) を参照。
 
@@ -36,6 +36,7 @@ origin: project
 ## ⚠️ 過去PRからの注意点（必読）
 
 ### PR #41 / PR #43 の教訓
+
 **PR #41**（feat: add new god ORDER）で ORDER 神を追加した際、以下のファイルの修正が抜けた：
 
 ```
@@ -64,7 +65,7 @@ import { GodType } from "@/types";
 describe("GOD_HIRAMEKI_EFFECTS", () => {
   it("新しい神のエフェクトが含まれている", () => {
     const effects = GOD_HIRAMEKI_EFFECTS.filter(
-      (e) => e.gods !== "all" && e.gods.includes(GodType.YOUR_NEW_GOD)
+      (e) => e.gods !== "all" && e.gods.includes(GodType.YOUR_NEW_GOD),
     );
     expect(effects.length).toBeGreaterThan(0);
   });
@@ -104,7 +105,9 @@ test("all N gods including [新しい神] are available in god hirameki dropdown
   await expect(page.getByRole("menuitem", { name: "ヴィトル" })).toBeVisible({ timeout: 5000 });
 
   // 新しい神を確認（i18n後の日本語名を使う）
-  await expect(page.getByRole("menuitem", { name: "[新しい神の日本語名]" })).toBeVisible({ timeout: 5000 });
+  await expect(page.getByRole("menuitem", { name: "[新しい神の日本語名]" })).toBeVisible({
+    timeout: 5000,
+  });
 
   // 合計N神分のmenuitemがあることを確認
   const menuItems = page.getByRole("menuitem");
@@ -169,6 +172,7 @@ const GOD_TYPES = [
 4言語すべてに追加する。未翻訳の場合は日本語または英語でフォールバック可。
 
 **`messages/ja/common.json`**:
+
 ```json
 {
   "god": {

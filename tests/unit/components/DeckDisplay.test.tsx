@@ -1,21 +1,21 @@
-import { describe, it, expect, vi, beforeEach } from 'vite-plus/test';
-import { render, screen } from '@testing-library/react';
-import { DeckDisplay } from '@/components/DeckDisplay';
-import { CardType, CardCategory, CardStatus, DeckCard, GodType } from '@/types';
-import { NextIntlClientProvider } from 'next-intl';
-import { GOD_HIRAMEKI_EFFECTS } from '@/lib/god-hirameki';
-import { HIDDEN_HIRAMEKI_EFFECTS } from '@/lib/hidden-hirameki';
+import { describe, it, expect, vi, beforeEach } from "vite-plus/test";
+import { render, screen } from "@testing-library/react";
+import { DeckDisplay } from "@/components/DeckDisplay";
+import { CardType, CardCategory, CardStatus, DeckCard, GodType } from "@/types";
+import { NextIntlClientProvider } from "next-intl";
+import { GOD_HIRAMEKI_EFFECTS } from "@/lib/god-hirameki";
+import { HIDDEN_HIRAMEKI_EFFECTS } from "@/lib/hidden-hirameki";
 
 // Mock components
 let cardFrameProps: any[] = [];
 
-vi.mock('@/components/CardFrame', () => ({
+vi.mock("@/components/CardFrame", () => ({
   CardFrame: (props: any) => (
     <div data-testid="card-frame" data-props-count={cardFrameProps.push(props)}>
       <div data-testid="card-name">{props.name}</div>
       {props.isCopied && <div data-testid="is-copied">Flipped</div>}
       {props.statuses && props.statuses.length > 0 && (
-        <div data-testid="statuses">{props.statuses.join(', ')}</div>
+        <div data-testid="statuses">{props.statuses.join(", ")}</div>
       )}
       {props.godEffectId && <div data-testid="god-effect">{props.godEffectId}</div>}
       {props.hiddenEffectId && <div data-testid="hidden-effect">{props.hiddenEffectId}</div>}
@@ -23,60 +23,60 @@ vi.mock('@/components/CardFrame', () => ({
       <div data-testid="left-controls">{props.leftControls}</div>
       <div data-testid="right-controls">{props.rightControls}</div>
     </div>
-  )
+  ),
 }));
 
-vi.mock('@/components/HiramekiControls', () => ({
-  HiramekiControls: () => <div data-testid="hirameki-controls">Controls</div>
+vi.mock("@/components/HiramekiControls", () => ({
+  HiramekiControls: () => <div data-testid="hirameki-controls">Controls</div>,
 }));
 
-vi.mock('@/components/CardActionsMenu', () => ({
-  CardActionsMenu: () => <div data-testid="card-actions">Actions</div>
+vi.mock("@/components/CardActionsMenu", () => ({
+  CardActionsMenu: () => <div data-testid="card-actions">Actions</div>,
 }));
 
-vi.mock('@/components/ui/card', () => ({
-  Card: ({ children }: any) => <div data-testid="card-container">{children}</div>
+vi.mock("@/components/ui/card", () => ({
+  Card: ({ children }: any) => <div data-testid="card-container">{children}</div>,
 }));
 
-describe('DeckDisplay - Copied Card Feature', () => {
+describe("DeckDisplay - Copied Card Feature", () => {
   const messages = {
     deck: {
-      selectCharacterHint: 'Select a character'
+      selectCharacterHint: "Select a character",
     },
     category: {
-      attack: 'Attack',
-      skill: 'Skill',
-      upgrade: 'Upgrade'
+      attack: "Attack",
+      skill: "Skill",
+      upgrade: "Upgrade",
     },
     card: {
-      hirameki: 'Hirameki',
-      godSelect: 'God Select',
-      hiddenHirameki: 'Hidden Hirameki',
-      level: 'Lv'
+      hirameki: "Hirameki",
+      godSelect: "God Select",
+      hiddenHirameki: "Hidden Hirameki",
+      level: "Lv",
     },
     status: {
-      unique: 'Unique',
-      copied: 'Copied',
-      exhaust: 'Exhaust',
-      control: 'Control',
-      inquiry: 'Inquiry',
-      claim: 'Claim',
-      survival: 'Survival',
+      unique: "Unique",
+      copied: "Copied",
+      exhaust: "Exhaust",
+      control: "Control",
+      inquiry: "Inquiry",
+      claim: "Claim",
+      survival: "Survival",
     },
     cards: {
-      'test-card': {
-        name: 'Test Card',
+      "test-card": {
+        name: "Test Card",
         descriptions: {
-          0: 'Base description'
-        }
-      }
-    }
+          0: "Base description",
+        },
+      },
+    },
   };
 
   const createMockCard = (overrides?: Partial<DeckCard>): DeckCard => ({
-    id: 'test-card',
-    deckId: 'deck-1',
-    name: 'Test Card',
+    id: "test-card",
+    deckId: "deck-1",
+    name: "Test Card",
     type: CardType.SHARED,
     category: CardCategory.ATTACK,
     statuses: [],
@@ -84,9 +84,9 @@ describe('DeckDisplay - Copied Card Feature', () => {
       {
         level: 0,
         cost: 2,
-        description: 'Base description',
-        statuses: overrides?.statuses
-      }
+        description: "Base description",
+        statuses: overrides?.statuses,
+      },
     ],
     selectedHiramekiLevel: 0,
     godHiramekiType: null,
@@ -94,14 +94,14 @@ describe('DeckDisplay - Copied Card Feature', () => {
     selectedHiddenHiramekiId: null,
     isBasicCard: false,
     isCopied: false,
-    ...overrides
+    ...overrides,
   });
 
   const renderWithIntl = (ui: React.ReactElement) => {
     return render(
       <NextIntlClientProvider locale="en" messages={messages}>
         {ui}
-      </NextIntlClientProvider>
+      </NextIntlClientProvider>,
     );
   };
 
@@ -126,148 +126,111 @@ describe('DeckDisplay - Copied Card Feature', () => {
 
   it('should display "copied" status for copied cards', () => {
     const copiedCard = createMockCard({
-      deckId: 'deck-copied',
-      isCopied: true
+      deckId: "deck-copied",
+      isCopied: true,
     });
 
     renderWithIntl(
-      <DeckDisplay
-        cards={[copiedCard]}
-        egoLevel={0}
-        hasPotential={false}
-        {...mockHandlers}
-      />
+      <DeckDisplay cards={[copiedCard]} egoLevel={0} hasPotential={false} {...mockHandlers} />,
     );
 
-    const statuses = screen.getByTestId('statuses');
-    expect(statuses.textContent).toContain('Copied');
+    const statuses = screen.getByTestId("statuses");
+    expect(statuses.textContent).toContain("Copied");
   });
 
-  it('should render empty state when no cards', () => {
-    renderWithIntl(
-      <DeckDisplay
-        cards={[]}
-        egoLevel={0}
-        hasPotential={false}
-        {...mockHandlers}
-      />
-    );
+  it("should render empty state when no cards", () => {
+    renderWithIntl(<DeckDisplay cards={[]} egoLevel={0} hasPotential={false} {...mockHandlers} />);
 
-    expect(screen.getByText('Select a character')).toBeDefined();
-    expect(screen.queryByTestId('card-frame')).toBeNull();
+    expect(screen.getByText("Select a character")).toBeDefined();
+    expect(screen.queryByTestId("card-frame")).toBeNull();
   });
 
   it('should not display "copied" status for non-copied cards', () => {
     const normalCard = createMockCard({
-      deckId: 'deck-normal',
-      isCopied: false
+      deckId: "deck-normal",
+      isCopied: false,
     });
 
     renderWithIntl(
-      <DeckDisplay
-        cards={[normalCard]}
-        egoLevel={0}
-        hasPotential={false}
-        {...mockHandlers}
-      />
+      <DeckDisplay cards={[normalCard]} egoLevel={0} hasPotential={false} {...mockHandlers} />,
     );
 
-    const statusElements = screen.queryAllByTestId('statuses');
+    const statusElements = screen.queryAllByTestId("statuses");
     if (statusElements.length > 0) {
-      statusElements.forEach(element => {
-        expect(element.textContent).not.toContain('Copied');
+      statusElements.forEach((element) => {
+        expect(element.textContent).not.toContain("Copied");
       });
     }
   });
 
   it('should display "copied" status along with other statuses', () => {
     const copiedCard = createMockCard({
-      deckId: 'deck-copied-unique',
+      deckId: "deck-copied-unique",
       isCopied: true,
-      statuses: [CardStatus.UNIQUE, CardStatus.EXHAUST]
+      statuses: [CardStatus.UNIQUE, CardStatus.EXHAUST],
     });
 
     renderWithIntl(
-      <DeckDisplay
-        cards={[copiedCard]}
-        egoLevel={0}
-        hasPotential={false}
-        {...mockHandlers}
-      />
+      <DeckDisplay cards={[copiedCard]} egoLevel={0} hasPotential={false} {...mockHandlers} />,
     );
 
-    const statuses = screen.getByTestId('statuses');
-    expect(statuses.textContent).toContain('Unique');
-    expect(statuses.textContent).toContain('Exhaust');
-    expect(statuses.textContent).toContain('Copied');
+    const statuses = screen.getByTestId("statuses");
+    expect(statuses.textContent).toContain("Unique");
+    expect(statuses.textContent).toContain("Exhaust");
+    expect(statuses.textContent).toContain("Copied");
   });
 
-  it('should pass isCopied prop to CardFrame', () => {
+  it("should pass isCopied prop to CardFrame", () => {
     const copiedCard = createMockCard({
-      deckId: 'deck-copied',
-      isCopied: true
+      deckId: "deck-copied",
+      isCopied: true,
     });
 
     renderWithIntl(
-      <DeckDisplay
-        cards={[copiedCard]}
-        egoLevel={0}
-        hasPotential={false}
-        {...mockHandlers}
-      />
+      <DeckDisplay cards={[copiedCard]} egoLevel={0} hasPotential={false} {...mockHandlers} />,
     );
 
     // CardFrame should indicate the card is flipped
-    expect(screen.getByTestId('is-copied')).toBeDefined();
+    expect(screen.getByTestId("is-copied")).toBeDefined();
   });
 
-  it('should not pass isCopied as true for non-copied cards', () => {
+  it("should not pass isCopied as true for non-copied cards", () => {
     const normalCard = createMockCard({
-      deckId: 'deck-normal',
-      isCopied: false
+      deckId: "deck-normal",
+      isCopied: false,
     });
 
     renderWithIntl(
-      <DeckDisplay
-        cards={[normalCard]}
-        egoLevel={0}
-        hasPotential={false}
-        {...mockHandlers}
-      />
+      <DeckDisplay cards={[normalCard]} egoLevel={0} hasPotential={false} {...mockHandlers} />,
     );
 
     // CardFrame should not indicate the card is flipped
-    expect(screen.queryByTestId('is-copied')).toBeNull();
+    expect(screen.queryByTestId("is-copied")).toBeNull();
   });
 
-  it('should display multiple cards with mixed copied status', () => {
+  it("should display multiple cards with mixed copied status", () => {
     const cards = [
-      createMockCard({ deckId: 'deck-1', isCopied: false }),
-      createMockCard({ deckId: 'deck-2', isCopied: true }),
-      createMockCard({ deckId: 'deck-3', isCopied: false }),
-      createMockCard({ deckId: 'deck-4', isCopied: true })
+      createMockCard({ deckId: "deck-1", isCopied: false }),
+      createMockCard({ deckId: "deck-2", isCopied: true }),
+      createMockCard({ deckId: "deck-3", isCopied: false }),
+      createMockCard({ deckId: "deck-4", isCopied: true }),
     ];
 
     renderWithIntl(
-      <DeckDisplay
-        cards={cards}
-        egoLevel={0}
-        hasPotential={false}
-        {...mockHandlers}
-      />
+      <DeckDisplay cards={cards} egoLevel={0} hasPotential={false} {...mockHandlers} />,
     );
 
-    const cardFrames = screen.getAllByTestId('card-frame');
+    const cardFrames = screen.getAllByTestId("card-frame");
     expect(cardFrames).toHaveLength(4);
 
-    const flippedCards = screen.getAllByTestId('is-copied');
+    const flippedCards = screen.getAllByTestId("is-copied");
     expect(flippedCards).toHaveLength(2);
   });
 
-  it('shows HiramekiControls for non-character cards with only base variation (SHARED/MONSTER/FORBIDDEN)', () => {
-    const shared = createMockCard({ deckId: 'd-shared', type: CardType.SHARED });
-    const monster = createMockCard({ deckId: 'd-monster', type: CardType.MONSTER });
-    const forbidden = createMockCard({ deckId: 'd-forbidden', type: CardType.FORBIDDEN });
+  it("shows HiramekiControls for non-character cards with only base variation (SHARED/MONSTER/FORBIDDEN)", () => {
+    const shared = createMockCard({ deckId: "d-shared", type: CardType.SHARED });
+    const monster = createMockCard({ deckId: "d-monster", type: CardType.MONSTER });
+    const forbidden = createMockCard({ deckId: "d-forbidden", type: CardType.FORBIDDEN });
 
     renderWithIntl(
       <DeckDisplay
@@ -275,112 +238,87 @@ describe('DeckDisplay - Copied Card Feature', () => {
         egoLevel={0}
         hasPotential={false}
         {...mockHandlers}
-      />
+      />,
     );
 
-    const controls = screen.getAllByTestId('hirameki-controls');
+    const controls = screen.getAllByTestId("hirameki-controls");
     expect(controls.length).toBe(3);
   });
 
-  it('does NOT show HiramekiControls for season4 cards', () => {
+  it("does NOT show HiramekiControls for season4 cards", () => {
     const season4Card = createMockCard({
-      id: 'traitors_execution',
-      deckId: 'd-season4',
+      id: "traitors_execution",
+      deckId: "d-season4",
       type: CardType.FORBIDDEN,
-      hiramekiVariations: [{ level: 0, cost: 2, description: 'Lv1', statuses: [] }],
+      hiramekiVariations: [{ level: 0, cost: 2, description: "Lv1", statuses: [] }],
     });
 
     renderWithIntl(
-      <DeckDisplay
-        cards={[season4Card]}
-        egoLevel={0}
-        hasPotential={false}
-        {...mockHandlers}
-      />
+      <DeckDisplay cards={[season4Card]} egoLevel={0} hasPotential={false} {...mockHandlers} />,
     );
 
-    expect(screen.queryByTestId('hirameki-controls')).toBeNull();
+    expect(screen.queryByTestId("hirameki-controls")).toBeNull();
   });
 
-  it('does not pass top levelLabel for season4 cards (avoid duplicate Lv display)', () => {
+  it("does not pass top levelLabel for season4 cards (avoid duplicate Lv display)", () => {
     const season4Card = createMockCard({
-      id: 'traitors_execution',
-      deckId: 'd-season4-level-label',
+      id: "traitors_execution",
+      deckId: "d-season4-level-label",
       type: CardType.FORBIDDEN,
       selectedSeasonLevel: 3,
-      hiramekiVariations: [{ level: 0, cost: 2, description: 'Lv1', statuses: [] }],
+      hiramekiVariations: [{ level: 0, cost: 2, description: "Lv1", statuses: [] }],
     });
 
     renderWithIntl(
-      <DeckDisplay
-        cards={[season4Card]}
-        egoLevel={0}
-        hasPotential={false}
-        {...mockHandlers}
-      />
+      <DeckDisplay cards={[season4Card]} egoLevel={0} hasPotential={false} {...mockHandlers} />,
     );
 
     const lastProps = cardFrameProps[cardFrameProps.length - 1];
     expect(lastProps.levelLabel).toBeUndefined();
   });
 
-  it('does NOT show HiramekiControls for character cards with only base variation', () => {
+  it("does NOT show HiramekiControls for character cards with only base variation", () => {
     const charBase: DeckCard = createMockCard({
-      deckId: 'd-char-base',
+      deckId: "d-char-base",
       type: CardType.CHARACTER,
     });
 
     renderWithIntl(
-      <DeckDisplay
-        cards={[charBase]}
-        egoLevel={0}
-        hasPotential={false}
-        {...mockHandlers}
-      />
+      <DeckDisplay cards={[charBase]} egoLevel={0} hasPotential={false} {...mockHandlers} />,
     );
 
-    expect(screen.queryByTestId('hirameki-controls')).toBeNull();
+    expect(screen.queryByTestId("hirameki-controls")).toBeNull();
   });
 
-  it('shows HiramekiControls for character cards that have hirameki variations (>1)', () => {
+  it("shows HiramekiControls for character cards that have hirameki variations (>1)", () => {
     const charWithVar: DeckCard = {
-      ...createMockCard({ deckId: 'd-char-var' }),
+      ...createMockCard({ deckId: "d-char-var" }),
       type: CardType.CHARACTER,
       hiramekiVariations: [
-        { level: 0, cost: 2, description: 'Base description', statuses: [] },
-        { level: 1, cost: 3, description: 'Lv1 description', statuses: [] },
+        { level: 0, cost: 2, description: "Base description", statuses: [] },
+        { level: 1, cost: 3, description: "Lv1 description", statuses: [] },
       ],
     };
 
     renderWithIntl(
-      <DeckDisplay
-        cards={[charWithVar]}
-        egoLevel={0}
-        hasPotential={false}
-        {...mockHandlers}
-      />
+      <DeckDisplay cards={[charWithVar]} egoLevel={0} hasPotential={false} {...mockHandlers} />,
     );
 
-    expect(screen.getByTestId('hirameki-controls')).toBeDefined();
+    expect(screen.getByTestId("hirameki-controls")).toBeDefined();
   });
 
-  it('should pass hidden/god hirameki effect ids and fallbacks to CardFrame', () => {
+  it("should pass hidden/god hirameki effect ids and fallbacks to CardFrame", () => {
     const godEffect = GOD_HIRAMEKI_EFFECTS[0];
     const hiddenEffect = HIDDEN_HIRAMEKI_EFFECTS[0];
     const cardWithEffects = createMockCard({
-      deckId: 'deck-effects',
+      deckId: "deck-effects",
       godHiramekiType: GodType.KILKEN,
       godHiramekiEffectId: godEffect.id,
       selectedHiddenHiramekiId: hiddenEffect.id,
     });
 
     renderWithIntl(
-      <DeckDisplay
-        cards={[cardWithEffects]}
-        egoLevel={0}
-        hasPotential={false}
-        {...mockHandlers}
-      />
+      <DeckDisplay cards={[cardWithEffects]} egoLevel={0} hasPotential={false} {...mockHandlers} />,
     );
 
     const lastProps = cardFrameProps[cardFrameProps.length - 1];
@@ -390,26 +328,21 @@ describe('DeckDisplay - Copied Card Feature', () => {
     expect(lastProps.hiddenEffectFallback).toBe(hiddenEffect.additionalEffect);
   });
 
-  it('should avoid passing hidden/god effect ids twice for engraved persona cards', () => {
+  it("should avoid passing hidden/god effect ids twice for engraved persona cards", () => {
     const godEffect = GOD_HIRAMEKI_EFFECTS[0];
     const hiddenEffect = HIDDEN_HIRAMEKI_EFFECTS[0];
     const personaCard = createMockCard({
-      id: 'persona_01',
-      deckId: 'deck-persona-effects',
+      id: "persona_01",
+      deckId: "deck-persona-effects",
       type: CardType.FORBIDDEN,
-      personaEngravings: [{ id: 'lux_attunement_discount', alignment: 'light' }],
+      personaEngravings: [{ id: "lux_attunement_discount", alignment: "light" }],
       godHiramekiType: GodType.KILKEN,
       godHiramekiEffectId: godEffect.id,
       selectedHiddenHiramekiId: hiddenEffect.id,
     });
 
     renderWithIntl(
-      <DeckDisplay
-        cards={[personaCard]}
-        egoLevel={0}
-        hasPotential={false}
-        {...mockHandlers}
-      />
+      <DeckDisplay cards={[personaCard]} egoLevel={0} hasPotential={false} {...mockHandlers} />,
     );
 
     const lastProps = cardFrameProps[cardFrameProps.length - 1];
@@ -418,27 +351,22 @@ describe('DeckDisplay - Copied Card Feature', () => {
     expect(lastProps.hiddenEffectId).toBeUndefined();
   });
 
-  it('should use name.<level> key when hirameki variation name is present', () => {
+  it("should use name.<level> key when hirameki variation name is present", () => {
     const cardWithName: DeckCard = {
-      ...createMockCard({ deckId: 'deck-name' }),
+      ...createMockCard({ deckId: "deck-name" }),
       selectedHiramekiLevel: 1,
       hiramekiVariations: [
-        { level: 0, cost: 2, description: 'Base description', statuses: [] },
-        { level: 1, cost: 3, description: 'Lv1 description', name: 'Variant Name', statuses: [] }
-      ]
+        { level: 0, cost: 2, description: "Base description", statuses: [] },
+        { level: 1, cost: 3, description: "Lv1 description", name: "Variant Name", statuses: [] },
+      ],
     };
 
     renderWithIntl(
-      <DeckDisplay
-        cards={[cardWithName]}
-        egoLevel={0}
-        hasPotential={false}
-        {...mockHandlers}
-      />
+      <DeckDisplay cards={[cardWithName]} egoLevel={0} hasPotential={false} {...mockHandlers} />,
     );
 
     const lastProps = cardFrameProps[cardFrameProps.length - 1];
-    expect(lastProps.nameId).toBe('cards.test-card.name.1');
-    expect(lastProps.nameFallback).toBe('Variant Name');
+    expect(lastProps.nameId).toBe("cards.test-card.name.1");
+    expect(lastProps.nameFallback).toBe("Variant Name");
   });
 });

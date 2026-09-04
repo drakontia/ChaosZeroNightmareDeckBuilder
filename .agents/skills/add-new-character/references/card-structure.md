@@ -6,14 +6,14 @@
 
 ```typescript
 interface CznCard {
-  id: string;              // "{character_id}_starting_1" 等
-  type: CardType;          // CHARACTER_CARDS なら CardType.CHARACTER
-  name: string;            // i18n キー "cards.{id}.name"
-  category: CardCategory;  // ATTACK / UPGRADE / SKILL
-  statuses: CardStatus[];  // 状態異常・効果のリスト
-  cost: number;            // コスト（仮の場合は // TODO: 要確認 を添付）
+  id: string; // "{character_id}_starting_1" 等
+  type: CardType; // CHARACTER_CARDS なら CardType.CHARACTER
+  name: string; // i18n キー "cards.{id}.name"
+  category: CardCategory; // ATTACK / UPGRADE / SKILL
+  statuses: CardStatus[]; // 状態異常・効果のリスト
+  cost: number; // コスト（仮の場合は // TODO: 要確認 を添付）
   isStartingCard: boolean; // スターティングカードか
-  isBasicCard: boolean;    // 基本カードか（基本カードはヒラメキなし）
+  isBasicCard: boolean; // 基本カードか（基本カードはヒラメキなし）
   hiramekiVariations: HiramekiVariation[];
 }
 ```
@@ -22,11 +22,11 @@ interface CznCard {
 
 ```typescript
 interface HiramekiVariation {
-  level: number;           // 0〜5（キャラカード）、0〜4（基本カードは0のみ）
+  level: number; // 0〜5（キャラカード）、0〜4（基本カードは0のみ）
   cost: number;
-  description: string;     // i18n キー "cards.{id}.descriptions.{level}"
-  category: CardCategory;  // カテゴリが変化する場合のみ記載（変化しない場合は親と同じ）
-  statuses: CardStatus[];  // ステータスが変化する場合のみ記載
+  description: string; // i18n キー "cards.{id}.descriptions.{level}"
+  category: CardCategory; // カテゴリが変化する場合のみ記載（変化しない場合は親と同じ）
+  statuses: CardStatus[]; // ステータスが変化する場合のみ記載
 }
 ```
 
@@ -34,29 +34,29 @@ interface HiramekiVariation {
 
 > **必ず `types/index.ts` の `CardStatus` enum を正とし、ここは参照のみに使用してください。**
 
-| 値 | 意味 |
-|----|------|
-| `INITIATION` | 開戦 |
-| `RETAIN` | 保存 |
-| `CELESTIAL` | 天上 |
-| `COMBO` | 連携 |
-| `EXHAUST` | 消滅 |
-| `LEAD` | 主導 |
-| `UNIQUE` | 唯一 |
-| `HASTE` | 迅速 |
-| `FINALE` | 終極 |
-| `RETRIEVE` | 回収 |
-| `EPHEMERAL` | 蒸発 |
-| `BULLET` | 弾丸 |
-| `QUIETUS` | 安息 |
-| `WEAKNESS_ATTACK` | 弱点攻撃 |
-| `PULVERIZE` | 粉砕 |
-| `BIND` | 結束 |
-| `IGNITION` | 点火 |
-| `COPIED` | コピー済み |
-| `FORM_UPGRADE` | 形状強化 |
-| `LINKED` | 連結 |
-| `BLESSING` | 祝福 |
+| 値                | 意味       |
+| ----------------- | ---------- |
+| `INITIATION`      | 開戦       |
+| `RETAIN`          | 保存       |
+| `CELESTIAL`       | 天上       |
+| `COMBO`           | 連携       |
+| `EXHAUST`         | 消滅       |
+| `LEAD`            | 主導       |
+| `UNIQUE`          | 唯一       |
+| `HASTE`           | 迅速       |
+| `FINALE`          | 終極       |
+| `RETRIEVE`        | 回収       |
+| `EPHEMERAL`       | 蒸発       |
+| `BULLET`          | 弾丸       |
+| `QUIETUS`         | 安息       |
+| `WEAKNESS_ATTACK` | 弱点攻撃   |
+| `PULVERIZE`       | 粉砕       |
+| `BIND`            | 結束       |
+| `IGNITION`        | 点火       |
+| `COPIED`          | コピー済み |
+| `FORM_UPGRADE`    | 形状強化   |
+| `LINKED`          | 連結       |
+| `BLESSING`        | 祝福       |
 
 ## カード ID 命名規則
 
@@ -92,16 +92,16 @@ interface HiramekiVariation {
 
 ## 基本カード vs 通常カード
 
-| 項目 | 基本カード (`isBasicCard: true`) | 通常カード |
-|------|--------------------------------|-----------|
-| ヒラメキ段階 | Lv0 のみ | Lv0〜Lv5 |
-| `hiramekiVariations` の数 | 1（level: 0 のみ） | 6（level: 0〜5） |
-| 神ヒラメキ対象 | 対象外 | 対象 |
+| 項目                      | 基本カード (`isBasicCard: true`) | 通常カード       |
+| ------------------------- | -------------------------------- | ---------------- |
+| ヒラメキ段階              | Lv0 のみ                         | Lv0〜Lv5         |
+| `hiramekiVariations` の数 | 1（level: 0 のみ）               | 6（level: 0〜5） |
+| 神ヒラメキ対象            | 対象外                           | 対象             |
 
 ## スターティングカードとヒラメキカードの違い
 
-| 項目 | スターティングカード | ヒラメキカード |
-|------|-------------------|-------------|
-| `isStartingCard` | `true` | `false` |
-| デッキ初期枚数 | 4枚 | 0枚（習得して追加） |
-| 基本カードの有無 | 通常 starting_1, starting_2 が基本カード | 通常なし |
+| 項目             | スターティングカード                     | ヒラメキカード      |
+| ---------------- | ---------------------------------------- | ------------------- |
+| `isStartingCard` | `true`                                   | `false`             |
+| デッキ初期枚数   | 4枚                                      | 0枚（習得して追加） |
+| 基本カードの有無 | 通常 starting_1, starting_2 が基本カード | 通常なし            |

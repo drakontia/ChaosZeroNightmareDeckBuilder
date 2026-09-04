@@ -16,7 +16,7 @@
   along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import { DeckBuilder } from '@/components/DeckBuilder';
+import { DeckBuilder } from "@/components/DeckBuilder";
 
 export default function Home() {
   return <DeckBuilder />;

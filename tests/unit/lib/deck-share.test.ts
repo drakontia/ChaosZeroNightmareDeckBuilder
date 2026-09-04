@@ -1,37 +1,43 @@
-import { describe, it, expect, beforeEach, vi } from 'vite-plus/test';
-import { encodeDeckShare, decodeDeckShare } from '@/lib/deck-share';
-import { Deck, CardStatus, CardType, CardCategory, GodType, EquipmentType } from '@/types';
+import { describe, it, expect, beforeEach, vi } from "vite-plus/test";
+import { encodeDeckShare, decodeDeckShare } from "@/lib/deck-share";
+import { Deck, CardStatus, CardType, CardCategory, GodType, EquipmentType } from "@/types";
 
-describe('deck-share', () => {
+describe("deck-share", () => {
   let mockDeck: Deck;
 
   beforeEach(() => {
     mockDeck = {
-      name: 'Test Deck',
+      name: "Test Deck",
       character: {
-        id: 'chizuru',
-        name: 'character.chizuru',
-        job: 'PSIONIC' as any,
-        element: 'VOID' as any,
-        startingCards: ['char_card_1', 'char_card_2', 'char_card_3', 'char_card_4'],
-        hiramekiCards: ['char_hirameki_1', 'char_hirameki_2', 'char_hirameki_3', 'char_hirameki_4'],
-        imgUrl: ''
+        id: "chizuru",
+        name: "character.chizuru",
+        job: "PSIONIC" as any,
+        element: "VOID" as any,
+        startingCards: ["char_card_1", "char_card_2", "char_card_3", "char_card_4"],
+        hiramekiCards: ["char_hirameki_1", "char_hirameki_2", "char_hirameki_3", "char_hirameki_4"],
+        imgUrl: "",
       } as any,
       equipment: {
         weapon: {
-          item: { id: 'obsidian_sword', name: 'equipment.weapon.obsidian_sword.name', type: EquipmentType.WEAPON, rarity: 'equipment.rarity.rare', obtainableChaosIds: [] },
-          refinement: 'refinement_01',
-          godHammerEquipmentId: 'assault_gauntlets',
-          engravingId: 'equipment_engraving_lux_01',
+          item: {
+            id: "obsidian_sword",
+            name: "equipment.weapon.obsidian_sword.name",
+            type: EquipmentType.WEAPON,
+            rarity: "equipment.rarity.rare",
+            obtainableChaosIds: [],
+          },
+          refinement: "refinement_01",
+          godHammerEquipmentId: "assault_gauntlets",
+          engravingId: "equipment_engraving_lux_01",
         },
         armor: { item: null, refinement: null, godHammerEquipmentId: null, engravingId: null },
-        pendant: { item: null, refinement: null, godHammerEquipmentId: null, engravingId: null }
+        pendant: { item: null, refinement: null, godHammerEquipmentId: null, engravingId: null },
       },
       cards: [
         {
-          deckId: 'deck-1',
-          id: 'shared_01',
-          name: '全体攻撃',
+          deckId: "deck-1",
+          id: "shared_01",
+          name: "全体攻撃",
           type: CardType.SHARED,
           category: CardCategory.ATTACK,
           statuses: [],
@@ -39,59 +45,59 @@ describe('deck-share', () => {
           godHiramekiType: null,
           godHiramekiEffectId: null,
           selectedHiddenHiramekiId: null,
-          personaEngravings: [{ id: 'lux_attunement_discount', alignment: 'light' }],
+          personaEngravings: [{ id: "lux_attunement_discount", alignment: "light" }],
           isBasicCard: false,
           isCopied: true,
-          copiedFromCardId: 'shared_01',
+          copiedFromCardId: "shared_01",
           hiramekiVariations: [
-            { level: 0, cost: 5, description: '敵全体に無属性ダメージを与える' }
-          ]
-        }
+            { level: 0, cost: 5, description: "敵全体に無属性ダメージを与える" },
+          ],
+        },
       ],
       egoLevel: 2,
       hasPotential: true,
-      createdAt: new Date('2024-01-01T12:00:00Z'),
-      removedCards: new Map([['removed-1', 2]]),
-      copiedCards: new Map([['shared_01', 1]]),
-      convertedCards: new Map([['original-1', 'converted-1']]),
+      createdAt: new Date("2024-01-01T12:00:00Z"),
+      removedCards: new Map([["removed-1", 2]]),
+      copiedCards: new Map([["shared_01", 1]]),
+      convertedCards: new Map([["original-1", "converted-1"]]),
       selectedMutationCoreId: null,
     };
   });
 
-  describe('encodeDeckShare', () => {
-    it('should encode deck to base64url string', () => {
+  describe("encodeDeckShare", () => {
+    it("should encode deck to base64url string", () => {
       const encoded = encodeDeckShare(mockDeck);
 
-      expect(typeof encoded).toBe('string');
+      expect(typeof encoded).toBe("string");
       expect(encoded.length).toBeGreaterThan(0);
       // Base64url should not have + or / or =
       expect(encoded).not.toMatch(/[+/=]/);
     });
 
-    it('should include essential deck data', () => {
+    it("should include essential deck data", () => {
       const encoded = encodeDeckShare(mockDeck);
       // The encoded string should be decodable
       expect(() => decodeDeckShare(encoded)).not.toThrow();
     });
 
-    it('should encode deck names with special characters', () => {
+    it("should encode deck names with special characters", () => {
       const specialDeck = {
         ...mockDeck,
-        name: 'デッキ with !@#$% characters'
+        name: "デッキ with !@#$% characters",
       };
 
       const encoded = encodeDeckShare(specialDeck);
       expect(encoded).not.toMatch(/[+/=]/);
     });
 
-    it('should handle empty deck', () => {
+    it("should handle empty deck", () => {
       const emptyDeck: Deck = {
-        name: '',
+        name: "",
         character: null,
         equipment: {
           weapon: { item: null, refinement: null, godHammerEquipmentId: null },
           armor: { item: null, refinement: null, godHammerEquipmentId: null },
-          pendant: { item: null, refinement: null, godHammerEquipmentId: null }
+          pendant: { item: null, refinement: null, godHammerEquipmentId: null },
         },
         cards: [],
         egoLevel: 0,
@@ -100,89 +106,91 @@ describe('deck-share', () => {
         removedCards: new Map(),
         copiedCards: new Map(),
         convertedCards: new Map(),
-      selectedMutationCoreId: null,
+        selectedMutationCoreId: null,
       };
 
       const encoded = encodeDeckShare(emptyDeck);
-      expect(typeof encoded).toBe('string');
+      expect(typeof encoded).toBe("string");
     });
   });
 
-  describe('decodeDeckShare', () => {
-    it('should decode valid encoded string back to deck', () => {
+  describe("decodeDeckShare", () => {
+    it("should decode valid encoded string back to deck", () => {
       const encoded = encodeDeckShare(mockDeck);
       const decoded = decodeDeckShare(encoded);
 
       expect(decoded).not.toBeNull();
-      expect(decoded!.name).toBe('Test Deck');
-      expect(decoded!.character?.id).toBe('chizuru');
+      expect(decoded!.name).toBe("Test Deck");
+      expect(decoded!.character?.id).toBe("chizuru");
       expect(decoded!.egoLevel).toBe(2);
       expect(decoded!.hasPotential).toBe(true);
     });
 
-    it('should preserve card data', () => {
+    it("should preserve card data", () => {
       const encoded = encodeDeckShare(mockDeck);
       const decoded = decodeDeckShare(encoded);
 
       expect(decoded!.cards).toHaveLength(1);
-        expect(decoded!.cards[0].id).toBe('shared_01');
-        expect(decoded!.cards[0].copiedFromCardId).toBe('shared_01');
-        expect(decoded!.cards[0].personaEngravings).toEqual([{ id: 'lux_attunement_discount', alignment: 'light' }]);
-        expect(decoded!.cards[0].selectedHiddenHiramekiId).toBeNull();
+      expect(decoded!.cards[0].id).toBe("shared_01");
+      expect(decoded!.cards[0].copiedFromCardId).toBe("shared_01");
+      expect(decoded!.cards[0].personaEngravings).toEqual([
+        { id: "lux_attunement_discount", alignment: "light" },
+      ]);
+      expect(decoded!.cards[0].selectedHiddenHiramekiId).toBeNull();
     });
 
-    it('should preserve equipment data', () => {
+    it("should preserve equipment data", () => {
       const encoded = encodeDeckShare(mockDeck);
       const decoded = decodeDeckShare(encoded);
 
-      expect(decoded!.equipment.weapon?.item?.id).toBe('obsidian_sword');
-      expect(decoded!.equipment.weapon?.refinement).toBe('refinement_01');
-      expect(decoded!.equipment.weapon?.godHammerEquipmentId).toBe('assault_gauntlets');
-      expect(decoded!.equipment.weapon?.engravingId).toBe('equipment_engraving_lux_01');
+      expect(decoded!.equipment.weapon?.item?.id).toBe("obsidian_sword");
+      expect(decoded!.equipment.weapon?.refinement).toBe("refinement_01");
+      expect(decoded!.equipment.weapon?.godHammerEquipmentId).toBe("assault_gauntlets");
+      expect(decoded!.equipment.weapon?.engravingId).toBe("equipment_engraving_lux_01");
       expect(decoded!.equipment.armor?.item).toBeNull();
     });
 
-    it('should preserve maps data', () => {
+    it("should preserve maps data", () => {
       const encoded = encodeDeckShare(mockDeck);
       const decoded = decodeDeckShare(encoded);
 
-      expect(decoded!.removedCards.get('removed-1')).toBe(2);
-      expect(decoded!.copiedCards.get('shared_01')).toBe(1);
-      expect(decoded!.convertedCards.get('original-1')).toBe('converted-1');
+      expect(decoded!.removedCards.get("removed-1")).toBe(2);
+      expect(decoded!.copiedCards.get("shared_01")).toBe(1);
+      expect(decoded!.convertedCards.get("original-1")).toBe("converted-1");
     });
 
-    it('should return null for invalid encoded string', () => {
-      const decoded = decodeDeckShare('invalid');
+    it("should return null for invalid encoded string", () => {
+      const decoded = decodeDeckShare("invalid");
       expect(decoded).toBeNull();
     });
 
-    it('should return null for malformed base64', () => {
-      const decoded = decodeDeckShare('!!!invalid!!!');
+    it("should return null for malformed base64", () => {
+      const decoded = decodeDeckShare("!!!invalid!!!");
       expect(decoded).toBeNull();
     });
 
-    it('should handle createdAt as ISO string', () => {
+    it("should handle createdAt as ISO string", () => {
       const encoded = encodeDeckShare(mockDeck);
       const decoded = decodeDeckShare(encoded);
 
       expect(decoded!.createdAt).toBeInstanceOf(Date);
-      expect(decoded!.createdAt.toISOString()).toBe('2024-01-01T12:00:00.000Z');
+      expect(decoded!.createdAt.toISOString()).toBe("2024-01-01T12:00:00.000Z");
     });
 
-    it('should return null for unsupported version', () => {
+    it("should return null for unsupported version", () => {
       const payload = { v: 2, k: [] };
-      const encoded = Buffer.from(JSON.stringify(payload), 'utf-8')
-        .toString('base64')
-        .replace(/\+/g, '-')
-        .replace(/\//g, '_')
-        .replace(/=+$/, '');
+      const encoded = Buffer.from(JSON.stringify(payload), "utf-8")
+        .toString("base64")
+        .replace(/\+/g, "-")
+        .replace(/\//g, "_")
+        .replace(/=+$/, "");
       const decoded = decodeDeckShare(encoded);
       expect(decoded).toBeNull();
     });
   });
 
-  describe('encoding/decoding round trip', () => {
-    it('should maintain data integrity through encode-decode cycle', () => {
+  describe("encoding/decoding round trip", () => {
+    it("should maintain data integrity through encode-decode cycle", () => {
       const encoded = encodeDeckShare(mockDeck);
       const decoded = decodeDeckShare(encoded)!;
 
@@ -193,25 +201,23 @@ describe('deck-share', () => {
       expect(decoded.cards.length).toBe(mockDeck.cards.length);
     });
 
-    it('should handle deck with multiple cards', () => {
+    it("should handle deck with multiple cards", () => {
       mockDeck.cards = [
         ...mockDeck.cards,
         {
-          deckId: 'deck-2',
-          id: 'monster_01',
-          name: 'モンスター召喚',
+          deckId: "deck-2",
+          id: "monster_01",
+          name: "モンスター召喚",
           type: CardType.MONSTER,
           category: CardCategory.SKILL,
           statuses: [],
           selectedHiramekiLevel: 0,
-          godHiramekiType: 'kilken' as GodType,
-          godHiramekiEffectId: 'kilken_01',
+          godHiramekiType: "kilken" as GodType,
+          godHiramekiEffectId: "kilken_01",
           selectedHiddenHiramekiId: null,
           isBasicCard: false,
-          hiramekiVariations: [
-            { level: 0, cost: 4, description: 'モンスターを召喚して攻撃' }
-          ]
-        }
+          hiramekiVariations: [{ level: 0, cost: 4, description: "モンスターを召喚して攻撃" }],
+        },
       ];
 
       const encoded = encodeDeckShare(mockDeck);
@@ -219,11 +225,11 @@ describe('deck-share', () => {
 
       expect(decoded!.cards).toHaveLength(2);
       expect(decoded!.cards[1].selectedHiramekiLevel).toBe(0);
-      expect(decoded!.cards[1].godHiramekiType).toBe('kilken' as GodType);
-      expect(decoded!.cards[1].godHiramekiEffectId).toBe('kilken_01');
+      expect(decoded!.cards[1].godHiramekiType).toBe("kilken" as GodType);
+      expect(decoded!.cards[1].godHiramekiEffectId).toBe("kilken_01");
     });
 
-    it('should handle high ego levels', () => {
+    it("should handle high ego levels", () => {
       mockDeck.egoLevel = 6;
 
       const encoded = encodeDeckShare(mockDeck);
@@ -232,12 +238,12 @@ describe('deck-share', () => {
       expect(decoded!.egoLevel).toBe(6);
     });
 
-    it('should preserve persona engraving order and two slots through round trip', () => {
+    it("should preserve persona engraving order and two slots through round trip", () => {
       mockDeck.cards[0] = {
         ...mockDeck.cards[0],
         personaEngravings: [
-          { id: 'lux_attunement_discount', alignment: 'light' },
-          { id: 'umbra_attack_boost', alignment: 'dark' },
+          { id: "lux_attunement_discount", alignment: "light" },
+          { id: "umbra_attack_boost", alignment: "dark" },
         ],
       };
 
@@ -245,27 +251,27 @@ describe('deck-share', () => {
       const decoded = decodeDeckShare(encoded);
 
       expect(decoded!.cards[0].personaEngravings).toEqual([
-        { id: 'lux_attunement_discount', alignment: 'light' },
-        { id: 'umbra_attack_boost', alignment: 'dark' },
+        { id: "lux_attunement_discount", alignment: "light" },
+        { id: "umbra_attack_boost", alignment: "dark" },
       ]);
     });
 
-    it('should preserve hidden hirameki selection through round trip', () => {
+    it("should preserve hidden hirameki selection through round trip", () => {
       mockDeck.cards[0] = {
         ...mockDeck.cards[0],
-        selectedHiddenHiramekiId: 'hidden_hirameki_cost_minus_1',
+        selectedHiddenHiramekiId: "hidden_hirameki_cost_minus_1",
       };
 
       const encoded = encodeDeckShare(mockDeck);
       const decoded = decodeDeckShare(encoded);
 
-      expect(decoded!.cards[0].selectedHiddenHiramekiId).toBe('hidden_hirameki_cost_minus_1');
+      expect(decoded!.cards[0].selectedHiddenHiramekiId).toBe("hidden_hirameki_cost_minus_1");
     });
 
-    it('should preserve season4 level and selected statuses through round trip', () => {
+    it("should preserve season4 level and selected statuses through round trip", () => {
       mockDeck.cards[0] = {
         ...mockDeck.cards[0],
-        id: 'traitors_execution',
+        id: "traitors_execution",
         type: CardType.FORBIDDEN,
         statuses: [CardStatus.CONTROL],
         selectedSeasonLevel: 3,
@@ -283,22 +289,22 @@ describe('deck-share', () => {
       ]);
     });
 
-    it('should default missing persona engraving fields from legacy payloads', () => {
+    it("should default missing persona engraving fields from legacy payloads", () => {
       const payload = {
         v: 1,
         k: [
           {
-            id: 'shared_01',
+            id: "shared_01",
             selectedHiramekiLevel: 0,
           },
         ],
-        ct: '2024-01-01T12:00:00.000Z',
+        ct: "2024-01-01T12:00:00.000Z",
       };
-      const encoded = Buffer.from(JSON.stringify(payload), 'utf-8')
-        .toString('base64')
-        .replace(/\+/g, '-')
-        .replace(/\//g, '_')
-        .replace(/=+$/, '');
+      const encoded = Buffer.from(JSON.stringify(payload), "utf-8")
+        .toString("base64")
+        .replace(/\+/g, "-")
+        .replace(/\//g, "_")
+        .replace(/=+$/, "");
 
       const decoded = decodeDeckShare(encoded);
 
@@ -306,45 +312,45 @@ describe('deck-share', () => {
       expect(decoded!.cards[0].personaEngravings).toEqual([]);
     });
 
-    it('should default missing equipment enhancement fields from legacy payloads', () => {
+    it("should default missing equipment enhancement fields from legacy payloads", () => {
       const payload = {
         v: 1,
         e: {
-          w: 'obsidian_sword',
+          w: "obsidian_sword",
         },
         k: [],
-        ct: '2024-01-01T12:00:00.000Z',
+        ct: "2024-01-01T12:00:00.000Z",
       };
-      const encoded = Buffer.from(JSON.stringify(payload), 'utf-8')
-        .toString('base64')
-        .replace(/\+/g, '-')
-        .replace(/\//g, '_')
-        .replace(/=+$/, '');
+      const encoded = Buffer.from(JSON.stringify(payload), "utf-8")
+        .toString("base64")
+        .replace(/\+/g, "-")
+        .replace(/\//g, "_")
+        .replace(/=+$/, "");
 
       const decoded = decodeDeckShare(encoded);
 
       expect(decoded).not.toBeNull();
-      expect(decoded!.equipment.weapon?.item?.id).toBe('obsidian_sword');
+      expect(decoded!.equipment.weapon?.item?.id).toBe("obsidian_sword");
       expect(decoded!.equipment.weapon?.refinement).toBeNull();
       expect(decoded!.equipment.weapon?.godHammerEquipmentId).toBeNull();
       expect(decoded!.equipment.weapon?.engravingId).toBeNull();
     });
 
-    it('should ignore unknown equipment engraving ids from payloads', () => {
+    it("should ignore unknown equipment engraving ids from payloads", () => {
       const payload = {
         v: 1,
         e: {
-          w: 'obsidian_sword',
-          we: 'invalid_engraving',
+          w: "obsidian_sword",
+          we: "invalid_engraving",
         },
         k: [],
-        ct: '2024-01-01T12:00:00.000Z',
+        ct: "2024-01-01T12:00:00.000Z",
       };
-      const encoded = Buffer.from(JSON.stringify(payload), 'utf-8')
-        .toString('base64')
-        .replace(/\+/g, '-')
-        .replace(/\//g, '_')
-        .replace(/=+$/, '');
+      const encoded = Buffer.from(JSON.stringify(payload), "utf-8")
+        .toString("base64")
+        .replace(/\+/g, "-")
+        .replace(/\//g, "_")
+        .replace(/=+$/, "");
 
       const decoded = decodeDeckShare(encoded);
 
@@ -352,97 +358,97 @@ describe('deck-share', () => {
       expect(decoded!.equipment.weapon?.engravingId).toBeNull();
     });
 
-    it('should ignore invalid persona engraving payload values', () => {
+    it("should ignore invalid persona engraving payload values", () => {
       const payload = {
         v: 1,
         k: [
           {
-            id: 'shared_01',
+            id: "shared_01",
             selectedHiramekiLevel: 0,
             personaEngravings: [
-              { id: 'lux_attunement_discount', alignment: 'light' },
-              { id: 'broken', alignment: 'invalid' },
-              { id: 'umbra_attack_boost', alignment: 'dark' },
-              { id: 10, alignment: 'light' },
+              { id: "lux_attunement_discount", alignment: "light" },
+              { id: "broken", alignment: "invalid" },
+              { id: "umbra_attack_boost", alignment: "dark" },
+              { id: 10, alignment: "light" },
             ],
           },
         ],
-        ct: '2024-01-01T12:00:00.000Z',
+        ct: "2024-01-01T12:00:00.000Z",
       };
-      const encoded = Buffer.from(JSON.stringify(payload), 'utf-8')
-        .toString('base64')
-        .replace(/\+/g, '-')
-        .replace(/\//g, '_')
-        .replace(/=+$/, '');
+      const encoded = Buffer.from(JSON.stringify(payload), "utf-8")
+        .toString("base64")
+        .replace(/\+/g, "-")
+        .replace(/\//g, "_")
+        .replace(/=+$/, "");
 
       const decoded = decodeDeckShare(encoded);
 
       expect(decoded).not.toBeNull();
       expect(decoded!.cards[0].personaEngravings).toEqual([
-        { id: 'lux_attunement_discount', alignment: 'light' },
-        { id: 'umbra_attack_boost', alignment: 'dark' },
+        { id: "lux_attunement_discount", alignment: "light" },
+        { id: "umbra_attack_boost", alignment: "dark" },
       ]);
     });
 
-    it('should drop persona engravings that are not allowed for the shared character job', () => {
+    it("should drop persona engravings that are not allowed for the shared character job", () => {
       const payload = {
         v: 1,
-        c: 'chizuru',
+        c: "chizuru",
         k: [
           {
-            id: 'persona_01',
+            id: "persona_01",
             selectedHiramekiLevel: 0,
-            personaEngravings: [
-              { id: 'lux_exhaust_draw', alignment: 'light' },
-            ],
+            personaEngravings: [{ id: "lux_exhaust_draw", alignment: "light" }],
           },
         ],
-        ct: '2024-01-01T12:00:00.000Z',
+        ct: "2024-01-01T12:00:00.000Z",
       };
-      const encoded = Buffer.from(JSON.stringify(payload), 'utf-8')
-        .toString('base64')
-        .replace(/\+/g, '-')
-        .replace(/\//g, '_')
-        .replace(/=+$/, '');
+      const encoded = Buffer.from(JSON.stringify(payload), "utf-8")
+        .toString("base64")
+        .replace(/\+/g, "-")
+        .replace(/\//g, "_")
+        .replace(/=+$/, "");
 
       const decoded = decodeDeckShare(encoded);
 
       expect(decoded).not.toBeNull();
-      expect(decoded!.character?.id).toBe('chizuru');
+      expect(decoded!.character?.id).toBe("chizuru");
       expect(decoded!.cards[0].personaEngravings).toEqual([]);
     });
   });
 
-  describe('URL encoding safety', () => {
-    it('should produce URL-safe characters', () => {
+  describe("URL encoding safety", () => {
+    it("should produce URL-safe characters", () => {
       const encoded = encodeDeckShare(mockDeck);
-      
+
       // Test that it's safe for URL
       const testUrl = `https://example.com/deck/${encoded}`;
       expect(() => new URL(testUrl)).not.toThrow();
     });
 
-    it('should produce reasonably short encoded strings', () => {
+    it("should produce reasonably short encoded strings", () => {
       const encoded = encodeDeckShare(mockDeck);
       // Encoded string should be reasonably short (less than 1000 chars for typical decks)
       expect(encoded.length).toBeLessThan(1000);
     });
   });
 
-  describe('encoding fallbacks', () => {
-    it('should fall back to TextEncoder path when Buffer.from fails', () => {
+  describe("encoding fallbacks", () => {
+    it("should fall back to TextEncoder path when Buffer.from fails", () => {
       const originalBuffer = global.Buffer;
       const originalBufferFrom = global.Buffer?.from;
       const originalBtoa = (global as any).btoa;
 
-      const safeBtoa = (data: string) => originalBufferFrom!(data, 'binary').toString('base64');
+      const safeBtoa = (data: string) => originalBufferFrom!(data, "binary").toString("base64");
       (global as any).btoa = originalBtoa ?? safeBtoa;
       if (global.Buffer) {
-        global.Buffer.from = (() => { throw new Error('force'); }) as any;
+        global.Buffer.from = (() => {
+          throw new Error("force");
+        }) as any;
       }
 
       const encoded = encodeDeckShare(mockDeck);
-      expect(typeof encoded).toBe('string');
+      expect(typeof encoded).toBe("string");
 
       if (originalBuffer && originalBufferFrom) {
         global.Buffer = originalBuffer;
@@ -451,16 +457,18 @@ describe('deck-share', () => {
       (global as any).btoa = originalBtoa;
     });
 
-    it('should fall back to atob/TextDecoder path when Buffer.from fails', () => {
+    it("should fall back to atob/TextDecoder path when Buffer.from fails", () => {
       const encoded = encodeDeckShare(mockDeck);
       const originalBuffer = global.Buffer;
       const originalBufferFrom = global.Buffer?.from;
       const originalAtob = (global as any).atob;
 
-      const safeAtob = (data: string) => originalBufferFrom!(data, 'base64').toString('binary');
+      const safeAtob = (data: string) => originalBufferFrom!(data, "base64").toString("binary");
       (global as any).atob = originalAtob ?? safeAtob;
       if (global.Buffer) {
-        global.Buffer.from = (() => { throw new Error('force'); }) as any;
+        global.Buffer.from = (() => {
+          throw new Error("force");
+        }) as any;
       }
 
       const decoded = decodeDeckShare(encoded);
@@ -473,8 +481,8 @@ describe('deck-share', () => {
       (global as any).atob = originalAtob;
     });
 
-    it('should use fallback deckId when crypto.randomUUID is unavailable', () => {
-      vi.stubGlobal('crypto', undefined as any);
+    it("should use fallback deckId when crypto.randomUUID is unavailable", () => {
+      vi.stubGlobal("crypto", undefined as any);
 
       const encoded = encodeDeckShare(mockDeck);
       const decoded = decodeDeckShare(encoded)!;
@@ -483,7 +491,7 @@ describe('deck-share', () => {
       vi.unstubAllGlobals();
     });
 
-    it('should handle non-Date createdAt values safely', () => {
+    it("should handle non-Date createdAt values safely", () => {
       const deckWithInvalidDate = {
         ...mockDeck,
         createdAt: 12345 as any,
@@ -494,57 +502,82 @@ describe('deck-share', () => {
     });
   });
 
-  describe('snapshot attributes', () => {
-    it('should preserve RemovedCardEntry/CopiedCardEntry/ConvertedCardEntry snapshot attributes', () => {
+  describe("snapshot attributes", () => {
+    it("should preserve RemovedCardEntry/CopiedCardEntry/ConvertedCardEntry snapshot attributes", () => {
       const deck: Deck = {
-        name: 'snaptest',
+        name: "snaptest",
         character: {
-          id: 'chizuru',
-          name: 'character.chizuru',
-          job: 'PSIONIC' as any,
-          element: 'VOID' as any,
+          id: "chizuru",
+          name: "character.chizuru",
+          job: "PSIONIC" as any,
+          element: "VOID" as any,
           startingCards: [],
           hiramekiCards: [],
-          imgUrl: ''
+          imgUrl: "",
         } as any,
         equipment: {
           weapon: { item: null, refinement: null, godHammerEquipmentId: null },
           armor: { item: null, refinement: null, godHammerEquipmentId: null },
-          pendant: { item: null, refinement: null, godHammerEquipmentId: null }
+          pendant: { item: null, refinement: null, godHammerEquipmentId: null },
         },
         cards: [],
         egoLevel: 0,
         hasPotential: false,
         createdAt: new Date(),
         removedCards: new Map([
-          ['c1', { count: 2, type: CardType.SHARED, selectedHiramekiLevel: 1, godHiramekiType: GodType.KILKEN }]
+          [
+            "c1",
+            {
+              count: 2,
+              type: CardType.SHARED,
+              selectedHiramekiLevel: 1,
+              godHiramekiType: GodType.KILKEN,
+            },
+          ],
         ]),
         copiedCards: new Map([
-          ['c2', { count: 1, type: CardType.MONSTER, selectedHiramekiLevel: 2, godHiramekiType: GodType.SECLAID }]
+          [
+            "c2",
+            {
+              count: 1,
+              type: CardType.MONSTER,
+              selectedHiramekiLevel: 2,
+              godHiramekiType: GodType.SECLAID,
+            },
+          ],
         ]),
         convertedCards: new Map([
-          ['c3', { convertedToId: 'c4', originalType: CardType.FORBIDDEN, selectedHiramekiLevel: 3, godHiramekiType: GodType.DIALOS, excluded: true }]
+          [
+            "c3",
+            {
+              convertedToId: "c4",
+              originalType: CardType.FORBIDDEN,
+              selectedHiramekiLevel: 3,
+              godHiramekiType: GodType.DIALOS,
+              excluded: true,
+            },
+          ],
         ]),
         selectedMutationCoreId: null,
       };
       const encoded = encodeDeckShare(deck);
       const decoded = decodeDeckShare(encoded)!;
       // RemovedCardEntry
-      const removed = decoded.removedCards.get('c1');
-      expect(typeof removed).toBe('object');
+      const removed = decoded.removedCards.get("c1");
+      expect(typeof removed).toBe("object");
       expect((removed as any).type).toBe(CardType.SHARED);
       expect((removed as any).selectedHiramekiLevel).toBe(1);
       expect((removed as any).godHiramekiType).toBe(GodType.KILKEN);
       // CopiedCardEntry
-      const copied = decoded.copiedCards.get('c2');
-      expect(typeof copied).toBe('object');
+      const copied = decoded.copiedCards.get("c2");
+      expect(typeof copied).toBe("object");
       expect((copied as any).type).toBe(CardType.MONSTER);
       expect((copied as any).selectedHiramekiLevel).toBe(2);
       expect((copied as any).godHiramekiType).toBe(GodType.SECLAID);
       // ConvertedCardEntry
-      const converted = decoded.convertedCards.get('c3');
-      expect(typeof converted).toBe('object');
-      expect((converted as any).convertedToId).toBe('c4');
+      const converted = decoded.convertedCards.get("c3");
+      expect(typeof converted).toBe("object");
+      expect((converted as any).convertedToId).toBe("c4");
       expect((converted as any).originalType).toBe(CardType.FORBIDDEN);
       expect((converted as any).selectedHiramekiLevel).toBe(3);
       expect((converted as any).godHiramekiType).toBe(GodType.DIALOS);
@@ -552,4 +585,3 @@ describe('deck-share', () => {
     });
   });
 });
-

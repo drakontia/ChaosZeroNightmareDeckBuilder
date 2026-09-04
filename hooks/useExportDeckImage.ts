@@ -65,14 +65,14 @@ export function useExportDeckImage() {
         alert(
           t("deck.exportImageFailed", {
             defaultValue: "デッキ画像の保存に失敗しました。",
-          })
+          }),
         );
       } finally {
         cleanup.forEach((fn) => fn());
         setIsExporting(false);
       }
     },
-    [isExporting, t]
+    [isExporting, t],
   );
 
   return { isExporting, handleExportDeckImage };

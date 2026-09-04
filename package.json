@@ -2,8 +2,8 @@
   "name": "chaos-zero-nightmare-deck-builder",
   "version": "0.1.0",
   "private": true,
-  "type": "module",
   "description": "ゲーム「カオスゼロナイトメア」のカードデッキを作成・保存出来る攻略補助サイトです。",
+  "type": "module",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -64,9 +64,9 @@
     "tsx": "^4.21.0",
     "typescript": "^7.0.2",
     "vite": "catalog:",
+    "vite-plus": "catalog:",
     "vite-tsconfig-paths": "^6.0.3",
-    "vitest": "catalog:",
-    "vite-plus": "catalog:"
+    "vitest": "catalog:"
   },
   "devEngines": {
     "packageManager": {

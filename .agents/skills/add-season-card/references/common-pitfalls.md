@@ -10,12 +10,14 @@
 英語キャラクター名が間違っていたため、カードIDや共有リンクが壊れた。
 ゲーム内では英語名を使うため、スペルミス1つがすべての参照を破壊する。
 
-**影響範囲**  
+**影響範囲**
+
 - カードID（`{character_id}_starting_1` 等）
 - 神ヒラメキ、コピー、変換の参照
 - デッキ共有URL（シリアライズされたID）
 
-**対処**  
+**対処**
+
 ```
 ❌ NG: id: "heidemari"    // スペルミス → すべての参照が壊れる
 ✅ OK: id: "heidemarie"   // 正確なスペル
@@ -36,10 +38,10 @@
 
 ```typescript
 // NG: 既存の値と意味が重複する
-NEW_STATUS = "exhaust"  // すでに EXHAUST が存在する
+NEW_STATUS = "exhaust"; // すでに EXHAUST が存在する
 
 // OK: 意味が明確で重複しない
-NEW_STATUS = "new_status"
+NEW_STATUS = "new_status";
 ```
 
 既存のステータスを改名する場合は、`lib/character-cards.ts`・`lib/cards/*` 内のすべての参照と、4言語の `common.json` の `cardStatus.*` キーをすべて更新してください。
@@ -48,7 +50,8 @@ NEW_STATUS = "new_status"
 
 ## 落とし穴 #3: キャラクター定義の属性ミス（PR #28・#30）
 
-**何が起きたか**  
+**何が起きたか**
+
 - PR #28 でハイデマリーを追加したが、ジョブや属性の設定が誤っていた
 - PR #30 でキャラクター定義を修正するPRが必要になった
 
@@ -89,10 +92,10 @@ ATTACKとSKILLのペルソナカードで同じ画像ファイルを使ってい
 
 **説明**
 
-| フィールド | 意味 | 設定する枚数 |
-|-----------|------|------------|
-| `isStartingCard: true` | キャラクターの初期デッキに含まれる | 4枚すべて |
-| `isBasicCard: true` | ヒラメキ不可の基本カード | 通常3枚（1〜3番） |
+| フィールド             | 意味                               | 設定する枚数      |
+| ---------------------- | ---------------------------------- | ----------------- |
+| `isStartingCard: true` | キャラクターの初期デッキに含まれる | 4枚すべて         |
+| `isBasicCard: true`    | ヒラメキ不可の基本カード           | 通常3枚（1〜3番） |
 
 ```typescript
 // 開始カード1〜3: どちらも true
@@ -151,15 +154,13 @@ hiramekiVariations: [
 
 ```typescript
 // 正しい: ヒラメキなし（Lv0 のみ）
-hiramekiVariations: [
-  { level: 0, cost: 3, description: "説明", statuses: [CardStatus.UNIQUE] }
-]
+hiramekiVariations: [{ level: 0, cost: 3, description: "説明", statuses: [CardStatus.UNIQUE] }];
 
 // NG: 誤って Lv1 以降を追加してしまう
 hiramekiVariations: [
   { level: 0, cost: 3, description: "説明" },
   { level: 1, cost: 3, description: "..." }, // ← UNIQUE カードにヒラメキは存在しない
-]
+];
 ```
 
 ---

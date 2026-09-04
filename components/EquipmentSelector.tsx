@@ -22,7 +22,11 @@ const EQUIPMENT_PLACEHOLDER: Record<EquipmentType, string> = {
   [EquipmentType.PENDANT]: "/images/equipment/pendants_placeholder.png",
 };
 
-const EQUIPMENT_TYPES: EquipmentType[] = [EquipmentType.WEAPON, EquipmentType.ARMOR, EquipmentType.PENDANT];
+const EQUIPMENT_TYPES: EquipmentType[] = [
+  EquipmentType.WEAPON,
+  EquipmentType.ARMOR,
+  EquipmentType.PENDANT,
+];
 const CHAOS_FILTER_OPTIONS: EquipmentObtainableChaosId[] = [
   EquipmentObtainableChaosId.THE_BLUE_POT,
   EquipmentObtainableChaosId.TWIN_STARS_SHADOW,
@@ -48,7 +52,8 @@ interface EquipmentDescriptions {
   engraving?: string;
 }
 
-const isMythicalEquipment = (equipment: Equipment) => equipment.rarity === "equipment.rarity.mythical";
+const isMythicalEquipment = (equipment: Equipment) =>
+  equipment.rarity === "equipment.rarity.mythical";
 
 const getSelectedMythicalType = (selectedEquipment: Record<EquipmentType, EquipmentSlot | null>) =>
   EQUIPMENT_TYPES.find((type) => {
@@ -56,7 +61,10 @@ const getSelectedMythicalType = (selectedEquipment: Record<EquipmentType, Equipm
     return item ? isMythicalEquipment(item) : false;
   }) ?? null;
 
-const getEquipmentDescriptions = (slot: EquipmentSlot | null, t: ReturnType<typeof useTranslations>): EquipmentDescriptions => {
+const getEquipmentDescriptions = (
+  slot: EquipmentSlot | null,
+  t: ReturnType<typeof useTranslations>,
+): EquipmentDescriptions => {
   if (!slot?.engravingId) {
     return {};
   }
@@ -65,7 +73,9 @@ const getEquipmentDescriptions = (slot: EquipmentSlot | null, t: ReturnType<type
     return {};
   }
   return {
-    engraving: t(`equipment.engravingEffects.${engraving.id}`, { defaultValue: engraving.description }),
+    engraving: t(`equipment.engravingEffects.${engraving.id}`, {
+      defaultValue: engraving.description,
+    }),
   };
 };
 
@@ -73,14 +83,32 @@ function EnhancementBadges({ slot }: { slot: EquipmentSlot | null }) {
   if (!slot) return null;
   return (
     <div className="absolute top-1 right-1 z-10 flex gap-1">
-      {slot.godHammerEquipmentId ? <div className="rounded-full bg-black/60 p-1"><Hammer size={16} className="text-orange-400" /></div> : null}
-      {slot.refinement ? <div className="rounded-full bg-black/60 p-1"><HardHat size={16} className="text-orange-400" /></div> : null}
-      {slot.engravingId ? <div className="rounded-full bg-black/60 p-1"><Sparkles size={16} className={slot.engravingId.includes("umbra") ? "text-violet-400" : "text-yellow-400"} /></div> : null}
+      {slot.godHammerEquipmentId ? (
+        <div className="rounded-full bg-black/60 p-1">
+          <Hammer size={16} className="text-orange-400" />
+        </div>
+      ) : null}
+      {slot.refinement ? (
+        <div className="rounded-full bg-black/60 p-1">
+          <HardHat size={16} className="text-orange-400" />
+        </div>
+      ) : null}
+      {slot.engravingId ? (
+        <div className="rounded-full bg-black/60 p-1">
+          <Sparkles
+            size={16}
+            className={slot.engravingId.includes("umbra") ? "text-violet-400" : "text-yellow-400"}
+          />
+        </div>
+      ) : null}
     </div>
   );
 }
 
-interface EquipmentPreviewButtonProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'slot'> {
+interface EquipmentPreviewButtonProps extends Omit<
+  React.ButtonHTMLAttributes<HTMLButtonElement>,
+  "slot"
+> {
   title: string;
   slot: EquipmentSlot | null;
   imageSrc: string;
@@ -90,17 +118,33 @@ interface EquipmentPreviewButtonProps extends Omit<React.ButtonHTMLAttributes<HT
 
 const EquipmentPreviewButton = React.forwardRef<HTMLButtonElement, EquipmentPreviewButtonProps>(
   function EquipmentPreviewButton({ title, slot, imageSrc, imageAlt, onImageError, ...rest }, ref) {
-  return (
-    <Button ref={ref} variant="outline" className="w-full h-20 sm:h-16 lg:h-24 xl:h-32 border-double bg-gray-500 relative overflow-hidden" {...rest}>
-      <div className="absolute inset-0 rounded-md overflow-hidden bg-muted">
-        <Image src={imageSrc} alt={imageAlt} fill className="object-cover" sizes="100%" onError={onImageError} />
-      </div>
-      {slot?.item ? <EnhancementBadges slot={slot} /> : null}
-      {slot?.item ? <div className="absolute bottom-1 z-10 flex flex-col text-center px-2"><span className="text-sm font-semibold text-white">{title}</span></div> : null}
-      {!slot?.item && <span className="sr-only">{title}</span>}
-    </Button>
-  );
-}
+    return (
+      <Button
+        ref={ref}
+        variant="outline"
+        className="w-full h-20 sm:h-16 lg:h-24 xl:h-32 border-double bg-gray-500 relative overflow-hidden"
+        {...rest}
+      >
+        <div className="absolute inset-0 rounded-md overflow-hidden bg-muted">
+          <Image
+            src={imageSrc}
+            alt={imageAlt}
+            fill
+            className="object-cover"
+            sizes="100%"
+            onError={onImageError}
+          />
+        </div>
+        {slot?.item ? <EnhancementBadges slot={slot} /> : null}
+        {slot?.item ? (
+          <div className="absolute bottom-1 z-10 flex flex-col text-center px-2">
+            <span className="text-sm font-semibold text-white">{title}</span>
+          </div>
+        ) : null}
+        {!slot?.item && <span className="sr-only">{title}</span>}
+      </Button>
+    );
+  },
 );
 EquipmentPreviewButton.displayName = "EquipmentPreviewButton";
 
@@ -115,18 +159,44 @@ interface EquipmentOptionCardProps {
   onSelect: () => void;
 }
 
-function EquipmentOptionCard({ selected, imageSrc, onImageError, name, rarity, obtainableChaosIds, description, onSelect }: EquipmentOptionCardProps) {
+function EquipmentOptionCard({
+  selected,
+  imageSrc,
+  onImageError,
+  name,
+  rarity,
+  obtainableChaosIds,
+  description,
+  onSelect,
+}: EquipmentOptionCardProps) {
   return (
     <div className="relative">
-      <Button variant={selected ? "secondary" : "outline"} className="h-auto flex-col justify-start p-2 text-center relative w-full" onClick={onSelect}>
+      <Button
+        variant={selected ? "secondary" : "outline"}
+        className="h-auto flex-col justify-start p-2 text-center relative w-full"
+        onClick={onSelect}
+      >
         <div className="relative w-full aspect-square rounded-md overflow-hidden bg-muted">
-          <Image src={imageSrc} alt={name} fill className="object-cover" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" onError={onImageError} />
+          <Image
+            src={imageSrc}
+            alt={name}
+            fill
+            className="object-cover"
+            sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+            onError={onImageError}
+          />
         </div>
         <div className="flex flex-col w-full">
           <span className="text-xs md:text-sm">{name}</span>
         </div>
       </Button>
-      {description ? <InfoDialog description={description} rarity={rarity} obtainableChaosIds={obtainableChaosIds} /> : null}
+      {description ? (
+        <InfoDialog
+          description={description}
+          rarity={rarity}
+          obtainableChaosIds={obtainableChaosIds}
+        />
+      ) : null}
     </div>
   );
 }
@@ -147,11 +217,13 @@ function EquipmentField(props: EquipmentFieldProps) {
   const items = props.equipment.filter((item) => item.type === props.type);
   const filteredItems = useMemo(
     () => filterEquipmentByChaosLocation(items, props.selectedChaosId),
-    [items, props.selectedChaosId]
+    [items, props.selectedChaosId],
   );
   const slot = props.selectedEquipment[props.type];
   const selected = slot?.item ?? null;
-  const imageSrc = props.imageErrors.has(selected?.id ?? "") ? "/images/equipment/equipment_placeholder.png" : selected?.imgUrl ?? EQUIPMENT_PLACEHOLDER[props.type];
+  const imageSrc = props.imageErrors.has(selected?.id ?? "")
+    ? "/images/equipment/equipment_placeholder.png"
+    : (selected?.imgUrl ?? EQUIPMENT_PLACEHOLDER[props.type]);
   const descriptions = useMemo(() => getEquipmentDescriptions(slot, t), [slot, t]);
 
   return (
@@ -159,9 +231,35 @@ function EquipmentField(props: EquipmentFieldProps) {
       <Dialog open={props.open} onOpenChange={props.onOpenChange}>
         <div className="relative">
           <DialogTrigger asChild>
-            <EquipmentPreviewButton title={selected ? t(selected.name) : t(props.titleKey)} slot={slot} imageSrc={imageSrc} imageAlt={selected ? t(selected.name) : t(props.titleKey)} onImageError={() => selected && props.onImageError(selected.id)} />
+            <EquipmentPreviewButton
+              title={selected ? t(selected.name) : t(props.titleKey)}
+              slot={slot}
+              imageSrc={imageSrc}
+              imageAlt={selected ? t(selected.name) : t(props.titleKey)}
+              onImageError={() => selected && props.onImageError(selected.id)}
+            />
           </DialogTrigger>
-          {selected?.description ? <InfoDialog description={t(selected.description)} rarity={t(selected.rarity)} obtainableChaosIds={selected.obtainableChaosIds} showEnhancements refinement={slot?.refinement ?? null} onRefinementChange={(refinementId) => props.onRefinementChange?.(props.type, refinementId)} equipmentEngravingId={slot?.engravingId ?? null} onEquipmentEngravingChange={(engravingId) => props.onEquipmentEngravingChange?.(props.type, engravingId)} equipment={props.equipment} godHammerEquipmentId={slot?.godHammerEquipmentId ?? null} onGodHammerEquipmentSelect={(equipmentId) => props.onGodHammerChange?.(props.type, equipmentId)} /> : null}
+          {selected?.description ? (
+            <InfoDialog
+              description={t(selected.description)}
+              rarity={t(selected.rarity)}
+              obtainableChaosIds={selected.obtainableChaosIds}
+              showEnhancements
+              refinement={slot?.refinement ?? null}
+              onRefinementChange={(refinementId) =>
+                props.onRefinementChange?.(props.type, refinementId)
+              }
+              equipmentEngravingId={slot?.engravingId ?? null}
+              onEquipmentEngravingChange={(engravingId) =>
+                props.onEquipmentEngravingChange?.(props.type, engravingId)
+              }
+              equipment={props.equipment}
+              godHammerEquipmentId={slot?.godHammerEquipmentId ?? null}
+              onGodHammerEquipmentSelect={(equipmentId) =>
+                props.onGodHammerChange?.(props.type, equipmentId)
+              }
+            />
+          ) : null}
         </div>
         <DialogContent className="max-h-[90vh] overflow-hidden w-[80vw] max-w-5xl flex flex-col">
           <DialogHeader className="flex-row items-center justify-between space-y-0 shrink-0">
@@ -172,7 +270,9 @@ function EquipmentField(props: EquipmentFieldProps) {
               </label>
               <select
                 id={`${props.type}-chaos-filter`}
-                aria-label={t("equipment.obtainableChaos.filterLabel", { defaultValue: "入手場所フィルター" })}
+                aria-label={t("equipment.obtainableChaos.filterLabel", {
+                  defaultValue: "入手場所フィルター",
+                })}
                 className="h-8 rounded-md border border-input bg-background px-2 text-xs md:text-sm"
                 value={props.selectedChaosId ?? ""}
                 onChange={(event) => {
@@ -192,15 +292,41 @@ function EquipmentField(props: EquipmentFieldProps) {
                 ))}
               </select>
             </div>
-            <DialogCloseButton onClick={() => { props.onSelect(null, props.type); props.onOpenChange(false); }} />
+            <DialogCloseButton
+              onClick={() => {
+                props.onSelect(null, props.type);
+                props.onOpenChange(false);
+              }}
+            />
           </DialogHeader>
           <div className="flex-1 p-2 md:p-6 pt-0 overflow-y-auto">
             <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-2">
               {filteredItems.map((item) => (
-                <EquipmentOptionCard key={item.id} selected={selected?.id === item.id} imageSrc={props.imageErrors.has(item.id) ? "/images/equipment/equipment_placeholder.png" : item.imgUrl ?? "/images/equipment/equipment_placeholder.png"} onImageError={() => props.onImageError(item.id)} name={t(item.name)} rarity={t(item.rarity)} obtainableChaosIds={item.obtainableChaosIds} description={item.description ? t(item.description) : undefined} onSelect={() => props.onSelect(item, props.type)} />
+                <EquipmentOptionCard
+                  key={item.id}
+                  selected={selected?.id === item.id}
+                  imageSrc={
+                    props.imageErrors.has(item.id)
+                      ? "/images/equipment/equipment_placeholder.png"
+                      : (item.imgUrl ?? "/images/equipment/equipment_placeholder.png")
+                  }
+                  onImageError={() => props.onImageError(item.id)}
+                  name={t(item.name)}
+                  rarity={t(item.rarity)}
+                  obtainableChaosIds={item.obtainableChaosIds}
+                  description={item.description ? t(item.description) : undefined}
+                  onSelect={() => props.onSelect(item, props.type)}
+                />
               ))}
             </div>
-            {descriptions.engraving ? <div className="mt-4 text-sm text-muted-foreground"><span className="font-semibold">{t("equipment.engraving", { defaultValue: "刻印" })}: </span>{descriptions.engraving}</div> : null}
+            {descriptions.engraving ? (
+              <div className="mt-4 text-sm text-muted-foreground">
+                <span className="font-semibold">
+                  {t("equipment.engraving", { defaultValue: "刻印" })}:{" "}
+                </span>
+                {descriptions.engraving}
+              </div>
+            ) : null}
           </div>
         </DialogContent>
       </Dialog>
@@ -222,7 +348,10 @@ export function EquipmentSelector(props: EquipmentSelectorProps) {
     if (item && type && isMythicalEquipment(item)) {
       const selectedMythicalType = getSelectedMythicalType(props.selectedEquipment);
       if (selectedMythicalType && selectedMythicalType !== type) {
-        toast.error(t("equipment.duplicate.warning", { type: t(`equipment.${selectedMythicalType}.title`) }), { duration: 3000, position: "top-center" });
+        toast.error(
+          t("equipment.duplicate.warning", { type: t(`equipment.${selectedMythicalType}.title`) }),
+          { duration: 3000, position: "top-center" },
+        );
         return;
       }
     }
@@ -232,9 +361,26 @@ export function EquipmentSelector(props: EquipmentSelectorProps) {
 
   return (
     <FieldGroup className="pt-4 gap-2">
-      <FieldLabel className="text-base lg:text-2xl text-gray-500"><Swords />{t("equipment.title")}</FieldLabel>
+      <FieldLabel className="text-base lg:text-2xl text-gray-500">
+        <Swords />
+        {t("equipment.title")}
+      </FieldLabel>
       <div className="grid grid-cols-3 gap-2">
-        {EQUIPMENT_TYPES.map((type) => <EquipmentField key={type} {...props} type={type} titleKey={`equipment.${type}.title`} open={openType === type} onOpenChange={(open) => setOpenType(open ? type : null)} selectedChaosId={selectedChaosId} onSelectedChaosIdChange={setSelectedChaosId} imageErrors={imageErrors} onImageError={handleImageError} onSelect={handleSelect} />)}
+        {EQUIPMENT_TYPES.map((type) => (
+          <EquipmentField
+            key={type}
+            {...props}
+            type={type}
+            titleKey={`equipment.${type}.title`}
+            open={openType === type}
+            onOpenChange={(open) => setOpenType(open ? type : null)}
+            selectedChaosId={selectedChaosId}
+            onSelectedChaosIdChange={setSelectedChaosId}
+            imageErrors={imageErrors}
+            onImageError={handleImageError}
+            onSelect={handleSelect}
+          />
+        ))}
       </div>
     </FieldGroup>
   );

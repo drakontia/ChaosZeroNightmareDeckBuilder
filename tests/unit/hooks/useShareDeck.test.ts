@@ -1,16 +1,16 @@
-import { describe, it, expect } from 'vite-plus/test';
-import { encodeDeckShare, decodeDeckShare } from '@/lib/deck-share';
-import { Deck } from '@/types';
+import { describe, it, expect } from "vite-plus/test";
+import { encodeDeckShare, decodeDeckShare } from "@/lib/deck-share";
+import { Deck } from "@/types";
 
-describe('useShareDeck (functional)', () => {
-  it('should encode and decode deck correctly', () => {
+describe("useShareDeck (functional)", () => {
+  it("should encode and decode deck correctly", () => {
     const mockDeck: Deck = {
-      name: 'Test Deck',
+      name: "Test Deck",
       character: null,
       equipment: {
         weapon: { item: null, refinement: null, godHammerEquipmentId: null },
         armor: { item: null, refinement: null, godHammerEquipmentId: null },
-        pendant: { item: null, refinement: null, godHammerEquipmentId: null }
+        pendant: { item: null, refinement: null, godHammerEquipmentId: null },
       },
       cards: [],
       egoLevel: 0,
@@ -23,18 +23,18 @@ describe('useShareDeck (functional)', () => {
     };
 
     const encoded = encodeDeckShare(mockDeck);
-    expect(typeof encoded).toBe('string');
+    expect(typeof encoded).toBe("string");
     expect(encoded.length).toBeGreaterThan(0);
   });
 
-  it('should produce URL-safe encoding', () => {
+  it("should produce URL-safe encoding", () => {
     const mockDeck: Deck = {
-      name: 'Test Deck',
+      name: "Test Deck",
       character: null,
       equipment: {
         weapon: { item: null, refinement: null, godHammerEquipmentId: null },
         armor: { item: null, refinement: null, godHammerEquipmentId: null },
-        pendant: { item: null, refinement: null, godHammerEquipmentId: null }
+        pendant: { item: null, refinement: null, godHammerEquipmentId: null },
       },
       cards: [],
       egoLevel: 0,
@@ -47,10 +47,10 @@ describe('useShareDeck (functional)', () => {
     };
 
     const encoded = encodeDeckShare(mockDeck);
-    
+
     // Base64url should not have + or / or =
     expect(encoded).not.toMatch(/[+/=]/);
-    
+
     // Should be safe for URL
     expect(() => {
       new URL(`https://example.com/deck/${encoded}`);
