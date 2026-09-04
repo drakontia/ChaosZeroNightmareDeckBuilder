@@ -1,4 +1,11 @@
-import { Deck, CardType, CardGrade, RemovedCardEntry, CopiedCardEntry, ConvertedCardEntry } from "@/types";
+import {
+  Deck,
+  CardType,
+  CardGrade,
+  RemovedCardEntry,
+  CopiedCardEntry,
+  ConvertedCardEntry,
+} from "@/types";
 import { getCardById } from "./card";
 import { isSeason4CardId } from "./season4";
 
@@ -20,25 +27,26 @@ function getMonsterCardPoints(grade?: CardGrade): number {
 export function calculateFaintMemory(deck: Deck | null | undefined): number {
   if (!deck || !Array.isArray(deck.cards)) return 0;
   let points = 0;
-  const activeCopiedCards = deck.cards.filter(card => card.isCopied);
-  
+  const activeCopiedCards = deck.cards.filter((card) => card.isCopied);
+
   // Points for equipment enhancements (refinement and god hammer)
   // Each equipment slot can have +10pt for refinement and +10pt for god hammer
-  const equipmentTypes: Array<'weapon' | 'armor' | 'pendant'> = ['weapon', 'armor', 'pendant'];
+  const equipmentTypes: Array<"weapon" | "armor" | "pendant"> = ["weapon", "armor", "pendant"];
   for (const type of equipmentTypes) {
     const slot = deck.equipment[type];
-    if (slot?.item) { // Only count if equipment is selected
+    if (slot?.item) {
+      // Only count if equipment is selected
       if (slot.refinement) points += 10;
       if (slot.godHammerEquipmentId) points += 10; // 選択された装備IDがあれば+10pt
     }
   }
-  
+
   // Points for cards in the deck
   const cards = deck.cards;
   for (const card of cards) {
     // Character cards: base cards do not add points.
     // Collect God Hirameki state once and handle uniformly for all types.
-    const hasGodHirameki = (card.godHiramekiType && card.godHiramekiEffectId && !card.isBasicCard);
+    const hasGodHirameki = card.godHiramekiType && card.godHiramekiEffectId && !card.isBasicCard;
 
     // Non-character cards receive base acquisition and hirameki points
     if (card.type !== CardType.CHARACTER) {
@@ -79,7 +87,8 @@ export function calculateFaintMemory(deck: Deck | null | undefined): number {
     }
 
     // Attribute points for removed cards (snapshot-based)
-    const snapshot: RemovedCardEntry | null = typeof entry === "number" ? null : entry as RemovedCardEntry;
+    const snapshot: RemovedCardEntry | null =
+      typeof entry === "number" ? null : (entry as RemovedCardEntry);
     if (snapshot && count > 0) {
       const cardType = snapshot.type;
       // Type acquisition points (per card)
@@ -108,13 +117,16 @@ export function calculateFaintMemory(deck: Deck | null | undefined): number {
 
   for (const [cardId, entry] of deck.copiedCards.entries()) {
     const count = typeof entry === "number" ? entry : (entry.count ?? 0);
-    const originalCardInDeck = deck.cards.some(c => c.id === cardId && !c.isCopied);
-    const activeCopyCountForCard = activeCopiedCards.filter(c => c.copiedFromCardId === cardId || c.id === cardId).length;
+    const originalCardInDeck = deck.cards.some((c) => c.id === cardId && !c.isCopied);
+    const activeCopyCountForCard = activeCopiedCards.filter(
+      (c) => c.copiedFromCardId === cardId || c.id === cardId,
+    ).length;
 
     // Attribute points for copied cards (snapshot-based)
     // ONLY add these if the original card is NOT currently in the deck
     // AND at least one copied card still exists in the deck
-    const snapshot: CopiedCardEntry | null = typeof entry === "number" ? null : entry as CopiedCardEntry;
+    const snapshot: CopiedCardEntry | null =
+      typeof entry === "number" ? null : (entry as CopiedCardEntry);
     if (snapshot && count > 0 && !originalCardInDeck && activeCopyCountForCard > 0) {
       const cardType = snapshot.type;
       // Type acquisition points (one-time for all copies of this card)
@@ -135,7 +147,8 @@ export function calculateFaintMemory(deck: Deck | null | undefined): number {
 
   // Points for converted cards (treated as removals in V2)
   for (const [originalId, entry] of deck.convertedCards.entries()) {
-    const snapshot: ConvertedCardEntry | null = typeof entry === "string" ? null : entry as ConvertedCardEntry;
+    const snapshot: ConvertedCardEntry | null =
+      typeof entry === "string" ? null : (entry as ConvertedCardEntry);
     const originalCard = getCardById(originalId);
     const isStartingCard = originalCard?.isStartingCard ?? false;
 
@@ -154,7 +167,7 @@ export function calculateFaintMemory(deck: Deck | null | undefined): number {
       }
       // V2: Hirameki points for shared cards removed (shared cards no longer gain hirameki points)
       // God hirameki points
-      if ((snapshot.godHiramekiType && snapshot.godHiramekiEffectId && !snapshot.isBasicCard)) {
+      if (snapshot.godHiramekiType && snapshot.godHiramekiEffectId && !snapshot.isBasicCard) {
         points += 20;
       }
     }

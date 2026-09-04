@@ -1,14 +1,24 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { NextIntlClientProvider } from 'next-intl';
-import { getLocale, getMessages } from 'next-intl/server';
-import { Analytics } from '@vercel/analytics/next';
-import { Toaster } from '@/components/ui/sonner';
+import { NextIntlClientProvider } from "next-intl";
+import { getLocale, getMessages } from "next-intl/server";
+import { Analytics } from "@vercel/analytics/next";
+import { Toaster } from "@/components/ui/sonner";
 
 export const metadata: Metadata = {
   title: "カオスゼロナイトメア デッキビルダー",
   description: "ゲーム「カオスゼロナイトメア」のカードデッキを構築出来る攻略補助サイトです。",
-  keywords: ['カオスゼロナイトメア', 'カオゼロ', 'Chaos Zero Nightmare', 'Deck Builder', 'デッキビルダー', 'ローグライク', 'Roguelike', 'カードゲーム', 'Card Game' ],
+  keywords: [
+    "カオスゼロナイトメア",
+    "カオゼロ",
+    "Chaos Zero Nightmare",
+    "Deck Builder",
+    "デッキビルダー",
+    "ローグライク",
+    "Roguelike",
+    "カードゲーム",
+    "Card Game",
+  ],
 };
 
 export default async function RootLayout({

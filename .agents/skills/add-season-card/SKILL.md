@@ -45,79 +45,79 @@ REFACTOR → コードを整理する
 `tests/unit/lib/{character_id}.test.ts` を作成します。
 
 ```typescript
-import { describe, it, expect } from 'vitest';
-import { CardStatus, CardCategory, CardType, JobType, ElementType } from '@/types';
-import { CHARACTERS } from '@/lib/characters';
-import { CHARACTER_CARDS } from '@/lib/character-cards';
+import { describe, it, expect } from "vitest";
+import { CardStatus, CardCategory, CardType, JobType, ElementType } from "@/types";
+import { CHARACTERS } from "@/lib/characters";
+import { CHARACTER_CARDS } from "@/lib/character-cards";
 
-describe('{キャラクター名} character', () => {
+describe("{キャラクター名} character", () => {
   // 新しい CardStatus を追加した場合のみ
-  it('CardStatus has {NEW_STATUS} defined', () => {
-    expect(CardStatus.NEW_STATUS).toBe('new_status');
+  it("CardStatus has {NEW_STATUS} defined", () => {
+    expect(CardStatus.NEW_STATUS).toBe("new_status");
   });
 
-  it('{character_id} exists in CHARACTERS', () => {
-    const char = CHARACTERS.find(c => c.id === '{character_id}');
+  it("{character_id} exists in CHARACTERS", () => {
+    const char = CHARACTERS.find((c) => c.id === "{character_id}");
     expect(char).toBeDefined();
     expect(char?.job).toBe(JobType.VANGUARD); // 実際のジョブに変更
     expect(char?.element).toBe(ElementType.VOID); // 実際の属性に変更
-    expect(char?.rarity).toBe('★5');
+    expect(char?.rarity).toBe("★5");
   });
 
-  it('{character_id} has 4 starting cards and 4 hirameki cards', () => {
-    const char = CHARACTERS.find(c => c.id === '{character_id}');
+  it("{character_id} has 4 starting cards and 4 hirameki cards", () => {
+    const char = CHARACTERS.find((c) => c.id === "{character_id}");
     expect(char?.startingCards).toHaveLength(4);
     expect(char?.hiramekiCards).toHaveLength(4);
   });
 
-  describe('starting cards', () => {
+  describe("starting cards", () => {
     const startingIds = [
-      '{character_id}_starting_1',
-      '{character_id}_starting_2',
-      '{character_id}_starting_3',
-      '{character_id}_starting_4',
+      "{character_id}_starting_1",
+      "{character_id}_starting_2",
+      "{character_id}_starting_3",
+      "{character_id}_starting_4",
     ];
 
-    it.each(startingIds)('%s exists in CHARACTER_CARDS', (id) => {
-      const card = CHARACTER_CARDS.find(c => c.id === id);
+    it.each(startingIds)("%s exists in CHARACTER_CARDS", (id) => {
+      const card = CHARACTER_CARDS.find((c) => c.id === id);
       expect(card).toBeDefined();
       expect(card?.type).toBe(CardType.CHARACTER);
       expect(card?.isStartingCard).toBe(true);
     });
 
     // 開始カード1〜3: 基本カード（isBasicCard: true）
-    it('{character_id}_starting_1 is basic ATTACK card', () => {
-      const card = CHARACTER_CARDS.find(c => c.id === '{character_id}_starting_1');
+    it("{character_id}_starting_1 is basic ATTACK card", () => {
+      const card = CHARACTER_CARDS.find((c) => c.id === "{character_id}_starting_1");
       expect(card?.category).toBe(CardCategory.ATTACK);
       expect(card?.isBasicCard).toBe(true);
     });
 
     // 開始カード4: 非基本カード（ヒラメキあり）
-    it('{character_id}_starting_4 is non-basic with statuses', () => {
-      const card = CHARACTER_CARDS.find(c => c.id === '{character_id}_starting_4');
+    it("{character_id}_starting_4 is non-basic with statuses", () => {
+      const card = CHARACTER_CARDS.find((c) => c.id === "{character_id}_starting_4");
       expect(card?.isBasicCard).toBe(false);
       expect(card?.hiramekiVariations).toHaveLength(6); // Lv0〜Lv5
     });
   });
 
-  describe('hirameki cards', () => {
+  describe("hirameki cards", () => {
     const hiramekiIds = [
-      '{character_id}_hirameki_1',
-      '{character_id}_hirameki_2',
-      '{character_id}_hirameki_3',
-      '{character_id}_hirameki_4',
+      "{character_id}_hirameki_1",
+      "{character_id}_hirameki_2",
+      "{character_id}_hirameki_3",
+      "{character_id}_hirameki_4",
     ];
 
-    it.each(hiramekiIds)('%s exists in CHARACTER_CARDS', (id) => {
-      const card = CHARACTER_CARDS.find(c => c.id === id);
+    it.each(hiramekiIds)("%s exists in CHARACTER_CARDS", (id) => {
+      const card = CHARACTER_CARDS.find((c) => c.id === id);
       expect(card).toBeDefined();
       expect(card?.type).toBe(CardType.CHARACTER);
     });
 
     // 各カードの特定のステータスやカテゴリをテストする
     // 例: hirameki_4 がヒラメキなし（Lv0のみ）の場合
-    it('{character_id}_hirameki_4 has only Lv0 (no hirameki)', () => {
-      const card = CHARACTER_CARDS.find(c => c.id === '{character_id}_hirameki_4');
+    it("{character_id}_hirameki_4 has only Lv0 (no hirameki)", () => {
+      const card = CHARACTER_CARDS.find((c) => c.id === "{character_id}_hirameki_4");
       expect(card?.hiramekiVariations).toHaveLength(1);
       expect(card?.hiramekiVariations[0].level).toBe(0);
     });
@@ -141,7 +141,7 @@ pnpm vitest run tests/unit/lib/{character_id}.test.ts
 // types/index.ts の CardStatus enum に追加
 export enum CardStatus {
   // ... 既存のステータス ...
-  NEW_STATUS = "new_status",  // 説明コメント（日本語）
+  NEW_STATUS = "new_status", // 説明コメント（日本語）
 }
 ```
 
@@ -183,12 +183,12 @@ export enum CardStatus {
 
 追加するカードの種別:
 
-| 種別 | 枚数 | `isBasicCard` | `isStartingCard` | ヒラメキ段階 |
-|------|-----|--------------|----------------|------------|
-| 開始カード 1〜3 | 3枚 | `true` | `true` | Lv0 のみ |
-| 開始カード 4 | 1枚 | `false` | `true` | Lv0〜5 |
-| ヒラメキカード 1〜3 | 3枚 | — | — | Lv0〜5 |
-| ヒラメキカード 4 | 1枚 | — | — | Lv0 のみ（ヒラメキなしの場合） |
+| 種別                | 枚数 | `isBasicCard` | `isStartingCard` | ヒラメキ段階                   |
+| ------------------- | ---- | ------------- | ---------------- | ------------------------------ |
+| 開始カード 1〜3     | 3枚  | `true`        | `true`           | Lv0 のみ                       |
+| 開始カード 4        | 1枚  | `false`       | `true`           | Lv0〜5                         |
+| ヒラメキカード 1〜3 | 3枚  | —             | —                | Lv0〜5                         |
+| ヒラメキカード 4    | 1枚  | —             | —                | Lv0 のみ（ヒラメキなしの場合） |
 
 ---
 
@@ -198,14 +198,14 @@ export enum CardStatus {
 
 **追加対象ファイル（8ファイル）**:
 
-| ファイル | 追加内容 |
-|---------|---------|
-| `messages/ja/cards.json` | カード名・説明（日本語） |
-| `messages/en/cards.json` | カード名・説明（英語） |
-| `messages/zh/cards.json` | カード名・説明（中国語）|
-| `messages/ko/cards.json` | カード名・説明（韓国語） |
+| ファイル                  | 追加内容                 |
+| ------------------------- | ------------------------ |
+| `messages/ja/cards.json`  | カード名・説明（日本語） |
+| `messages/en/cards.json`  | カード名・説明（英語）   |
+| `messages/zh/cards.json`  | カード名・説明（中国語） |
+| `messages/ko/cards.json`  | カード名・説明（韓国語） |
 | `messages/ja/common.json` | キャラクター名（日本語） |
-| `messages/en/common.json` | キャラクター名（英語） |
+| `messages/en/common.json` | キャラクター名（英語）   |
 | `messages/zh/common.json` | キャラクター名（中国語） |
 | `messages/ko/common.json` | キャラクター名（韓国語） |
 

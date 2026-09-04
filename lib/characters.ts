@@ -8,8 +8,18 @@ export const CHARACTERS: Character[] = [
     job: JobType.STRIKER,
     element: ElementType.INSTINCT,
     imgUrl: "/images/characters/character_arabella.png",
-    startingCards: ["arabella_starting_1", "arabella_starting_2", "arabella_starting_3", "arabella_starting_4"],
-    hiramekiCards: ["arabella_hirameki_1", "arabella_hirameki_2", "arabella_hirameki_3", "arabella_hirameki_4"]
+    startingCards: [
+      "arabella_starting_1",
+      "arabella_starting_2",
+      "arabella_starting_3",
+      "arabella_starting_4",
+    ],
+    hiramekiCards: [
+      "arabella_hirameki_1",
+      "arabella_hirameki_2",
+      "arabella_hirameki_3",
+      "arabella_hirameki_4",
+    ],
   },
   {
     id: "hilde",
@@ -19,7 +29,7 @@ export const CHARACTERS: Character[] = [
     element: ElementType.INSTINCT,
     imgUrl: "/images/characters/character_hilde.png",
     startingCards: ["hilde_starting_1", "hilde_starting_2", "hilde_starting_3", "hilde_starting_4"],
-    hiramekiCards: ["hilde_hirameki_1", "hilde_hirameki_2", "hilde_hirameki_3", "hilde_hirameki_4"]
+    hiramekiCards: ["hilde_hirameki_1", "hilde_hirameki_2", "hilde_hirameki_3", "hilde_hirameki_4"],
   },
   {
     id: "fei",
@@ -29,7 +39,7 @@ export const CHARACTERS: Character[] = [
     element: ElementType.VOID,
     imgUrl: "/images/characters/character_fei.png", // TODO: フェイ画像差し替え
     startingCards: ["fei_starting_1", "fei_starting_2", "fei_starting_3", "fei_starting_4"],
-    hiramekiCards: ["fei_hirameki_1", "fei_hirameki_2", "fei_hirameki_3", "fei_hirameki_4"]
+    hiramekiCards: ["fei_hirameki_1", "fei_hirameki_2", "fei_hirameki_3", "fei_hirameki_4"],
   },
   {
     id: "tenebria",
@@ -38,8 +48,18 @@ export const CHARACTERS: Character[] = [
     job: JobType.PSIONIC,
     element: ElementType.PASSION,
     imgUrl: "/images/characters/character_tenebria.png",
-    startingCards: ["tenebria_starting_1", "tenebria_starting_2", "tenebria_starting_3", "tenebria_starting_4"],
-    hiramekiCards: ["tenebria_hirameki_1", "tenebria_hirameki_2", "tenebria_hirameki_3", "tenebria_hirameki_4"]
+    startingCards: [
+      "tenebria_starting_1",
+      "tenebria_starting_2",
+      "tenebria_starting_3",
+      "tenebria_starting_4",
+    ],
+    hiramekiCards: [
+      "tenebria_hirameki_1",
+      "tenebria_hirameki_2",
+      "tenebria_hirameki_3",
+      "tenebria_hirameki_4",
+    ],
   },
   {
     id: "adelheid",
@@ -48,8 +68,18 @@ export const CHARACTERS: Character[] = [
     job: JobType.VANGUARD,
     element: ElementType.VOID,
     imgUrl: "/images/characters/character_adelheid.png",
-    startingCards: ["adelheid_starting_1", "adelheid_starting_2", "adelheid_starting_3", "adelheid_starting_4"],
-    hiramekiCards: ["adelheid_hirameki_1", "adelheid_hirameki_2", "adelheid_hirameki_3", "adelheid_hirameki_4"]
+    startingCards: [
+      "adelheid_starting_1",
+      "adelheid_starting_2",
+      "adelheid_starting_3",
+      "adelheid_starting_4",
+    ],
+    hiramekiCards: [
+      "adelheid_hirameki_1",
+      "adelheid_hirameki_2",
+      "adelheid_hirameki_3",
+      "adelheid_hirameki_4",
+    ],
   },
   {
     id: "heidemarie",
@@ -58,8 +88,18 @@ export const CHARACTERS: Character[] = [
     job: JobType.RANGER,
     element: ElementType.PASSION,
     imgUrl: "/images/characters/character_heidemarie.png",
-    startingCards: ["heidemarie_starting_1", "heidemarie_starting_2", "heidemarie_starting_3", "heidemarie_starting_4"],
-    hiramekiCards: ["heidemarie_hirameki_1", "heidemarie_hirameki_2", "heidemarie_hirameki_3", "heidemarie_hirameki_4"]
+    startingCards: [
+      "heidemarie_starting_1",
+      "heidemarie_starting_2",
+      "heidemarie_starting_3",
+      "heidemarie_starting_4",
+    ],
+    hiramekiCards: [
+      "heidemarie_hirameki_1",
+      "heidemarie_hirameki_2",
+      "heidemarie_hirameki_3",
+      "heidemarie_hirameki_4",
+    ],
   },
   {
     id: "diana",
@@ -69,7 +109,7 @@ export const CHARACTERS: Character[] = [
     element: ElementType.PASSION,
     imgUrl: "/images/characters/character_diana.png",
     startingCards: ["diana_starting_1", "diana_starting_2", "diana_starting_3", "diana_starting_4"],
-    hiramekiCards: ["diana_hirameki_1", "diana_hirameki_2", "diana_hirameki_3", "diana_hirameki_4"]
+    hiramekiCards: ["diana_hirameki_1", "diana_hirameki_2", "diana_hirameki_3", "diana_hirameki_4"],
   },
   {
     id: "rita",
@@ -79,7 +119,7 @@ export const CHARACTERS: Character[] = [
     element: ElementType.JUSTICE,
     imgUrl: "/images/characters/character_rita.png",
     startingCards: ["rita_starting_1", "rita_starting_2", "rita_starting_3", "rita_starting_4"],
-    hiramekiCards: ["rita_hirameki_1", "rita_hirameki_2", "rita_hirameki_3", "rita_hirameki_4"]
+    hiramekiCards: ["rita_hirameki_1", "rita_hirameki_2", "rita_hirameki_3", "rita_hirameki_4"],
   },
   {
     id: "tiphera",
@@ -88,8 +128,18 @@ export const CHARACTERS: Character[] = [
     job: JobType.CONTROLLER,
     element: ElementType.ORDER,
     imgUrl: "/images/characters/character_tiphera.png",
-    startingCards: ["tiphera_starting_1", "tiphera_starting_2", "tiphera_starting_3", "tiphera_starting_4"],
-    hiramekiCards: ["tiphera_hirameki_1", "tiphera_hirameki_2", "tiphera_hirameki_3", "tiphera_hirameki_4"]
+    startingCards: [
+      "tiphera_starting_1",
+      "tiphera_starting_2",
+      "tiphera_starting_3",
+      "tiphera_starting_4",
+    ],
+    hiramekiCards: [
+      "tiphera_hirameki_1",
+      "tiphera_hirameki_2",
+      "tiphera_hirameki_3",
+      "tiphera_hirameki_4",
+    ],
   },
   {
     id: "nine",
@@ -99,7 +149,7 @@ export const CHARACTERS: Character[] = [
     element: ElementType.ORDER,
     imgUrl: "/images/characters/character_nine.png",
     startingCards: ["nine_starting_1", "nine_starting_2", "nine_starting_3", "nine_starting_4"],
-    hiramekiCards: ["nine_hirameki_1", "nine_hirameki_2", "nine_hirameki_3", "nine_hirameki_4"]
+    hiramekiCards: ["nine_hirameki_1", "nine_hirameki_2", "nine_hirameki_3", "nine_hirameki_4"],
   },
   {
     id: "narja",
@@ -109,7 +159,7 @@ export const CHARACTERS: Character[] = [
     element: ElementType.INSTINCT,
     imgUrl: "/images/characters/character_narja.png",
     startingCards: ["narja_starting_1", "narja_starting_2", "narja_starting_3", "narja_starting_4"],
-    hiramekiCards: ["narja_hirameki_1", "narja_hirameki_2", "narja_hirameki_3", "narja_hirameki_4"]
+    hiramekiCards: ["narja_hirameki_1", "narja_hirameki_2", "narja_hirameki_3", "narja_hirameki_4"],
   },
   {
     id: "sereniel",
@@ -118,8 +168,18 @@ export const CHARACTERS: Character[] = [
     job: JobType.HUNTER,
     element: ElementType.INSTINCT,
     imgUrl: "/images/characters/character_sereniel.png",
-    startingCards: ["sereniel_starting_1", "sereniel_starting_2", "sereniel_starting_3", "sereniel_starting_4"],
-    hiramekiCards: ["sereniel_hirameki_1", "sereniel_hirameki_2", "sereniel_hirameki_3", "sereniel_hirameki_4"]
+    startingCards: [
+      "sereniel_starting_1",
+      "sereniel_starting_2",
+      "sereniel_starting_3",
+      "sereniel_starting_4",
+    ],
+    hiramekiCards: [
+      "sereniel_hirameki_1",
+      "sereniel_hirameki_2",
+      "sereniel_hirameki_3",
+      "sereniel_hirameki_4",
+    ],
   },
   {
     id: "luke",
@@ -129,7 +189,7 @@ export const CHARACTERS: Character[] = [
     element: ElementType.ORDER,
     imgUrl: "/images/characters/character_luke.png",
     startingCards: ["luke_starting_1", "luke_starting_2", "luke_starting_3", "luke_starting_4"],
-    hiramekiCards: ["luke_hirameki_1", "luke_hirameki_2", "luke_hirameki_3", "luke_hirameki_4"]
+    hiramekiCards: ["luke_hirameki_1", "luke_hirameki_2", "luke_hirameki_3", "luke_hirameki_4"],
   },
   {
     id: "khalipe",
@@ -138,8 +198,18 @@ export const CHARACTERS: Character[] = [
     job: JobType.VANGUARD,
     element: ElementType.INSTINCT,
     imgUrl: "/images/characters/character_khalipe.png",
-    startingCards: ["khalipe_starting_1", "khalipe_starting_2", "khalipe_starting_3", "khalipe_starting_4"],
-    hiramekiCards: ["khalipe_hirameki_1", "khalipe_hirameki_2", "khalipe_hirameki_3", "khalipe_hirameki_4"]
+    startingCards: [
+      "khalipe_starting_1",
+      "khalipe_starting_2",
+      "khalipe_starting_3",
+      "khalipe_starting_4",
+    ],
+    hiramekiCards: [
+      "khalipe_hirameki_1",
+      "khalipe_hirameki_2",
+      "khalipe_hirameki_3",
+      "khalipe_hirameki_4",
+    ],
   },
   {
     id: "magna",
@@ -149,9 +219,9 @@ export const CHARACTERS: Character[] = [
     element: ElementType.JUSTICE,
     imgUrl: "/images/characters/character_magna.png",
     startingCards: ["magna_starting_1", "magna_starting_2", "magna_starting_3", "magna_starting_4"],
-    hiramekiCards: ["magna_hirameki_1", "magna_hirameki_2", "magna_hirameki_3", "magna_hirameki_4"]
+    hiramekiCards: ["magna_hirameki_1", "magna_hirameki_2", "magna_hirameki_3", "magna_hirameki_4"],
   },
-    {
+  {
     id: "rin",
     name: "character.rin",
     rarity: "★5",
@@ -159,7 +229,7 @@ export const CHARACTERS: Character[] = [
     element: ElementType.VOID,
     imgUrl: "/images/characters/character_rin.png",
     startingCards: ["rin_starting_1", "rin_starting_2", "rin_starting_3", "rin_starting_4"],
-    hiramekiCards: ["rin_hirameki_1", "rin_hirameki_2", "rin_hirameki_3", "rin_hirameki_4"]
+    hiramekiCards: ["rin_hirameki_1", "rin_hirameki_2", "rin_hirameki_3", "rin_hirameki_4"],
   },
   {
     id: "orlea",
@@ -169,7 +239,7 @@ export const CHARACTERS: Character[] = [
     element: ElementType.INSTINCT,
     imgUrl: "/images/characters/character_orlea.png",
     startingCards: ["orlea_starting_1", "orlea_starting_2", "orlea_starting_3", "orlea_starting_4"],
-    hiramekiCards: ["orlea_hirameki_1", "orlea_hirameki_2", "orlea_hirameki_3", "orlea_hirameki_4"]
+    hiramekiCards: ["orlea_hirameki_1", "orlea_hirameki_2", "orlea_hirameki_3", "orlea_hirameki_4"],
   },
   {
     id: "meilin",
@@ -178,8 +248,18 @@ export const CHARACTERS: Character[] = [
     job: JobType.STRIKER,
     element: ElementType.PASSION,
     imgUrl: "/images/characters/character_meilin.png",
-    startingCards: ["meilin_starting_1", "meilin_starting_2", "meilin_starting_3", "meilin_starting_4"],
-    hiramekiCards: ["meilin_hirameki_1", "meilin_hirameki_2", "meilin_hirameki_3", "meilin_hirameki_4"]
+    startingCards: [
+      "meilin_starting_1",
+      "meilin_starting_2",
+      "meilin_starting_3",
+      "meilin_starting_4",
+    ],
+    hiramekiCards: [
+      "meilin_hirameki_1",
+      "meilin_hirameki_2",
+      "meilin_hirameki_3",
+      "meilin_hirameki_4",
+    ],
   },
   {
     id: "velonica",
@@ -188,8 +268,18 @@ export const CHARACTERS: Character[] = [
     job: JobType.RANGER,
     element: ElementType.PASSION,
     imgUrl: "/images/characters/character_velonica.png",
-    startingCards: ["velonica_starting_1", "velonica_starting_2", "velonica_starting_3", "velonica_starting_4"],
-    hiramekiCards: ["velonica_hirameki_1", "velonica_hirameki_2", "velonica_hirameki_3", "velonica_hirameki_4"]
+    startingCards: [
+      "velonica_starting_1",
+      "velonica_starting_2",
+      "velonica_starting_3",
+      "velonica_starting_4",
+    ],
+    hiramekiCards: [
+      "velonica_hirameki_1",
+      "velonica_hirameki_2",
+      "velonica_hirameki_3",
+      "velonica_hirameki_4",
+    ],
   },
   {
     id: "renoa",
@@ -199,7 +289,7 @@ export const CHARACTERS: Character[] = [
     element: ElementType.VOID,
     imgUrl: "/images/characters/character_renoa.png",
     startingCards: ["renoa_starting_1", "renoa_starting_2", "renoa_starting_3", "renoa_starting_4"],
-    hiramekiCards: ["renoa_hirameki_1", "renoa_hirameki_2", "renoa_hirameki_3", "renoa_hirameki_4"]
+    hiramekiCards: ["renoa_hirameki_1", "renoa_hirameki_2", "renoa_hirameki_3", "renoa_hirameki_4"],
   },
   {
     id: "hugo",
@@ -209,7 +299,7 @@ export const CHARACTERS: Character[] = [
     element: ElementType.ORDER,
     imgUrl: "/images/characters/character_hugo.png",
     startingCards: ["hugo_starting_1", "hugo_starting_2", "hugo_starting_3", "hugo_starting_4"],
-    hiramekiCards: ["hugo_hirameki_1", "hugo_hirameki_2", "hugo_hirameki_3", "hugo_hirameki_4"]
+    hiramekiCards: ["hugo_hirameki_1", "hugo_hirameki_2", "hugo_hirameki_3", "hugo_hirameki_4"],
   },
   {
     id: "yuki",
@@ -219,7 +309,7 @@ export const CHARACTERS: Character[] = [
     element: ElementType.ORDER,
     imgUrl: "/images/characters/character_yuki.png",
     startingCards: ["yuki_starting_1", "yuki_starting_2", "yuki_starting_3", "yuki_starting_4"],
-    hiramekiCards: ["yuki_hirameki_1", "yuki_hirameki_2", "yuki_hirameki_3", "yuki_hirameki_4"]
+    hiramekiCards: ["yuki_hirameki_1", "yuki_hirameki_2", "yuki_hirameki_3", "yuki_hirameki_4"],
   },
   {
     id: "chizuru",
@@ -228,8 +318,18 @@ export const CHARACTERS: Character[] = [
     job: JobType.PSIONIC,
     element: ElementType.VOID,
     imgUrl: "/images/characters/character_chizuru.png",
-    startingCards: ["chizuru_starting_1", "chizuru_starting_2", "chizuru_starting_3", "chizuru_starting_4"],
-    hiramekiCards: ["chizuru_hirameki_1", "chizuru_hirameki_2", "chizuru_hirameki_3", "chizuru_hirameki_4"]
+    startingCards: [
+      "chizuru_starting_1",
+      "chizuru_starting_2",
+      "chizuru_starting_3",
+      "chizuru_starting_4",
+    ],
+    hiramekiCards: [
+      "chizuru_hirameki_1",
+      "chizuru_hirameki_2",
+      "chizuru_hirameki_3",
+      "chizuru_hirameki_4",
+    ],
   },
   {
     id: "haru",
@@ -239,7 +339,7 @@ export const CHARACTERS: Character[] = [
     element: ElementType.JUSTICE,
     imgUrl: "/images/characters/character_haru.png",
     startingCards: ["haru_starting_1", "haru_starting_2", "haru_starting_3", "haru_starting_4"],
-    hiramekiCards: ["haru_hirameki_1", "haru_hirameki_2", "haru_hirameki_3", "haru_hirameki_4"]
+    hiramekiCards: ["haru_hirameki_1", "haru_hirameki_2", "haru_hirameki_3", "haru_hirameki_4"],
   },
   {
     id: "kayron",
@@ -248,8 +348,18 @@ export const CHARACTERS: Character[] = [
     job: JobType.PSIONIC,
     element: ElementType.VOID,
     imgUrl: "/images/characters/character_kayron.png",
-    startingCards: ["kayron_starting_1", "kayron_starting_2", "kayron_starting_3", "kayron_starting_4"],
-    hiramekiCards: ["kayron_hirameki_1", "kayron_hirameki_2", "kayron_hirameki_3", "kayron_hirameki_4"]
+    startingCards: [
+      "kayron_starting_1",
+      "kayron_starting_2",
+      "kayron_starting_3",
+      "kayron_starting_4",
+    ],
+    hiramekiCards: [
+      "kayron_hirameki_1",
+      "kayron_hirameki_2",
+      "kayron_hirameki_3",
+      "kayron_hirameki_4",
+    ],
   },
   {
     id: "nia",
@@ -259,7 +369,7 @@ export const CHARACTERS: Character[] = [
     element: ElementType.INSTINCT,
     imgUrl: "/images/characters/character_nia.png",
     startingCards: ["nia_starting_1", "nia_starting_2", "nia_starting_3", "nia_starting_4"],
-    hiramekiCards: ["nia_hirameki_1", "nia_hirameki_2", "nia_hirameki_3", "nia_hirameki_4"]
+    hiramekiCards: ["nia_hirameki_1", "nia_hirameki_2", "nia_hirameki_3", "nia_hirameki_4"],
   },
   {
     id: "selena",
@@ -268,8 +378,18 @@ export const CHARACTERS: Character[] = [
     job: JobType.RANGER,
     element: ElementType.PASSION,
     imgUrl: "/images/characters/character_selena.png",
-    startingCards: ["selena_starting_1", "selena_starting_2", "selena_starting_3", "selena_starting_4"],
-    hiramekiCards: ["selena_hirameki_1", "selena_hirameki_2", "selena_hirameki_3", "selena_hirameki_4"]
+    startingCards: [
+      "selena_starting_1",
+      "selena_starting_2",
+      "selena_starting_3",
+      "selena_starting_4",
+    ],
+    hiramekiCards: [
+      "selena_hirameki_1",
+      "selena_hirameki_2",
+      "selena_hirameki_3",
+      "selena_hirameki_4",
+    ],
   },
   {
     id: "tressa",
@@ -278,8 +398,18 @@ export const CHARACTERS: Character[] = [
     job: JobType.PSIONIC,
     element: ElementType.VOID,
     imgUrl: "/images/characters/character_tressa.png",
-    startingCards: ["tressa_starting_1", "tressa_starting_2", "tressa_starting_3", "tressa_starting_4"],
-    hiramekiCards: ["tressa_hirameki_1", "tressa_hirameki_2", "tressa_hirameki_3", "tressa_hirameki_4"]
+    startingCards: [
+      "tressa_starting_1",
+      "tressa_starting_2",
+      "tressa_starting_3",
+      "tressa_starting_4",
+    ],
+    hiramekiCards: [
+      "tressa_hirameki_1",
+      "tressa_hirameki_2",
+      "tressa_hirameki_3",
+      "tressa_hirameki_4",
+    ],
   },
   {
     id: "amir",
@@ -289,7 +419,7 @@ export const CHARACTERS: Character[] = [
     element: ElementType.ORDER,
     imgUrl: "/images/characters/character_amir.png",
     startingCards: ["amir_starting_1", "amir_starting_2", "amir_starting_3", "amir_starting_4"],
-    hiramekiCards: ["amir_hirameki_1", "amir_hirameki_2", "amir_hirameki_3", "amir_hirameki_4"]
+    hiramekiCards: ["amir_hirameki_1", "amir_hirameki_2", "amir_hirameki_3", "amir_hirameki_4"],
   },
   {
     id: "lucas",
@@ -299,7 +429,7 @@ export const CHARACTERS: Character[] = [
     element: ElementType.PASSION,
     imgUrl: "/images/characters/character_lucas.png",
     startingCards: ["lucas_starting_1", "lucas_starting_2", "lucas_starting_3", "lucas_starting_4"],
-    hiramekiCards: ["lucas_hirameki_1", "lucas_hirameki_2", "lucas_hirameki_3", "lucas_hirameki_4"]
+    hiramekiCards: ["lucas_hirameki_1", "lucas_hirameki_2", "lucas_hirameki_3", "lucas_hirameki_4"],
   },
   {
     id: "maribell",
@@ -308,8 +438,18 @@ export const CHARACTERS: Character[] = [
     job: JobType.VANGUARD,
     element: ElementType.PASSION,
     imgUrl: "/images/characters/character_maribell.png",
-    startingCards: ["maribell_starting_1", "maribell_starting_2", "maribell_starting_3", "maribell_starting_4"],
-    hiramekiCards: ["maribell_hirameki_1", "maribell_hirameki_2", "maribell_hirameki_3", "maribell_hirameki_4"]
+    startingCards: [
+      "maribell_starting_1",
+      "maribell_starting_2",
+      "maribell_starting_3",
+      "maribell_starting_4",
+    ],
+    hiramekiCards: [
+      "maribell_hirameki_1",
+      "maribell_hirameki_2",
+      "maribell_hirameki_3",
+      "maribell_hirameki_4",
+    ],
   },
   {
     id: "mika",
@@ -319,7 +459,7 @@ export const CHARACTERS: Character[] = [
     element: ElementType.JUSTICE,
     imgUrl: "/images/characters/character_mika.png",
     startingCards: ["mika_starting_1", "mika_starting_2", "mika_starting_3", "mika_starting_4"],
-    hiramekiCards: ["mika_hirameki_1", "mika_hirameki_2", "mika_hirameki_3", "mika_hirameki_4"]
+    hiramekiCards: ["mika_hirameki_1", "mika_hirameki_2", "mika_hirameki_3", "mika_hirameki_4"],
   },
   {
     id: "beryl",
@@ -329,7 +469,7 @@ export const CHARACTERS: Character[] = [
     element: ElementType.JUSTICE,
     imgUrl: "/images/characters/character_beryl.png",
     startingCards: ["beryl_starting_1", "beryl_starting_2", "beryl_starting_3", "beryl_starting_4"],
-    hiramekiCards: ["beryl_hirameki_1", "beryl_hirameki_2", "beryl_hirameki_3", "beryl_hirameki_4"]
+    hiramekiCards: ["beryl_hirameki_1", "beryl_hirameki_2", "beryl_hirameki_3", "beryl_hirameki_4"],
   },
   {
     id: "cassius",
@@ -338,8 +478,18 @@ export const CHARACTERS: Character[] = [
     job: JobType.CONTROLLER,
     element: ElementType.INSTINCT,
     imgUrl: "/images/characters/character_cassius.png",
-    startingCards: ["cassius_starting_1", "cassius_starting_2", "cassius_starting_3", "cassius_starting_4"],
-    hiramekiCards: ["cassius_hirameki_1", "cassius_hirameki_2", "cassius_hirameki_3", "cassius_hirameki_4"]
+    startingCards: [
+      "cassius_starting_1",
+      "cassius_starting_2",
+      "cassius_starting_3",
+      "cassius_starting_4",
+    ],
+    hiramekiCards: [
+      "cassius_hirameki_1",
+      "cassius_hirameki_2",
+      "cassius_hirameki_3",
+      "cassius_hirameki_4",
+    ],
   },
   {
     id: "owen",
@@ -349,7 +499,7 @@ export const CHARACTERS: Character[] = [
     element: ElementType.PASSION,
     imgUrl: "/images/characters/character_owen.png",
     startingCards: ["owen_starting_1", "owen_starting_2", "owen_starting_3", "owen_starting_4"],
-    hiramekiCards: ["owen_hirameki_1", "owen_hirameki_2", "owen_hirameki_3", "owen_hirameki_4"]
+    hiramekiCards: ["owen_hirameki_1", "owen_hirameki_2", "owen_hirameki_3", "owen_hirameki_4"],
   },
   {
     id: "rei",
@@ -359,6 +509,6 @@ export const CHARACTERS: Character[] = [
     element: ElementType.VOID,
     imgUrl: "/images/characters/character_rei.png",
     startingCards: ["rei_starting_1", "rei_starting_2", "rei_starting_3", "rei_starting_4"],
-    hiramekiCards: ["rei_hirameki_1", "rei_hirameki_2", "rei_hirameki_3", "rei_hirameki_4"]
-  }
+    hiramekiCards: ["rei_hirameki_1", "rei_hirameki_2", "rei_hirameki_3", "rei_hirameki_4"],
+  },
 ];

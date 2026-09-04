@@ -38,9 +38,24 @@ describe("Tenebria character", () => {
     });
 
     it.each([
-      { id: "tenebria_starting_1", name: "サウンドチェック", category: CardCategory.ATTACK, description: "ダメージ100%" },
-      { id: "tenebria_starting_2", name: "サウンドチェック", category: CardCategory.ATTACK, description: "ダメージ100%" },
-      { id: "tenebria_starting_3", name: "ファンサービス", category: CardCategory.SKILL, description: "治癒100%" },
+      {
+        id: "tenebria_starting_1",
+        name: "サウンドチェック",
+        category: CardCategory.ATTACK,
+        description: "ダメージ100%",
+      },
+      {
+        id: "tenebria_starting_2",
+        name: "サウンドチェック",
+        category: CardCategory.ATTACK,
+        description: "ダメージ100%",
+      },
+      {
+        id: "tenebria_starting_3",
+        name: "ファンサービス",
+        category: CardCategory.SKILL,
+        description: "治癒100%",
+      },
     ])("$id has expected basic card info", ({ id, name, category, description }) => {
       const card = CHARACTER_CARDS.find((c) => c.id === id);
       expect(card?.name).toBe(name);

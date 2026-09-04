@@ -12,9 +12,18 @@ import {
   UMBRA_PERSONA_CARD_IMAGE,
   UMBRA_PERSONA_SKILL_IMAGE,
 } from "@/lib/persona-image-paths";
-import { CardStatus, JobType, PersonaEngraving, PersonaEngravingAlignment, CardCategory } from "@/types";
+import {
+  CardStatus,
+  JobType,
+  PersonaEngraving,
+  PersonaEngravingAlignment,
+  CardCategory,
+} from "@/types";
 
-export const VALID_PERSONA_ENGRAVING_ALIGNMENTS: ReadonlySet<PersonaEngravingAlignment> = new Set(["light", "dark"]);
+export const VALID_PERSONA_ENGRAVING_ALIGNMENTS: ReadonlySet<PersonaEngravingAlignment> = new Set([
+  "light",
+  "dark",
+]);
 
 export interface PersonaEngravingDefinition {
   id: string;
@@ -58,7 +67,13 @@ export const PERSONA_CARD_ENGRAVINGS: PersonaEngravingDefinition[] = [
     alignment: "light",
     description: "迅速付与、コスト1増加。行動カウントが1の対象がいる場合、このカードのコスト2減少",
     descriptionKey: "lux_haste_discount",
-    allowedJobs: [JobType.STRIKER, JobType.VANGUARD, JobType.RANGER, JobType.HUNTER, JobType.PSIONIC],
+    allowedJobs: [
+      JobType.STRIKER,
+      JobType.VANGUARD,
+      JobType.RANGER,
+      JobType.HUNTER,
+      JobType.PSIONIC,
+    ],
     costModifier: 1,
     statuses: [CardStatus.HASTE],
   },
@@ -331,23 +346,36 @@ export const getPersonaNameVariant = (engravings: PersonaEngraving[]): PersonaNa
   return "boundary";
 };
 
-const getPersonaName = (engravings: PersonaEngraving[], localization?: PersonaPresentationLocalization): string => {
+const getPersonaName = (
+  engravings: PersonaEngraving[],
+  localization?: PersonaPresentationLocalization,
+): string => {
   const variant = getPersonaNameVariant(engravings);
   return localization?.getName?.(variant) ?? PERSONA_NAME_BY_VARIANT[variant];
 };
 
-const getPersonaImageUrl = (engravings: PersonaEngraving[], fallback: string, category?: CardCategory): string => {
-  const signature = engravings.length === 0 ? "none" : engravings.map((engraving) => engraving.alignment).join("-");
-  const imageMap = category === CardCategory.SKILL ? PERSONA_SKILL_IMAGE_BY_SIGNATURE : PERSONA_IMAGE_BY_SIGNATURE;
+const getPersonaImageUrl = (
+  engravings: PersonaEngraving[],
+  fallback: string,
+  category?: CardCategory,
+): string => {
+  const signature =
+    engravings.length === 0 ? "none" : engravings.map((engraving) => engraving.alignment).join("-");
+  const imageMap =
+    category === CardCategory.SKILL ? PERSONA_SKILL_IMAGE_BY_SIGNATURE : PERSONA_IMAGE_BY_SIGNATURE;
   return imageMap[signature] ?? fallback;
 };
 
-const getPersonaEngravingDefinition = (engraving: PersonaEngraving): PersonaEngravingDefinition | undefined =>
-  PERSONA_CARD_ENGRAVINGS.find((definition) => definition.id === engraving.id && definition.alignment === engraving.alignment);
+const getPersonaEngravingDefinition = (
+  engraving: PersonaEngraving,
+): PersonaEngravingDefinition | undefined =>
+  PERSONA_CARD_ENGRAVINGS.find(
+    (definition) => definition.id === engraving.id && definition.alignment === engraving.alignment,
+  );
 
 export function normalizePersonaCardEngravings(
   engravings: readonly PersonaEngraving[] | undefined,
-  job?: JobType
+  job?: JobType,
 ): PersonaEngraving[] {
   if (!engravings) {
     return [];
@@ -404,7 +432,9 @@ export function getPersonaCardPresentation({
       continue;
     }
 
-    descriptions.push(localization?.getEngravingDescription?.(definition) ?? definition.description);
+    descriptions.push(
+      localization?.getEngravingDescription?.(definition) ?? definition.description,
+    );
     if (typeof cost === "number" && definition.costModifier) {
       cost += definition.costModifier;
     }

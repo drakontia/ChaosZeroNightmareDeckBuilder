@@ -3,6 +3,7 @@
 ## このドキュメントについて
 
 ｰ この文書は GitHub Copilot Coding Agent が本リポジトリで安全かつ正確に開発タスクを実施するための実務ガイドです。
+
 - 現行コードベース（Next.js 16 / TypeScript / Tailwind v4 / next-intl）に沿った運用ルールを補足しています。
 - 新しい機能を実装する際はここで示す技術選定・設計方針・モジュール構成を前提にしてください。
 - 不確かな点がある場合は、リポジトリのファイルを探索し、ユーザーに「こういうことですか?」と確認をするようにしてください。
@@ -14,12 +15,14 @@
 - 何か大きい変更を加える場合、まず何をするのか計画を立てた上で、ユーザーに「このような計画で進めようと思います。」と提案してください。この時、ユーザーから計画の修正を求められた場合は計画を修正して、再提案をしてください。
 
 ## 目的 / スコープ
+
 - ゲーム「カオスゼロナイトメア」のデッキ編集 Web アプリの機能追加・改善・バグ修正。
 - ゲーム内のセーブデータの様式を模して、ユーザーが馴染んでいるUI/UXを提供する。
 - 仕様への準拠、型安全、UI/UX一貫性、多言語対応の維持。
 - 変更は最小限で、既存挙動・公開 API を壊さない。
 
 ## 技術スタックと前提
+
 - Framework: Next.js 16.x（App Router, Turbopack）
 - Language: TypeScript 5.9.x
 - Styling: Tailwind CSS 4.1.x
@@ -30,6 +33,7 @@
 - **型チェック**: TypeScript strict mode
 
 ## 主要ドメイン仕様（要点）
+
 - カード種別: `CHARACTER` / `SHARED` / `MONSTER` / `FORBIDDEN`
 - カテゴリ: `ATTACK` / `UPGRADE` / `SKILL`
 - 基本カードは、潜在力の発現により、効果が変更される。
@@ -59,21 +63,24 @@
 ##### コピーカードのUI表現
 
 コピーされたカードは以下の視覚的特徴で識別可能：
+
 - **カード画像**: 左右反転表示（CSS `transform: scaleX(-1)`）
 - **カードステータス**: ステータス欄に「コピー済み」表示
 
 #### 変換されたカード
 
-| 行動 | ポイント | 備考 |
-|------|----------|------|
-| カードの変換 | +10pt | 基本変換コスト |
+| 行動               | ポイント | 備考                                             |
+| ------------------ | -------- | ------------------------------------------------ |
+| カードの変換       | +10pt    | 基本変換コスト                                   |
 | 元カードの属性保持 | 状況次第 | 変換前のヒラメキ・神ヒラメキポイントは保持される |
-| 変換先カードの属性 | 状況次第 | 変換後のカードがデッキにある場合、通常通り加算 |
+| 変換先カードの属性 | 状況次第 | 変換後のカードがデッキにある場合、通常通り加算   |
 
 変換時の元カード属性（種別・ヒラメキ・神ヒラメキ）はスナップショット保存される。変換後のカードがデッキから削除されても、元カードと変換の+10ptは残る。
 
 ## データ構造（実装の基準）
+
 型は `types/index.ts` に準拠します。特に以下に注意：
+
 - `DeckCard`: `deckId`, `selectedHiramekiLevel`, `godHiramekiType`, `godHiramekiEffectId` 等を保持
 - `Deck`: `removedCards: Map<string, number | RemovedCardEntry>`, `copiedCards: Map<string, number | CopiedCardEntry>`, `convertedCards: Map<string, string | ConvertedCardEntry>`
 - 変換管理: `convertedCards` は Map で originalId → (convertedId | ConvertedCardEntry) を保存
@@ -81,6 +88,7 @@
 - 神ヒラメキ: `GodHiramekiDefinition` は統一構造で、`gods` 配列で適用可能な神を指定
 
 ## ファイル構成（主要）
+
 - `app/` … Next.js App Router（`app/deck/[shareId]/` がデッキ共有ルート）
 - `components/` … UI/ロジックコンポーネント（`DeckBuilder.tsx`, `DeckDisplay.tsx`, `CardSelector.tsx` 等）
 - `hooks/` … 状態管理（`useDeckBuilderStore.ts` が Zustand ストア本体）
@@ -91,6 +99,7 @@
 - `scripts/` … データ入力支援スクリプト
 
 ### `@` パスエイリアス
+
 `@` はプロジェクトルート（`./`）を指します（`./src` ではない）。
 例: `import { useDeckBuilderStore } from "@/hooks/useDeckBuilderStore"`
 
@@ -177,6 +186,7 @@
 - **クロスブラウザ**: Chrome でテスト
 
 ## 開発・テスト手順
+
 - 依存関係の導入・開発起動
   ```bash
   pnpm install
@@ -201,6 +211,7 @@
   ```
 
 ## 実装ルール
+
 - 型安全: すべて TypeScript で厳密に型定義を尊重（`types/index.ts` を参照）。
 - i18n: 表示文言は next-intl のキーを用い、`messages/*` にキー追加。既存キー構造に従い、フォールバックを適切に設定。
 - UI: Tailwind v4 記法に準拠。Shadcn UI コンポーネントのスタイル/アクセシビリティを維持。
@@ -209,6 +220,7 @@
 - ドメイン整合性: ヒラメキ/神ヒラメキのルール、ポイント算出のルールを守る。
 
 ## 変更の作法（PR作成の指針）
+
 - ブランチ: `feature/<短く要点>` / `fix/<短く要点>` など意味のある名前。
 - コミット: 1つの目的に絞った小さなコミット。メッセージは動詞先行で簡潔に。
 - PR説明: 目的/背景、仕様への整合性、UI変更のスクリーンショット（必要時）、テスト実行結果の要約。
@@ -246,16 +258,16 @@
 5. スタイル
 
 ```typescript
-import { useState, useEffect } from 'react';
-import { useQuery } from '@tanstack/react-query';
+import { useState, useEffect } from "react";
+import { useQuery } from "@tanstack/react-query";
 
-import { TaskList } from '@/features/task/components';
-import { Button } from '@/components/ui';
-import { formatDate } from '@/utils';
+import { TaskList } from "@/features/task/components";
+import { Button } from "@/components/ui";
+import { formatDate } from "@/utils";
 
-import type { Task } from '@/features/task/types';
+import type { Task } from "@/features/task/types";
 
-import styles from './Home.module.css';
+import styles from "./Home.module.css";
 ```
 
 ### コメント
@@ -265,6 +277,7 @@ import styles from './Home.module.css';
 - **コメントアウト**: 不要なコードは削除し、コメントアウトは残さない
 
 ## よくある実装ポイント
+
 - カード検索: 翻訳済み名称/説明/カテゴリに対して大小文字無視の部分一致でフィルタ。
 - 変換モーダル: 共用/禁忌カードのみ選択可能。変換はデッキ内で1枚置換し、`convertedCards` に original→converted を記録。復元時は変換先をデッキから除外。
   - Zustand/ローカルストアともにdeckId指定で元カードを変換先カードで置換し、convertedCardsにConvertedCardEntryスナップショットを記録すること
@@ -276,16 +289,19 @@ import styles from './Home.module.css';
 - 曖昧な記憶: `lib/deck-utils.ts` のルールに従い、行動ごとの加点を正しく計算。
 
 ## 破壊的変更の禁止例
+
 - 型定義の互換性を壊す変更（引数/戻り値の型を勝手に変更）
 - i18nキー構造の破壊（既存キーの削除・意味変更）
 - 既存コンポーネントの公開プロップの後方互換性を損なう変更
 
 ## セキュリティ / 品質
+
 - XSS/CSRF 等は Next.js/React 標準挙動に準拠しつつ、危険な HTML を挿入しない。
 - コード整形は既存のスタイルに合わせる。不要なリファクタリングは避ける。
 - 大規模改修は要分割・段階的 PR。
 
 ## 失敗時の対応
+
 - ビルド/テスト失敗時は差分を見直し、最小修正で復旧。
 - i18nエラー（キー欠落等）はフォールバックを暫定使用し、キーを追って追加。
 
@@ -344,6 +360,7 @@ import styles from './Home.module.css';
 このドキュメントを常に最新に保ち、新しい技術選定や設計変更があった場合は適宜更新してください。GitHub Copilot や AI ツールは、このドキュメントを参照することで、プロジェクトのコンテキストを正確に理解し、より適切なコード提案を行うことができます。
 
 ## 参考
+
 - 仕様: `docs/season1.md`、シーズン2調整: `docs/season2.md`
 - 型/ロジック: `types/index.ts`, `hooks/useDeckBuilderStore.ts`, `lib/*`
 - UI: `components/*`

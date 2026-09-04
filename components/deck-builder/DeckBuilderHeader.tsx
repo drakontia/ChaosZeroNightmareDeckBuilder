@@ -10,7 +10,12 @@ interface DeckBuilderHeaderProps {
   challengeCheckerLabel: string;
 }
 
-export function DeckBuilderHeader({ locale, title, description, challengeCheckerLabel }: DeckBuilderHeaderProps) {
+export function DeckBuilderHeader({
+  locale,
+  title,
+  description,
+  challengeCheckerLabel,
+}: DeckBuilderHeaderProps) {
   return (
     <header className="mb-6">
       <div className="flex flex-col sm:flex-row sm:justify-between items-end sm:items-start gap-2 mb-2">
@@ -23,7 +28,13 @@ export function DeckBuilderHeader({ locale, title, description, challengeChecker
           >
             {challengeCheckerLabel}
           </Link>
-          <iframe src="https://github.com/sponsors/drakontia/button" title="Sponsor drakontia" height="32" width="114" style={{ border: 0, borderRadius: "6px" }} />
+          <iframe
+            src="https://github.com/sponsors/drakontia/button"
+            title="Sponsor drakontia"
+            height="32"
+            width="114"
+            style={{ border: 0, borderRadius: "6px" }}
+          />
           <Link
             href="https://x.com/MhdenOfRamuh"
             target="_blank"

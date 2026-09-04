@@ -32,7 +32,11 @@ function getFallbackEffectName(fullDescription: string): string {
   return fallback || fullDescription;
 }
 
-function getEffectName(t: MutationCoreTranslator, effectId: string, fullDescription: string): string {
+function getEffectName(
+  t: MutationCoreTranslator,
+  effectId: string,
+  fullDescription: string,
+): string {
   const nameKey = `mutationCore.effectNames.${effectId}`;
   if (t.has(nameKey)) {
     return t(nameKey);
@@ -41,14 +45,28 @@ function getEffectName(t: MutationCoreTranslator, effectId: string, fullDescript
   return getFallbackEffectName(fullDescription);
 }
 
-function MutationCorePreviewButton({ selectedEffectId, onOpenChange }: { selectedEffectId: string | null; onOpenChange: (open: boolean) => void }) {
+function MutationCorePreviewButton({
+  selectedEffectId,
+  onOpenChange,
+}: {
+  selectedEffectId: string | null;
+  onOpenChange: (open: boolean) => void;
+}) {
   const t = useTranslations();
   const selectedEffect = MUTATION_CORE_EFFECTS.find((e) => e.id === selectedEffectId);
-  const fullDescription = selectedEffect ? t(`mutationCore.effects.${selectedEffectId}`, { defaultValue: selectedEffect.description }) : t("mutationCore.noEffect");
-  const displayText = selectedEffect ? getEffectName(t, selectedEffect.id, fullDescription) : fullDescription;
+  const fullDescription = selectedEffect
+    ? t(`mutationCore.effects.${selectedEffectId}`, { defaultValue: selectedEffect.description })
+    : t("mutationCore.noEffect");
+  const displayText = selectedEffect
+    ? getEffectName(t, selectedEffect.id, fullDescription)
+    : fullDescription;
 
   return (
-    <Button onClick={() => onOpenChange(true)} variant="outline" className="w-full h-20 sm:h-16 lg:h-20 border-2 border-purple-600 bg-purple-600/10 text-purple-700 dark:text-purple-300 hover:bg-purple-600/20 flex items-center justify-between px-4">
+    <Button
+      onClick={() => onOpenChange(true)}
+      variant="outline"
+      className="w-full h-20 sm:h-16 lg:h-20 border-2 border-purple-600 bg-purple-600/10 text-purple-700 dark:text-purple-300 hover:bg-purple-600/20 flex items-center justify-between px-4"
+    >
       <div className="flex items-center gap-2">
         <Zap className="w-5 h-5" />
         <span className="font-semibold text-sm">{t("mutationCore.title")}</span>
@@ -58,9 +76,19 @@ function MutationCorePreviewButton({ selectedEffectId, onOpenChange }: { selecte
   );
 }
 
-function MutationCoreOptionCard({ effect, selected, onSelect }: { effect: (typeof MUTATION_CORE_EFFECTS)[0]; selected: boolean; onSelect: () => void }) {
+function MutationCoreOptionCard({
+  effect,
+  selected,
+  onSelect,
+}: {
+  effect: (typeof MUTATION_CORE_EFFECTS)[0];
+  selected: boolean;
+  onSelect: () => void;
+}) {
   const t = useTranslations();
-  const fullDescription = t(`mutationCore.effects.${effect.id}`, { defaultValue: effect.description });
+  const fullDescription = t(`mutationCore.effects.${effect.id}`, {
+    defaultValue: effect.description,
+  });
   const effectName = getEffectName(t, effect.id, fullDescription);
 
   return (
@@ -74,15 +102,21 @@ function MutationCoreOptionCard({ effect, selected, onSelect }: { effect: (typeo
           <span className="text-sm font-semibold flex-1">{effectName}</span>
           <Popover>
             <PopoverTrigger asChild>
-              <Info className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0 cursor-help" onClick={(e) => e.stopPropagation()} />
+              <Info
+                className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0 cursor-help"
+                onClick={(e) => e.stopPropagation()}
+              />
             </PopoverTrigger>
             <PopoverContent className="w-72 p-3 text-sm" side="right">
               <div className="space-y-2">
-                <div className="font-semibold text-purple-600 dark:text-purple-400">{effectName}</div>
+                <div className="font-semibold text-purple-600 dark:text-purple-400">
+                  {effectName}
+                </div>
                 <div className="text-gray-700 dark:text-gray-300">{fullDescription}</div>
                 {effect.costModifier && (
                   <div className="text-xs text-gray-500 dark:text-gray-400 border-t pt-2 mt-2">
-                    Cost: {effect.costModifier > 0 ? "+" : ""}{effect.costModifier}
+                    Cost: {effect.costModifier > 0 ? "+" : ""}
+                    {effect.costModifier}
                   </div>
                 )}
               </div>
@@ -100,7 +134,7 @@ export function MutationCoreSelector({ selectedEffectId, onSelect }: MutationCor
   const [activeTab, setActiveTab] = useState(MutationCoreEffectCategory.BASIC_STATS);
 
   const categoryEffects = useMemo(() => {
-    const result: Record<MutationCoreEffectCategory, (typeof MUTATION_CORE_EFFECTS)> = {} as any;
+    const result: Record<MutationCoreEffectCategory, typeof MUTATION_CORE_EFFECTS> = {} as any;
     CATEGORIES.forEach((category) => {
       result[category] = getMutationCoreEffectsByCategory(category);
     });
@@ -138,13 +172,26 @@ export function MutationCoreSelector({ selectedEffectId, onSelect }: MutationCor
 
             <div className="flex-1 overflow-y-auto">
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 pr-2">
-                <button className={`h-auto flex-col justify-start p-3 text-left w-full rounded-md border-2 transition-colors ${!selectedEffectId ? "bg-purple-600 text-white border-purple-600" : "border-gray-300 dark:border-gray-600 hover:border-purple-400"}`} onClick={() => { onSelect(null); setOpen(false); }}>
+                <button
+                  className={`h-auto flex-col justify-start p-3 text-left w-full rounded-md border-2 transition-colors ${!selectedEffectId ? "bg-purple-600 text-white border-purple-600" : "border-gray-300 dark:border-gray-600 hover:border-purple-400"}`}
+                  onClick={() => {
+                    onSelect(null);
+                    setOpen(false);
+                  }}
+                >
                   <span className="text-sm font-semibold">{t("mutationCore.noEffect")}</span>
                 </button>
 
                 {categoryEffects[activeTab].map((effect) => (
                   <div key={effect.id}>
-                    <MutationCoreOptionCard effect={effect} selected={selectedEffectId === effect.id} onSelect={() => { onSelect(effect.id); setOpen(false); }} />
+                    <MutationCoreOptionCard
+                      effect={effect}
+                      selected={selectedEffectId === effect.id}
+                      onSelect={() => {
+                        onSelect(effect.id);
+                        setOpen(false);
+                      }}
+                    />
                   </div>
                 ))}
               </div>

@@ -1,20 +1,20 @@
-import { describe, it, expect, beforeEach } from 'vite-plus/test';
-import { DeckCard, CardType, CardCategory, CardGrade, Deck, HiramekiVariation } from '@/types';
-import { getCardInfo } from '@/lib/deck-utils';
+import { describe, it, expect, beforeEach } from "vite-plus/test";
+import { DeckCard, CardType, CardCategory, CardGrade, Deck, HiramekiVariation } from "@/types";
+import { getCardInfo } from "@/lib/deck-utils";
 import { calculateFaintMemory } from "@/lib/calculateFaintMemory";
-import { HIDDEN_HIRAMEKI_EFFECTS } from '@/lib/hidden-hirameki';
+import { HIDDEN_HIRAMEKI_EFFECTS } from "@/lib/hidden-hirameki";
 
-describe('Hidden Hirameki (Unified Structure)', () => {
+describe("Hidden Hirameki (Unified Structure)", () => {
   let testCard: DeckCard;
 
   beforeEach(() => {
     testCard = {
-      id: 'test_card',
-      name: 'Test Card',
+      id: "test_card",
+      name: "Test Card",
       type: CardType.SHARED,
       category: CardCategory.SKILL,
       statuses: [],
-      deckId: 'deck_test_1',
+      deckId: "deck_test_1",
       selectedHiramekiLevel: 0,
       godHiramekiType: null,
       godHiramekiEffectId: null,
@@ -23,73 +23,73 @@ describe('Hidden Hirameki (Unified Structure)', () => {
         {
           level: 0,
           cost: 1,
-          description: 'Base description',
+          description: "Base description",
         },
         {
           level: 1,
           cost: 2,
-          description: 'Hirameki Lv1 description',
-        }
-      ]
+          description: "Hirameki Lv1 description",
+        },
+      ],
     };
   });
 
-  describe('getCardInfo with unified hidden hirameki', () => {
-    it('should return regular hirameki info when selectedHiddenHiramekiId is null', () => {
+  describe("getCardInfo with unified hidden hirameki", () => {
+    it("should return regular hirameki info when selectedHiddenHiramekiId is null", () => {
       testCard.selectedHiramekiLevel = 1;
       testCard.selectedHiddenHiramekiId = null;
       const info = getCardInfo(testCard);
-      
+
       expect(info.cost).toBe(2);
-      expect(info.description).toBe('Hirameki Lv1 description');
+      expect(info.description).toBe("Hirameki Lv1 description");
     });
 
-    it('should return base card info when no hirameki is selected', () => {
+    it("should return base card info when no hirameki is selected", () => {
       testCard.selectedHiramekiLevel = 0;
       testCard.selectedHiddenHiramekiId = null;
       const info = getCardInfo(testCard);
-      
+
       expect(info.cost).toBe(1);
-      expect(info.description).toBe('Base description');
+      expect(info.description).toBe("Base description");
     });
 
-    it('should apply hidden hirameki only with base level (Lv0)', () => {
+    it("should apply hidden hirameki only with base level (Lv0)", () => {
       // Hidden hirameki can only be applied when selectedHiramekiLevel is 0
       testCard.selectedHiramekiLevel = 0;
       const firstHiddenEffect = HIDDEN_HIRAMEKI_EFFECTS[0];
       testCard.selectedHiddenHiramekiId = firstHiddenEffect.id;
-      
+
       const info = getCardInfo(testCard);
-      
+
       // Should include hidden effect in description
       expect(info.description).toContain(firstHiddenEffect.additionalEffect);
     });
 
-    it('should not apply hidden hirameki when hirameki level is above 0', () => {
+    it("should not apply hidden hirameki when hirameki level is above 0", () => {
       // Hidden hirameki should not be applicable when regular hirameki (Lv1+) is selected
       testCard.selectedHiramekiLevel = 1;
       const firstHiddenEffect = HIDDEN_HIRAMEKI_EFFECTS[0];
       testCard.selectedHiddenHiramekiId = firstHiddenEffect.id;
       const info = getCardInfo(testCard);
-      
+
       // Should return regular hirameki info, ignoring hidden hirameki
       expect(info.cost).toBe(2);
-      expect(info.description).toBe('Hirameki Lv1 description');
+      expect(info.description).toBe("Hirameki Lv1 description");
       expect(info.description).not.toContain(firstHiddenEffect.additionalEffect);
     });
 
-    it('should handle hidden hirameki with cost modifier', () => {
+    it("should handle hidden hirameki with cost modifier", () => {
       // This test verifies the structure when hidden hirameki effects are added in the future
       // For now, with empty array, the selectedHiddenHiramekiId should not affect the result
       testCard.selectedHiramekiLevel = 0;
       testCard.selectedHiddenHiramekiId = null;
       const info = getCardInfo(testCard);
-      
+
       expect(info.cost).toBe(1);
-      expect(info.description).toBe('Base description');
+      expect(info.description).toBe("Base description");
     });
 
-    it('should preserve hidden hirameki on base-level ego variations', () => {
+    it("should preserve hidden hirameki on base-level ego variations", () => {
       const firstHiddenEffect = HIDDEN_HIRAMEKI_EFFECTS[0];
       testCard.selectedHiramekiLevel = 0;
       testCard.selectedHiddenHiramekiId = firstHiddenEffect.id;
@@ -97,10 +97,10 @@ describe('Hidden Hirameki (Unified Structure)', () => {
         {
           level: 0,
           cost: 1,
-          description: 'Base description',
+          description: "Base description",
           egoVariations: {
             1: {
-              description: 'Base ego variation',
+              description: "Base ego variation",
             },
           },
         },
@@ -108,12 +108,12 @@ describe('Hidden Hirameki (Unified Structure)', () => {
 
       const info = getCardInfo(testCard, 1);
 
-      expect(info.description).toContain('Base ego variation');
+      expect(info.description).toContain("Base ego variation");
       expect(info.description).toContain(firstHiddenEffect.additionalEffect);
     });
   });
 
-  describe('calculateFaintMemory with hidden hirameki', () => {
+  describe("calculateFaintMemory with hidden hirameki", () => {
     let baseDeck: Deck;
     let variation: HiramekiVariation;
 
@@ -121,7 +121,7 @@ describe('Hidden Hirameki (Unified Structure)', () => {
       variation = {
         level: 0,
         cost: 1,
-        description: 'Base description',
+        description: "Base description",
       };
 
       baseDeck = {
@@ -129,7 +129,7 @@ describe('Hidden Hirameki (Unified Structure)', () => {
         equipment: {
           weapon: null,
           armor: null,
-          pendant: null
+          pendant: null,
         },
         cards: [],
         egoLevel: 0,
@@ -142,12 +142,12 @@ describe('Hidden Hirameki (Unified Structure)', () => {
       };
     });
 
-    it('should add 10pt for hidden hirameki on shared card', () => {
+    it("should add 10pt for hidden hirameki on shared card", () => {
       const firstHiddenEffect = HIDDEN_HIRAMEKI_EFFECTS[0];
       baseDeck.cards.push({
-        deckId: '1',
-        id: 'shared-1',
-        name: 'Shared Card',
+        deckId: "1",
+        id: "shared-1",
+        name: "Shared Card",
         type: CardType.SHARED,
         category: CardCategory.ATTACK,
         statuses: [],
@@ -156,17 +156,17 @@ describe('Hidden Hirameki (Unified Structure)', () => {
         godHiramekiType: null,
         godHiramekiEffectId: null,
         isBasicCard: false,
-        hiramekiVariations: [variation]
+        hiramekiVariations: [variation],
       });
       expect(calculateFaintMemory(baseDeck)).toBe(20); // 20 (shared), no hirameki points in V2
     });
 
-    it('should NOT add hirameki points for hidden hirameki on monster card', () => {
+    it("should NOT add hirameki points for hidden hirameki on monster card", () => {
       const firstHiddenEffect = HIDDEN_HIRAMEKI_EFFECTS[0];
       baseDeck.cards.push({
-        deckId: '1',
-        id: 'monster-1',
-        name: 'Monster Card',
+        deckId: "1",
+        id: "monster-1",
+        name: "Monster Card",
         type: CardType.MONSTER,
         grade: CardGrade.LEGEND,
         category: CardCategory.ATTACK,
@@ -176,17 +176,17 @@ describe('Hidden Hirameki (Unified Structure)', () => {
         godHiramekiType: null,
         godHiramekiEffectId: null,
         isBasicCard: false,
-        hiramekiVariations: [variation]
+        hiramekiVariations: [variation],
       });
       expect(calculateFaintMemory(baseDeck)).toBe(80); // 80 (legend monster), no hirameki points
     });
 
-    it('should not add points for hidden hirameki on character card', () => {
+    it("should not add points for hidden hirameki on character card", () => {
       const firstHiddenEffect = HIDDEN_HIRAMEKI_EFFECTS[0];
       baseDeck.cards.push({
-        deckId: '1',
-        id: 'char-1',
-        name: 'Character Card',
+        deckId: "1",
+        id: "char-1",
+        name: "Character Card",
         type: CardType.CHARACTER,
         category: CardCategory.ATTACK,
         statuses: [],
@@ -195,17 +195,17 @@ describe('Hidden Hirameki (Unified Structure)', () => {
         godHiramekiType: null,
         godHiramekiEffectId: null,
         isBasicCard: false,
-        hiramekiVariations: [variation]
+        hiramekiVariations: [variation],
       });
       expect(calculateFaintMemory(baseDeck)).toBe(0); // Character cards don't add points
     });
 
-    it('should add 10pt for regular hirameki same as hidden hirameki', () => {
+    it("should add 10pt for regular hirameki same as hidden hirameki", () => {
       // Regular hirameki
       baseDeck.cards.push({
-        deckId: '1',
-        id: 'shared-1',
-        name: 'Shared Card 1',
+        deckId: "1",
+        id: "shared-1",
+        name: "Shared Card 1",
         type: CardType.SHARED,
         category: CardCategory.ATTACK,
         statuses: [],
@@ -214,15 +214,15 @@ describe('Hidden Hirameki (Unified Structure)', () => {
         godHiramekiType: null,
         godHiramekiEffectId: null,
         isBasicCard: false,
-        hiramekiVariations: [variation, { level: 1, cost: 2, description: 'Lv1' }]
+        hiramekiVariations: [variation, { level: 1, cost: 2, description: "Lv1" }],
       });
 
       // Hidden hirameki
       const firstHiddenEffect = HIDDEN_HIRAMEKI_EFFECTS[0];
       baseDeck.cards.push({
-        deckId: '2',
-        id: 'shared-2',
-        name: 'Shared Card 2',
+        deckId: "2",
+        id: "shared-2",
+        name: "Shared Card 2",
         type: CardType.SHARED,
         category: CardCategory.ATTACK,
         statuses: [],
@@ -231,7 +231,7 @@ describe('Hidden Hirameki (Unified Structure)', () => {
         godHiramekiType: null,
         godHiramekiEffectId: null,
         isBasicCard: false,
-        hiramekiVariations: [variation]
+        hiramekiVariations: [variation],
       });
 
       // Both shared cards = 20pt each, no hirameki points in V2

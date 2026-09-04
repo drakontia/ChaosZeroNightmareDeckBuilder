@@ -11,6 +11,7 @@ description: This is specification in season 1 about ChaosZeroNightmare
 ゲーム「カオスゼロナイトメア」（参考サイト：https://chaoszeronightmare.onstove.com/ja）のデッキを自由に編集できるWebアプリケーション。
 
 ### 参考資料
+
 - ゲーム公式サイト: https://chaoszeronightmare.onstove.com/ja
 - 攻略情報: https://nightmare.aosns.com/
 - デッキ参考画像: http://bit.ly/4oZ77Hx
@@ -42,6 +43,7 @@ description: This is specification in season 1 about ChaosZeroNightmare
 ### 多言語対応
 
 4つの言語をサポート:
+
 - 🇯🇵 日本語 (ja) - デフォルト
 - 🇺🇸 英語 (en)
 - 🇨🇳 中国語 (zh)
@@ -55,26 +57,28 @@ description: This is specification in season 1 about ChaosZeroNightmare
 
 6種類の職業が存在:
 
-| 職業 | 日本語 | 英語 | 中国語 | 韓国語 |
-|------|--------|------|--------|--------|
-| striker | ストライカー | Striker | 前锋 | 스트라이커 |
-| vanguard | ヴァンガード | Vanguard | 先锋 | 뱅가드 |
-| ranger | レンジャー | Ranger | 游侠 | 레인저 |
-| hunter | ハンター | Hunter | 猎人 | 헌터 |
-| controller | コントローラー | Controller | 控制者 | 컨트롤러 |
-| psionic | サイオニック | Psionic | 灵能者 | 사이오닉 |
+| 職業       | 日本語         | 英語       | 中国語 | 韓国語     |
+| ---------- | -------------- | ---------- | ------ | ---------- |
+| striker    | ストライカー   | Striker    | 前锋   | 스트라이커 |
+| vanguard   | ヴァンガード   | Vanguard   | 先锋   | 뱅가드     |
+| ranger     | レンジャー     | Ranger     | 游侠   | 레인저     |
+| hunter     | ハンター       | Hunter     | 猎人   | 헌터       |
+| controller | コントローラー | Controller | 控制者 | 컨트롤러   |
+| psionic    | サイオニック   | Psionic    | 灵能者 | 사이오닉   |
 
 ### キャラクターカード
 
 各キャラクターは8枚のカードを持つ:
 
 #### 開始カード（4枚）
+
 - キャラクター選択時に自動的にデッキに追加される
 - 内訳:
   - **基本カード（3枚）**: ヒラメキが起こらないカード
   - **ヒラメキ対応カード（1枚）**: ヒラメキが起こるカード
 
 #### ヒラメキカード（4枚）
+
 - 手動で追加可能
 - 全てヒラメキが起こるカード
 
@@ -103,16 +107,17 @@ description: This is specification in season 1 about ChaosZeroNightmare
 
 ### カード種別（Type）
 
-| 種別 | 説明 | 職業制限 |
-|------|------|----------|
-| 通常（Normal） | キャラクター固有のカード | なし（キャラクター専用） |
-| 共用（Shared） | 複数キャラで使用可能 | 2職業 or 全職業 |
-| モンスター（Monster） | モンスターカード | 2職業 or 全職業 |
-| 禁忌（Forbidden） | 禁忌カード | 2職業 or 全職業 |
+| 種別                  | 説明                     | 職業制限                 |
+| --------------------- | ------------------------ | ------------------------ |
+| 通常（Normal）        | キャラクター固有のカード | なし（キャラクター専用） |
+| 共用（Shared）        | 複数キャラで使用可能     | 2職業 or 全職業          |
+| モンスター（Monster） | モンスターカード         | 2職業 or 全職業          |
+| 禁忌（Forbidden）     | 禁忌カード               | 2職業 or 全職業          |
 
 ### カードカテゴリ（Category）
 
 3種類のカテゴリ:
+
 - **攻撃（Attack）**
 - **強化（Upgrade）**
 - **スキル（Skill）**
@@ -121,26 +126,26 @@ description: This is specification in season 1 about ChaosZeroNightmare
 
 カードには複数のステータスが付与される可能性がある:
 
-| ステータス | 日本語 | 英語 |
-|------------|--------|------|
-| initiation | 開戦 | Initiation |
-| retain | 保存 | Retain |
-| celestial | 天上 | Celestial |
-| combo | 連携 | Combo |
-| exhaust | 消滅 | Exhaust |
-| exhaust2 | 消滅2 | Exhaust2 |
-| exhaust3 | 消滅3 | Exhaust3 |
-| lead | 主導 | Lead |
-| unique | 唯一 | Unique |
-| haste | 迅速 | Haste |
-| finale | 終極 | Finale |
-| retrieve | 回収 | Retrieve |
-| retrieve2 | 回収2 | Retrieve2 |
-| retrieve3 | 回収3 | Retrieve3 |
-| bullet | 弾丸 | Bullet |
+| ステータス      | 日本語   | 英語            |
+| --------------- | -------- | --------------- |
+| initiation      | 開戦     | Initiation      |
+| retain          | 保存     | Retain          |
+| celestial       | 天上     | Celestial       |
+| combo           | 連携     | Combo           |
+| exhaust         | 消滅     | Exhaust         |
+| exhaust2        | 消滅2    | Exhaust2        |
+| exhaust3        | 消滅3    | Exhaust3        |
+| lead            | 主導     | Lead            |
+| unique          | 唯一     | Unique          |
+| haste           | 迅速     | Haste           |
+| finale          | 終極     | Finale          |
+| retrieve        | 回収     | Retrieve        |
+| retrieve2       | 回収2    | Retrieve2       |
+| retrieve3       | 回収3    | Retrieve3       |
+| bullet          | 弾丸     | Bullet          |
 | weakness_attack | 弱点攻撃 | Weakness Attack |
-| pulverize | 粉砕 | Pulverize |
-| bind | 結束 | Bind |
+| pulverize       | 粉砕     | Pulverize       |
+| bind            | 結束     | Bind            |
 
 ### ヒラメキシステム
 
@@ -148,15 +153,16 @@ description: This is specification in season 1 about ChaosZeroNightmare
 
 カードの種類によってヒラメキレベル数が異なる:
 
-| カード種別 | ヒラメキレベル数 | レベル表記 |
-|------------|------------------|------------|
-| キャラクターカード | 6段階 | 基本, Lv1, Lv2, Lv3, Lv4, Lv5 |
-| 共用/モンスター/禁忌 | 4段階 | 基本, Lv1, Lv2, Lv3 |
-| 基本カード | 0段階 | ヒラメキなし |
+| カード種別           | ヒラメキレベル数 | レベル表記                    |
+| -------------------- | ---------------- | ----------------------------- |
+| キャラクターカード   | 6段階            | 基本, Lv1, Lv2, Lv3, Lv4, Lv5 |
+| 共用/モンスター/禁忌 | 4段階            | 基本, Lv1, Lv2, Lv3           |
+| 基本カード           | 0段階            | ヒラメキなし                  |
 
 #### ヒラメキレベルによる変化
 
 各ヒラメキレベルで以下が変化する:
+
 - **コスト**: カードを使用するためのコスト値
 - **説明文**: カードの効果説明
 - **ステータス**: 付与されるステータス効果（例: [火傷・防御低下]）
@@ -187,13 +193,13 @@ description: This is specification in season 1 about ChaosZeroNightmare
 
 #### 5種類の神
 
-| 神 | 日本語 | 英語 | 中国語 | 韓国語 |
-|----|--------|------|--------|--------|
-| kilken | キルケン | Kilken | 基尔肯 | 킬켄 |
-| seclaid | セクレド | Seclaid | 塞克雷德 | 세크레드 |
-| dialos | ディアロス | Dialos | 迪亚洛斯 | 디알로스 |
-| nihilum | ニヒルム | Nihilum | 尼希鲁姆 | 니힐룸 |
-| vitol | ヴィトル | Vitol | 维托尔 | 비톨 |
+| 神      | 日本語     | 英語    | 中国語   | 韓国語   |
+| ------- | ---------- | ------- | -------- | -------- |
+| kilken  | キルケン   | Kilken  | 基尔肯   | 킬켄     |
+| seclaid | セクレド   | Seclaid | 塞克雷德 | 세크레드 |
+| dialos  | ディアロス | Dialos  | 迪亚洛斯 | 디알로스 |
+| nihilum | ニヒルム   | Nihilum | 尼希鲁姆 | 니힐룸   |
+| vitol   | ヴィトル   | Vitol   | 维托尔   | 비톨     |
 
 #### 神ヒラメキ選択UI（2段階選択）
 
@@ -228,51 +234,52 @@ description: This is specification in season 1 about ChaosZeroNightmare
 
 #### デッキ内カード
 
-| 行動 | ポイント | 備考 |
-|------|----------|------|
-| 共用カードの獲得 | +20pt | キャラカード以外 |
-| モンスターカードの獲得 | +80pt | キャラカード以外 |
-| 禁忌カード | +20pt | キャラカード以外 |
-| 共用・モンスターカードのヒラメキ（Lv1以上） | +10pt | キャラカードのヒラメキは0pt |
-| 神ヒラメキ（全カード、基本カード除く） | +20pt | ヒラメキ対応カードのみ。共用・モンスターの場合は上記+10ptも加算 |
+| 行動                                        | ポイント | 備考                                                            |
+| ------------------------------------------- | -------- | --------------------------------------------------------------- |
+| 共用カードの獲得                            | +20pt    | キャラカード以外                                                |
+| モンスターカードの獲得                      | +80pt    | キャラカード以外                                                |
+| 禁忌カード                                  | +20pt    | キャラカード以外                                                |
+| 共用・モンスターカードのヒラメキ（Lv1以上） | +10pt    | キャラカードのヒラメキは0pt                                     |
+| 神ヒラメキ（全カード、基本カード除く）      | +20pt    | ヒラメキ対応カードのみ。共用・モンスターの場合は上記+10ptも加算 |
 
 #### 削除されたカード
 
-| 回数 | ポイント | 備考 |
-|------|----------|------|
-| 1回目 | 0pt | キャラカードは+20pt追加 |
-| 2回目 | +10pt | キャラカードは+20pt追加 |
-| 3回目 | +30pt | キャラカードは+20pt追加 |
-| 4回目 | +50pt | キャラカードは+20pt追加 |
-| 5回目以降 | +70pt | キャラカードは+20pt追加 |
+| 回数      | ポイント | 備考                    |
+| --------- | -------- | ----------------------- |
+| 1回目     | 0pt      | キャラカードは+20pt追加 |
+| 2回目     | +10pt    | キャラカードは+20pt追加 |
+| 3回目     | +30pt    | キャラカードは+20pt追加 |
+| 4回目     | +50pt    | キャラカードは+20pt追加 |
+| 5回目以降 | +70pt    | キャラカードは+20pt追加 |
 
 削除時のカード属性（種別・ヒラメキ・神ヒラメキ）は削除時点の状態がスナップショット保存され、加算される。
 
 #### コピーされたカード
 
-| 回数 | ポイント | 備考 |
-|------|----------|------|
-| 1回目 | 0pt | コピー元の属性（種別・ヒラメキ・神ヒラメキ）を継承 |
-| 2回目 | +10pt | - |
-| 3回目 | +30pt | - |
-| 4回目 | +50pt | - |
-| 5回目以降 | +70pt | - |
+| 回数      | ポイント | 備考                                               |
+| --------- | -------- | -------------------------------------------------- |
+| 1回目     | 0pt      | コピー元の属性（種別・ヒラメキ・神ヒラメキ）を継承 |
+| 2回目     | +10pt    | -                                                  |
+| 3回目     | +30pt    | -                                                  |
+| 4回目     | +50pt    | -                                                  |
+| 5回目以降 | +70pt    | -                                                  |
 
 コピー時のカード属性（種別・ヒラメキ・神ヒラメキ）はコピー時点の状態がスナップショット保存され、加算される。
 
 ##### コピーカードのUI表現
 
 コピーされたカードは以下の視覚的特徴で識別可能：
+
 - **カード画像**: 左右反転表示（CSS `transform: scaleX(-1)`）
 - **カードステータス**: ステータス欄に「コピー済み」表示
 
 #### 変換されたカード
 
-| 行動 | ポイント | 備考 |
-|------|----------|------|
-| カードの変換 | +10pt | 基本変換コスト |
+| 行動               | ポイント | 備考                                             |
+| ------------------ | -------- | ------------------------------------------------ |
+| カードの変換       | +10pt    | 基本変換コスト                                   |
 | 元カードの属性保持 | 状況次第 | 変換前のヒラメキ・神ヒラメキポイントは保持される |
-| 変換先カードの属性 | 状況次第 | 変換後のカードがデッキにある場合、通常通り加算 |
+| 変換先カードの属性 | 状況次第 | 変換後のカードがデッキにある場合、通常通り加算   |
 
 変換時の元カード属性（種別・ヒラメキ・神ヒラメキ）はスナップショット保存される。変換後のカードがデッキから削除されても、元カードと変換の+10ptは残る。
 
@@ -291,6 +298,7 @@ description: This is specification in season 1 about ChaosZeroNightmare
 ### 統計情報
 
 リアルタイムで表示される情報:
+
 - **カード枚数**: 現在のデッキ内のカード数
 - **合計コスト**: 全カードのコスト合計（ヒラメキ、神ヒラメキのコスト変更を反映）
 
@@ -314,7 +322,7 @@ enum JobType {
   RANGER = "ranger",
   HUNTER = "hunter",
   CONTROLLER = "controller",
-  PSIONIC = "psionic"
+  PSIONIC = "psionic",
 }
 
 // キャラクター
@@ -332,14 +340,14 @@ enum CardType {
   CHARACTER = "character",
   SHARED = "shared",
   MONSTER = "monster",
-  FORBIDDEN = "forbidden"
+  FORBIDDEN = "forbidden",
 }
 
 // カードカテゴリ
 enum CardCategory {
   ATTACK = "attack",
   UPGRADE = "upgrade",
-  SKILL = "skill"
+  SKILL = "skill",
 }
 
 // ヒラメキバリエーション
@@ -366,7 +374,7 @@ enum GodType {
   SECLAID = "seclaid",
   DIALOS = "dialos",
   NIHILUM = "nihilum",
-  VITOL = "vitol"
+  VITOL = "vitol",
 }
 
 // 神ヒラメキ効果オプション（単一効果）
@@ -378,9 +386,9 @@ interface GodHiramekiEffectOption {
 
 // 神ヒラメキ定義（統一構造）
 interface GodHiramekiDefinition {
-  id: string;              // 効果ID（i18nキーに対応）
+  id: string; // 効果ID（i18nキーに対応）
   additionalEffect: string; // フォールバック説明
-  costModifier?: number;   // コスト修正
+  costModifier?: number; // コスト修正
   gods: GodType[] | "all"; // 適用可能な神（配列または"all"）
 }
 
@@ -419,7 +427,7 @@ interface Deck {
   createdAt: Date;
   // 曖昧な記憶計算用のトラッキング（スナップショット対応）
   removedCards: Map<string, number | RemovedCardEntry>; // カードID → 削除回数 or スナップショット
-  copiedCards: Map<string, number | CopiedCardEntry>;   // カードID → コピー回数 or スナップショット
+  copiedCards: Map<string, number | CopiedCardEntry>; // カードID → コピー回数 or スナップショット
   convertedCards: Map<string, string | ConvertedCardEntry>; // 元カードID → 変換先カードID or スナップショット
 }
 
@@ -513,6 +521,7 @@ pnpm start     # プロダクションサーバー起動
 ### データ管理
 
 現在はハードコードされたダミーデータを使用しているが、以下の移行が可能:
+
 - JSON/YAML形式の外部ファイル
 - CMS（Contentful、Strapiなど）
 - データベース（Firebase、Supabaseなど）

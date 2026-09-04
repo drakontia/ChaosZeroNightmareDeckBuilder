@@ -1,73 +1,69 @@
-import { getTranslations } from 'next-intl/server';
-import { decodeDeckShare } from '@/lib/deck-share';
+import { getTranslations } from "next-intl/server";
+import { decodeDeckShare } from "@/lib/deck-share";
 import { calculateFaintMemory } from "@/lib/calculateFaintMemory";
-import { resolveLocale } from '@/i18n/locale';
-import { cookies, headers } from 'next/headers';
+import { resolveLocale } from "@/i18n/locale";
+import { cookies, headers } from "next/headers";
 export const size = {
   width: 1200,
   height: 630,
 };
-export const contentType = 'image/svg+xml';
+export const contentType = "image/svg+xml";
 const MAX_CARD_NAMES = 8;
 
 const escapeSvgText = (value: string) =>
   value
-    .replaceAll('&', '&amp;')
-    .replaceAll('<', '&lt;')
-    .replaceAll('>', '&gt;')
-    .replaceAll('"', '&quot;')
-    .replaceAll("'", '&#39;');
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#39;");
 
 // Next.js 16 OG Image Route - default export関数でparamsを受け取る
-export default async function Image({
-  params,
-}: {
-  params: Promise<{ shareId: string }>;
-}) {
+export default async function Image({ params }: { params: Promise<{ shareId: string }> }) {
   try {
     const { shareId } = await params;
 
     if (!shareId) {
-      console.error('[OG Image] No shareId in params');
-      return new Response('Invalid request', { status: 400 });
+      console.error("[OG Image] No shareId in params");
+      return new Response("Invalid request", { status: 400 });
     }
     const deck = decodeDeckShare(shareId);
 
     if (!deck) {
-      console.error('[OG Image] Failed to decode deck share:', shareId);
-      return new Response('Deck not found', { status: 404 });
+      console.error("[OG Image] Failed to decode deck share:", shareId);
+      return new Response("Deck not found", { status: 404 });
     }
 
     const cookieStore = await cookies();
     const requestHeaders = await headers();
-    const localeCookie = cookieStore.get('NEXT_LOCALE')?.value;
+    const localeCookie = cookieStore.get("NEXT_LOCALE")?.value;
     const locale = resolveLocale({
       cookieLocale: localeCookie,
-      acceptLanguage: requestHeaders.get('accept-language'),
+      acceptLanguage: requestHeaders.get("accept-language"),
     });
 
     const t = await getTranslations({ locale });
 
-    const deckName = deck.name || t('deck.noDeck');
+    const deckName = deck.name || t("deck.noDeck");
     const characterName = deck.character?.name
       ? t(`character.${deck.character.id}`)
-      : t('character.select');
+      : t("character.select");
     const cardCount = deck.cards.length;
     const createdDate = new Date(deck.createdAt).toLocaleDateString(locale, {
-      year: '2-digit',
-      month: '2-digit',
-      day: '2-digit',
+      year: "2-digit",
+      month: "2-digit",
+      day: "2-digit",
     });
 
     // Use existing faint memory calculation logic
     const faintMemoryPoints = calculateFaintMemory(deck);
 
     const labels = {
-      title: t('app.title'),
-      shareCardUnit: t('deck.shareCardUnit'),
-      cardsLabel: t('deck.totalCards'),
-      faintMemoryLabel: t('character.faintMemory'),
-      createdDateLabel: t('deck.createdDate'),
+      title: t("app.title"),
+      shareCardUnit: t("deck.shareCardUnit"),
+      cardsLabel: t("deck.totalCards"),
+      faintMemoryLabel: t("character.faintMemory"),
+      createdDateLabel: t("deck.createdDate"),
     };
     const cardNames = deck.cards
       .slice(0, MAX_CARD_NAMES)
@@ -78,9 +74,9 @@ export default async function Image({
       .map(
         (name, index) => `
         <text x="700" y="${224 + index * 36}" fill="#E5E7EB" font-size="24" font-family="system-ui">${index + 1}. ${name}</text>
-      `
+      `,
       )
-      .join('');
+      .join("");
 
     const svg = `
       <svg xmlns="http://www.w3.org/2000/svg" width="${size.width}" height="${size.height}" viewBox="0 0 ${size.width} ${size.height}">
@@ -114,7 +110,7 @@ export default async function Image({
         <rect x="676" y="176" width="436" height="322" rx="22" fill="rgba(15,23,42,0.58)" stroke="rgba(148,163,184,0.32)" />
         <text x="700" y="214" fill="#F8FAFC" font-size="24" font-family="system-ui" font-weight="700">Deck Cards</text>
         ${cardListMarkup}
-        ${moreCardsCount > 0 ? `<text x="700" y="${224 + cardNames.length * 36}" fill="#94A3B8" font-size="20" font-family="system-ui">+${moreCardsCount} more</text>` : ''}
+        ${moreCardsCount > 0 ? `<text x="700" y="${224 + cardNames.length * 36}" fill="#94A3B8" font-size="20" font-family="system-ui">+${moreCardsCount} more</text>` : ""}
         <rect x="40" y="562" width="1120" height="28" rx="14" fill="#E2E8F0" />
         <rect x="40" y="562" width="${Math.min(1120, Math.max(160, cardCount * 42))}" height="28" rx="14" fill="url(#accent)" />
         <text x="40" y="620" fill="#64748B" font-size="20" font-family="system-ui">${escapeSvgText(labels.title)}</text>
@@ -124,12 +120,12 @@ export default async function Image({
 
     return new Response(svg, {
       headers: {
-        'Content-Type': contentType,
-        'Cache-Control': 'public, max-age=0, must-revalidate',
+        "Content-Type": contentType,
+        "Cache-Control": "public, max-age=0, must-revalidate",
       },
     });
   } catch (error) {
-    console.error('[OG Image] Error generating image:', error);
-    return new Response('Internal Server Error', { status: 500 });
+    console.error("[OG Image] Error generating image:", error);
+    return new Response("Internal Server Error", { status: 500 });
   }
 }

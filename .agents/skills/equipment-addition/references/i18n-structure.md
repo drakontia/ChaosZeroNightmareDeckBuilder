@@ -105,9 +105,9 @@ messages/
 
 TypeScript の `name` / `description` フィールドは以下のパスを参照する:
 
-| フィールド | パス |
-|---|---|
-| `name` | `equipment.{type}.{id}.name` |
+| フィールド    | パス                                |
+| ------------- | ----------------------------------- |
+| `name`        | `equipment.{type}.{id}.name`        |
 | `description` | `equipment.{type}.{id}.description` |
 
 - `{type}` は **単数形**: `weapon` / `armor` / `pendant`
@@ -117,10 +117,10 @@ TypeScript の `name` / `description` フィールドは以下のパスを参照
 
 ## 4言語の更新が必須
 
-| 言語 | ファイル | 注意点 |
-|---|---|---|
-| 日本語 | `messages/ja/equipment.json` | ゲーム内の正式な日本語名を使用 |
-| 英語 | `messages/en/equipment.json` | **システムIDの根拠**。正式な英語名必須 |
+| 言語   | ファイル                     | 注意点                                         |
+| ------ | ---------------------------- | ---------------------------------------------- |
+| 日本語 | `messages/ja/equipment.json` | ゲーム内の正式な日本語名を使用                 |
+| 英語   | `messages/en/equipment.json` | **システムIDの根拠**。正式な英語名必須         |
 | 中国語 | `messages/zh/equipment.json` | 未翻訳の場合は英語をフォールバックとして使用可 |
 | 韓国語 | `messages/ko/equipment.json` | 未翻訳の場合は英語をフォールバックとして使用可 |
 

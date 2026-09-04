@@ -18,13 +18,19 @@ export function useEquipmentValidation(deck: Deck | null, t: Translate) {
       if (!slot?.item || !slot.godHammerEquipmentId || slot.refinement) {
         continue;
       }
-      toast.warning(t("equipment.godHammerWithoutRefinement.title", { defaultValue: "精錬が選択されていません" }), {
-        description: t("equipment.godHammerWithoutRefinement.message", {
-          defaultValue: "神のハンマーが有効な装備に精錬が選択されていません。精錬を有効にすることを推奨します。",
+      toast.warning(
+        t("equipment.godHammerWithoutRefinement.title", {
+          defaultValue: "精錬が選択されていません",
         }),
-        duration: 5000,
-        position: "top-center",
-      });
+        {
+          description: t("equipment.godHammerWithoutRefinement.message", {
+            defaultValue:
+              "神のハンマーが有効な装備に精錬が選択されていません。精錬を有効にすることを推奨します。",
+          }),
+          duration: 5000,
+          position: "top-center",
+        },
+      );
       return false;
     }
     return true;

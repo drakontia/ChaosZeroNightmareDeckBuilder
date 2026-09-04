@@ -11,9 +11,16 @@ interface ControlButtonProps {
   inactiveIcon: ReactNode;
 }
 
-const toggleIconButtonClass = "inline-flex items-center justify-center h-6 xl:h-9 w-6 xl:w-9 rounded-full transition";
+const toggleIconButtonClass =
+  "inline-flex items-center justify-center h-6 xl:h-9 w-6 xl:w-9 rounded-full transition";
 
-export function ControlButton({ active, label, onClick, activeIcon, inactiveIcon }: ControlButtonProps) {
+export function ControlButton({
+  active,
+  label,
+  onClick,
+  activeIcon,
+  inactiveIcon,
+}: ControlButtonProps) {
   return (
     <Button
       type="button"
@@ -21,7 +28,12 @@ export function ControlButton({ active, label, onClick, activeIcon, inactiveIcon
       aria-label={label}
       title={label}
       onClick={onClick}
-      className={cn(toggleIconButtonClass, active ? "bg-yellow-400 text-black hover:bg-yellow-400/90" : "bg-secondary text-secondary-foreground hover:bg-secondary/90")}
+      className={cn(
+        toggleIconButtonClass,
+        active
+          ? "bg-yellow-400 text-black hover:bg-yellow-400/90"
+          : "bg-secondary text-secondary-foreground hover:bg-secondary/90",
+      )}
     >
       {active ? activeIcon : inactiveIcon}
     </Button>

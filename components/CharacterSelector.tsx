@@ -1,8 +1,8 @@
 "use client";
 
-import { useTranslations } from 'next-intl';
-import Image from 'next/image';
-import { useState } from 'react';
+import { useTranslations } from "next-intl";
+import Image from "next/image";
+import { useState } from "react";
 import { Character } from "@/types";
 import { Button } from "./ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "./ui/dialog";
@@ -23,24 +23,28 @@ interface CharacterSelectorProps {
   onTogglePotential: () => void;
 }
 
-export function CharacterSelector({ characters, character, onSelect, onEgoLevelChange, hasPotential, onTogglePotential }: CharacterSelectorProps) {
+export function CharacterSelector({
+  characters,
+  character,
+  onSelect,
+  onEgoLevelChange,
+  hasPotential,
+  onTogglePotential,
+}: CharacterSelectorProps) {
   const t = useTranslations();
   const [imageErrors, setImageErrors] = useState<Set<string>>(new Set());
-  
-  const {
-    isOpen,
-    setIsOpen,
-    getEgoLevel,
-    handleEgoIncrement,
-    handleSelect,
-  } = useCharacterSelection({ character, onSelect, onEgoLevelChange });
+
+  const { isOpen, setIsOpen, getEgoLevel, handleEgoIncrement, handleSelect } =
+    useCharacterSelection({ character, onSelect, onEgoLevelChange });
 
   const handleImageError = (characterId: string) => {
-    setImageErrors(prev => new Set(prev).add(characterId));
+    setImageErrors((prev) => new Set(prev).add(characterId));
   };
 
   const getImageSrc = (characterImgUrl: string, characterId: string) => {
-    return imageErrors.has(characterId) ? '/images/characters/character_placeholder.png' : characterImgUrl;
+    return imageErrors.has(characterId)
+      ? "/images/characters/character_placeholder.png"
+      : characterImgUrl;
   };
 
   const currentCharacter = character;
@@ -57,7 +61,7 @@ export function CharacterSelector({ characters, character, onSelect, onEgoLevelC
               type="button"
               variant="outline"
               className="absolute inset-0 z-0 h-full w-full border-0 bg-transparent shadow-none hover:bg-accent/10"
-              aria-label={currentCharacter ? t(currentCharacter.name) : t('character.select')}
+              aria-label={currentCharacter ? t(currentCharacter.name) : t("character.select")}
             />
           </DialogTrigger>
           {currentCharacter ? (
@@ -72,16 +76,21 @@ export function CharacterSelector({ characters, character, onSelect, onEgoLevelC
                     sizes="100%"
                     onError={() => handleImageError(currentCharacter.id)}
                   />
-                  <div className={`absolute inset-y-0 left-0 w-4 lg:w-8 ${currentCharacter.rarity === '★5'
-                      ? 'bg-linear-to-b from-purple-600 to-transparent'
-                      : currentCharacter.rarity === '★4'
-                        ? 'bg-linear-to-b from-yellow-600 to-transparent'
-                        : ''
-                    }`} />
+                  <div
+                    className={`absolute inset-y-0 left-0 w-4 lg:w-8 ${
+                      currentCharacter.rarity === "★5"
+                        ? "bg-linear-to-b from-purple-600 to-transparent"
+                        : currentCharacter.rarity === "★4"
+                          ? "bg-linear-to-b from-yellow-600 to-transparent"
+                          : ""
+                    }`}
+                  />
                 </div>
               )}
               <div className="absolute z-10 bottom-0 right-0 pb-4 pr-4 text-right pointer-events-none">
-                <span className="text-2xl lg:text-4xl font-semibold text-gray-100 text-shadow-lg/20">{t(currentCharacter.name)}</span>
+                <span className="text-2xl lg:text-4xl font-semibold text-gray-100 text-shadow-lg/20">
+                  {t(currentCharacter.name)}
+                </span>
               </div>
               <div className="absolute top-1 left-6 lg:left-10 z-20 flex flex-col items-center gap-1">
                 {getJobIcon(currentCharacter.job) && (
@@ -107,7 +116,7 @@ export function CharacterSelector({ characters, character, onSelect, onEgoLevelC
                   tabIndex={0}
                   onClick={() => handleEgoIncrement(currentCharacter, true)}
                   onKeyDown={(e) => {
-                    if (e.key === 'Enter' || e.key === ' ') {
+                    if (e.key === "Enter" || e.key === " ") {
                       e.preventDefault();
                       handleEgoIncrement(currentCharacter, true);
                     }
@@ -124,12 +133,12 @@ export function CharacterSelector({ characters, character, onSelect, onEgoLevelC
                   tabIndex={0}
                   onClick={onTogglePotential}
                   onKeyDown={(e) => {
-                    if (e.key === 'Enter' || e.key === ' ') {
+                    if (e.key === "Enter" || e.key === " ") {
                       e.preventDefault();
                       onTogglePotential();
                     }
                   }}
-                  aria-label={t('character.potential', { defaultValue: '潜在力' })}
+                  aria-label={t("character.potential", { defaultValue: "潜在力" })}
                   aria-pressed={hasPotential}
                   className="p-2 rounded border border-white bg-black/80 text-white w-8 h-8 cursor-pointer flex items-center justify-center"
                 >
@@ -139,14 +148,14 @@ export function CharacterSelector({ characters, character, onSelect, onEgoLevelC
             </>
           ) : (
             <div className="absolute inset-0 z-10 flex items-center justify-center pointer-events-none">
-              <span className="text-muted-foreground font-semibold">{t('character.select')}</span>
+              <span className="text-muted-foreground font-semibold">{t("character.select")}</span>
             </div>
           )}
         </div>
 
         <DialogContent className="w-[90vw] max-w-6xl max-h-[90vh] overflow-hidden p-4">
           <DialogHeader>
-            <DialogTitle>{t('character.select')}</DialogTitle>
+            <DialogTitle>{t("character.select")}</DialogTitle>
           </DialogHeader>
           <div className="p-2 pt-0 overflow-y-auto max-h-[65vh]">
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2">
@@ -170,12 +179,15 @@ export function CharacterSelector({ characters, character, onSelect, onEgoLevelC
                         sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
                         onError={() => handleImageError(candidate.id)}
                       />
-                      <div className={`absolute inset-y-0 left-0 w-2 sm:w-5 ${candidate.rarity === '★5'
-                          ? 'bg-linear-to-b from-purple-600 to-transparent'
-                          : candidate.rarity === '★4'
-                            ? 'bg-linear-to-b from-yellow-600 to-transparent'
-                            : ''
-                        }`} />
+                      <div
+                        className={`absolute inset-y-0 left-0 w-2 sm:w-5 ${
+                          candidate.rarity === "★5"
+                            ? "bg-linear-to-b from-purple-600 to-transparent"
+                            : candidate.rarity === "★4"
+                              ? "bg-linear-to-b from-yellow-600 to-transparent"
+                              : ""
+                        }`}
+                      />
                       <div className="absolute top-1 left-2 sm:left-5 z-20 flex flex-col items-center gap-0.5">
                         {getJobIcon(candidate.job) && (
                           <Image
@@ -204,7 +216,7 @@ export function CharacterSelector({ characters, character, onSelect, onEgoLevelC
                             handleEgoIncrement(candidate, currentCharacter?.id === candidate.id);
                           }}
                           onKeyDown={(e) => {
-                            if (e.key === 'Enter' || e.key === ' ') {
+                            if (e.key === "Enter" || e.key === " ") {
                               e.stopPropagation();
                               e.preventDefault();
                               handleEgoIncrement(candidate, currentCharacter?.id === candidate.id);

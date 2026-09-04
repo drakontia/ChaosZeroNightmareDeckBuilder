@@ -27,7 +27,9 @@ export function useDeckBuilderAlerts({
   useEffect(() => {
     if (!removeLimitReached) return;
     toast.warning(t("deck.removeLimitTitle", { defaultValue: "排除上限に達しました" }), {
-      description: t("deck.removeLimitMessage", { defaultValue: "排除は5回までです。これ以上排除できません。" }),
+      description: t("deck.removeLimitMessage", {
+        defaultValue: "排除は5回までです。これ以上排除できません。",
+      }),
       duration: 4000,
       position: "top-center",
     });
@@ -37,7 +39,9 @@ export function useDeckBuilderAlerts({
   useEffect(() => {
     if (!copyLimitReached) return;
     toast.warning(t("deck.copyLimitTitle", { defaultValue: "コピー上限に達しました" }), {
-      description: t("deck.copyLimitMessage", { defaultValue: "コピーは4回までです。これ以上コピーできません。" }),
+      description: t("deck.copyLimitMessage", {
+        defaultValue: "コピーは4回までです。これ以上コピーできません。",
+      }),
       duration: 4000,
       position: "top-center",
     });
@@ -47,7 +51,9 @@ export function useDeckBuilderAlerts({
   useEffect(() => {
     if (!conversionLimitReached) return;
     toast.warning(t("deck.conversionLimitTitle", { defaultValue: "変換上限に達しました" }), {
-      description: t("deck.conversionLimitMessage", { defaultValue: "変換は5回までです。これ以上変換できません。" }),
+      description: t("deck.conversionLimitMessage", {
+        defaultValue: "変換は5回までです。これ以上変換できません。",
+      }),
       duration: 4000,
       position: "top-center",
     });

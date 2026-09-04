@@ -30,16 +30,16 @@ description: >
 
 新しい装備を1件追加するたびに、以下のファイルすべてを更新します。
 
-| ファイル | 内容 |
-|---|---|
-| `lib/equipment/weapons.ts` | WEAPON の場合のみ |
-| `lib/equipment/armors.ts` | ARMOR の場合のみ |
-| `lib/equipment/pendants.ts` | PENDANT の場合のみ |
-| `messages/ja/equipment.json` | 日本語名・説明 |
-| `messages/en/equipment.json` | 英語名・説明（IDの根拠） |
-| `messages/zh/equipment.json` | 中国語名・説明 |
-| `messages/ko/equipment.json` | 韓国語名・説明 |
-| `public/images/equipment/{type}s/{id}.png` | 装備画像 |
+| ファイル                                   | 内容                     |
+| ------------------------------------------ | ------------------------ |
+| `lib/equipment/weapons.ts`                 | WEAPON の場合のみ        |
+| `lib/equipment/armors.ts`                  | ARMOR の場合のみ         |
+| `lib/equipment/pendants.ts`                | PENDANT の場合のみ       |
+| `messages/ja/equipment.json`               | 日本語名・説明           |
+| `messages/en/equipment.json`               | 英語名・説明（IDの根拠） |
+| `messages/zh/equipment.json`               | 中国語名・説明           |
+| `messages/ko/equipment.json`               | 韓国語名・説明           |
+| `public/images/equipment/{type}s/{id}.png` | 装備画像                 |
 
 > **注意**: `lib/equipment.ts` は変更不要（自動的に集約される）
 
@@ -58,6 +58,7 @@ pnpm exec vitest run
 ```
 
 `tests/unit/lib/equipment-data.test.ts` は以下を自動検証します:
+
 - 全装備のIDが一意である
 - i18n キーがパターンに準拠している（`equipment.{type}.{id}.{name|description}`）
 - imgUrl パスがパターンに準拠している（`/images/equipment/{type}s/{id}.png`）
@@ -126,13 +127,13 @@ pnpm exec vitest run tests/unit/lib/equipment-data.test.ts
 
 ## よくあるミスとその対処
 
-| ミス | 対処 |
-|---|---|
-| 英語名を日本語名から類推した | 必ずゲーム内の英語表記を確認する |
-| i18n キーの `type` 部分を複数形にした（`weapons`） | 単数形: `weapon` / `armor` / `pendant` |
-| imgUrl の `type` 部分を単数形にした（`weapon`） | 複数形: `weapons` / `armors` / `pendants` |
-| 一部の言語ファイルにしか追加しなかった | 必ず `ja` `en` `zh` `ko` の4言語すべて |
-| 神話級を複数追加した | 神話級は各スロット1個のみ（UIが警告を出すが、データ追加自体はできてしまう） |
+| ミス                                               | 対処                                                                        |
+| -------------------------------------------------- | --------------------------------------------------------------------------- |
+| 英語名を日本語名から類推した                       | 必ずゲーム内の英語表記を確認する                                            |
+| i18n キーの `type` 部分を複数形にした（`weapons`） | 単数形: `weapon` / `armor` / `pendant`                                      |
+| imgUrl の `type` 部分を単数形にした（`weapon`）    | 複数形: `weapons` / `armors` / `pendants`                                   |
+| 一部の言語ファイルにしか追加しなかった             | 必ず `ja` `en` `zh` `ko` の4言語すべて                                      |
+| 神話級を複数追加した                               | 神話級は各スロット1個のみ（UIが警告を出すが、データ追加自体はできてしまう） |
 
 ---
 

@@ -9,7 +9,7 @@ import { isSeason4Card } from "@/lib/season4";
 
 const ConversionModal = dynamic(
   () => import("./ConversionModal").then((m) => ({ default: m.ConversionModal })),
-  { ssr: false }
+  { ssr: false },
 );
 
 interface CardActionsMenuProps {
@@ -27,7 +27,7 @@ export function CardActionsMenu({
   onRemoveCard,
   onCopyCard,
   onConvertCard,
-  onUndoCard
+  onUndoCard,
 }: CardActionsMenuProps) {
   const t = useTranslations();
   const {
@@ -40,10 +40,12 @@ export function CardActionsMenu({
     closeMenu,
   } = useCardActionsMenu({ onConvertCard, deckId: card.deckId });
 
-  const variation = card.hiramekiVariations[card.selectedHiramekiLevel] ?? card.hiramekiVariations[0];
+  const variation =
+    card.hiramekiVariations[card.selectedHiramekiLevel] ?? card.hiramekiVariations[0];
   const effectiveStatuses = variation?.statuses ?? card.statuses;
   const isPersonaCard = card.id.startsWith("persona_");
-  const canCopy = !isSeason4Card(card) && !card.isBasicCard && !effectiveStatuses.includes(CardStatus.UNIQUE);
+  const canCopy =
+    !isSeason4Card(card) && !card.isBasicCard && !effectiveStatuses.includes(CardStatus.UNIQUE);
   const canRemove = !isPersonaCard;
   const canConvert = !isPersonaCard;
 
@@ -72,7 +74,10 @@ export function CardActionsMenu({
               variant="destructive"
               size="icon"
               className={actionButtonClass}
-              onClick={() => { onRemoveCard(card.deckId); closeMenu(); }}
+              onClick={() => {
+                onRemoveCard(card.deckId);
+                closeMenu();
+              }}
               aria-label={t("common.delete", { defaultValue: "削除" })}
               title={t("common.delete", { defaultValue: "削除" })}
             >
@@ -85,7 +90,10 @@ export function CardActionsMenu({
               variant="outline"
               size="icon"
               className={actionButtonClass}
-              onClick={() => { onCopyCard(card.deckId); closeMenu(); }}
+              onClick={() => {
+                onCopyCard(card.deckId);
+                closeMenu();
+              }}
               aria-label={t("common.copy", { defaultValue: "コピー" })}
               title={t("common.copy", { defaultValue: "コピー" })}
             >
@@ -111,7 +119,10 @@ export function CardActionsMenu({
               variant="outline"
               size="icon"
               className={actionButtonClass}
-              onClick={() => { onUndoCard(card.deckId); closeMenu(); }}
+              onClick={() => {
+                onUndoCard(card.deckId);
+                closeMenu();
+              }}
               aria-label={t("actions.undo", { defaultValue: "戻す" })}
               title={t("actions.undo", { defaultValue: "戻す" })}
             >

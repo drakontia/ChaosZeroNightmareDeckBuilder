@@ -27,23 +27,51 @@ const formatDeckDate = (createdAt: Date) => {
 
 export function DeckStatsPanel(props: DeckStatsPanelProps) {
   const rows = [
-    { icon: Clock12, label: props.createdDateLabel, value: formatDeckDate(props.createdAt), testId: undefined },
+    {
+      icon: Clock12,
+      label: props.createdDateLabel,
+      value: formatDeckDate(props.createdAt),
+      testId: undefined,
+    },
     { icon: Book, label: props.totalCardsLabel, value: props.totalCards, testId: "total-cards" },
-    { icon: Brain, label: props.faintMemoryLabel, value: `${props.faintMemoryPoints} points`, testId: "faint-memory", valueTestId: "faint-memory-points" },
-    { icon: BookCopy, label: props.copiedCardsLabel, value: props.copiedCards, testId: "copied-cards" },
-    { icon: BookX, label: props.removedCardsLabel, value: props.removedCards, testId: "removed-cards" },
+    {
+      icon: Brain,
+      label: props.faintMemoryLabel,
+      value: `${props.faintMemoryPoints} points`,
+      testId: "faint-memory",
+      valueTestId: "faint-memory-points",
+    },
+    {
+      icon: BookCopy,
+      label: props.copiedCardsLabel,
+      value: props.copiedCards,
+      testId: "copied-cards",
+    },
+    {
+      icon: BookX,
+      label: props.removedCardsLabel,
+      value: props.removedCards,
+      testId: "removed-cards",
+    },
   ];
 
   return (
     <FieldGroup className="gap-2">
       {rows.map(({ icon: Icon, label, value, testId, valueTestId }) => (
-        <Field key={label} orientation="horizontal" className={label === props.removedCardsLabel ? undefined : "border-b"} data-testid={testId}>
+        <Field
+          key={label}
+          orientation="horizontal"
+          className={label === props.removedCardsLabel ? undefined : "border-b"}
+          data-testid={testId}
+        >
           <FieldLabel className={statLabelClass}>
             <Icon className="align-middle" />
             {label}
           </FieldLabel>
           <div className="flex justify-between items-center p-1">
-            <span className={statValueClass} data-testid={valueTestId}>{value}</span>
+            <span className={statValueClass} data-testid={valueTestId}>
+              {value}
+            </span>
           </div>
         </Field>
       ))}

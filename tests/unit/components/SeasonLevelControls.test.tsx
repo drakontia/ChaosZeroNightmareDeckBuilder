@@ -67,7 +67,7 @@ describe("SeasonLevelControls", () => {
     render(
       <NextIntlClientProvider locale="ja" messages={messages}>
         <TestHarness onUpdate={onUpdate} onUpdateStatuses={onUpdateStatuses} />
-      </NextIntlClientProvider>
+      </NextIntlClientProvider>,
     );
 
     expect(screen.getByRole("button", { name: "Lv.1" })).toBeDefined();
@@ -102,7 +102,7 @@ describe("SeasonLevelControls", () => {
     render(
       <NextIntlClientProvider locale="ja" messages={messages}>
         <TestHarness onUpdate={onUpdate} onUpdateStatuses={onUpdateStatuses} />
-      </NextIntlClientProvider>
+      </NextIntlClientProvider>,
     );
 
     fireEvent.click(screen.getByRole("button", { name: "Lv.1" }));

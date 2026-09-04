@@ -1,18 +1,18 @@
 "use client";
 
-import { useTransition } from 'react';
-import { Globe, Check } from 'lucide-react';
+import { useTransition } from "react";
+import { Globe, Check } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
-import { Button } from '@/components/ui/button';
+} from "@/components/ui/dropdown-menu";
+import { Button } from "@/components/ui/button";
 
 const LANGUAGES = [
-  { code: 'ja', name: '日本語', flag: '🇯🇵' },
-  { code: 'en', name: 'English', flag: '🇺🇸' },
+  { code: "ja", name: "日本語", flag: "🇯🇵" },
+  { code: "en", name: "English", flag: "🇺🇸" },
   // { code: 'zh', name: '中文', flag: '🇨🇳' },
   // { code: 'ko', name: '한국어', flag: '🇰🇷' },
 ];
@@ -58,9 +58,7 @@ export function LanguageSwitcher({ currentLocale }: { currentLocale: string }) {
               <span>{lang.flag}</span>
               <span>{lang.name}</span>
             </span>
-            {currentLocale === lang.code && (
-              <Check className="h-4 w-4" />
-            )}
+            {currentLocale === lang.code && <Check className="h-4 w-4" />}
           </DropdownMenuItem>
         ))}
       </DropdownMenuContent>

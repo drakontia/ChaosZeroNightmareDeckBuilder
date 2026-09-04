@@ -7,7 +7,11 @@ interface UseCharacterSelectionProps {
   onEgoLevelChange?: (level: number) => void;
 }
 
-export function useCharacterSelection({ character, onSelect, onEgoLevelChange }: UseCharacterSelectionProps) {
+export function useCharacterSelection({
+  character,
+  onSelect,
+  onEgoLevelChange,
+}: UseCharacterSelectionProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [egoLevels, setEgoLevels] = useState<Record<string, number>>({});
 
@@ -22,23 +26,32 @@ export function useCharacterSelection({ character, onSelect, onEgoLevelChange }:
     }));
   }, [character]);
 
-  const getEgoLevel = useCallback((character: Character) => {
-    return egoLevels[character.id] ?? character.egoLevel ?? 0;
-  }, [egoLevels]);
+  const getEgoLevel = useCallback(
+    (character: Character) => {
+      return egoLevels[character.id] ?? character.egoLevel ?? 0;
+    },
+    [egoLevels],
+  );
 
-  const handleEgoIncrement = useCallback((targetCharacter: Character, syncSelect = false) => {
-    const current = getEgoLevel(targetCharacter);
-    const next = current >= 6 ? 0 : current + 1;
-    setEgoLevels((prev) => ({ ...prev, [targetCharacter.id]: next }));
-    if (syncSelect || character?.id === targetCharacter.id) {
-      onEgoLevelChange?.(next);
-    }
-  }, [character, getEgoLevel, onEgoLevelChange]);
+  const handleEgoIncrement = useCallback(
+    (targetCharacter: Character, syncSelect = false) => {
+      const current = getEgoLevel(targetCharacter);
+      const next = current >= 6 ? 0 : current + 1;
+      setEgoLevels((prev) => ({ ...prev, [targetCharacter.id]: next }));
+      if (syncSelect || character?.id === targetCharacter.id) {
+        onEgoLevelChange?.(next);
+      }
+    },
+    [character, getEgoLevel, onEgoLevelChange],
+  );
 
-  const handleSelect = useCallback((targetCharacter: Character) => {
-    onSelect({ ...targetCharacter, egoLevel: getEgoLevel(targetCharacter) });
-    setIsOpen(false);
-  }, [getEgoLevel, onSelect]);
+  const handleSelect = useCallback(
+    (targetCharacter: Character) => {
+      onSelect({ ...targetCharacter, egoLevel: getEgoLevel(targetCharacter) });
+      setIsOpen(false);
+    },
+    [getEgoLevel, onSelect],
+  );
 
   return {
     isOpen,

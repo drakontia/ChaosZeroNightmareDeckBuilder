@@ -23,7 +23,7 @@ const createEmptyDeck = (): Deck => ({
 export function useDeckBuilderInitialization(
   deck: Deck | null,
   setDeck: (deck: Deck) => void,
-  options?: { skipInitialization?: boolean }
+  options?: { skipInitialization?: boolean },
 ) {
   useEffect(() => {
     if (!deck && !options?.skipInitialization) {

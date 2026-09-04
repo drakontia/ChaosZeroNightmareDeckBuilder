@@ -20,22 +20,24 @@ description: >
 ### 読み取る項目
 
 **キャラクター情報**
-| 項目 | 説明 |
-|------|------|
-| `id` | 英小文字の識別子（例: `adelheid`） |
-| `name (ja)` | 日本語名 |
-| `name (en)` | 英語名 |
-| `rarity` | ★4 または ★5 |
-| `job` | STRIKER / VANGUARD / RANGER / HUNTER / CONTROLLER / PSIONIC |
-| `element` | PASSION / JUSTICE / ORDER / INSTINCT / VOID |
+
+| 項目        | 説明                                                        |
+| ----------- | ----------------------------------------------------------- |
+| `id`        | 英小文字の識別子（例: `adelheid`）                          |
+| `name (ja)` | 日本語名                                                    |
+| `name (en)` | 英語名                                                      |
+| `rarity`    | ★4 または ★5                                                |
+| `job`       | STRIKER / VANGUARD / RANGER / HUNTER / CONTROLLER / PSIONIC |
+| `element`   | PASSION / JUSTICE / ORDER / INSTINCT / VOID                 |
 
 **各カード（starting × 4、hirameki × 4 合計8枚）**
-| 項目 | 説明 |
-|------|------|
-| `name (ja)` | カード名（日本語） |
-| `category` | ATTACK / UPGRADE / SKILL |
-| `statuses` | CardStatus の配列（詳細は references/card-structure.md） |
-| `isBasicCard` | 基本カードか否か（基本カードはヒラメキなし） |
+
+| 項目             | 説明                                                     |
+| ---------------- | -------------------------------------------------------- |
+| `name (ja)`      | カード名（日本語）                                       |
+| `category`       | ATTACK / UPGRADE / SKILL                                 |
+| `statuses`       | CardStatus の配列（詳細は references/card-structure.md） |
+| `isBasicCard`    | 基本カードか否か（基本カードはヒラメキなし）             |
 | ヒラメキ各レベル | level / cost / description / category変化 / statuses変化 |
 
 ### ユーザーへの確認
@@ -78,7 +80,7 @@ description: >
 // types/index.ts の CardStatus enum に追加
 export enum CardStatus {
   // ... 既存の定義 ...
-  NEW_STATUS = "new_status",  // 新しいステータス名（日本語コメント）
+  NEW_STATUS = "new_status", // 新しいステータス名（日本語コメント）
 }
 ```
 
@@ -217,6 +219,7 @@ pnpm vitest run tests/unit/lib/{character_id}.test.ts
 > **警告（PR #28 の教訓）**: 4言語すべてに追加しないとビルドエラーになる。
 
 対象ファイル（4言語すべて）:
+
 - `messages/ja/common.json` — キャラクター名
 - `messages/en/common.json` — キャラクター名
 - `messages/zh/common.json` — キャラクター名

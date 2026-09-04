@@ -57,7 +57,7 @@ export const getSeason4BaseStatus = (card: Pick<CznCard, "statuses">): Season4De
 
 export const normalizeSeason4SelectedStatuses = (
   statuses: readonly CardStatus[] | undefined,
-  fallback: Season4DesireStatus
+  fallback: Season4DesireStatus,
 ): [Season4DesireStatus, Season4DesireStatus, Season4DesireStatus] => {
   const filtered = (statuses ?? []).filter(isSeason4DesireStatus);
   const first = filtered[0] ?? fallback;

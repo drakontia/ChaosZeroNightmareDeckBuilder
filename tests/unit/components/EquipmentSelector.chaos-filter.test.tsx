@@ -6,7 +6,10 @@ import { EquipmentSelector } from "@/components/EquipmentSelector";
 import { Equipment, EquipmentObtainableChaosId, EquipmentType } from "@/types";
 
 vi.mock("next/image", () => ({
-  default: ({ fill: _fill, ...props }: ImgHTMLAttributes<HTMLImageElement> & { fill?: boolean }) => (
+  default: ({
+    fill: _fill,
+    ...props
+  }: ImgHTMLAttributes<HTMLImageElement> & { fill?: boolean }) => (
     <img {...props} alt={props.alt ?? ""} />
   ),
 }));
@@ -75,13 +78,16 @@ describe("EquipmentSelector chaos filter", () => {
         equipment={equipment}
         selectedEquipment={selectedEquipment}
         onSelect={vi.fn()}
-      />
+      />,
     );
 
     fireEvent.click(screen.getByRole("button", { name: /equipment\.weapon\.title/ }));
-    fireEvent.change(screen.getByRole("combobox", { name: "equipment.obtainableChaos.filterLabel" }), {
-      target: { value: EquipmentObtainableChaosId.SWAMP_OF_JUDGMENT },
-    });
+    fireEvent.change(
+      screen.getByRole("combobox", { name: "equipment.obtainableChaos.filterLabel" }),
+      {
+        target: { value: EquipmentObtainableChaosId.SWAMP_OF_JUDGMENT },
+      },
+    );
 
     expect(screen.getByRole("button", { name: /weapon_common_name/ })).toBeTruthy();
     expect(screen.getByRole("button", { name: /weapon_swamp_name/ })).toBeTruthy();
@@ -94,13 +100,16 @@ describe("EquipmentSelector chaos filter", () => {
         equipment={equipment}
         selectedEquipment={selectedEquipment}
         onSelect={vi.fn()}
-      />
+      />,
     );
 
     fireEvent.click(screen.getByRole("button", { name: /equipment\.weapon\.title/ }));
-    fireEvent.change(screen.getByRole("combobox", { name: "equipment.obtainableChaos.filterLabel" }), {
-      target: { value: EquipmentObtainableChaosId.SWAMP_OF_JUDGMENT },
-    });
+    fireEvent.change(
+      screen.getByRole("combobox", { name: "equipment.obtainableChaos.filterLabel" }),
+      {
+        target: { value: EquipmentObtainableChaosId.SWAMP_OF_JUDGMENT },
+      },
+    );
     fireEvent.click(screen.getByRole("button", { name: "common.remove" }));
 
     fireEvent.click(screen.getByRole("button", { name: /equipment\.armor\.title/ }));

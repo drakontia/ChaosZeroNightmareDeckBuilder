@@ -1,39 +1,44 @@
 allowBuilds:
-  '@parcel/watcher': true
-  '@swc/core': true
+  "@parcel/watcher": true
+  "@swc/core": true
   esbuild: true
   lefthook: true
   sharp: true
 minimumReleaseAgeExclude:
-  - '@next/env@16.3.0'
-  - '@next/swc-darwin-arm64@16.3.0'
-  - '@next/swc-darwin-x64@16.3.0'
-  - '@next/swc-linux-arm64-gnu@16.3.0'
-  - '@next/swc-linux-arm64-musl@16.3.0'
-  - '@next/swc-linux-x64-gnu@16.3.0'
-  - '@next/swc-linux-x64-musl@16.3.0'
-  - '@next/swc-win32-arm64-msvc@16.3.0'
-  - '@next/swc-win32-x64-msvc@16.3.0'
+  - "@next/env@16.3.0"
+  - "@next/swc-darwin-arm64@16.3.0"
+  - "@next/swc-darwin-x64@16.3.0"
+  - "@next/swc-linux-arm64-gnu@16.3.0"
+  - "@next/swc-linux-arm64-musl@16.3.0"
+  - "@next/swc-linux-x64-gnu@16.3.0"
+  - "@next/swc-linux-x64-musl@16.3.0"
+  - "@next/swc-win32-arm64-msvc@16.3.0"
+  - "@next/swc-win32-x64-msvc@16.3.0"
   - next@16.3.0
 onlyBuiltDependencies:
-  - '@parcel/watcher'
-  - '@swc/core'
+  - "@parcel/watcher"
+  - "@swc/core"
   - esbuild
   - lefthook
   - sharp
 catalog:
   vite: npm:@voidzero-dev/vite-plus-core@0.3.0
-  vitest: 4.1.11
+  vitest: 5.0.0
   vite-plus: 0.3.0
-  '@vitest/coverage-v8': 4.1.11
-  '@vitest/ui': 4.1.11
+  "@vitest/coverage-v8": 5.0.0
+  "@vitest/ui": 5.0.0
 overrides:
-  vite@*: 'catalog:'
-  vitest@*: 'catalog:'
+  vite@*: "catalog:"
+  vitest@*: "catalog:"
+  "@vitest/ui@*": "catalog:"
+  "@vitest/coverage-v8@*": "catalog:"
 peerDependencyRules:
   allowAny:
     - vite
     - vitest
+    - "@vitest/ui"
+    - "@vitest/coverage-v8"
+    - vitest
   allowedVersions:
-    vite: '*'
-    vitest: '*'
+    vite: "*"
+    vitest: "*"

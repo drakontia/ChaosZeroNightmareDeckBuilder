@@ -15,11 +15,14 @@ export function useCardActionsMenu({ onConvertCard, deckId }: UseCardActionsMenu
     setIsConversionModalOpen(true);
   }, []);
 
-  const handleConversionSelect = useCallback((targetCard: CznCard) => {
-    const asExcl = targetCard.id === "__exclusion__";
-    onConvertCard(deckId, targetCard, { asExclusion: asExcl });
-    setIsConversionModalOpen(false);
-  }, [onConvertCard, deckId]);
+  const handleConversionSelect = useCallback(
+    (targetCard: CznCard) => {
+      const asExcl = targetCard.id === "__exclusion__";
+      onConvertCard(deckId, targetCard, { asExclusion: asExcl });
+      setIsConversionModalOpen(false);
+    },
+    [onConvertCard, deckId],
+  );
 
   const closeMenu = useCallback(() => {
     setIsOpen(false);

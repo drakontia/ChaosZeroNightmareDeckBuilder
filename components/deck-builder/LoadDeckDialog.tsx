@@ -26,18 +26,35 @@ export function LoadDeckDialog(props: LoadDeckDialogProps) {
           <DialogTitle>{props.title}</DialogTitle>
         </DialogHeader>
         <div className="space-y-2 max-h-80 overflow-auto">
-          {props.savedList.length === 0 ? <div className="text-sm text-muted-foreground">{props.emptyLabel}</div> : props.savedList.map(({ name, savedAt }) => (
-            <div key={name} className="flex items-center justify-between rounded border p-2 gap-2">
-              <div className="min-w-0">
-                <div className="font-medium truncate">{name}</div>
-                <div className="text-xs text-muted-foreground">{new Date(savedAt).toLocaleString()}</div>
+          {props.savedList.length === 0 ? (
+            <div className="text-sm text-muted-foreground">{props.emptyLabel}</div>
+          ) : (
+            props.savedList.map(({ name, savedAt }) => (
+              <div
+                key={name}
+                className="flex items-center justify-between rounded border p-2 gap-2"
+              >
+                <div className="min-w-0">
+                  <div className="font-medium truncate">{name}</div>
+                  <div className="text-xs text-muted-foreground">
+                    {new Date(savedAt).toLocaleString()}
+                  </div>
+                </div>
+                <div className="flex gap-2">
+                  <Button variant="secondary" onClick={() => props.onLoad(name)}>
+                    {props.loadLabel}
+                  </Button>
+                  <Button
+                    variant="destructive"
+                    aria-label={`${props.deleteLabel}: ${name}`}
+                    onClick={() => props.onDelete(name)}
+                  >
+                    {props.deleteLabel}
+                  </Button>
+                </div>
               </div>
-              <div className="flex gap-2">
-                <Button variant="secondary" onClick={() => props.onLoad(name)}>{props.loadLabel}</Button>
-                <Button variant="destructive" aria-label={`${props.deleteLabel}: ${name}`} onClick={() => props.onDelete(name)}>{props.deleteLabel}</Button>
-              </div>
-            </div>
-          ))}
+            ))
+          )}
         </div>
       </DialogContent>
     </Dialog>

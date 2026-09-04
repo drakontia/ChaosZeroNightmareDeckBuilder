@@ -10,7 +10,8 @@ export const EQUIPMENT_ENGRAVING_EFFECTS: EquipmentEngravingEffect[] = [
   {
     id: "equipment_engraving_lux_01",
     alignment: "light",
-    description: "味方が能力でカードを5枚以上生成した場合、自分の追加攻撃ダメージ量+30％（各ターン1回）",
+    description:
+      "味方が能力でカードを5枚以上生成した場合、自分の追加攻撃ダメージ量+30％（各ターン1回）",
   },
   {
     id: "equipment_engraving_lux_02",
@@ -25,7 +26,8 @@ export const EQUIPMENT_ENGRAVING_EFFECTS: EquipmentEngravingEffect[] = [
   {
     id: "equipment_engraving_lux_04",
     alignment: "light",
-    description: "今回のターンで行動カウントが３以上減少した場合、行動カウントが最も低い対象に弱体化１",
+    description:
+      "今回のターンで行動カウントが３以上減少した場合、行動カウントが最も低い対象に弱体化１",
   },
   {
     id: "equipment_engraving_lux_05",
@@ -70,7 +72,8 @@ export const EQUIPMENT_ENGRAVING_EFFECTS: EquipmentEngravingEffect[] = [
   {
     id: "equipment_engraving_umbra_08",
     alignment: "dark",
-    description: "自分のカードが破棄された場合、次に使用する攻撃カードのダメージ量+100％（各ターン1回）",
+    description:
+      "自分のカードが破棄された場合、次に使用する攻撃カードのダメージ量+100％（各ターン1回）",
   },
   // 追加：光装備刻印
   {
@@ -126,10 +129,14 @@ export const EQUIPMENT_ENGRAVING_EFFECTS: EquipmentEngravingEffect[] = [
   },
 ];
 
-export function normalizeEquipmentEngravingId(engravingId: string | null | undefined): string | null {
+export function normalizeEquipmentEngravingId(
+  engravingId: string | null | undefined,
+): string | null {
   if (!engravingId) {
     return null;
   }
 
-  return EQUIPMENT_ENGRAVING_EFFECTS.some((effect) => effect.id === engravingId) ? engravingId : null;
+  return EQUIPMENT_ENGRAVING_EFFECTS.some((effect) => effect.id === engravingId)
+    ? engravingId
+    : null;
 }

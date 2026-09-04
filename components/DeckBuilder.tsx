@@ -1,18 +1,23 @@
 "use client";
 
-import { useTranslations, useLocale } from 'next-intl';
-import { useRouter } from 'next/navigation';
-import { useShallow } from 'zustand/react/shallow';
+import { useTranslations, useLocale } from "next-intl";
+import { useRouter } from "next/navigation";
+import { useShallow } from "zustand/react/shallow";
 import { useDeckBuilderStore } from "@/hooks/useDeckBuilderStore";
 import { CHARACTERS, EQUIPMENT } from "@/lib/card";
 import { calculateFaintMemory } from "@/lib/calculateFaintMemory";
-import { useCallback, useMemo, useRef, useState } from 'react';
+import { useCallback, useMemo, useRef, useState } from "react";
 import { CznCard, Deck } from "@/types";
 import { useShareDeck } from "@/hooks/useShareDeck";
 import { useExportDeckImage } from "@/hooks/useExportDeckImage";
 import { useDeckSaveLoad } from "@/hooks/useDeckSaveLoad";
-import { Footer } from './Footer';
-import { CardCatalogSection, DeckBuilderHeader, DeckWorkspace, LoadDeckDialog } from "./deck-builder";
+import { Footer } from "./Footer";
+import {
+  CardCatalogSection,
+  DeckBuilderHeader,
+  DeckWorkspace,
+  LoadDeckDialog,
+} from "./deck-builder";
 import { useDeckBuilderAlerts } from "@/hooks/useDeckBuilderAlerts";
 import { useDeckBuilderInitialization } from "@/hooks/useDeckBuilderInitialization";
 import { useDeckShareLoader } from "@/hooks/useDeckShareLoader";
@@ -24,38 +29,40 @@ export type DeckBuilderProps = {
 };
 
 export function DeckBuilder({ shareId }: DeckBuilderProps) {
-  const store = useDeckBuilderStore(useShallow((state) => ({
-    deck: state.deck,
-    setDeck: state.setDeck,
-    setCharacter: state.setCharacter,
-    setEgoLevel: state.setEgoLevel,
-    setPotential: state.setPotential,
-    addCard: state.addCard,
-    removeCard: state.removeCard,
-    restoreCard: state.restoreCard,
-    selectEquipment: state.selectEquipment,
-    setEquipmentRefinement: state.setEquipmentRefinement,
-    setEquipmentGodHammer: state.setEquipmentGodHammer,
-    setEquipmentEngraving: state.setEquipmentEngraving,
-    updateCardHirameki: state.updateCardHirameki,
-    setCardGodHirameki: state.setCardGodHirameki,
-    setCardGodHiramekiEffect: state.setCardGodHiramekiEffect,
-    setCardHiddenHirameki: state.setCardHiddenHirameki,
-    updateCardSeasonLevel: state.updateCardSeasonLevel,
-    updateCardSeasonStatuses: state.updateCardSeasonStatuses,
-    setCardPersonaEngravings: state.setCardPersonaEngravings,
-    reset: state.reset,
-    undoCard: state.undoCard,
-    copyCard: state.copyCard,
-    convertCard: state.convertCard,
-    removeLimitReached: state.removeLimitReached,
-    copyLimitReached: state.copyLimitReached,
-    conversionLimitReached: state.conversionLimitReached,
-    clearRemoveLimitAlert: state.clearRemoveLimitAlert,
-    clearCopyLimitAlert: state.clearCopyLimitAlert,
-    clearConversionLimitAlert: state.clearConversionLimitAlert,
-    setDeckMutationCore: state.setDeckMutationCore,
-  })));
+  const store = useDeckBuilderStore(
+    useShallow((state) => ({
+      deck: state.deck,
+      setDeck: state.setDeck,
+      setCharacter: state.setCharacter,
+      setEgoLevel: state.setEgoLevel,
+      setPotential: state.setPotential,
+      addCard: state.addCard,
+      removeCard: state.removeCard,
+      restoreCard: state.restoreCard,
+      selectEquipment: state.selectEquipment,
+      setEquipmentRefinement: state.setEquipmentRefinement,
+      setEquipmentGodHammer: state.setEquipmentGodHammer,
+      setEquipmentEngraving: state.setEquipmentEngraving,
+      updateCardHirameki: state.updateCardHirameki,
+      setCardGodHirameki: state.setCardGodHirameki,
+      setCardGodHiramekiEffect: state.setCardGodHiramekiEffect,
+      setCardHiddenHirameki: state.setCardHiddenHirameki,
+      updateCardSeasonLevel: state.updateCardSeasonLevel,
+      updateCardSeasonStatuses: state.updateCardSeasonStatuses,
+      setCardPersonaEngravings: state.setCardPersonaEngravings,
+      reset: state.reset,
+      undoCard: state.undoCard,
+      copyCard: state.copyCard,
+      convertCard: state.convertCard,
+      removeLimitReached: state.removeLimitReached,
+      copyLimitReached: state.copyLimitReached,
+      conversionLimitReached: state.conversionLimitReached,
+      clearRemoveLimitAlert: state.clearRemoveLimitAlert,
+      clearCopyLimitAlert: state.clearCopyLimitAlert,
+      clearConversionLimitAlert: state.clearConversionLimitAlert,
+      setDeckMutationCore: state.setDeckMutationCore,
+    })),
+  );
 
   const t = useTranslations();
   const locale = useLocale();
@@ -80,19 +87,28 @@ export function DeckBuilder({ shareId }: DeckBuilderProps) {
   useDeckShareLoader(shareId, store.setDeck, setShareError, t);
 
   // DeckDisplay用: (deckId: string, targetCard: CznCard) => void にラップ
-  const handleConvertCard = useCallback((deckId: string, targetCard: CznCard, options?: { asExclusion?: boolean }) => {
-    store.convertCard(deckId, targetCard.id, options);
-  }, [store]);
+  const handleConvertCard = useCallback(
+    (deckId: string, targetCard: CznCard, options?: { asExclusion?: boolean }) => {
+      store.convertCard(deckId, targetCard.id, options);
+    },
+    [store],
+  );
 
-  const handleRemoveCard = useCallback((deckId: string) => {
-    if (!store.deck) return;
-    store.removeCard(deckId);
-  }, [store]);
+  const handleRemoveCard = useCallback(
+    (deckId: string) => {
+      if (!store.deck) return;
+      store.removeCard(deckId);
+    },
+    [store],
+  );
 
-  const handleCopyCard = useCallback((deckId: string) => {
-    if (!store.deck) return;
-    store.copyCard(deckId);
-  }, [store]);
+  const handleCopyCard = useCallback(
+    (deckId: string) => {
+      if (!store.deck) return;
+      store.copyCard(deckId);
+    },
+    [store],
+  );
 
   const { isSharing, handleShareDeck: shareHandler } = useShareDeck();
   const { isExporting, handleExportDeckImage: exportHandler } = useExportDeckImage();
@@ -114,7 +130,7 @@ export function DeckBuilder({ shareId }: DeckBuilderProps) {
 
   const handleExportImage = useCallback(() => {
     if (!validateEquipment()) return;
-    exportHandler(deckCaptureRef, store.deck?.name || 'deck');
+    exportHandler(deckCaptureRef, store.deck?.name || "deck");
   }, [validateEquipment, exportHandler, store.deck?.name, deckCaptureRef]);
 
   const handleShareDeck = useCallback(() => {
@@ -124,7 +140,7 @@ export function DeckBuilder({ shareId }: DeckBuilderProps) {
 
   const handleClearDeck = useCallback(() => {
     store.reset();
-    router.push('/');
+    router.push("/");
   }, [store, router]);
 
   const currentDeck = store.deck;
@@ -137,24 +153,29 @@ export function DeckBuilder({ shareId }: DeckBuilderProps) {
   return (
     <div className="min-h-screen p-4 lg:p-8 bg-gray-50 dark:bg-gray-900">
       <div className="max-w-400 mx-auto">
-        <DeckBuilderHeader locale={locale} title={t('app.title')} description={t('app.description')} challengeCheckerLabel={t('app.challengeChecker')} />
+        <DeckBuilderHeader
+          locale={locale}
+          title={t("app.title")}
+          description={t("app.description")}
+          challengeCheckerLabel={t("app.challengeChecker")}
+        />
         {shareError ? <div className="mb-4 text-sm text-destructive">{shareError}</div> : null}
         <main ref={deckCaptureRef}>
           <DeckWorkspace
             deck={currentDeck}
             equipment={EQUIPMENT}
             characters={CHARACTERS}
-            deckNamePlaceholder={t('deck.namePlaceholder')}
-            saveLabel={t('deck.save', { defaultValue: 'デッキを保存' })}
-            loadLabel={t('deck.load', { defaultValue: 'デッキを読み込み' })}
-            shareLabel={t('deck.share')}
-            exportLabel={t('deck.exportImage')}
-            clearLabel={t('deck.clear')}
-            createdDateLabel={t('deck.createdDate')}
-            totalCardsLabel={t('deck.totalCards')}
-            faintMemoryLabel={t('character.faintMemory')}
-            copiedCardsLabel={t('deck.copiedCards')}
-            removedCardsLabel={t('deck.removedCards')}
+            deckNamePlaceholder={t("deck.namePlaceholder")}
+            saveLabel={t("deck.save", { defaultValue: "デッキを保存" })}
+            loadLabel={t("deck.load", { defaultValue: "デッキを読み込み" })}
+            shareLabel={t("deck.share")}
+            exportLabel={t("deck.exportImage")}
+            clearLabel={t("deck.clear")}
+            createdDateLabel={t("deck.createdDate")}
+            totalCardsLabel={t("deck.totalCards")}
+            faintMemoryLabel={t("character.faintMemory")}
+            copiedCardsLabel={t("deck.copiedCards")}
+            removedCardsLabel={t("deck.removedCards")}
             faintMemoryPoints={faintMemoryPoints}
             isSharing={isSharing}
             isExporting={isExporting}
@@ -195,10 +216,10 @@ export function DeckBuilder({ shareId }: DeckBuilderProps) {
           open={loadOpen}
           onOpenChange={setLoadOpen}
           savedList={savedList}
-          title={t('deck.loadTitle', { defaultValue: '保存されたデッキを読み込み' })}
-          emptyLabel={t('deck.noSavedDecks', { defaultValue: '保存されたデッキはありません' })}
-          loadLabel={t('deck.load', { defaultValue: '呼び出し' })}
-          deleteLabel={t('common.delete', { defaultValue: '削除' })}
+          title={t("deck.loadTitle", { defaultValue: "保存されたデッキを読み込み" })}
+          emptyLabel={t("deck.noSavedDecks", { defaultValue: "保存されたデッキはありません" })}
+          loadLabel={t("deck.load", { defaultValue: "呼び出し" })}
+          deleteLabel={t("common.delete", { defaultValue: "削除" })}
           onLoad={handleLoadDeck}
           onDelete={handleDeleteSaved}
         />
@@ -208,8 +229,8 @@ export function DeckBuilder({ shareId }: DeckBuilderProps) {
               deck={currentDeck}
               searchQuery={searchQuery}
               onSearchQueryChange={setSearchQuery}
-              searchLabel={t('card.search')}
-              title={t('card.add')}
+              searchLabel={t("card.search")}
+              title={t("card.add")}
               onAddCard={store.addCard}
               onRestoreCard={store.restoreCard}
             />

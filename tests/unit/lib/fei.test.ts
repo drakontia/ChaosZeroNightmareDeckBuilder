@@ -19,12 +19,7 @@ describe("Fei character", () => {
   });
 
   describe("starting cards", () => {
-    const startingIds = [
-      "fei_starting_1",
-      "fei_starting_2",
-      "fei_starting_3",
-      "fei_starting_4",
-    ];
+    const startingIds = ["fei_starting_1", "fei_starting_2", "fei_starting_3", "fei_starting_4"];
 
     it.each(startingIds)("%s exists in CHARACTER_CARDS", (id) => {
       const card = CHARACTER_CARDS.find((c) => c.id === id);
@@ -64,12 +59,7 @@ describe("Fei character", () => {
   });
 
   describe("hirameki cards", () => {
-    const hiramekiIds = [
-      "fei_hirameki_1",
-      "fei_hirameki_2",
-      "fei_hirameki_3",
-      "fei_hirameki_4",
-    ];
+    const hiramekiIds = ["fei_hirameki_1", "fei_hirameki_2", "fei_hirameki_3", "fei_hirameki_4"];
 
     it.each(hiramekiIds)("%s exists in CHARACTER_CARDS", (id) => {
       const card = CHARACTER_CARDS.find((c) => c.id === id);

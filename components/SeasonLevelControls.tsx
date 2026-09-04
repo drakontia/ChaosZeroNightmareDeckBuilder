@@ -4,7 +4,11 @@ import { useState } from "react";
 import { useTranslations } from "next-intl";
 
 import type { DeckCard, Season4DesireStatus } from "@/types";
-import { SEASON4_DESIRE_STATUS_OPTIONS, getSeason4BaseStatus, normalizeSeason4SelectedStatuses } from "@/lib/season4";
+import {
+  SEASON4_DESIRE_STATUS_OPTIONS,
+  getSeason4BaseStatus,
+  normalizeSeason4SelectedStatuses,
+} from "@/lib/season4";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
@@ -18,11 +22,18 @@ interface SeasonLevelControlsProps {
 
 const dialogContentClass = "w-[90vw] max-w-md";
 
-export function SeasonLevelControls({ card, onUpdateSeasonLevel, onUpdateSeasonStatuses }: SeasonLevelControlsProps) {
+export function SeasonLevelControls({
+  card,
+  onUpdateSeasonLevel,
+  onUpdateSeasonStatuses,
+}: SeasonLevelControlsProps) {
   const t = useTranslations();
   const [open, setOpen] = useState(false);
   const selectedLevel = card.selectedSeasonLevel ?? 1;
-  const selectedStatuses = normalizeSeason4SelectedStatuses(card.selectedSeasonStatuses, getSeason4BaseStatus(card));
+  const selectedStatuses = normalizeSeason4SelectedStatuses(
+    card.selectedSeasonStatuses,
+    getSeason4BaseStatus(card),
+  );
 
   const updateStatusAt = (slotIndex: number, status: Season4DesireStatus) => {
     const next = [...selectedStatuses] as Season4DesireStatus[];
@@ -62,13 +73,20 @@ export function SeasonLevelControls({ card, onUpdateSeasonLevel, onUpdateSeasonS
             ))}
           </div>
           <div className="mt-4 space-y-2">
-            <p className="text-sm font-medium">{t("card.seasonStatus", { defaultValue: "ステータス" })}</p>
+            <p className="text-sm font-medium">
+              {t("card.seasonStatus", { defaultValue: "ステータス" })}
+            </p>
             {Array.from({ length: selectedLevel }, (_, index) => index + 1).map((level) => {
               const slotIndex = level - 1;
               const selectedStatus = selectedStatuses[slotIndex];
               return (
-                <div key={`${card.deckId}-status-slot-${level}`} className="grid grid-cols-[3.5rem_1fr] items-center gap-2">
-                  <span className="text-sm">{t("card.level")}.{level}</span>
+                <div
+                  key={`${card.deckId}-status-slot-${level}`}
+                  className="grid grid-cols-[3.5rem_1fr] items-center gap-2"
+                >
+                  <span className="text-sm">
+                    {t("card.level")}.{level}
+                  </span>
                   <div className="grid grid-cols-2 gap-2">
                     {SEASON4_DESIRE_STATUS_OPTIONS.map((status) => {
                       const label = t(`status.${status}`);

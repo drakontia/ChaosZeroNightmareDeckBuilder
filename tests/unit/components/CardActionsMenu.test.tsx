@@ -62,7 +62,7 @@ function renderMenu(card: DeckCard) {
         onConvertCard={vi.fn()}
         onUndoCard={vi.fn()}
       />
-    </NextIntlClientProvider>
+    </NextIntlClientProvider>,
   );
 
   fireEvent.click(screen.getByRole("button", { name: "メニュー" }));

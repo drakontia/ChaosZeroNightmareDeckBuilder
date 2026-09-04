@@ -65,22 +65,25 @@ export const CardFrame = memo(function CardFrame({
 }: CardFrameProps) {
   const t = useTranslations();
   const [imageError, setImageError] = useState(false);
-  
-  const displayName = nameId ? t(nameId, { defaultValue: nameFallback ?? name ?? "" }) : (name ?? "");
+
+  const displayName = nameId
+    ? t(nameId, { defaultValue: nameFallback ?? name ?? "" })
+    : (name ?? "");
   const displayAlt = displayName || alt || "";
-  
+
   // Determine name color based on grade
-  const nameColorClass = grade === CardGrade.RARE
-    ? "text-cyan-400"
-    : grade === CardGrade.LEGEND
-    ? "text-amber-400"
-    : "text-white";
+  const nameColorClass =
+    grade === CardGrade.RARE
+      ? "text-cyan-400"
+      : grade === CardGrade.LEGEND
+        ? "text-amber-400"
+        : "text-white";
 
   return (
     <div className={cn("relative overflow-hidden aspect-2/3 rounded-md", className)}>
       {imgUrl && (
         <Image
-          src={imageError ? '/images/cards/card_placeholder.png' : imgUrl}
+          src={imageError ? "/images/cards/card_placeholder.png" : imgUrl}
           alt={displayAlt}
           fill
           loading="lazy"
@@ -95,16 +98,29 @@ export const CardFrame = memo(function CardFrame({
       <div className="flex items-start pt-1 lg:pt-3 ml-2 sm:ml-4 lg:ml-6 xl:ml-6 gap-2 z-10 relative">
         <div className="flex flex-col items-start">
           {cost === "unusable" ? (
-            <Ban className="w-5 h-5 sm:w-6 sm:h-6 lg:w-9 lg:h-9 xl:w-12 xl:h-12 text-white text-shadow-2xl" strokeWidth={2.5} />
+            <Ban
+              className="w-5 h-5 sm:w-6 sm:h-6 lg:w-9 lg:h-9 xl:w-12 xl:h-12 text-white text-shadow-2xl"
+              strokeWidth={2.5}
+            />
           ) : (
-            <div className="text-lg sm:text-2xl lg:text-4xl xl:text-5xl font-extrabold text-white underline underline-offset-4 decoration-1 text-shadow-2xl align-middle leading-none">{cost}</div>
+            <div className="text-lg sm:text-2xl lg:text-4xl xl:text-5xl font-extrabold text-white underline underline-offset-4 decoration-1 text-shadow-2xl align-middle leading-none">
+              {cost}
+            </div>
           )}
           {levelLabel ? (
             <div className="text-xs lg:text-sm text-white text-shadow-2xl mt-1">{levelLabel}</div>
           ) : null}
         </div>
         <div className="min-w-0 flex-1 text-left">
-          <div className={cn("text-xs sm:text-base lg:text-lg text-shadow-2xl truncate", nameColorClass)} title={displayName}>{displayName}</div>
+          <div
+            className={cn(
+              "text-xs sm:text-base lg:text-lg text-shadow-2xl truncate",
+              nameColorClass,
+            )}
+            title={displayName}
+          >
+            {displayName}
+          </div>
           <div className="text-xs lg:text-base text-white/90 text-shadow-4xl flex items-center gap-1 h-6 lg:h-8 ">
             {categoryId && CATEGORY_ICONS[categoryId.toLowerCase()] && (
               <Image
@@ -123,24 +139,16 @@ export const CardFrame = memo(function CardFrame({
       {/* Controls row: left and right */}
       {(leftControls || rightControls) && (
         <div className="flex items-start pt-1 ml-4 gap-2 z-10 relative">
-          {leftControls && (
-            <div className="flex flex-col gap-2">
-              {leftControls}
-            </div>
-          )}
-          <div className="relative ml-auto mr-2">
-            {rightControls}
-          </div>
+          {leftControls && <div className="flex flex-col gap-2">{leftControls}</div>}
+          <div className="relative ml-auto mr-2">{rightControls}</div>
         </div>
       )}
 
       {/* Bottom overlay: statuses + description */}
-      {((descriptionId || description) || (statuses && statuses.length > 0)) && (
+      {(descriptionId || description || (statuses && statuses.length > 0)) && (
         <div className="absolute left-4 right-2 bottom-2 lg:bottom-6 text-center text-white text-xs lg:text-base text-shadow-4xl whitespace-pre-wrap">
           {statuses && statuses.length > 0 && (
-            <div className="mb-1 text-yellow-300">
-              [{statuses.join(" / ")}]
-            </div>
+            <div className="mb-1 text-yellow-300">[{statuses.join(" / ")}]</div>
           )}
           {descriptionId
             ? t(descriptionId, { defaultValue: descriptionFallback ?? "" })
@@ -153,7 +161,9 @@ export const CardFrame = memo(function CardFrame({
           {godEffectId && (
             <div className="mt-2 flex items-center justify-center gap-1">
               <Zap className="h-5 w-5" />
-              <span className="text-blue-300">{t(`godEffects.${godEffectId}`, { defaultValue: godEffectFallback ?? "" })}</span>
+              <span className="text-blue-300">
+                {t(`godEffects.${godEffectId}`, { defaultValue: godEffectFallback ?? "" })}
+              </span>
             </div>
           )}
         </div>

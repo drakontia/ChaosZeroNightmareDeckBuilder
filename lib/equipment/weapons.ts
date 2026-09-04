@@ -8,7 +8,7 @@ export const WEAPONS: Equipment[] = [
     rarity: "equipment.rarity.rare",
     obtainableChaosIds: [EquipmentObtainableChaosId.ALL],
     description: "equipment.weapon.obsidian_sword.description",
-    imgUrl: "/images/equipment/weapons/obsidian_sword.png"
+    imgUrl: "/images/equipment/weapons/obsidian_sword.png",
   },
   {
     id: "gastronomicon",
@@ -17,7 +17,7 @@ export const WEAPONS: Equipment[] = [
     rarity: "equipment.rarity.rare",
     obtainableChaosIds: [EquipmentObtainableChaosId.ALL],
     description: "equipment.weapon.gastronomicon.description",
-    imgUrl: "/images/equipment/weapons/gastronomicon.png"
+    imgUrl: "/images/equipment/weapons/gastronomicon.png",
   },
   {
     id: "m85_military_grenade",
@@ -26,7 +26,7 @@ export const WEAPONS: Equipment[] = [
     rarity: "equipment.rarity.rare",
     obtainableChaosIds: [EquipmentObtainableChaosId.ALL],
     description: "equipment.weapon.m85_military_grenade.description",
-    imgUrl: "/images/equipment/weapons/m85_military_grenade.png"
+    imgUrl: "/images/equipment/weapons/m85_military_grenade.png",
   },
   {
     id: "big_game_hunter",
@@ -35,7 +35,7 @@ export const WEAPONS: Equipment[] = [
     rarity: "equipment.rarity.rare",
     obtainableChaosIds: [EquipmentObtainableChaosId.ALL],
     description: "equipment.weapon.big_game_hunter.description",
-    imgUrl: "/images/equipment/weapons/big_game_hunter.png"
+    imgUrl: "/images/equipment/weapons/big_game_hunter.png",
   },
   {
     id: "torch_of_wrath",
@@ -44,7 +44,7 @@ export const WEAPONS: Equipment[] = [
     rarity: "equipment.rarity.rare",
     obtainableChaosIds: [EquipmentObtainableChaosId.ALL],
     description: "equipment.weapon.torch_of_wrath.description",
-    imgUrl: "/images/equipment/weapons/torch_of_wrath.png"
+    imgUrl: "/images/equipment/weapons/torch_of_wrath.png",
   },
   {
     id: "bone_cutter",
@@ -53,7 +53,7 @@ export const WEAPONS: Equipment[] = [
     rarity: "equipment.rarity.rare",
     obtainableChaosIds: [EquipmentObtainableChaosId.ALL],
     description: "equipment.weapon.bone_cutter.description",
-    imgUrl: "/images/equipment/weapons/bone_cutter.png"
+    imgUrl: "/images/equipment/weapons/bone_cutter.png",
   },
   {
     id: "flashbang",
@@ -62,7 +62,7 @@ export const WEAPONS: Equipment[] = [
     rarity: "equipment.rarity.rare",
     obtainableChaosIds: [EquipmentObtainableChaosId.ALL],
     description: "equipment.weapon.flashbang.description",
-    imgUrl: "/images/equipment/weapons/flashbang.png"
+    imgUrl: "/images/equipment/weapons/flashbang.png",
   },
   {
     id: "command_108",
@@ -71,7 +71,7 @@ export const WEAPONS: Equipment[] = [
     rarity: "equipment.rarity.rare",
     obtainableChaosIds: [EquipmentObtainableChaosId.ALL],
     description: "equipment.weapon.command_108.description",
-    imgUrl: "/images/equipment/weapons/command_108.png"
+    imgUrl: "/images/equipment/weapons/command_108.png",
   },
   {
     id: "crimson_sword",
@@ -80,7 +80,7 @@ export const WEAPONS: Equipment[] = [
     rarity: "equipment.rarity.legendary",
     obtainableChaosIds: [EquipmentObtainableChaosId.ALL],
     description: "equipment.weapon.crimson_sword.description",
-    imgUrl: "/images/equipment/weapons/crimson_sword.png"
+    imgUrl: "/images/equipment/weapons/crimson_sword.png",
   },
   {
     id: "second_method",
@@ -89,7 +89,7 @@ export const WEAPONS: Equipment[] = [
     rarity: "equipment.rarity.legendary",
     obtainableChaosIds: [EquipmentObtainableChaosId.ALL],
     description: "equipment.weapon.second_method.description",
-    imgUrl: "/images/equipment/weapons/second_method.png"
+    imgUrl: "/images/equipment/weapons/second_method.png",
   },
   {
     id: "sneering_dagger",
@@ -98,7 +98,7 @@ export const WEAPONS: Equipment[] = [
     rarity: "equipment.rarity.legendary",
     obtainableChaosIds: [EquipmentObtainableChaosId.ALL],
     description: "equipment.weapon.sneering_dagger.description",
-    imgUrl: "/images/equipment/weapons/sneering_dagger.png"
+    imgUrl: "/images/equipment/weapons/sneering_dagger.png",
   },
   {
     id: "rfs_17",
@@ -107,7 +107,7 @@ export const WEAPONS: Equipment[] = [
     rarity: "equipment.rarity.legendary",
     obtainableChaosIds: [EquipmentObtainableChaosId.ALL],
     description: "equipment.weapon.rfs_17.description",
-    imgUrl: "/images/equipment/weapons/rfs_17.png"
+    imgUrl: "/images/equipment/weapons/rfs_17.png",
   },
   {
     id: "mountain_of_corpses",
@@ -116,7 +116,7 @@ export const WEAPONS: Equipment[] = [
     rarity: "equipment.rarity.legendary",
     obtainableChaosIds: [EquipmentObtainableChaosId.ALL],
     description: "equipment.weapon.mountain_of_corpses.description",
-    imgUrl: "/images/equipment/weapons/mountain_of_corpses.png"
+    imgUrl: "/images/equipment/weapons/mountain_of_corpses.png",
   },
   {
     id: "intellect_of_discord",
@@ -125,7 +125,7 @@ export const WEAPONS: Equipment[] = [
     rarity: "equipment.rarity.mythical",
     obtainableChaosIds: [EquipmentObtainableChaosId.ALL],
     description: "equipment.weapon.intellect_of_discord.description",
-    imgUrl: "/images/equipment/weapons/intellect_of_discord.png"
+    imgUrl: "/images/equipment/weapons/intellect_of_discord.png",
   },
   {
     id: "tentacles_of_chaos",
@@ -134,7 +134,7 @@ export const WEAPONS: Equipment[] = [
     rarity: "equipment.rarity.mythical",
     obtainableChaosIds: [EquipmentObtainableChaosId.ALL],
     description: "equipment.weapon.tentacles_of_chaos.description",
-    imgUrl: "/images/equipment/weapons/tentacles_of_chaos.png"
+    imgUrl: "/images/equipment/weapons/tentacles_of_chaos.png",
   },
   {
     id: "steelers_dagger",
@@ -143,7 +143,7 @@ export const WEAPONS: Equipment[] = [
     rarity: "equipment.rarity.rare",
     obtainableChaosIds: [EquipmentObtainableChaosId.THE_BLUE_POT],
     description: "equipment.weapon.steelers_dagger.description",
-    imgUrl: "/images/equipment/weapons/steelers_dagger.png"
+    imgUrl: "/images/equipment/weapons/steelers_dagger.png",
   },
   {
     id: "dull_bone_blade",
@@ -152,25 +152,35 @@ export const WEAPONS: Equipment[] = [
     rarity: "equipment.rarity.rare",
     obtainableChaosIds: [EquipmentObtainableChaosId.THE_BLUE_POT],
     description: "equipment.weapon.dull_bone_blade.description",
-    imgUrl: "/images/equipment/weapons/dull_bone_blade.png"
+    imgUrl: "/images/equipment/weapons/dull_bone_blade.png",
   },
   {
     id: "natures_hostility",
     name: "equipment.weapon.natures_hostility.name",
     type: EquipmentType.WEAPON,
     rarity: "equipment.rarity.legendary",
-    obtainableChaosIds: [EquipmentObtainableChaosId.THE_BLUE_POT, EquipmentObtainableChaosId.CITY_OF_MIST, EquipmentObtainableChaosId.LABORATORY_0, EquipmentObtainableChaosId.BURNING_LIFE],
+    obtainableChaosIds: [
+      EquipmentObtainableChaosId.THE_BLUE_POT,
+      EquipmentObtainableChaosId.CITY_OF_MIST,
+      EquipmentObtainableChaosId.LABORATORY_0,
+      EquipmentObtainableChaosId.BURNING_LIFE,
+    ],
     description: "equipment.weapon.natures_hostility.description",
-    imgUrl: "/images/equipment/weapons/natures_hostility.png"
+    imgUrl: "/images/equipment/weapons/natures_hostility.png",
   },
   {
     id: "mutated_claws",
     name: "equipment.weapon.mutated_claws.name",
     type: EquipmentType.WEAPON,
     rarity: "equipment.rarity.legendary",
-    obtainableChaosIds: [EquipmentObtainableChaosId.THE_BLUE_POT, EquipmentObtainableChaosId.CITY_OF_MIST, EquipmentObtainableChaosId.LABORATORY_0, EquipmentObtainableChaosId.BURNING_LIFE],
+    obtainableChaosIds: [
+      EquipmentObtainableChaosId.THE_BLUE_POT,
+      EquipmentObtainableChaosId.CITY_OF_MIST,
+      EquipmentObtainableChaosId.LABORATORY_0,
+      EquipmentObtainableChaosId.BURNING_LIFE,
+    ],
     description: "equipment.weapon.mutated_claws.description",
-    imgUrl: "/images/equipment/weapons/mutated_claws.png"
+    imgUrl: "/images/equipment/weapons/mutated_claws.png",
   },
   {
     id: "executioners_edge",
@@ -179,7 +189,7 @@ export const WEAPONS: Equipment[] = [
     rarity: "equipment.rarity.legendary",
     obtainableChaosIds: [EquipmentObtainableChaosId.THE_BLUE_POT],
     description: "equipment.weapon.executioners_edge.description",
-    imgUrl: "/images/equipment/weapons/executioners_edge.png"
+    imgUrl: "/images/equipment/weapons/executioners_edge.png",
   },
   {
     id: "ritual_dagger",
@@ -188,16 +198,21 @@ export const WEAPONS: Equipment[] = [
     rarity: "equipment.rarity.legendary",
     obtainableChaosIds: [EquipmentObtainableChaosId.THE_BLUE_POT],
     description: "equipment.weapon.ritual_dagger.description",
-    imgUrl: "/images/equipment/weapons/ritual_dagger.png"
+    imgUrl: "/images/equipment/weapons/ritual_dagger.png",
   },
   {
     id: "esophagus_of_madness",
     name: "equipment.weapon.esophagus_of_madness.name",
     type: EquipmentType.WEAPON,
     rarity: "equipment.rarity.legendary",
-    obtainableChaosIds: [EquipmentObtainableChaosId.THE_BLUE_POT, EquipmentObtainableChaosId.TWIN_STARS_SHADOW, EquipmentObtainableChaosId.THE_FORETOLD_RUIN, EquipmentObtainableChaosId.THEATER_OF_ILLUSIONS],
+    obtainableChaosIds: [
+      EquipmentObtainableChaosId.THE_BLUE_POT,
+      EquipmentObtainableChaosId.TWIN_STARS_SHADOW,
+      EquipmentObtainableChaosId.THE_FORETOLD_RUIN,
+      EquipmentObtainableChaosId.THEATER_OF_ILLUSIONS,
+    ],
     description: "equipment.weapon.esophagus_of_madness.description",
-    imgUrl: "/images/equipment/weapons/esophagus_of_madness.png"
+    imgUrl: "/images/equipment/weapons/esophagus_of_madness.png",
   },
   {
     id: "dark_grips_claws",
@@ -206,7 +221,7 @@ export const WEAPONS: Equipment[] = [
     rarity: "equipment.rarity.mythical",
     obtainableChaosIds: [EquipmentObtainableChaosId.THE_BLUE_POT],
     description: "equipment.weapon.dark_grips_claws.description",
-    imgUrl: "/images/equipment/weapons/dark_grips_claws.png"
+    imgUrl: "/images/equipment/weapons/dark_grips_claws.png",
   },
   {
     id: "mutated_order",
@@ -215,7 +230,7 @@ export const WEAPONS: Equipment[] = [
     rarity: "equipment.rarity.mythical",
     obtainableChaosIds: [EquipmentObtainableChaosId.THE_BLUE_POT],
     description: "equipment.weapon.mutated_order.description",
-    imgUrl: "/images/equipment/weapons/mutated_order.png"
+    imgUrl: "/images/equipment/weapons/mutated_order.png",
   },
   {
     id: "bug_killer",
@@ -224,7 +239,7 @@ export const WEAPONS: Equipment[] = [
     rarity: "equipment.rarity.rare",
     obtainableChaosIds: [EquipmentObtainableChaosId.TWIN_STARS_SHADOW],
     description: "equipment.weapon.bug_killer.description",
-    imgUrl: "/images/equipment/weapons/bug_killer.png"
+    imgUrl: "/images/equipment/weapons/bug_killer.png",
   },
   {
     id: "violet_butterflys_whip",
@@ -233,7 +248,7 @@ export const WEAPONS: Equipment[] = [
     rarity: "equipment.rarity.legendary",
     obtainableChaosIds: [EquipmentObtainableChaosId.TWIN_STARS_SHADOW],
     description: "equipment.weapon.violet_butterflys_whip.description",
-    imgUrl: "/images/equipment/weapons/violet_butterflys_whip.png"
+    imgUrl: "/images/equipment/weapons/violet_butterflys_whip.png",
   },
   {
     id: "formicas_broken_spear",
@@ -242,25 +257,31 @@ export const WEAPONS: Equipment[] = [
     rarity: "equipment.rarity.legendary",
     obtainableChaosIds: [EquipmentObtainableChaosId.TWIN_STARS_SHADOW],
     description: "equipment.weapon.formicas_broken_spear.description",
-    imgUrl: "/images/equipment/weapons/formicas_broken_spear.png"
+    imgUrl: "/images/equipment/weapons/formicas_broken_spear.png",
   },
   {
     id: "abyssal_bug_tooth",
     name: "equipment.weapon.abyssal_bug_tooth.name",
     type: EquipmentType.WEAPON,
     rarity: "equipment.rarity.legendary",
-    obtainableChaosIds: [EquipmentObtainableChaosId.TWIN_STARS_SHADOW, EquipmentObtainableChaosId.THE_KALEIDOSCOPE_HATCHERY],
+    obtainableChaosIds: [
+      EquipmentObtainableChaosId.TWIN_STARS_SHADOW,
+      EquipmentObtainableChaosId.THE_KALEIDOSCOPE_HATCHERY,
+    ],
     description: "equipment.weapon.abyssal_bug_tooth.description",
-    imgUrl: "/images/equipment/weapons/abyssal_bug_tooth.png"
+    imgUrl: "/images/equipment/weapons/abyssal_bug_tooth.png",
   },
   {
     id: "the_destruction_of_erysichthon",
     name: "equipment.weapon.the_destruction_of_erysichthon.name",
     type: EquipmentType.WEAPON,
     rarity: "equipment.rarity.legendary",
-    obtainableChaosIds: [EquipmentObtainableChaosId.TWIN_STARS_SHADOW, EquipmentObtainableChaosId.THE_KALEIDOSCOPE_HATCHERY],
+    obtainableChaosIds: [
+      EquipmentObtainableChaosId.TWIN_STARS_SHADOW,
+      EquipmentObtainableChaosId.THE_KALEIDOSCOPE_HATCHERY,
+    ],
     description: "equipment.weapon.the_destruction_of_erysichthon.description",
-    imgUrl: "/images/equipment/weapons/the_destruction_of_erysichthon.png"
+    imgUrl: "/images/equipment/weapons/the_destruction_of_erysichthon.png",
   },
   {
     id: "formicas_perfect_spear",
@@ -269,7 +290,7 @@ export const WEAPONS: Equipment[] = [
     rarity: "equipment.rarity.mythical",
     obtainableChaosIds: [EquipmentObtainableChaosId.TWIN_STARS_SHADOW],
     description: "equipment.weapon.formicas_perfect_spear.description",
-    imgUrl: "/images/equipment/weapons/formicas_perfect_spear.png"
+    imgUrl: "/images/equipment/weapons/formicas_perfect_spear.png",
   },
   {
     id: "lepidolas_whip",
@@ -278,7 +299,7 @@ export const WEAPONS: Equipment[] = [
     rarity: "equipment.rarity.mythical",
     obtainableChaosIds: [EquipmentObtainableChaosId.TWIN_STARS_SHADOW],
     description: "equipment.weapon.lepidolas_whip.description",
-    imgUrl: "/images/equipment/weapons/lepidolas_whip.png"
+    imgUrl: "/images/equipment/weapons/lepidolas_whip.png",
   },
   {
     id: "twin_swords_of_greater_and_lesser_evil",
@@ -287,16 +308,19 @@ export const WEAPONS: Equipment[] = [
     rarity: "equipment.rarity.mythical",
     obtainableChaosIds: [EquipmentObtainableChaosId.TWIN_STARS_SHADOW],
     description: "equipment.weapon.twin_swords_of_greater_and_lesser_evil.description",
-    imgUrl: "/images/equipment/weapons/twin_swords_of_greater_and_lesser_evil.png"
+    imgUrl: "/images/equipment/weapons/twin_swords_of_greater_and_lesser_evil.png",
   },
   {
     id: "shell_bug_horn",
     name: "equipment.weapon.shell_bug_horn.name",
     type: EquipmentType.WEAPON,
     rarity: "equipment.rarity.mythical",
-    obtainableChaosIds: [EquipmentObtainableChaosId.TWIN_STARS_SHADOW, EquipmentObtainableChaosId.THE_KALEIDOSCOPE_HATCHERY],
+    obtainableChaosIds: [
+      EquipmentObtainableChaosId.TWIN_STARS_SHADOW,
+      EquipmentObtainableChaosId.THE_KALEIDOSCOPE_HATCHERY,
+    ],
     description: "equipment.weapon.shell_bug_horn.description",
-    imgUrl: "/images/equipment/weapons/shell_bug_horn.png"
+    imgUrl: "/images/equipment/weapons/shell_bug_horn.png",
   },
   {
     id: "dream_of_the_devoured",
@@ -305,25 +329,31 @@ export const WEAPONS: Equipment[] = [
     rarity: "equipment.rarity.legendary",
     obtainableChaosIds: [EquipmentObtainableChaosId.CITY_OF_MIST],
     description: "equipment.weapon.dream_of_the_devoured.description",
-    imgUrl: "/images/equipment/weapons/dream_of_the_devoured.png"
+    imgUrl: "/images/equipment/weapons/dream_of_the_devoured.png",
   },
   {
     id: "unexploded_plasma_bomb",
     name: "equipment.weapon.unexploded_plasma_bomb.name",
     type: EquipmentType.WEAPON,
     rarity: "equipment.rarity.legendary",
-    obtainableChaosIds: [EquipmentObtainableChaosId.CITY_OF_MIST, EquipmentObtainableChaosId.LABORATORY_0],
+    obtainableChaosIds: [
+      EquipmentObtainableChaosId.CITY_OF_MIST,
+      EquipmentObtainableChaosId.LABORATORY_0,
+    ],
     description: "equipment.weapon.unexploded_plasma_bomb.description",
-    imgUrl: "/images/equipment/weapons/unexploded_plasma_bomb.png"
+    imgUrl: "/images/equipment/weapons/unexploded_plasma_bomb.png",
   },
   {
     id: "blood_giant_claw",
     name: "equipment.weapon.blood_giant_claw.name",
     type: EquipmentType.WEAPON,
     rarity: "equipment.rarity.legendary",
-    obtainableChaosIds: [EquipmentObtainableChaosId.CITY_OF_MIST, EquipmentObtainableChaosId.LABORATORY_0],
+    obtainableChaosIds: [
+      EquipmentObtainableChaosId.CITY_OF_MIST,
+      EquipmentObtainableChaosId.LABORATORY_0,
+    ],
     description: "equipment.weapon.blood_giant_claw.description",
-    imgUrl: "/images/equipment/weapons/blood_giant_claw.png"
+    imgUrl: "/images/equipment/weapons/blood_giant_claw.png",
   },
   {
     id: "void_of_the_devourer",
@@ -332,16 +362,19 @@ export const WEAPONS: Equipment[] = [
     rarity: "equipment.rarity.mythical",
     obtainableChaosIds: [EquipmentObtainableChaosId.CITY_OF_MIST],
     description: "equipment.weapon.void_of_the_devourer.description",
-    imgUrl: "/images/equipment/weapons/void_of_the_devourer.png"
+    imgUrl: "/images/equipment/weapons/void_of_the_devourer.png",
   },
   {
     id: "foggy_crystal_ball",
     name: "equipment.weapon.foggy_crystal_ball.name",
     type: EquipmentType.WEAPON,
     rarity: "equipment.rarity.mythical",
-    obtainableChaosIds: [EquipmentObtainableChaosId.CITY_OF_MIST, EquipmentObtainableChaosId.LABORATORY_0],
+    obtainableChaosIds: [
+      EquipmentObtainableChaosId.CITY_OF_MIST,
+      EquipmentObtainableChaosId.LABORATORY_0,
+    ],
     description: "equipment.weapon.foggy_crystal_ball.description",
-    imgUrl: "/images/equipment/weapons/foggy_crystal_ball.png"
+    imgUrl: "/images/equipment/weapons/foggy_crystal_ball.png",
   },
   {
     id: "the_fading_flower_of_life",
@@ -350,34 +383,43 @@ export const WEAPONS: Equipment[] = [
     rarity: "equipment.rarity.rare",
     obtainableChaosIds: [EquipmentObtainableChaosId.SWAMP_OF_JUDGMENT],
     description: "equipment.weapon.the_fading_flower_of_life.description",
-    imgUrl: "/images/equipment/weapons/the_fading_flower_of_life.png"
+    imgUrl: "/images/equipment/weapons/the_fading_flower_of_life.png",
   },
   {
     id: "dagger_that_tricked_the_shadow",
     name: "equipment.weapon.dagger_that_tricked_the_shadow.name",
     type: EquipmentType.WEAPON,
     rarity: "equipment.rarity.legendary",
-    obtainableChaosIds: [EquipmentObtainableChaosId.SWAMP_OF_JUDGMENT, EquipmentObtainableChaosId.BURNING_LIFE],
+    obtainableChaosIds: [
+      EquipmentObtainableChaosId.SWAMP_OF_JUDGMENT,
+      EquipmentObtainableChaosId.BURNING_LIFE,
+    ],
     description: "equipment.weapon.dagger_that_tricked_the_shadow.description",
-    imgUrl: "/images/equipment/weapons/dagger_that_tricked_the_shadow.png"
+    imgUrl: "/images/equipment/weapons/dagger_that_tricked_the_shadow.png",
   },
   {
     id: "sword_reflected_in_the_lake",
     name: "equipment.weapon.sword_reflected_in_the_lake.name",
     type: EquipmentType.WEAPON,
     rarity: "equipment.rarity.legendary",
-    obtainableChaosIds: [EquipmentObtainableChaosId.SWAMP_OF_JUDGMENT, EquipmentObtainableChaosId.BURNING_LIFE],
+    obtainableChaosIds: [
+      EquipmentObtainableChaosId.SWAMP_OF_JUDGMENT,
+      EquipmentObtainableChaosId.BURNING_LIFE,
+    ],
     description: "equipment.weapon.sword_reflected_in_the_lake.description",
-    imgUrl: "/images/equipment/weapons/sword_reflected_in_the_lake.png"
+    imgUrl: "/images/equipment/weapons/sword_reflected_in_the_lake.png",
   },
   {
     id: "sun_setting_bow",
     name: "equipment.weapon.sun_setting_bow.name",
     type: EquipmentType.WEAPON,
     rarity: "equipment.rarity.legendary",
-    obtainableChaosIds: [EquipmentObtainableChaosId.SWAMP_OF_JUDGMENT, EquipmentObtainableChaosId.BURNING_LIFE],
+    obtainableChaosIds: [
+      EquipmentObtainableChaosId.SWAMP_OF_JUDGMENT,
+      EquipmentObtainableChaosId.BURNING_LIFE,
+    ],
     description: "equipment.weapon.sun_setting_bow.description",
-    imgUrl: "/images/equipment/weapons/sun_setting_bow.png"
+    imgUrl: "/images/equipment/weapons/sun_setting_bow.png",
   },
   {
     id: "branch_of_the_sacred_tree",
@@ -386,7 +428,7 @@ export const WEAPONS: Equipment[] = [
     rarity: "equipment.rarity.legendary",
     obtainableChaosIds: [EquipmentObtainableChaosId.SWAMP_OF_JUDGMENT],
     description: "equipment.weapon.branch_of_the_sacred_tree.description",
-    imgUrl: "/images/equipment/weapons/branch_of_the_sacred_tree.png"
+    imgUrl: "/images/equipment/weapons/branch_of_the_sacred_tree.png",
   },
   {
     id: "the_flower_of_life",
@@ -395,7 +437,7 @@ export const WEAPONS: Equipment[] = [
     rarity: "equipment.rarity.legendary",
     obtainableChaosIds: [EquipmentObtainableChaosId.SWAMP_OF_JUDGMENT],
     description: "equipment.weapon.the_flower_of_life.description",
-    imgUrl: "/images/equipment/weapons/the_flower_of_life.png"
+    imgUrl: "/images/equipment/weapons/the_flower_of_life.png",
   },
   {
     id: "branch_of_the_evil_tree",
@@ -404,16 +446,20 @@ export const WEAPONS: Equipment[] = [
     rarity: "equipment.rarity.legendary",
     obtainableChaosIds: [EquipmentObtainableChaosId.SWAMP_OF_JUDGMENT],
     description: "equipment.weapon.branch_of_the_evil_tree.description",
-    imgUrl: "/images/equipment/weapons/branch_of_the_evil_tree.png"
+    imgUrl: "/images/equipment/weapons/branch_of_the_evil_tree.png",
   },
   {
     id: "cavalry_of_lightning",
     name: "equipment.weapon.cavalry_of_lightning.name",
     type: EquipmentType.WEAPON,
     rarity: "equipment.rarity.legendary",
-    obtainableChaosIds: [EquipmentObtainableChaosId.SWAMP_OF_JUDGMENT, EquipmentObtainableChaosId.THE_FORETOLD_RUIN, EquipmentObtainableChaosId.THEATER_OF_ILLUSIONS],
+    obtainableChaosIds: [
+      EquipmentObtainableChaosId.SWAMP_OF_JUDGMENT,
+      EquipmentObtainableChaosId.THE_FORETOLD_RUIN,
+      EquipmentObtainableChaosId.THEATER_OF_ILLUSIONS,
+    ],
     description: "equipment.weapon.cavalry_of_lightning.description",
-    imgUrl: "/images/equipment/weapons/cavalry_of_lightning.png"
+    imgUrl: "/images/equipment/weapons/cavalry_of_lightning.png",
   },
   {
     id: "branch_of_eternity",
@@ -422,7 +468,7 @@ export const WEAPONS: Equipment[] = [
     rarity: "equipment.rarity.mythical",
     obtainableChaosIds: [EquipmentObtainableChaosId.SWAMP_OF_JUDGMENT],
     description: "equipment.weapon.branch_of_eternity.description",
-    imgUrl: "/images/equipment/weapons/branch_of_eternity.png"
+    imgUrl: "/images/equipment/weapons/branch_of_eternity.png",
   },
   {
     id: "rune_lance",
@@ -431,7 +477,7 @@ export const WEAPONS: Equipment[] = [
     rarity: "equipment.rarity.legendary",
     obtainableChaosIds: [EquipmentObtainableChaosId.THE_FORETOLD_RUIN],
     description: "equipment.weapon.rune_lance.description",
-    imgUrl: "/images/equipment/weapons/rune_lance.png"
+    imgUrl: "/images/equipment/weapons/rune_lance.png",
   },
   {
     id: "flame_of_purification",
@@ -440,7 +486,7 @@ export const WEAPONS: Equipment[] = [
     rarity: "equipment.rarity.legendary",
     obtainableChaosIds: [EquipmentObtainableChaosId.THE_FORETOLD_RUIN],
     description: "equipment.weapon.flame_of_purification.description",
-    imgUrl: "/images/equipment/weapons/flame_of_purification.png"
+    imgUrl: "/images/equipment/weapons/flame_of_purification.png",
   },
   {
     id: "trumpet_of_revelation",
@@ -449,7 +495,7 @@ export const WEAPONS: Equipment[] = [
     rarity: "equipment.rarity.legendary",
     obtainableChaosIds: [EquipmentObtainableChaosId.THE_FORETOLD_RUIN],
     description: "equipment.weapon.trumpet_of_revelation.description",
-    imgUrl: "/images/equipment/weapons/trumpet_of_revelation.png"
+    imgUrl: "/images/equipment/weapons/trumpet_of_revelation.png",
   },
   {
     id: "singing_sword",
@@ -458,7 +504,7 @@ export const WEAPONS: Equipment[] = [
     rarity: "equipment.rarity.legendary",
     obtainableChaosIds: [EquipmentObtainableChaosId.THE_FORETOLD_RUIN],
     description: "equipment.weapon.singing_sword.description",
-    imgUrl: "/images/equipment/weapons/singing_sword.png"
+    imgUrl: "/images/equipment/weapons/singing_sword.png",
   },
   {
     id: "radiant_orb",
@@ -467,7 +513,7 @@ export const WEAPONS: Equipment[] = [
     rarity: "equipment.rarity.mythical",
     obtainableChaosIds: [EquipmentObtainableChaosId.THE_FORETOLD_RUIN],
     description: "equipment.weapon.radiant_orb.description",
-    imgUrl: "/images/equipment/weapons/radiant_orb.png"
+    imgUrl: "/images/equipment/weapons/radiant_orb.png",
   },
   {
     id: "overcurrent_shock_unit",
@@ -476,7 +522,7 @@ export const WEAPONS: Equipment[] = [
     rarity: "equipment.rarity.rare",
     obtainableChaosIds: [EquipmentObtainableChaosId.LABORATORY_0],
     description: "equipment.weapon.overcurrent_shock_unit.description",
-    imgUrl: "/images/equipment/weapons/overcurrent_shock_unit.png"
+    imgUrl: "/images/equipment/weapons/overcurrent_shock_unit.png",
   },
   {
     id: "mutant_predator_spike",
@@ -485,7 +531,7 @@ export const WEAPONS: Equipment[] = [
     rarity: "equipment.rarity.legendary",
     obtainableChaosIds: [EquipmentObtainableChaosId.LABORATORY_0],
     description: "equipment.weapon.mutant_predator_spike.description",
-    imgUrl: "/images/equipment/weapons/mutant_predator_spike.png"
+    imgUrl: "/images/equipment/weapons/mutant_predator_spike.png",
   },
   {
     id: "w_52_dopamine_injector",
@@ -494,7 +540,7 @@ export const WEAPONS: Equipment[] = [
     rarity: "equipment.rarity.legendary",
     obtainableChaosIds: [EquipmentObtainableChaosId.LABORATORY_0],
     description: "equipment.weapon.w_52_dopamine_injector.description",
-    imgUrl: "/images/equipment/weapons/w_52_dopamine_injector.png"
+    imgUrl: "/images/equipment/weapons/w_52_dopamine_injector.png",
   },
   {
     id: "mutagenic_wave_amplifier",
@@ -503,7 +549,7 @@ export const WEAPONS: Equipment[] = [
     rarity: "equipment.rarity.legendary",
     obtainableChaosIds: [EquipmentObtainableChaosId.LABORATORY_0],
     description: "equipment.weapon.mutagenic_wave_amplifier.description",
-    imgUrl: "/images/equipment/weapons/mutagenic_wave_amplifier.png"
+    imgUrl: "/images/equipment/weapons/mutagenic_wave_amplifier.png",
   },
   {
     id: "replica_core",
@@ -512,7 +558,7 @@ export const WEAPONS: Equipment[] = [
     rarity: "equipment.rarity.legendary",
     obtainableChaosIds: [EquipmentObtainableChaosId.LABORATORY_0],
     description: "equipment.weapon.replica_core.description",
-    imgUrl: "/images/equipment/weapons/replica_core.png"
+    imgUrl: "/images/equipment/weapons/replica_core.png",
   },
   {
     id: "chimeranite",
@@ -521,7 +567,7 @@ export const WEAPONS: Equipment[] = [
     rarity: "equipment.rarity.mythical",
     obtainableChaosIds: [EquipmentObtainableChaosId.LABORATORY_0],
     description: "equipment.weapon.chimeranite.description",
-    imgUrl: "/images/equipment/weapons/chimeranite.png"
+    imgUrl: "/images/equipment/weapons/chimeranite.png",
   },
   // Season 2
   {
@@ -531,7 +577,7 @@ export const WEAPONS: Equipment[] = [
     rarity: "equipment.rarity.rare",
     obtainableChaosIds: [EquipmentObtainableChaosId.BURNING_LIFE],
     description: "equipment.weapon.millennium_arbor.description",
-    imgUrl: "/images/equipment/weapons/millennium_arbor.png"
+    imgUrl: "/images/equipment/weapons/millennium_arbor.png",
   },
   {
     id: "sword_of_judgment",
@@ -540,7 +586,7 @@ export const WEAPONS: Equipment[] = [
     rarity: "equipment.rarity.rare",
     obtainableChaosIds: [EquipmentObtainableChaosId.BURNING_LIFE],
     description: "equipment.weapon.sword_of_judgment.description",
-    imgUrl: "/images/equipment/weapons/sword_of_judgment.png"
+    imgUrl: "/images/equipment/weapons/sword_of_judgment.png",
   },
   {
     id: "veiled_thorn",
@@ -549,7 +595,7 @@ export const WEAPONS: Equipment[] = [
     rarity: "equipment.rarity.legendary",
     obtainableChaosIds: [EquipmentObtainableChaosId.BURNING_LIFE],
     description: "equipment.weapon.veiled_thorn.description",
-    imgUrl: "/images/equipment/weapons/veiled_thorn.png"
+    imgUrl: "/images/equipment/weapons/veiled_thorn.png",
   },
   {
     id: "pale_eternal_flame",
@@ -558,7 +604,7 @@ export const WEAPONS: Equipment[] = [
     rarity: "equipment.rarity.legendary",
     obtainableChaosIds: [EquipmentObtainableChaosId.BURNING_LIFE],
     description: "equipment.weapon.pale_eternal_flame.description",
-    imgUrl: "/images/equipment/weapons/pale_eternal_flame.png"
+    imgUrl: "/images/equipment/weapons/pale_eternal_flame.png",
   },
   {
     id: "brilliant_eternal_flame",
@@ -567,7 +613,7 @@ export const WEAPONS: Equipment[] = [
     rarity: "equipment.rarity.mythical",
     obtainableChaosIds: [EquipmentObtainableChaosId.BURNING_LIFE],
     description: "equipment.weapon.brilliant_eternal_flame.description",
-    imgUrl: "/images/equipment/weapons/brilliant_eternal_flame.png"
+    imgUrl: "/images/equipment/weapons/brilliant_eternal_flame.png",
   },
   {
     id: "harp_of_conflict",
@@ -576,7 +622,7 @@ export const WEAPONS: Equipment[] = [
     rarity: "equipment.rarity.legendary",
     obtainableChaosIds: [EquipmentObtainableChaosId.BURNING_LIFE],
     description: "equipment.weapon.harp_of_conflict.description",
-    imgUrl: "/images/equipment/weapons/harp_of_conflict.png"
+    imgUrl: "/images/equipment/weapons/harp_of_conflict.png",
   },
   {
     id: "arm_of_lost_valor",
@@ -585,7 +631,7 @@ export const WEAPONS: Equipment[] = [
     rarity: "equipment.rarity.rare",
     obtainableChaosIds: [EquipmentObtainableChaosId.BURNING_LIFE],
     description: "equipment.weapon.arm_of_lost_valor.description",
-    imgUrl: "/images/equipment/weapons/arm_of_lost_valor.png"
+    imgUrl: "/images/equipment/weapons/arm_of_lost_valor.png",
   },
   {
     id: "harpoon_case_of_broken_resolve",
@@ -594,7 +640,7 @@ export const WEAPONS: Equipment[] = [
     rarity: "equipment.rarity.rare",
     obtainableChaosIds: [EquipmentObtainableChaosId.BURNING_LIFE],
     description: "equipment.weapon.harpoon_case_of_broken_resolve.description",
-    imgUrl: "/images/equipment/weapons/harpoon_case_of_broken_resolve.png"
+    imgUrl: "/images/equipment/weapons/harpoon_case_of_broken_resolve.png",
   },
   // Season 3
   {
@@ -604,7 +650,7 @@ export const WEAPONS: Equipment[] = [
     rarity: "equipment.rarity.rare",
     obtainableChaosIds: [EquipmentObtainableChaosId.THEATER_OF_ILLUSIONS],
     description: "equipment.weapon.corrupted_gauntlet.description",
-    imgUrl: "/images/equipment/weapons/corrupted_gauntlet.png"
+    imgUrl: "/images/equipment/weapons/corrupted_gauntlet.png",
   },
   {
     id: "broken_golden_quill_pen",
@@ -613,7 +659,7 @@ export const WEAPONS: Equipment[] = [
     rarity: "equipment.rarity.rare",
     obtainableChaosIds: [EquipmentObtainableChaosId.THEATER_OF_ILLUSIONS],
     description: "equipment.weapon.broken_golden_quill_pen.description",
-    imgUrl: "/images/equipment/weapons/broken_golden_quill_pen.png"
+    imgUrl: "/images/equipment/weapons/broken_golden_quill_pen.png",
   },
   {
     id: "orders_baton",
@@ -622,7 +668,7 @@ export const WEAPONS: Equipment[] = [
     rarity: "equipment.rarity.legendary",
     obtainableChaosIds: [EquipmentObtainableChaosId.THEATER_OF_ILLUSIONS],
     description: "equipment.weapon.orders_baton.description",
-    imgUrl: "/images/equipment/weapons/orders_baton.png"
+    imgUrl: "/images/equipment/weapons/orders_baton.png",
   },
   {
     id: "key_of_sleep",
@@ -631,7 +677,7 @@ export const WEAPONS: Equipment[] = [
     rarity: "equipment.rarity.legendary",
     obtainableChaosIds: [EquipmentObtainableChaosId.THEATER_OF_ILLUSIONS],
     description: "equipment.weapon.key_of_sleep.description",
-    imgUrl: "/images/equipment/weapons/key_of_sleep.png"
+    imgUrl: "/images/equipment/weapons/key_of_sleep.png",
   },
   {
     id: "yearning_left_hand",
@@ -640,7 +686,7 @@ export const WEAPONS: Equipment[] = [
     rarity: "equipment.rarity.legendary",
     obtainableChaosIds: [EquipmentObtainableChaosId.THEATER_OF_ILLUSIONS],
     description: "equipment.weapon.yearning_left_hand.description",
-    imgUrl: "/images/equipment/weapons/yearning_left_hand.png"
+    imgUrl: "/images/equipment/weapons/yearning_left_hand.png",
   },
   // Season 4
   {
@@ -650,7 +696,7 @@ export const WEAPONS: Equipment[] = [
     rarity: "equipment.rarity.rare",
     obtainableChaosIds: [EquipmentObtainableChaosId.THE_KALEIDOSCOPE_HATCHERY],
     description: "equipment.weapon.the_exsanguine.description",
-    imgUrl: "/images/equipment/weapons/the_exsanguine.png"
+    imgUrl: "/images/equipment/weapons/the_exsanguine.png",
   },
   {
     id: "raiders_harpoon_gun",
@@ -659,7 +705,7 @@ export const WEAPONS: Equipment[] = [
     rarity: "equipment.rarity.rare",
     obtainableChaosIds: [EquipmentObtainableChaosId.THE_KALEIDOSCOPE_HATCHERY],
     description: "equipment.weapon.raiders_harpoon_gun.description",
-    imgUrl: "/images/equipment/weapons/raiders_harpoon_gun.png"
+    imgUrl: "/images/equipment/weapons/raiders_harpoon_gun.png",
   },
   {
     id: "gauntlets_of_protection",
@@ -668,7 +714,7 @@ export const WEAPONS: Equipment[] = [
     rarity: "equipment.rarity.legendary",
     obtainableChaosIds: [EquipmentObtainableChaosId.THE_KALEIDOSCOPE_HATCHERY],
     description: "equipment.weapon.gauntlets_of_protection.description",
-    imgUrl: "/images/equipment/weapons/gauntlets_of_protection.png"
+    imgUrl: "/images/equipment/weapons/gauntlets_of_protection.png",
   },
   {
     id: "eternal_wedge",
@@ -677,7 +723,7 @@ export const WEAPONS: Equipment[] = [
     rarity: "equipment.rarity.legendary",
     obtainableChaosIds: [EquipmentObtainableChaosId.THE_KALEIDOSCOPE_HATCHERY],
     description: "equipment.weapon.eternal_wedge.description",
-    imgUrl: "/images/equipment/weapons/eternal_wedge.png"
+    imgUrl: "/images/equipment/weapons/eternal_wedge.png",
   },
   {
     id: "twisted_drill_bit",
@@ -686,6 +732,6 @@ export const WEAPONS: Equipment[] = [
     rarity: "equipment.rarity.legendary",
     obtainableChaosIds: [EquipmentObtainableChaosId.THE_KALEIDOSCOPE_HATCHERY],
     description: "equipment.weapon.twisted_drill_bit.description",
-    imgUrl: "/images/equipment/weapons/twisted_drill_bit.png"
+    imgUrl: "/images/equipment/weapons/twisted_drill_bit.png",
   },
 ];
