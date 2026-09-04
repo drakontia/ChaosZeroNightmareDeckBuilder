@@ -362,3 +362,12 @@ export const CHARACTERS: Character[] = [
     hiramekiCards: ["rei_hirameki_1", "rei_hirameki_2", "rei_hirameki_3", "rei_hirameki_4"]
   }
 ];
+
+// Create a Map for O(1) lookup performance
+const CHARACTERS_MAP = new Map<string, Character>(CHARACTERS.map(char => [char.id, char]));
+
+// Helper function to get character by ID (O(1) lookup with Map)
+export function getCharacterById(id: string | null | undefined): Character | null {
+  if (!id) return null;
+  return CHARACTERS_MAP.get(id) ?? null;
+}

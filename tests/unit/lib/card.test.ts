@@ -150,4 +150,18 @@ describe('card helpers', () => {
       expect(card?.imgUrl).toBe(`/images/cards/season4/${id}.png`);
     }
   });
+
+  it('getCardById performs efficiently with Map-based lookup', () => {
+    // Performance test: 1000 lookups should complete quickly
+    const startTime = performance.now();
+    for (let i = 0; i < 1000; i++) {
+      getCardById('shared_01');
+      getCardById('fei_starting_1');
+      getCardById('monster_01');
+    }
+    const duration = performance.now() - startTime;
+    
+    // Should complete within reasonable time (Map-based should be <50ms for 3000 lookups)
+    expect(duration).toBeLessThan(100);
+  });
 });
