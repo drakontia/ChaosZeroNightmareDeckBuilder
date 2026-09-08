@@ -3676,11 +3676,11 @@
       "name": "Splitting and Repair",
       "descriptions": {
         "0": "Brand of Agony 1\nInflict Agony 4 on the enemy with the highest HP",
-        "1": "Brand of Rift 1\nInflict Rift 2 on the enemy with the highest HP",
-        "2": "Brand of Rift 2 and Brand of Agony 2\nInflict Rift 3 and Agony 6 on the enemy with the highest HP",
-        "3": "Move one Rift of Severance to your hand\nGrant Retrieve",
-        "4": "Brand of Rift 2 and Brand of Agony 2\nAt turn start, apply Brand of Rift 1 or Brand of Agony 1",
-        "5": "Brand of Agony 1\nInflict Agony 4 on the enemy with the highest HP"
+        "1": "Brand of Agony 1\nInflict Agony 4 on the enemy with the highest HP",
+        "2": "Brand of Rift 1\nInflict Rift 2 on the enemy with the highest HP",
+        "3": "Brand of Rift 2 and Brand of Agony 2\nInflict Rift 3 and Agony 6 on the enemy with the highest HP",
+        "4": "Move one Rift of Severance to your hand\nGrant Retrieve",
+        "5": "Brand of Rift 2 and Brand of Agony 2\nAt turn start, apply Brand of Rift 1 or Brand of Agony 1"
       }
     },
     "olga_hirameki_3": {
