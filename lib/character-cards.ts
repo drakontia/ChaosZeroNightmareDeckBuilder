@@ -108,27 +108,28 @@ export const CHARACTER_CARDS: CznCard[] = (
       imgUrl: "/images/cards/olga_hirameki_2.png",
       hiramekiVariations: [
         // TODO: 苦痛・亀裂の烙印を表す専用CardStatusを確認
-        { level: 0, cost: 0, description: "苦痛の烙印1\nHPが最も高い敵に苦痛4" },
-        { level: 1, cost: 0, description: "亀裂の烙印1\nHPが最も高い敵に亀裂2" },
+        { level: 0, cost: 1, description: "苦痛の烙印1\nHPが最も高い敵に苦痛4" },
+        { level: 1, cost: 0, description: "苦痛の烙印1\nHPが最も高い敵に苦痛4" },
+        { level: 2, cost: 0, description: "亀裂の烙印1\nHPが最も高い敵に亀裂2" },
         {
-          level: 2,
+          level: 3,
           cost: 0,
           description: "亀裂の烙印2\n苦痛の烙印2\nHPが最も高い敵に亀裂3\n苦痛6",
           statuses: [CardStatus.EXHAUST],
         },
         {
-          level: 3,
+          level: 4,
           cost: 0,
           description: "断絶の裂け目を1枚手札に移動\n回収付与",
           statuses: [CardStatus.UNIQUE],
         },
         {
-          level: 4,
-          cost: 0,
+          level: 5,
+          cost: 2,
           description: "亀裂の烙印2\n苦痛の烙印2\nターン開始時、亀裂の烙印1または苦痛の烙印1",
           statuses: [CardStatus.UNIQUE, CardStatus.INITIATION, CardStatus.LEAD],
+          category: CardCategory.UPGRADE,
         },
-        { level: 5, cost: 2, description: "苦痛の烙印1\nHPが最も高い敵に苦痛4" },
       ],
     },
     {
