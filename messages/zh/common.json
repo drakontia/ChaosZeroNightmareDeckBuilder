@@ -153,7 +153,8 @@
     "control": "统制",
     "inquiry": "探求",
     "claim": "所有",
-    "survival": "生存"
+    "survival": "生存",
+    "rapacity": "贪婪"
   },
   "actions": {
     "add": "添加",
@@ -250,7 +251,8 @@
     "diana": "ディアナ",
     "tenebria": "特涅布蕾雅",
     "fei": "菲",
-    "hilde": "希尔德"
+    "hilde": "希尔德",
+    "olga": "奥尔加"
   },
   "hiddenEffects": {
     "hiddenhirameki_01": "アクションポイント1獲得",

@@ -12,6 +12,156 @@ import { CznCard, CardType, CardCategory, CardStatus } from "@/types";
  */
 export const CHARACTER_CARDS: CznCard[] = (
   [
+    // Olga's starting cards (temporary implementation)
+    {
+      id: "olga_starting_1",
+      name: "引き斬り",
+      type: CardType.CHARACTER,
+      category: CardCategory.ATTACK,
+      statuses: [],
+      isBasicCard: true,
+      isStartingCard: true,
+      imgUrl: "/images/cards/olga_starting_1.png",
+      hiramekiVariations: [{ level: 0, cost: 1, description: "ダメージ100%" }],
+    },
+    {
+      id: "olga_starting_2",
+      name: "引き斬り",
+      type: CardType.CHARACTER,
+      category: CardCategory.ATTACK,
+      statuses: [],
+      isBasicCard: true,
+      isStartingCard: true,
+      imgUrl: "/images/cards/olga_starting_2.png",
+      hiramekiVariations: [{ level: 0, cost: 1, description: "ダメージ100%" }],
+    },
+    {
+      id: "olga_starting_3",
+      name: "渇きの解消",
+      type: CardType.CHARACTER,
+      category: CardCategory.SKILL,
+      statuses: [],
+      isBasicCard: true,
+      isStartingCard: true,
+      imgUrl: "/images/cards/olga_starting_3.png",
+      hiramekiVariations: [{ level: 0, cost: 1, description: "治癒100%" }],
+    },
+    {
+      id: "olga_starting_4",
+      name: "断絶の裂け目",
+      type: CardType.CHARACTER,
+      category: CardCategory.ATTACK,
+      statuses: [],
+      isBasicCard: false,
+      isStartingCard: true,
+      imgUrl: "/images/cards/olga_starting_4.png",
+      hiramekiVariations: [
+        // TODO: 亀裂を表す専用CardStatusと正確な効果値を確認
+        { level: 0, cost: 1, description: "ダメージ80%\n亀裂2\n自分の亀裂発動" },
+        { level: 1, cost: 1, description: "ダメージ140%\n亀裂3\n自分の亀裂発動" },
+        { level: 2, cost: 1, description: "ダメージ80%\n亀裂2\n味方の亀裂発動" },
+        { level: 3, cost: 1, description: "ダメージ80%\n亀裂2\n自分の亀裂2回発動" },
+        {
+          level: 4,
+          cost: 1,
+          description: "ダメージ100%\n亀裂1\n対象のデバフ種類数に応じて亀裂1（最大3）\n自分の亀裂発動",
+        },
+        {
+          level: 5,
+          cost: 1,
+          description: "ダメージ100%\n亀裂2\n自分の亀裂発動\nターン終了時、亀裂1追加（最大3）",
+        },
+      ],
+    },
+    // Olga's hirameki cards (temporary implementation)
+    {
+      id: "olga_hirameki_1",
+      name: "飛散した欲望",
+      type: CardType.CHARACTER,
+      category: CardCategory.ATTACK,
+      statuses: [],
+      imgUrl: "/images/cards/olga_hirameki_1.png",
+      hiramekiVariations: [
+        // TODO: 苦痛・灼熱を表す専用CardStatusと正確な効果値を確認
+        { level: 0, cost: 1, description: "ダメージ80%\n苦痛4\n自分の苦痛発動" },
+        { level: 1, cost: 1, description: "ダメージ140%\n苦痛6\n自分の苦痛発動" },
+        { level: 2, cost: 1, description: "ダメージ80%\n苦痛5\n味方の苦痛発動" },
+        { level: 3, cost: 1, description: "ダメージ80%\n苦痛5\n自分の苦痛2回発動" },
+        {
+          level: 4,
+          cost: 1,
+          description: "ダメージ80%\n苦痛4\n灼熱3\n自分の苦痛発動\n味方の灼熱発動",
+        },
+        {
+          level: 5,
+          cost: 1,
+          description: "ダメージ100%\n苦痛4\n自分の苦痛発動\nターン終了時、苦痛1追加（最大4）",
+        },
+      ],
+    },
+    {
+      id: "olga_hirameki_2",
+      name: "分裂と修復",
+      type: CardType.CHARACTER,
+      category: CardCategory.SKILL,
+      statuses: [],
+      imgUrl: "/images/cards/olga_hirameki_2.png",
+      hiramekiVariations: [
+        // TODO: 苦痛・亀裂の烙印を表す専用CardStatusを確認
+        { level: 0, cost: 0, description: "苦痛の烙印1\nHPが最も高い敵に苦痛4" },
+        { level: 1, cost: 0, description: "亀裂の烙印1\nHPが最も高い敵に亀裂2" },
+        {
+          level: 2,
+          cost: 0,
+          description: "亀裂の烙印2\n苦痛の烙印2\nHPが最も高い敵に亀裂3\n苦痛6",
+          statuses: [CardStatus.EXHAUST],
+        },
+        {
+          level: 3,
+          cost: 0,
+          description: "断絶の裂け目を1枚手札に移動\n回収付与",
+          statuses: [CardStatus.UNIQUE],
+        },
+        {
+          level: 4,
+          cost: 0,
+          description: "亀裂の烙印2\n苦痛の烙印2\nターン開始時、亀裂の烙印1または苦痛の烙印1",
+          statuses: [CardStatus.UNIQUE, CardStatus.INITIATION, CardStatus.LEAD],
+        },
+        { level: 5, cost: 2, description: "苦痛の烙印1\nHPが最も高い敵に苦痛4" },
+      ],
+    },
+    {
+      id: "olga_hirameki_3",
+      name: "終わりなき渇望",
+      type: CardType.CHARACTER,
+      category: CardCategory.UPGRADE,
+      statuses: [CardStatus.UNIQUE],
+      imgUrl: "/images/cards/olga_hirameki_3.png",
+      hiramekiVariations: [
+        { level: 0, cost: 1, description: "ターゲティングカードで亀裂または苦痛発動時、対象に亀裂2\n苦痛3（各ターン3回）", statuses: [CardStatus.UNIQUE, CardStatus.INITIATION] },
+        { level: 1, cost: 1, description: "ターゲティングカードで亀裂または苦痛発動時、対象に亀裂2\n苦痛3（各ターン4回）" },
+        { level: 2, cost: 1, description: "ターゲティングカードで亀裂または苦痛付与時、対象に亀裂1\n苦痛2（各ターン7回）" },
+        { level: 3, cost: 1, description: "ターン開始時、敵全体に灼熱3\nターン終了時、敵全体の灼熱排除\nその数に応じてHPが最も高い敵に亀裂付与（最大7）" },
+        { level: 4, cost: 1, description: "能力でデバフ付与時、1ターンの間、ダメージ量1%増加（最大30%）" },
+        { level: 5, cost: 1, description: "能力でデバフ付与時、1ターンの間、ダメージ量1%増加（最大30%）" },
+      ],
+    },
+    {
+      id: "olga_hirameki_4",
+      name: "処断の宣告",
+      type: CardType.CHARACTER,
+      category: CardCategory.ATTACK,
+      statuses: [CardStatus.UNIQUE, CardStatus.RAPACITY],
+      imgUrl: "/images/cards/olga_hirameki_4.png",
+      hiramekiVariations: [
+        {
+          level: 0,
+          cost: 1,
+          description: "破片化2\nダメージ200%\n亀裂2\n苦痛4\nこのカード発動時、処断の執行に変更",
+        },
+      ],
+    },
     // Hilde's starting cards (temporary implementation)
     {
       id: "hilde_starting_1",
