@@ -21,7 +21,7 @@ export const CHARACTER_CARDS: CznCard[] = (
       statuses: [],
       isBasicCard: true,
       isStartingCard: true,
-      imgUrl: "/images/cards/arabella_starting_1.png", // TODO: オルガ画像差し替え
+      imgUrl: "/images/cards/olga_starting_1.png",
       hiramekiVariations: [{ level: 0, cost: 1, description: "ダメージ100%" }],
     },
     {
@@ -32,7 +32,7 @@ export const CHARACTER_CARDS: CznCard[] = (
       statuses: [],
       isBasicCard: true,
       isStartingCard: true,
-      imgUrl: "/images/cards/arabella_starting_1.png", // TODO: オルガ画像差し替え
+      imgUrl: "/images/cards/olga_starting_2.png",
       hiramekiVariations: [{ level: 0, cost: 1, description: "ダメージ100%" }],
     },
     {
@@ -43,7 +43,7 @@ export const CHARACTER_CARDS: CznCard[] = (
       statuses: [],
       isBasicCard: true,
       isStartingCard: true,
-      imgUrl: "/images/cards/arabella_starting_3.png", // TODO: オルガ画像差し替え
+      imgUrl: "/images/cards/olga_starting_3.png",
       hiramekiVariations: [{ level: 0, cost: 1, description: "治癒100%" }],
     },
     {
@@ -54,7 +54,7 @@ export const CHARACTER_CARDS: CznCard[] = (
       statuses: [],
       isBasicCard: false,
       isStartingCard: true,
-      imgUrl: "/images/cards/arabella_starting_4.png", // TODO: オルガ画像差し替え
+      imgUrl: "/images/cards/olga_starting_4.png",
       hiramekiVariations: [
         // TODO: 亀裂を表す専用CardStatusと正確な効果値を確認
         { level: 0, cost: 1, description: "ダメージ80%\n亀裂2\n自分の亀裂発動" },
@@ -80,7 +80,7 @@ export const CHARACTER_CARDS: CznCard[] = (
       type: CardType.CHARACTER,
       category: CardCategory.ATTACK,
       statuses: [],
-      imgUrl: "/images/cards/arabella_hirameki_1.png", // TODO: オルガ画像差し替え
+      imgUrl: "/images/cards/olga_hirameki_1.png",
       hiramekiVariations: [
         // TODO: 苦痛・灼熱を表す専用CardStatusと正確な効果値を確認
         { level: 0, cost: 1, description: "ダメージ80%\n苦痛4\n自分の苦痛発動" },
@@ -105,7 +105,7 @@ export const CHARACTER_CARDS: CznCard[] = (
       type: CardType.CHARACTER,
       category: CardCategory.SKILL,
       statuses: [],
-      imgUrl: "/images/cards/arabella_hirameki_2.png", // TODO: オルガ画像差し替え
+      imgUrl: "/images/cards/olga_hirameki_2.png",
       hiramekiVariations: [
         // TODO: 苦痛・亀裂の烙印を表す専用CardStatusを確認
         { level: 0, cost: 0, description: "苦痛の烙印1\nHPが最も高い敵に苦痛4" },
@@ -137,7 +137,7 @@ export const CHARACTER_CARDS: CznCard[] = (
       type: CardType.CHARACTER,
       category: CardCategory.UPGRADE,
       statuses: [CardStatus.UNIQUE],
-      imgUrl: "/images/cards/arabella_hirameki_3.png", // TODO: オルガ画像差し替え
+      imgUrl: "/images/cards/olga_hirameki_3.png",
       hiramekiVariations: [
         { level: 0, cost: 1, description: "ターゲティングカードで亀裂または苦痛発動時、対象に亀裂2\n苦痛3（各ターン3回）", statuses: [CardStatus.UNIQUE, CardStatus.INITIATION] },
         { level: 1, cost: 1, description: "ターゲティングカードで亀裂または苦痛発動時、対象に亀裂2\n苦痛3（各ターン4回）" },
@@ -153,7 +153,7 @@ export const CHARACTER_CARDS: CznCard[] = (
       type: CardType.CHARACTER,
       category: CardCategory.ATTACK,
       statuses: [CardStatus.UNIQUE, CardStatus.RAPACITY],
-      imgUrl: "/images/cards/arabella_hirameki_4.png", // TODO: オルガ画像差し替え
+      imgUrl: "/images/cards/olga_hirameki_4.png",
       hiramekiVariations: [
         {
           level: 0,
