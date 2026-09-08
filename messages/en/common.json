@@ -86,7 +86,8 @@
     "yuki": "Yuki",
     "heidemarie": "Heidemarie",
     "fei": "Fei",
-    "hilde": "Hilde"
+    "hilde": "Hilde",
+    "olga": "Olga"
   },
   "common": {
     "convert": "Convert",
@@ -289,6 +290,7 @@
     "control": "Control",
     "inquiry": "Inquiry",
     "claim": "Claim",
-    "survival": "Survival"
+    "survival": "Survival",
+    "rapacity": "Rapacity"
   }
 }

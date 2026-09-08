@@ -153,7 +153,8 @@
     "control": "통제",
     "inquiry": "탐구",
     "claim": "소유",
-    "survival": "생존"
+    "survival": "생존",
+    "rapacity": "탐욕"
   },
   "actions": {
     "add": "추가",
@@ -250,7 +251,8 @@
     "diana": "ディアナ",
     "tenebria": "테네브레아",
     "fei": "페이",
-    "hilde": "힐데"
+    "hilde": "힐데",
+    "olga": "올가"
   },
   "hiddenEffects": {
     "hiddenhirameki_01": "アクションポイント1獲得",

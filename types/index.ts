@@ -121,6 +121,7 @@ export enum CardStatus {
   INQUIRY = "inquiry", // 探求
   CLAIM = "claim", // 所有
   SURVIVAL = "survival", // 生存
+  RAPACITY = "rapacity", // 強欲
 }
 
 export type Season4DesireStatus =

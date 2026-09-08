@@ -3637,6 +3637,68 @@
       "descriptions": {
         "0": "When using Link card, draw 1 (once per turn)"
       }
+    },
+    "olga_starting_1": {
+      "name": "Drawn Slash",
+      "descriptions": { "0": "Deal 100% damage" }
+    },
+    "olga_starting_2": {
+      "name": "Drawn Slash",
+      "descriptions": { "0": "Deal 100% damage" }
+    },
+    "olga_starting_3": {
+      "name": "Thirst Quenched",
+      "descriptions": { "0": "Heal 100%" }
+    },
+    "olga_starting_4": {
+      "name": "Rift of Severance",
+      "descriptions": {
+        "0": "Deal 80% damage, inflict Rift 2, and trigger your Rift",
+        "1": "Deal 140% damage, inflict Rift 3, and trigger your Rift",
+        "2": "Deal 80% damage, inflict Rift 2, and trigger an ally's Rift",
+        "3": "Deal 80% damage, inflict Rift 2, and trigger your Rift twice",
+        "4": "Deal 100% damage, inflict Rift 1 plus 1 per target debuff type (up to 3), and trigger your Rift",
+        "5": "Deal 100% damage, inflict Rift 2, trigger your Rift, then inflict Rift 1 at turn end (up to 3)"
+      }
+    },
+    "olga_hirameki_1": {
+      "name": "Scattered Desire",
+      "descriptions": {
+        "0": "Deal 80% damage, inflict Agony 4, and trigger your Agony",
+        "1": "Deal 140% damage, inflict Agony 6, and trigger your Agony",
+        "2": "Deal 80% damage, inflict Agony 5, and trigger an ally's Agony",
+        "3": "Deal 80% damage, inflict Agony 5, and trigger your Agony twice",
+        "4": "Deal 80% damage, inflict Agony 4 and Scorch 3, trigger your Agony, and trigger an ally's Scorch",
+        "5": "Deal 100% damage, inflict Agony 4, trigger your Agony, then inflict Agony 1 at turn end (up to 4)"
+      }
+    },
+    "olga_hirameki_2": {
+      "name": "Splitting and Repair",
+      "descriptions": {
+        "0": "Brand of Agony 1; inflict Agony 4 on the enemy with the highest HP",
+        "1": "Brand of Rift 1; inflict Rift 2 on the enemy with the highest HP",
+        "2": "Brand of Rift 2 and Brand of Agony 2; inflict Rift 3 and Agony 6 on the enemy with the highest HP",
+        "3": "Move one Rift of Severance to your hand and grant Retrieve",
+        "4": "Brand of Rift 2 and Brand of Agony 2; at turn start, apply Brand of Rift 1 or Brand of Agony 1",
+        "5": "Brand of Agony 1; inflict Agony 4 on the enemy with the highest HP"
+      }
+    },
+    "olga_hirameki_3": {
+      "name": "Endless Thirst",
+      "descriptions": {
+        "0": "When a targeting card triggers Rift or Agony, inflict Rift 2 and Agony 3 on the target (3 times per turn)",
+        "1": "When a targeting card triggers Rift or Agony, inflict Rift 2 and Agony 3 on the target (4 times per turn)",
+        "2": "When a targeting card inflicts Rift or Agony, inflict Rift 1 and Agony 2 on the target (7 times per turn)",
+        "3": "At turn start, inflict Scorch 3 on all enemies; at turn end, remove Scorch from all enemies and inflict Rift based on the number removed (up to 7)",
+        "4": "When an ability inflicts a debuff, increase damage by 1% for 1 turn (up to 30%)",
+        "5": "When an ability inflicts a debuff, increase damage by 1% for 1 turn (up to 30%)"
+      }
+    },
+    "olga_hirameki_4": {
+      "name": "Sentence of Execution",
+      "descriptions": {
+        "0": "Shatter 2, deal 200% damage, inflict Rift 2 and Agony 4. When activated, change to Execution"
+      }
     }
   }
 }

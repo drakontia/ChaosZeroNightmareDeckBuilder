@@ -317,7 +317,8 @@
     "control": "統制",
     "inquiry": "探求",
     "claim": "所有",
-    "survival": "生存"
+    "survival": "生存",
+    "rapacity": "強欲"
   },
   "actions": {
     "add": "追加",
@@ -378,6 +379,7 @@
     "heidemarie": "ハイデマリ",
     "tenebria": "テネブレア",
     "fei": "フェイ",
-    "hilde": "ヒルデ"
+    "hilde": "ヒルデ",
+    "olga": "オルガ"
   }
 }
