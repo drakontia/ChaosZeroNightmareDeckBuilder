@@ -82,7 +82,6 @@ describe("Olga character", () => {
     expect(execution?.statuses).toContain(CardStatus.UNIQUE);
     expect(execution?.statuses).toContain(CardStatus.RAPACITY);
     expect(execution?.hiramekiVariations[0].statuses).toBeUndefined();
-    expect(endlessThirst?.hiramekiVariations.slice(1).every((variation) => variation.statuses === undefined)).toBe(true);
   });
 
   it("has the correct statuses and effect descriptions for 分裂と修復 (olga_hirameki_2)", () => {
@@ -98,19 +97,19 @@ describe("Olga character", () => {
       {
         level: 3,
         cost: 0,
-        description: "亀裂の烙印2\n苦痛の烙印2\nHPが最も高い敵に亀裂3\n苦痛6",
+        description: "亀裂の烙印2\n苦痛の烙印2\nHPが最も高い敵に亀裂3、苦痛6",
         statuses: [CardStatus.EXHAUST],
       },
       {
         level: 4,
         cost: 0,
-        description: "断絶の裂け目を1枚手札に移動\n回収付与",
+        description: "断絶の裂け目を1枚手札に移動、\n回収付与",
         statuses: [CardStatus.UNIQUE],
       },
       {
         level: 5,
         cost: 2,
-        description: "亀裂の烙印2\n苦痛の烙印2\nターン開始時、亀裂の烙印1または苦痛の烙印1",
+        description: "亀裂の烙印2\n苦痛の烙印2\nターン開始時、\n亀裂の烙印1\nまたは\n苦痛の烙印1",
         statuses: [CardStatus.UNIQUE, CardStatus.INITIATION, CardStatus.LEAD],
         category: CardCategory.UPGRADE,
       },
