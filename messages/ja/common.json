@@ -13,7 +13,7 @@
     "removedCardsSection": "削除したカード",
     "convertedCardsSection": "変換したカード",
     "restoreTooltipSuffix": "をデッキに戻す",
-    "sharedCards": "共用カード",
+    "sharedCards": "中立カード",
     "monsterCards": "モンスターカード",
     "forbiddenCards": "シーズンカード",
     "characterCards": "キャラクターカード",
@@ -117,7 +117,7 @@
     "godhirameki_26": "治癒量100%増加、このカードに終極付与",
     "godhirameki_27": "撃破：ドロー3",
     "godhirameki_28": "このカードに連携付与",
-    "godhirameki_29": "共用カードとして扱う、共用カードをドロー1"
+    "godhirameki_29": "中立カードとして扱う、中立カードをドロー1"
   },
   "hiddenEffects": {
     "hiddenhirameki_01": "アクションポイント1獲得",

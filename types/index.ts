@@ -69,7 +69,7 @@ export interface Equipment {
 // Card types with enhanced Hirameki support
 export enum CardType {
   CHARACTER = "character",
-  SHARED = "shared", // 共用カード
+  SHARED = "shared", // 中立カード
   MONSTER = "monster", // モンスターカード
   FORBIDDEN = "forbidden", // 禁忌カード
 }

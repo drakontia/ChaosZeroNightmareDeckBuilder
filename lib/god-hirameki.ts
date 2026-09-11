@@ -91,7 +91,7 @@ export const GOD_HIRAMEKI_EFFECTS: GodHiramekiDefinition[] = [
   { id: "godhirameki_28", additionalEffect: "このカードに連携付与", gods: [GodType.ORDER] },
   {
     id: "godhirameki_29",
-    additionalEffect: "共用カードとして扱う、共用カードをドロー1",
+    additionalEffect: "中立カードとして扱う、中立カードをドロー1",
     gods: [GodType.ORDER],
   },
 ];
