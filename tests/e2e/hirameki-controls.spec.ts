@@ -27,8 +27,8 @@ test.describe("Hirameki Controls (non-character cards)", () => {
 
   test("shared/monster/forbidden cards show Hirameki and God controls", async ({ page }) => {
     // Add one card for each type
-    await openAccordion(page, "共用カード");
-    const sharedSection = page.getByRole("heading", { name: "共用カード" }).locator("..");
+    await openAccordion(page, "中立カード");
+    const sharedSection = page.getByRole("heading", { name: "中立カード" }).locator("..");
     await sharedSection.getByText("加虐性", { exact: true }).first().click({ timeout: 10_000 });
 
     await openAccordion(page, "モンスターカード");
@@ -61,8 +61,8 @@ test.describe("Hirameki Controls (non-character cards)", () => {
     page,
   }) => {
     // Add a shared card
-    await openAccordion(page, "共用カード");
-    const sharedSection = page.getByRole("heading", { name: "共用カード" }).locator("..");
+    await openAccordion(page, "中立カード");
+    const sharedSection = page.getByRole("heading", { name: "中立カード" }).locator("..");
     const cardName = "加虐性";
     await sharedSection.getByText(cardName, { exact: true }).first().click({ timeout: 10_000 });
 
@@ -116,8 +116,8 @@ test.describe("Hirameki Controls (non-character cards)", () => {
 
   test("apply god hirameki to shared card marks God active", async ({ page }) => {
     // Add a shared card
-    await openAccordion(page, "共用カード");
-    const sharedSection = page.getByRole("heading", { name: "共用カード" }).locator("..");
+    await openAccordion(page, "中立カード");
+    const sharedSection = page.getByRole("heading", { name: "中立カード" }).locator("..");
     const cardName = "加虐性";
     await sharedSection.getByText(cardName, { exact: true }).first().click({ timeout: 10_000 });
 
@@ -171,8 +171,8 @@ test.describe("Hirameki Controls (non-character cards)", () => {
 
   test("all 6 gods including ORDER are available in god hirameki dropdown", async ({ page }) => {
     // Add a shared card
-    await openAccordion(page, "共用カード");
-    const sharedSection = page.getByRole("heading", { name: "共用カード" }).locator("..");
+    await openAccordion(page, "中立カード");
+    const sharedSection = page.getByRole("heading", { name: "中立カード" }).locator("..");
     const cardName = "加虐性";
     await sharedSection.getByText(cardName, { exact: true }).first().click({ timeout: 10_000 });
 

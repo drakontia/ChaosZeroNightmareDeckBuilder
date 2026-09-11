@@ -35,7 +35,7 @@
     "level": "Lv",
     "monsterCards": "Monster Cards",
     "search": "Search Card",
-    "sharedCards": "Shared Cards",
+    "sharedCards": "Neutral Cards",
     "startingCards": "Starting Cards",
     "title": "Card"
   },
@@ -163,7 +163,7 @@
     "godhirameki_26": "Increase Heal amount by 100%, grant Finale to this card",
     "godhirameki_27": "Defeat: Draw 3",
     "godhirameki_28": "Grant Combo to this card",
-    "godhirameki_29": "Treat as shared card, Draw 1 shared card",
+    "godhirameki_29": "Treat as neutral card, Draw 1 neutral card",
     "godhirameki_2": "Gain 1 Action Point",
     "godhirameki_3": "Reduce this card's cost by 1",
     "godhirameki_4": "Increase this card's shield by 30%",

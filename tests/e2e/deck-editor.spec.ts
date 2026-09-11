@@ -187,8 +187,8 @@ test.describe("Deck Builder", () => {
 
     await addFirstHiramekiCard(page);
 
-    await openAccordion(page, "共用カード");
-    const sharedSection = page.getByRole("heading", { name: "共用カード" }).locator("..");
+    await openAccordion(page, "中立カード");
+    const sharedSection = page.getByRole("heading", { name: "中立カード" }).locator("..");
     await sharedSection.getByText("加虐性", { exact: true }).first().click({ timeout: 10_000 });
 
     await openAccordion(page, "モンスターカード");
@@ -277,8 +277,8 @@ test.describe("Deck Builder", () => {
     await selectCharacterAndWeapon(page);
 
     const cardName = "加虐性";
-    await openAccordion(page, "共用カード");
-    const sharedSection = page.getByRole("heading", { name: "共用カード" }).locator("..");
+    await openAccordion(page, "中立カード");
+    const sharedSection = page.getByRole("heading", { name: "中立カード" }).locator("..");
     await sharedSection.getByText(cardName, { exact: true }).first().click({ timeout: 10_000 });
 
     // Copy the card from its actions menu
@@ -583,8 +583,8 @@ test.describe("Deck Builder", () => {
     await selectCharacterAndWeapon(page);
 
     const cardName = "加虐性";
-    await openAccordion(page, "共用カード");
-    const sharedSection = page.getByRole("heading", { name: "共用カード" }).locator("..");
+    await openAccordion(page, "中立カード");
+    const sharedSection = page.getByRole("heading", { name: "中立カード" }).locator("..");
     await sharedSection.getByText(cardName, { exact: true }).first().click({ timeout: 10_000 });
     await page.waitForTimeout(400);
 
@@ -661,8 +661,8 @@ test.describe("Deck Builder", () => {
     await page.waitForTimeout(1000);
 
     const cardName = "加虐性";
-    await openAccordion(page, "共用カード");
-    const sharedSection = page.getByRole("heading", { name: "共用カード" }).locator("..");
+    await openAccordion(page, "中立カード");
+    const sharedSection = page.getByRole("heading", { name: "中立カード" }).locator("..");
     await sharedSection.getByText(cardName, { exact: true }).first().click({ timeout: 10_000 });
     await page.waitForTimeout(400);
 
@@ -684,10 +684,10 @@ test.describe("Deck Builder", () => {
     await page.waitForTimeout(400);
 
     // Get points after copy
-    // (共用カード 20pt + コピー属性 20pt = 40pt)
+    // (中立カード 20pt + コピー属性 20pt = 40pt)
     const afterCopyText = await page.locator('[data-testid="faint-memory"]').innerText();
     const afterCopyPoints = parseInt(afterCopyText.replace(/[^0-9]/g, ""));
-    expect(afterCopyPoints).toBe(initialPoints + 20); // 共用カード属性が1回加算される
+    expect(afterCopyPoints).toBe(initialPoints + 20); // 中立カード属性が1回加算される
 
     // Undo the copied card (the most recently added card)
     const allMenuButtons = page.locator('button[aria-label="メニュー"]');
@@ -715,8 +715,8 @@ test.describe("Deck Builder", () => {
     await page.waitForTimeout(1000);
 
     const cardName = "加虐性";
-    await openAccordion(page, "共用カード");
-    const sharedSection = page.getByRole("heading", { name: "共用カード" }).locator("..");
+    await openAccordion(page, "中立カード");
+    const sharedSection = page.getByRole("heading", { name: "中立カード" }).locator("..");
     await sharedSection.getByText(cardName, { exact: true }).first().click({ timeout: 10_000 });
     await page.waitForTimeout(400);
 
