@@ -54,4 +54,23 @@ describe("MutationCoreSelector", () => {
     expect(button.className).toContain("bg-purple-600/10");
     expect(button.className).not.toMatch(/hover:bg-/);
   });
+
+  it("モーダル内に「効果なし」の選択肢を表示しない", () => {
+    render(<MutationCoreSelector selectedEffectId="attack_boost_lv1" onSelect={vi.fn()} />);
+
+    fireEvent.click(screen.getByRole("button", { name: /攻撃力/ }));
+
+    expect(screen.queryByText("mutationCore.noEffect")).toBeNull();
+  });
+
+  it("除去ボタンを押すと変異効果の選択が解除され、モーダルが閉じる", () => {
+    const onSelect = vi.fn();
+    render(<MutationCoreSelector selectedEffectId="attack_boost_lv1" onSelect={onSelect} />);
+
+    fireEvent.click(screen.getByRole("button", { name: /攻撃力/ }));
+    fireEvent.click(screen.getByRole("button", { name: "外す" }));
+
+    expect(onSelect).toHaveBeenCalledWith(null);
+    expect(screen.queryByText("mutationCore.select")).toBeNull();
+  });
 });

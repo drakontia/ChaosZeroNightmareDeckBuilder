@@ -188,7 +188,12 @@ export function MutationCoreSelector({ selectedEffectId, onSelect }: MutationCor
               <Virus className="w-5 h-5 text-purple-600" />
               {t("mutationCore.select")}
             </DialogTitle>
-            <DialogCloseButton onClick={() => setOpen(false)} />
+            <DialogCloseButton
+              onClick={() => {
+                onSelect(null);
+                setOpen(false);
+              }}
+            />
           </DialogHeader>
 
           <div className="flex-1 flex flex-col overflow-hidden gap-4">
@@ -207,16 +212,6 @@ export function MutationCoreSelector({ selectedEffectId, onSelect }: MutationCor
 
             <div className="flex-1 overflow-y-auto">
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 pr-2">
-                <button
-                  className={`h-auto flex-col justify-start p-3 text-left w-full rounded-md border-2 transition-colors ${!selectedEffectId ? "bg-purple-600 text-white border-purple-600" : "border-gray-300 dark:border-gray-600 hover:border-purple-400"}`}
-                  onClick={() => {
-                    onSelect(null);
-                    setOpen(false);
-                  }}
-                >
-                  <span className="text-sm font-semibold">{t("mutationCore.noEffect")}</span>
-                </button>
-
                 {categoryEffects[activeTab].map((effect) => (
                   <div key={effect.id}>
                     <MutationCoreOptionCard
