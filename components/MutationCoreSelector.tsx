@@ -60,7 +60,7 @@ function MutationCorePreviewButton({
       <button
         type="button"
         onClick={() => onOpenChange(true)}
-        className="w-full h-10 rounded-md border-2 border-purple-600 bg-purple-600/10 text-purple-700 dark:text-purple-300 flex items-center justify-start gap-2 px-4"
+        className="w-full h-10 rounded-md bg-purple-600/10 text-purple-700 dark:text-purple-300 flex items-center justify-start gap-2 px-4"
       >
         <Virus className="w-4 h-4 shrink-0" />
         <span className="text-base font-semibold">{t("mutationCore.assignable")}</span>
@@ -78,7 +78,7 @@ function MutationCorePreviewButton({
       <button
         type="button"
         onClick={() => onOpenChange(true)}
-        className="w-full h-10 rounded-md border-2 border-purple-600 bg-purple-600/10 text-purple-700 dark:text-purple-300 flex items-center justify-start gap-2 px-4 pr-8"
+        className="w-full h-10 rounded-md bg-purple-600 text-white flex items-center justify-start gap-2 px-4 pr-8"
       >
         <Virus className="w-4 h-4 shrink-0" />
         <span className="text-base font-semibold truncate">{effectName}</span>
@@ -87,7 +87,7 @@ function MutationCorePreviewButton({
         <PopoverTrigger asChild>
           <button
             type="button"
-            className="absolute right-2 top-1/2 -translate-y-1/2 text-purple-700 dark:text-purple-300"
+            className="absolute right-2 top-1/2 -translate-y-1/2 text-white"
             onClick={(event) => event.stopPropagation()}
             aria-label="info"
           >
