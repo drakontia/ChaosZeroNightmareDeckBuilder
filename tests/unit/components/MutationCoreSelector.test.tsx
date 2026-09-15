@@ -67,6 +67,15 @@ describe("MutationCoreSelector", () => {
     expect(infoButton.className).toContain("text-[#654066]");
   });
 
+  it("選択時のウイルスアイコンも白背景の丸型で表示され、アイコンは背景と同色になる", () => {
+    render(<MutationCoreSelector selectedEffectId="attack_boost_lv1" onSelect={vi.fn()} />);
+
+    const virusIconWrapper = screen.getByTestId("mutation-core-virus-icon");
+    expect(virusIconWrapper.className).toContain("bg-white");
+    expect(virusIconWrapper.className).toContain("text-[#654066]");
+    expect(virusIconWrapper.className).toContain("rounded-full");
+  });
+
   it("モーダル内に「効果なし」の選択肢を表示しない", () => {
     render(<MutationCoreSelector selectedEffectId="attack_boost_lv1" onSelect={vi.fn()} />);
 

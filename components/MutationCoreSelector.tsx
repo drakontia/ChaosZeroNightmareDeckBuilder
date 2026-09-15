@@ -80,7 +80,12 @@ function MutationCorePreviewButton({
         onClick={() => onOpenChange(true)}
         className="w-full h-10 rounded-md bg-gradient-to-r from-[#654066] to-[#983786] text-white flex items-center justify-start gap-2 px-4 pr-8"
       >
-        <Virus className="w-4 h-4 shrink-0" />
+        <span
+          data-testid="mutation-core-virus-icon"
+          className="bg-white text-[#654066] rounded-full p-0.5 shrink-0 flex items-center justify-center"
+        >
+          <Virus className="w-4 h-4" />
+        </span>
         <span className="text-base font-semibold truncate">{effectName}</span>
       </button>
       <Popover>
