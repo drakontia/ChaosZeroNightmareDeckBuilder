@@ -5,14 +5,14 @@ import React, { useMemo, useState } from "react";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { toast } from "sonner";
-import { HardHat, Hammer, Sparkles, Swords } from "lucide-react";
+import { HardHat, Hammer, Sparkles } from "lucide-react";
 
 import { filterEquipmentByChaosLocation } from "@/lib/equipment-chaos";
 import { EQUIPMENT_ENGRAVING_EFFECTS } from "@/lib/equipment-engraving";
 import { Equipment, EquipmentObtainableChaosId, EquipmentSlot, EquipmentType } from "@/types";
 import { Button } from "./ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "./ui/dialog";
-import { Field, FieldGroup, FieldLabel } from "./ui/field";
+import { Field, FieldGroup } from "./ui/field";
 import { InfoDialog } from "./InfoDialog";
 import { DialogCloseButton } from "./DialogCloseButton";
 
@@ -361,10 +361,6 @@ export function EquipmentSelector(props: EquipmentSelectorProps) {
 
   return (
     <FieldGroup className="pt-4 gap-2">
-      <FieldLabel className="text-base lg:text-2xl text-gray-500">
-        <Swords />
-        {t("equipment.title")}
-      </FieldLabel>
       <div className="grid grid-cols-3 gap-2">
         {EQUIPMENT_TYPES.map((type) => (
           <EquipmentField

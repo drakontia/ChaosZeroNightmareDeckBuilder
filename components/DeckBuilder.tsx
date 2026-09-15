@@ -6,6 +6,7 @@ import { useShallow } from "zustand/react/shallow";
 import { useDeckBuilderStore } from "@/hooks/useDeckBuilderStore";
 import { CHARACTERS, EQUIPMENT } from "@/lib/card";
 import { calculateFaintMemory } from "@/lib/calculateFaintMemory";
+import { MAX_COPY_COUNT, MAX_REMOVAL_AND_CONVERSION_COUNT } from "@/lib/deck-limits";
 import { useCallback, useMemo, useRef, useState } from "react";
 import { CznCard, Deck } from "@/types";
 import { useShareDeck } from "@/hooks/useShareDeck";
@@ -171,11 +172,13 @@ export function DeckBuilder({ shareId }: DeckBuilderProps) {
             shareLabel={t("deck.share")}
             exportLabel={t("deck.exportImage")}
             clearLabel={t("deck.clear")}
-            createdDateLabel={t("deck.createdDate")}
             totalCardsLabel={t("deck.totalCards")}
             faintMemoryLabel={t("character.faintMemory")}
+            faintMemoryUnitLabel={t("deck.faintMemoryUnit", { defaultValue: "pt" })}
             copiedCardsLabel={t("deck.copiedCards")}
             removedCardsLabel={t("deck.removedCards")}
+            maxCopiedCards={MAX_COPY_COUNT}
+            maxRemovedCards={MAX_REMOVAL_AND_CONVERSION_COUNT}
             faintMemoryPoints={faintMemoryPoints}
             isSharing={isSharing}
             isExporting={isExporting}

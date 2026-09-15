@@ -2,7 +2,7 @@
 
 import React, { useMemo, useState } from "react";
 import { useTranslations } from "next-intl";
-import { Zap, Info } from "lucide-react";
+import { Virus, Info } from "lucide-react";
 
 import { MUTATION_CORE_EFFECTS, getMutationCoreEffectsByCategory } from "@/lib/mutation-core";
 import { MutationCoreEffectCategory } from "@/types";
@@ -54,25 +54,65 @@ function MutationCorePreviewButton({
 }) {
   const t = useTranslations();
   const selectedEffect = MUTATION_CORE_EFFECTS.find((e) => e.id === selectedEffectId);
-  const fullDescription = selectedEffect
-    ? t(`mutationCore.effects.${selectedEffectId}`, { defaultValue: selectedEffect.description })
-    : t("mutationCore.noEffect");
-  const displayText = selectedEffect
-    ? getEffectName(t, selectedEffect.id, fullDescription)
-    : fullDescription;
+
+  if (!selectedEffect) {
+    return (
+      <button
+        type="button"
+        onClick={() => onOpenChange(true)}
+        className="w-full h-10 rounded-md bg-purple-600/10 text-purple-700 dark:text-purple-300 flex items-center justify-start gap-2 px-4"
+      >
+        <Virus className="w-4 h-4 shrink-0" />
+        <span className="text-lg font-semibold">{t("mutationCore.assignable")}</span>
+      </button>
+    );
+  }
+
+  const fullDescription = t(`mutationCore.effects.${selectedEffect.id}`, {
+    defaultValue: selectedEffect.description,
+  });
+  const effectName = getEffectName(t, selectedEffect.id, fullDescription);
 
   return (
-    <Button
-      onClick={() => onOpenChange(true)}
-      variant="outline"
-      className="w-full h-20 sm:h-16 lg:h-20 border-2 border-purple-600 bg-purple-600/10 text-purple-700 dark:text-purple-300 hover:bg-purple-600/20 flex items-center justify-between px-4"
-    >
-      <div className="flex items-center gap-2">
-        <Zap className="w-5 h-5" />
-        <span className="font-semibold text-sm">{t("mutationCore.title")}</span>
-      </div>
-      <span className="text-sm font-semibold">{displayText}</span>
-    </Button>
+    <div className="group relative w-full">
+      <button
+        type="button"
+        onClick={() => onOpenChange(true)}
+        className="w-full h-10 rounded-md bg-gradient-to-r from-[#654066] to-[#983786] text-white flex items-center justify-start gap-2 px-4 pr-8"
+      >
+        <span
+          data-testid="mutation-core-virus-icon"
+          className="bg-white text-[#654066] rounded-full p-0.5 shrink-0 flex items-center justify-center"
+        >
+          <Virus className="w-4 h-4" />
+        </span>
+        <span className="text-lg font-semibold truncate">{effectName}</span>
+      </button>
+      <Popover>
+        <PopoverTrigger asChild>
+          <button
+            type="button"
+            className="absolute right-2 top-1/2 -translate-y-1/2 bg-white text-[#654066] rounded-full p-0.5"
+            onClick={(event) => event.stopPropagation()}
+            aria-label="info"
+          >
+            <Info className="w-4 h-4" />
+          </button>
+        </PopoverTrigger>
+        <PopoverContent className="w-72 p-3 text-sm" side="right">
+          <div className="space-y-2">
+            <div className="font-semibold text-purple-600 dark:text-purple-400">{effectName}</div>
+            <div className="text-gray-700 dark:text-gray-300">{fullDescription}</div>
+            {selectedEffect.costModifier && (
+              <div className="text-xs text-gray-500 dark:text-gray-400 border-t pt-2 mt-2">
+                Cost: {selectedEffect.costModifier > 0 ? "+" : ""}
+                {selectedEffect.costModifier}
+              </div>
+            )}
+          </div>
+        </PopoverContent>
+      </Popover>
+    </div>
   );
 }
 
@@ -150,10 +190,15 @@ export function MutationCoreSelector({ selectedEffectId, onSelect }: MutationCor
         <DialogContent className="max-h-[90vh] overflow-hidden w-[90vw] max-w-3xl flex flex-col">
           <DialogHeader className="flex-row items-center justify-between space-y-0 shrink-0">
             <DialogTitle className="flex items-center gap-2">
-              <Zap className="w-5 h-5 text-purple-600" />
+              <Virus className="w-5 h-5 text-purple-600" />
               {t("mutationCore.select")}
             </DialogTitle>
-            <DialogCloseButton onClick={() => setOpen(false)} />
+            <DialogCloseButton
+              onClick={() => {
+                onSelect(null);
+                setOpen(false);
+              }}
+            />
           </DialogHeader>
 
           <div className="flex-1 flex flex-col overflow-hidden gap-4">
@@ -172,16 +217,6 @@ export function MutationCoreSelector({ selectedEffectId, onSelect }: MutationCor
 
             <div className="flex-1 overflow-y-auto">
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 pr-2">
-                <button
-                  className={`h-auto flex-col justify-start p-3 text-left w-full rounded-md border-2 transition-colors ${!selectedEffectId ? "bg-purple-600 text-white border-purple-600" : "border-gray-300 dark:border-gray-600 hover:border-purple-400"}`}
-                  onClick={() => {
-                    onSelect(null);
-                    setOpen(false);
-                  }}
-                >
-                  <span className="text-sm font-semibold">{t("mutationCore.noEffect")}</span>
-                </button>
-
                 {categoryEffects[activeTab].map((effect) => (
                   <div key={effect.id}>
                     <MutationCoreOptionCard

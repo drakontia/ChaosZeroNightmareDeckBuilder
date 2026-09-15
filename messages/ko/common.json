@@ -54,6 +54,7 @@
     "exportImage": "이미지 내보내기",
     "exportImageFailed": "이미지 내보내기 실패",
     "totalCards": "카드 수",
+    "faintMemoryUnit": "pt",
     "copiedCards": "복사된",
     "removedCards": "제거된",
     "totalCost": "총 비용",
@@ -64,7 +65,7 @@
     "removeLimitTitle": "제거 한도에 도달했습니다",
     "removeLimitMessage": "제거는 최대 5회까지 가능합니다. 더 이상 제거할 수 없습니다.",
     "copyLimitTitle": "복사 한도에 도달했습니다",
-    "copyLimitMessage": "복사는 최대 4회까지 가능합니다. 더 이상 복사할 수 없습니다.",
+    "copyLimitMessage": "복사는 최대 3회까지 가능합니다. 더 이상 복사할 수 없습니다.",
     "conversionLimitTitle": "변환 한도에 도달했습니다",
     "conversionLimitMessage": "변환은 최대 5회까지 가능합니다. 더 이상 변환할 수 없습니다."
   },
@@ -174,7 +175,8 @@
   "conversion": {},
   "mutationCore": {
     "title": "뮤테이션 코어",
-    "select": "뮤테이션 코어 효과 선택",
+    "select": "세이브 데이터에 무작위 변이 효과를 부여",
+    "assignable": "변이 부여 가능",
     "noEffect": "효과 없음",
     "categories": {
       "basic_stats": "기본 스탯 강화",

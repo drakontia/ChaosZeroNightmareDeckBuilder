@@ -1077,7 +1077,7 @@ describe("useDeckBuilderStore", () => {
     }
   });
 
-  it("copyCardでコピー上限を超えるとcopyLimitReachedになる", () => {
+  it("copyCardでコピー上限(3回)を超えるとcopyLimitReachedになり、4回目のコピーは反映されない", () => {
     const card = getTestCard();
 
     act(() => {
@@ -1086,11 +1086,21 @@ describe("useDeckBuilderStore", () => {
       useDeckBuilderStore.getState().copyCard(card.deckId);
       useDeckBuilderStore.getState().copyCard(card.deckId);
       useDeckBuilderStore.getState().copyCard(card.deckId);
-      useDeckBuilderStore.getState().copyCard(card.deckId);
+    });
+
+    expect(useDeckBuilderStore.getState().copyLimitReached).toBe(false);
+    const entryBefore = useDeckBuilderStore.getState().deck!.copiedCards.get(card.id);
+    const countBefore = typeof entryBefore === "number" ? entryBefore : (entryBefore?.count ?? 0);
+    expect(countBefore).toBe(3);
+
+    act(() => {
       useDeckBuilderStore.getState().copyCard(card.deckId);
     });
 
     expect(useDeckBuilderStore.getState().copyLimitReached).toBe(true);
+    const entryAfter = useDeckBuilderStore.getState().deck!.copiedCards.get(card.id);
+    const countAfter = typeof entryAfter === "number" ? entryAfter : (entryAfter?.count ?? 0);
+    expect(countAfter).toBe(3);
   });
 
   it("clearCopyLimitAlertでcopyLimitReachedが解除される", () => {
