@@ -125,7 +125,7 @@ export function DeckWorkspace(props: DeckWorkspaceProps) {
         <Card>
           <CardContent className="p-2 lg:p-4">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-4">
-              <div className="space-y-4">
+              <div className="space-y-2">
                 <CharacterSelector
                   characters={props.characters}
                   character={props.deck.character}

@@ -63,7 +63,7 @@ function MutationCorePreviewButton({
         className="w-full h-10 rounded-md bg-purple-600/10 text-purple-700 dark:text-purple-300 flex items-center justify-start gap-2 px-4"
       >
         <Virus className="w-4 h-4 shrink-0" />
-        <span className="text-base font-semibold">{t("mutationCore.assignable")}</span>
+        <span className="text-lg font-semibold">{t("mutationCore.assignable")}</span>
       </button>
     );
   }
@@ -86,7 +86,7 @@ function MutationCorePreviewButton({
         >
           <Virus className="w-4 h-4" />
         </span>
-        <span className="text-base font-semibold truncate">{effectName}</span>
+        <span className="text-lg font-semibold truncate">{effectName}</span>
       </button>
       <Popover>
         <PopoverTrigger asChild>

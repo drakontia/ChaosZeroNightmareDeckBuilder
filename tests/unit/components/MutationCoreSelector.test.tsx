@@ -47,6 +47,15 @@ describe("MutationCoreSelector", () => {
     expect(button.className).not.toMatch(/hover:bg-/);
   });
 
+  it("ボタン内の文字サイズが一段階大きい(text-lg)", () => {
+    render(<MutationCoreSelector selectedEffectId={null} onSelect={vi.fn()} />);
+
+    const button = screen.getByRole("button", { name: "mutationCore.assignable" });
+    const label = button.querySelector("span");
+    expect(label?.className).toContain("text-lg");
+    expect(label?.className).not.toContain("text-base");
+  });
+
   it("選択時のボタンは左寄せで濃い紫のグラデーション背景、ホバーによる色変化がない", () => {
     render(<MutationCoreSelector selectedEffectId="attack_boost_lv1" onSelect={vi.fn()} />);
 

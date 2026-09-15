@@ -119,4 +119,14 @@ describe("DeckWorkspace", () => {
     // 同じ親グループ配下にあること（statsパネルとは別グループ）
     expect(character.parentElement).toBe(equipment.parentElement);
   });
+
+  it("キャラクターセレクターと装備セレクターの間隔を詰める", () => {
+    renderWorkspace();
+
+    const character = screen.getByTestId("character-selector");
+    const group = character.parentElement;
+
+    expect(group?.className).toContain("space-y-2");
+    expect(group?.className).not.toContain("space-y-4");
+  });
 });
