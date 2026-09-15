@@ -54,6 +54,7 @@
     "exportImage": "エクスポート",
     "exportImageFailed": "画像エクスポートに失敗しました",
     "totalCards": "カード数",
+    "faintMemoryUnit": "pt",
     "copiedCards": "コピー",
     "removedCards": "排除",
     "totalCost": "合計コスト",
@@ -64,7 +65,7 @@
     "removeLimitTitle": "排除上限に達しました",
     "removeLimitMessage": "排除は5回までです。これ以上排除できません。",
     "copyLimitTitle": "コピー上限に達しました",
-    "copyLimitMessage": "コピーは4回までです。これ以上コピーできません。",
+    "copyLimitMessage": "コピーは3回までです。これ以上コピーできません。",
     "conversionLimitTitle": "変換上限に達しました",
     "conversionLimitMessage": "変換は5回までです。これ以上変換できません。"
   },
@@ -155,7 +156,8 @@
   },
   "mutationCore": {
     "title": "変異のコア",
-    "select": "変異のコア効果を選択",
+    "select": "セーブデータにランダムな変異効果を付与",
+    "assignable": "変異付与可能",
     "noEffect": "効果なし",
     "categories": {
       "basic_stats": "基本ステータス強化",

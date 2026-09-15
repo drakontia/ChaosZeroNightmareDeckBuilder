@@ -117,4 +117,16 @@ describe("EquipmentSelector chaos filter", () => {
     expect(screen.getByRole("button", { name: /armor_swamp_name/ })).toBeTruthy();
     expect(screen.queryByRole("button", { name: /armor_mist_name/ })).toBeNull();
   });
+
+  it("獲得装備のラベル・アイコンを表示しない", () => {
+    render(
+      <EquipmentSelector
+        equipment={equipment}
+        selectedEquipment={selectedEquipment}
+        onSelect={vi.fn()}
+      />,
+    );
+
+    expect(screen.queryByText("equipment.title")).toBeNull();
+  });
 });

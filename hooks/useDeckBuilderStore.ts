@@ -13,6 +13,7 @@ import type {
   Season4DesireStatus,
 } from "@/types";
 import { getCardById, CHARACTERS } from "@/lib/card";
+import { MAX_COPY_COUNT, MAX_REMOVAL_AND_CONVERSION_COUNT } from "@/lib/deck-limits";
 import { normalizeEquipmentEngravingId } from "@/lib/equipment-engraving";
 import { normalizePersonaCardEngravings, VALID_PERSONA_ENGRAVING_ALIGNMENTS } from "@/lib/persona";
 import {
@@ -356,7 +357,7 @@ export const useDeckBuilderStore = create<DeckBuilderStore>((set) => ({
       const convertedCount = Array.from(state.deck.convertedCards.values()).length;
       const totalRemovalAndConversion = removedCount + convertedCount;
 
-      if (totalRemovalAndConversion >= 5) {
+      if (totalRemovalAndConversion >= MAX_REMOVAL_AND_CONVERSION_COUNT) {
         return { removeLimitReached: true };
       }
 
@@ -779,7 +780,7 @@ export const useDeckBuilderStore = create<DeckBuilderStore>((set) => ({
         },
         0,
       );
-      if (totalCopied >= 4) {
+      if (totalCopied >= MAX_COPY_COUNT) {
         return { copyLimitReached: true };
       }
 
@@ -841,7 +842,7 @@ export const useDeckBuilderStore = create<DeckBuilderStore>((set) => ({
       const convertedCount = Array.from(state.deck.convertedCards.values()).length;
       const totalRemovalAndConversion = removedCount + convertedCount;
 
-      if (totalRemovalAndConversion >= 5) {
+      if (totalRemovalAndConversion >= MAX_REMOVAL_AND_CONVERSION_COUNT) {
         return { conversionLimitReached: true };
       }
       const cardIndex = state.deck.cards.findIndex((c) => c.deckId === deckId);

@@ -1,14 +1,15 @@
-import { Book, BookCopy, BookX, Brain, Clock12 } from "lucide-react";
+import { Book, BookCopy, BookX, Brain } from "lucide-react";
 
 import { Field, FieldGroup, FieldLabel } from "@/components/ui/field";
 
 interface DeckStatsPanelProps {
-  createdAt: Date;
   totalCards: number;
   faintMemoryPoints: number;
+  faintMemoryUnitLabel: string;
   copiedCards: number;
+  maxCopiedCards: number;
   removedCards: number;
-  createdDateLabel: string;
+  maxRemovedCards: number;
   totalCardsLabel: string;
   faintMemoryLabel: string;
   copiedCardsLabel: string;
@@ -18,39 +19,26 @@ interface DeckStatsPanelProps {
 const statLabelClass = "text-sm sm:text-base md:text-lg lg:text-2xl text-gray-500";
 const statValueClass = "text-sm sm:text-base md:text-lg lg:text-2xl font-bold text-gray-500";
 
-const formatDeckDate = (createdAt: Date) => {
-  const yy = String(createdAt.getFullYear()).slice(-2);
-  const mm = String(createdAt.getMonth() + 1).padStart(2, "0");
-  const dd = String(createdAt.getDate()).padStart(2, "0");
-  return `${yy}.${mm}.${dd}`;
-};
-
 export function DeckStatsPanel(props: DeckStatsPanelProps) {
   const rows = [
-    {
-      icon: Clock12,
-      label: props.createdDateLabel,
-      value: formatDeckDate(props.createdAt),
-      testId: undefined,
-    },
     { icon: Book, label: props.totalCardsLabel, value: props.totalCards, testId: "total-cards" },
     {
       icon: Brain,
       label: props.faintMemoryLabel,
-      value: `${props.faintMemoryPoints} points`,
+      value: `${props.faintMemoryPoints} ${props.faintMemoryUnitLabel}`,
       testId: "faint-memory",
       valueTestId: "faint-memory-points",
     },
     {
       icon: BookCopy,
       label: props.copiedCardsLabel,
-      value: props.copiedCards,
+      value: `${props.copiedCards} / ${props.maxCopiedCards}`,
       testId: "copied-cards",
     },
     {
       icon: BookX,
       label: props.removedCardsLabel,
-      value: props.removedCards,
+      value: `${props.removedCards} / ${props.maxRemovedCards}`,
       testId: "removed-cards",
     },
   ];

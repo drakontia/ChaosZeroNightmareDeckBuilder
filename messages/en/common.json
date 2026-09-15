@@ -124,13 +124,14 @@
     "sharePrompt": "Share URL",
     "title": "Deck",
     "totalCards": "Card Count",
+    "faintMemoryUnit": "pt",
     "copiedCards": "Copied",
     "removedCards": "Removed",
     "totalCost": "Total Cost",
     "removeLimitTitle": "Reached removal limit",
     "removeLimitMessage": "Removal is limited to 5 times. You cannot remove any more.",
     "copyLimitTitle": "Reached copy limit",
-    "copyLimitMessage": "Copying is limited to 4 times. You cannot copy any more.",
+    "copyLimitMessage": "Copying is limited to 3 times. You cannot copy any more.",
     "conversionLimitTitle": "Reached conversion limit",
     "conversionLimitMessage": "Conversion is limited to 5 times. You cannot convert any more."
   },
@@ -209,7 +210,8 @@
   },
   "mutationCore": {
     "title": "Mutation Core",
-    "select": "Select Mutation Core Effect",
+    "select": "Grant a random mutation effect to the save data",
+    "assignable": "Assignable",
     "noEffect": "No Effect",
     "categories": {
       "basic_stats": "Basic Stats Enhancement",

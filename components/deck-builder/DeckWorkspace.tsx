@@ -19,6 +19,13 @@ import type {
   Season4DesireStatus,
 } from "@/types";
 
+const formatDeckDate = (createdAt: Date) => {
+  const yy = String(createdAt.getFullYear()).slice(-2);
+  const mm = String(createdAt.getMonth() + 1).padStart(2, "0");
+  const dd = String(createdAt.getDate()).padStart(2, "0");
+  return `${yy}.${mm}.${dd}`;
+};
+
 interface DeckWorkspaceProps {
   deck: Deck;
   equipment: Equipment[];
@@ -29,11 +36,13 @@ interface DeckWorkspaceProps {
   shareLabel: string;
   exportLabel: string;
   clearLabel: string;
-  createdDateLabel: string;
   totalCardsLabel: string;
   faintMemoryLabel: string;
+  faintMemoryUnitLabel: string;
   copiedCardsLabel: string;
   removedCardsLabel: string;
+  maxCopiedCards: number;
+  maxRemovedCards: number;
   faintMemoryPoints: number;
   isSharing: boolean;
   isExporting: boolean;
@@ -86,6 +95,12 @@ export function DeckWorkspace(props: DeckWorkspaceProps) {
             className="text-base sm:text-lg md:text-xl lg:text-2xl h-12 font-bold"
             placeholder={props.deckNamePlaceholder}
           />
+          <span
+            data-testid="deck-created-date"
+            className="text-xs sm:text-sm md:text-base lg:text-lg text-gray-500 whitespace-nowrap"
+          >
+            {formatDeckDate(new Date(props.deck.createdAt))}
+          </span>
         </Field>
         <DeckBuilderToolbar
           disabled={!props.deck.character || props.isSharing}
@@ -107,26 +122,14 @@ export function DeckWorkspace(props: DeckWorkspaceProps) {
         <Card>
           <CardContent className="p-2 lg:p-4">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-4">
-              <CharacterSelector
-                characters={props.characters}
-                character={props.deck.character}
-                onSelect={props.onSelectCharacter}
-                onEgoLevelChange={props.onEgoLevelChange}
-                hasPotential={props.deck.hasPotential}
-                onTogglePotential={props.onTogglePotential}
-              />
               <div className="space-y-4">
-                <DeckStatsPanel
-                  createdAt={new Date(props.deck.createdAt)}
-                  totalCards={props.deck.cards.length}
-                  faintMemoryPoints={props.faintMemoryPoints}
-                  copiedCards={copiedTotal}
-                  removedCards={removedTotal}
-                  createdDateLabel={props.createdDateLabel}
-                  totalCardsLabel={props.totalCardsLabel}
-                  faintMemoryLabel={props.faintMemoryLabel}
-                  copiedCardsLabel={props.copiedCardsLabel}
-                  removedCardsLabel={props.removedCardsLabel}
+                <CharacterSelector
+                  characters={props.characters}
+                  character={props.deck.character}
+                  onSelect={props.onSelectCharacter}
+                  onEgoLevelChange={props.onEgoLevelChange}
+                  hasPotential={props.deck.hasPotential}
+                  onTogglePotential={props.onTogglePotential}
                 />
                 <EquipmentSelector
                   equipment={props.equipment}
@@ -135,6 +138,21 @@ export function DeckWorkspace(props: DeckWorkspaceProps) {
                   onRefinementChange={props.onEquipmentRefinementChange}
                   onGodHammerChange={props.onEquipmentGodHammerChange}
                   onEquipmentEngravingChange={props.onEquipmentEngravingChange}
+                />
+              </div>
+              <div className="space-y-4">
+                <DeckStatsPanel
+                  totalCards={props.deck.cards.length}
+                  faintMemoryPoints={props.faintMemoryPoints}
+                  faintMemoryUnitLabel={props.faintMemoryUnitLabel}
+                  copiedCards={copiedTotal}
+                  maxCopiedCards={props.maxCopiedCards}
+                  removedCards={removedTotal}
+                  maxRemovedCards={props.maxRemovedCards}
+                  totalCardsLabel={props.totalCardsLabel}
+                  faintMemoryLabel={props.faintMemoryLabel}
+                  copiedCardsLabel={props.copiedCardsLabel}
+                  removedCardsLabel={props.removedCardsLabel}
                 />
                 <MutationCoreSelector
                   selectedEffectId={props.deck.selectedMutationCoreId ?? null}
