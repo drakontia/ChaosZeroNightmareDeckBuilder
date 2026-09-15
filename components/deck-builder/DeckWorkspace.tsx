@@ -1,3 +1,5 @@
+import { Clock12 } from "lucide-react";
+
 import { CharacterSelector } from "@/components/CharacterSelector";
 import { DeckDisplay } from "@/components/DeckDisplay";
 import { EquipmentSelector } from "@/components/EquipmentSelector";
@@ -97,8 +99,9 @@ export function DeckWorkspace(props: DeckWorkspaceProps) {
           />
           <span
             data-testid="deck-created-date"
-            className="text-xs sm:text-sm md:text-base lg:text-lg text-gray-500 whitespace-nowrap"
+            className="text-xs sm:text-sm md:text-base lg:text-lg text-gray-500 whitespace-nowrap inline-flex items-center gap-1"
           >
+            <Clock12 className="size-3 sm:size-4 shrink-0" />
             {formatDeckDate(new Date(props.deck.createdAt))}
           </span>
         </Field>

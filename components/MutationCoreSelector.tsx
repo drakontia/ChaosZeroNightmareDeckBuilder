@@ -57,14 +57,14 @@ function MutationCorePreviewButton({
 
   if (!selectedEffect) {
     return (
-      <Button
+      <button
+        type="button"
         onClick={() => onOpenChange(true)}
-        variant="ghost"
-        className="w-full h-10 flex items-center justify-center gap-2 text-purple-700 dark:text-purple-300 hover:bg-purple-600/10"
+        className="w-full h-10 rounded-md border-2 border-purple-600 bg-purple-600/10 text-purple-700 dark:text-purple-300 flex items-center justify-start gap-2 px-4"
       >
-        <Virus className="w-4 h-4" />
-        <span className="text-sm font-semibold">{t("mutationCore.assignable")}</span>
-      </Button>
+        <Virus className="w-4 h-4 shrink-0" />
+        <span className="text-base font-semibold">{t("mutationCore.assignable")}</span>
+      </button>
     );
   }
 
@@ -75,18 +75,19 @@ function MutationCorePreviewButton({
 
   return (
     <div className="group relative w-full">
-      <Button
+      <button
+        type="button"
         onClick={() => onOpenChange(true)}
-        className="w-full h-10 flex items-center justify-center gap-2 bg-purple-900 text-white hover:bg-purple-800"
+        className="w-full h-10 rounded-md border-2 border-purple-600 bg-purple-600/10 text-purple-700 dark:text-purple-300 flex items-center justify-start gap-2 px-4 pr-8"
       >
-        <Virus className="w-4 h-4" />
-        <span className="text-sm font-semibold">{effectName}</span>
-      </Button>
+        <Virus className="w-4 h-4 shrink-0" />
+        <span className="text-base font-semibold truncate">{effectName}</span>
+      </button>
       <Popover>
         <PopoverTrigger asChild>
           <button
             type="button"
-            className="absolute right-2 top-1/2 -translate-y-1/2 text-white/80 hover:text-white"
+            className="absolute right-2 top-1/2 -translate-y-1/2 text-purple-700 dark:text-purple-300"
             onClick={(event) => event.stopPropagation()}
             aria-label="info"
           >

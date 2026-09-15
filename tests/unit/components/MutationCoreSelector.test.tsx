@@ -36,4 +36,22 @@ describe("MutationCoreSelector", () => {
 
     expect(screen.getByText("mutationCore.select")).toBeTruthy();
   });
+
+  it("未選択時のボタンは左寄せで薄い紫背景、ホバーによる色変化がない", () => {
+    render(<MutationCoreSelector selectedEffectId={null} onSelect={vi.fn()} />);
+
+    const button = screen.getByRole("button", { name: "mutationCore.assignable" });
+    expect(button.className).toContain("justify-start");
+    expect(button.className).toContain("bg-purple-600/10");
+    expect(button.className).not.toMatch(/hover:bg-/);
+  });
+
+  it("選択時のボタンは左寄せで薄い紫背景、ホバーによる色変化がない", () => {
+    render(<MutationCoreSelector selectedEffectId="attack_boost_lv1" onSelect={vi.fn()} />);
+
+    const button = screen.getByRole("button", { name: /攻撃力/ });
+    expect(button.className).toContain("justify-start");
+    expect(button.className).toContain("bg-purple-600/10");
+    expect(button.className).not.toMatch(/hover:bg-/);
+  });
 });

@@ -103,6 +103,7 @@ describe("DeckWorkspace", () => {
     const dateBadge = screen.getByTestId("deck-created-date");
     expect(dateBadge.textContent).toBe("24.05.06");
     expect(dateBadge.className).toContain("text-xs");
+    expect(dateBadge.querySelector("svg")).not.toBeNull();
   });
 
   it("獲得装備セレクターをキャラクターセレクターの直後に配置する", () => {
