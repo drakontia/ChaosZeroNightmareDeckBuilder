@@ -47,21 +47,24 @@ describe("MutationCoreSelector", () => {
     expect(button.className).not.toMatch(/hover:bg-/);
   });
 
-  it("選択時のボタンは左寄せで濃い紫背景、ホバーによる色変化がない", () => {
+  it("選択時のボタンは左寄せで濃い紫のグラデーション背景、ホバーによる色変化がない", () => {
     render(<MutationCoreSelector selectedEffectId="attack_boost_lv1" onSelect={vi.fn()} />);
 
     const button = screen.getByRole("button", { name: /攻撃力/ });
     expect(button.className).toContain("justify-start");
-    expect(button.className).toContain("bg-purple-600");
+    expect(button.className).toContain("bg-gradient-to-r");
+    expect(button.className).toContain("from-[#654066]");
+    expect(button.className).toContain("to-[#983786]");
     expect(button.className).not.toContain("bg-purple-600/10");
     expect(button.className).not.toMatch(/hover:bg-/);
   });
 
-  it("選択時のインフォメーションアイコンは白抜きになる", () => {
+  it("選択時のインフォメーションアイコンは白背景で表示され、iマークは背景と同色になる", () => {
     render(<MutationCoreSelector selectedEffectId="attack_boost_lv1" onSelect={vi.fn()} />);
 
     const infoButton = screen.getByRole("button", { name: "info" });
-    expect(infoButton.className).toContain("text-white");
+    expect(infoButton.className).toContain("bg-white");
+    expect(infoButton.className).toContain("text-[#654066]");
   });
 
   it("モーダル内に「効果なし」の選択肢を表示しない", () => {
