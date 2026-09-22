@@ -68,6 +68,27 @@ describe("useExportDeckImage", () => {
     expect(vi.mocked(htmlToImage.toPng)).not.toHaveBeenCalled();
   });
 
+  it("should load the image export dependency only for a valid export", async () => {
+    const { result } = renderHook(() => useExportDeckImage());
+    const ref: { current: HTMLDivElement | null } = { current: null };
+
+    await act(async () => {
+      await result.current.handleExportDeckImage(ref, "my-deck");
+    });
+
+    expect(vi.mocked(htmlToImage.toPng)).not.toHaveBeenCalled();
+
+    const mockDiv = document.createElement("div");
+    ref.current = mockDiv;
+    vi.spyOn(HTMLAnchorElement.prototype, "click").mockImplementation(() => {});
+
+    await act(async () => {
+      await result.current.handleExportDeckImage(ref, "my-deck");
+    });
+
+    expect(vi.mocked(htmlToImage.toPng)).toHaveBeenCalledWith(mockDiv, expect.any(Object));
+  });
+
   it("should handle toPng errors gracefully", async () => {
     const { result } = renderHook(() => useExportDeckImage());
     vi.mocked(htmlToImage.toPng).mockRejectedValue(new Error("Export failed"));
