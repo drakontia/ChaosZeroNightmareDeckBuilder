@@ -65,3 +65,31 @@ export const normalizeSeason4SelectedStatuses = (
   const third = filtered[2] ?? second;
   return [first, second, third];
 };
+
+// 欲望カード専用のステータス表示仕様:
+// 同じステータスが複数選択された場合は初出順にまとめ、件数が2以上のときのみ
+// ラベルの末尾に件数を付与する（1つだけの場合は数字を付けない）。
+// 例: [探求, 探求, 探求] -> ["探求3"], [探求, 探求, 所有] -> ["探求2", "所有"]
+export const formatSeason4DesireStatusLabels = (
+  statuses: readonly CardStatus[],
+  translate: (status: CardStatus) => string,
+): string[] => {
+  const order: CardStatus[] = [];
+  const counts = new Map<CardStatus, number>();
+
+  for (const status of statuses) {
+    const count = counts.get(status);
+    if (count === undefined) {
+      order.push(status);
+      counts.set(status, 1);
+    } else {
+      counts.set(status, count + 1);
+    }
+  }
+
+  return order.map((status) => {
+    const count = counts.get(status) ?? 1;
+    const label = translate(status);
+    return count > 1 ? `${label}${count}` : label;
+  });
+};
