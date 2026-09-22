@@ -20,7 +20,7 @@ import { Card } from "./ui/card";
 import { getCardInfo, sortDeckCards } from "@/lib/deck-utils";
 import { GOD_HIRAMEKI_EFFECTS } from "@/lib/god-hirameki";
 import { HIDDEN_HIRAMEKI_EFFECTS } from "@/lib/hidden-hirameki";
-import { isSeason4Card } from "@/lib/season4";
+import { formatSeason4DesireStatusLabels, isSeason4Card } from "@/lib/season4";
 
 interface DeckDisplayProps {
   cards: DeckCard[];
@@ -180,7 +180,11 @@ export function DeckDisplay({
               godEffectFallback={hasPersonaEngravings ? undefined : godEffectFallback}
               hiddenEffectId={hasPersonaEngravings ? undefined : hiddenEffectId}
               hiddenEffectFallback={hasPersonaEngravings ? undefined : hiddenEffectFallback}
-              statuses={displayStatuses.map((s) => t(`status.${s}`))}
+              statuses={
+                isSeason4
+                  ? formatSeason4DesireStatusLabels(displayStatuses, (s) => t(`status.${s}`))
+                  : displayStatuses.map((s) => t(`status.${s}`))
+              }
               isCopied={card.isCopied}
               grade={card.grade}
               leftControls={leftControls}

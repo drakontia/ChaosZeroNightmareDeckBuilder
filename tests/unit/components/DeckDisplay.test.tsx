@@ -277,6 +277,55 @@ describe("DeckDisplay - Copied Card Feature", () => {
     expect(lastProps.levelLabel).toBeUndefined();
   });
 
+  it("collapses duplicate season4 desire statuses into a single label with a count (issue #167)", () => {
+    // traitors_execution has base status CONTROL and no explicit selectedSeasonStatuses,
+    // so at level 3 all three slots default to CONTROL.
+    const season4Card = createMockCard({
+      id: "traitors_execution",
+      deckId: "d-season4-duplicate-status",
+      type: CardType.FORBIDDEN,
+      selectedSeasonLevel: 3,
+      statuses: [CardStatus.CONTROL],
+      hiramekiVariations: [{ level: 0, cost: 2, description: "Lv1", statuses: [] }],
+      seasonLevelVariations: [
+        { level: 1, cost: 2, description: "Lv1" },
+        { level: 2, cost: 2, description: "Lv2" },
+        { level: 3, cost: 2, description: "Lv3" },
+      ],
+    });
+
+    renderWithIntl(
+      <DeckDisplay cards={[season4Card]} egoLevel={0} hasPotential={false} {...mockHandlers} />,
+    );
+
+    const lastProps = cardFrameProps[cardFrameProps.length - 1];
+    expect(lastProps.statuses).toEqual(["Control3"]);
+  });
+
+  it("collapses two identical season4 desire statuses followed by a distinct one", () => {
+    const season4Card = createMockCard({
+      id: "traitors_execution",
+      deckId: "d-season4-mixed-status",
+      type: CardType.FORBIDDEN,
+      selectedSeasonLevel: 3,
+      statuses: [CardStatus.CONTROL],
+      selectedSeasonStatuses: [CardStatus.INQUIRY, CardStatus.INQUIRY, CardStatus.CLAIM],
+      hiramekiVariations: [{ level: 0, cost: 2, description: "Lv1", statuses: [] }],
+      seasonLevelVariations: [
+        { level: 1, cost: 2, description: "Lv1" },
+        { level: 2, cost: 2, description: "Lv2" },
+        { level: 3, cost: 2, description: "Lv3" },
+      ],
+    });
+
+    renderWithIntl(
+      <DeckDisplay cards={[season4Card]} egoLevel={0} hasPotential={false} {...mockHandlers} />,
+    );
+
+    const lastProps = cardFrameProps[cardFrameProps.length - 1];
+    expect(lastProps.statuses).toEqual(["Inquiry2", "Claim"]);
+  });
+
   it("does NOT show HiramekiControls for character cards with only base variation", () => {
     const charBase: DeckCard = createMockCard({
       deckId: "d-char-base",
