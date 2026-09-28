@@ -1,7 +1,10 @@
+"use client";
+
 import * as React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
+import { Button as ButtonPrimitive } from "@base-ui/react/button";
+import { useRender } from "@base-ui/react/use-render";
 
-import { Slot } from "@/components/ui/slot";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
@@ -36,11 +39,31 @@ export interface ButtonProps
   asChild?: boolean;
 }
 
+type ButtonAsChildProps = Omit<ButtonProps, "asChild" | "children" | "size" | "variant"> & {
+  render: React.ReactElement;
+};
+
+const ButtonAsChild = React.forwardRef<HTMLButtonElement, ButtonAsChildProps>(
+  ({ render, ...props }, ref) => useRender({ render, ref, props }),
+);
+ButtonAsChild.displayName = "ButtonAsChild";
+
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant, size, asChild = false, ...props }, ref) => {
-    const Comp = asChild ? Slot : "button";
+  ({ className, variant, size, asChild = false, children, ...props }, ref) => {
+    const renderChild = asChild && React.isValidElement(children);
+    const buttonClassName = cn(buttonVariants({ variant, size, className }));
+
+    if (asChild && React.isValidElement(children) && children.type !== "button") {
+      return <ButtonAsChild {...props} ref={ref} className={buttonClassName} render={children} />;
+    }
+
     return (
-      <Comp className={cn(buttonVariants({ variant, size, className }))} ref={ref} {...props} />
+      <ButtonPrimitive
+        {...props}
+        ref={ref}
+        className={buttonClassName}
+        {...(renderChild ? { render: children } : { children })}
+      />
     );
   },
 );
