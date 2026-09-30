@@ -12,6 +12,148 @@ import { CznCard, CardType, CardCategory, CardStatus } from "@/types";
  */
 export const CHARACTER_CARDS: CznCard[] = (
   [
+    // Anika's cards (temporary implementation)
+    {
+      id: "anika_starting_1",
+      name: "ブラスタースイング",
+      type: CardType.CHARACTER,
+      category: CardCategory.ATTACK,
+      statuses: [],
+      isBasicCard: true,
+      isStartingCard: true,
+      imgUrl: "/images/cards/anika_starting_1.png", // TODO: アニカ画像追加
+      hiramekiVariations: [{ level: 0, cost: 1, description: "ダメージ100%" }],
+    },
+    {
+      id: "anika_starting_2",
+      name: "ブラスタースイング",
+      type: CardType.CHARACTER,
+      category: CardCategory.ATTACK,
+      statuses: [],
+      isBasicCard: true,
+      isStartingCard: true,
+      imgUrl: "/images/cards/anika_starting_1.png", // TODO: アニカ画像追加
+      hiramekiVariations: [{ level: 0, cost: 1, description: "ダメージ100%" }],
+    },
+    {
+      id: "anika_starting_3",
+      name: "ポジションホールド",
+      type: CardType.CHARACTER,
+      category: CardCategory.SKILL,
+      statuses: [],
+      isBasicCard: true,
+      isStartingCard: true,
+      imgUrl: "/images/cards/anika_starting_3.png", // TODO: アニカ画像追加
+      hiramekiVariations: [{ level: 0, cost: 1, description: "シールド100%" }],
+    },
+    {
+      id: "anika_starting_4",
+      name: "イグニッションスラッシュ",
+      type: CardType.CHARACTER,
+      category: CardCategory.ATTACK,
+      statuses: [CardStatus.LEAD],
+      isBasicCard: false,
+      isStartingCard: true,
+      imgUrl: "/images/cards/anika_starting_4.png", // TODO: アニカ画像追加
+      hiramekiVariations: [
+        { level: 0, cost: 2, description: "ダメージ400%\n強靱度ダメージ2\n効率：アクションポイント1獲得", statuses: [CardStatus.LEAD] },
+        {
+          level: 1,
+          cost: 2,
+          description: "ダメージ550%\n強靱度ダメージ2\n効率：アクションポイント1獲得",
+          statuses: [CardStatus.LEAD, CardStatus.WEAKNESS_ATTACK],
+        },
+        {
+          level: 2,
+          cost: 2,
+          description: "ダメージ450%\n強靱度ダメージ2\n大破：アクションポイント2獲得",
+          statuses: [CardStatus.LEAD],
+        },
+        {
+          level: 3,
+          cost: 3,
+          description: "ダメージ500%\n強靱度ダメージ2\nすべての主導カード数に応じてダメージ量+80%",
+          statuses: [CardStatus.LEAD],
+        },
+        {
+          level: 4,
+          cost: 2,
+          description: "ダメージ400%\nアクションポイント1獲得\n効率：コスト2以上のカードドロー1、そのカード1ターンの間、保存",
+          statuses: [CardStatus.LEAD, CardStatus.RETAIN],
+        },
+        {
+          level: 5,
+          cost: 1,
+          description: "基本攻撃カード発動時、対象に挟み撃ち100%\n強靱度ダメージ1",
+          statuses: [CardStatus.UNIQUE, CardStatus.INITIATION],
+        },
+      ],
+    },
+    {
+      id: "anika_hirameki_1",
+      name: "ショックガン",
+      type: CardType.CHARACTER,
+      category: CardCategory.ATTACK,
+      statuses: [CardStatus.BULLET, CardStatus.LEAD],
+      isBasicCard: false,
+      isStartingCard: false,
+      imgUrl: "/images/cards/anika_hirameki_1.png", // TODO: アニカ画像追加
+      hiramekiVariations: [
+        { level: 0, cost: 1, description: "ダメージ150%\nショックウェーブ1\n効率：強靱度ダメージ1", statuses: [CardStatus.BULLET, CardStatus.LEAD] },
+        { level: 1, cost: 1, description: "ダメージ220%\nショックウェーブ1\n効率：強靱度ダメージ2", statuses: [CardStatus.BULLET, CardStatus.LEAD] },
+        { level: 2, cost: 2, description: "敵全体にダメージ200%\nショックウェーブ1\n効率：強靱度ダメージ1", statuses: [CardStatus.BULLET, CardStatus.LEAD] },
+        { level: 3, cost: 1, description: "ダメージ150%\nショックウェーブ1\n強靱度ダメージ2", statuses: [CardStatus.BULLET, CardStatus.COMBO] },
+        { level: 4, cost: 2, description: "ショックウェーブ3", statuses: [CardStatus.LEAD, CardStatus.EXHAUST] },
+        { level: 5, cost: 1, description: "ダメージ200%\n効率：手札にあるすべての弾丸カードがそれぞれ50%の確率で1ターンの間、発動時までコスト1減少", statuses: [CardStatus.BULLET, CardStatus.LEAD] },
+      ],
+    },
+    {
+      id: "anika_hirameki_2",
+      name: "リロード",
+      type: CardType.CHARACTER,
+      category: CardCategory.SKILL,
+      statuses: [CardStatus.FINALE],
+      isBasicCard: false,
+      isStartingCard: false,
+      imgUrl: "/images/cards/anika_hirameki_2.png", // TODO: アニカ画像追加
+      hiramekiVariations: [
+        { level: 0, cost: 0, description: "次のターン開始時、主導カードドロー2", statuses: [CardStatus.FINALE] },
+        { level: 1, cost: 0, description: "次のターン開始時、自分の主導カードドロー2\nそのカード1ターンの間、発動時までコスト1減少", statuses: [CardStatus.FINALE] },
+        { level: 2, cost: 1, description: "ターン終了時、手札の主導カード1枚につき次のターン、主導カードドロー", statuses: [CardStatus.FINALE] },
+        { level: 3, cost: 0, description: "次のターン開始時、主導カードドロー1\n大破時、手札に移動", statuses: [CardStatus.FINALE] },
+        { level: 4, cost: 0, description: "次のターン開始時、自分のカードドロー5\n1ターンの間、手札封鎖", statuses: [CardStatus.FINALE] },
+        { level: 5, cost: 0, description: "次のターン開始時、自分のカードドロー5\n1ターンの間、手札封鎖", statuses: [CardStatus.FINALE] },
+      ],
+    },
+    {
+      id: "anika_hirameki_3",
+      name: "ウォーミングアップ",
+      type: CardType.CHARACTER,
+      category: CardCategory.UPGRADE,
+      statuses: [CardStatus.LEAD, CardStatus.RETAIN],
+      isBasicCard: false,
+      isStartingCard: false,
+      imgUrl: "/images/cards/anika_hirameki_3.png", // TODO: アニカ画像追加
+      hiramekiVariations: [
+        { level: 0, cost: 1, description: "1ターンの間、次に発動する自分のカードコスト1減少\n効率：自分の主導攻撃カードドロー1", statuses: [CardStatus.LEAD, CardStatus.RETAIN] },
+        { level: 1, cost: 1, description: "1ターンの間、次に発動する自分のカードコスト2減少\n効率：自分の主導攻撃カードドロー1", statuses: [CardStatus.LEAD, CardStatus.RETAIN] },
+        { level: 2, cost: 1, description: "1ターンの間、次に発動する自分の基本コスト2以上の攻撃カードダメージ量50%増加\n効率：効果2倍適用", statuses: [CardStatus.LEAD, CardStatus.RETAIN] },
+        { level: 3, cost: 1, description: "1ターンの間、次に発動する自分のカードコスト1減少\n保存：自分の主導カードドロー1", statuses: [CardStatus.LEAD, CardStatus.RETAIN] },
+        { level: 4, cost: 2, description: "手札の自分の攻撃カード数に応じて攻撃カードダメージ量25%増加\n効率：手札の自分の攻撃カード1ターンの間、コスト1減少", statuses: [CardStatus.LEAD, CardStatus.RETAIN] },
+        { level: 5, cost: 1, description: "味方がそれぞれ1ターンの間、次に発動する主導カードコスト1減少", statuses: [CardStatus.UNIQUE, CardStatus.LEAD] },
+      ],
+    },
+    {
+      id: "anika_hirameki_4",
+      name: "ランページトリガー",
+      type: CardType.CHARACTER,
+      category: CardCategory.ATTACK,
+      statuses: [CardStatus.WEAKNESS_ATTACK],
+      isBasicCard: true,
+      isStartingCard: false,
+      imgUrl: "/images/cards/anika_hirameki_4.png", // TODO: アニカ画像追加
+      hiramekiVariations: [{ level: 0, cost: 2, description: "ダメージ100%×4\n破壊：ダメージ量+100%", statuses: [CardStatus.WEAKNESS_ATTACK] }],
+    },
     // Olga's starting cards (temporary implementation)
     {
       id: "olga_starting_1",
