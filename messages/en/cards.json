@@ -1,5 +1,48 @@
 {
   "cards": {
+    "anika_starting_1": {"name": "Blaster Swing", "descriptions": {"0": "100% Damage"}},
+    "anika_starting_2": {"name": "Blaster Swing", "descriptions": {"0": "100% Damage"}},
+    "anika_starting_3": {"name": "Position Hold", "descriptions": {"0": "100% Shield"}},
+    "anika_starting_4": {"name": "Ignition Slash", "descriptions": {
+      "0": "400% Damage\n2 Toughness Damage\nEfficiency: Gain 1 Action Point",
+      "1": "550% Damage\n2 Toughness Damage\nEfficiency: Gain 1 Action Point",
+      "2": "450% Damage\n2 Toughness Damage\nPulverize: Gain 2 Action Points",
+      "3": "500% Damage\n2 Toughness Damage\nDamage +80% for each Lead card",
+      "4": "400% Damage\nGain 1 Action Point\nEfficiency: Draw 1 card costing 2 or more and retain it for 1 turn",
+      "5": "When a Basic Attack is activated, deal 100% Pincer damage to the target\n1 Toughness Damage"
+    }},
+    "anika_hirameki_1": {"name": "Shock Gun", "descriptions": {
+      "0": "150% Damage\nShockwave 1\nEfficiency: 1 Toughness Damage",
+      "1": "220% Damage\nShockwave 1\nEfficiency: 2 Toughness Damage",
+      "2": "200% Damage to all enemies\nShockwave 1\nEfficiency: 1 Toughness Damage",
+      "3": "150% Damage\nShockwave 1\n2 Toughness Damage",
+      "4": "Shockwave 3",
+      "5": "200% Damage\nEfficiency: Each Bullet card in hand has a 50% chance to cost 1 less until activated for 1 turn"
+    }},
+    "anika_hirameki_2": {"name": "Reload", "descriptions": {
+      "0": "At the start of next turn, draw 2 Lead cards",
+      "1": "At the start of next turn, draw 2 of your Lead cards; they cost 1 less until activated for 1 turn",
+      "2": "At the end of turn, draw 1 Lead card next turn for each Lead card in hand",
+      "3": "At the start of next turn, draw 1 Lead card\nMove this card to hand when Pulverized",
+      "4": "At the start of next turn, draw 5 cards\nSeal hand for 1 turn",
+      "5": "At the start of next turn, draw 5 cards\nSeal hand for 1 turn"
+    }},
+    "anika_hirameki_3": {"name": "Warming Up", "descriptions": {
+      "0": "For 1 turn, your next card costs 1 less\nEfficiency: Draw 1 of your Lead Attack cards",
+      "1": "For 1 turn, your next card costs 2 less\nEfficiency: Draw 1 of your Lead Attack cards",
+      "2": "For 1 turn, your Basic Attack cards costing 2 or more deal 50% more damage\nEfficiency: Apply the effect twice",
+      "3": "For 1 turn, your next card costs 1 less\nDraw 1 Lead card",
+      "4": "Attack damage increases by 25% for each of your Attack cards in hand\nEfficiency: Your Attack cards in hand cost 1 less for 1 turn",
+      "5": "Each ally's next Lead card costs 1 less for 1 turn"
+    }},
+    "anika_hirameki_4": {"name": "Rampage Trigger", "descriptions": {
+      "0": "100% Damage ×4\nPulverize: Damage +100%",
+      "1": "100% Damage ×4\nPulverize: Damage +100%",
+      "2": "100% Damage ×4\nPulverize: Damage +100%",
+      "3": "100% Damage ×4\nPulverize: Damage +100%",
+      "4": "100% Damage ×4\nPulverize: Damage +100%",
+      "5": "100% Damage ×4\nPulverize: Damage +100%"
+    }},
     "olga_starting_1": {
       "name": "Reaping Slash",
       "descriptions": { "0": "100% Damage" }
