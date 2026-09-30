@@ -1,7 +1,18 @@
 import { describe, it, expect, beforeEach, vi, afterEach } from "vite-plus/test";
 import { renderHook, act } from "@testing-library/react";
 import { useExportDeckImage } from "@/hooks/useExportDeckImage";
-import * as htmlToImage from "html-to-image";
+
+const { htmlToImageModuleLoaded, mockToPng, getHtmlToImageModuleLoadState } =
+  vi.hoisted(() => {
+    let loaded = false;
+    return {
+      htmlToImageModuleLoaded: vi.fn(() => {
+        loaded = true;
+      }),
+      mockToPng: vi.fn(),
+      getHtmlToImageModuleLoadState: () => loaded,
+    };
+  });
 
 // Mock next-intl
 vi.mock("next-intl", () => ({
@@ -9,9 +20,10 @@ vi.mock("next-intl", () => ({
 }));
 
 // Mock html-to-image
-vi.mock("html-to-image", () => ({
-  toPng: vi.fn(),
-}));
+vi.mock("html-to-image", () => {
+  htmlToImageModuleLoaded();
+  return { toPng: mockToPng };
+});
 
 describe("useExportDeckImage", () => {
   let mockAlertSpy: any;
@@ -23,7 +35,7 @@ describe("useExportDeckImage", () => {
     mockConsoleSpy = vi.spyOn(console, "error").mockImplementation(() => {});
 
     // Mock successful image export
-    vi.mocked(htmlToImage.toPng).mockResolvedValue("data:image/png;base64,test");
+    mockToPng.mockResolvedValue("data:image/png;base64,test");
   });
 
   afterEach(() => {
@@ -34,6 +46,17 @@ describe("useExportDeckImage", () => {
   it("should initialize with isExporting false", () => {
     const { result } = renderHook(() => useExportDeckImage());
     expect(result.current.isExporting).toBe(false);
+  });
+
+  it("should defer loading the image export library until an export is requested", async () => {
+    const { result } = renderHook(() => useExportDeckImage());
+    expect(getHtmlToImageModuleLoadState()).toBe(false);
+
+    await act(async () => {
+      await result.current.handleExportDeckImage({ current: null }, "my-deck");
+    });
+
+    expect(getHtmlToImageModuleLoadState()).toBe(false);
   });
 
   it("should export deck image and trigger download", async () => {
@@ -50,7 +73,8 @@ describe("useExportDeckImage", () => {
       await result.current.handleExportDeckImage(ref, "my-deck");
     });
 
-    expect(vi.mocked(htmlToImage.toPng)).toHaveBeenCalledWith(mockDiv, expect.any(Object));
+    expect(htmlToImageModuleLoaded).toHaveBeenCalled();
+    expect(mockToPng).toHaveBeenCalledWith(mockDiv, expect.any(Object));
     expect(clickSpy).toHaveBeenCalled();
 
     clickSpy.mockRestore();
@@ -65,12 +89,12 @@ describe("useExportDeckImage", () => {
     });
 
     // Should not call toPng if ref is null
-    expect(vi.mocked(htmlToImage.toPng)).not.toHaveBeenCalled();
+    expect(mockToPng).not.toHaveBeenCalled();
   });
 
   it("should handle toPng errors gracefully", async () => {
     const { result } = renderHook(() => useExportDeckImage());
-    vi.mocked(htmlToImage.toPng).mockRejectedValue(new Error("Export failed"));
+    mockToPng.mockRejectedValue(new Error("Export failed"));
 
     const mockDiv = document.createElement("div");
     const ref = { current: mockDiv };
@@ -99,7 +123,7 @@ describe("useExportDeckImage", () => {
     });
 
     // Image should be temporarily replaced with placeholder
-    expect(vi.mocked(htmlToImage.toPng)).toHaveBeenCalled();
+    expect(mockToPng).toHaveBeenCalled();
   });
 
   it.skip("should prevent duplicate exports", async () => {
@@ -118,7 +142,7 @@ describe("useExportDeckImage", () => {
       await result.current.handleExportDeckImage(ref, "my-deck");
     });
 
-    const callArgs = vi.mocked(htmlToImage.toPng).mock.calls[0];
+    const callArgs = mockToPng.mock.calls[0];
     expect(callArgs[1]).toHaveProperty("pixelRatio");
     expect(callArgs[1]?.pixelRatio).toBeLessThanOrEqual(3);
   });

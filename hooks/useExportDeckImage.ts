@@ -2,7 +2,6 @@
 
 import { useCallback, useState } from "react";
 import { useTranslations } from "next-intl";
-import { toPng } from "html-to-image";
 
 export function useExportDeckImage() {
   const t = useTranslations();
@@ -42,6 +41,7 @@ export function useExportDeckImage() {
         });
 
         const pixelRatio = Math.min(window.devicePixelRatio || 2, 3);
+        const { toPng } = await import("html-to-image");
         const dataUrl = await toPng(node, {
           cacheBust: true,
           pixelRatio,
