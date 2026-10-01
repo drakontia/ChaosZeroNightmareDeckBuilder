@@ -2305,27 +2305,27 @@ export const CHARACTER_CARDS: CznCard[] = (
       imgUrl: "/images/cards/sereniel_starting_4.png",
       hiramekiVariations: [
         // Fallback descriptions
-        { level: 0, cost: 0, description: "ダメージ100%\n残光2\n大破時、墓地から手札に移動" },
+        { level: 0, cost: 0, description: "ダメージ120%\n残光2\n大破時、墓地から手札に移動" },
         {
           level: 1,
           cost: 0,
-          description: "ダメージ150%\n大破時、墓地から手札に移動\n破壊：ヒット数1回追加",
+          description: "ダメージ180%\n大破時、墓地から手札に移動\n破壊：ヒット数1回追加",
         },
-        { level: 2, cost: 0, description: "ダメージ150%\n残光3\n大破時、手札に移動" },
+        { level: 2, cost: 0, description: "ダメージ180%\n残光3\n大破時、手札に移動" },
         {
           level: 3,
           cost: 1,
-          description: "ダメージ150%\n残光2\n捨て札にホーミングレーザーL2枚作成",
+          description: "ダメージ225%\n残光2\n捨て札にホーミングレーザーL2枚作成",
         },
         {
           level: 4,
           cost: 0,
-          description: "ダメージ100%\n残光1\n大破時またはターン開始時、手札に移動",
+          description: "ダメージ120%\n残光1\n大破時またはターン開始時、手札に移動",
         },
         {
           level: 5,
           cost: 0,
-          description: "ダメージ150%\n残光2\n墓地のホーミングレーザーL手札に移動",
+          description: "ダメージ180%\n残光2\n墓地のすべてのホーミングレーザーLを手札に移動",
         },
       ],
     },
@@ -2352,7 +2352,7 @@ export const CHARACTER_CARDS: CznCard[] = (
         {
           level: 2,
           cost: 1,
-          description: "ダメージ180%\n対象の減少した強靱度の数に応じて、ダメージ量+60%\n(最大10)",
+          description: "ダメージ180%\n対象の減少した強靱度の数に応じて、基本ダメージ量+60%\n(最大10)",
         },
         {
           level: 3,
@@ -2410,37 +2410,37 @@ export const CHARACTER_CARDS: CznCard[] = (
         {
           level: 0,
           cost: 3,
-          description: "ランダムな敵にダメージ120%x4\nヒットごとに強靱度ダメージ1",
+          description: "ランダムな敵にダメージ140%x4\nヒットごとに強靱度ダメージ1",
         },
         {
           level: 1,
           cost: 3,
           description:
-            "ランダムな敵にダメージ180%x4\nヒットごとに強靱度ダメージ1\n大破：コスト1減小",
+            "ランダムな敵にダメージ210%x4\nヒットごとに強靱度ダメージ1\n大破：コスト1減少",
         },
         {
           level: 2,
           cost: 3,
           description:
-            "ランダムな敵にダメージ120%x4\nヒットごとに強靱度ダメージ1\n保存：使用時まで、ヒット数1回追加\n(最大5回)",
+            "ランダムな敵にダメージ140%x4\nヒットごとに強靱度ダメージ1\n保存：発動時まで、ヒット数1回追加\n(最大5回)",
           statuses: [CardStatus.RETAIN],
         },
         {
           level: 3,
           cost: 2,
           description:
-            "ランダムな敵にダメージ120%x4\nヒットした対象の数に応じて、ホーミングレーザーL1枚生成",
+            "ランダムな敵にダメージ140%x4\nヒットした対象の数に応じて、ホーミングレーザーL1枚生成",
         },
         {
           level: 4,
           cost: 1,
           description:
-            "ランダムな敵にダメージ120%\n手札のホーミングレーザー数に応じて、ヒット数1回追加",
+            "ランダムな敵にダメージ140%\n手札のホーミングレーザー数に応じて、ヒット数1回追加",
         },
         {
           level: 5,
           cost: 3,
-          description: "ダメージ120%x4\n大破：もう1回発動",
+          description: "ダメージ140%x4\n大破：もう1回発動",
           statuses: [CardStatus.WEAKNESS_ATTACK],
         },
       ],
