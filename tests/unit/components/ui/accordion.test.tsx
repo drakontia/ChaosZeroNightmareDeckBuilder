@@ -151,4 +151,94 @@ describe("Accordion", () => {
     expect(secondTrigger.getAttribute("aria-expanded")).toBe("true");
     expect(screen.getAllByRole("region")).toHaveLength(2);
   });
+
+  it.each([
+    { orientation: "vertical" as const, dir: "ltr", nextKey: "ArrowDown", previousKey: "ArrowUp" },
+    {
+      orientation: "horizontal" as const,
+      dir: "ltr",
+      nextKey: "ArrowRight",
+      previousKey: "ArrowLeft",
+    },
+    {
+      orientation: "horizontal" as const,
+      dir: "rtl",
+      nextKey: "ArrowLeft",
+      previousKey: "ArrowRight",
+    },
+  ])(
+    "navigates $orientation items in $dir order with wrapping, Home and End",
+    ({ orientation, dir, nextKey, previousKey }) => {
+      render(
+        <Accordion type="multiple" orientation={orientation} dir={dir}>
+          <AccordionItem value="first">
+            <AccordionTrigger>First</AccordionTrigger>
+          </AccordionItem>
+          <AccordionItem value="disabled" disabled>
+            <AccordionTrigger>Disabled</AccordionTrigger>
+          </AccordionItem>
+          <AccordionItem value="last">
+            <AccordionTrigger>Last</AccordionTrigger>
+          </AccordionItem>
+        </Accordion>,
+      );
+
+      const first = screen.getByRole("button", { name: "First" });
+      const last = screen.getByRole("button", { name: "Last" });
+      first.focus();
+      fireEvent.keyDown(first, { key: nextKey });
+      expect(document.activeElement).toBe(last);
+      fireEvent.keyDown(last, { key: nextKey });
+      expect(document.activeElement).toBe(first);
+      fireEvent.keyDown(first, { key: previousKey });
+      expect(document.activeElement).toBe(last);
+      fireEvent.keyDown(last, { key: "Home" });
+      expect(document.activeElement).toBe(first);
+      fireEvent.keyDown(first, { key: "End" });
+      expect(document.activeElement).toBe(last);
+      fireEvent.keyDown(last, { key: "a" });
+      expect(document.activeElement).toBe(last);
+    },
+  );
+
+  it("respects a caller preventing keyboard navigation", () => {
+    const onKeyDown = vi.fn((event: React.KeyboardEvent<HTMLButtonElement>) => {
+      event.preventDefault();
+    });
+    render(
+      <Accordion type="multiple">
+        <AccordionItem value="first">
+          <AccordionTrigger onKeyDown={onKeyDown}>First</AccordionTrigger>
+        </AccordionItem>
+        <AccordionItem value="second">
+          <AccordionTrigger>Second</AccordionTrigger>
+        </AccordionItem>
+      </Accordion>,
+    );
+    const first = screen.getByRole("button", { name: "First" });
+    first.focus();
+    fireEvent.keyDown(first, { key: "ArrowDown" });
+    expect(onKeyDown).toHaveBeenCalledOnce();
+    expect(document.activeElement).toBe(first);
+  });
+
+  it("supports an empty controlled single value and mounted closed content", () => {
+    const onValueChange = vi.fn();
+    render(
+      <Accordion type="single" value="" collapsible onValueChange={onValueChange}>
+        <AccordionItem value="first">
+          <AccordionTrigger>First</AccordionTrigger>
+          <AccordionContent forceMount>First panel</AccordionContent>
+        </AccordionItem>
+      </Accordion>,
+    );
+    const trigger = screen.getByRole("button", { name: "First" });
+    expect(trigger.getAttribute("aria-expanded")).toBe("false");
+    expect(screen.getByText("First panel").parentElement?.getAttribute("data-state")).toBe(
+      "closed",
+    );
+    fireEvent.click(trigger);
+    expect(onValueChange).toHaveBeenCalledWith("first");
+    expect(trigger.getAttribute("aria-expanded")).toBe("false");
+  });
 });
