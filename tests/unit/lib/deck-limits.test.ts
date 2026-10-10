@@ -1,4 +1,4 @@
-import { describe, expect, it } from "vitest";
+import { describe, expect, it } from "vite-plus/test";
 
 import { MAX_COPY_COUNT, MAX_REMOVAL_AND_CONVERSION_COUNT } from "@/lib/deck-limits";
 

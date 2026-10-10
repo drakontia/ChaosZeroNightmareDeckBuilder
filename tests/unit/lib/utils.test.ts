@@ -1,4 +1,4 @@
-import { describe, expect, it } from "vitest";
+import { describe, expect, it } from "vite-plus/test";
 
 import { cn } from "@/lib/utils";
 
@@ -8,15 +8,11 @@ describe("cn", () => {
   });
 
   it("falsyな値を無視する", () => {
-    expect(cn("px-2", false && "py-1", null, undefined, "text-white")).toBe(
-      "px-2 text-white",
-    );
+    expect(cn("px-2", false && "py-1", null, undefined, "text-white")).toBe("px-2 text-white");
   });
 
   it("オブジェクト形式の条件付きクラスを扱える", () => {
-    expect(cn("px-2", { "bg-blue-500": true, "bg-red-500": false })).toBe(
-      "px-2 bg-blue-500",
-    );
+    expect(cn("px-2", { "bg-blue-500": true, "bg-red-500": false })).toBe("px-2 bg-blue-500");
   });
 
   it("競合するTailwindクラスを後勝ちでマージする", () => {
