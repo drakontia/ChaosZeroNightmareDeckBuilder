@@ -242,7 +242,7 @@ export const CHARACTER_CARDS: CznCard[] = (
       statuses: [],
       isBasicCard: true,
       isStartingCard: true,
-      imgUrl: "/images/cards/anika_starting_1.png", // TODO: アニカ画像追加
+      imgUrl: "/images/cards/anika_starting_2.png", // TODO: アニカ画像追加
       hiramekiVariations: [{ level: 0, cost: 1, description: "ダメージ100%" }],
     },
     {
