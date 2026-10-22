@@ -31,7 +31,7 @@ export const CHARACTER_CARDS: CznCard[] = (
       statuses: [],
       isBasicCard: true,
       isStartingCard: true,
-      imgUrl: "/images/cards/rossweisse_starting_2.png", // TODO: ロスヴァイセのカード画像追加
+      imgUrl: "/images/cards/rossweisse_starting_1.png", // TODO: ロスヴァイセのカード画像追加
       hiramekiVariations: [{ level: 0, cost: 1, description: "ダメージ100%" }],
     },
     {
