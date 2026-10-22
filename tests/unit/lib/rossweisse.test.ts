@@ -91,17 +91,17 @@ describe("Rossweisse character", () => {
 
   describe("starting cards", () => {
     it.each([
-      "rossweisse_starting_1",
-      "rossweisse_starting_2",
-      "rossweisse_starting_3",
-      "rossweisse_starting_4",
-    ])("%s is registered as a starting character card", (id) => {
+      ["rossweisse_starting_1", "rossweisse_starting_1"],
+      ["rossweisse_starting_2", "rossweisse_starting_1"],
+      ["rossweisse_starting_3", "rossweisse_starting_3"],
+      ["rossweisse_starting_4", "rossweisse_starting_4"],
+    ])("%s is registered as a starting character card", (id, imageId) => {
       const card = CHARACTER_CARDS.find((entry) => entry.id === id);
 
       expect(card).toBeDefined();
       expect(card?.type).toBe(CardType.CHARACTER);
       expect(card?.isStartingCard).toBe(true);
-      expect(card?.imgUrl).toBe(`/images/cards/character/${id}.png`);
+      expect(card?.imgUrl).toBe(`/images/cards/character/${imageId}.png`);
     });
 
     it("registers the two basic attacks and basic shield card", () => {
