@@ -2,6 +2,26 @@ import { Character, ElementType, JobType } from "@/types";
 
 export const CHARACTERS: Character[] = [
   {
+    id: "rossweisse",
+    name: "character.rossweisse",
+    rarity: "★5",
+    job: JobType.STRIKER,
+    element: ElementType.JUSTICE,
+    imgUrl: "/images/characters/character_rossweisse.png", // TODO: ロスヴァイセのキャラクター画像追加
+    startingCards: [
+      "rossweisse_starting_1",
+      "rossweisse_starting_2",
+      "rossweisse_starting_3",
+      "rossweisse_starting_4",
+    ],
+    hiramekiCards: [
+      "rossweisse_hirameki_1",
+      "rossweisse_hirameki_2",
+      "rossweisse_hirameki_3",
+      "rossweisse_hirameki_4",
+    ],
+  },
+  {
     id: "anika",
     name: "character.anika",
     rarity: "★4",

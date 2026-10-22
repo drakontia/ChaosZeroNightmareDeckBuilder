@@ -12,6 +12,216 @@ import { CznCard, CardType, CardCategory, CardStatus } from "@/types";
  */
 export const CHARACTER_CARDS: CznCard[] = (
   [
+    {
+      id: "rossweisse_starting_1",
+      name: "剣撃",
+      type: CardType.CHARACTER,
+      category: CardCategory.ATTACK,
+      statuses: [],
+      isBasicCard: true,
+      isStartingCard: true,
+      imgUrl: "/images/cards/rossweisse_starting_1.png", // TODO: ロスヴァイセのカード画像追加
+      hiramekiVariations: [{ level: 0, cost: 1, description: "ダメージ100%" }],
+    },
+    {
+      id: "rossweisse_starting_2",
+      name: "剣撃",
+      type: CardType.CHARACTER,
+      category: CardCategory.ATTACK,
+      statuses: [],
+      isBasicCard: true,
+      isStartingCard: true,
+      imgUrl: "/images/cards/rossweisse_starting_2.png", // TODO: ロスヴァイセのカード画像追加
+      hiramekiVariations: [{ level: 0, cost: 1, description: "ダメージ100%" }],
+    },
+    {
+      id: "rossweisse_starting_3",
+      name: "立剣",
+      type: CardType.CHARACTER,
+      category: CardCategory.SKILL,
+      statuses: [],
+      isBasicCard: true,
+      isStartingCard: true,
+      imgUrl: "/images/cards/rossweisse_starting_3.png", // TODO: ロスヴァイセのカード画像追加
+      hiramekiVariations: [{ level: 0, cost: 1, description: "シールド100%" }],
+    },
+    {
+      id: "rossweisse_starting_4",
+      name: "明滅の剣",
+      type: CardType.CHARACTER,
+      category: CardCategory.ATTACK,
+      statuses: [CardStatus.EQUILUX, CardStatus.UNIQUE],
+      isBasicCard: false,
+      isStartingCard: true,
+      imgUrl: "/images/cards/rossweisse_starting_4.png", // TODO: ロスヴァイセのカード画像追加
+      hiramekiVariations: [
+        {
+          level: 0,
+          cost: 0,
+          description: "ダメージ400%\n分裂時、片鱗：明、片鱗：暗に分裂",
+          statuses: [CardStatus.EQUILUX, CardStatus.UNIQUE],
+        },
+        {
+          level: 1,
+          cost: 0,
+          description: "ダメージ600%\n分裂時、片鱗：明(強化)、片鱗：暗(強化)に分裂",
+          statuses: [CardStatus.EQUILUX, CardStatus.UNIQUE],
+        },
+        {
+          level: 2,
+          cost: 0,
+          description: "ダメージ600%\n分裂時、片鱗：明(循環)、片鱗：暗(循環)に分裂",
+          statuses: [CardStatus.EQUILUX, CardStatus.UNIQUE],
+        },
+        {
+          level: 3,
+          cost: 0,
+          description: "ダメージ400%\nダメージ依存シールド20%\n分裂時、片鱗：明(守護)、片鱗：暗(守護)に分裂",
+          statuses: [CardStatus.EQUILUX, CardStatus.UNIQUE],
+        },
+        {
+          level: 4,
+          cost: 0,
+          description: "ダメージ600%\n分裂時、片鱗：明(閃撃)、片鱗：暗(閃撃)に分裂",
+          statuses: [CardStatus.EQUILUX, CardStatus.UNIQUE],
+        },
+        {
+          level: 5,
+          cost: "X",
+          description: "ダメージ400%\nXの分基本ダメージ量+120%\n分裂時、片鱗：明(無限)、片鱗：暗(無限)に分裂",
+          statuses: [CardStatus.EQUILUX, CardStatus.UNIQUE, CardStatus.FINALE],
+        },
+      ],
+    },
+    {
+      id: "rossweisse_hirameki_1",
+      name: "剣の共鳴",
+      type: CardType.CHARACTER,
+      category: CardCategory.SKILL,
+      statuses: [],
+      isBasicCard: false,
+      isStartingCard: false,
+      imgUrl: "/images/cards/rossweisse_hirameki_1.png", // TODO: ロスヴァイセのカード画像追加
+      hiramekiVariations: [
+        { level: 0, cost: 1, description: "剣穂を3枚生成" },
+        { level: 1, cost: 1, description: "剣穂を3枚生成\nランダムな明・暗カード1枚の効果発動" },
+        { level: 2, cost: 1, description: "剣穂を3枚生成\n自分のカードドロー1" },
+        {
+          level: 3,
+          cost: 0,
+          description: "手札のすべての明・暗カードに回収付与",
+          statuses: [CardStatus.UNIQUE],
+        },
+        {
+          level: 4,
+          cost: 1,
+          description: "剣穂を3枚生成\n次の明暗カード結合時、そのカードに粉砕付与",
+        },
+        {
+          level: 5,
+          cost: 1,
+          description: "手札のすべての明・暗カードの効果発動",
+          statuses: [CardStatus.UNIQUE],
+        },
+      ],
+    },
+    {
+      id: "rossweisse_hirameki_2",
+      name: "光の剣筋",
+      type: CardType.CHARACTER,
+      category: CardCategory.ATTACK,
+      statuses: [],
+      isBasicCard: false,
+      isStartingCard: false,
+      imgUrl: "/images/cards/rossweisse_hirameki_2.png", // TODO: ロスヴァイセのカード画像追加
+      hiramekiVariations: [
+        {
+          level: 0,
+          cost: 1,
+          description: "ダメージ200%\n手札のカードを1枚まで破棄、破棄したなら、ダメージ150%",
+        },
+        {
+          level: 1,
+          cost: 1,
+          description: "ダメージ300%\n手札のカードを2枚まで破棄、その数×ダメージ200%",
+        },
+        {
+          level: 2,
+          cost: 0,
+          description: "ダメージ200%\n破棄1、そのカードが明・暗カードなら、起動後、手札に移動",
+        },
+        {
+          level: 3,
+          cost: 1,
+          description: "ダメージ300%\n手札のカードを1枚まで破棄\n次の明・暗カード2枚発動時まで、コスト2減少",
+        },
+        {
+          level: 4,
+          cost: 1,
+          description: "ダメージ300%\nこのターン結束カード重複時、基本ダメージ量+50%(最大500%)",
+          statuses: [CardStatus.UNIQUE],
+        },
+        {
+          level: 5,
+          cost: 1,
+          description: "手札の正義カード数に応じて1ターンの間、自分のダメージ量15%増加(最大75%)",
+          statuses: [CardStatus.UNIQUE],
+        },
+      ],
+    },
+    {
+      id: "rossweisse_hirameki_3",
+      name: "循環の刃",
+      type: CardType.CHARACTER,
+      category: CardCategory.ATTACK,
+      statuses: [],
+      isBasicCard: false,
+      isStartingCard: false,
+      imgUrl: "/images/cards/rossweisse_hirameki_3.png", // TODO: ロスヴァイセのカード画像追加
+      hiramekiVariations: [
+        { level: 0, cost: 1, description: "ダメージ200%\n循環の烙印4" },
+        { level: 1, cost: 1, description: "ダメージ300%\n循環の烙印6" },
+        {
+          level: 2,
+          cost: 1,
+          description: "ダメージ300%\n循環の烙印2\n純粋：剣穂を2枚生成\n※純粋：手札に他の属性カードがない場合、効果有効化",
+        },
+        {
+          level: 3,
+          cost: 1,
+          description: "ダメージ200%\n循環の烙印4\n自分のカードドロー1、1ターンの間、そのカードコスト1減少",
+        },
+        {
+          level: 4,
+          cost: 1,
+          description: "ダメージ300%\n手札の正義カード数に応じて循環の烙印1\n純粋：コスト1減少\n※純粋：手札に他の属性の循環の刃カードがない場合、効果有効化",
+        },
+        {
+          level: 5,
+          cost: 2,
+          description: "ダメージ500%\n循環の烙印4\nこのカードでシールド破壊時、効果1回さらに発動(各ターン1回)",
+          statuses: [CardStatus.PULVERIZE],
+        },
+      ],
+    },
+    {
+      id: "rossweisse_hirameki_4",
+      name: "キルケンの使徒",
+      type: CardType.CHARACTER,
+      category: CardCategory.SKILL,
+      statuses: [CardStatus.UNIQUE, CardStatus.INITIATION],
+      isBasicCard: false,
+      isStartingCard: false,
+      imgUrl: "/images/cards/rossweisse_hirameki_4.png", // TODO: ロスヴァイセのカード画像追加
+      hiramekiVariations: [
+        {
+          level: 0,
+          cost: 0,
+          description: "ドロー2\nキルケンの加護1",
+          statuses: [CardStatus.UNIQUE, CardStatus.INITIATION],
+        },
+      ],
+    },
     // Anika's cards (temporary implementation)
     {
       id: "anika_starting_1",
