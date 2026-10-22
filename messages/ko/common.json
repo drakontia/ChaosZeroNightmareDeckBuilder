@@ -127,6 +127,7 @@
   },
   "status": {
     "initiation": "개전",
+    "equilux": "明暗",
     "unique": "유일",
     "exhaust": "소멸",
     "exhaust2": "소멸2",
@@ -255,7 +256,8 @@
     "fei": "페이",
     "hilde": "힐데",
     "olga": "올가",
-    "anika": "아니카"
+    "anika": "아니카",
+    "rossweisse": "ロスヴァイセ"
   },
   "hiddenEffects": {
     "hiddenhirameki_01": "アクションポイント1獲得",

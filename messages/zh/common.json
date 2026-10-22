@@ -127,6 +127,7 @@
   },
   "status": {
     "initiation": "开战",
+    "equilux": "明暗",
     "unique": "唯一",
     "exhaust": "消灭",
     "exhaust2": "消灭2",
@@ -255,7 +256,8 @@
     "fei": "菲",
     "hilde": "希尔德",
     "olga": "奥尔加",
-    "anika": "阿妮卡"
+    "anika": "阿妮卡",
+    "rossweisse": "ロスヴァイセ"
   },
   "hiddenEffects": {
     "hiddenhirameki_01": "アクションポイント1獲得",

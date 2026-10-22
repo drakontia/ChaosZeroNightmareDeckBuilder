@@ -290,6 +290,7 @@
   },
   "status": {
     "initiation": "開戦",
+    "equilux": "明暗",
     "unique": "唯一",
     "exhaust": "消滅",
     "exhaust2": "消滅2",
@@ -383,6 +384,7 @@
     "fei": "フェイ",
     "hilde": "ヒルデ",
     "olga": "オルガ",
-    "anika": "アニカ"
+    "anika": "アニカ",
+    "rossweisse": "ロスヴァイセ"
   }
 }

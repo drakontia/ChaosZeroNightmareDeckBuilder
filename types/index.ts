@@ -99,6 +99,7 @@ export enum CardStatus {
   EXHAUST3 = "exhaust3", // 消滅3
   EXHAUST5 = "exhaust5", // 消滅5
   LEAD = "lead", // 主導
+  EQUILUX = "equilux", // 明暗
   UNIQUE = "unique", // 唯一
   HASTE = "haste", // 迅速
   FINALE = "finale", // 終極
