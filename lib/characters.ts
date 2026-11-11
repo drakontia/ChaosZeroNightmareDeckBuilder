@@ -7,7 +7,7 @@ export const CHARACTERS: Character[] = [
     rarity: "★5",
     job: JobType.CONTROLLER,
     element: ElementType.JUSTICE,
-    imgUrl: "/images/characters/character_placeholder.png", // TODO: ブレイズベルのキャラクター画像追加
+    imgUrl: "/images/characters/character_blazebell.png",
     startingCards: [
       "blazebell_starting_1",
       "blazebell_starting_2",

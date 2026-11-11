@@ -21,7 +21,7 @@ export const CHARACTER_CARDS: CznCard[] = (
       statuses: [],
       isBasicCard: true,
       isStartingCard: true,
-      imgUrl: "/images/cards/card_placeholder.png",
+      imgUrl: "/images/cards/blazebell_starting_1.png",
       hiramekiVariations: [{ level: 0, cost: 1, description: "防御依存ダメージ100%" }],
     },
     {
@@ -32,7 +32,7 @@ export const CHARACTER_CARDS: CznCard[] = (
       statuses: [CardStatus.BIND],
       isBasicCard: true,
       isStartingCard: true,
-      imgUrl: "/images/cards/card_placeholder.png",
+      imgUrl: "/images/cards/blazebell_starting_2.png",
       hiramekiVariations: [
         {
           level: 0,
@@ -49,7 +49,7 @@ export const CHARACTER_CARDS: CznCard[] = (
       statuses: [CardStatus.BIND],
       isBasicCard: true,
       isStartingCard: true,
-      imgUrl: "/images/cards/card_placeholder.png",
+      imgUrl: "/images/cards/blazebell_starting_3.png",
       hiramekiVariations: [
         {
           level: 0,
@@ -66,7 +66,7 @@ export const CHARACTER_CARDS: CznCard[] = (
       statuses: [],
       isBasicCard: false,
       isStartingCard: true,
-      imgUrl: "/images/cards/card_placeholder.png",
+      imgUrl: "/images/cards/blazebell_starting_4.png",
       hiramekiVariations: [
         {
           level: 0,
@@ -110,7 +110,7 @@ export const CHARACTER_CARDS: CznCard[] = (
       statuses: [],
       isBasicCard: false,
       isStartingCard: false,
-      imgUrl: "/images/cards/card_placeholder.png",
+      imgUrl: "/images/cards/blazebell_hirameki_1.png",
       hiramekiVariations: [
         { level: 0, cost: 1, description: "融解1\n防御依存ダメージ150%" },
         { level: 1, cost: 1, description: "融解1\n防御依存ダメージ250%" },
@@ -134,7 +134,7 @@ export const CHARACTER_CARDS: CznCard[] = (
       statuses: [],
       isBasicCard: false,
       isStartingCard: false,
-      imgUrl: "/images/cards/card_placeholder.png",
+      imgUrl: "/images/cards/blazebell_hirameki_2.png",
       hiramekiVariations: [
         { level: 0, cost: 1, description: "治癒150%\n連続：碧炎を2枚生成" },
         { level: 1, cost: 1, description: "治癒200%\n碧炎を2枚生成" },
@@ -167,7 +167,7 @@ export const CHARACTER_CARDS: CznCard[] = (
       statuses: [CardStatus.UNIQUE, CardStatus.INITIATION],
       isBasicCard: false,
       isStartingCard: false,
-      imgUrl: "/images/cards/card_placeholder.png",
+      imgUrl: "/images/cards/blazebell_hirameki_3.png",
       hiramekiVariations: [
         {
           level: 0,
@@ -212,7 +212,7 @@ export const CHARACTER_CARDS: CznCard[] = (
       statuses: [CardStatus.UNIQUE, CardStatus.RETAIN],
       isBasicCard: false,
       isStartingCard: false,
-      imgUrl: "/images/cards/card_placeholder.png",
+      imgUrl: "/images/cards/blazebell_hirameki_4.png",
       hiramekiVariations: [
         {
           level: 0,

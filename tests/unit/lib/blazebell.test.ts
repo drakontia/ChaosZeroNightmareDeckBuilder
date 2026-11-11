@@ -42,6 +42,27 @@ describe("Blazebell character", () => {
     }
   });
 
+  it("uses the supplied character and card images in screenshot order", () => {
+    const character = CHARACTERS.find((entry) => entry.id === "blazebell");
+    expect(character?.imgUrl).toBe("/images/characters/character_blazebell.png");
+
+    const imageIds = [
+      "blazebell_starting_1",
+      "blazebell_starting_2",
+      "blazebell_starting_3",
+      "blazebell_starting_4",
+      "blazebell_hirameki_1",
+      "blazebell_hirameki_2",
+      "blazebell_hirameki_3",
+      "blazebell_hirameki_4",
+    ];
+
+    for (const id of imageIds) {
+      const card = CHARACTER_CARDS.find((entry) => entry.id === id);
+      expect(card?.imgUrl).toBe(`/images/cards/character/${id}.png`);
+    }
+  });
+
   it("keeps bracketed statuses separate from card descriptions", () => {
     const cards = CHARACTER_CARDS.filter((card) => card.id.startsWith("blazebell_"));
 
