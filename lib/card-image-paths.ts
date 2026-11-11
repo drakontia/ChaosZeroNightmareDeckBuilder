@@ -103,6 +103,10 @@ export const getOrganizedCardImagePath = (
   }
 
   const fileName = imgUrl.slice(LEGACY_CARD_IMAGE_PREFIX.length);
+  if (fileName === "card_placeholder.png") {
+    return imgUrl;
+  }
+
   if (fileName.includes("/")) {
     return imgUrl;
   }

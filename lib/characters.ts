@@ -2,6 +2,26 @@ import { Character, ElementType, JobType } from "@/types";
 
 export const CHARACTERS: Character[] = [
   {
+    id: "blazebell",
+    name: "character.blazebell",
+    rarity: "★5",
+    job: JobType.CONTROLLER,
+    element: ElementType.JUSTICE,
+    imgUrl: "/images/characters/character_placeholder.png", // TODO: ブレイズベルのキャラクター画像追加
+    startingCards: [
+      "blazebell_starting_1",
+      "blazebell_starting_2",
+      "blazebell_starting_3",
+      "blazebell_starting_4",
+    ],
+    hiramekiCards: [
+      "blazebell_hirameki_1",
+      "blazebell_hirameki_2",
+      "blazebell_hirameki_3",
+      "blazebell_hirameki_4",
+    ],
+  },
+  {
     id: "rossweisse",
     name: "character.rossweisse",
     rarity: "★5",
