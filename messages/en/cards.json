@@ -1,5 +1,67 @@
 {
   "cards": {
+    "blazebell_starting_1": {
+      "name": "Scarlet Flame",
+      "descriptions": { "0": "Defense-based damage 100%" }
+    },
+    "blazebell_starting_2": {
+      "name": "Azure Flame",
+      "descriptions": { "0": "Heal 60%\nWhen this card triggers a Bind stack, heal 60%" }
+    },
+    "blazebell_starting_3": {
+      "name": "Azure Flame",
+      "descriptions": { "0": "Heal 60%\nWhen this card triggers a Bind stack, heal 60%" }
+    },
+    "blazebell_starting_4": {
+      "name": "Scattering Flames",
+      "descriptions": {
+        "0": "Gain 1 Action Point\nPure: Draw 1",
+        "1": "Gain 1 Action Point\nDraw 1",
+        "2": "Gain 1 Action Point\nJustice card damage +40% for 1 turn",
+        "3": "Gain 1 Action Point\nHeal 150%\nPure: Draw 1",
+        "4": "Gain 1 Action Point\nThe next card activated this turn costs 1 less",
+        "5": "Gain 1 Action Point\nGenerate 2 Azure Flames"
+      }
+    },
+    "blazebell_hirameki_1": {
+      "name": "Beckoning Flame",
+      "descriptions": {
+        "0": "Apply Melt 1\nDefense-based damage 150%",
+        "1": "Apply Melt 1\nDefense-based damage 250%",
+        "2": "Apply Melt 1 to all enemies\nDefense-based damage 200%",
+        "3": "Apply Melt 1\nDefense-based damage 150%\nGenerate 1 Azure Flame",
+        "4": "Apply Melt 1\nDefense-based damage 100%",
+        "5": "At the start of the turn, apply Melt 1 to the enemy with the most HP\nGenerate 1 Azure Flame"
+      }
+    },
+    "blazebell_hirameki_2": {
+      "name": "Freya's Blessing",
+      "descriptions": {
+        "0": "Heal 150%\nContinuous: Generate 2 Azure Flames",
+        "1": "Heal 200%\nGenerate 2 Azure Flames",
+        "2": "Heal 150%\nAllies' Bind card damage and healing +30% for 1 turn",
+        "3": "Heal 200%\nApply Melt 1 to all enemies",
+        "4": "Heal 200%\nDiscard any number of cards from your hand\nDraw 1 Attack card\nThat card deals 100% more damage until activated for 1 turn",
+        "5": "Heal 100%\nGenerate 3 Azure Flames\nReduce allies' Stress by 5"
+      }
+    },
+    "blazebell_hirameki_3": {
+      "name": "Resonating Flame",
+      "descriptions": {
+        "0": "Generate 3 Azure Flames\nGenerate 1 Azure Flame at the start of the turn",
+        "1": "Generate 3 Azure Flames\nWhen another ally triggers a Bind stack, generate 1 Azure Flame (up to 4 times per turn)",
+        "2": "Generate 3 Azure Flames\nChoose 2 cards and draw them",
+        "3": "Generate 3 Azure Flames\nGenerate 1 Azure Flame at the start of the turn",
+        "4": "Generate 3 Azure Flames\nAt the start of the turn, reduce a random card's cost by 1 until activated for 1 turn",
+        "5": "Generate 2 Azure Flames\nGenerate 2 Azure Flames at the start of the turn\nThe next Bind card activated this turn costs 1 less"
+      }
+    },
+    "blazebell_hirameki_4": {
+      "name": "Flame Afterimage",
+      "descriptions": {
+        "0": "Allies' damage +20% for 1 turn\nAllies' Justice card damage +20%"
+      }
+    },
     "rossweisse_starting_1": {
       "name": "剣撃",
       "descriptions": { "0": "ダメージ100%" }

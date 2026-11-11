@@ -12,6 +12,216 @@ import { CznCard, CardType, CardCategory, CardStatus } from "@/types";
  */
 export const CHARACTER_CARDS: CznCard[] = (
   [
+    // TODO: 英語・中国語・韓国語のカード名と説明は仮訳のため要確認。
+    {
+      id: "blazebell_starting_1",
+      name: "緋炎",
+      type: CardType.CHARACTER,
+      category: CardCategory.ATTACK,
+      statuses: [],
+      isBasicCard: true,
+      isStartingCard: true,
+      imgUrl: "/images/cards/blazebell_starting_1.png",
+      hiramekiVariations: [{ level: 0, cost: 1, description: "防御依存ダメージ100%" }],
+    },
+    {
+      id: "blazebell_starting_2",
+      name: "碧炎",
+      type: CardType.CHARACTER,
+      category: CardCategory.SKILL,
+      statuses: [CardStatus.BIND],
+      isBasicCard: true,
+      isStartingCard: true,
+      imgUrl: "/images/cards/blazebell_starting_2.png",
+      hiramekiVariations: [
+        {
+          level: 0,
+          cost: 1,
+          description: "治癒60%\nこのカード結束重複時、治癒60%",
+        },
+      ],
+    },
+    {
+      id: "blazebell_starting_3",
+      name: "碧炎",
+      type: CardType.CHARACTER,
+      category: CardCategory.SKILL,
+      statuses: [CardStatus.BIND],
+      isBasicCard: true,
+      isStartingCard: true,
+      imgUrl: "/images/cards/blazebell_starting_3.png",
+      hiramekiVariations: [
+        {
+          level: 0,
+          cost: 1,
+          description: "治癒60%\nこのカード結束重複時、治癒60%",
+        },
+      ],
+    },
+    {
+      id: "blazebell_starting_4",
+      name: "舞い散る炎",
+      type: CardType.CHARACTER,
+      category: CardCategory.SKILL,
+      statuses: [],
+      isBasicCard: false,
+      isStartingCard: true,
+      imgUrl: "/images/cards/blazebell_starting_4.png",
+      hiramekiVariations: [
+        {
+          level: 0,
+          cost: 0,
+          description: "アクションポイント1獲得\n純粋：ドロー1",
+        },
+        {
+          level: 1,
+          cost: 0,
+          description: "アクションポイント1獲得\nドロー1",
+          statuses: [CardStatus.UNIQUE, CardStatus.RETAIN],
+        },
+        {
+          level: 2,
+          cost: 0,
+          description: "アクションポイント1獲得\n1ターンの間、味方の正義カードダメージ量40%増加",
+        },
+        {
+          level: 3,
+          cost: 0,
+          description: "アクションポイント1獲得\n治癒150%\n純粋：ドロー1",
+          statuses: [CardStatus.UNIQUE],
+        },
+        {
+          level: 4,
+          cost: 0,
+          description: "アクションポイント1獲得\n1ターンの間、次に発動するカードのコスト1減少",
+        },
+        {
+          level: 5,
+          cost: 0,
+          description: "アクションポイント1獲得\n碧炎を2枚生成",
+        },
+      ],
+    },
+    {
+      id: "blazebell_hirameki_1",
+      name: "炎の手招き",
+      type: CardType.CHARACTER,
+      category: CardCategory.ATTACK,
+      statuses: [],
+      isBasicCard: false,
+      isStartingCard: false,
+      imgUrl: "/images/cards/blazebell_hirameki_1.png",
+      hiramekiVariations: [
+        { level: 0, cost: 1, description: "融解1\n防御依存ダメージ150%" },
+        { level: 1, cost: 1, description: "融解1\n防御依存ダメージ250%" },
+        { level: 2, cost: 1, description: "敵全体に融解1\n防御依存ダメージ200%" },
+        { level: 3, cost: 1, description: "融解1\n防御依存ダメージ150%\n碧炎を1枚生成" },
+        { level: 4, cost: 0, description: "融解1\n防御依存ダメージ100%" },
+        {
+          level: 5,
+          cost: 1,
+          description: "ターン開始時、HPが最も高い敵に融解1\n碧炎を1枚生成",
+          category: CardCategory.UPGRADE,
+          statuses: [CardStatus.UNIQUE, CardStatus.INITIATION],
+        },
+      ],
+    },
+    {
+      id: "blazebell_hirameki_2",
+      name: "フレイヤの祝福",
+      type: CardType.CHARACTER,
+      category: CardCategory.SKILL,
+      statuses: [],
+      isBasicCard: false,
+      isStartingCard: false,
+      imgUrl: "/images/cards/blazebell_hirameki_2.png",
+      hiramekiVariations: [
+        { level: 0, cost: 1, description: "治癒150%\n連続：碧炎を2枚生成" },
+        { level: 1, cost: 1, description: "治癒200%\n碧炎を2枚生成" },
+        {
+          level: 2,
+          cost: 0,
+          description: "治癒150%\n1ターンの間、味方の結束カードダメージ量・治癒量30%増加",
+        },
+        { level: 3, cost: 1, description: "治癒200%\n敵全体に融解1" },
+        {
+          level: 4,
+          cost: 1,
+          description:
+            "治癒200%\n手札のカードから任意の枚数を選び破棄\n攻撃カードを1枚ドロー\nそのカードは1ターンの間、発動時までダメージ量+100%",
+          statuses: [CardStatus.EXHAUST],
+        },
+        {
+          level: 5,
+          cost: 1,
+          description: "治癒100%\n碧炎を3枚生成\n味方のストレス5減少",
+          statuses: [CardStatus.UNIQUE],
+        },
+      ],
+    },
+    {
+      id: "blazebell_hirameki_3",
+      name: "共鳴する炎",
+      type: CardType.CHARACTER,
+      category: CardCategory.UPGRADE,
+      statuses: [CardStatus.UNIQUE, CardStatus.INITIATION],
+      isBasicCard: false,
+      isStartingCard: false,
+      imgUrl: "/images/cards/blazebell_hirameki_3.png",
+      hiramekiVariations: [
+        {
+          level: 0,
+          cost: 2,
+          description: "碧炎を3枚生成\nターン開始時、碧炎を1枚生成",
+        },
+        {
+          level: 1,
+          cost: 3,
+          description: "碧炎を3枚生成\n他の戦闘員が結束重複時、碧炎を1枚生成（各ターン4回）",
+        },
+        {
+          level: 2,
+          cost: 1,
+          description: "碧炎を3枚生成\n2枚選択し、ドロー",
+          statuses: [CardStatus.UNIQUE, CardStatus.EXHAUST],
+        },
+        {
+          level: 3,
+          cost: 1,
+          description: "碧炎を3枚生成\nターン開始時、碧炎を1枚生成",
+        },
+        {
+          level: 4,
+          cost: 1,
+          description:
+            "碧炎を3枚生成\nターン開始時、1ターンの間、ランダムなカード1枚の発動時までコスト1減少",
+        },
+        {
+          level: 5,
+          cost: 2,
+          description:
+            "碧炎を2枚生成\nターン開始時、碧炎を2枚生成\n1ターンの間、次に発動する結束カードのコスト1減少",
+        },
+      ],
+    },
+    {
+      id: "blazebell_hirameki_4",
+      name: "炎の残影",
+      type: CardType.CHARACTER,
+      category: CardCategory.UPGRADE,
+      statuses: [CardStatus.UNIQUE, CardStatus.RETAIN],
+      isBasicCard: false,
+      isStartingCard: false,
+      imgUrl: "/images/cards/blazebell_hirameki_4.png",
+      hiramekiVariations: [
+        {
+          level: 0,
+          cost: 1,
+          description:
+            "1ターンの間、味方のダメージ量20%増加\n味方の正義カードダメージ量20%増加",
+        },
+      ],
+    },
     {
       id: "rossweisse_starting_1",
       name: "剣撃",

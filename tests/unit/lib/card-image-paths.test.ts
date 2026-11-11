@@ -34,6 +34,16 @@ describe("getOrganizedCardImagePath", () => {
     ).toBe("/images/cards/common/persona.png");
   });
 
+  it("keeps the shared card placeholder at the root cards path", () => {
+    expect(
+      getOrganizedCardImagePath(
+        "blazebell_starting_1",
+        CardType.CHARACTER,
+        "/images/cards/card_placeholder.png",
+      ),
+    ).toBe("/images/cards/card_placeholder.png");
+  });
+
   it("maps monster cards into the monster folder", () => {
     expect(
       getOrganizedCardImagePath("monster_01", CardType.MONSTER, "/images/cards/monster_01.png"),
