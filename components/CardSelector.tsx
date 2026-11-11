@@ -110,6 +110,15 @@ export function CardSelector({
     () =>
       addableCards
         .filter((c) => c.type === CardType.SHARED)
+        .filter((card) => !card.id.startsWith("season5_"))
+        .filter((card) => !(isPersonaCard(card) && hiddenHiramekiIds.has(card.id)))
+        .filter(matchesQuery),
+    [addableCards, hiddenHiramekiIds, matchesQuery],
+  );
+  const filteredSeason5Cards = useMemo(
+    () =>
+      addableCards
+        .filter((card) => card.type === CardType.SHARED && card.id.startsWith("season5_"))
         .filter((card) => !(isPersonaCard(card) && hiddenHiramekiIds.has(card.id)))
         .filter(matchesQuery),
     [addableCards, hiddenHiramekiIds, matchesQuery],
@@ -319,6 +328,11 @@ export function CardSelector({
 
         {/* Accordion for Shared, Monster, and Forbidden Cards */}
         <Accordion type="multiple" className="w-full">
+          {renderAccordionSection(
+            filteredSeason5Cards,
+            `${t("card.forbiddenCards")} 5`,
+            "season-5",
+          )}
           {renderAccordionSection(
             forbiddenCardsBySeason[4],
             `${t("card.forbiddenCards")} 4`,
