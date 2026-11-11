@@ -82,10 +82,18 @@ describe("Blazebell character", () => {
     expect(card("blazebell_starting_4")?.hiramekiVariations).toHaveLength(6);
     expect(card("blazebell_hirameki_1")?.category).toBe(CardCategory.ATTACK);
     expect(card("blazebell_hirameki_1")?.hiramekiVariations).toHaveLength(6);
+    expect(
+      card("blazebell_hirameki_1")?.hiramekiVariations.find((variation) => variation.level === 5)
+        ?.category,
+    ).toBe(CardCategory.UPGRADE);
     expect(card("blazebell_hirameki_2")?.category).toBe(CardCategory.SKILL);
     expect(card("blazebell_hirameki_2")?.hiramekiVariations).toHaveLength(6);
-    expect(card("blazebell_hirameki_3")?.category).toBe(CardCategory.SKILL);
-    expect(card("blazebell_hirameki_3")?.hiramekiVariations).toHaveLength(6);
+    const resonance = card("blazebell_hirameki_3");
+    expect(resonance?.category).toBe(CardCategory.UPGRADE);
+    expect(resonance?.hiramekiVariations).toHaveLength(6);
+    expect(
+      resonance?.hiramekiVariations.map((variation) => variation.category ?? resonance.category),
+    ).toEqual(Array(6).fill(CardCategory.UPGRADE));
     expect(card("blazebell_hirameki_4")?.category).toBe(CardCategory.UPGRADE);
     expect(card("blazebell_hirameki_4")?.hiramekiVariations).toHaveLength(1);
     expect(
