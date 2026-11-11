@@ -123,6 +123,8 @@ export enum CardStatus {
   CLAIM = "claim", // 所有
   SURVIVAL = "survival", // 生存
   RAPACITY = "rapacity", // 強欲
+  MEMORY = "memory", // 記憶
+  BANISH = "banish", // 排除
 }
 
 export type Season4DesireStatus =
@@ -233,6 +235,8 @@ export interface CznCard {
   hiramekiVariations: HiramekiVariation[];
   // Season 4 desire card level variations (Lv.1-Lv.3)
   seasonLevelVariations?: SeasonLevelVariation[];
+  isMemoryCard?: boolean;
+  memoryLevelVariations?: MemoryLevelVariation[];
 }
 
 // Deck state
@@ -244,6 +248,7 @@ export interface DeckCard extends CznCard {
   selectedHiddenHiramekiId: string | null; // Hidden hirameki effect ID (null = none)
   selectedSeasonLevel?: 1 | 2 | 3; // Season 4 desire card level
   selectedSeasonStatuses?: Season4DesireStatus[]; // Season 4 desire statuses (up to 3, overflow retained)
+  selectedMemoryLevel?: 1 | 2 | 3 | 4;
   personaEngravings?: PersonaEngraving[]; // Persona-only engraving slots
   isCopied?: boolean; // True if this is a copied card
   copiedFromCardId?: string; // Original card id this copy was created from
@@ -258,10 +263,12 @@ export interface RemovedCardEntry {
   selectedHiddenHiramekiId?: string | null; // Hidden hirameki at removal time
   selectedSeasonLevel?: 1 | 2 | 3;
   selectedSeasonStatuses?: Season4DesireStatus[];
+  selectedMemoryLevel?: 1 | 2 | 3 | 4;
   personaEngravings?: PersonaEngraving[];
   godHiramekiType?: GodType | null;
   godHiramekiEffectId?: string | null;
   isBasicCard?: boolean;
+  isMemoryCard?: boolean;
   isCopied?: boolean;
   copiedFromCardId?: string;
 }
@@ -274,10 +281,12 @@ export interface CopiedCardEntry {
   selectedHiddenHiramekiId?: string | null; // Hidden hirameki at copy time
   selectedSeasonLevel?: 1 | 2 | 3;
   selectedSeasonStatuses?: Season4DesireStatus[];
+  selectedMemoryLevel?: 1 | 2 | 3 | 4;
   personaEngravings?: PersonaEngraving[];
   godHiramekiType?: GodType | null;
   godHiramekiEffectId?: string | null;
   isBasicCard?: boolean;
+  isMemoryCard?: boolean;
 }
 
 export interface ConvertedCardEntry {
@@ -288,13 +297,21 @@ export interface ConvertedCardEntry {
   selectedHiddenHiramekiId?: string | null; // Hidden hirameki at conversion time
   selectedSeasonLevel?: 1 | 2 | 3;
   selectedSeasonStatuses?: Season4DesireStatus[];
+  selectedMemoryLevel?: 1 | 2 | 3 | 4;
   personaEngravings?: PersonaEngraving[];
   godHiramekiType?: GodType | null; // God hirameki at conversion time
   godHiramekiEffectId?: string | null; // God effect at conversion time
   isBasicCard?: boolean;
+  isMemoryCard?: boolean;
   isCopied?: boolean;
   copiedFromCardId?: string;
   excluded?: boolean; // Converted as temporary exclusion card (not added to deck)
+}
+
+export interface MemoryLevelVariation {
+  level: 1 | 2 | 3 | 4;
+  cost: number;
+  description: string;
 }
 
 export interface EquipmentSlot {

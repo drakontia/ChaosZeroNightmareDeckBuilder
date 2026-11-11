@@ -29,7 +29,8 @@
     "god": "请选择使用哪个神的灵感",
     "level": "Lv",
     "search": "搜索卡牌",
-    "hiddenHirameki": "隠しヒラメキ"
+    "hiddenHirameki": "隠しヒラメキ",
+    "memoryLevel": "记忆卡等级"
   },
   "deck": {
     "title": "卡组",
@@ -156,7 +157,9 @@
     "inquiry": "探求",
     "claim": "所有",
     "survival": "生存",
-    "rapacity": "贪婪"
+    "rapacity": "贪婪",
+    "memory": "记忆",
+    "banish": "放逐"
   },
   "actions": {
     "add": "添加",

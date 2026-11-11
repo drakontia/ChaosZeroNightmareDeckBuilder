@@ -17,6 +17,7 @@ import {
   isSeason4CardId,
   normalizeSeason4SelectedStatuses,
 } from "@/lib/season4";
+import { isMemoryCard, normalizeMemoryLevel } from "@/lib/season5";
 import { Card, CardContent } from "./ui/card";
 import { CardFrame } from "./CardFrame";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "./ui/accordion";
@@ -88,7 +89,8 @@ export function CardSelector({
     (card: CznCard) => {
       if (!query) return true;
       const name = getCardNameInfo(card).name.toLowerCase();
-      const baseDesc = t(`cards.${card.id}.descriptions.0`, {
+      const baseDescriptionLevel = isMemoryCard(card) ? 1 : 0;
+      const baseDesc = t(`cards.${card.id}.descriptions.${baseDescriptionLevel}`, {
         defaultValue: card.hiramekiVariations[0]?.description || "",
       }).toLowerCase();
       const category = t(`category.${card.category}`).toLowerCase();
@@ -167,7 +169,8 @@ export function CardSelector({
     const { name: translatedName, nameId, nameFallback } = getCardNameInfo(card);
     const cardTitle = title || translatedName;
     const statuses = rawStatuses?.map((s) => t(`status.${s}`));
-    const description = t(`cards.${card.id}.descriptions.0`, {
+    const descriptionLevel = isMemoryCard(card) ? 1 : 0;
+    const description = t(`cards.${card.id}.descriptions.${descriptionLevel}`, {
       defaultValue: baseVariation.description,
     });
 
@@ -182,7 +185,7 @@ export function CardSelector({
             nameFallback={nameFallback}
             category={t(`category.${card.category}`)}
             categoryId={card.category}
-            descriptionId={`cards.${card.id}.descriptions.0`}
+            descriptionId={`cards.${card.id}.descriptions.${descriptionLevel}`}
             descriptionFallback={baseVariation.description}
             statuses={statuses}
             grade={card.grade}
@@ -208,6 +211,9 @@ export function CardSelector({
       ...card,
       deckId: `${card.id}_${Date.now()}_${Math.random()}`,
       selectedHiramekiLevel: entry?.selectedHiramekiLevel ?? 0,
+      selectedMemoryLevel: isMemoryCard(card)
+        ? normalizeMemoryLevel(entry?.selectedMemoryLevel)
+        : undefined,
       godHiramekiType: entry?.godHiramekiType ?? null,
       godHiramekiEffectId: entry?.godHiramekiEffectId ?? null,
       selectedHiddenHiramekiId: entry?.selectedHiddenHiramekiId ?? null,

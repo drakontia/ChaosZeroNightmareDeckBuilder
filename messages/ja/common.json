@@ -29,7 +29,8 @@
     "personaEngravingSelected": "選択中の刻印",
     "god": "どの神のヒラメキを使用するか選択してください",
     "level": "Lv",
-    "search": "カード検索"
+    "search": "カード検索",
+    "memoryLevel": "記憶カードレベル"
   },
   "deck": {
     "title": "デッキ",
@@ -321,7 +322,9 @@
     "inquiry": "探求",
     "claim": "所有",
     "survival": "生存",
-    "rapacity": "強欲"
+    "rapacity": "強欲",
+    "memory": "記憶",
+    "banish": "排除"
   },
   "actions": {
     "add": "追加",

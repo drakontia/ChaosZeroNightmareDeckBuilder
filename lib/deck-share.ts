@@ -16,6 +16,7 @@ import {
   isSeason4Card,
   normalizeSeason4SelectedStatuses,
 } from "@/lib/season4";
+import { isMemoryCard, normalizeMemoryLevel } from "@/lib/season5";
 
 interface SharedDeckCard {
   id: string;
@@ -25,6 +26,7 @@ interface SharedDeckCard {
   selectedHiddenHiramekiId?: DeckCard["selectedHiddenHiramekiId"];
   selectedSeasonLevel?: DeckCard["selectedSeasonLevel"];
   selectedSeasonStatuses?: DeckCard["selectedSeasonStatuses"];
+  selectedMemoryLevel?: DeckCard["selectedMemoryLevel"];
   personaEngravings?: DeckCard["personaEngravings"];
   isCopied?: boolean;
   copiedFromCardId?: string;
@@ -206,6 +208,9 @@ export function encodeDeckShare(deck: Deck): string {
         selectedSeasonLevel: card.selectedSeasonLevel,
       }),
       ...(card.selectedSeasonStatuses && { selectedSeasonStatuses: card.selectedSeasonStatuses }),
+      ...(card.selectedMemoryLevel !== undefined && {
+        selectedMemoryLevel: card.selectedMemoryLevel,
+      }),
       ...(card.personaEngravings?.length && {
         personaEngravings: normalizePersonaEngravings(card.personaEngravings),
       }),
@@ -263,6 +268,9 @@ const toDeckCard = (
       typeof shared.selectedHiddenHiramekiId === "string" ? shared.selectedHiddenHiramekiId : null,
     selectedSeasonLevel: normalizedSeason.selectedSeasonLevel,
     selectedSeasonStatuses: normalizedSeason.selectedSeasonStatuses,
+    selectedMemoryLevel: isMemoryCard(card)
+      ? normalizeMemoryLevel(shared.selectedMemoryLevel)
+      : undefined,
     personaEngravings: normalizePersonaEngravings(shared.personaEngravings, characterJob),
     isCopied: shared.isCopied,
     copiedFromCardId: shared.copiedFromCardId,
@@ -308,6 +316,7 @@ export function decodeDeckShare(value: string): Deck | null {
         return toDeckCard(card, shared, character?.job);
       })
       .filter((card): card is DeckCard => Boolean(card));
+    if (cards.filter(isMemoryCard).length > 1) return null;
 
     // createdAt を安全に Date に変換
     let validCreatedAt = new Date();

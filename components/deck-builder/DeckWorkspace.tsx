@@ -72,6 +72,7 @@ interface DeckWorkspaceProps {
   onSetPersonaEngravings: (deckId: string, engravings: PersonaEngraving[]) => void;
   onUpdateSeasonLevel: (deckId: string, level: 1 | 2 | 3) => void;
   onUpdateSeasonStatuses: (deckId: string, statuses: Season4DesireStatus[]) => void;
+  onUpdateMemoryLevel: (deckId: string, level: 1 | 2 | 3 | 4) => void;
   onSetDeckMutationCore: (effectId: string | null) => void;
 }
 
@@ -185,6 +186,7 @@ export function DeckWorkspace(props: DeckWorkspaceProps) {
               onSetPersonaEngravings={props.onSetPersonaEngravings}
               onUpdateSeasonLevel={props.onUpdateSeasonLevel}
               onUpdateSeasonStatuses={props.onUpdateSeasonStatuses}
+              onUpdateMemoryLevel={props.onUpdateMemoryLevel}
             />
           </CardContent>
         </Card>

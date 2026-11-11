@@ -5,6 +5,7 @@ import { CardFrame } from "./CardFrame";
 import { HiramekiControls } from "./HiramekiControls";
 import { CardActionsMenu } from "./CardActionsMenu";
 import { SeasonLevelControls } from "./SeasonLevelControls";
+import { MemoryLevelControls } from "./MemoryLevelControls";
 
 import {
   DeckCard,
@@ -21,6 +22,7 @@ import { getCardInfo, sortDeckCards } from "@/lib/deck-utils";
 import { GOD_HIRAMEKI_EFFECTS } from "@/lib/god-hirameki";
 import { HIDDEN_HIRAMEKI_EFFECTS } from "@/lib/hidden-hirameki";
 import { formatSeason4DesireStatusLabels, isSeason4Card } from "@/lib/season4";
+import { isMemoryCard } from "@/lib/season5";
 
 interface DeckDisplayProps {
   cards: DeckCard[];
@@ -38,6 +40,7 @@ interface DeckDisplayProps {
   onSetPersonaEngravings: (deckId: string, engravings: PersonaEngraving[]) => void;
   onUpdateSeasonLevel: (deckId: string, level: 1 | 2 | 3) => void;
   onUpdateSeasonStatuses: (deckId: string, statuses: Season4DesireStatus[]) => void;
+  onUpdateMemoryLevel: (deckId: string, level: 1 | 2 | 3 | 4) => void;
 }
 
 export function DeckDisplay({
@@ -56,6 +59,7 @@ export function DeckDisplay({
   onSetPersonaEngravings,
   onUpdateSeasonLevel,
   onUpdateSeasonStatuses,
+  onUpdateMemoryLevel,
 }: DeckDisplayProps) {
   const t = useTranslations();
 
@@ -102,8 +106,10 @@ export function DeckDisplay({
             t(`hiddenEffects.${effectId}`, { defaultValue: fallback }),
         });
         const isSeason4 = isSeason4Card(card);
+        const isMemory = isMemoryCard(card);
         const supportsHiramekiControls =
           !isSeason4 &&
+          !isMemory &&
           card.hiramekiVariations.length > 0 &&
           (card.type !== CardType.CHARACTER || card.hiramekiVariations.length > 1);
         const hasPersonaEngravings =
@@ -139,7 +145,9 @@ export function DeckDisplay({
         if (card.isCopied) {
           displayStatuses.push(CardStatus.COPIED);
         }
-        const leftControls = isSeason4 ? (
+        const leftControls = isMemory ? (
+          <MemoryLevelControls card={card} onUpdateMemoryLevel={onUpdateMemoryLevel} />
+        ) : isSeason4 ? (
           <SeasonLevelControls
             card={card}
             onUpdateSeasonLevel={onUpdateSeasonLevel}
@@ -173,7 +181,9 @@ export function DeckDisplay({
               descriptionId={
                 hasPersonaEngravings || isSeason4
                   ? undefined
-                  : `cards.${card.id}.descriptions.${card.selectedHiramekiLevel}`
+                  : `cards.${card.id}.descriptions.${
+                      isMemory ? (card.selectedMemoryLevel ?? 1) : card.selectedHiramekiLevel
+                    }`
               }
               descriptionFallback={cardInfo.description}
               godEffectId={hasPersonaEngravings ? undefined : godEffectId}

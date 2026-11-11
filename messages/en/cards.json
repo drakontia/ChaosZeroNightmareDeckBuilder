@@ -2,15 +2,21 @@
   "cards": {
     "blazebell_starting_1": {
       "name": "Scarlet Flame",
-      "descriptions": { "0": "Defense-based damage 100%" }
+      "descriptions": {
+        "0": "Defense-based damage 100%"
+      }
     },
     "blazebell_starting_2": {
       "name": "Azure Flame",
-      "descriptions": { "0": "Heal 60%\nWhen this card triggers a Bind stack, heal 60%" }
+      "descriptions": {
+        "0": "Heal 60%\nWhen this card triggers a Bind stack, heal 60%"
+      }
     },
     "blazebell_starting_3": {
       "name": "Azure Flame",
-      "descriptions": { "0": "Heal 60%\nWhen this card triggers a Bind stack, heal 60%" }
+      "descriptions": {
+        "0": "Heal 60%\nWhen this card triggers a Bind stack, heal 60%"
+      }
     },
     "blazebell_starting_4": {
       "name": "Scattering Flames",
@@ -64,15 +70,21 @@
     },
     "rossweisse_starting_1": {
       "name": "剣撃",
-      "descriptions": { "0": "ダメージ100%" }
+      "descriptions": {
+        "0": "ダメージ100%"
+      }
     },
     "rossweisse_starting_2": {
       "name": "剣撃",
-      "descriptions": { "0": "ダメージ100%" }
+      "descriptions": {
+        "0": "ダメージ100%"
+      }
     },
     "rossweisse_starting_3": {
       "name": "立剣",
-      "descriptions": { "0": "シールド100%" }
+      "descriptions": {
+        "0": "シールド100%"
+      }
     },
     "rossweisse_starting_4": {
       "name": "明滅の剣",
@@ -120,62 +132,100 @@
     },
     "rossweisse_hirameki_4": {
       "name": "キルケンの使徒",
-      "descriptions": { "0": "ドロー2\nキルケンの加護1" }
+      "descriptions": {
+        "0": "ドロー2\nキルケンの加護1"
+      }
     },
-    "anika_starting_1": {"name": "Blaster Swing", "descriptions": {"0": "100% Damage"}},
-    "anika_starting_2": {"name": "Blaster Swing", "descriptions": {"0": "100% Damage"}},
-    "anika_starting_3": {"name": "Position Hold", "descriptions": {"0": "100% Shield"}},
-    "anika_starting_4": {"name": "Ignition Slash", "descriptions": {
-      "0": "400% Damage\n2 Toughness Damage\nEfficiency: Gain 1 Action Point",
-      "1": "550% Damage\n2 Toughness Damage\nEfficiency: Gain 1 Action Point",
-      "2": "450% Damage\n2 Toughness Damage\nPulverize: Gain 2 Action Points",
-      "3": "500% Damage\n2 Toughness Damage\nDamage +80% for each Lead card",
-      "4": "400% Damage\nGain 1 Action Point\nEfficiency: Draw 1 card costing 2 or more and retain it for 1 turn",
-      "5": "When a Basic Attack is activated, deal 100% Pincer damage to the target\n1 Toughness Damage"
-    }},
-    "anika_hirameki_1": {"name": "Shock Gun", "descriptions": {
-      "0": "150% Damage\nShockwave 1\nEfficiency: 1 Toughness Damage",
-      "1": "220% Damage\nShockwave 1\nEfficiency: 2 Toughness Damage",
-      "2": "200% Damage to all enemies\nShockwave 1\nEfficiency: 1 Toughness Damage",
-      "3": "150% Damage\nShockwave 1\n2 Toughness Damage",
-      "4": "Shockwave 3",
-      "5": "200% Damage\nEfficiency: Each Bullet card in hand has a 50% chance to cost 1 less until activated for 1 turn"
-    }},
-    "anika_hirameki_2": {"name": "Reload", "descriptions": {
-      "0": "At the start of next turn, draw 2 Lead cards",
-      "1": "At the start of next turn, draw 2 of your Lead cards; they cost 1 less until activated for 1 turn",
-      "2": "At the end of turn, draw 1 Lead card next turn for each Lead card in hand",
-      "3": "At the start of next turn, draw 1 Lead card\nMove this card to hand when Pulverized",
-      "4": "At the start of next turn, draw 5 cards\nSeal hand for 1 turn",
-      "5": "At the start of next turn, draw 5 cards\nSeal hand for 1 turn"
-    }},
-    "anika_hirameki_3": {"name": "Warming Up", "descriptions": {
-      "0": "For 1 turn, your next card costs 1 less\nEfficiency: Draw 1 of your Lead Attack cards",
-      "1": "For 1 turn, your next card costs 2 less\nEfficiency: Draw 1 of your Lead Attack cards",
-      "2": "For 1 turn, your Basic Attack cards costing 2 or more deal 50% more damage\nEfficiency: Apply the effect twice",
-      "3": "For 1 turn, your next card costs 1 less\nDraw 1 Lead card",
-      "4": "Attack damage increases by 25% for each of your Attack cards in hand\nEfficiency: Your Attack cards in hand cost 1 less for 1 turn",
-      "5": "Each ally's next Lead card costs 1 less for 1 turn"
-    }},
-    "anika_hirameki_4": {"name": "Rampage Trigger", "descriptions": {
-      "0": "100% Damage ×4\nPulverize: Damage +100%",
-      "1": "100% Damage ×4\nPulverize: Damage +100%",
-      "2": "100% Damage ×4\nPulverize: Damage +100%",
-      "3": "100% Damage ×4\nPulverize: Damage +100%",
-      "4": "100% Damage ×4\nPulverize: Damage +100%",
-      "5": "100% Damage ×4\nPulverize: Damage +100%"
-    }},
+    "anika_starting_1": {
+      "name": "Blaster Swing",
+      "descriptions": {
+        "0": "100% Damage"
+      }
+    },
+    "anika_starting_2": {
+      "name": "Blaster Swing",
+      "descriptions": {
+        "0": "100% Damage"
+      }
+    },
+    "anika_starting_3": {
+      "name": "Position Hold",
+      "descriptions": {
+        "0": "100% Shield"
+      }
+    },
+    "anika_starting_4": {
+      "name": "Ignition Slash",
+      "descriptions": {
+        "0": "400% Damage\n2 Toughness Damage\nEfficiency: Gain 1 Action Point",
+        "1": "550% Damage\n2 Toughness Damage\nEfficiency: Gain 1 Action Point",
+        "2": "450% Damage\n2 Toughness Damage\nPulverize: Gain 2 Action Points",
+        "3": "500% Damage\n2 Toughness Damage\nDamage +80% for each Lead card",
+        "4": "400% Damage\nGain 1 Action Point\nEfficiency: Draw 1 card costing 2 or more and retain it for 1 turn",
+        "5": "When a Basic Attack is activated, deal 100% Pincer damage to the target\n1 Toughness Damage"
+      }
+    },
+    "anika_hirameki_1": {
+      "name": "Shock Gun",
+      "descriptions": {
+        "0": "150% Damage\nShockwave 1\nEfficiency: 1 Toughness Damage",
+        "1": "220% Damage\nShockwave 1\nEfficiency: 2 Toughness Damage",
+        "2": "200% Damage to all enemies\nShockwave 1\nEfficiency: 1 Toughness Damage",
+        "3": "150% Damage\nShockwave 1\n2 Toughness Damage",
+        "4": "Shockwave 3",
+        "5": "200% Damage\nEfficiency: Each Bullet card in hand has a 50% chance to cost 1 less until activated for 1 turn"
+      }
+    },
+    "anika_hirameki_2": {
+      "name": "Reload",
+      "descriptions": {
+        "0": "At the start of next turn, draw 2 Lead cards",
+        "1": "At the start of next turn, draw 2 of your Lead cards; they cost 1 less until activated for 1 turn",
+        "2": "At the end of turn, draw 1 Lead card next turn for each Lead card in hand",
+        "3": "At the start of next turn, draw 1 Lead card\nMove this card to hand when Pulverized",
+        "4": "At the start of next turn, draw 5 cards\nSeal hand for 1 turn",
+        "5": "At the start of next turn, draw 5 cards\nSeal hand for 1 turn"
+      }
+    },
+    "anika_hirameki_3": {
+      "name": "Warming Up",
+      "descriptions": {
+        "0": "For 1 turn, your next card costs 1 less\nEfficiency: Draw 1 of your Lead Attack cards",
+        "1": "For 1 turn, your next card costs 2 less\nEfficiency: Draw 1 of your Lead Attack cards",
+        "2": "For 1 turn, your Basic Attack cards costing 2 or more deal 50% more damage\nEfficiency: Apply the effect twice",
+        "3": "For 1 turn, your next card costs 1 less\nDraw 1 Lead card",
+        "4": "Attack damage increases by 25% for each of your Attack cards in hand\nEfficiency: Your Attack cards in hand cost 1 less for 1 turn",
+        "5": "Each ally's next Lead card costs 1 less for 1 turn"
+      }
+    },
+    "anika_hirameki_4": {
+      "name": "Rampage Trigger",
+      "descriptions": {
+        "0": "100% Damage ×4\nPulverize: Damage +100%",
+        "1": "100% Damage ×4\nPulverize: Damage +100%",
+        "2": "100% Damage ×4\nPulverize: Damage +100%",
+        "3": "100% Damage ×4\nPulverize: Damage +100%",
+        "4": "100% Damage ×4\nPulverize: Damage +100%",
+        "5": "100% Damage ×4\nPulverize: Damage +100%"
+      }
+    },
     "olga_starting_1": {
       "name": "Reaping Slash",
-      "descriptions": { "0": "100% Damage" }
+      "descriptions": {
+        "0": "100% Damage"
+      }
     },
     "olga_starting_2": {
       "name": "Reaping Slash",
-      "descriptions": { "0": "100% Damage" }
+      "descriptions": {
+        "0": "100% Damage"
+      }
     },
     "olga_starting_3": {
       "name": "Slake Thirst",
-      "descriptions": { "0": "100% Heal" }
+      "descriptions": {
+        "0": "100% Heal"
+      }
     },
     "olga_starting_4": {
       "name": "Rift of Severance",
@@ -3626,45 +3676,45 @@
     "heidemarie_starting_4": {
       "name": "剣の雨",
       "descriptions": {
+        "0": "Damage 80% x2; Resonance: Generate 1 Radiant Sword",
+        "1": "Damage 120% x2; Resonance: Generate 2 Radiant Swords",
+        "2": "Damage 180%; Add 1 hit based on Radiant Swords in hand; Resonance: Generate 1 Radiant Sword",
         "3": "Activate 5 Radiant Swords from Graveyard as additional attacks",
         "4": "Generate 2 Radiant Swords; Grant them Retrieve",
-        "0": "Damage 80% x2; Resonance: Generate 1 Radiant Sword",
-        "5": "Deal 500% damage to all enemies; If Radiant Release is in hand, discard it and increase damage by 80% per Radiant Sword in Graveyard",
-        "1": "Damage 120% x2; Resonance: Generate 2 Radiant Swords",
-        "2": "Damage 180%; Add 1 hit based on Radiant Swords in hand; Resonance: Generate 1 Radiant Sword"
+        "5": "Deal 500% damage to all enemies; If Radiant Release is in hand, discard it and increase damage by 80% per Radiant Sword in Graveyard"
       }
     },
     "heidemarie_hirameki_1": {
       "name": "万人の英雄",
       "descriptions": {
+        "0": "Draw 3; Link those cards this turn",
+        "1": "Draw 3; Link those cards this turn",
+        "2": "Draw 3; Link cards with cost 1 or less in hand this turn",
         "3": "Draw 1; Link Haste cards in hand this turn",
         "4": "Choose 1 card from deck or discard pile, grant it Link status, add to hand",
-        "0": "Draw 3; Link those cards this turn",
-        "5": "Draw 2 Attack cards; Link all Attack cards in hand this turn",
-        "1": "Draw 3; Link those cards this turn",
-        "2": "Draw 3; Link cards with cost 1 or less in hand this turn"
+        "5": "Draw 2 Attack cards; Link all Attack cards in hand this turn"
       }
     },
     "heidemarie_hirameki_2": {
       "name": "一筋の光",
       "descriptions": {
+        "0": "Damage 120%; Increase damage by 120% per Link card in hand",
+        "1": "Damage 180%; Increase damage by 180% per Link card in hand",
+        "2": "Damage 300%; Triple damage if 3+ Link cards in hand",
         "3": "Damage 100%; If this card is in hand or Graveyard, increase Link card damage by 80%",
         "4": "Activate all Link cards in hand without discarding",
-        "0": "Damage 120%; Increase damage by 120% per Link card in hand",
-        "5": "Direct use: 350% x2 damage; If discarded: 300% damage to all enemies",
-        "1": "Damage 180%; Increase damage by 180% per Link card in hand",
-        "2": "Damage 300%; Triple damage if 3+ Link cards in hand"
+        "5": "Direct use: 350% x2 damage; If discarded: 300% damage to all enemies"
       }
     },
     "heidemarie_hirameki_3": {
       "name": "極光展開",
       "descriptions": {
+        "0": "Generate 2 Radiant Swords; +50% damage to Radiant Swords this turn",
+        "1": "Generate 2 Radiant Swords; +70% damage to Radiant Swords this turn",
+        "2": "Generate 2 Radiant Swords; +200% damage to Radiant Swords next 2 turns",
         "3": "Generate Radiant Swords based on Link cards in hand",
         "4": "Generate 10 Radiant Swords in Discard pile",
-        "0": "Generate 2 Radiant Swords; +50% damage to Radiant Swords this turn",
-        "5": "Generate 2 Radiant Swords at turn start; +50% damage to Radiant Swords",
-        "1": "Generate 2 Radiant Swords; +70% damage to Radiant Swords this turn",
-        "2": "Generate 2 Radiant Swords; +200% damage to Radiant Swords next 2 turns"
+        "5": "Generate 2 Radiant Swords at turn start; +50% damage to Radiant Swords"
       }
     },
     "heidemarie_hirameki_4": {
@@ -3863,6 +3913,426 @@
       "name": "Faceless Woman",
       "descriptions": {
         "0": "When using Link card, draw 1 (once per turn)"
+      }
+    },
+    "season5_divine_punishment": {
+      "name": "Divine Punishment",
+      "descriptions": {
+        "0": "Deal 350% damage. Cost decreases for each Pulverize card in hand."
+      }
+    },
+    "season5_damaged_divine_relic": {
+      "name": "Damaged Divine Relic",
+      "descriptions": {
+        "0": "Reduce all allies' Stress by 10. Gain 200 Credits."
+      }
+    },
+    "season5_proxy_armor": {
+      "name": "Proxy's Armor",
+      "descriptions": {
+        "0": "Gain 200% Shield. If this is in hand when an ally uses an Upgrade card, activate it."
+      }
+    },
+    "season5_enveloping_light": {
+      "name": "Enveloping Light",
+      "descriptions": {
+        "0": "When an ally uses a Skill or Upgrade card, create 1 Retribution in hand (up to 3 times per turn)."
+      }
+    },
+    "season5_frost_fighter": {
+      "name": "Frost Fighter",
+      "descriptions": {
+        "0": "[Retain / Pulverize] Deal 120% damage. When you generate a card while this is in hand, this card's damage increases by 30% until activated (max 180%)."
+      }
+    },
+    "season5_ambush_support": {
+      "name": "Ambush Support",
+      "descriptions": {
+        "0": "[Combo] Deal 150% damage to all enemies. Inspiration: apply Pulverize."
+      }
+    },
+    "season5_slow_cooling": {
+      "name": "Slow Cooling",
+      "descriptions": {
+        "0": "[Retain] Apply Vulnerable 2 and increase Action Count by 1. Pure: apply effects twice."
+      }
+    },
+    "season5_rite_of_execution": {
+      "name": "Rite of Execution",
+      "descriptions": {
+        "0": "[Finale / Exhaust] At the start of next turn, gain Morale 2 and 2 Action Points for 1 turn."
+      }
+    },
+    "season5_retribution": {
+      "name": "Retribution",
+      "descriptions": {
+        "0": "[Exhaust / Bind (1/3)] Deal 70% damage. Damage increases by 60% per Bind stack."
+      }
+    },
+    "season5_frozen_revelation": {
+      "name": "Frozen Revelation",
+      "descriptions": {
+        "0": "Draw 1 Upgrade card. Consecutive: draw 1."
+      }
+    },
+    "season5_memory_suppression_self_attack": {
+      "name": "Memory: Suppression",
+      "descriptions": {
+        "1": "For 1 turn, when allied Attack cards with 3 or more hits activate twice, your Attack increases by 7%(once per turn, twice per battle)",
+        "2": "For 1 turn, when allied Attack cards with 3 or more hits activate twice, your Attack increases by 8%(once per turn, twice per battle)",
+        "3": "For 1 turn, when allied Attack cards with 3 or more hits activate twice, your Attack increases by 9%(once per turn, twice per battle)",
+        "4": "For 1 turn, when allied Attack cards with 3 or more hits activate twice, your Attack increases by 10%(once per turn, twice per battle)"
+      }
+    },
+    "season5_memory_suppression_self_damage": {
+      "name": "Memory: Suppression",
+      "descriptions": {
+        "1": "For 1 turn, when allied Attack cards with 3 or more hits activate twice, your damage increases by 9%(once per turn, twice per battle)",
+        "2": "For 1 turn, when allied Attack cards with 3 or more hits activate twice, your damage increases by 11%(once per turn, twice per battle)",
+        "3": "For 1 turn, when allied Attack cards with 3 or more hits activate twice, your damage increases by 13%(once per turn, twice per battle)",
+        "4": "For 1 turn, when allied Attack cards with 3 or more hits activate twice, your damage increases by 15%(once per turn, twice per battle)"
+      }
+    },
+    "season5_memory_suppression_allied_attack": {
+      "name": "Memory: Suppression",
+      "descriptions": {
+        "1": "For 1 turn, when allied Attack cards with 3 or more hits activate twice, allies' Attack increases by 3%(once per turn, twice per battle)",
+        "2": "For 1 turn, when allied Attack cards with 3 or more hits activate twice, allies' Attack increases by 4%(once per turn, twice per battle)",
+        "3": "For 1 turn, when allied Attack cards with 3 or more hits activate twice, allies' Attack increases by 5%(once per turn, twice per battle)",
+        "4": "For 1 turn, when allied Attack cards with 3 or more hits activate twice, allies' Attack increases by 6%(once per turn, twice per battle)"
+      }
+    },
+    "season5_memory_suppression_allied_damage": {
+      "name": "Memory: Suppression",
+      "descriptions": {
+        "1": "For 1 turn, when allied Attack cards with 3 or more hits activate twice, allies' damage increases by 5%(once per turn, twice per battle)",
+        "2": "For 1 turn, when allied Attack cards with 3 or more hits activate twice, allies' damage increases by 6%(once per turn, twice per battle)",
+        "3": "For 1 turn, when allied Attack cards with 3 or more hits activate twice, allies' damage increases by 7%(once per turn, twice per battle)",
+        "4": "For 1 turn, when allied Attack cards with 3 or more hits activate twice, allies' damage increases by 8%(once per turn, twice per battle)"
+      }
+    },
+    "season5_memory_craving_self_attack": {
+      "name": "Memory: Craving",
+      "descriptions": {
+        "1": "When an allied Attack card with increased Toughness damage activates, your Attack increases by 7%(once per turn, twice per battle)",
+        "2": "When an allied Attack card with increased Toughness damage activates, your Attack increases by 8%(once per turn, twice per battle)",
+        "3": "When an allied Attack card with increased Toughness damage activates, your Attack increases by 9%(once per turn, twice per battle)",
+        "4": "When an allied Attack card with increased Toughness damage activates, your Attack increases by 10%(once per turn, twice per battle)"
+      }
+    },
+    "season5_memory_craving_self_damage": {
+      "name": "Memory: Craving",
+      "descriptions": {
+        "1": "When an allied Attack card with increased Toughness damage activates, your damage increases by 9%(once per turn, twice per battle)",
+        "2": "When an allied Attack card with increased Toughness damage activates, your damage increases by 11%(once per turn, twice per battle)",
+        "3": "When an allied Attack card with increased Toughness damage activates, your damage increases by 13%(once per turn, twice per battle)",
+        "4": "When an allied Attack card with increased Toughness damage activates, your damage increases by 15%(once per turn, twice per battle)"
+      }
+    },
+    "season5_memory_craving_allied_attack": {
+      "name": "Memory: Craving",
+      "descriptions": {
+        "1": "When an allied Attack card with increased Toughness damage activates, allies' Attack increases by 3%(once per turn, twice per battle)",
+        "2": "When an allied Attack card with increased Toughness damage activates, allies' Attack increases by 4%(once per turn, twice per battle)",
+        "3": "When an allied Attack card with increased Toughness damage activates, allies' Attack increases by 5%(once per turn, twice per battle)",
+        "4": "When an allied Attack card with increased Toughness damage activates, allies' Attack increases by 6%(once per turn, twice per battle)"
+      }
+    },
+    "season5_memory_craving_allied_damage": {
+      "name": "Memory: Craving",
+      "descriptions": {
+        "1": "When an allied Attack card with increased Toughness damage activates, allies' damage increases by 5%(once per turn, twice per battle)",
+        "2": "When an allied Attack card with increased Toughness damage activates, allies' damage increases by 6%(once per turn, twice per battle)",
+        "3": "When an allied Attack card with increased Toughness damage activates, allies' damage increases by 7%(once per turn, twice per battle)",
+        "4": "When an allied Attack card with increased Toughness damage activates, allies' damage increases by 8%(once per turn, twice per battle)"
+      }
+    },
+    "season5_memory_kingdom_self_attack": {
+      "name": "Memory: Kingdom",
+      "descriptions": {
+        "1": "For 1 turn, when allied Attack cards with a base cost of 3 or more activate twice, your Attack increases by 7%(once per turn, twice per battle)",
+        "2": "For 1 turn, when allied Attack cards with a base cost of 3 or more activate twice, your Attack increases by 8%(once per turn, twice per battle)",
+        "3": "For 1 turn, when allied Attack cards with a base cost of 3 or more activate twice, your Attack increases by 9%(once per turn, twice per battle)",
+        "4": "For 1 turn, when allied Attack cards with a base cost of 3 or more activate twice, your Attack increases by 10%(once per turn, twice per battle)"
+      }
+    },
+    "season5_memory_kingdom_self_damage": {
+      "name": "Memory: Kingdom",
+      "descriptions": {
+        "1": "For 1 turn, when allied Attack cards with a base cost of 3 or more activate twice, your damage increases by 9%(once per turn, twice per battle)",
+        "2": "For 1 turn, when allied Attack cards with a base cost of 3 or more activate twice, your damage increases by 11%(once per turn, twice per battle)",
+        "3": "For 1 turn, when allied Attack cards with a base cost of 3 or more activate twice, your damage increases by 13%(once per turn, twice per battle)",
+        "4": "For 1 turn, when allied Attack cards with a base cost of 3 or more activate twice, your damage increases by 15%(once per turn, twice per battle)"
+      }
+    },
+    "season5_memory_kingdom_allied_attack": {
+      "name": "Memory: Kingdom",
+      "descriptions": {
+        "1": "For 1 turn, when allied Attack cards with a base cost of 3 or more activate twice, allies' Attack increases by 3%(once per turn, twice per battle)",
+        "2": "For 1 turn, when allied Attack cards with a base cost of 3 or more activate twice, allies' Attack increases by 4%(once per turn, twice per battle)",
+        "3": "For 1 turn, when allied Attack cards with a base cost of 3 or more activate twice, allies' Attack increases by 5%(once per turn, twice per battle)",
+        "4": "For 1 turn, when allied Attack cards with a base cost of 3 or more activate twice, allies' Attack increases by 6%(once per turn, twice per battle)"
+      }
+    },
+    "season5_memory_kingdom_allied_damage": {
+      "name": "Memory: Kingdom",
+      "descriptions": {
+        "1": "For 1 turn, when allied Attack cards with a base cost of 3 or more activate twice, allies' damage increases by 5%(once per turn, twice per battle)",
+        "2": "For 1 turn, when allied Attack cards with a base cost of 3 or more activate twice, allies' damage increases by 6%(once per turn, twice per battle)",
+        "3": "For 1 turn, when allied Attack cards with a base cost of 3 or more activate twice, allies' damage increases by 7%(once per turn, twice per battle)",
+        "4": "For 1 turn, when allied Attack cards with a base cost of 3 or more activate twice, allies' damage increases by 8%(once per turn, twice per battle)"
+      }
+    },
+    "season5_memory_golden_self_attack": {
+      "name": "Memory: Golden",
+      "descriptions": {
+        "1": "For 1 turn, when the total cost of activated allied Attack cards is 8 or more, your Attack increases by 7%(once per turn, twice per battle)",
+        "2": "For 1 turn, when the total cost of activated allied Attack cards is 8 or more, your Attack increases by 8%(once per turn, twice per battle)",
+        "3": "For 1 turn, when the total cost of activated allied Attack cards is 8 or more, your Attack increases by 9%(once per turn, twice per battle)",
+        "4": "For 1 turn, when the total cost of activated allied Attack cards is 8 or more, your Attack increases by 10%(once per turn, twice per battle)"
+      }
+    },
+    "season5_memory_golden_self_damage": {
+      "name": "Memory: Golden",
+      "descriptions": {
+        "1": "For 1 turn, when the total cost of activated allied Attack cards is 8 or more, your damage increases by 9%(once per turn, twice per battle)",
+        "2": "For 1 turn, when the total cost of activated allied Attack cards is 8 or more, your damage increases by 11%(once per turn, twice per battle)",
+        "3": "For 1 turn, when the total cost of activated allied Attack cards is 8 or more, your damage increases by 13%(once per turn, twice per battle)",
+        "4": "For 1 turn, when the total cost of activated allied Attack cards is 8 or more, your damage increases by 15%(once per turn, twice per battle)"
+      }
+    },
+    "season5_memory_golden_allied_attack": {
+      "name": "Memory: Golden",
+      "descriptions": {
+        "1": "For 1 turn, when the total cost of activated allied Attack cards is 8 or more, allies' Attack increases by 3%(once per turn, twice per battle)",
+        "2": "For 1 turn, when the total cost of activated allied Attack cards is 8 or more, allies' Attack increases by 4%(once per turn, twice per battle)",
+        "3": "For 1 turn, when the total cost of activated allied Attack cards is 8 or more, allies' Attack increases by 5%(once per turn, twice per battle)",
+        "4": "For 1 turn, when the total cost of activated allied Attack cards is 8 or more, allies' Attack increases by 6%(once per turn, twice per battle)"
+      }
+    },
+    "season5_memory_golden_allied_damage": {
+      "name": "Memory: Golden",
+      "descriptions": {
+        "1": "For 1 turn, when the total cost of activated allied Attack cards is 8 or more, allies' damage increases by 5%(once per turn, twice per battle)",
+        "2": "For 1 turn, when the total cost of activated allied Attack cards is 8 or more, allies' damage increases by 6%(once per turn, twice per battle)",
+        "3": "For 1 turn, when the total cost of activated allied Attack cards is 8 or more, allies' damage increases by 7%(once per turn, twice per battle)",
+        "4": "For 1 turn, when the total cost of activated allied Attack cards is 8 or more, allies' damage increases by 8%(once per turn, twice per battle)"
+      }
+    },
+    "season5_memory_resentment_self_attack": {
+      "name": "Memory: Resentment",
+      "descriptions": {
+        "1": "For 1 turn, when 3 allied Attack cards are discarded, your Attack increases by 7%(once per turn, twice per battle)",
+        "2": "For 1 turn, when 3 allied Attack cards are discarded, your Attack increases by 8%(once per turn, twice per battle)",
+        "3": "For 1 turn, when 3 allied Attack cards are discarded, your Attack increases by 9%(once per turn, twice per battle)",
+        "4": "For 1 turn, when 3 allied Attack cards are discarded, your Attack increases by 10%(once per turn, twice per battle)"
+      }
+    },
+    "season5_memory_resentment_self_damage": {
+      "name": "Memory: Resentment",
+      "descriptions": {
+        "1": "For 1 turn, when 3 allied Attack cards are discarded, your damage increases by 9%(once per turn, twice per battle)",
+        "2": "For 1 turn, when 3 allied Attack cards are discarded, your damage increases by 11%(once per turn, twice per battle)",
+        "3": "For 1 turn, when 3 allied Attack cards are discarded, your damage increases by 13%(once per turn, twice per battle)",
+        "4": "For 1 turn, when 3 allied Attack cards are discarded, your damage increases by 15%(once per turn, twice per battle)"
+      }
+    },
+    "season5_memory_resentment_allied_attack": {
+      "name": "Memory: Resentment",
+      "descriptions": {
+        "1": "For 1 turn, when 3 allied Attack cards are discarded, allies' Attack increases by 3%(once per turn, twice per battle)",
+        "2": "For 1 turn, when 3 allied Attack cards are discarded, allies' Attack increases by 4%(once per turn, twice per battle)",
+        "3": "For 1 turn, when 3 allied Attack cards are discarded, allies' Attack increases by 5%(once per turn, twice per battle)",
+        "4": "For 1 turn, when 3 allied Attack cards are discarded, allies' Attack increases by 6%(once per turn, twice per battle)"
+      }
+    },
+    "season5_memory_resentment_allied_damage": {
+      "name": "Memory: Resentment",
+      "descriptions": {
+        "1": "For 1 turn, when 3 allied Attack cards are discarded, allies' damage increases by 5%(once per turn, twice per battle)",
+        "2": "For 1 turn, when 3 allied Attack cards are discarded, allies' damage increases by 6%(once per turn, twice per battle)",
+        "3": "For 1 turn, when 3 allied Attack cards are discarded, allies' damage increases by 7%(once per turn, twice per battle)",
+        "4": "For 1 turn, when 3 allied Attack cards are discarded, allies' damage increases by 8%(once per turn, twice per battle)"
+      }
+    },
+    "season5_memory_woman_self_attack": {
+      "name": "Memory: Woman",
+      "descriptions": {
+        "1": "For 1 turn, when allied Haste Attack cards activate 3 times, your Attack increases by 7%(once per turn, twice per battle)",
+        "2": "For 1 turn, when allied Haste Attack cards activate 3 times, your Attack increases by 8%(once per turn, twice per battle)",
+        "3": "For 1 turn, when allied Haste Attack cards activate 3 times, your Attack increases by 9%(once per turn, twice per battle)",
+        "4": "For 1 turn, when allied Haste Attack cards activate 3 times, your Attack increases by 10%(once per turn, twice per battle)"
+      }
+    },
+    "season5_memory_woman_self_damage": {
+      "name": "Memory: Woman",
+      "descriptions": {
+        "1": "For 1 turn, when allied Haste Attack cards activate 3 times, your damage increases by 9%(once per turn, twice per battle)",
+        "2": "For 1 turn, when allied Haste Attack cards activate 3 times, your damage increases by 11%(once per turn, twice per battle)",
+        "3": "For 1 turn, when allied Haste Attack cards activate 3 times, your damage increases by 13%(once per turn, twice per battle)",
+        "4": "For 1 turn, when allied Haste Attack cards activate 3 times, your damage increases by 15%(once per turn, twice per battle)"
+      }
+    },
+    "season5_memory_woman_allied_attack": {
+      "name": "Memory: Woman",
+      "descriptions": {
+        "1": "For 1 turn, when allied Haste Attack cards activate 3 times, allies' Attack increases by 3%(once per turn, twice per battle)",
+        "2": "For 1 turn, when allied Haste Attack cards activate 3 times, allies' Attack increases by 4%(once per turn, twice per battle)",
+        "3": "For 1 turn, when allied Haste Attack cards activate 3 times, allies' Attack increases by 5%(once per turn, twice per battle)",
+        "4": "For 1 turn, when allied Haste Attack cards activate 3 times, allies' Attack increases by 6%(once per turn, twice per battle)"
+      }
+    },
+    "season5_memory_woman_allied_damage": {
+      "name": "Memory: Woman",
+      "descriptions": {
+        "1": "For 1 turn, when allied Haste Attack cards activate 3 times, allies' damage increases by 5%(once per turn, twice per battle)",
+        "2": "For 1 turn, when allied Haste Attack cards activate 3 times, allies' damage increases by 6%(once per turn, twice per battle)",
+        "3": "For 1 turn, when allied Haste Attack cards activate 3 times, allies' damage increases by 7%(once per turn, twice per battle)",
+        "4": "For 1 turn, when allied Haste Attack cards activate 3 times, allies' damage increases by 8%(once per turn, twice per battle)"
+      }
+    },
+    "season5_memory_greed_self_attack": {
+      "name": "Memory: Greed",
+      "descriptions": {
+        "1": "For 1 turn, when allied Attack cards perform AoE attacks 3 times, your Attack increases by 7%(once per turn, twice per battle)",
+        "2": "For 1 turn, when allied Attack cards perform AoE attacks 3 times, your Attack increases by 8%(once per turn, twice per battle)",
+        "3": "For 1 turn, when allied Attack cards perform AoE attacks 3 times, your Attack increases by 9%(once per turn, twice per battle)",
+        "4": "For 1 turn, when allied Attack cards perform AoE attacks 3 times, your Attack increases by 10%(once per turn, twice per battle)"
+      }
+    },
+    "season5_memory_greed_self_damage": {
+      "name": "Memory: Greed",
+      "descriptions": {
+        "1": "For 1 turn, when allied Attack cards perform AoE attacks 3 times, your damage increases by 9%(once per turn, twice per battle)",
+        "2": "For 1 turn, when allied Attack cards perform AoE attacks 3 times, your damage increases by 11%(once per turn, twice per battle)",
+        "3": "For 1 turn, when allied Attack cards perform AoE attacks 3 times, your damage increases by 13%(once per turn, twice per battle)",
+        "4": "For 1 turn, when allied Attack cards perform AoE attacks 3 times, your damage increases by 15%(once per turn, twice per battle)"
+      }
+    },
+    "season5_memory_greed_allied_attack": {
+      "name": "Memory: Greed",
+      "descriptions": {
+        "1": "For 1 turn, when allied Attack cards perform AoE attacks 3 times, allies' Attack increases by 3%(once per turn, twice per battle)",
+        "2": "For 1 turn, when allied Attack cards perform AoE attacks 3 times, allies' Attack increases by 4%(once per turn, twice per battle)",
+        "3": "For 1 turn, when allied Attack cards perform AoE attacks 3 times, allies' Attack increases by 5%(once per turn, twice per battle)",
+        "4": "For 1 turn, when allied Attack cards perform AoE attacks 3 times, allies' Attack increases by 6%(once per turn, twice per battle)"
+      }
+    },
+    "season5_memory_greed_allied_damage": {
+      "name": "Memory: Greed",
+      "descriptions": {
+        "1": "For 1 turn, when allied Attack cards perform AoE attacks 3 times, allies' damage increases by 5%(once per turn, twice per battle)",
+        "2": "For 1 turn, when allied Attack cards perform AoE attacks 3 times, allies' damage increases by 6%(once per turn, twice per battle)",
+        "3": "For 1 turn, when allied Attack cards perform AoE attacks 3 times, allies' damage increases by 7%(once per turn, twice per battle)",
+        "4": "For 1 turn, when allied Attack cards perform AoE attacks 3 times, allies' damage increases by 8%(once per turn, twice per battle)"
+      }
+    },
+    "season5_memory_kaleidoscope_self_attack": {
+      "name": "Memory: Kaleidoscope",
+      "descriptions": {
+        "1": "For 1 turn, when allied damage-over-time effects activate 3 times, your Attack increases by 7%(once per turn, twice per battle)",
+        "2": "For 1 turn, when allied damage-over-time effects activate 3 times, your Attack increases by 8%(once per turn, twice per battle)",
+        "3": "For 1 turn, when allied damage-over-time effects activate 3 times, your Attack increases by 9%(once per turn, twice per battle)",
+        "4": "For 1 turn, when allied damage-over-time effects activate 3 times, your Attack increases by 10%(once per turn, twice per battle)"
+      }
+    },
+    "season5_memory_kaleidoscope_self_damage": {
+      "name": "Memory: Kaleidoscope",
+      "descriptions": {
+        "1": "For 1 turn, when allied damage-over-time effects activate 3 times, your damage increases by 9%(once per turn, twice per battle)",
+        "2": "For 1 turn, when allied damage-over-time effects activate 3 times, your damage increases by 11%(once per turn, twice per battle)",
+        "3": "For 1 turn, when allied damage-over-time effects activate 3 times, your damage increases by 13%(once per turn, twice per battle)",
+        "4": "For 1 turn, when allied damage-over-time effects activate 3 times, your damage increases by 15%(once per turn, twice per battle)"
+      }
+    },
+    "season5_memory_kaleidoscope_allied_attack": {
+      "name": "Memory: Kaleidoscope",
+      "descriptions": {
+        "1": "For 1 turn, when allied damage-over-time effects activate 3 times, allies' Attack increases by 3%(once per turn, twice per battle)",
+        "2": "For 1 turn, when allied damage-over-time effects activate 3 times, allies' Attack increases by 4%(once per turn, twice per battle)",
+        "3": "For 1 turn, when allied damage-over-time effects activate 3 times, allies' Attack increases by 5%(once per turn, twice per battle)",
+        "4": "For 1 turn, when allied damage-over-time effects activate 3 times, allies' Attack increases by 6%(once per turn, twice per battle)"
+      }
+    },
+    "season5_memory_kaleidoscope_allied_damage": {
+      "name": "Memory: Kaleidoscope",
+      "descriptions": {
+        "1": "For 1 turn, when allied damage-over-time effects activate 3 times, allies' damage increases by 5%(once per turn, twice per battle)",
+        "2": "For 1 turn, when allied damage-over-time effects activate 3 times, allies' damage increases by 6%(once per turn, twice per battle)",
+        "3": "For 1 turn, when allied damage-over-time effects activate 3 times, allies' damage increases by 7%(once per turn, twice per battle)",
+        "4": "For 1 turn, when allied damage-over-time effects activate 3 times, allies' damage increases by 8%(once per turn, twice per battle)"
+      }
+    },
+    "season5_memory_loss_self_attack": {
+      "name": "Memory: Loss",
+      "descriptions": {
+        "1": "When an allied Skill card is duplicated, your Attack increases by 7%(once per turn, twice per battle) Your Justice Attack card damage increases by 25%.",
+        "2": "When an allied Skill card is duplicated, your Attack increases by 8%(once per turn, twice per battle) Your Justice Attack card damage increases by 25%.",
+        "3": "When an allied Skill card is duplicated, your Attack increases by 9%(once per turn, twice per battle) Your Justice Attack card damage increases by 25%.",
+        "4": "When an allied Skill card is duplicated, your Attack increases by 10%(once per turn, twice per battle) Your Justice Attack card damage increases by 25%."
+      }
+    },
+    "season5_memory_loss_self_damage": {
+      "name": "Memory: Loss",
+      "descriptions": {
+        "1": "When an allied Skill card is duplicated, your damage increases by 9%(once per turn, twice per battle) Your Justice Attack card damage increases by 25%.",
+        "2": "When an allied Skill card is duplicated, your damage increases by 11%(once per turn, twice per battle) Your Justice Attack card damage increases by 25%.",
+        "3": "When an allied Skill card is duplicated, your damage increases by 13%(once per turn, twice per battle) Your Justice Attack card damage increases by 25%.",
+        "4": "When an allied Skill card is duplicated, your damage increases by 15%(once per turn, twice per battle) Your Justice Attack card damage increases by 25%."
+      }
+    },
+    "season5_memory_loss_allied_attack": {
+      "name": "Memory: Loss",
+      "descriptions": {
+        "1": "When an allied Skill card is duplicated, allies' Attack increases by 3%(once per turn, twice per battle) Your Justice Attack card damage increases by 25%.",
+        "2": "When an allied Skill card is duplicated, allies' Attack increases by 4%(once per turn, twice per battle) Your Justice Attack card damage increases by 25%.",
+        "3": "When an allied Skill card is duplicated, allies' Attack increases by 5%(once per turn, twice per battle) Your Justice Attack card damage increases by 25%.",
+        "4": "When an allied Skill card is duplicated, allies' Attack increases by 6%(once per turn, twice per battle) Your Justice Attack card damage increases by 25%."
+      }
+    },
+    "season5_memory_loss_allied_damage": {
+      "name": "Memory: Loss",
+      "descriptions": {
+        "1": "When an allied Skill card is duplicated, allies' damage increases by 5%(once per turn, twice per battle) Your Justice Attack card damage increases by 25%.",
+        "2": "When an allied Skill card is duplicated, allies' damage increases by 6%(once per turn, twice per battle) Your Justice Attack card damage increases by 25%.",
+        "3": "When an allied Skill card is duplicated, allies' damage increases by 7%(once per turn, twice per battle) Your Justice Attack card damage increases by 25%.",
+        "4": "When an allied Skill card is duplicated, allies' damage increases by 8%(once per turn, twice per battle) Your Justice Attack card damage increases by 25%."
+      }
+    },
+    "season5_memory_coercion_self_attack": {
+      "name": "Memory: Coercion",
+      "descriptions": {
+        "1": "When an allied Basic card is duplicated, your Attack increases by 7%(once per turn, twice per battle) Allies' damage increases by 15%.",
+        "2": "When an allied Basic card is duplicated, your Attack increases by 8%(once per turn, twice per battle) Allies' damage increases by 15%.",
+        "3": "When an allied Basic card is duplicated, your Attack increases by 9%(once per turn, twice per battle) Allies' damage increases by 15%.",
+        "4": "When an allied Basic card is duplicated, your Attack increases by 10%(once per turn, twice per battle) Allies' damage increases by 15%."
+      }
+    },
+    "season5_memory_coercion_self_damage": {
+      "name": "Memory: Coercion",
+      "descriptions": {
+        "1": "When an allied Basic card is duplicated, your damage increases by 9%(once per turn, twice per battle) Allies' damage increases by 15%.",
+        "2": "When an allied Basic card is duplicated, your damage increases by 11%(once per turn, twice per battle) Allies' damage increases by 15%.",
+        "3": "When an allied Basic card is duplicated, your damage increases by 13%(once per turn, twice per battle) Allies' damage increases by 15%.",
+        "4": "When an allied Basic card is duplicated, your damage increases by 15%(once per turn, twice per battle) Allies' damage increases by 15%."
+      }
+    },
+    "season5_memory_coercion_allied_attack": {
+      "name": "Memory: Coercion",
+      "descriptions": {
+        "1": "When an allied Basic card is duplicated, allies' Attack increases by 3%(once per turn, twice per battle) Allies' damage increases by 15%.",
+        "2": "When an allied Basic card is duplicated, allies' Attack increases by 4%(once per turn, twice per battle) Allies' damage increases by 15%.",
+        "3": "When an allied Basic card is duplicated, allies' Attack increases by 5%(once per turn, twice per battle) Allies' damage increases by 15%.",
+        "4": "When an allied Basic card is duplicated, allies' Attack increases by 6%(once per turn, twice per battle) Allies' damage increases by 15%."
+      }
+    },
+    "season5_memory_coercion_allied_damage": {
+      "name": "Memory: Coercion",
+      "descriptions": {
+        "1": "When an allied Basic card is duplicated, allies' damage increases by 5%(once per turn, twice per battle) Allies' damage increases by 15%.",
+        "2": "When an allied Basic card is duplicated, allies' damage increases by 6%(once per turn, twice per battle) Allies' damage increases by 15%.",
+        "3": "When an allied Basic card is duplicated, allies' damage increases by 7%(once per turn, twice per battle) Allies' damage increases by 15%.",
+        "4": "When an allied Basic card is duplicated, allies' damage increases by 8%(once per turn, twice per battle) Allies' damage increases by 15%."
       }
     }
   }

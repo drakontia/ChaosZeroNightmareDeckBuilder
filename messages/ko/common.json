@@ -29,7 +29,8 @@
     "god": "어떤 신의 히라메키를 사용할지 선택하세요",
     "level": "Lv",
     "search": "카드 검색",
-    "hiddenHirameki": "隠しヒラメキ"
+    "hiddenHirameki": "隠しヒラメキ",
+    "memoryLevel": "기억 카드 레벨"
   },
   "deck": {
     "title": "덱",
@@ -156,7 +157,9 @@
     "inquiry": "탐구",
     "claim": "소유",
     "survival": "생존",
-    "rapacity": "탐욕"
+    "rapacity": "탐욕",
+    "memory": "기억",
+    "banish": "제외"
   },
   "actions": {
     "add": "추가",
