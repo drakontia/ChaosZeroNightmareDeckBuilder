@@ -27,7 +27,7 @@ function getMonsterCardPoints(grade?: CardGrade): number {
 export function calculateFaintMemory(deck: Deck | null | undefined): number {
   if (!deck || !Array.isArray(deck.cards)) return 0;
   let points = 0;
-  const activeCopiedCards = deck.cards.filter((card) => card.isCopied);
+  const activeCopiedCards = deck.cards.filter((card) => card.isCopied && !card.isMemoryCard);
 
   // Points for equipment enhancements (refinement and god hammer)
   // Each equipment slot can have +10pt for refinement and +10pt for god hammer
@@ -44,6 +44,8 @@ export function calculateFaintMemory(deck: Deck | null | undefined): number {
   // Points for cards in the deck
   const cards = deck.cards;
   for (const card of cards) {
+    if (card.isMemoryCard) continue;
+
     // Character cards: base cards do not add points.
     // Collect God Hirameki state once and handle uniformly for all types.
     const hasGodHirameki = card.godHiramekiType && card.godHiramekiEffectId && !card.isBasicCard;
@@ -92,7 +94,7 @@ export function calculateFaintMemory(deck: Deck | null | undefined): number {
     if (snapshot && count > 0) {
       const cardType = snapshot.type;
       // Type acquisition points (per card)
-      if (cardType === CardType.SHARED) {
+      if (cardType === CardType.SHARED && !snapshot.isMemoryCard && !cardData?.isMemoryCard) {
         points += 20;
       } else if (cardType === CardType.MONSTER) {
         points += getMonsterCardPoints(snapshot.grade);
@@ -101,7 +103,13 @@ export function calculateFaintMemory(deck: Deck | null | undefined): number {
       }
       // V2: Hirameki points for shared cards removed (shared cards no longer gain hirameki points)
       // God hirameki points (per card)
-      if (snapshot.godHiramekiType && snapshot.godHiramekiEffectId && !snapshot.isBasicCard) {
+      if (
+        snapshot.godHiramekiType &&
+        snapshot.godHiramekiEffectId &&
+        !snapshot.isBasicCard &&
+        !snapshot.isMemoryCard &&
+        !cardData?.isMemoryCard
+      ) {
         points += 20;
       }
     }
@@ -127,10 +135,17 @@ export function calculateFaintMemory(deck: Deck | null | undefined): number {
     // AND at least one copied card still exists in the deck
     const snapshot: CopiedCardEntry | null =
       typeof entry === "number" ? null : (entry as CopiedCardEntry);
-    if (snapshot && count > 0 && !originalCardInDeck && activeCopyCountForCard > 0) {
+    if (
+      snapshot &&
+      count > 0 &&
+      !originalCardInDeck &&
+      activeCopyCountForCard > 0 &&
+      !snapshot.isMemoryCard &&
+      !getCardById(cardId)?.isMemoryCard
+    ) {
       const cardType = snapshot.type;
       // Type acquisition points (one-time for all copies of this card)
-      if (cardType === CardType.SHARED) {
+      if (cardType === CardType.SHARED && !snapshot.isMemoryCard) {
         points += 20;
       } else if (cardType === CardType.MONSTER) {
         points += getMonsterCardPoints(snapshot.grade);
@@ -139,7 +154,12 @@ export function calculateFaintMemory(deck: Deck | null | undefined): number {
       }
       // V2: Hirameki points for shared cards removed (shared cards no longer gain hirameki points)
       // God hirameki points (one-time for all copies of this card)
-      if (snapshot.godHiramekiType && snapshot.godHiramekiEffectId && !snapshot.isBasicCard) {
+      if (
+        snapshot.godHiramekiType &&
+        snapshot.godHiramekiEffectId &&
+        !snapshot.isBasicCard &&
+        !snapshot.isMemoryCard
+      ) {
         points += 20;
       }
     }
@@ -160,14 +180,24 @@ export function calculateFaintMemory(deck: Deck | null | undefined): number {
     // 属性ポイントはスナップショットから従来通り加算
     if (snapshot) {
       const originalType = snapshot.originalType;
-      if (originalType === CardType.SHARED || originalType === CardType.FORBIDDEN) {
+      if (
+        !snapshot.isMemoryCard &&
+        !originalCard?.isMemoryCard &&
+        (originalType === CardType.SHARED || originalType === CardType.FORBIDDEN)
+      ) {
         points += 20;
       } else if (originalType === CardType.MONSTER) {
         points += getMonsterCardPoints(snapshot.originalGrade);
       }
       // V2: Hirameki points for shared cards removed (shared cards no longer gain hirameki points)
       // God hirameki points
-      if (snapshot.godHiramekiType && snapshot.godHiramekiEffectId && !snapshot.isBasicCard) {
+      if (
+        snapshot.godHiramekiType &&
+        snapshot.godHiramekiEffectId &&
+        !snapshot.isBasicCard &&
+        !snapshot.isMemoryCard &&
+        !originalCard?.isMemoryCard
+      ) {
         points += 20;
       }
     }

@@ -27,7 +27,9 @@ vi.mock("@/components/ui/card", () => ({
 
 vi.mock("@/components/ui/accordion", () => ({
   Accordion: ({ children }: any) => <div>{children}</div>,
-  AccordionItem: ({ children }: any) => <div>{children}</div>,
+  AccordionItem: ({ children, value }: any) => (
+    <div data-testid={`accordion-${value}`}>{children}</div>
+  ),
   AccordionTrigger: ({ children }: any) => <div>{children}</div>,
   AccordionContent: ({ children }: any) => <div>{children}</div>,
 }));
@@ -112,6 +114,27 @@ const season4Card = {
   hiramekiVariations: [{ level: 0, cost: 1, description: "Season 4 description", statuses: [] }],
 };
 
+const season5Card = {
+  id: "season5_divine_punishment",
+  name: "Season 5 Card",
+  type: "shared",
+  category: "attack",
+  statuses: [],
+  imgUrl: "/season5_card.png",
+  hiramekiVariations: [{ level: 0, cost: 1, description: "Season 5 description", statuses: [] }],
+};
+
+const season5MemoryCard = {
+  id: "season5_memory_suppression_self_attack",
+  name: "Season 5 Memory Card",
+  type: "shared",
+  category: "upgrade",
+  statuses: [],
+  imgUrl: "/season5_memory.png",
+  isMemoryCard: true,
+  hiramekiVariations: [{ level: 0, cost: 0, description: "Memory description", statuses: [] }],
+};
+
 const personaSeason3Card = {
   id: "persona_99",
   name: "Persona Season 3 Card",
@@ -163,6 +186,14 @@ describe("CardSelector", () => {
       spore_harvester: { name: "Season 2 Card", descriptions: { 0: "Season 2 description" } },
       doctrine_of_binding: { name: "Season 3 Card", descriptions: { 0: "Season 3 description" } },
       traitors_execution: { name: "Season 4 Card", descriptions: { 0: "Season 4 description" } },
+      season5_divine_punishment: {
+        name: "Season 5 Card",
+        descriptions: { 0: "Season 5 description" },
+      },
+      season5_memory_suppression_self_attack: {
+        name: "Season 5 Memory Card",
+        descriptions: { 1: "Memory description" },
+      },
       persona_99: { name: "Persona Season 3 Card", descriptions: { 0: "Persona description" } },
     },
   };
@@ -291,6 +322,36 @@ describe("CardSelector", () => {
     expect(screen.getByText("Season 1 Card")).toBeTruthy();
   });
 
+  it("places season 5 shared and memory cards in their own accordion", () => {
+    vi.mocked(getAddableCards).mockReturnValue([
+      sharedCard,
+      season5Card,
+      season5MemoryCard,
+    ] as any);
+
+    render(
+      <NextIntlClientProvider locale="en" messages={messages}>
+        <CardSelector
+          character={null}
+          onAddCard={vi.fn()}
+          onRestoreCard={vi.fn()}
+          removedCards={new Map()}
+          convertedCards={new Map()}
+          presentHiramekiIds={new Set()}
+          searchQuery=""
+        />
+      </NextIntlClientProvider>,
+    );
+
+    const season5Accordion = screen.getByTestId("accordion-season-5");
+    const sharedAccordion = screen.getByTestId("accordion-shared");
+
+    expect(season5Accordion.textContent).toContain("Season 5 Card");
+    expect(season5Accordion.textContent).toContain("Season 5 Memory Card");
+    expect(sharedAccordion.textContent).toContain("Shared Card");
+    expect(sharedAccordion.textContent).not.toContain("Season 5 Card");
+  });
+
   it("renders season card accordions in season4 to season1 order before shared and monster", () => {
     vi.mocked(getAddableCards).mockReturnValue([
       sharedCard,
@@ -299,6 +360,7 @@ describe("CardSelector", () => {
       season2Card,
       season3Card,
       season4Card,
+      season5Card,
       personaSeason3Card,
     ] as any);
 
@@ -317,6 +379,9 @@ describe("CardSelector", () => {
     );
 
     const renderedText = document.body.textContent || "";
+    expect(renderedText.indexOf("Season Cards 5")).toBeLessThan(
+      renderedText.indexOf("Season Cards 4"),
+    );
     expect(renderedText.indexOf("Season Cards 4")).toBeLessThan(
       renderedText.indexOf("Season Cards 3"),
     );

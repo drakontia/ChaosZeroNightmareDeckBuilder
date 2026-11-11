@@ -117,6 +117,7 @@ describe("DeckDisplay - Copied Card Feature", () => {
     onSetPersonaEngravings: vi.fn(),
     onUpdateSeasonLevel: vi.fn(),
     onUpdateSeasonStatuses: vi.fn(),
+    onUpdateMemoryLevel: vi.fn(),
   };
 
   beforeEach(() => {

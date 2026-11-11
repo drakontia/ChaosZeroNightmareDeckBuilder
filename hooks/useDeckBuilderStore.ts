@@ -21,6 +21,7 @@ import {
   isSeason4Card,
   normalizeSeason4SelectedStatuses,
 } from "@/lib/season4";
+import { isMemoryCard, normalizeMemoryLevel } from "@/lib/season5";
 
 const PERSONA_CARD_ID_PREFIX = "persona_";
 
@@ -91,6 +92,7 @@ interface DeckBuilderStore {
   setCardGodHiramekiEffect: (deckId: string, effectId: string | null) => void;
   setCardHiddenHirameki: (deckId: string, hiddenHiramekiId: string | null) => void;
   updateCardSeasonLevel: (deckId: string, level: 1 | 2 | 3) => void;
+  updateCardMemoryLevel: (deckId: string, level: 1 | 2 | 3 | 4) => void;
   updateCardSeasonStatuses: (deckId: string, statuses: Season4DesireStatus[]) => void;
   setCardPersonaEngravings: (deckId: string, engravings: PersonaEngraving[]) => void;
   undoCard: (deckId: string) => void;
@@ -172,6 +174,8 @@ export const useDeckBuilderStore = create<DeckBuilderStore>((set) => ({
     });
   },
   setDeck: (deck) => {
+    if (deck.cards.filter(isMemoryCard).length > 1) return;
+
     // characterがidの場合はCHARACTERSからオブジェクト化
     let charObj = null;
     if (deck.character) {
@@ -243,6 +247,9 @@ export const useDeckBuilderStore = create<DeckBuilderStore>((set) => ({
     const normalizedCards = deck.cards.map((card) => ({
       ...card,
       ...normalizeSeason4CardState(card),
+      selectedMemoryLevel: isMemoryCard(card)
+        ? normalizeMemoryLevel(card.selectedMemoryLevel)
+        : undefined,
       personaEngravings: normalizePersonaEngravings(card.personaEngravings, normalizedCharacter),
     }));
     const normalizedRemovedCards = new Map(
@@ -331,6 +338,7 @@ export const useDeckBuilderStore = create<DeckBuilderStore>((set) => ({
   addCard: (card) => {
     set((state) => {
       if (!state.deck) return {};
+      if (isMemoryCard(card) && state.deck.cards.some(isMemoryCard)) return {};
       if (isPersonaCard(card) && state.deck.cards.some((existing) => isPersonaCard(existing))) {
         return {};
       }
@@ -374,6 +382,7 @@ export const useDeckBuilderStore = create<DeckBuilderStore>((set) => ({
         selectedHiddenHiramekiId: cardToRemove.selectedHiddenHiramekiId,
         selectedSeasonLevel: cardToRemove.selectedSeasonLevel,
         selectedSeasonStatuses: cardToRemove.selectedSeasonStatuses,
+        selectedMemoryLevel: cardToRemove.selectedMemoryLevel,
         personaEngravings: normalizePersonaEngravings(
           cardToRemove.personaEngravings,
           state.deck.character,
@@ -381,6 +390,7 @@ export const useDeckBuilderStore = create<DeckBuilderStore>((set) => ({
         godHiramekiType: cardToRemove.godHiramekiType,
         godHiramekiEffectId: cardToRemove.godHiramekiEffectId,
         isBasicCard: cardToRemove.isBasicCard,
+        isMemoryCard: isMemoryCard(cardToRemove),
         isCopied: cardToRemove.isCopied,
         copiedFromCardId: cardToRemove.copiedFromCardId,
       };
@@ -403,6 +413,7 @@ export const useDeckBuilderStore = create<DeckBuilderStore>((set) => ({
       const normalizedCard: DeckCard = {
         ...card,
         ...normalizeSeason4CardState(card),
+        selectedMemoryLevel: isMemoryCard(card) ? normalizeMemoryLevel(card.selectedMemoryLevel) : undefined,
         personaEngravings: normalizePersonaEngravings(card.personaEngravings, state.deck.character),
       };
       // 変換済みカード（変換先）がデッキに存在する場合は除外
@@ -419,6 +430,12 @@ export const useDeckBuilderStore = create<DeckBuilderStore>((set) => ({
       }
       // 既に同じdeckIdのカードが存在しない場合のみ追加
       if (newCards.some((c) => c.deckId === normalizedCard.deckId)) return {};
+      if (
+        isMemoryCard(normalizedCard) &&
+        newCards.some((existing) => existing.deckId !== normalizedCard.deckId && isMemoryCard(existing))
+      ) {
+        return {};
+      }
       // Remove from removedCards when restoring
       const newRemoved = new Map(state.deck.removedCards);
       const removedEntry = newRemoved.get(normalizedCard.id);
@@ -533,7 +550,10 @@ export const useDeckBuilderStore = create<DeckBuilderStore>((set) => ({
         deck: {
           ...state.deck,
           cards: state.deck.cards.map((card) =>
-            card.deckId === deckId && !isPersonaCard(card) && !isSeason4Card(card)
+            card.deckId === deckId &&
+            !isPersonaCard(card) &&
+            !isSeason4Card(card) &&
+            !isMemoryCard(card)
               ? { ...card, selectedHiramekiLevel: level }
               : card,
           ),
@@ -548,7 +568,10 @@ export const useDeckBuilderStore = create<DeckBuilderStore>((set) => ({
         deck: {
           ...state.deck,
           cards: state.deck.cards.map((card) =>
-            card.deckId === deckId && !isPersonaCard(card) && !isSeason4Card(card)
+            card.deckId === deckId &&
+            !isPersonaCard(card) &&
+            !isSeason4Card(card) &&
+            !isMemoryCard(card)
               ? { ...card, godHiramekiType: godType }
               : card,
           ),
@@ -563,7 +586,10 @@ export const useDeckBuilderStore = create<DeckBuilderStore>((set) => ({
         deck: {
           ...state.deck,
           cards: state.deck.cards.map((card) =>
-            card.deckId === deckId && !isPersonaCard(card) && !isSeason4Card(card)
+            card.deckId === deckId &&
+            !isPersonaCard(card) &&
+            !isSeason4Card(card) &&
+            !isMemoryCard(card)
               ? { ...card, godHiramekiEffectId: effectId }
               : card,
           ),
@@ -605,6 +631,21 @@ export const useDeckBuilderStore = create<DeckBuilderStore>((set) => ({
               ...normalized,
             };
           }),
+        },
+      };
+    });
+  },
+  updateCardMemoryLevel: (deckId, level) => {
+    set((state) => {
+      if (!state.deck) return {};
+      return {
+        deck: {
+          ...state.deck,
+          cards: state.deck.cards.map((card) =>
+            card.deckId === deckId && isMemoryCard(card)
+              ? { ...card, selectedMemoryLevel: normalizeMemoryLevel(level) }
+              : card,
+          ),
         },
       };
     });
@@ -676,6 +717,12 @@ export const useDeckBuilderStore = create<DeckBuilderStore>((set) => ({
       if (isConverted && originalCardId) {
         const originalCard = getCardById(originalCardId);
         if (originalCard) {
+          if (
+            isMemoryCard(originalCard) &&
+            state.deck.cards.some((card) => card.deckId !== deckId && isMemoryCard(card))
+          ) {
+            return {};
+          }
           const entry = newConverted.get(originalCardId);
           const snapshot = typeof entry === "string" ? null : entry;
 
@@ -688,6 +735,7 @@ export const useDeckBuilderStore = create<DeckBuilderStore>((set) => ({
             selectedHiddenHiramekiId: snapshot?.selectedHiddenHiramekiId ?? null,
             selectedSeasonLevel: snapshot?.selectedSeasonLevel,
             selectedSeasonStatuses: snapshot?.selectedSeasonStatuses,
+            selectedMemoryLevel: snapshot?.selectedMemoryLevel,
             ...normalizeSeason4CardState({
               ...originalCard,
               selectedSeasonLevel: snapshot?.selectedSeasonLevel,
@@ -699,6 +747,9 @@ export const useDeckBuilderStore = create<DeckBuilderStore>((set) => ({
             ),
             isCopied: snapshot?.isCopied,
             copiedFromCardId: snapshot?.copiedFromCardId,
+            ...(isMemoryCard(originalCard) && {
+              selectedMemoryLevel: normalizeMemoryLevel(snapshot?.selectedMemoryLevel),
+            }),
           };
 
           // Replace converted card with original card
@@ -733,6 +784,8 @@ export const useDeckBuilderStore = create<DeckBuilderStore>((set) => ({
             type: snapshot?.type ?? cardToUndo.type,
             selectedHiramekiLevel:
               snapshot?.selectedHiramekiLevel ?? cardToUndo.selectedHiramekiLevel,
+            selectedMemoryLevel:
+              snapshot?.selectedMemoryLevel ?? cardToUndo.selectedMemoryLevel,
             selectedHiddenHiramekiId:
               snapshot?.selectedHiddenHiramekiId ?? cardToUndo.selectedHiddenHiramekiId,
             personaEngravings: normalizePersonaEngravings(
@@ -742,6 +795,7 @@ export const useDeckBuilderStore = create<DeckBuilderStore>((set) => ({
             godHiramekiType: snapshot?.godHiramekiType ?? cardToUndo.godHiramekiType,
             godHiramekiEffectId: snapshot?.godHiramekiEffectId ?? cardToUndo.godHiramekiEffectId,
             isBasicCard: snapshot?.isBasicCard ?? cardToUndo.isBasicCard,
+            isMemoryCard: snapshot?.isMemoryCard ?? isMemoryCard(cardToUndo),
           });
         } else {
           newCopied.delete(copiedFromId);
@@ -771,7 +825,7 @@ export const useDeckBuilderStore = create<DeckBuilderStore>((set) => ({
       const deckCharacter = state.deck.character;
       const card = state.deck.cards.find((c) => c.deckId === deckId);
       if (!card) return {};
-      if (isSeason4Card(card)) return {};
+      if (isSeason4Card(card) || isMemoryCard(card)) return {};
 
       const totalCopied = Array.from(state.deck.copiedCards.values()).reduce(
         (sum: number, entry) => {
@@ -803,10 +857,12 @@ export const useDeckBuilderStore = create<DeckBuilderStore>((set) => ({
         selectedHiddenHiramekiId: card.selectedHiddenHiramekiId,
         selectedSeasonLevel: card.selectedSeasonLevel,
         selectedSeasonStatuses: card.selectedSeasonStatuses,
+        selectedMemoryLevel: card.selectedMemoryLevel,
         personaEngravings: normalizePersonaEngravings(card.personaEngravings, deckCharacter),
         godHiramekiType: card.godHiramekiType,
         godHiramekiEffectId: card.godHiramekiEffectId,
         isBasicCard: card.isBasicCard,
+        isMemoryCard: isMemoryCard(card),
       };
       newCopied.set(card.id, snapshot);
       return {
@@ -830,6 +886,14 @@ export const useDeckBuilderStore = create<DeckBuilderStore>((set) => ({
       if (isPersonaCard(cardToConvert)) return {};
       const target = getCardById(targetCardId);
       if (!target && !asExclusion) return {};
+      if (
+        !asExclusion &&
+        target &&
+        isMemoryCard(target) &&
+        state.deck.cards.some((card) => card.deckId !== deckId && isMemoryCard(card))
+      ) {
+        return {};
+      }
 
       // Check integrated removal+conversion limit (max 5 total)
       const removedCount = Array.from(state.deck.removedCards.values()).reduce(
@@ -856,6 +920,7 @@ export const useDeckBuilderStore = create<DeckBuilderStore>((set) => ({
           godHiramekiType: null,
           godHiramekiEffectId: null,
           selectedHiddenHiramekiId: null,
+          selectedMemoryLevel: isMemoryCard(target) ? 1 : undefined,
           ...normalizeSeason4CardState({
             ...target,
             id: target.id,
@@ -878,6 +943,7 @@ export const useDeckBuilderStore = create<DeckBuilderStore>((set) => ({
         selectedHiddenHiramekiId: cardToConvert.selectedHiddenHiramekiId,
         selectedSeasonLevel: cardToConvert.selectedSeasonLevel,
         selectedSeasonStatuses: cardToConvert.selectedSeasonStatuses,
+        selectedMemoryLevel: cardToConvert.selectedMemoryLevel,
         personaEngravings: normalizePersonaEngravings(
           cardToConvert.personaEngravings,
           deckCharacter,
@@ -885,6 +951,7 @@ export const useDeckBuilderStore = create<DeckBuilderStore>((set) => ({
         godHiramekiType: cardToConvert.godHiramekiType,
         godHiramekiEffectId: cardToConvert.godHiramekiEffectId,
         isBasicCard: cardToConvert.isBasicCard,
+        isMemoryCard: isMemoryCard(cardToConvert),
         isCopied: cardToConvert.isCopied,
         copiedFromCardId: cardToConvert.copiedFromCardId,
         excluded: asExclusion,

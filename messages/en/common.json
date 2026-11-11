@@ -37,7 +37,8 @@
     "search": "Search Card",
     "sharedCards": "Neutral Cards",
     "startingCards": "Starting Cards",
-    "title": "Card"
+    "title": "Card",
+    "memoryLevel": "Memory card level"
   },
   "category": {
     "attack": "Attack",
@@ -297,6 +298,8 @@
     "inquiry": "Inquiry",
     "claim": "Claim",
     "survival": "Survival",
-    "rapacity": "Rapacity"
+    "rapacity": "Rapacity",
+    "memory": "Memory",
+    "banish": "Banish"
   }
 }

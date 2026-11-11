@@ -91,6 +91,7 @@ function renderWorkspace() {
       onSetPersonaEngravings={noop}
       onUpdateSeasonLevel={noop}
       onUpdateSeasonStatuses={noop}
+      onUpdateMemoryLevel={noop}
       onSetDeckMutationCore={noop}
     />,
   );

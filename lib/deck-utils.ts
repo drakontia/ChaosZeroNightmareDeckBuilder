@@ -8,6 +8,7 @@ import {
   isSeason4Card,
   normalizeSeason4SelectedStatuses,
 } from "@/lib/season4";
+import { getMemoryLevelVariation, isMemoryCard } from "@/lib/season5";
 
 export interface CardInfoLocalization {
   persona?: PersonaPresentationLocalization;
@@ -49,6 +50,7 @@ export function getCardInfo(
         ? baseCard.statuses
         : undefined;
   const isSeason4 = isSeason4Card(baseCard);
+  const isMemory = isMemoryCard(baseCard);
 
   if (isSeason4 && baseCard.seasonLevelVariations && baseCard.seasonLevelVariations.length > 0) {
     const selectedSeasonLevel = card.selectedSeasonLevel ?? 1;
@@ -63,6 +65,14 @@ export function getCardInfo(
       getSeason4BaseStatus(baseCard),
     );
     statuses = normalizedSeasonStatuses.slice(0, selectedSeasonLevel);
+  }
+
+  if (isMemory) {
+    const memoryVariation = getMemoryLevelVariation(baseCard, card.selectedMemoryLevel);
+    if (memoryVariation) {
+      cost = memoryVariation.cost;
+      description = memoryVariation.description;
+    }
   }
 
   // Apply ego level variations
@@ -86,7 +96,7 @@ export function getCardInfo(
   }
 
   // Apply hidden hirameki if present and at base level (Lv0 only)
-  if (!isSeason4 && card.selectedHiddenHiramekiId && card.selectedHiramekiLevel === 0) {
+  if (!isSeason4 && !isMemory && card.selectedHiddenHiramekiId && card.selectedHiramekiLevel === 0) {
     const hiddenEffect = HIDDEN_HIRAMEKI_EFFECTS.find(
       (e) => e.id === card.selectedHiddenHiramekiId,
     );
@@ -102,7 +112,13 @@ export function getCardInfo(
   }
 
   // Apply god hirameki if active and an effect is selected
-  if (!isSeason4 && card.godHiramekiType && card.godHiramekiEffectId && !card.isBasicCard) {
+  if (
+    !isSeason4 &&
+    !isMemory &&
+    card.godHiramekiType &&
+    card.godHiramekiEffectId &&
+    !card.isBasicCard
+  ) {
     const effect = GOD_HIRAMEKI_EFFECTS.find((e) => e.id === card.godHiramekiEffectId);
     if (effect) {
       const godEffectDescription =
