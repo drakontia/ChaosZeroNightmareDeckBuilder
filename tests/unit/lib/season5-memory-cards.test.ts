@@ -1,3 +1,6 @@
+import { existsSync } from "node:fs";
+import { join } from "node:path";
+
 import { act } from "@testing-library/react";
 import { describe, expect, it, beforeEach } from "vite-plus/test";
 
@@ -55,6 +58,24 @@ describe("Season 5 shared and memory cards", () => {
   it("registers ten ordinary shared cards", () => {
     expect(SEASON5_SHARED_CARDS).toHaveLength(10);
     expect(SEASON5_SHARED_CARDS.every((card) => card.type === CardType.SHARED)).toBe(true);
+  });
+
+  it("uses available season 5 artwork for each shared card and memory theme", () => {
+    const cards = [...SEASON5_SHARED_CARDS, ...SEASON5_MEMORY_CARDS];
+    const imagePaths = [
+      ...new Set(
+        cards
+          .map((card) => card.imgUrl)
+          .filter((imagePath): imagePath is string => Boolean(imagePath)),
+      ),
+    ];
+
+    expect(cards.every((card) => Boolean(card.imgUrl))).toBe(true);
+    expect(imagePaths).toHaveLength(20);
+    for (const imagePath of imagePaths) {
+      expect(imagePath).toMatch(/^\/images\/cards\/season5\//);
+      expect(existsSync(join(process.cwd(), "public", imagePath.slice(1)))).toBe(true);
+    }
   });
 
   it("registers 40 memory choices with four levels and the required status", () => {

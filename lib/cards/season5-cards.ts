@@ -342,7 +342,7 @@ export const SEASON5_SHARED_CARDS: CznCard[] = sharedCardDefinitions.map((defini
   category: definition.category,
   statuses: definition.statuses,
   allowedJobs: "all",
-  imgUrl: "/images/cards/card_placeholder.png",
+  imgUrl: `/images/cards/season5/${definition.id.replace("season5_", "")}.png`,
   hiramekiVariations: [{ level: 0, cost: definition.cost, description: definition.description.ja }],
 }));
 
@@ -364,7 +364,7 @@ export const SEASON5_MEMORY_CARDS: CznCard[] = memoryThemes.flatMap((theme) =>
       category: CardCategory.UPGRADE,
       statuses: [CardStatus.MEMORY, CardStatus.PREMIERE],
       allowedJobs: "all",
-      imgUrl: "/images/cards/card_placeholder.png",
+      imgUrl: `/images/cards/season5/memory_${theme.id}.png`,
       isMemoryCard: true,
       memoryLevelVariations,
       hiramekiVariations: [
