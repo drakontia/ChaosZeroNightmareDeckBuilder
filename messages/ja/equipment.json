@@ -24,7 +24,8 @@
         "laboratory_0": "第0研究所",
         "burning_life": "燃ゆる生命",
         "theater_of_illusions": "虚像の劇場",
-        "the_kaleidoscope_hatchery": "万華鏡の孵化場"
+        "the_kaleidoscope_hatchery": "万華鏡の孵化場",
+        "heavenly_barrier": "天上の防壁"
       }
     },
     "refinementEffects": {
@@ -392,6 +393,30 @@
       "twisted_drill_bit": {
         "name": "歪んだドリル刃",
         "description": "味方の欲望カード発動時、敵全体に固定ダメージ100%(各ターン3回)"
+      },
+      "triskelion_of_judgment": {
+        "name": "審判のトリスケリオン",
+        "description": "攻撃を受けると、次に発動する自分の攻撃カードのダメージ量20%増加(各ターン1回)"
+      },
+      "core_disassembler": {
+        "name": "コア解体器",
+        "description": "自分がシールドを所持中に敵へヒット時、強靭度ダメージ2(各ターン1回)"
+      },
+      "phantom_dagger": {
+        "name": "幻影の短剣",
+        "description": "自分の攻撃カード使用時、ランダムな敵にコストに応じて固定ダメージ60%(各ターン2回)"
+      },
+      "needle_of_the_severed_overseer": {
+        "name": "断絶した演算子の針",
+        "description": "自分の攻撃カードで弱点攻撃時、ダメージ量+40%"
+      },
+      "runic_hammer": {
+        "name": "ルーン柄ハンマー",
+        "description": "味方の唯一攻撃カードの会心ダメージ+20%(重複不可)"
+      },
+      "fragment_of_condensed_radiance": {
+        "name": "凝縮された光輝の破片",
+        "description": "自分の結束攻撃カードの会心ダメージ+50%"
       }
     },
     "armor": {
@@ -659,6 +684,26 @@
       "remnants_of_succession": {
         "name": "継承の残痕",
         "description": "攻撃カード2回発動時、敵全体に灼熱4(各ターン1回)"
+      },
+      "white_coat": {
+        "name": "白衣",
+        "description": "ターン開始時、味方がデバフ状態なら固定シールド50%"
+      },
+      "condensed_fuel": {
+        "name": "凝縮された燃料",
+        "description": "ターン終了時、固定治癒100%(各戦闘3回)"
+      },
+      "shield_of_repentance": {
+        "name": "悔悟の盾",
+        "description": "ターン終了時、シールドがある敵全体に脆弱2(各戦闘1回)"
+      },
+      "imitated_hand": {
+        "name": "模倣された手",
+        "description": "戦闘開始時、ダメージ減少2。攻撃を受けると、固定治癒80%(各ターン1回)"
+      },
+      "crown_of_corruption": {
+        "name": "堕落の王冠",
+        "description": "最大HP10%減少。自分の正義属性攻撃カードの会心率+10%"
       }
     },
     "pendant": {
@@ -1026,6 +1071,26 @@
       "invader_observation_logs": {
         "name": "インベーダー観察記録",
         "description": "攻撃カードダメージ量+20%、敵数に応じて会心率+2%"
+      },
+      "pendant_of_balance": {
+        "name": "均衡のペンダント",
+        "description": "味方が攻撃カード使用時、固定シールド20%(各ターン5回)"
+      },
+      "enforcement_contract": {
+        "name": "執行の契約",
+        "description": "ターン終了時、手札のカード数に応じて固定治癒20%(最大100%)"
+      },
+      "split_design_core": {
+        "name": "ひび割れた設計コア",
+        "description": "ターン開始時、味方のダメージ量8%増加(最大3重複)"
+      },
+      "overloaded_power_engine": {
+        "name": "過負荷動力機関",
+        "description": "このターン自分の結束カードの重複数に応じて、自分の攻撃カードの会心ダメージ+3%(最大30%)"
+      },
+      "the_final_command": {
+        "name": "最期のコマンド",
+        "description": "自分のカードまたはエゴスキルでアクションポイント獲得時、1ターンの間、味方の攻撃力+3%(最大6重複)"
       }
     }
   }

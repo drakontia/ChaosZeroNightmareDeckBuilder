@@ -33,7 +33,8 @@
         "laboratory_0": "Laboratory 0",
         "burning_life": "Burning Life",
         "theater_of_illusions": "Theater of Illusions",
-        "the_kaleidoscope_hatchery": "The Kaleidoscope Hatchery"
+        "the_kaleidoscope_hatchery": "The Kaleidoscope Hatchery",
+        "heavenly_barrier": "Heavenly Barrier"
       }
     },
     "refinementEffects": {
@@ -372,6 +373,26 @@
       "remnants_of_succession": {
         "description": "When attack cards are activated twice, inflict Burn 4 on all enemies (once per turn)",
         "name": "Remnants of Succession"
+      },
+      "white_coat": {
+        "description": "At the start of turn, gain 50% fixed shield if an ally is debuffed",
+        "name": "White Coat"
+      },
+      "condensed_fuel": {
+        "description": "At the end of turn, restore 100% fixed healing (three times per combat)",
+        "name": "Condensed Fuel"
+      },
+      "shield_of_repentance": {
+        "description": "At the end of turn, inflict Vulnerable 2 on all shielded enemies (once per combat)",
+        "name": "Shield of Repentance"
+      },
+      "imitated_hand": {
+        "description": "At the start of combat, Damage Reduction 2. When attacked, restore 80% fixed healing (once per turn)",
+        "name": "Imitated Hand"
+      },
+      "crown_of_corruption": {
+        "description": "Max HP -10%. Critical Rate of your Justice attack cards +10%",
+        "name": "Crown of Corruption"
       }
     },
     "pendant": {
@@ -743,6 +764,26 @@
       "invader_observation_logs": {
         "description": "Attack card damage +20%, critical rate +2% based on enemy count",
         "name": "Invader Observation Logs"
+      },
+      "pendant_of_balance": {
+        "description": "When an ally uses an attack card, gain 20% fixed shield (five times per turn)",
+        "name": "Pendant of Balance"
+      },
+      "enforcement_contract": {
+        "description": "At the end of turn, restore 20% fixed healing per card in hand (up to 100%)",
+        "name": "Enforcement Contract"
+      },
+      "split_design_core": {
+        "description": "At the start of turn, allies' damage increases by 8% (up to three stacks)",
+        "name": "Split Design Core"
+      },
+      "overloaded_power_engine": {
+        "description": "For each stack of your Bond cards this turn, your attack cards gain 3% critical damage (up to 30%)",
+        "name": "Overloaded Power Engine"
+      },
+      "the_final_command": {
+        "description": "When you gain an action point with a card or Ego Skill, allies gain 3% Attack for 1 turn (up to six stacks)",
+        "name": "The Final Command"
       }
     },
     "weapon": {
@@ -1054,6 +1095,30 @@
       "twisted_drill_bit": {
         "description": "When an ally activates a Desire card, deal 100% fixed damage to all enemies (three times per turn)",
         "name": "Twisted Drill Bit"
+      },
+      "triskelion_of_judgment": {
+        "description": "When attacked, the next attack card you activate deals 20% more damage (once per turn)",
+        "name": "Triskelion of Judgment"
+      },
+      "core_disassembler": {
+        "description": "When you hit an enemy while you have a shield, deal 2 Toughness damage (once per turn)",
+        "name": "Core Disassembler"
+      },
+      "phantom_dagger": {
+        "description": "When you use an attack card, deal 60% fixed damage per cost to a random enemy (twice per turn)",
+        "name": "Phantom Dagger"
+      },
+      "needle_of_the_severed_overseer": {
+        "description": "Your attack cards deal 40% more damage when hitting a weakness",
+        "name": "Needle of the Severed Overseer"
+      },
+      "runic_hammer": {
+        "description": "Allies' Unique attack cards gain 20% critical damage (cannot stack)",
+        "name": "Runic Hammer"
+      },
+      "fragment_of_condensed_radiance": {
+        "description": "Your Bond attack cards gain 50% critical damage",
+        "name": "Fragment of Condensed Radiance"
       }
     }
   }

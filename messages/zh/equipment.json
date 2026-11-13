@@ -21,7 +21,8 @@
         "laboratory_0": "Laboratory 0",
         "burning_life": "Burning Life",
         "theater_of_illusions": "Theater of Illusions",
-        "the_kaleidoscope_hatchery": "The Kaleidoscope Hatchery"
+        "the_kaleidoscope_hatchery": "The Kaleidoscope Hatchery",
+        "heavenly_barrier": "天上之壁"
       }
     },
     "refinementEffects": {
@@ -802,6 +803,30 @@
       "twisted_drill_bit": {
         "description": "When an ally activates a Desire card, deal 100% fixed damage to all enemies (three times per turn)",
         "name": "Twisted Drill Bit"
+      },
+      "triskelion_of_judgment": {
+        "description": "受到攻击时，你下一张发动的攻击牌伤害量+20%（每回合1次）",
+        "name": "审判三曲轮"
+      },
+      "core_disassembler": {
+        "description": "自身持有护盾时命中敌人，造成韧性伤害2（每回合1次）",
+        "name": "核心解体器"
+      },
+      "phantom_dagger": {
+        "description": "使用攻击牌时，依据费用对随机敌人造成60%固定伤害（每回合2次）",
+        "name": "幻影短剑"
+      },
+      "needle_of_the_severed_overseer": {
+        "description": "自身攻击牌攻击弱点时，伤害量+40%",
+        "name": "断绝的演算者之针"
+      },
+      "runic_hammer": {
+        "description": "友军唯一攻击牌的暴击伤害+20%（不可叠加）",
+        "name": "符文柄锤"
+      },
+      "fragment_of_condensed_radiance": {
+        "description": "自身结绊攻击牌的暴击伤害+50%",
+        "name": "浓缩光辉碎片"
       }
     },
     "armor": {
@@ -852,6 +877,26 @@
       "remnants_of_succession": {
         "description": "When attack cards are activated twice, inflict Burn 4 on all enemies (once per turn)",
         "name": "Remnants of Succession"
+      },
+      "white_coat": {
+        "description": "回合开始时，若友军处于减益状态，获得50%固定护盾",
+        "name": "白大褂"
+      },
+      "condensed_fuel": {
+        "description": "回合结束时，固定治疗100%（每场战斗3次）",
+        "name": "浓缩燃料"
+      },
+      "shield_of_repentance": {
+        "description": "回合结束时，对所有持有护盾的敌人施加脆弱2（每场战斗1次）",
+        "name": "悔悟之盾"
+      },
+      "imitated_hand": {
+        "description": "战斗开始时，伤害减免2。受到攻击时，固定治疗80%（每回合1次）",
+        "name": "模仿之手"
+      },
+      "crown_of_corruption": {
+        "description": "最大生命值-10%。自身正义属性攻击牌暴击率+10%",
+        "name": "腐化王冠"
       }
     },
     "pendant": {
@@ -906,6 +951,26 @@
       "invader_observation_logs": {
         "description": "Attack card damage +20%, critical rate +2% based on enemy count",
         "name": "Invader Observation Logs"
+      },
+      "pendant_of_balance": {
+        "description": "友军使用攻击牌时，获得20%固定护盾（每回合5次）",
+        "name": "均衡吊坠"
+      },
+      "enforcement_contract": {
+        "description": "回合结束时，每有1张手牌固定治疗20%（最多100%）",
+        "name": "执行契约"
+      },
+      "split_design_core": {
+        "description": "回合开始时，友军伤害量+8%（最多叠加3层）",
+        "name": "裂纹设计核心"
+      },
+      "overloaded_power_engine": {
+        "description": "根据自身本回合结绊牌的叠加数，自身攻击牌暴击伤害+3%（最多30%）",
+        "name": "过载动力引擎"
+      },
+      "the_final_command": {
+        "description": "自身通过卡牌或自我技能获得行动点时，友军攻击力+3%，持续1回合（最多叠加6层）",
+        "name": "最后的命令"
       }
     }
   }

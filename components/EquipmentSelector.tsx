@@ -37,6 +37,7 @@ const CHAOS_FILTER_OPTIONS: EquipmentObtainableChaosId[] = [
   EquipmentObtainableChaosId.BURNING_LIFE,
   EquipmentObtainableChaosId.THEATER_OF_ILLUSIONS,
   EquipmentObtainableChaosId.THE_KALEIDOSCOPE_HATCHERY,
+  EquipmentObtainableChaosId.HEAVENLY_BARRIER,
 ];
 
 interface EquipmentSelectorProps {

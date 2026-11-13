@@ -1,6 +1,10 @@
 import { describe, expect, it } from "vite-plus/test";
 
-import { filterEquipmentByChaosLocation } from "@/lib/equipment-chaos";
+import {
+  EQUIPMENT_OBTAINABLE_CHAOS_IDS,
+  filterEquipmentByChaosLocation,
+} from "@/lib/equipment-chaos";
+import { EQUIPMENT } from "@/lib/equipment";
 import { Equipment, EquipmentObtainableChaosId, EquipmentType } from "@/types";
 
 const mockEquipment: Equipment[] = [
@@ -47,5 +51,19 @@ describe("filterEquipmentByChaosLocation", () => {
       EquipmentObtainableChaosId.THE_BLUE_POT,
     );
     expect(result.map((item) => item.id)).toEqual(["common_drop"]);
+  });
+
+  it("exposes Heavenly Barrier and filters its equipment", () => {
+    expect(EQUIPMENT_OBTAINABLE_CHAOS_IDS).toContain(EquipmentObtainableChaosId.HEAVENLY_BARRIER);
+
+    const result = filterEquipmentByChaosLocation(
+      EQUIPMENT,
+      EquipmentObtainableChaosId.HEAVENLY_BARRIER,
+    );
+    expect(
+      result.filter((item) =>
+        item.obtainableChaosIds.includes(EquipmentObtainableChaosId.HEAVENLY_BARRIER),
+      ),
+    ).toHaveLength(16);
   });
 });

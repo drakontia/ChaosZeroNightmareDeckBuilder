@@ -72,6 +72,24 @@ const selectedEquipment = {
 };
 
 describe("EquipmentSelector chaos filter", () => {
+  it("offers Heavenly Barrier as an equipment location filter", () => {
+    render(
+      <EquipmentSelector
+        equipment={equipment}
+        selectedEquipment={selectedEquipment}
+        onSelect={vi.fn()}
+      />,
+    );
+
+    fireEvent.click(screen.getByRole("button", { name: /equipment\.weapon\.title/ }));
+
+    expect(
+      screen.getByRole("option", {
+        name: "equipment.obtainableChaos.options.heavenly_barrier",
+      }),
+    ).toBeTruthy();
+  });
+
   it("filters modal options by selected chaos and keeps common drops", () => {
     render(
       <EquipmentSelector
