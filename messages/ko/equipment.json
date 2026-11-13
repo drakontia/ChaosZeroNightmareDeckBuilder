@@ -21,7 +21,8 @@
         "laboratory_0": "Laboratory 0",
         "burning_life": "Burning Life",
         "theater_of_illusions": "Theater of Illusions",
-        "the_kaleidoscope_hatchery": "The Kaleidoscope Hatchery"
+        "the_kaleidoscope_hatchery": "The Kaleidoscope Hatchery",
+        "heavenly_barrier": "천상의 방벽"
       }
     },
     "refinementEffects": {
@@ -802,6 +803,30 @@
       "twisted_drill_bit": {
         "description": "When an ally activates a Desire card, deal 100% fixed damage to all enemies (three times per turn)",
         "name": "Twisted Drill Bit"
+      },
+      "triskelion_of_judgment": {
+        "description": "공격을 받으면 다음에 발동하는 자신의 공격 카드 피해량이 20% 증가합니다 (턴당 1회)",
+        "name": "심판의 트리스켈리온"
+      },
+      "core_disassembler": {
+        "description": "자신이 실드를 보유한 상태에서 적을 명중시키면 강인도 피해 2를 줍니다 (턴당 1회)",
+        "name": "코어 해체기"
+      },
+      "phantom_dagger": {
+        "description": "공격 카드를 사용할 때 비용에 비례해 무작위 적에게 60% 고정 피해를 줍니다 (턴당 2회)",
+        "name": "환영의 단검"
+      },
+      "needle_of_the_severed_overseer": {
+        "description": "자신의 공격 카드로 약점을 공격하면 피해량이 40% 증가합니다",
+        "name": "단절된 연산자의 바늘"
+      },
+      "runic_hammer": {
+        "description": "아군 고유 공격 카드의 치명타 피해가 20% 증가합니다 (중첩 불가)",
+        "name": "룬 손잡이 망치"
+      },
+      "fragment_of_condensed_radiance": {
+        "description": "자신의 결속 공격 카드의 치명타 피해가 50% 증가합니다",
+        "name": "응축된 광휘의 파편"
       }
     },
     "armor": {
@@ -852,6 +877,26 @@
       "remnants_of_succession": {
         "description": "When attack cards are activated twice, inflict Burn 4 on all enemies (once per turn)",
         "name": "Remnants of Succession"
+      },
+      "white_coat": {
+        "description": "턴 시작 시 아군이 디버프 상태라면 고정 실드 50%를 얻습니다",
+        "name": "흰 가운"
+      },
+      "condensed_fuel": {
+        "description": "턴 종료 시 고정 회복 100%를 얻습니다 (전투당 3회)",
+        "name": "응축 연료"
+      },
+      "shield_of_repentance": {
+        "description": "턴 종료 시 실드를 보유한 모든 적에게 취약 2를 부여합니다 (전투당 1회)",
+        "name": "참회의 방패"
+      },
+      "imitated_hand": {
+        "description": "전투 시작 시 피해 감소 2. 공격을 받으면 고정 회복 80%를 얻습니다 (턴당 1회)",
+        "name": "모방된 손"
+      },
+      "crown_of_corruption": {
+        "description": "최대 HP 10% 감소. 자신의 정의 속성 공격 카드 치명타 확률이 10% 증가합니다",
+        "name": "타락의 왕관"
       }
     },
     "pendant": {
@@ -906,6 +951,26 @@
       "invader_observation_logs": {
         "description": "Attack card damage +20%, critical rate +2% based on enemy count",
         "name": "Invader Observation Logs"
+      },
+      "pendant_of_balance": {
+        "description": "아군이 공격 카드를 사용하면 고정 실드 20%를 얻습니다 (턴당 5회)",
+        "name": "균형의 펜던트"
+      },
+      "enforcement_contract": {
+        "description": "턴 종료 시 손패 카드 1장당 고정 회복 20%를 얻습니다 (최대 100%)",
+        "name": "집행 계약"
+      },
+      "split_design_core": {
+        "description": "턴 시작 시 아군 피해량이 8% 증가합니다 (최대 3중첩)",
+        "name": "균열 설계 코어"
+      },
+      "overloaded_power_engine": {
+        "description": "이번 턴 자신의 결속 카드 중첩 수에 따라 자신의 공격 카드 치명타 피해가 3% 증가합니다 (최대 30%)",
+        "name": "과부하 동력 기관"
+      },
+      "the_final_command": {
+        "description": "자신의 카드 또는 에고 스킬로 행동 포인트를 획득하면 아군 공격력이 1턴 동안 3% 증가합니다 (최대 6중첩)",
+        "name": "최후의 명령"
       }
     }
   }

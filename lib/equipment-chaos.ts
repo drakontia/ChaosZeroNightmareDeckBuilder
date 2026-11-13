@@ -11,6 +11,7 @@ export const EQUIPMENT_OBTAINABLE_CHAOS_IDS: EquipmentObtainableChaosId[] = [
   EquipmentObtainableChaosId.BURNING_LIFE,
   EquipmentObtainableChaosId.THEATER_OF_ILLUSIONS,
   EquipmentObtainableChaosId.THE_KALEIDOSCOPE_HATCHERY,
+  EquipmentObtainableChaosId.HEAVENLY_BARRIER,
 ];
 
 export const filterEquipmentByChaosLocation = (

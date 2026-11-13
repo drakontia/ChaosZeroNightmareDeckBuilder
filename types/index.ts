@@ -54,6 +54,7 @@ export enum EquipmentObtainableChaosId {
   BURNING_LIFE = "burning_life",
   THEATER_OF_ILLUSIONS = "theater_of_illusions",
   THE_KALEIDOSCOPE_HATCHERY = "the_kaleidoscope_hatchery",
+  HEAVENLY_BARRIER = "heavenly_barrier",
 }
 
 export interface Equipment {

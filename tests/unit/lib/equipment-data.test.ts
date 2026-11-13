@@ -1,3 +1,6 @@
+import { existsSync } from "node:fs";
+import { join } from "node:path";
+
 import { describe, it, expect } from "vite-plus/test";
 import { EquipmentType } from "@/types";
 import { WEAPONS } from "@/lib/equipment/weapons";
@@ -5,6 +8,10 @@ import { ARMORS } from "@/lib/equipment/armors";
 import { PENDANTS } from "@/lib/equipment/pendants";
 import { EQUIPMENT } from "@/lib/equipment";
 import { EquipmentObtainableChaosId } from "@/types";
+import enEquipment from "@/messages/en/equipment.json";
+import jaEquipment from "@/messages/ja/equipment.json";
+import koEquipment from "@/messages/ko/equipment.json";
+import zhEquipment from "@/messages/zh/equipment.json";
 
 const VALID_RARITIES = [
   "equipment.rarity.rare",
@@ -12,8 +19,90 @@ const VALID_RARITIES = [
   "equipment.rarity.mythical",
 ];
 
+type EquipmentLocale = {
+  equipment: {
+    weapon: Record<string, string | { name: string; description: string }>;
+    armor: Record<string, string | { name: string; description: string }>;
+    pendant: Record<string, string | { name: string; description: string }>;
+    obtainableChaos: { options: Record<string, string> };
+  };
+};
+
 describe("equipment data integrity", () => {
   const validChaosIds = new Set(Object.values(EquipmentObtainableChaosId));
+
+  describe("Season 5 equipment", () => {
+    const expectedEquipment = [
+      ["triskelion_of_judgment", EquipmentType.WEAPON, "equipment.rarity.rare"],
+      ["core_disassembler", EquipmentType.WEAPON, "equipment.rarity.rare"],
+      ["phantom_dagger", EquipmentType.WEAPON, "equipment.rarity.rare"],
+      ["white_coat", EquipmentType.ARMOR, "equipment.rarity.rare"],
+      ["condensed_fuel", EquipmentType.ARMOR, "equipment.rarity.rare"],
+      ["shield_of_repentance", EquipmentType.ARMOR, "equipment.rarity.rare"],
+      ["pendant_of_balance", EquipmentType.PENDANT, "equipment.rarity.rare"],
+      ["enforcement_contract", EquipmentType.PENDANT, "equipment.rarity.rare"],
+      ["needle_of_the_severed_overseer", EquipmentType.WEAPON, "equipment.rarity.legendary"],
+      ["runic_hammer", EquipmentType.WEAPON, "equipment.rarity.legendary"],
+      ["fragment_of_condensed_radiance", EquipmentType.WEAPON, "equipment.rarity.legendary"],
+      ["imitated_hand", EquipmentType.ARMOR, "equipment.rarity.legendary"],
+      ["crown_of_corruption", EquipmentType.ARMOR, "equipment.rarity.legendary"],
+      ["split_design_core", EquipmentType.PENDANT, "equipment.rarity.legendary"],
+      ["overloaded_power_engine", EquipmentType.PENDANT, "equipment.rarity.legendary"],
+      ["the_final_command", EquipmentType.PENDANT, "equipment.rarity.mythical"],
+    ] as const;
+
+    it("registers every listed item with its ordered Heavenly Barrier image", () => {
+      const equipmentById = new Map(EQUIPMENT.map((item) => [item.id, item]));
+      const equipmentDirectories = {
+        [EquipmentType.WEAPON]: "weapons",
+        [EquipmentType.ARMOR]: "armors",
+        [EquipmentType.PENDANT]: "pendants",
+      };
+
+      expect(
+        EQUIPMENT.filter((item) => expectedEquipment.some(([id]) => id === item.id)),
+      ).toHaveLength(expectedEquipment.length);
+
+      expectedEquipment.forEach(([id, type, rarity]) => {
+        const equipment = equipmentById.get(id);
+        const imagePath = `/images/equipment/${equipmentDirectories[type]}/${id}.png`;
+
+        expect(equipment).toMatchObject({
+          type,
+          rarity,
+          obtainableChaosIds: ["heavenly_barrier"],
+          imgUrl: imagePath,
+        });
+        expect(
+          existsSync(
+            join(
+              process.cwd(),
+              "public",
+              "images",
+              "equipment",
+              equipmentDirectories[type],
+              `${id}.png`,
+            ),
+          ),
+        ).toBe(true);
+      });
+    });
+
+    it("defines names and descriptions in every locale", () => {
+      const locales: EquipmentLocale[] = [jaEquipment, enEquipment, zhEquipment, koEquipment];
+
+      locales.forEach((locale) => {
+        expect(locale.equipment.obtainableChaos.options.heavenly_barrier).toBeTruthy();
+
+        expectedEquipment.forEach(([id, type]) => {
+          expect(locale.equipment[type][id]).toMatchObject({
+            name: expect.any(String),
+            description: expect.any(String),
+          });
+        });
+      });
+    });
+  });
 
   describe("WEAPONS", () => {
     it("all weapon IDs are unique", () => {
