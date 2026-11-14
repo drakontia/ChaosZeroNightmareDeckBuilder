@@ -8,6 +8,7 @@ vi.mock("next/link", () => ({
     children,
     target,
     rel,
+    prefetch,
     "data-testid": dataTestId,
     "aria-label": ariaLabel,
     ...props
@@ -16,6 +17,7 @@ vi.mock("next/link", () => ({
       href={href}
       target={target}
       rel={rel}
+      data-prefetch={prefetch === undefined ? "auto" : String(prefetch)}
       data-testid={dataTestId}
       aria-label={ariaLabel}
       {...props}
@@ -46,6 +48,13 @@ describe("DeckBuilderHeader", () => {
   it("タイトルが表示される", () => {
     render(<DeckBuilderHeader {...defaultProps} />);
     expect(screen.getByText("デッキビルダー")).toBeTruthy();
+  });
+
+  it("ホームへのリンクは動的ページ全体を先読みする", () => {
+    render(<DeckBuilderHeader {...defaultProps} />);
+    const link = screen.getByRole("link", { name: "デッキビルダー" });
+    expect(link.getAttribute("href")).toBe("/");
+    expect(link.getAttribute("data-prefetch")).toBe("true");
   });
 
   it("説明が表示される", () => {
