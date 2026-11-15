@@ -54,7 +54,7 @@ export function DeckBuilderHeader({
         </div>
         <div className="order-2 sm:order-1 w-full sm:w-auto">
           <h1 className="text-xl sm:text-2xl lg:text-4xl font-bold mb-2">
-            <Link href="/" className="hover:underline">
+            <Link href="/" prefetch={true} className="hover:underline">
               {title}
             </Link>
           </h1>
