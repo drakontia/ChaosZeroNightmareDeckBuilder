@@ -148,19 +148,30 @@ export function DeckBuilder({ shareId }: DeckBuilderProps) {
   const currentDeck = store.deck;
   const faintMemoryPoints = useMemo(() => calculateFaintMemory(currentDeck), [currentDeck]);
 
+  const deckBuilderHeader = (
+    <DeckBuilderHeader
+      locale={locale}
+      title={t("app.title")}
+      description={t("app.description")}
+      challengeCheckerLabel={t("app.challengeChecker")}
+    />
+  );
+
   if (!currentDeck) {
-    return <div className="min-h-screen flex items-center justify-center text-lg">Loading...</div>;
+    return (
+      <div className="min-h-screen p-4 lg:p-8 bg-gray-50 dark:bg-gray-900">
+        <div className="max-w-400 mx-auto">
+          {deckBuilderHeader}
+          <div className="min-h-[40vh] flex items-center justify-center text-lg">Loading...</div>
+        </div>
+      </div>
+    );
   }
 
   return (
     <div className="min-h-screen p-4 lg:p-8 bg-gray-50 dark:bg-gray-900">
       <div className="max-w-400 mx-auto">
-        <DeckBuilderHeader
-          locale={locale}
-          title={t("app.title")}
-          description={t("app.description")}
-          challengeCheckerLabel={t("app.challengeChecker")}
-        />
+        {deckBuilderHeader}
         {shareError ? <div className="mb-4 text-sm text-destructive">{shareError}</div> : null}
         <main ref={deckCaptureRef}>
           <DeckWorkspace

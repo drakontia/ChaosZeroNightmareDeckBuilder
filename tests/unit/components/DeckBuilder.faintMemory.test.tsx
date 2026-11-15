@@ -177,6 +177,16 @@ describe("DeckBuilder - faintMemoryPoints のメモ化", () => {
     latestDeckWorkspaceProps = null;
   });
 
+  it("デッキ初期化前でもヘッダーを表示する", async () => {
+    mockStore.deck = null;
+
+    const { DeckBuilder } = await import("@/components/DeckBuilder");
+    render(<DeckBuilder />);
+
+    expect(screen.getByTestId("deck-builder-header")).toBeTruthy();
+    expect(screen.getByText("Loading...")).toBeTruthy();
+  });
+
   it("デッキが変わらない再レンダーでは calculateFaintMemory を1回しか呼ばない", async () => {
     const { DeckBuilder } = await import("@/components/DeckBuilder");
 
