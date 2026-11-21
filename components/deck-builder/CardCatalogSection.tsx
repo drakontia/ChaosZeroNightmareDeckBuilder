@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import { CardHeader, CardTitle, CardContent, Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { CardSelector } from "@/components/CardSelector";
@@ -27,8 +29,6 @@ const toDeckCard = (card: CznCard): DeckCard => {
 
 interface CardCatalogSectionProps {
   deck: Deck;
-  searchQuery: string;
-  onSearchQueryChange: (value: string) => void;
   searchLabel: string;
   title: string;
   onAddCard: (card: DeckCard) => void;
@@ -36,6 +36,7 @@ interface CardCatalogSectionProps {
 }
 
 export function CardCatalogSection(props: CardCatalogSectionProps) {
+  const [searchQuery, setSearchQuery] = useState("");
   const presentHiramekiIds = new Set(
     props.deck.cards
       .filter((card) => card.type === CardType.CHARACTER || card.id.startsWith("persona_"))
@@ -48,8 +49,8 @@ export function CardCatalogSection(props: CardCatalogSectionProps) {
         <CardTitle>{props.title}</CardTitle>
         <Input
           type="text"
-          value={props.searchQuery}
-          onChange={(event) => props.onSearchQueryChange(event.target.value)}
+          value={searchQuery}
+          onChange={(event) => setSearchQuery(event.target.value)}
           className="w-32 sm:w-64"
           placeholder={props.searchLabel}
         />
@@ -62,7 +63,7 @@ export function CardCatalogSection(props: CardCatalogSectionProps) {
           removedCards={props.deck.removedCards}
           convertedCards={props.deck.convertedCards}
           presentHiramekiIds={presentHiramekiIds}
-          searchQuery={props.searchQuery}
+          searchQuery={searchQuery}
         />
       </CardContent>
     </Card>

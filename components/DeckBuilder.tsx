@@ -69,7 +69,6 @@ export function DeckBuilder({ shareId }: DeckBuilderProps) {
   const t = useTranslations();
   const locale = useLocale();
   const router = useRouter();
-  const [searchQuery, setSearchQuery] = useState("");
   const [, setName] = useState("");
   const [sharedDeck, setSharedDeck] = useState<Deck | null>(null);
   const [shareError, setShareError] = useState<string | null>(null);
@@ -243,8 +242,6 @@ export function DeckBuilder({ shareId }: DeckBuilderProps) {
           <div className="lg:col-span-12">
             <CardCatalogSection
               deck={currentDeck}
-              searchQuery={searchQuery}
-              onSearchQueryChange={setSearchQuery}
               searchLabel={t("card.search")}
               title={t("card.add")}
               onAddCard={store.addCard}
