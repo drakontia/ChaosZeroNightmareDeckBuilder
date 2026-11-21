@@ -1,4 +1,4 @@
-import { describe, it, expect } from "vite-plus/test";
+import { describe, it, expect, vi } from "vite-plus/test";
 import {
   getAddableCards,
   getCardById,
@@ -14,6 +14,17 @@ describe("card helpers", () => {
   it("getCardById returns a card when it exists", () => {
     const card = getCardById("shared_01");
     expect(card).toBeDefined();
+  });
+
+  it("getCardById looks up cards without scanning the full card list", () => {
+    const findSpy = vi.spyOn(CARDS, "find");
+
+    try {
+      expect(getCardById("shared_01")).toBeDefined();
+      expect(findSpy).not.toHaveBeenCalled();
+    } finally {
+      findSpy.mockRestore();
+    }
   });
 
   it("getCharacterStartingCards resolves valid cards", () => {

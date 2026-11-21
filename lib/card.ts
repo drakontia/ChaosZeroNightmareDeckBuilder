@@ -14,6 +14,13 @@ import { OTHER_CARDS } from "./other-cards";
 // ============================================================
 
 export const CARDS: CznCard[] = [...CHARACTER_CARDS, ...OTHER_CARDS];
+const CARD_BY_ID = new Map<string, CznCard>();
+
+for (const card of CARDS) {
+  if (!CARD_BY_ID.has(card.id)) {
+    CARD_BY_ID.set(card.id, card);
+  }
+}
 
 // ============================================================
 // ヘルパー関数 (Helper Functions)
@@ -21,7 +28,7 @@ export const CARDS: CznCard[] = [...CHARACTER_CARDS, ...OTHER_CARDS];
 
 // Helper function to get card by ID
 export function getCardById(id: string): CznCard | undefined {
-  return CARDS.find((card) => card.id === id);
+  return CARD_BY_ID.get(id);
 }
 
 // Helper function to get character's starting cards
