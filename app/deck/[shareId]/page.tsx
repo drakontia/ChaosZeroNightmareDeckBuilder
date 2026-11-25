@@ -14,8 +14,7 @@ export async function generateMetadata(
 ): Promise<Metadata> {
   const { shareId } = await params;
   const deck = decodeDeckShare(shareId);
-  const locale = await getLocale();
-  const t = await getTranslations();
+  const [locale, t] = await Promise.all([getLocale(), getTranslations()]);
 
   if (!deck) {
     return {
